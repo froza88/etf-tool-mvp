@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新能源ETF筛选实战 - ETF投资顾问</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            border-radius: 12px;
+            border: 1px solid #2a3f5f;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #8892b0;
+        }
+
+        .step {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2a3f5f;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        .step:nth-child(2) { animation-delay: 0.1s; }
+        .step:nth-child(3) { animation-delay: 0.2s; }
+        .step:nth-child(4) { animation-delay: 0.3s; }
+        .step:nth-child(5) { animation-delay: 0.4s; }
+        .step:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 24px;
+            color: #00d4ff;
+        }
+
+        .step-content {
+            color: #ccd6f6;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .criteria {
+            background: #0a0e27;
+            border-left: 4px solid #00d4ff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .criteria h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #0a0e27;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #2a3f5f;
+            color: #00d4ff;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #2a3f5f;
+        }
+
+        tr:hover {
+            background: #1a1f3a;
+        }
+
+        .passed {
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .eliminated {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2a3f5f 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #00d4ff;
+        }
+
+        .result-card h3 {
+            color: #00d4ff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .winner {
+            background: #0a0e27;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .winner-name {
+            font-size: 22px;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .reason {
+            background: #1a1f3a;
+            border-left: 4px solid #00ff88;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .reason h4 {
+            color: #00ff88;
+            margin-bottom: 8px;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            border-radius: 12px;
+            border: 1px solid #2a3f5f;
+        }
+
+        .cta h2 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: #8892b0;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #8892b0;
+            font-size: 14px;
+            border-top: 1px solid #2a3f5f;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            border-radius: 20px;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        .progress {
+            font-size: 18px;
+            color: #8892b0;
+            margin-bottom: 20px;
+        }
+
+        .progress span {
+            color: #00ff88;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎯 新能源ETF筛选实战</h1>
+            <p>基于{{ total_count }}只新能源ETF的真实数据筛选过程</p>
+            <div style="margin-top: 20px;">
+                <span class="tag">真实数据</span>
+                <span class="tag">动态筛选</span>
+                <span class="tag">专业逻辑</span>
+            </div>
+        </div>
+
+        <!-- Screening Steps -->
+        {% for step in screening_steps %}
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">{{ step.step }}</div>
+                <div class="step-title">{{ step.name }}</div>
+            </div>
+            <div class="step-content">
+                <div class="criteria">
+                    <h4>📋 筛选标准</h4>
+                    <p>{{ step.criteria }}</p>
+                </div>
+
+                <div class="progress">
+                    通过：<span>{{ step.passed|length }}</span> 只 |
+                    淘汰：<span>{{ step.eliminated_count }}</span> 只
+                </div>
+
+                {% if step.passed %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ETF名称</th>
+                            <th>代码</th>
+                            <th>规模（亿）</th>
+                            <th>费率</th>
+                            <th>跟踪误差</th>
+                            <th>流动性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for etf in step.passed %}
+                        <tr class="passed">
+                            <td>{{ etf.name }}</td>
+                            <td>{{ etf.code }}</td>
+                            <td>{{ etf.scale }}</td>
+                            <td>{{ etf.fee }}%</td>
+                            <td>{{ etf.tracking_error }}%</td>
+                            <td>{{ etf.volume }}亿</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+
+                {% if step.winner %}
+                <div class="result-card">
+                    <h3>🏆 最终推荐</h3>
+                    <div class="winner">
+                        <div class="winner-name">🥇 第一选择：{{ step.winner.name }} ({{ step.winner.code }})</div>
+                        <div class="reason">
+                            <h4>推荐理由：</h4>
+                            <ul>
+                                <li>✅ <strong>规模最优：</strong>{{ step.winner.scale }}亿</li>
+                                <li>✅ <strong>费率最低：</strong>{{ step.winner.fee }}%</li>
+                                <li>✅ <strong>跟踪误差最小：</strong>{{ step.winner.tracking_error }}%</li>
+                                <li>✅ <strong>流动性最佳：</strong>日均成交{{ step.winner.volume }}亿</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- CTA -->
+        <div class="cta">
+            <h2>想看其他ETF的筛选过程？</h2>
+            <p>我们已收录130只主流ETF，支持智能对比和专业筛选</p>
+            <a href="/" class="btn">立即试用工具</a>
+            <a href="/compare" class="btn" style="background: transparent; border: 2px solid #00d4ff; color: #00d4ff;">ETF对比工具</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 ETF投资顾问 | 基于130只真实ETF数据</p>
+            <p>风险提示：ETF投资有风险，入市需谨慎。以上内容仅供参考，不构成投资建议。</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加滚动动画
+        const steps = document.querySelectorAll('.step');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        steps.forEach(step => observer.observe(step));
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ etf.name }} - ETF详情 - ETF工具平台</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            border: 1px solid #2a2f4a;
+            border-radius: 12px;
+            padding: 24px 30px;
+            margin-bottom: 20px;
+        }
+        
+        .back-link {
+            color: #8a8fa3;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: #3b82f6;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        
+        .header .subtitle {
+            font-size: 14px;
+            color: #8a8fa3;
+        }
+        
+        .header .subtitle span {
+            margin-right: 16px;
+        }
+        
+        .detail-section {
+            background: #111633;
+            border: 1px solid #2a2f4a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            color: #8a8fa3;
+            margin-bottom: 16px;
+            font-weight: 500;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1a1f3a;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card {
+            background: #0a0e27;
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-card h3 {
+            font-size: 13px;
+            color: #8a8fa3;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .info-card .value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #e0e0e0;
+        }
+        
+        .info-card .value.positive {
+            color: #ef4444;
+        }
+        
+        .info-card .value.negative {
+            color: #22c55e;
+        }
+        
+        .chart-placeholder {
+            background: #0a0e27;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px dashed #2a2f4a;
+            margin-bottom: 24px;
+        }
+        
+        .chart-placeholder h2 {
+            margin-bottom: 12px;
+            font-size: 18px;
+            color: #e0e0e0;
+        }
+        
+        .chart-placeholder p {
+            color: #8a8fa3;
+            font-size: 14px;
+        }
+        
+        .holdings-section {
+            margin-top: 24px;
+        }
+        
+        .holdings-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .holdings-list li {
+            padding: 14px 16px;
+            background: #0a0e27;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .holdings-list li:hover {
+            background: #151b38;
+        }
+        
+        .holding-name {
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        
+        .holding-index {
+            color: #8a8fa3;
+            margin-right: 10px;
+            font-size: 13px;
+        }
+        
+        .holding-weight {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            margin-right: 12px;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: #1e2238;
+            color: #8a8fa3;
+            border: 1px solid #2a2f4a;
+        }
+        
+        .btn-secondary:hover {
+            background: #2a2f4a;
+            color: #e0e0e0;
+        }
+        
+        .meta-info {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #1a1f3a;
+            font-size: 14px;
+            color: #8a8fa3;
+        }
+        
+        .meta-info p {
+            margin-bottom: 8px;
+        }
+        
+        .meta-info strong {
+            color: #e0e0e0;
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="back-link">← 返回列表</a>
+            <h1>{{ etf.name }}</h1>
+            <div class="subtitle">
+                <span>代码：{{ etf.code }}</span>
+                <span>发行方：{{ etf.issuer }}</span>
+                <span>成立日期：{{ etf.launch_date }}</span>
+            </div>
+        </div>
+        
+        <div class="detail-section">
+            <div class="section-title">📊 关键指标</div>
+            <div class="info-grid">
+                <div class="info-card" style="border-left-color: #3b82f6;">
+                    <h3>💰 规模（亿元）</h3>
+                    <div class="value">{{ "%.1f"|format(etf.scale) }}</div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: #f59e0b;">
+                    <h3>📉 管理费率（%）</h3>
+                    <div class="value">{{ "%.2f"|format(etf.fee) }}</div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: {% if etf.year_1_return >= 0 %}#ef4444{% else %}#22c55e{% endif %};">
+                    <h3>📈 近1年收益</h3>
+                    <div class="value {% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">
+                        {% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.1f"|format(etf.year_1_return) }}%
+                    </div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: {% if etf.year_3_return >= 0 %}#ef4444{% else %}#22c55e{% endif %};">
+                    <h3>📈 近3年收益</h3>
+                    <div class="value {% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">
+                        {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.1f"|format(etf.year_3_return) }}%
+                    </div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: #22c55e;">
+                    <h3>📉 最大回撤</h3>
+                    <div class="value negative">{{ "%.1f"|format(etf.max_drawdown) }}%</div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: #fbbf24;">
+                    <h3>⚖️ 夏普比率</h3>
+                    <div class="value" style="color: #fbbf24;">{{ "%.2f"|format(etf.sharpe_ratio) }}</div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: #8b5cf6;">
+                    <h3>🎯 跟踪误差（%）</h3>
+                    <div class="value" style="color: #a78bfa;">{{ "%.2f"|format(etf.tracking_error) }}</div>
+                </div>
+                
+                <div class="info-card" style="border-left-color: #06b6d4;">
+                    <h3>💧 日均成交（亿元）</h3>
+                    <div class="value" style="color: #22d3ee;">{{ "%.1f"|format(etf.volume) }}</div>
+                </div>
+            </div>
+            
+            <div class="section-title">📈 历史净值走势</div>
+            <div class="chart-container">
+                <canvas id="performanceChart" width="400" height="200"></canvas>
+            </div>
+            <div class="chart-controls" style="margin-top: 15px; text-align: center;">
+                <button class="btn btn-secondary" onclick="updateChart('1M')">1个月</button>
+                <button class="btn btn-secondary" onclick="updateChart('3M')">3个月</button>
+                <button class="btn btn-secondary active" onclick="updateChart('1Y')">1年</button>
+                <button class="btn btn-secondary" onclick="updateChart('3Y')">3年</button>
+            </div>
+            
+            <script>
+                // 生成模拟数据（基于ETF收益率）
+                function generateData(days, annualReturn) {
+                    const data = [];
+                    let value = 1.0;
+                    const dailyReturn = annualReturn / 252;  // 252个交易日
+                    
+                    for (let i = 0; i < days; i++) {
+                        // 添加随机波动
+                        const volatility = 0.02;
+                        const randomReturn = (Math.random() - 0.5) * 2 * volatility + dailyReturn;
+                        value = value * (1 + randomReturn);
+                        data.push(value);
+                    }
+                    
+                    return data;
+                }
+                
+                // 生成日期标签
+                function generateLabels(days) {
+                    const labels = [];
+                    const today = new Date();
+                    
+                    for (let i = days - 1; i >= 0; i--) {
+                        const date = new Date(today);
+                        date.setDate(date.getDate() - i);
+                        labels.push(date.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }));
+                    }
+                    
+                    return labels;
+                }
+                
+                // 创建图表
+                const ctx = document.getElementById('performanceChart').getContext('2d');
+                let chart;
+                
+                function createChart(period) {
+                    const periods = {
+                        '1M': 22,
+                        '3M': 66,
+                        '1Y': 252,
+                        '3Y': 756
+                    };
+                    
+                    const days = periods[period];
+                    const data = generateData(days, {{ etf.year_1_return }} / 100);
+                    const labels = generateLabels(days);
+                    
+                    if (chart) {
+                        chart.destroy();
+                    }
+                    
+                    chart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '{{ etf.name }}',
+                                data: data,
+                                borderColor: '{{ etf.year_1_return >= 0 and "#ef4444" or "#22c55e" }}',
+                                backgroundColor: '{{ etf.year_1_return >= 0 and "rgba(239, 68, 68, 0.1)" or "rgba(34, 197, 94, 0.1)" }}',
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: '#e0e0e0'
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    ticks: {
+                                        color: '#6b7280',
+                                        maxTicksLimit: 10
+                                    },
+                                    grid: {
+                                        color: '#1a1f3a'
+                                    }
+                                },
+                                y: {
+                                    ticks: {
+                                        color: '#6b7280',
+                                        callback: function(value) {
+                                            return (value * 100).toFixed(0) + '%';
+                                        }
+                                    },
+                                    grid: {
+                                        color: '#1a1f3a'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                
+                // 更新图表
+                function updateChart(period) {
+                    createChart(period);
+                    
+                    // 更新按钮状态
+                    document.querySelectorAll('.chart-controls .btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    event.target.classList.add('active');
+                }
+                
+                // 初始加载（1年）
+                createChart('1Y');
+            </script>
+            
+            <div class="section-title">💼 前五大持仓</div>
+            <div class="holdings-section">
+                <ul class="holdings-list">
+                    {% for holding in etf.top_holdings %}
+                        <li>
+                            <span class="holding-index">{{ loop.index }}.</span>
+                            <span class="holding-name">{{ holding.split(' ')[0] }}</span>
+                            <span class="holding-weight">{{ holding.split(' ')[1] }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="meta-info">
+                <p><strong>跟踪标的：</strong>{{ etf.underlying }}</p>
+                <p><strong>类型：</strong>{{ etf.type }} <span style="margin: 0 8px;">|</span> <strong>主题分类：</strong>{{ etf.category }}</p>
+            </div>
+            
+            <div>
+                <button class="btn btn-primary" onclick="window.location.href='/compare?codes={{ etf.code }}'">📊 对比这只ETF</button>
+                <button class="btn btn-secondary" onclick="window.location.href='/'">← 返回列表</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

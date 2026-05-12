@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF工具 - 智能ETF筛选与对比平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #0a0e27;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            border: 1px solid #2a2f4a;
+            border-radius: 12px;
+            padding: 24px 30px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left h1 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        .header-left p {
+            font-size: 14px;
+            color: #8a8fa3;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .filter-section {
+            background: #111633;
+            border: 1px solid #2a2f4a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-title {
+            font-size: 16px;
+            color: #8a8fa3;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 180px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #8a8fa3;
+            font-weight: 500;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0a0e27;
+            border: 1px solid #2a2f4a;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        
+        .filter-group select option {
+            background: #111633;
+            color: #e0e0e0;
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: #1e2238;
+            color: #8a8fa3;
+            border: 1px solid #2a2f4a;
+        }
+        
+        .btn-secondary:hover {
+            background: #2a2f4a;
+            color: #e0e0e0;
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .results-section {
+            background: #111633;
+            border: 1px solid #2a2f4a;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .results-count {
+            font-size: 15px;
+            color: #8a8fa3;
+            font-weight: 500;
+        }
+        
+        .results-count strong {
+            color: #3b82f6;
+            font-size: 20px;
+            margin: 0 4px;
+        }
+        
+        .etf-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .etf-table thead {
+            background: #0a0e27;
+        }
+        
+        .etf-table th {
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            color: #8a8fa3;
+            border-bottom: 1px solid #2a2f4a;
+            white-space: nowrap;
+        }
+        
+        .etf-table tbody tr {
+            border-bottom: 1px solid #1a1f3a;
+            transition: all 0.2s;
+        }
+        
+        .etf-table tbody tr:hover {
+            background: #151b38;
+        }
+        
+        .etf-table td {
+            padding: 16px;
+            font-size: 14px;
+            color: #e0e0e0;
+        }
+        
+        .etf-name {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .etf-name:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-stock {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+        }
+        
+        .badge-bond {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+        
+        .badge-commodity {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+        }
+        
+        .badge-qdii {
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+        }
+        
+        .badge-money {
+            background: rgba(6, 182, 212, 0.15);
+            color: #22d3ee;
+        }
+        
+        .positive {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        .negative {
+            color: #22c55e;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #3b82f6;
+        }
+        
+        .compare-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111633;
+            border-top: 2px solid #3b82f6;
+            padding: 16px 24px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .compare-section.active {
+            display: block;
+        }
+        
+        .compare-bar {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .selected-count {
+            font-size: 15px;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+        
+        .selected-count strong {
+            color: #3b82f6;
+            font-size: 18px;
+            margin: 0 4px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8a8fa3;
+            font-size: 16px;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8a8fa3;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .filter-row {
+                flex-direction: column;
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .etf-table {
+                font-size: 12px;
+            }
+            
+            .etf-table th,
+            .etf-table td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>📊 ETF工具平台</h1>
+                <p>智能筛选 · 深度对比 · 辅助投资决策</p>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-secondary" onclick="location.href='/'">刷新数据</button>
+            </div>
+        </div>
+        
+        <div class="filter-section">
+            <div class="filter-title">🔍 筛选条件</div>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>搜索ETF名称/代码</label>
+                    <input type="text" id="keyword" placeholder="例如：沪深300、510300" onkeyup="if(event.key==='Enter') applyFilter()">
+                </div>
+                <div class="filter-group">
+                    <label>类型</label>
+                    <select id="type">
+                        <option value="">全部</option>
+                        <option value="股票型">股票型</option>
+                        <option value="债券型">债券型</option>
+                        <option value="商品型">商品型</option>
+                        <option value="货币型">货币型</option>
+                        <option value="股票型-QDII">QDII</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>主题分类</label>
+                    <select id="category">
+                        <option value="">全部</option>
+                        <option value="宽基">宽基指数</option>
+                        <option value="行业">行业主题</option>
+                        <option value="主题">主题投资</option>
+                        <option value="跨境">跨境ETF</option>
+                        <option value="商品">商品</option>
+                        <option value="债券">债券</option>
+                        <option value="货币">货币</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>最小规模（亿元）</label>
+                    <input type="number" id="scale_min" placeholder="例如：10" onkeyup="if(event.key==='Enter') applyFilter()">
+                </div>
+                <div class="filter-group">
+                    <label>最大规模（亿元）</label>
+                    <input type="number" id="scale_max" placeholder="例如：500" onkeyup="if(event.key==='Enter') applyFilter()">
+                </div>
+                <div class="filter-group">
+                    <label>最大费率（%）</label>
+                    <input type="number" id="fee_max" step="0.1" placeholder="例如：0.5" onkeyup="if(event.key==='Enter') applyFilter()">
+                </div>
+                <div class="filter-group">
+                    <label>最小年化收益（%）</label>
+                    <input type="number" id="return_min" step="0.1" placeholder="例如：5" onkeyup="if(event.key==='Enter') applyFilter()">
+                </div>
+            </div>
+            
+            <div class="filter-row">
+                <button class="btn btn-primary" onclick="applyFilter()">🔍 应用筛选</button>
+                <button class="btn btn-secondary" onclick="resetFilter()">🔄 重置</button>
+            </div>
+        </div>
+        
+        <div class="results-section">
+            <div class="results-header">
+                <div class="results-count" id="results-count">正在加载...</div>
+                <button class="btn btn-success" onclick="goCompare()" id="compare-btn" style="display:none;">📊 对比选中的ETF</button>
+            </div>
+            <div id="etf-list">
+                <div class="loading">正在加载ETF数据...</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="compare-section" id="compare-bar">
+        <div class="compare-bar">
+            <div class="selected-count" id="selected-count">已选中 <strong>0</strong> 只ETF（至少选择2只进行对比）</div>
+            <div>
+                <button class="btn btn-success" onclick="goCompare()">查看对比</button>
+                <button class="btn btn-secondary" onclick="clearSelection()">清空选择</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let selectedETFs = [];
+        
+        function loadETFs() {
+            const params = new URLSearchParams();
+            
+            const keyword = document.getElementById('keyword').value;
+            const type = document.getElementById('type').value;
+            const category = document.getElementById('category').value;
+            const scaleMin = document.getElementById('scale_min').value;
+            const scaleMax = document.getElementById('scale_max').value;
+            const feeMax = document.getElementById('fee_max').value;
+            const returnMin = document.getElementById('return_min').value;
+            
+            if (keyword) params.append('keyword', keyword);
+            if (type) params.append('type', type);
+            if (category) params.append('category', category);
+            if (scaleMin) params.append('scale_min', scaleMin);
+            if (scaleMax) params.append('scale_max', scaleMax);
+            if (feeMax) params.append('fee_max', feeMax);
+            if (returnMin) params.append('return_min', returnMin);
+            
+            document.getElementById('etf-list').innerHTML = '<div class="loading">正在加载ETF数据...</div>';
+            
+            fetch('/api/etfs?' + params.toString())
+                .then(response => response.json())
+                .then(data => {
+                    displayETFs(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('etf-list').innerHTML = '<div class="no-data">加载失败，请刷新重试</div>';
+                });
+        }
+        
+        function displayETFs(etfs) {
+            document.getElementById('results-count').innerHTML = `共找到 <strong>${etfs.length}</strong> 只ETF`;
+            
+            if (etfs.length === 0) {
+                document.getElementById('etf-list').innerHTML = '<div class="no-data">没有找到符合条件的ETF</div>';
+                return;
+            }
+            
+            let html = '<table class="etf-table"><thead><tr>';
+            html += '<th><input type="checkbox" onchange="toggleAll(this)"></th>';
+            html += '<th>名称</th>';
+            html += '<th>代码</th>';
+            html += '<th>类型</th>';
+            html += '<th>规模(亿)</th>';
+            html += '<th>费率(%)</th>';
+            html += '<th>近1年</th>';
+            html += '<th>近3年</th>';
+            html += '<th>操作</th>';
+            html += '</tr></thead><tbody>';
+            
+            etfs.forEach(etf => {
+                const isSelected = selectedETFs.includes(etf.code);
+                const year1Class = etf.year_1_return >= 0 ? 'positive' : 'negative';
+                const year3Class = etf.year_3_return >= 0 ? 'positive' : 'negative';
+                const year1Sign = etf.year_1_return >= 0 ? '+' : '';
+                const year3Sign = etf.year_3_return >= 0 ? '+' : '';
+                
+                let badgeClass = 'badge-stock';
+                if (etf.type.includes('QDII')) badgeClass = 'badge-qdii';
+                if (etf.type.includes('债券')) badgeClass = 'badge-bond';
+                if (etf.type.includes('商品')) badgeClass = 'badge-commodity';
+                if (etf.type.includes('货币')) badgeClass = 'badge-money';
+                
+                html += '<tr>';
+                html += `<td><input type="checkbox" class="checkbox" value="${etf.code}" ${isSelected ? 'checked' : ''} onchange="toggleSelect(this)"></td>`;
+                html += `<td><a href="/etf/${etf.code}" class="etf-name">${etf.name}</a></td>`;
+                html += `<td>${etf.code}</td>`;
+                html += `<td><span class="badge ${badgeClass}">${etf.type}</span></td>`;
+                html += `<td>${etf.scale.toFixed(1)}</td>`;
+                html += `<td>${etf.fee.toFixed(2)}</td>`;
+                html += `<td class="${year1Class}">${year1Sign}${etf.year_1_return.toFixed(1)}%</td>`;
+                html += `<td class="${year3Class}">${year3Sign}${etf.year_3_return.toFixed(1)}%</td>`;
+                html += `<td><a href="/etf/${etf.code}" class="etf-name" style="font-size:13px;">详情 →</a></td>`;
+                html += '</tr>';
+            });
+            
+            html += '</tbody></table>';
+            document.getElementById('etf-list').innerHTML = html;
+        }
+        
+        function toggleSelect(checkbox) {
+            const code = checkbox.value;
+            if (checkbox.checked) {
+                if (!selectedETFs.includes(code)) {
+                    selectedETFs.push(code);
+                }
+            } else {
+                selectedETFs = selectedETFs.filter(c => c !== code);
+            }
+            updateCompareBar();
+        }
+        
+        function toggleAll(masterCheckbox) {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            checkboxes.forEach(cb => {
+                cb.checked = masterCheckbox.checked;
+                const code = cb.value;
+                if (masterCheckbox.checked) {
+                    if (!selectedETFs.includes(code)) {
+                        selectedETFs.push(code);
+                    }
+                }
+            });
+            if (!masterCheckbox.checked) {
+                selectedETFs = [];
+            }
+            updateCompareBar();
+        }
+        
+        function updateCompareBar() {
+            const count = selectedETFs.length;
+            document.getElementById('selected-count').innerHTML = `已选中 <strong>${count}</strong> 只ETF${count < 2 ? '（至少选择2只进行对比）' : ''}`;
+            
+            if (count >= 2) {
+                document.getElementById('compare-bar').classList.add('active');
+                document.getElementById('compare-btn').style.display = 'inline-block';
+            } else {
+                document.getElementById('compare-bar').classList.remove('active');
+                document.getElementById('compare-btn').style.display = 'none';
+            }
+        }
+        
+        function goCompare() {
+            if (selectedETFs.length < 2) {
+                alert('请至少选择2只ETF进行对比');
+                return;
+            }
+            const codes = selectedETFs.join(',');
+            window.location.href = '/compare?codes=' + codes;
+        }
+        
+        function clearSelection() {
+            selectedETFs = [];
+            document.querySelectorAll('.checkbox').forEach(cb => cb.checked = false);
+            updateCompareBar();
+        }
+        
+        function applyFilter() {
+            loadETFs();
+        }
+        
+        function resetFilter() {
+            document.getElementById('keyword').value = '';
+            document.getElementById('type').value = '';
+            document.getElementById('category').value = '';
+            document.getElementById('scale_min').value = '';
+            document.getElementById('scale_max').value = '';
+            document.getElementById('fee_max').value = '';
+            document.getElementById('return_min').value = '';
+            loadETFs();
+        }
+        
+        window.onload = function() {
+            loadETFs();
+        };
+    </script>
+</body>
+</html>

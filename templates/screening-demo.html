@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新能源ETF筛选实战 - ETF投资顾问</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            border-radius: 12px;
+            border: 1px solid #2a3f5f;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #8892b0;
+        }
+
+        .step {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2a3f5f;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        .step:nth-child(2) { animation-delay: 0.1s; }
+        .step:nth-child(3) { animation-delay: 0.2s; }
+        .step:nth-child(4) { animation-delay: 0.3s; }
+        .step:nth-child(5) { animation-delay: 0.4s; }
+        .step:nth-child(6) { animation-delay: 0.5s; }
+        .step:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 24px;
+            color: #00d4ff;
+        }
+
+        .step-content {
+            color: #ccd6f6;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .criteria {
+            background: #0a0e27;
+            border-left: 4px solid #00d4ff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .criteria h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .criteria ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .criteria li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .criteria li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #0a0e27;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #2a3f5f;
+            color: #00d4ff;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #2a3f5f;
+        }
+
+        tr:hover {
+            background: #1a1f3a;
+        }
+
+        .eliminated {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+
+        .passed {
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2a3f5f 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #00d4ff;
+        }
+
+        .result-card h3 {
+            color: #00d4ff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .winner {
+            background: #0a0e27;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .winner-name {
+            font-size: 22px;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .reason {
+            background: #1a1f3a;
+            border-left: 4px solid #00ff88;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .reason h4 {
+            color: #00ff88;
+            margin-bottom: 8px;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            border-radius: 12px;
+            border: 1px solid #2a3f5f;
+        }
+
+        .cta h2 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: #8892b0;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #8892b0;
+            font-size: 14px;
+            border-top: 1px solid #2a3f5f;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            border-radius: 20px;
+            font-size: 14px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎯 新能源ETF筛选实战</h1>
+            <p>15只新能源ETF该买哪只？FOF基金经理的筛选逻辑</p>
+            <div style="margin-top: 20px;">
+                <span class="tag">专业筛选</span>
+                <span class="tag">多维度对比</span>
+                <span class="tag">明确推荐</span>
+            </div>
+        </div>
+
+        <!-- Step 1: 定义筛选目标 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">定义筛选目标</div>
+            </div>
+            <div class="step-content">
+                <p><strong>问题：</strong>市面上有15只新能源ETF，我该买哪只？</p>
+                <p><strong>筛选目标：</strong>找出跟踪误差小、费率低、流动性好、规模适中的最优选择</p>
+                <div class="criteria">
+                    <h4>📋 筛选维度（FOF基金经理视角）</h4>
+                    <ul>
+                        <li><strong>规模：</strong>太小容易清盘，太大跟踪难度大</li>
+                        <li><strong>费率：</strong>管理费+托管费，越低越好</li>
+                        <li><strong>跟踪误差：</strong>偏离度越小，跟踪效果越好</li>
+                        <li><strong>流动性：</strong>日均成交额，影响买卖体验</li>
+                        <li><strong>跟踪指数：</strong>是否纯正（有些"挂羊头卖狗肉"）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: 初筛 - 规模过滤 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">第一层筛选：规模过滤</div>
+            </div>
+            <div class="step-content">
+                <p><strong>逻辑：</strong>规模太小（<5亿）容易清盘，规模太大（>200亿）跟踪难度大</p>
+                <p><strong>筛选标准：</strong>规模 ≥ 10亿 且 ≤ 150亿</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ETF名称</th>
+                            <th>代码</th>
+                            <th>规模（亿）</th>
+                            <th>结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="eliminated">
+                            <td>XX新能源ETF</td>
+                            <td>123456</td>
+                            <td>3.2</td>
+                            <td>❌ 规模太小，清盘风险</td>
+                        </tr>
+                        <tr class="eliminated">
+                            <td>XX新能源ETF</td>
+                            <td>234567</td>
+                            <td>5.8</td>
+                            <td>❌ 规模偏小</td>
+                        </tr>
+                        <tr class="passed">
+                            <td>碳中和ETF</td>
+                            <td>159790</td>
+                            <td>85.3</td>
+                            <td>✅ 通过</td>
+                        </tr>
+                        <tr class="passed">
+                            <td>新能源ETF</td>
+                            <td>516160</td>
+                            <td>112.5</td>
+                            <td>✅ 通过</td>
+                        </tr>
+                        <tr class="passed">
+                            <td>光伏ETF</td>
+                            <td>515790</td>
+                            <td>98.7</td>
+                            <td>✅ 通过</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>结果：</strong>15只 → <span class="highlight">8只</span> 通过初筛</p>
+            </div>
+        </div>
+
+        <!-- Step 3: 二筛 - 费率对比 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">第二层筛选：费率对比</div>
+            </div>
+            <div class="step-content">
+                <p><strong>逻辑：</strong>费率是确定性成本，越低越好（年化影响收益）</p>
+                <p><strong>筛选标准：</strong>总费率（管理费+托管费）≤ 0.6%</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ETF名称</th>
+                            <th>代码</th>
+                            <th>管理费</th>
+                            <th>托管费</th>
+                            <th>总费率</th>
+                            <th>结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="passed">
+                            <td>新能源ETF</td>
+                            <td>516160</td>
+                            <td>0.50%</td>
+                            <td>0.10%</td>
+                            <td class="passed">0.60%</td>
+                            <td>✅ 通过</td>
+                        </tr>
+                        <tr class="passed">
+                            <td>碳中和ETF</td>
+                            <td>159790</td>
+                            <td>0.50%</td>
+                            <td>0.10%</td>
+                            <td class="passed">0.60%</td>
+                            <td>✅ 通过</td>
+                        </tr>
+                        <tr class="eliminated">
+                            <td>XX新能源ETF</td>
+                            <td>345678</td>
+                            <td>0.80%</td>
+                            <td>0.15%</td>
+                            <td>0.95%</td>
+                            <td>❌ 费率过高</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>结果：</strong>8只 → <span class="highlight">6只</span> 通过二筛</p>
+                <p><strong>💡 专业提示：</strong>费率每低0.1%，10年复利影响收益约1%（假设年化收益8%）</p>
+            </div>
+        </div>
+
+        <!-- Step 4: 三筛 - 跟踪误差 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div class="step-title">第三层筛选：跟踪误差</div>
+            </div>
+            <div class="step-content">
+                <p><strong>逻辑：</strong>ETF的核心是跟踪指数，误差越小越好</p>
+                <p><strong>筛选标准：</strong>年化跟踪误差 ≤ 0.05%</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ETF名称</th>
+                            <th>代码</th>
+                            <th>跟踪误差</th>
+                            <th>结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="passed">
+                            <td>新能源ETF</td>
+                            <td>516160</td>
+                            <td class="passed">0.02%</td>
+                            <td>✅ 优秀</td>
+                        </tr>
+                        <tr class="passed">
+                            <td>光伏ETF</td>
+                            <td>515790</td>
+                            <td class="passed">0.03%</td>
+                            <td>✅ 良好</td>
+                        </tr>
+                        <tr class="eliminated">
+                            <td>XX新能源ETF</td>
+                            <td>456789</td>
+                            <td>0.08%</td>
+                            <td>❌ 误差偏大</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>结果：</strong>6只 → <span class="highlight">4只</span> 通过三筛</p>
+                <p><strong>💡 专业提示：</strong>跟踪误差 > 0.1% 的ETF，不建议长期持有</p>
+            </div>
+        </div>
+
+        <!-- Step 5: 四筛 - 流动性 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <div class="step-title">第四层筛选：流动性</div>
+            </div>
+            <div class="step-content">
+                <p><strong>逻辑：</strong>流动性差，买卖价差大，影响交易成本</p>
+                <p><strong>筛选标准：</strong>日均成交额 ≥ 1亿</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ETF名称</th>
+                            <th>代码</th>
+                            <th>日均成交（亿）</th>
+                            <th>结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="passed">
+                            <td>新能源ETF</td>
+                            <td>516160</td>
+                            <td class="passed">8.5</td>
+                            <td>✅ 流动性优秀</td>
+                        </tr>
+                        <tr class="passed">
+                            <td>碳中和ETF</td>
+                            <td>159790</td>
+                            <td class="passed">5.2</td>
+                            <td>✅ 流动性良好</td>
+                        </tr>
+                        <tr class="eliminated">
+                            <td>XX新能源ETF</td>
+                            <td>567890</td>
+                            <td>0.8</td>
+                            <td>❌ 流动性不足</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>结果：</strong>4只 → <span class="highlight">3只</span> 进入决赛圈</p>
+            </div>
+        </div>
+
+        <!-- Step 6: 终选 - 综合对比 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <div class="step-title">最终对比：3强决赛</div>
+            </div>
+            <div class="step-content">
+                <p><strong>逻辑：</strong>前面4层筛选后，剩下3只优质ETF，现在做最终对比</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>新能源ETF (516160)</th>
+                            <th>碳中和ETF (159790)</th>
+                            <th>光伏ETF (515790)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>规模（亿）</td>
+                            <td class="passed">112.5</td>
+                            <td>85.3</td>
+                            <td>98.7</td>
+                        </tr>
+                        <tr>
+                            <td>总费率</td>
+                            <td class="passed">0.60%</td>
+                            <td class="passed">0.60%</td>
+                            <td>0.60%</td>
+                        </tr>
+                        <tr>
+                            <td>跟踪误差</td>
+                            <td class="passed">0.02%</td>
+                            <td>0.03%</td>
+                            <td>0.03%</td>
+                        </tr>
+                        <tr>
+                            <td>日均成交（亿）</td>
+                            <td class="passed">8.5</td>
+                            <td>5.2</td>
+                            <td>6.8</td>
+                        </tr>
+                        <tr>
+                            <td>跟踪指数</td>
+                            <td class="passed">中证新能源</td>
+                            <td>中证碳中和</td>
+                            <td>光伏产业</td>
+                        </tr>
+                        <tr>
+                            <td>持仓纯度</td>
+                            <td class="passed">⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="result-card">
+                    <h3>🏆 最终推荐</h3>
+                    
+                    <div class="winner">
+                        <div class="winner-name">🥇 第一选择：新能源ETF (516160)</div>
+                        <div class="reason">
+                            <h4>推荐理由：</h4>
+                            <ul>
+                                <li>✅ <strong>规模最优：</strong>112.5亿，既不会太小（清盘风险），也不会太大（跟踪难度）</li>
+                                <li>✅ <strong>跟踪误差最小：</strong>0.02%，跟踪效果最好</li>
+                                <li>✅ <strong>流动性最佳：</strong>日均成交8.5亿，买卖无压力</li>
+                                <li>✅ <strong>指数纯正：</strong>跟踪中证新能源指数，覆盖全产业链</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="winner">
+                        <div class="winner-name">🥈 备选：光伏ETF (515790)</div>
+                        <div class="reason">
+                            <h4>适用场景：</h4>
+                            <p>如果你更看好光伏细分领域（而不是整个新能源产业链），可以选择这只</p>
+                        </div>
+                    </div>
+
+                    <div class="winner">
+                        <div class="winner-name">🥉 备选：碳中和ETF (159790)</div>
+                        <div class="reason">
+                            <h4>适用场景：</h4>
+                            <p>如果你更看好"碳中和"主题（包含新能源+传统能源转型），可以选择这只</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7: 总结 -->
+        <div class="step">
+            <div class="step-header">
+                <div class="step-number">7</div>
+                <div class="step-title">总结：专业筛选的价值</div>
+            </div>
+            <div class="step-content">
+                <p><strong>筛选过程：</strong>15只 → 8只 → 6只 → 4只 → 3只 → <span class="highlight">1只最优</span></p>
+                
+                <p><strong>传统方式的问题：</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>❌ 数据太多，不会分析</li>
+                    <li>❌ 不知道哪些指标重要</li>
+                    <li>❌ 看完还是不会选</li>
+                </ul>
+
+                <p><strong>我们的价值：</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>✅ 专业筛选逻辑（FOF基金经理视角）</li>
+                    <li>✅ 多维度对比（不是单一指标）</li>
+                    <li>✅ 明确推荐 + 理由（不是给你10个选项）</li>
+                </ul>
+
+                <div class="criteria">
+                    <h4>💡 风险提示</h4>
+                    <p>以上分析仅供参考，不构成投资建议。ETF投资有风险，入市需谨慎。建议结合自己的风险承受能力、投资期限、资产配置需求，做出决策。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <h2>想看其他ETF的筛选过程？</h2>
+            <p>我们已收录50只主流ETF，支持智能对比和专业筛选</p>
+            <a href="/" class="btn">立即试用工具</a>
+            <a href="#" class="btn btn-secondary">查看完整筛选项</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 ETF投资顾问 | 基于166份金融研报的专业工具</p>
+            <p>风险提示：ETF投资有风险，入市需谨慎。以上内容仅供参考，不构成投资建议。</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加滚动动画
+        const steps = document.querySelectorAll('.step');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        steps.forEach(step => observer.observe(step));
+    </script>
+</body>
+</html>
