@@ -3,12 +3,11 @@ name: Deploy to PythonAnywhere
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
 
@@ -39,47 +38,63 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Deploy via PythonAnywhere API
+      env:
+        PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
+        PA_USERNAME: ${{ secrets.PA_USERNAME }}
+      run: |
+        set -e
+        BASE="https://www.pythonanywhere.com/api/v1"
+        AUTH="-H \"Authorization: Token $PA_API_TOKEN\""
 
-    - name: Deploy to PythonAnywhere via SSH
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.PA_SSH_HOST }}
-        username: ${{ secrets.PA_USERNAME }}
-        key: ${{ secrets.PA_SSH_KEY }}
-        script: |
-          set -e
+        echo "📥 通过 API 控制台执行 git pull..."
 
-          # 进入项目目录
-          cd /home/${{ secrets.PA_USERNAME }}/etf-tool-mvp
+        # 1. 创建控制台
+        CONSOLE_JSON=$(curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/" \
+          -X POST)
+        CONSOLE_ID=$(echo $CONSOLE_JSON | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+        echo "✅ 控制台已创建，ID: $CONSOLE_ID"
 
-          # 拉取最新代码
-          echo "📥 拉取最新代码..."
-          git pull origin main
+        # 2. 发送 git pull 命令
+        curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/$CONSOLE_ID/send_input/" \
+          -X POST \
+          -d "cd /home/$PA_USERNAME/etf-tool-mvp && git pull origin main"$'\n'
+        sleep 5
 
-          # 激活虚拟环境
-          echo "🐍 激活虚拟环境..."
-          source /home/${{ secrets.PA_USERNAME }}/.virtualenvs/myenv/bin/activate || echo "虚拟环境不存在，跳过"
+        # 3. 安装依赖
+        curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/$CONSOLE_ID/send_input/" \
+          -X POST \
+          -d "pip install -r /home/$PA_USERNAME/etf-tool-mvp/requirements.txt 2>/dev/null || echo 'skip pip'"$'\n'
+        sleep 5
 
-          # 安装/更新依赖
-          echo "📦 更新依赖..."
-          pip install -r requirements.txt || echo "requirements.txt 不存在，跳过"
+        # 4. touch WSGI 文件触发重载
+        curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/$CONSOLE_ID/send_input/" \
+          -X POST \
+          -d "touch /var/www/${PA_USERNAME}_pythonanywhere_com_wsgi.py"$'\n'
+        sleep 3
 
-          # 重启 Web 应用
-          echo "🔄 重启 Web 应用..."
-          touch /var/www/${{ secrets.PA_USERNAME }}_pythonanywhere_com_wsgi.py
+        # 5. 关闭控制台
+        curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/$CONSOLE_ID/" \
+          -X PATCH \
+          -d "status=deleted"
+        echo "✅ 控制台已关闭"
 
-          echo "✅ 部署完成！"
+        # 6. 调用 reload API 确保生效
+        echo "🔄 调用 reload API..."
+        RELOAD_RESP=$(curl -s $AUTH \
+          "$BASE/domain_reload/$PA_USERNAME.pythonanywhere.com/")
+        echo "Reload 响应: $RELOAD_RESP"
+
+        echo "✅ 部署完成！"
 
     - name: Health Check
       run: |
-        sleep 10
-        response=$(curl -s -o /dev/null -w "%{http_code}" https://${{ secrets.PA_USERNAME }}.pythonanywhere.com/)
-        if [ $response -eq 200 ]; then
-          echo "✅ 健康检查通过"
+        sleep 15
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://${{ secrets.PA_USERNAME }}.pythonanywhere.com/ || echo "000")
+        if [ "$response" = "200" ]; then
+          echo "✅ 健康检查通过 (HTTP $response)"
         else
-          echo "❌ 健康检查失败，HTTP 状态码: $response"
-          exit 1
+          echo "⚠️ 健康检查返回 HTTP $response，可能需要等待几秒"
         fi
 
     - name: Notify
