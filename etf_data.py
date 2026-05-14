@@ -48,10 +48,19 @@ def _load_etfs():
     
     etfs = []
     for etf in raw_etfs:
+        # 获取名称和管理人
+        raw_name = etf.get("name", "")
+        manager = etf.get("manager", "")
+        
+        # 清理名称：去除末尾重复的管理人名称
+        name = raw_name
+        if manager and raw_name.endswith(manager):
+            name = raw_name[:-len(manager)].rstrip("-")
+        
         # 转换字段映射
         transformed = {
             "code": etf.get("symbol_id", ""),
-            "name": etf.get("name", ""),
+            "name": name,
             "type": "股票型",  # 默认值
             "scale": etf.get("market_cap_total", 0) / 1e8 if etf.get("market_cap_total") else 0,  # 转换为亿元
             "fee": 0.6,  # 默认值，需从其他数据源获取
