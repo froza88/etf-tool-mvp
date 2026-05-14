@@ -85,7 +85,7 @@ jobs:
     - name: Notify
       if: always()
       run: |
-        if [["${{ job.status }}" == "success" ]]; then
+        if [ "${{ job.status }}" = "success" ]; then
           echo "🚀 部署成功！"
           echo "   访问: https://${{ secrets.PA_USERNAME }}.pythonanywhere.com/"
         else
