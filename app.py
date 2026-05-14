@@ -86,12 +86,13 @@ def screening_demo():
         'eliminated_count': len(unique_etfs) - len(step1_passed)
     })
     
-    # 第二层：费率对比
-    step2_passed = [etf for etf in step1_passed if etf['fee'] <= 0.6]
+    # 第二层：费率对比（使用动态参数或默认值0.6%）
+    fee_threshold = float(request.args.get('fee_max', 0.6))
+    step2_passed = [etf for etf in step1_passed if etf['fee'] <= fee_threshold]
     screening_steps.append({
         'step': 2,
         'name': '第二层筛选：费率对比',
-        'criteria': '总费率（管理费+托管费）≤ 0.6%',
+        'criteria': f'总费率（管理费+托管费）≤ {fee_threshold}%',
         'passed': step2_passed,
         'eliminated_count': len(step1_passed) - len(step2_passed)
     })
