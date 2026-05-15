@@ -5,6 +5,7 @@ ETF数据模块 - 支持双数据源（130只 + 全量1645只）
 """
 import json
 import os
+import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -57,26 +58,26 @@ def _load_etfs():
         if manager and raw_name.endswith(manager):
             name = raw_name[:-len(manager)].rstrip("-")
         
-        # 转换字段映射
+        # 转换字段映射（适配 etf_complete_all.json 实际字段）
         transformed = {
-            "code": etf.get("symbol_id", ""),
+            "code": etf.get("code", ""),
             "name": name,
             "type": "股票型",  # 默认值
-            "scale": etf.get("market_cap_total", 0) / 1e8 if etf.get("market_cap_total") else 0,  # 转换为亿元
-            "fee": 0.6,  # 默认值，需从其他数据源获取
+            "scale": etf.get("market_cap", 0) / 1e8 if etf.get("market_cap") else 0,  # 规模（亿元）
+            "fee": 0.6,  # 默认值
             "management_fee": 0.5,
             "custody_fee": 0.1,
-            "tracking_error": 0.02,  # 默认值
-            "year_1_return": etf.get("change_rate_1y", 0) / 100 if etf.get("change_rate_1y") else 0,
-            "year_3_return": etf.get("change_rate_3y", 0) / 100 if etf.get("change_rate_3y") else 0,
-            "max_drawdown": etf.get("max_drawdown", 0),
-            "sharpe_ratio": 0.0,  # 需计算
-            "launch_date": etf.get("issue_date", ""),
-            "issuer": etf.get("manager", ""),
-            "underlying": etf.get("tracking_index_symkey", ""),
-            "top_holdings": [],  # 需从其他数据源获取
-            "volume": etf.get("turnover", 0) / 1e8 if etf.get("turnover") else 0,  # 转换为亿元
-            "category": "宽基" if "沪深300" in etf.get("name", "") or "中证500" in etf.get("name", "") else "行业",
+            "tracking_error": 0.02,
+            "year_1_return": etf.get("change_pct", 0) / 100 if etf.get("change_pct") else 0,
+            "year_3_return": 0,  # etf_complete_all.json 无此字段
+            "max_drawdown": 0,  # etf_complete_all.json 无此字段
+            "sharpe_ratio": 0.0,
+            "launch_date": "",  # etf_complete_all.json 无此字段
+            "issuer": etf.get("name", "").replace(name, "").strip("-") if name else "",
+            "underlying": "",  # etf_complete_all.json 无此字段
+            "top_holdings": [],
+            "volume": etf.get("volume", 0) / 1e8 if etf.get("volume") else 0,
+            "category": "宽基" if any(k in etf.get("name", "") for k in ["沪深300", "中证500", "上证50", "科创50"]) else "行业",
         }
         etfs.append(transformed)
     
@@ -136,7 +137,8 @@ def filter_etfs(filters):
         
         # 关键词筛选
         if "keyword" in filters and filters["keyword"]:
-            if filters["keyword"].lower() not in etf["name"].lower():
+            keyword = filters["keyword"].lower()
+            if keyword not in etf["name"].lower() and keyword not in etf["code"].lower():
                 continue
         
         result.append(etf)
