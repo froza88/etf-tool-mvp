@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-ETF数据模块 - 支持双数据源（130只 + 全量1645只）
-优先使用全量数据（如果可用且最近更新）
+ETF数据模块 - 支持多数据源
+优先使用 etf_data_generated.json（含 top_holdings 真实持仓数据）
 """
 import json
 import os
@@ -9,10 +9,11 @@ import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 
-# 数据文件配置
+# 数据文件配置（优先级：generated > full > sample）
+GENERATED_DATA_FILE = Path(__file__).parent / "etf_data_generated.json"
 FULL_DATA_FILE = Path(__file__).parent / "etf_complete_all.json"
 SAMPLE_DATA_FILE = Path(__file__).parent / "etf_complete_130.json"
-MAX_AGE_HOURS = 168  # 全量数据最大有效期（7天 = 168小时）
+MAX_AGE_HOURS = 168  # 全量数据最大有效期（7天）
 
 def _is_file_recent(filepath, max_age_hours):
     """检查文件是否存在且最近更新"""
@@ -26,20 +27,31 @@ def _is_file_recent(filepath, max_age_hours):
     return age < timedelta(hours=max_age_hours)
 
 def _load_etfs():
-    """加载ETF数据并转换为标准格式（优先使用全量数据）"""
+    """加载ETF数据并转换为标准格式（优先使用含持仓数据的文件）"""
     
     raw_etfs = None  # 初始化，避免 UnboundLocalError
     
-    # 优先尝试加载全量数据（如果可用且最近更新）
-    if _is_file_recent(FULL_DATA_FILE, MAX_AGE_HOURS):
+    # 第1优先：加载 etf_data_generated.json（含 top_holdings 真实持仓数据）
+    if GENERATED_DATA_FILE.exists():
+        try:
+            with open(GENERATED_DATA_FILE, "r", encoding="utf-8") as f:
+                raw_etfs = json.load(f)
+            print(f"✅ 使用生成数据：{GENERATED_DATA_FILE.name} ({len(raw_etfs)} 只ETF)", file=sys.stderr)
+        except Exception as e:
+            print(f"⚠️  加载生成数据失败：{e}", file=sys.stderr)
+            raw_etfs = None
+    
+    # 第2优先：加载全量数据
+    if raw_etfs is None and _is_file_recent(FULL_DATA_FILE, MAX_AGE_HOURS):
         try:
             with open(FULL_DATA_FILE, "r", encoding="utf-8") as f:
                 raw_etfs = json.load(f)
             print(f"✅ 使用全量数据：{FULL_DATA_FILE.name} ({len(raw_etfs)} 只ETF)", file=sys.stderr)
-        except:
+        except Exception as e:
+            print(f"⚠️  加载全量数据失败：{e}", file=sys.stderr)
             raw_etfs = None
     
-    # 回退到样本数据
+    # 第3优先：回退到样本数据
     if raw_etfs is None:
         try:
             with open(SAMPLE_DATA_FILE, "r", encoding="utf-8") as f:
@@ -50,37 +62,61 @@ def _load_etfs():
             return []
     
     etfs = []
+    # 检测数据格式：etf_data_generated.json 含有 top_holdings 字段
+    is_generated_format = raw_etfs and "top_holdings" in raw_etfs[0]
+    
     for etf in raw_etfs:
-        # 获取名称和管理人
-        raw_name = etf.get("name", "")
-        manager = etf.get("manager", "")
-        
-        # 清理名称：去除末尾重复的管理人名称
-        name = raw_name
-        if manager and raw_name.endswith(manager):
-            name = raw_name[:-len(manager)].rstrip("-")
-        
-        # 转换字段映射（适配 etf_complete_all.json 实际字段）
-        transformed = {
-            "code": etf.get("code", ""),
-            "name": name,
-            "type": "股票型",  # 默认值
-            "scale": etf.get("market_cap", 0) / 1e8 if etf.get("market_cap") else 0,  # 规模（亿元）
-            "fee": 0.6,  # 默认值
-            "management_fee": 0.5,
-            "custody_fee": 0.1,
-            "tracking_error": 0.02,
-            "year_1_return": etf.get("change_pct", 0) / 100 if etf.get("change_pct") else 0,
-            "year_3_return": 0,  # etf_complete_all.json 无此字段
-            "max_drawdown": 0,  # etf_complete_all.json 无此字段
-            "sharpe_ratio": 0.0,
-            "launch_date": "",  # etf_complete_all.json 无此字段
-            "issuer": etf.get("name", "").replace(name, "").strip("-") if name else "",
-            "underlying": "",  # etf_complete_all.json 无此字段
-            "top_holdings": [],
-            "volume": etf.get("volume", 0) / 1e8 if etf.get("volume") else 0,
-            "category": "宽基" if any(k in etf.get("name", "") for k in ["沪深300", "中证500", "上证50", "科创50"]) else "行业",
-        }
+        if is_generated_format:
+            # etf_data_generated.json 格式（含完整字段和 top_holdings）
+            transformed = {
+                "code": etf.get("code", ""),
+                "name": etf.get("name", ""),
+                "type": etf.get("type", "股票型"),
+                "scale": etf.get("scale", 0),  # 单位：亿元
+                "fee": etf.get("fee", 0.6),
+                "management_fee": round(etf.get("fee", 0.6) * 0.8, 4) if etf.get("fee") else 0.5,
+                "custody_fee": round(etf.get("fee", 0.6) * 0.2, 4) if etf.get("fee") else 0.1,
+                "tracking_error": etf.get("tracking_error", 0.02),
+                "year_1_return": etf.get("year_1_return", 0) / 100 if abs(etf.get("year_1_return", 0)) > 1 else etf.get("year_1_return", 0),
+                "year_3_return": etf.get("year_3_return", 0) / 100 if abs(etf.get("year_3_return", 0)) > 1 else etf.get("year_3_return", 0),
+                "max_drawdown": etf.get("max_drawdown", 0) / 100 if abs(etf.get("max_drawdown", 0)) > 1 else etf.get("max_drawdown", 0),
+                "sharpe_ratio": etf.get("sharpe_ratio", 0.0),
+                "launch_date": etf.get("launch_date", ""),
+                "issuer": etf.get("issuer", ""),
+                "underlying": etf.get("underlying", ""),
+                "top_holdings": etf.get("top_holdings", []),
+                "volume": etf.get("volume", 0),  # 单位：亿元
+                "category": etf.get("category", ""),
+            }
+        else:
+            # etf_complete_all.json / etf_complete_130.json 格式
+            raw_name = etf.get("name", "")
+            manager = etf.get("manager", "")
+            
+            name = raw_name
+            if manager and raw_name.endswith(manager):
+                name = raw_name[:-len(manager)].rstrip("-")
+            
+            transformed = {
+                "code": etf.get("code", ""),
+                "name": name,
+                "type": "股票型",
+                "scale": etf.get("market_cap", 0) / 1e8 if etf.get("market_cap") else 0,
+                "fee": 0.6,
+                "management_fee": 0.5,
+                "custody_fee": 0.1,
+                "tracking_error": 0.02,
+                "year_1_return": etf.get("change_pct", 0) / 100 if etf.get("change_pct") else 0,
+                "year_3_return": 0,
+                "max_drawdown": 0,
+                "sharpe_ratio": 0.0,
+                "launch_date": "",
+                "issuer": etf.get("name", "").replace(name, "").strip("-") if name else "",
+                "underlying": "",
+                "top_holdings": [],  # 这两种格式无持仓数据
+                "volume": etf.get("volume", 0) / 1e8 if etf.get("volume") else 0,
+                "category": "宽基" if any(k in etf.get("name", "") for k in ["沪深300", "中证500", "上证50", "科创50"]) else "行业",
+            }
         etfs.append(transformed)
     
     return etfs
