@@ -11,7 +11,7 @@ def index():
 
 @app.route('/api/etfs')
 def get_etfs():
-    """API：获取ETF列表（支持筛选）"""
+    """API：获取ETF列表（支持筛选、排序、分页）"""
     filters = {
         "type": request.args.get('type', ''),
         "scale_min": request.args.get('scale_min', ''),
@@ -21,12 +21,42 @@ def get_etfs():
         "category": request.args.get('category', ''),
         "keyword": request.args.get('keyword', '')
     }
-    
-    # 过滤空值
     filters = {k: v for k, v in filters.items() if v}
     
+    # 排序
+    sort_by = request.args.get('sort_by', 'scale')
+    sort_order = request.args.get('sort_order', 'desc')
+    reverse = sort_order == 'desc'
+    
+    # 分页
+    page = int(request.args.get('page', 1))
+    page_size = int(request.args.get('page_size', 50))
+    offset = (page - 1) * page_size
+    
     etfs = etf_data.filter_etfs(filters)
-    return jsonify(etfs)
+    
+    # 排序（安全处理None值）
+    def sort_key(e):
+        val = e.get(sort_by, 0)
+        return val if val is not None else 0
+    
+    etfs.sort(key=sort_key, reverse=reverse)
+    
+    total = len(etfs)
+    paged = etfs[offset:offset + page_size]
+    
+    # 精简字段（列表页只需要这些）
+    list_fields = ['code', 'name', 'issuer', 'type', 'scale', 'fee',
+                   'year_1_return', 'year_3_return', 'volume', 'category']
+    slim = [{k: e[k] for k in list_fields} for e in paged]
+    
+    return jsonify({
+        'total': total,
+        'page': page,
+        'page_size': page_size,
+        'total_pages': (total + page_size - 1) // page_size,
+        'etfs': slim
+    })
 
 @app.route('/etf/<code>')
 def etf_detail(code):

@@ -444,41 +444,55 @@
     
     <script>
         let selectedETFs = [];
+        let currentPage = 1;
+        let currentSort = 'scale';
+        let currentOrder = 'desc';
+        let totalPages = 1;
         
-        function loadETFs() {
+        function loadETFs(page) {
+            if (page) currentPage = page;
+            
             const params = new URLSearchParams();
-            
-            const keyword = document.getElementById('keyword').value;
-            const type = document.getElementById('type').value;
-            const category = document.getElementById('category').value;
-            const scaleMin = document.getElementById('scale_min').value;
-            const scaleMax = document.getElementById('scale_max').value;
-            const feeMax = document.getElementById('fee_max').value;
-            const returnMin = document.getElementById('return_min').value;
-            
-            if (keyword) params.append('keyword', keyword);
-            if (type) params.append('type', type);
-            if (category) params.append('category', category);
-            if (scaleMin) params.append('scale_min', scaleMin);
-            if (scaleMax) params.append('scale_max', scaleMax);
-            if (feeMax) params.append('fee_max', feeMax);
-            if (returnMin) params.append('return_min', returnMin);
+            ['keyword','type','category','scale_min','scale_max','fee_max','return_min'].forEach(id => {
+                const v = document.getElementById(id).value;
+                if (v) params.append(id, v);
+            });
+            params.append('page', currentPage);
+            params.append('page_size', 50);
+            params.append('sort_by', currentSort);
+            params.append('sort_order', currentOrder);
             
             document.getElementById('etf-list').innerHTML = '<div class="loading">正在加载ETF数据...</div>';
             
             fetch('/api/etfs?' + params.toString())
-                .then(response => response.json())
-                .then(data => {
-                    displayETFs(data);
+                .then(r => r.json())
+                .then(res => {
+                    totalPages = res.total_pages;
+                    displayETFs(res);
                 })
-                .catch(error => {
-                    console.error('Error:', error);
+                .catch(() => {
                     document.getElementById('etf-list').innerHTML = '<div class="no-data">加载失败，请刷新重试</div>';
                 });
         }
         
-        function displayETFs(etfs) {
-            document.getElementById('results-count').innerHTML = `共找到 <strong>${etfs.length}</strong> 只ETF`;
+        function doSort(field) {
+            if (currentSort === field) {
+                currentOrder = currentOrder === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentSort = field;
+                currentOrder = 'desc';
+            }
+            loadETFs(1);
+        }
+        
+        function sortArrow(field) {
+            if (currentSort !== field) return ' ↕';
+            return currentOrder === 'desc' ? ' ↓' : ' ↑';
+        }
+        
+        function displayETFs(res) {
+            const etfs = res.etfs;
+            document.getElementById('results-count').innerHTML = `共找到 <strong>${res.total}</strong> 只ETF（第${res.page}/${res.total_pages}页）`;
             
             if (etfs.length === 0) {
                 document.getElementById('etf-list').innerHTML = '<div class="no-data">没有找到符合条件的ETF</div>';
@@ -487,22 +501,24 @@
             
             let html = '<table class="etf-table"><thead><tr>';
             html += '<th><input type="checkbox" onchange="toggleAll(this)"></th>';
-            html += '<th>名称</th>';
+            html += `<th onclick="doSort('name')" style="cursor:pointer">名称${sortArrow('name')}</th>`;
             html += '<th>代码</th>';
             html += '<th>类型</th>';
-            html += '<th>规模(亿)</th>';
-            html += '<th>费率(%)</th>';
-            html += '<th>近1年</th>';
-            html += '<th>近3年</th>';
+            html += `<th onclick="doSort('scale')" style="cursor:pointer">规模(亿)${sortArrow('scale')}</th>`;
+            html += `<th onclick="doSort('fee')" style="cursor:pointer">费率(%)${sortArrow('fee')}</th>`;
+            html += `<th onclick="doSort('year_1_return')" style="cursor:pointer">近1年${sortArrow('year_1_return')}</th>`;
+            html += `<th onclick="doSort('year_3_return')" style="cursor:pointer">近3年${sortArrow('year_3_return')}</th>`;
             html += '<th>操作</th>';
             html += '</tr></thead><tbody>';
             
             etfs.forEach(etf => {
                 const isSelected = selectedETFs.includes(etf.code);
-                const year1Class = etf.year_1_return >= 0 ? 'positive' : 'negative';
-                const year3Class = etf.year_3_return >= 0 ? 'positive' : 'negative';
-                const year1Sign = etf.year_1_return >= 0 ? '+' : '';
-                const year3Sign = etf.year_3_return >= 0 ? '+' : '';
+                const y1 = etf.year_1_return || 0;
+                const y3 = etf.year_3_return || 0;
+                const y1Cls = y1 >= 0 ? 'positive' : 'negative';
+                const y3Cls = y3 >= 0 ? 'positive' : 'negative';
+                const y1Sign = y1 >= 0 ? '+' : '';
+                const y3Sign = y3 >= 0 ? '+' : '';
                 
                 let badgeClass = 'badge-stock';
                 if (etf.type.includes('QDII')) badgeClass = 'badge-qdii';
@@ -515,17 +531,37 @@
                 html += `<td><a href="/etf/${etf.code}" class="etf-name">${etf.code} - ${etf.name}${etf.issuer ? ' - ' + etf.issuer : ''}</a></td>`;
                 html += `<td>${etf.code}</td>`;
                 html += `<td><span class="badge ${badgeClass}">${etf.type}</span></td>`;
-                html += `<td>${etf.scale.toFixed(1)}</td>`;
-                html += `<td>${etf.fee.toFixed(2)}</td>`;
-                html += `<td class="${year1Class}">${year1Sign}${etf.year_1_return.toFixed(1)}%</td>`;
-                html += `<td class="${year3Class}">${year3Sign}${etf.year_3_return.toFixed(1)}%</td>`;
-                html += `<td><a href="/etf/${etf.code}" class="etf-name" style="font-size:13px;">详情 →</a></td>`;
+                html += `<td>${(etf.scale || 0).toFixed(1)}</td>`;
+                html += `<td>${(etf.fee || 0).toFixed(2)}</td>`;
+                html += `<td class="${y1Cls}">${y1Sign}${y1.toFixed(1)}%</td>`;
+                html += `<td class="${y3Cls}">${y3Sign}${y3.toFixed(1)}%</td>`;
+                html += `<td><a href="/etf/${etf.code}" style="font-size:13px;">详情 →</a></td>`;
                 html += '</tr>';
             });
             
             html += '</tbody></table>';
+            
+            // 分页控件
+            html += '<div class="pagination" style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:16px;">';
+            html += `<button class="btn btn-secondary" onclick="loadETFs(1)" ${res.page <= 1 ? 'disabled' : ''}>« 首页</button>`;
+            html += `<button class="btn btn-secondary" onclick="loadETFs(${res.page - 1})" ${res.page <= 1 ? 'disabled' : ''}>‹ 上一页</button>`;
+            
+            // 页码按钮
+            const start = Math.max(1, res.page - 2);
+            const end = Math.min(res.total_pages, res.page + 2);
+            for (let p = start; p <= end; p++) {
+                html += `<button class="btn ${p === res.page ? 'btn-primary' : 'btn-secondary'}" onclick="loadETFs(${p})">${p}</button>`;
+            }
+            
+            html += `<button class="btn btn-secondary" onclick="loadETFs(${res.page + 1})" ${res.page >= res.total_pages ? 'disabled' : ''}>下一页 ›</button>`;
+            html += `<button class="btn btn-secondary" onclick="loadETFs(${res.total_pages})" ${res.page >= res.total_pages ? 'disabled' : ''}>末页 »</button>`;
+            html += `</div>`;
+            
             document.getElementById('etf-list').innerHTML = html;
         }
+        
+        // 重置筛选时回到第一页
+        function applyFilters() { loadETFs(1); }
         
         function toggleSelect(checkbox) {
             const code = checkbox.value;
@@ -585,7 +621,7 @@
         }
         
         function applyFilter() {
-            loadETFs();
+            loadETFs(1);
         }
         
         function resetFilter() {
@@ -596,11 +632,11 @@
             document.getElementById('scale_max').value = '';
             document.getElementById('fee_max').value = '';
             document.getElementById('return_min').value = '';
-            loadETFs();
+            loadETFs(1);
         }
         
         window.onload = function() {
-            loadETFs();
+            loadETFs(1);
         };
     </script>
 </body>
