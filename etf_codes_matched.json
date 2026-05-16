@@ -1,0 +1,812 @@
+[
+  {
+    "code": "159001",
+    "name": "货币ETF易方达",
+    "latest_price": 100.0,
+    "change_pct": 0.0,
+    "volume": 37855.0,
+    "amount": 378540428.134,
+    "total_value": 2005952200.0
+  },
+  {
+    "code": "159736",
+    "name": "食品饮料ETF天弘",
+    "latest_price": 0.635,
+    "change_pct": 0.0,
+    "volume": 838588.0,
+    "amount": 53217187.7,
+    "total_value": 4943090505.0
+  },
+  {
+    "code": "159755",
+    "name": "电池ETF广发",
+    "latest_price": 1.174,
+    "change_pct": -2.89,
+    "volume": 8628356.0,
+    "amount": 1030549855.625,
+    "total_value": 15802799174.0
+  },
+  {
+    "code": "159766",
+    "name": "旅游ETF富国",
+    "latest_price": 0.631,
+    "change_pct": -1.87,
+    "volume": 3482071.0,
+    "amount": 221194209.7,
+    "total_value": 3963084486.0
+  },
+  {
+    "code": "159770",
+    "name": "机器人ETF天弘",
+    "latest_price": 1.167,
+    "change_pct": -2.75,
+    "volume": 3154030.0,
+    "amount": 373505909.592,
+    "total_value": 8211114472.0
+  },
+  {
+    "code": "159790",
+    "name": "碳中和ETF华夏",
+    "latest_price": 0.835,
+    "change_pct": -2.22,
+    "volume": 389633.0,
+    "amount": 33100551.645,
+    "total_value": 1483401281.0
+  },
+  {
+    "code": "159807",
+    "name": "科技ETF易方达",
+    "latest_price": 0.928,
+    "change_pct": -1.9,
+    "volume": 701099.0,
+    "amount": 65999073.336,
+    "total_value": 867727721.0
+  },
+  {
+    "code": "159813",
+    "name": "半导体ETF鹏华",
+    "latest_price": 1.485,
+    "change_pct": -2.69,
+    "volume": 2942211.0,
+    "amount": 445688322.867,
+    "total_value": 5659130688.0
+  },
+  {
+    "code": "159825",
+    "name": "农业ETF富国",
+    "latest_price": 0.806,
+    "change_pct": -0.37,
+    "volume": 1112792.0,
+    "amount": 90065967.705,
+    "total_value": 2399524391.0
+  },
+  {
+    "code": "159855",
+    "name": "影视ETF银华",
+    "latest_price": 0.888,
+    "change_pct": -3.37,
+    "volume": 160499.0,
+    "amount": 14474222.4,
+    "total_value": 151781610.0
+  },
+  {
+    "code": "159865",
+    "name": "养殖ETF国泰",
+    "latest_price": 0.6,
+    "change_pct": 1.52,
+    "volume": 5547097.0,
+    "amount": 332155992.1,
+    "total_value": 6521673370.0
+  },
+  {
+    "code": "159901",
+    "name": "深证100ETF易方达",
+    "latest_price": 3.979,
+    "change_pct": -1.85,
+    "volume": 1092690.0,
+    "amount": 439111240.032,
+    "total_value": 6759664179.0
+  },
+  {
+    "code": "159915",
+    "name": "创业板ETF易方达",
+    "latest_price": 3.961,
+    "change_pct": -2.15,
+    "volume": 14719688.0,
+    "amount": 5906571388.606,
+    "total_value": 47799189160.0
+  },
+  {
+    "code": "159918",
+    "name": "中创400ETF嘉实",
+    "latest_price": 2.884,
+    "change_pct": -2.3,
+    "volume": 2333.0,
+    "amount": 681793.6,
+    "total_value": 85254685.0
+  },
+  {
+    "code": "159920",
+    "name": "恒生ETF华夏",
+    "latest_price": 1.548,
+    "change_pct": 0.0,
+    "volume": 2876429.0,
+    "amount": 449256095.6,
+    "total_value": 11172781790.0
+  },
+  {
+    "code": "159928",
+    "name": "消费ETF汇添富",
+    "latest_price": 0.72,
+    "change_pct": 0.14,
+    "volume": 6068319.0,
+    "amount": 438236037.24,
+    "total_value": 17611652874.0
+  },
+  {
+    "code": "159929",
+    "name": "医药ETF汇添富",
+    "latest_price": 1.295,
+    "change_pct": -2.04,
+    "volume": 756959.0,
+    "amount": 99244594.8,
+    "total_value": 2317666949.0
+  },
+  {
+    "code": "159934",
+    "name": "黄金ETF易方达",
+    "latest_price": 10.229,
+    "change_pct": -0.15,
+    "volume": 707488.0,
+    "amount": 722869302.228,
+    "total_value": 42424869479.0
+  },
+  {
+    "code": "159937",
+    "name": "黄金ETF博时",
+    "latest_price": 9.771,
+    "change_pct": -0.1,
+    "volume": 747618.0,
+    "amount": 729559295.2,
+    "total_value": 49038908668.0
+  },
+  {
+    "code": "159941",
+    "name": "纳指ETF广发",
+    "latest_price": 1.577,
+    "change_pct": 0.38,
+    "volume": 8824488.0,
+    "amount": 1392375516.867,
+    "total_value": 35389315196.0
+  },
+  {
+    "code": "159949",
+    "name": "创业板50ETF华安",
+    "latest_price": 1.906,
+    "change_pct": -1.95,
+    "volume": 13602961.0,
+    "amount": 2621667568.65,
+    "total_value": 24783308256.0
+  },
+  {
+    "code": "159966",
+    "name": "创业板价值ETF华夏",
+    "latest_price": 0.629,
+    "change_pct": -2.02,
+    "volume": 211942.0,
+    "amount": 13494811.745,
+    "total_value": 385136398.0
+  },
+  {
+    "code": "159967",
+    "name": "创业板成长ETF华夏",
+    "latest_price": 0.881,
+    "change_pct": -2.33,
+    "volume": 8011501.0,
+    "amount": 713837613.74,
+    "total_value": 3813237516.0
+  },
+  {
+    "code": "159992",
+    "name": "创新药ETF银华",
+    "latest_price": 0.803,
+    "change_pct": -3.14,
+    "volume": 12021926.0,
+    "amount": 981442680.698,
+    "total_value": 14813889542.0
+  },
+  {
+    "code": "510050",
+    "name": "上证50ETF华夏",
+    "latest_price": 3.074,
+    "change_pct": -1.57,
+    "volume": 10422841.0,
+    "amount": 3230850343.0,
+    "total_value": 39841089989.0
+  },
+  {
+    "code": "510300",
+    "name": "沪深300ETF华泰柏瑞",
+    "latest_price": 4.941,
+    "change_pct": -1.51,
+    "volume": 10281646.0,
+    "amount": 5118663487.0,
+    "total_value": 167726136769.0
+  },
+  {
+    "code": "510500",
+    "name": "中证500ETF南方",
+    "latest_price": 8.772,
+    "change_pct": -2.63,
+    "volume": 8902588.0,
+    "amount": 7900399322.0,
+    "total_value": 59787921949.0
+  },
+  {
+    "code": "510880",
+    "name": "红利ETF华泰柏瑞",
+    "latest_price": 3.223,
+    "change_pct": -0.65,
+    "volume": 1022441.0,
+    "amount": 330506928.0,
+    "total_value": 18869619820.0
+  },
+  {
+    "code": "511900",
+    "name": "富国货币ETF",
+    "latest_price": 100.009,
+    "change_pct": 0.0,
+    "volume": 1577.0,
+    "amount": 15769883.0,
+    "total_value": 179256132.0
+  },
+  {
+    "code": "512010",
+    "name": "医药ETF易方达",
+    "latest_price": 0.36,
+    "change_pct": -2.7,
+    "volume": 22967470.0,
+    "amount": 835597006.0,
+    "total_value": 16812610191.0
+  },
+  {
+    "code": "512100",
+    "name": "中证1000ETF南方",
+    "latest_price": 3.529,
+    "change_pct": -1.92,
+    "volume": 6280729.0,
+    "amount": 2238207387.0,
+    "total_value": 16343567136.0
+  },
+  {
+    "code": "512160",
+    "name": "MSCI中国A股ETF南方",
+    "latest_price": 1.597,
+    "change_pct": -1.66,
+    "volume": 6233.0,
+    "amount": 1002740.0,
+    "total_value": 200867147.0
+  },
+  {
+    "code": "512170",
+    "name": "医疗ETF华宝",
+    "latest_price": 0.329,
+    "change_pct": -2.08,
+    "volume": 26524358.0,
+    "amount": 881757655.0,
+    "total_value": 26689079001.0
+  },
+  {
+    "code": "512200",
+    "name": "房地产ETF南方",
+    "latest_price": 1.456,
+    "change_pct": -2.35,
+    "volume": 1045031.0,
+    "amount": 153923365.0,
+    "total_value": 5219902548.0
+  },
+  {
+    "code": "512290",
+    "name": "生物医药ETF国泰",
+    "latest_price": 0.966,
+    "change_pct": -3.01,
+    "volume": 1638636.0,
+    "amount": 160492314.0,
+    "total_value": 3646476800.0
+  },
+  {
+    "code": "512400",
+    "name": "有色金属ETF南方",
+    "latest_price": 2.13,
+    "change_pct": -3.58,
+    "volume": 6221129.0,
+    "amount": 1345276196.0,
+    "total_value": 28597463155.0
+  },
+  {
+    "code": "512480",
+    "name": "半导体ETF国联安",
+    "latest_price": 2.043,
+    "change_pct": -2.16,
+    "volume": 8772967.0,
+    "amount": 1824684056.0,
+    "total_value": 21175702191.0
+  },
+  {
+    "code": "512510",
+    "name": "中证500ETF华泰柏瑞",
+    "latest_price": 2.552,
+    "change_pct": -2.71,
+    "volume": 117444.0,
+    "amount": 30440821.0,
+    "total_value": 1140564870.0
+  },
+  {
+    "code": "512550",
+    "name": "富时A50ETF嘉实",
+    "latest_price": 1.901,
+    "change_pct": -1.14,
+    "volume": 35887.0,
+    "amount": 6872141.0,
+    "total_value": 224139306.0
+  },
+  {
+    "code": "512580",
+    "name": "环保ETF广发",
+    "latest_price": 1.436,
+    "change_pct": -2.38,
+    "volume": 89134.0,
+    "amount": 13061219.0,
+    "total_value": 930056555.0
+  },
+  {
+    "code": "512600",
+    "name": "消费ETF嘉实",
+    "latest_price": 0.615,
+    "change_pct": 0.0,
+    "volume": 161012.0,
+    "amount": 9926493.0,
+    "total_value": 936740999.0
+  },
+  {
+    "code": "512650",
+    "name": "长三角ETF汇添富",
+    "latest_price": 1.385,
+    "change_pct": -1.91,
+    "volume": 47646.0,
+    "amount": 6690041.0,
+    "total_value": 45624116.0
+  },
+  {
+    "code": "512660",
+    "name": "军工ETF国泰",
+    "latest_price": 1.419,
+    "change_pct": -4.64,
+    "volume": 4122822.0,
+    "amount": 596307538.0,
+    "total_value": 9994130429.0
+  },
+  {
+    "code": "512680",
+    "name": "军工ETF广发",
+    "latest_price": 1.451,
+    "change_pct": -4.73,
+    "volume": 1299225.0,
+    "amount": 192053972.0,
+    "total_value": 5414159969.0
+  },
+  {
+    "code": "512690",
+    "name": "酒ETF鹏华",
+    "latest_price": 0.466,
+    "change_pct": 0.87,
+    "volume": 29439543.0,
+    "amount": 1374025760.0,
+    "total_value": 16260673967.0
+  },
+  {
+    "code": "512700",
+    "name": "银行ETF南方",
+    "latest_price": 1.487,
+    "change_pct": 0.41,
+    "volume": 542485.0,
+    "amount": 80590777.0,
+    "total_value": 1064068959.0
+  },
+  {
+    "code": "512800",
+    "name": "银行ETF华宝",
+    "latest_price": 0.784,
+    "change_pct": 0.51,
+    "volume": 9626540.0,
+    "amount": 753770104.0,
+    "total_value": 10224833769.0
+  },
+  {
+    "code": "512880",
+    "name": "证券ETF国泰",
+    "latest_price": 1.071,
+    "change_pct": -2.19,
+    "volume": 20033561.0,
+    "amount": 2173890535.0,
+    "total_value": 54747690149.0
+  },
+  {
+    "code": "512900",
+    "name": "证券ETF南方",
+    "latest_price": 1.06,
+    "change_pct": -2.12,
+    "volume": 596250.0,
+    "amount": 63883193.0,
+    "total_value": 6822590377.0
+  },
+  {
+    "code": "512980",
+    "name": "传媒ETF广发",
+    "latest_price": 0.979,
+    "change_pct": -4.39,
+    "volume": 4063268.0,
+    "amount": 405381211.0,
+    "total_value": 5530297003.0
+  },
+  {
+    "code": "513030",
+    "name": "德国ETF华安",
+    "latest_price": 1.795,
+    "change_pct": -0.61,
+    "volume": 363159.0,
+    "amount": 65314560.0,
+    "total_value": 1780243319.0
+  },
+  {
+    "code": "513090",
+    "name": "香港证券ETF易方达",
+    "latest_price": 1.831,
+    "change_pct": -1.72,
+    "volume": 26347840.0,
+    "amount": 4890924984.0,
+    "total_value": 21482185411.0
+  },
+  {
+    "code": "513100",
+    "name": "纳指ETF国泰",
+    "latest_price": 2.105,
+    "change_pct": 0.57,
+    "volume": 4314164.0,
+    "amount": 907650113.0,
+    "total_value": 19926163066.0
+  },
+  {
+    "code": "513180",
+    "name": "恒生科技ETF华夏",
+    "latest_price": 0.646,
+    "change_pct": 0.0,
+    "volume": 99074337.0,
+    "amount": 6477020019.0,
+    "total_value": 53803893539.0
+  },
+  {
+    "code": "513330",
+    "name": "恒生互联网ETF华夏",
+    "latest_price": 0.436,
+    "change_pct": 0.0,
+    "volume": 94869262.0,
+    "amount": 4191562257.0,
+    "total_value": 34418484806.0
+  },
+  {
+    "code": "513500",
+    "name": "标普500ETF博时",
+    "latest_price": 2.489,
+    "change_pct": 0.04,
+    "volume": 1146810.0,
+    "amount": 285769004.0,
+    "total_value": 24714870615.0
+  },
+  {
+    "code": "515030",
+    "name": "新能源车ETF华夏",
+    "latest_price": 2.037,
+    "change_pct": -3.14,
+    "volume": 2013927.0,
+    "amount": 417303773.0,
+    "total_value": 5832713208.0
+  },
+  {
+    "code": "515050",
+    "name": "通信ETF华夏",
+    "latest_price": 1.133,
+    "change_pct": -1.99,
+    "volume": 9447509.0,
+    "amount": 1080733984.0,
+    "total_value": 4116266606.0
+  },
+  {
+    "code": "515070",
+    "name": "人工智能ETF华夏",
+    "latest_price": 2.522,
+    "change_pct": -2.1,
+    "volume": 1095376.0,
+    "amount": 280229956.0,
+    "total_value": 10495227865.0
+  },
+  {
+    "code": "515180",
+    "name": "红利ETF易方达",
+    "latest_price": 1.426,
+    "change_pct": -0.83,
+    "volume": 1798111.0,
+    "amount": 257579335.0,
+    "total_value": 14670170351.0
+  },
+  {
+    "code": "515210",
+    "name": "钢铁ETF国泰",
+    "latest_price": 1.406,
+    "change_pct": -2.09,
+    "volume": 816957.0,
+    "amount": 115454609.0,
+    "total_value": 2107208891.0
+  },
+  {
+    "code": "515220",
+    "name": "煤炭ETF国泰",
+    "latest_price": 1.212,
+    "change_pct": -1.3,
+    "volume": 4027715.0,
+    "amount": 492780735.0,
+    "total_value": 10473106320.0
+  },
+  {
+    "code": "515230",
+    "name": "软件ETF国泰",
+    "latest_price": 0.832,
+    "change_pct": -4.15,
+    "volume": 4179052.0,
+    "amount": 354599759.0,
+    "total_value": 5014206759.0
+  },
+  {
+    "code": "515450",
+    "name": "红利低波50ETF南方",
+    "latest_price": 1.431,
+    "change_pct": -0.07,
+    "volume": 1486550.0,
+    "amount": 213118535.0,
+    "total_value": 17688354988.0
+  },
+  {
+    "code": "515560",
+    "name": "证券ETF建信",
+    "latest_price": 0.983,
+    "change_pct": -2.09,
+    "volume": 70784.0,
+    "amount": 7059404.0,
+    "total_value": 197468284.0
+  },
+  {
+    "code": "515650",
+    "name": "消费50ETF富国",
+    "latest_price": 1.087,
+    "change_pct": 0.18,
+    "volume": 443161.0,
+    "amount": 48266296.0,
+    "total_value": 3473165008.0
+  },
+  {
+    "code": "515790",
+    "name": "光伏ETF华泰柏瑞",
+    "latest_price": 1.128,
+    "change_pct": -1.57,
+    "volume": 7395441.0,
+    "amount": 849193911.0,
+    "total_value": 10167221250.0
+  },
+  {
+    "code": "515850",
+    "name": "证券ETF富国",
+    "latest_price": 1.33,
+    "change_pct": -2.28,
+    "volume": 221544.0,
+    "amount": 29901853.0,
+    "total_value": 367467041.0
+  },
+  {
+    "code": "515880",
+    "name": "通信ETF国泰",
+    "latest_price": 1.544,
+    "change_pct": -0.83,
+    "volume": 24101120.0,
+    "amount": 3747317573.0,
+    "total_value": 28201757540.0
+  },
+  {
+    "code": "515900",
+    "name": "央企创新ETF博时",
+    "latest_price": 1.796,
+    "change_pct": -2.39,
+    "volume": 36996.0,
+    "amount": 6740368.0,
+    "total_value": 4044316307.0
+  },
+  {
+    "code": "515950",
+    "name": "医药50ETF富国",
+    "latest_price": 0.898,
+    "change_pct": -2.29,
+    "volume": 187050.0,
+    "amount": 17013680.0,
+    "total_value": 515632146.0
+  },
+  {
+    "code": "516020",
+    "name": "化工ETF华宝",
+    "latest_price": 0.953,
+    "change_pct": -2.66,
+    "volume": 3851220.0,
+    "amount": 372643967.0,
+    "total_value": 5258964937.0
+  },
+  {
+    "code": "516110",
+    "name": "汽车ETF国泰",
+    "latest_price": 1.294,
+    "change_pct": -2.12,
+    "volume": 216630.0,
+    "amount": 28366107.0,
+    "total_value": 462764297.0
+  },
+  {
+    "code": "516150",
+    "name": "稀土ETF嘉实",
+    "latest_price": 2.051,
+    "change_pct": -3.21,
+    "volume": 1658424.0,
+    "amount": 344936896.0,
+    "total_value": 9817269214.0
+  },
+  {
+    "code": "516160",
+    "name": "新能源ETF南方",
+    "latest_price": 3.223,
+    "change_pct": -3.16,
+    "volume": 922453.0,
+    "amount": 302870940.0,
+    "total_value": 7679255166.0
+  },
+  {
+    "code": "516180",
+    "name": "光伏ETF平安",
+    "latest_price": 0.926,
+    "change_pct": -1.8,
+    "volume": 150041.0,
+    "amount": 14170826.0,
+    "total_value": 237969962.0
+  },
+  {
+    "code": "516300",
+    "name": "中证1000ETF华泰柏瑞",
+    "latest_price": 3.632,
+    "change_pct": -1.92,
+    "volume": 14405.0,
+    "amount": 5281030.0,
+    "total_value": 76317763.0
+  },
+  {
+    "code": "516360",
+    "name": "新材料ETF华宝",
+    "latest_price": 1.125,
+    "change_pct": -2.26,
+    "volume": 56803.0,
+    "amount": 6513755.0,
+    "total_value": 68120775.0
+  },
+  {
+    "code": "516530",
+    "name": "物流ETF银华",
+    "latest_price": 1.048,
+    "change_pct": 0.38,
+    "volume": 36842.0,
+    "amount": 3893158.0,
+    "total_value": 19180810.0
+  },
+  {
+    "code": "516700",
+    "name": "大数据ETF华宝",
+    "latest_price": 1.082,
+    "change_pct": -4.5,
+    "volume": 280324.0,
+    "amount": 30948053.0,
+    "total_value": 104545004.0
+  },
+  {
+    "code": "516710",
+    "name": "新材料ETF华夏",
+    "latest_price": 0.82,
+    "change_pct": -2.03,
+    "volume": 32240.0,
+    "amount": 2670441.0,
+    "total_value": 47783040.0
+  },
+  {
+    "code": "516830",
+    "name": "沪深300ESGETF富国",
+    "latest_price": 1.082,
+    "change_pct": -1.28,
+    "volume": 38537.0,
+    "amount": 4209622.0,
+    "total_value": 102440406.0
+  },
+  {
+    "code": "516860",
+    "name": "金融科技ETF博时",
+    "latest_price": 1.25,
+    "change_pct": -3.55,
+    "volume": 530611.0,
+    "amount": 67419742.0,
+    "total_value": 1494402500.0
+  },
+  {
+    "code": "516950",
+    "name": "基建ETF银华",
+    "latest_price": 1.139,
+    "change_pct": -2.9,
+    "volume": 115086.0,
+    "amount": 13273914.0,
+    "total_value": 143310119.0
+  },
+  {
+    "code": "516960",
+    "name": "机械ETF国泰",
+    "latest_price": 1.087,
+    "change_pct": -3.03,
+    "volume": 7793.0,
+    "amount": 865525.0,
+    "total_value": 17447546.0
+  },
+  {
+    "code": "516970",
+    "name": "基建ETF广发",
+    "latest_price": 1.234,
+    "change_pct": -2.22,
+    "volume": 678737.0,
+    "amount": 84544164.0,
+    "total_value": 1763438440.0
+  },
+  {
+    "code": "516980",
+    "name": "证券先锋ETF华富",
+    "latest_price": 1.055,
+    "change_pct": -1.59,
+    "volume": 24024.0,
+    "amount": 2550609.0,
+    "total_value": 50656880.0
+  },
+  {
+    "code": "517180",
+    "name": "中国国企ETF南方",
+    "latest_price": 1.546,
+    "change_pct": -0.39,
+    "volume": 16417.0,
+    "amount": 2542945.0,
+    "total_value": 156913280.0
+  },
+  {
+    "code": "518800",
+    "name": "黄金ETF国泰",
+    "latest_price": 10.269,
+    "change_pct": -0.09,
+    "volume": 336001.0,
+    "amount": 344544529.0,
+    "total_value": 41260628405.0
+  },
+  {
+    "code": "518880",
+    "name": "黄金ETF华安",
+    "latest_price": 9.795,
+    "change_pct": -0.09,
+    "volume": 2968824.0,
+    "amount": 2903498943.0,
+    "total_value": 115012309509.0
+  }
+]
