@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 # 数据文件配置
 FULL_DATA_FILE = Path(__file__).parent / "etf_complete_all.json"
 SAMPLE_DATA_FILE = Path(__file__).parent / "etf_complete_130.json"
-MAX_AGE_HOURS = 24  # 全量数据最大有效期（小时）
+MAX_AGE_HOURS = 168  # 全量数据最大有效期（7天 = 168小时）
 
 def _is_file_recent(filepath, max_age_hours):
     """检查文件是否存在且最近更新"""
@@ -27,6 +27,8 @@ def _is_file_recent(filepath, max_age_hours):
 
 def _load_etfs():
     """加载ETF数据并转换为标准格式（优先使用全量数据）"""
+    
+    raw_etfs = None  # 初始化，避免 UnboundLocalError
     
     # 优先尝试加载全量数据（如果可用且最近更新）
     if _is_file_recent(FULL_DATA_FILE, MAX_AGE_HOURS):
