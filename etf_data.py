@@ -77,9 +77,9 @@ def _load_etfs():
                 "management_fee": round(etf.get("fee", 0.6) * 0.8, 4) if etf.get("fee") else 0.5,
                 "custody_fee": round(etf.get("fee", 0.6) * 0.2, 4) if etf.get("fee") else 0.1,
                 "tracking_error": etf.get("tracking_error", 0.02),
-                "year_1_return": etf.get("year_1_return", 0) / 100 if abs(etf.get("year_1_return", 0)) > 1 else etf.get("year_1_return", 0),
-                "year_3_return": etf.get("year_3_return", 0) / 100 if abs(etf.get("year_3_return", 0)) > 1 else etf.get("year_3_return", 0),
-                "max_drawdown": etf.get("max_drawdown", 0) / 100 if abs(etf.get("max_drawdown", 0)) > 1 else etf.get("max_drawdown", 0),
+                "year_1_return": etf.get("year_1_return", 0),  # 已是百分比格式，如 -17.9 表示 -17.9%
+                "year_3_return": etf.get("year_3_return", 0),
+                "max_drawdown": etf.get("max_drawdown", 0),
                 "sharpe_ratio": etf.get("sharpe_ratio", 0.0),
                 "launch_date": etf.get("launch_date", ""),
                 "issuer": etf.get("issuer", ""),
