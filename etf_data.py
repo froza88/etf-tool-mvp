@@ -92,12 +92,6 @@ def _extract_name_issuer(raw_name, known_names):
     
     # 3. 无法提取，保持原样
     return raw_name, ""
-    """检查文件是否存在且最近更新"""
-    if not filepath.exists():
-        return False
-    mtime = datetime.fromtimestamp(os.path.getmtime(filepath))
-    age = datetime.now() - mtime
-    return age < timedelta(hours=max_age_hours)
 
 
 def _load_etfs():
