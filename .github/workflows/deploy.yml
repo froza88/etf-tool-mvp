@@ -9,10 +9,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
 
@@ -50,9 +50,8 @@ jobs:
         echo "📥 通过 API 控制台执行 git pull..."
 
         # 1. 创建控制台
-        CONSOLE_JSON=$(curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/" \
-          -X POST)
-        CONSOLE_ID=$(echo $CONSOLE_JSON | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+        CONSOLE_JSON=$(curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/" -X POST)
+        CONSOLE_ID=$(echo "$CONSOLE_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
         echo "✅ 控制台已创建，ID: $CONSOLE_ID"
 
         # 2. 发送 git pull 命令
@@ -64,7 +63,7 @@ jobs:
         # 3. 安装依赖
         curl -s $AUTH "$BASE/user/$PA_USERNAME/consoles/$CONSOLE_ID/send_input/" \
           -X POST \
-          -d "pip install -r /home/$PA_USERNAME/etf-tool-mvp/requirements.txt 2>/dev/null || echo 'skip pip'"$'\n'
+          -d "pip install -r /home/$PA_USERNAME/etf-tool-mvp/requirements.txt 2>/dev/null || echo skip"$'\n'
         sleep 5
 
         # 4. touch WSGI 文件触发重载
@@ -79,7 +78,7 @@ jobs:
           -d "status=deleted"
         echo "✅ 控制台已关闭"
 
-        # 6. 调用 reload API 确保生效
+        # 6. 调用 reload API
         echo "🔄 调用 reload API..."
         RELOAD_RESP=$(curl -s $AUTH \
           "$BASE/domain_reload/$PA_USERNAME.pythonanywhere.com/")
