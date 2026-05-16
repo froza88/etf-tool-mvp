@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ etf.name }} - ETF详情 - ETF工具平台</title>
+    <title>{{ etf.code }} - {{ etf.name }} - {{ etf.issuer }} - ETF详情 - ETF工具平台</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -240,7 +240,7 @@
     <div class="container">
         <div class="header">
             <a href="/" class="back-link">← 返回列表</a>
-            <h1>{{ etf.name }}</h1>
+            <h1>{{ etf.code }} - {{ etf.name }} - {{ etf.issuer }}</h1>
             <div class="subtitle">
                 <span>代码：{{ etf.code }}</span>
                 <span>发行方：{{ etf.issuer }}</span>
