@@ -114,7 +114,20 @@ def _load_etfs():
             transformed["launch_date"] = gen.get("launch_date", transformed["launch_date"])
             transformed["issuer"] = gen.get("issuer", transformed["issuer"])
             transformed["underlying"] = gen.get("underlying", transformed["underlying"])
-            transformed["top_holdings"] = gen.get("top_holdings", transformed["top_holdings"])
+        # top_holdings: 统一转为 [{"name": "xx", "weight": "xx%"}, ...] 格式
+            raw_holdings = gen.get("top_holdings", transformed["top_holdings"])
+            formatted_holdings = []
+            if isinstance(raw_holdings, list):
+                for h in raw_holdings[:5]:
+                    if isinstance(h, dict) and "name" in h:
+                        formatted_holdings.append(h)
+                    elif isinstance(h, str):
+                        # 尝试分割 "股票名称 权重%" 格式
+                        parts = h.split(" ", 1)
+                        name = parts[0]
+                        weight = parts[1] if len(parts) > 1 else ""
+                        formatted_holdings.append({"name": name, "weight": weight})
+            transformed["top_holdings"] = formatted_holdings
             transformed["volume"] = gen.get("volume", transformed["volume"])
             transformed["category"] = gen.get("category", transformed["category"])
         

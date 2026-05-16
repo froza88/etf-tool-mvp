@@ -62,8 +62,8 @@ for i, etf in enumerate(unique_etfs):
             data = json.loads(result.stdout)
             comp_names = data.get("components_name", [])
             if comp_names:
-                # 取前5大持仓，格式: "股票名称"（暂时不带权重）
-                top5 = comp_names[:5]
+                # 格式化为 [{"name": "xx", "weight": ""}, ...]
+                top5 = [{"name": name, "weight": ""} for name in comp_names[:5]]
                 etf["top_holdings"] = top5
                 updated += 1
             else:

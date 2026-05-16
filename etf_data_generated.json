@@ -14,11 +14,26 @@
     "issuer": "嘉实基金",
     "underlying": "沪深300ETF指数",
     "top_holdings": [
-      "平安银行",
-      "万  科Ａ",
-      "中兴通讯",
-      "TCL科技",
-      "中联重科"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "万",
+        "weight": " 科Ａ"
+      },
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "TCL科技",
+        "weight": ""
+      },
+      {
+        "name": "中联重科",
+        "weight": ""
+      }
     ],
     "volume": 25.2,
     "category": "宽基"
@@ -38,11 +53,26 @@
     "issuer": "广发基金",
     "underlying": "中证500ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "深科技",
-      "深圳能源",
-      "深桑达Ａ",
-      "神州数码"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "深科技",
+        "weight": ""
+      },
+      {
+        "name": "深圳能源",
+        "weight": ""
+      },
+      {
+        "name": "深桑达Ａ",
+        "weight": ""
+      },
+      {
+        "name": "神州数码",
+        "weight": ""
+      }
     ],
     "volume": 0.9,
     "category": "宽基"
@@ -62,11 +92,26 @@
     "issuer": "国泰基金",
     "underlying": "上证50ETF指数",
     "top_holdings": [
-      "中国石化",
-      "中信证券",
-      "三一重工",
-      "招商银行",
-      "中国联通"
+      {
+        "name": "中国石化",
+        "weight": ""
+      },
+      {
+        "name": "中信证券",
+        "weight": ""
+      },
+      {
+        "name": "三一重工",
+        "weight": ""
+      },
+      {
+        "name": "招商银行",
+        "weight": ""
+      },
+      {
+        "name": "中国联通",
+        "weight": ""
+      }
     ],
     "volume": 7.7,
     "category": "宽基"
@@ -86,11 +131,26 @@
     "issuer": "广发基金",
     "underlying": "创业板ETF指数",
     "top_holdings": [
-      "特锐德",
-      "神州泰岳",
-      "乐普医疗",
-      "华测检测",
-      "亿纬锂能"
+      {
+        "name": "特锐德",
+        "weight": ""
+      },
+      {
+        "name": "神州泰岳",
+        "weight": ""
+      },
+      {
+        "name": "乐普医疗",
+        "weight": ""
+      },
+      {
+        "name": "华测检测",
+        "weight": ""
+      },
+      {
+        "name": "亿纬锂能",
+        "weight": ""
+      }
     ],
     "volume": 0.6,
     "category": "宽基"
@@ -110,11 +170,26 @@
     "issuer": "汇添富",
     "underlying": "中证1000ETF指数",
     "top_holdings": [
-      "南  玻Ａ",
-      "深粮控股",
-      "国药一致",
-      "深深房Ａ",
-      "富奥股份"
+      {
+        "name": "南",
+        "weight": " 玻Ａ"
+      },
+      {
+        "name": "深粮控股",
+        "weight": ""
+      },
+      {
+        "name": "国药一致",
+        "weight": ""
+      },
+      {
+        "name": "深深房Ａ",
+        "weight": ""
+      },
+      {
+        "name": "富奥股份",
+        "weight": ""
+      }
     ],
     "volume": 30.2,
     "category": "宽基"
@@ -134,11 +209,26 @@
     "issuer": "广发基金",
     "underlying": "创业板50ETF指数",
     "top_holdings": [
-      "乐普医疗",
-      "天海防务",
-      "同花顺",
-      "鼎龙股份",
-      "蓝色光标"
+      {
+        "name": "乐普医疗",
+        "weight": ""
+      },
+      {
+        "name": "天海防务",
+        "weight": ""
+      },
+      {
+        "name": "同花顺",
+        "weight": ""
+      },
+      {
+        "name": "鼎龙股份",
+        "weight": ""
+      },
+      {
+        "name": "蓝色光标",
+        "weight": ""
+      }
     ],
     "volume": 8.1,
     "category": "宽基"
@@ -158,11 +248,26 @@
     "issuer": "汇添富",
     "underlying": "MSCI中国A50ETF指数",
     "top_holdings": [
-      "中国天楹",
-      "徐工机械",
-      "长虹美菱",
-      "皖能电力",
-      "创元科技"
+      {
+        "name": "中国天楹",
+        "weight": ""
+      },
+      {
+        "name": "徐工机械",
+        "weight": ""
+      },
+      {
+        "name": "长虹美菱",
+        "weight": ""
+      },
+      {
+        "name": "皖能电力",
+        "weight": ""
+      },
+      {
+        "name": "创元科技",
+        "weight": ""
+      }
     ],
     "volume": 1.2,
     "category": "宽基"
@@ -182,11 +287,26 @@
     "issuer": "嘉实基金",
     "underlying": "深证100ETF指数",
     "top_holdings": [
-      "平安银行",
-      "万  科Ａ",
-      "中兴通讯",
-      "TCL科技",
-      "中联重科"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "万",
+        "weight": " 科Ａ"
+      },
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "TCL科技",
+        "weight": ""
+      },
+      {
+        "name": "中联重科",
+        "weight": ""
+      }
     ],
     "volume": 26.3,
     "category": "宽基"
@@ -206,11 +326,26 @@
     "issuer": "华宝基金",
     "underlying": "上证红利ETF指数",
     "top_holdings": [
-      "华夏银行",
-      "中国石化",
-      "四川路桥",
-      "云天化",
-      "兰花科创"
+      {
+        "name": "华夏银行",
+        "weight": ""
+      },
+      {
+        "name": "中国石化",
+        "weight": ""
+      },
+      {
+        "name": "四川路桥",
+        "weight": ""
+      },
+      {
+        "name": "云天化",
+        "weight": ""
+      },
+      {
+        "name": "兰花科创",
+        "weight": ""
+      }
     ],
     "volume": 20.3,
     "category": "宽基"
@@ -230,11 +365,26 @@
     "issuer": "富国基金",
     "underlying": "中证800ETF指数",
     "top_holdings": [
-      "平安银行",
-      "兰州银行",
-      "宁波银行",
-      "江阴银行",
-      "张家港行"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "兰州银行",
+        "weight": ""
+      },
+      {
+        "name": "宁波银行",
+        "weight": ""
+      },
+      {
+        "name": "江阴银行",
+        "weight": ""
+      },
+      {
+        "name": "张家港行",
+        "weight": ""
+      }
     ],
     "volume": 12.1,
     "category": "宽基"
@@ -254,11 +404,26 @@
     "issuer": "华夏基金",
     "underlying": "中证100ETF指数",
     "top_holdings": [
-      "平安银行",
-      "美的集团",
-      "东阿阿胶",
-      "格力电器",
-      "五 粮 液"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "美的集团",
+        "weight": ""
+      },
+      {
+        "name": "东阿阿胶",
+        "weight": ""
+      },
+      {
+        "name": "格力电器",
+        "weight": ""
+      },
+      {
+        "name": "五",
+        "weight": "粮 液"
+      }
     ],
     "volume": 4.4,
     "category": "宽基"
@@ -278,11 +443,26 @@
     "issuer": "嘉实基金",
     "underlying": "MSCI中国A股ETF指数",
     "top_holdings": [
-      "平安银行",
-      "万  科Ａ",
-      "中兴通讯",
-      "中国长城",
-      "TCL科技"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "万",
+        "weight": " 科Ａ"
+      },
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "中国长城",
+        "weight": ""
+      },
+      {
+        "name": "TCL科技",
+        "weight": ""
+      }
     ],
     "volume": 19.0,
     "category": "宽基"
@@ -302,11 +482,26 @@
     "issuer": "华宝基金",
     "underlying": "证券保险ETF指数",
     "top_holdings": [
-      "平安银行",
-      "兰州银行",
-      "宁波银行",
-      "江阴银行",
-      "张家港行"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "兰州银行",
+        "weight": ""
+      },
+      {
+        "name": "宁波银行",
+        "weight": ""
+      },
+      {
+        "name": "江阴银行",
+        "weight": ""
+      },
+      {
+        "name": "张家港行",
+        "weight": ""
+      }
     ],
     "volume": 21.2,
     "category": "行业"
@@ -326,11 +521,26 @@
     "issuer": "华宝基金",
     "underlying": "证券ETF指数",
     "top_holdings": [
-      "申万宏源",
-      "东北证券",
-      "锦龙股份",
-      "国元证券",
-      "国海证券"
+      {
+        "name": "申万宏源",
+        "weight": ""
+      },
+      {
+        "name": "东北证券",
+        "weight": ""
+      },
+      {
+        "name": "锦龙股份",
+        "weight": ""
+      },
+      {
+        "name": "国元证券",
+        "weight": ""
+      },
+      {
+        "name": "国海证券",
+        "weight": ""
+      }
     ],
     "volume": 22.4,
     "category": "行业"
@@ -350,11 +560,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "金融行业ETF指数",
     "top_holdings": [
-      "申万宏源",
-      "东北证券",
-      "锦龙股份",
-      "国元证券",
-      "国海证券"
+      {
+        "name": "申万宏源",
+        "weight": ""
+      },
+      {
+        "name": "东北证券",
+        "weight": ""
+      },
+      {
+        "name": "锦龙股份",
+        "weight": ""
+      },
+      {
+        "name": "国元证券",
+        "weight": ""
+      },
+      {
+        "name": "国海证券",
+        "weight": ""
+      }
     ],
     "volume": 3.0,
     "category": "行业"
@@ -374,11 +599,26 @@
     "issuer": "南方基金",
     "underlying": "消费ETF指数",
     "top_holdings": [
-      "泸州老窖",
-      "古井贡酒",
-      "燕京啤酒",
-      "五 粮 液",
-      "新 希 望"
+      {
+        "name": "泸州老窖",
+        "weight": ""
+      },
+      {
+        "name": "古井贡酒",
+        "weight": ""
+      },
+      {
+        "name": "燕京啤酒",
+        "weight": ""
+      },
+      {
+        "name": "五",
+        "weight": "粮 液"
+      },
+      {
+        "name": "新",
+        "weight": "希 望"
+      }
     ],
     "volume": 39.3,
     "category": "行业"
@@ -398,11 +638,26 @@
     "issuer": "汇添富",
     "underlying": "酒ETF指数",
     "top_holdings": [
-      "泸州老窖",
-      "古井贡酒",
-      "燕京啤酒",
-      "酒鬼酒",
-      "五 粮 液"
+      {
+        "name": "泸州老窖",
+        "weight": ""
+      },
+      {
+        "name": "古井贡酒",
+        "weight": ""
+      },
+      {
+        "name": "燕京啤酒",
+        "weight": ""
+      },
+      {
+        "name": "酒鬼酒",
+        "weight": ""
+      },
+      {
+        "name": "五",
+        "weight": "粮 液"
+      }
     ],
     "volume": 5.2,
     "category": "行业"
@@ -422,11 +677,26 @@
     "issuer": "富国基金",
     "underlying": "食品饮料ETF指数",
     "top_holdings": [
-      "美的集团",
-      "格力电器",
-      "五 粮 液",
-      "双汇发展",
-      "慕思股份"
+      {
+        "name": "美的集团",
+        "weight": ""
+      },
+      {
+        "name": "格力电器",
+        "weight": ""
+      },
+      {
+        "name": "五",
+        "weight": "粮 液"
+      },
+      {
+        "name": "双汇发展",
+        "weight": ""
+      },
+      {
+        "name": "慕思股份",
+        "weight": ""
+      }
     ],
     "volume": 2.5,
     "category": "行业"
@@ -446,11 +716,26 @@
     "issuer": "易方达",
     "underlying": "饮料ETF指数",
     "top_holdings": [
-      "京粮控股",
-      "红棉股份",
-      "泸州老窖",
-      "古井贡酒",
-      "黑芝麻"
+      {
+        "name": "京粮控股",
+        "weight": ""
+      },
+      {
+        "name": "红棉股份",
+        "weight": ""
+      },
+      {
+        "name": "泸州老窖",
+        "weight": ""
+      },
+      {
+        "name": "古井贡酒",
+        "weight": ""
+      },
+      {
+        "name": "黑芝麻",
+        "weight": ""
+      }
     ],
     "volume": 1.0,
     "category": "行业"
@@ -470,11 +755,26 @@
     "issuer": "广发基金",
     "underlying": "家电ETF指数",
     "top_holdings": [
-      "泸州老窖",
-      "古井贡酒",
-      "燕京啤酒",
-      "五 粮 液",
-      "新 希 望"
+      {
+        "name": "泸州老窖",
+        "weight": ""
+      },
+      {
+        "name": "古井贡酒",
+        "weight": ""
+      },
+      {
+        "name": "燕京啤酒",
+        "weight": ""
+      },
+      {
+        "name": "五",
+        "weight": "粮 液"
+      },
+      {
+        "name": "新",
+        "weight": "希 望"
+      }
     ],
     "volume": 1.9,
     "category": "行业"
@@ -494,11 +794,26 @@
     "issuer": "南方基金",
     "underlying": "医疗ETF指数",
     "top_holdings": [
-      "美年健康",
-      "鱼跃医疗",
-      "九安医疗",
-      "凯莱英",
-      "大博医疗"
+      {
+        "name": "美年健康",
+        "weight": ""
+      },
+      {
+        "name": "鱼跃医疗",
+        "weight": ""
+      },
+      {
+        "name": "九安医疗",
+        "weight": ""
+      },
+      {
+        "name": "凯莱英",
+        "weight": ""
+      },
+      {
+        "name": "大博医疗",
+        "weight": ""
+      }
     ],
     "volume": 23.1,
     "category": "行业"
@@ -518,11 +833,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "医药ETF指数",
     "top_holdings": [
-      "云南白药",
-      "长春高新",
-      "华东医药",
-      "华润三九",
-      "新 和 成"
+      {
+        "name": "云南白药",
+        "weight": ""
+      },
+      {
+        "name": "长春高新",
+        "weight": ""
+      },
+      {
+        "name": "华东医药",
+        "weight": ""
+      },
+      {
+        "name": "华润三九",
+        "weight": ""
+      },
+      {
+        "name": "新",
+        "weight": "和 成"
+      }
     ],
     "volume": 17.3,
     "category": "行业"
@@ -542,11 +872,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "生物医药ETF指数",
     "top_holdings": [
-      "东阿阿胶",
-      "丽珠集团",
-      "云南白药",
-      "吉林敖东",
-      "长春高新"
+      {
+        "name": "东阿阿胶",
+        "weight": ""
+      },
+      {
+        "name": "丽珠集团",
+        "weight": ""
+      },
+      {
+        "name": "云南白药",
+        "weight": ""
+      },
+      {
+        "name": "吉林敖东",
+        "weight": ""
+      },
+      {
+        "name": "长春高新",
+        "weight": ""
+      }
     ],
     "volume": 18.7,
     "category": "行业"
@@ -566,11 +911,26 @@
     "issuer": "华夏基金",
     "underlying": "创新药ETF指数",
     "top_holdings": [
-      "长春高新",
-      "华兰生物",
-      "上海莱士",
-      "奥赛康",
-      "康弘药业"
+      {
+        "name": "长春高新",
+        "weight": ""
+      },
+      {
+        "name": "华兰生物",
+        "weight": ""
+      },
+      {
+        "name": "上海莱士",
+        "weight": ""
+      },
+      {
+        "name": "奥赛康",
+        "weight": ""
+      },
+      {
+        "name": "康弘药业",
+        "weight": ""
+      }
     ],
     "volume": 2.4,
     "category": "行业"
@@ -590,11 +950,26 @@
     "issuer": "华宝基金",
     "underlying": "医疗服务ETF指数",
     "top_holdings": [
-      "丽珠集团",
-      "长春高新",
-      "通化金马",
-      "华东医药",
-      "华兰生物"
+      {
+        "name": "丽珠集团",
+        "weight": ""
+      },
+      {
+        "name": "长春高新",
+        "weight": ""
+      },
+      {
+        "name": "通化金马",
+        "weight": ""
+      },
+      {
+        "name": "华东医药",
+        "weight": ""
+      },
+      {
+        "name": "华兰生物",
+        "weight": ""
+      }
     ],
     "volume": 2.0,
     "category": "行业"
@@ -614,11 +989,26 @@
     "issuer": "华宝基金",
     "underlying": "半导体ETF指数",
     "top_holdings": [
-      "德明利",
-      "紫光国微",
-      "通富微电",
-      "华天科技",
-      "北方华创"
+      {
+        "name": "德明利",
+        "weight": ""
+      },
+      {
+        "name": "紫光国微",
+        "weight": ""
+      },
+      {
+        "name": "通富微电",
+        "weight": ""
+      },
+      {
+        "name": "华天科技",
+        "weight": ""
+      },
+      {
+        "name": "北方华创",
+        "weight": ""
+      }
     ],
     "volume": 28.8,
     "category": "行业"
@@ -638,11 +1028,26 @@
     "issuer": "汇添富",
     "underlying": "芯片ETF指数",
     "top_holdings": [
-      "紫光国微",
-      "通富微电",
-      "北方华创",
-      "北京君正",
-      "晶盛机电"
+      {
+        "name": "紫光国微",
+        "weight": ""
+      },
+      {
+        "name": "通富微电",
+        "weight": ""
+      },
+      {
+        "name": "北方华创",
+        "weight": ""
+      },
+      {
+        "name": "北京君正",
+        "weight": ""
+      },
+      {
+        "name": "晶盛机电",
+        "weight": ""
+      }
     ],
     "volume": 9.9,
     "category": "行业"
@@ -662,11 +1067,26 @@
     "issuer": "汇添富",
     "underlying": "5GETF指数",
     "top_holdings": [
-      "中兴通讯",
-      "紫光股份",
-      "华工科技",
-      "中航光电",
-      "歌尔股份"
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "紫光股份",
+        "weight": ""
+      },
+      {
+        "name": "华工科技",
+        "weight": ""
+      },
+      {
+        "name": "中航光电",
+        "weight": ""
+      },
+      {
+        "name": "歌尔股份",
+        "weight": ""
+      }
     ],
     "volume": 15.0,
     "category": "主题"
@@ -686,11 +1106,26 @@
     "issuer": "易方达",
     "underlying": "大数据ETF指数",
     "top_holdings": [
-      "深桑达Ａ",
-      "紫光股份",
-      "浪潮信息",
-      "东华软件",
-      "广电运通"
+      {
+        "name": "深桑达Ａ",
+        "weight": ""
+      },
+      {
+        "name": "紫光股份",
+        "weight": ""
+      },
+      {
+        "name": "浪潮信息",
+        "weight": ""
+      },
+      {
+        "name": "东华软件",
+        "weight": ""
+      },
+      {
+        "name": "广电运通",
+        "weight": ""
+      }
     ],
     "volume": 1.3,
     "category": "主题"
@@ -710,11 +1145,26 @@
     "issuer": "广发基金",
     "underlying": "科技ETF指数",
     "top_holdings": [
-      "中兴通讯",
-      "TCL科技",
-      "京东方Ａ",
-      "华工科技",
-      "思源电气"
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "TCL科技",
+        "weight": ""
+      },
+      {
+        "name": "京东方Ａ",
+        "weight": ""
+      },
+      {
+        "name": "华工科技",
+        "weight": ""
+      },
+      {
+        "name": "思源电气",
+        "weight": ""
+      }
     ],
     "volume": 14.6,
     "category": "主题"
@@ -734,11 +1184,26 @@
     "issuer": "华宝基金",
     "underlying": "软件ETF指数",
     "top_holdings": [
-      "神州信息",
-      "远光软件",
-      "石基信息",
-      "科大讯飞",
-      "拓维信息"
+      {
+        "name": "神州信息",
+        "weight": ""
+      },
+      {
+        "name": "远光软件",
+        "weight": ""
+      },
+      {
+        "name": "石基信息",
+        "weight": ""
+      },
+      {
+        "name": "科大讯飞",
+        "weight": ""
+      },
+      {
+        "name": "拓维信息",
+        "weight": ""
+      }
     ],
     "volume": 25.6,
     "category": "行业"
@@ -758,11 +1223,26 @@
     "issuer": "易方达",
     "underlying": "人工智能ETF指数",
     "top_holdings": [
-      "华数传媒",
-      "智度股份",
-      "视觉中国",
-      "中原传媒",
-      "电广传媒"
+      {
+        "name": "华数传媒",
+        "weight": ""
+      },
+      {
+        "name": "智度股份",
+        "weight": ""
+      },
+      {
+        "name": "视觉中国",
+        "weight": ""
+      },
+      {
+        "name": "中原传媒",
+        "weight": ""
+      },
+      {
+        "name": "电广传媒",
+        "weight": ""
+      }
     ],
     "volume": 35.6,
     "category": "主题"
@@ -782,11 +1262,26 @@
     "issuer": "易方达",
     "underlying": "互联网ETF指数",
     "top_holdings": [
-      "华数传媒",
-      "天府文旅",
-      "视觉中国",
-      "欢瑞世纪",
-      "天威视讯"
+      {
+        "name": "华数传媒",
+        "weight": ""
+      },
+      {
+        "name": "天府文旅",
+        "weight": ""
+      },
+      {
+        "name": "视觉中国",
+        "weight": ""
+      },
+      {
+        "name": "欢瑞世纪",
+        "weight": ""
+      },
+      {
+        "name": "天威视讯",
+        "weight": ""
+      }
     ],
     "volume": 24.8,
     "category": "行业"
@@ -806,11 +1301,26 @@
     "issuer": "富国基金",
     "underlying": "新能源ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "川能动力",
-      "绿发电力",
-      "太阳能",
-      "电投绿能"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "川能动力",
+        "weight": ""
+      },
+      {
+        "name": "绿发电力",
+        "weight": ""
+      },
+      {
+        "name": "太阳能",
+        "weight": ""
+      },
+      {
+        "name": "电投绿能",
+        "weight": ""
+      }
     ],
     "volume": 10.6,
     "category": "行业"
@@ -830,11 +1340,26 @@
     "issuer": "南方基金",
     "underlying": "新能源车ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "长安汽车",
-      "西藏矿业",
-      "尚太科技",
-      "三花智控"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "长安汽车",
+        "weight": ""
+      },
+      {
+        "name": "西藏矿业",
+        "weight": ""
+      },
+      {
+        "name": "尚太科技",
+        "weight": ""
+      },
+      {
+        "name": "三花智控",
+        "weight": ""
+      }
     ],
     "volume": 22.9,
     "category": "行业"
@@ -854,11 +1379,26 @@
     "issuer": "广发基金",
     "underlying": "光伏ETF指数",
     "top_holdings": [
-      "TCL科技",
-      "太阳能",
-      "电投绿能",
-      "横店东磁",
-      "TCL中环"
+      {
+        "name": "TCL科技",
+        "weight": ""
+      },
+      {
+        "name": "太阳能",
+        "weight": ""
+      },
+      {
+        "name": "电投绿能",
+        "weight": ""
+      },
+      {
+        "name": "横店东磁",
+        "weight": ""
+      },
+      {
+        "name": "TCL中环",
+        "weight": ""
+      }
     ],
     "volume": 12.8,
     "category": "行业"
@@ -878,11 +1418,26 @@
     "issuer": "华夏基金",
     "underlying": "风电ETF指数",
     "top_holdings": [
-      "申万宏源",
-      "东北证券",
-      "锦龙股份",
-      "国元证券",
-      "国海证券"
+      {
+        "name": "申万宏源",
+        "weight": ""
+      },
+      {
+        "name": "东北证券",
+        "weight": ""
+      },
+      {
+        "name": "锦龙股份",
+        "weight": ""
+      },
+      {
+        "name": "国元证券",
+        "weight": ""
+      },
+      {
+        "name": "国海证券",
+        "weight": ""
+      }
     ],
     "volume": 4.0,
     "category": "行业"
@@ -902,11 +1457,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "电池ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "三花智控",
-      "横店东磁",
-      "国轩高科",
-      "中材科技"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "三花智控",
+        "weight": ""
+      },
+      {
+        "name": "横店东磁",
+        "weight": ""
+      },
+      {
+        "name": "国轩高科",
+        "weight": ""
+      },
+      {
+        "name": "中材科技",
+        "weight": ""
+      }
     ],
     "volume": 0.3,
     "category": "行业"
@@ -926,11 +1496,26 @@
     "issuer": "国泰基金",
     "underlying": "电网ETF指数",
     "top_holdings": [
-      "天健集团",
-      "中联重科",
-      "徐工机械",
-      "山东路桥",
-      "柳    工"
+      {
+        "name": "天健集团",
+        "weight": ""
+      },
+      {
+        "name": "中联重科",
+        "weight": ""
+      },
+      {
+        "name": "徐工机械",
+        "weight": ""
+      },
+      {
+        "name": "山东路桥",
+        "weight": ""
+      },
+      {
+        "name": "柳",
+        "weight": "   工"
+      }
     ],
     "volume": 4.9,
     "category": "行业"
@@ -950,11 +1535,26 @@
     "issuer": "易方达",
     "underlying": "新能源主题ETF指数",
     "top_holdings": [
-      "华侨城Ａ",
-      "深圳机场",
-      "华天酒店",
-      "岭南控股",
-      "天府文旅"
+      {
+        "name": "华侨城Ａ",
+        "weight": ""
+      },
+      {
+        "name": "深圳机场",
+        "weight": ""
+      },
+      {
+        "name": "华天酒店",
+        "weight": ""
+      },
+      {
+        "name": "岭南控股",
+        "weight": ""
+      },
+      {
+        "name": "天府文旅",
+        "weight": ""
+      }
     ],
     "volume": 26.0,
     "category": "主题"
@@ -974,11 +1574,26 @@
     "issuer": "华宝基金",
     "underlying": "军工ETF指数",
     "top_holdings": [
-      "中国长城",
-      "中兵红箭",
-      "航天发展",
-      "振华科技",
-      "航发控制"
+      {
+        "name": "中国长城",
+        "weight": ""
+      },
+      {
+        "name": "中兵红箭",
+        "weight": ""
+      },
+      {
+        "name": "航天发展",
+        "weight": ""
+      },
+      {
+        "name": "振华科技",
+        "weight": ""
+      },
+      {
+        "name": "航发控制",
+        "weight": ""
+      }
     ],
     "volume": 9.7,
     "category": "行业"
@@ -998,11 +1613,26 @@
     "issuer": "南方基金",
     "underlying": "军工龙头ETF指数",
     "top_holdings": [
-      "中国长城",
-      "中兵红箭",
-      "航天发展",
-      "振华科技",
-      "航发控制"
+      {
+        "name": "中国长城",
+        "weight": ""
+      },
+      {
+        "name": "中兵红箭",
+        "weight": ""
+      },
+      {
+        "name": "航天发展",
+        "weight": ""
+      },
+      {
+        "name": "振华科技",
+        "weight": ""
+      },
+      {
+        "name": "航发控制",
+        "weight": ""
+      }
     ],
     "volume": 7.1,
     "category": "行业"
@@ -1022,11 +1652,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "有色金属ETF指数",
     "top_holdings": [
-      "中金岭南",
-      "藏格矿业",
-      "兴业银锡",
-      "铜陵有色",
-      "中钨高新"
+      {
+        "name": "中金岭南",
+        "weight": ""
+      },
+      {
+        "name": "藏格矿业",
+        "weight": ""
+      },
+      {
+        "name": "兴业银锡",
+        "weight": ""
+      },
+      {
+        "name": "铜陵有色",
+        "weight": ""
+      },
+      {
+        "name": "中钨高新",
+        "weight": ""
+      }
     ],
     "volume": 11.7,
     "category": "行业"
@@ -1046,11 +1691,26 @@
     "issuer": "华宝基金",
     "underlying": "煤炭ETF指数",
     "top_holdings": [
-      "甘肃能化",
-      "美锦能源",
-      "冀中能源",
-      "山西焦煤",
-      "郑州煤电"
+      {
+        "name": "甘肃能化",
+        "weight": ""
+      },
+      {
+        "name": "美锦能源",
+        "weight": ""
+      },
+      {
+        "name": "冀中能源",
+        "weight": ""
+      },
+      {
+        "name": "山西焦煤",
+        "weight": ""
+      },
+      {
+        "name": "郑州煤电",
+        "weight": ""
+      }
     ],
     "volume": 1.5,
     "category": "行业"
@@ -1070,11 +1730,26 @@
     "issuer": "华夏基金",
     "underlying": "房地产ETF指数",
     "top_holdings": [
-      "万  科Ａ",
-      "深振业Ａ",
-      "深物业A",
-      "沙河股份",
-      "特  力Ａ"
+      {
+        "name": "万",
+        "weight": " 科Ａ"
+      },
+      {
+        "name": "深振业Ａ",
+        "weight": ""
+      },
+      {
+        "name": "深物业A",
+        "weight": ""
+      },
+      {
+        "name": "沙河股份",
+        "weight": ""
+      },
+      {
+        "name": "特",
+        "weight": " 力Ａ"
+      }
     ],
     "volume": 0.4,
     "category": "行业"
@@ -1094,11 +1769,26 @@
     "issuer": "华夏基金",
     "underlying": "基建ETF指数",
     "top_holdings": [
-      "深桑达Ａ",
-      "天健集团",
-      "山东路桥",
-      "高新发展",
-      "中钢国际"
+      {
+        "name": "深桑达Ａ",
+        "weight": ""
+      },
+      {
+        "name": "天健集团",
+        "weight": ""
+      },
+      {
+        "name": "山东路桥",
+        "weight": ""
+      },
+      {
+        "name": "高新发展",
+        "weight": ""
+      },
+      {
+        "name": "中钢国际",
+        "weight": ""
+      }
     ],
     "volume": 28.3,
     "category": "行业"
@@ -1118,11 +1808,26 @@
     "issuer": "南方基金",
     "underlying": "稀土ETF指数",
     "top_holdings": [
-      "东阿阿胶",
-      "丽珠集团",
-      "长春高新",
-      "华特达因",
-      "华东医药"
+      {
+        "name": "东阿阿胶",
+        "weight": ""
+      },
+      {
+        "name": "丽珠集团",
+        "weight": ""
+      },
+      {
+        "name": "长春高新",
+        "weight": ""
+      },
+      {
+        "name": "华特达因",
+        "weight": ""
+      },
+      {
+        "name": "华东医药",
+        "weight": ""
+      }
     ],
     "volume": 9.4,
     "category": "行业"
@@ -1142,11 +1847,26 @@
     "issuer": "富国基金",
     "underlying": "养殖ETF指数",
     "top_holdings": [
-      "罗 牛 山",
-      "新 希 望",
-      "天康生物",
-      "天邦食品",
-      "正邦科技"
+      {
+        "name": "罗",
+        "weight": "牛 山"
+      },
+      {
+        "name": "新",
+        "weight": "希 望"
+      },
+      {
+        "name": "天康生物",
+        "weight": ""
+      },
+      {
+        "name": "天邦食品",
+        "weight": ""
+      },
+      {
+        "name": "正邦科技",
+        "weight": ""
+      }
     ],
     "volume": 8.0,
     "category": "行业"
@@ -1166,11 +1886,26 @@
     "issuer": "国泰基金",
     "underlying": "农业ETF指数",
     "top_holdings": [
-      "藏格矿业",
-      "罗 牛 山",
-      "盐湖股份",
-      "新 希 望",
-      "亚钾国际"
+      {
+        "name": "藏格矿业",
+        "weight": ""
+      },
+      {
+        "name": "罗",
+        "weight": "牛 山"
+      },
+      {
+        "name": "盐湖股份",
+        "weight": ""
+      },
+      {
+        "name": "新",
+        "weight": "希 望"
+      },
+      {
+        "name": "亚钾国际",
+        "weight": ""
+      }
     ],
     "volume": 0.9,
     "category": "行业"
@@ -1190,11 +1925,26 @@
     "issuer": "南方基金",
     "underlying": "化工ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "东方盛虹",
-      "中兵红箭",
-      "中信特钢",
-      "国轩高科"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "东方盛虹",
+        "weight": ""
+      },
+      {
+        "name": "中兵红箭",
+        "weight": ""
+      },
+      {
+        "name": "中信特钢",
+        "weight": ""
+      },
+      {
+        "name": "国轩高科",
+        "weight": ""
+      }
     ],
     "volume": 11.0,
     "category": "行业"
@@ -1214,11 +1964,26 @@
     "issuer": "易方达",
     "underlying": "有色金属ETF指数",
     "top_holdings": [
-      "国药一致",
-      "中集集团",
-      "长安汽车",
-      "北新建材",
-      "鲁西化工"
+      {
+        "name": "国药一致",
+        "weight": ""
+      },
+      {
+        "name": "中集集团",
+        "weight": ""
+      },
+      {
+        "name": "长安汽车",
+        "weight": ""
+      },
+      {
+        "name": "北新建材",
+        "weight": ""
+      },
+      {
+        "name": "鲁西化工",
+        "weight": ""
+      }
     ],
     "volume": 11.3,
     "category": "行业"
@@ -1238,11 +2003,26 @@
     "issuer": "南方基金",
     "underlying": "央国企ETF指数",
     "top_holdings": [
-      "深桑达Ａ",
-      "深天马Ａ",
-      "许继电气",
-      "长安汽车",
-      "中钨高新"
+      {
+        "name": "深桑达Ａ",
+        "weight": ""
+      },
+      {
+        "name": "深天马Ａ",
+        "weight": ""
+      },
+      {
+        "name": "许继电气",
+        "weight": ""
+      },
+      {
+        "name": "长安汽车",
+        "weight": ""
+      },
+      {
+        "name": "中钨高新",
+        "weight": ""
+      }
     ],
     "volume": 23.2,
     "category": "主题"
@@ -1262,11 +2042,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "碳中和ETF指数",
     "top_holdings": [
-      "湖北能源",
-      "龙源电力",
-      "横店东磁",
-      "国轩高科",
-      "TCL中环"
+      {
+        "name": "湖北能源",
+        "weight": ""
+      },
+      {
+        "name": "龙源电力",
+        "weight": ""
+      },
+      {
+        "name": "横店东磁",
+        "weight": ""
+      },
+      {
+        "name": "国轩高科",
+        "weight": ""
+      },
+      {
+        "name": "TCL中环",
+        "weight": ""
+      }
     ],
     "volume": 6.0,
     "category": "主题"
@@ -1286,11 +2081,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "纳指ETF指数",
     "top_holdings": [
-      "AAPL",
-      "ABNB",
-      "ADBE",
-      "ADI",
-      "ADP"
+      {
+        "name": "AAPL",
+        "weight": ""
+      },
+      {
+        "name": "ABNB",
+        "weight": ""
+      },
+      {
+        "name": "ADBE",
+        "weight": ""
+      },
+      {
+        "name": "ADI",
+        "weight": ""
+      },
+      {
+        "name": "ADP",
+        "weight": ""
+      }
     ],
     "volume": 31.4,
     "category": "跨境"
@@ -1310,11 +2120,26 @@
     "issuer": "汇添富",
     "underlying": "标普500ETF指数",
     "top_holdings": [
-      "A",
-      "AAPL",
-      "ABBV",
-      "ABNB",
-      "ABT"
+      {
+        "name": "A",
+        "weight": ""
+      },
+      {
+        "name": "AAPL",
+        "weight": ""
+      },
+      {
+        "name": "ABBV",
+        "weight": ""
+      },
+      {
+        "name": "ABNB",
+        "weight": ""
+      },
+      {
+        "name": "ABT",
+        "weight": ""
+      }
     ],
     "volume": 3.6,
     "category": "跨境"
@@ -1334,11 +2159,26 @@
     "issuer": "易方达",
     "underlying": "恒生ETF指数",
     "top_holdings": [
-      "长和",
-      "中电控股",
-      "中华煤气",
-      "汇丰控股",
-      "电能实业"
+      {
+        "name": "长和",
+        "weight": ""
+      },
+      {
+        "name": "中电控股",
+        "weight": ""
+      },
+      {
+        "name": "中华煤气",
+        "weight": ""
+      },
+      {
+        "name": "汇丰控股",
+        "weight": ""
+      },
+      {
+        "name": "电能实业",
+        "weight": ""
+      }
     ],
     "volume": 39.9,
     "category": "跨境"
@@ -1358,11 +2198,26 @@
     "issuer": "富国基金",
     "underlying": "纳指科技ETF指数",
     "top_holdings": [
-      "中国光大控股",
-      "香港交易所",
-      "中国信达",
-      "中州证券",
-      "国联民生"
+      {
+        "name": "中国光大控股",
+        "weight": ""
+      },
+      {
+        "name": "香港交易所",
+        "weight": ""
+      },
+      {
+        "name": "中国信达",
+        "weight": ""
+      },
+      {
+        "name": "中州证券",
+        "weight": ""
+      },
+      {
+        "name": "国联民生",
+        "weight": ""
+      }
     ],
     "volume": 3.0,
     "category": "跨境"
@@ -1382,11 +2237,26 @@
     "issuer": "嘉实基金",
     "underlying": "恒生科技ETF指数",
     "top_holdings": [
-      "秦川机床",
-      "盈峰环境",
-      "夏厦精密",
-      "大族激光",
-      "巨轮智能"
+      {
+        "name": "秦川机床",
+        "weight": ""
+      },
+      {
+        "name": "盈峰环境",
+        "weight": ""
+      },
+      {
+        "name": "夏厦精密",
+        "weight": ""
+      },
+      {
+        "name": "大族激光",
+        "weight": ""
+      },
+      {
+        "name": "巨轮智能",
+        "weight": ""
+      }
     ],
     "volume": 36.2,
     "category": "跨境"
@@ -1406,11 +2276,26 @@
     "issuer": "易方达",
     "underlying": "中概互联ETF指数",
     "top_holdings": [
-      "AAPL",
-      "ABNB",
-      "ADBE",
-      "ADI",
-      "ADP"
+      {
+        "name": "AAPL",
+        "weight": ""
+      },
+      {
+        "name": "ABNB",
+        "weight": ""
+      },
+      {
+        "name": "ADBE",
+        "weight": ""
+      },
+      {
+        "name": "ADI",
+        "weight": ""
+      },
+      {
+        "name": "ADP",
+        "weight": ""
+      }
     ],
     "volume": 5.5,
     "category": "跨境"
@@ -1430,11 +2315,26 @@
     "issuer": "富国基金",
     "underlying": "德国30ETF指数",
     "top_holdings": [
-      "ADS",
-      "AIR",
-      "ALV",
-      "BAS",
-      "BAYN"
+      {
+        "name": "ADS",
+        "weight": ""
+      },
+      {
+        "name": "AIR",
+        "weight": ""
+      },
+      {
+        "name": "ALV",
+        "weight": ""
+      },
+      {
+        "name": "BAS",
+        "weight": ""
+      },
+      {
+        "name": "BAYN",
+        "weight": ""
+      }
     ],
     "volume": 25.1,
     "category": "跨境"
@@ -1454,7 +2354,10 @@
     "issuer": "汇添富",
     "underlying": "黄金ETF指数",
     "top_holdings": [
-      "黄金9999"
+      {
+        "name": "黄金9999",
+        "weight": ""
+      }
     ],
     "volume": 20.4,
     "category": "商品"
@@ -1492,7 +2395,10 @@
     "issuer": "华泰柏瑞",
     "underlying": "黄金ETF指数",
     "top_holdings": [
-      "黄金9999"
+      {
+        "name": "黄金9999",
+        "weight": ""
+      }
     ],
     "volume": 19.9,
     "category": "商品"
@@ -1530,11 +2436,26 @@
     "issuer": "华夏基金",
     "underlying": "华宝油气LOF指数",
     "top_holdings": [
-      "股票1 5.0%",
-      "股票2 4.5%",
-      "股票3 4.0%",
-      "股票4 3.5%",
-      "股票5 3.0%"
+      {
+        "name": "股票1",
+        "weight": "5.0%"
+      },
+      {
+        "name": "股票2",
+        "weight": "4.5%"
+      },
+      {
+        "name": "股票3",
+        "weight": "4.0%"
+      },
+      {
+        "name": "股票4",
+        "weight": "3.5%"
+      },
+      {
+        "name": "股票5",
+        "weight": "3.0%"
+      }
     ],
     "volume": 7.7,
     "category": "商品"
@@ -1554,11 +2475,26 @@
     "issuer": "广发基金",
     "underlying": "华安石油LOF指数",
     "top_holdings": [
-      "股票1 5.0%",
-      "股票2 4.5%",
-      "股票3 4.0%",
-      "股票4 3.5%",
-      "股票5 3.0%"
+      {
+        "name": "股票1",
+        "weight": "5.0%"
+      },
+      {
+        "name": "股票2",
+        "weight": "4.5%"
+      },
+      {
+        "name": "股票3",
+        "weight": "4.0%"
+      },
+      {
+        "name": "股票4",
+        "weight": "3.5%"
+      },
+      {
+        "name": "股票5",
+        "weight": "3.0%"
+      }
     ],
     "volume": 13.8,
     "category": "商品"
@@ -1578,11 +2514,26 @@
     "issuer": "富国基金",
     "underlying": "华夏原油LOF指数",
     "top_holdings": [
-      "股票1 5.0%",
-      "股票2 4.5%",
-      "股票3 4.0%",
-      "股票4 3.5%",
-      "股票5 3.0%"
+      {
+        "name": "股票1",
+        "weight": "5.0%"
+      },
+      {
+        "name": "股票2",
+        "weight": "4.5%"
+      },
+      {
+        "name": "股票3",
+        "weight": "4.0%"
+      },
+      {
+        "name": "股票4",
+        "weight": "3.5%"
+      },
+      {
+        "name": "股票5",
+        "weight": "3.0%"
+      }
     ],
     "volume": 31.9,
     "category": "商品"
@@ -1602,10 +2553,22 @@
     "issuer": "广发基金",
     "underlying": "国债ETF指数",
     "top_holdings": [
-      "25国债14",
-      "25国债20",
-      "26国债03",
-      "26国债08"
+      {
+        "name": "25国债14",
+        "weight": ""
+      },
+      {
+        "name": "25国债20",
+        "weight": ""
+      },
+      {
+        "name": "26国债03",
+        "weight": ""
+      },
+      {
+        "name": "26国债08",
+        "weight": ""
+      }
     ],
     "volume": 16.7,
     "category": "债券"
@@ -1625,11 +2588,26 @@
     "issuer": "华宝基金",
     "underlying": "国债ETF指数",
     "top_holdings": [
-      "23国债26",
-      "24国债11",
-      "25国债04",
-      "25国债11",
-      "25国债16"
+      {
+        "name": "23国债26",
+        "weight": ""
+      },
+      {
+        "name": "24国债11",
+        "weight": ""
+      },
+      {
+        "name": "25国债04",
+        "weight": ""
+      },
+      {
+        "name": "25国债11",
+        "weight": ""
+      },
+      {
+        "name": "25国债16",
+        "weight": ""
+      }
     ],
     "volume": 5.5,
     "category": "债券"
@@ -1649,11 +2627,26 @@
     "issuer": "富国基金",
     "underlying": "信用债ETF指数",
     "top_holdings": [
-      "23穗建04",
-      "23诚通02",
-      "23亦庄01",
-      "23鄂交01",
-      "23广越04"
+      {
+        "name": "23穗建04",
+        "weight": ""
+      },
+      {
+        "name": "23诚通02",
+        "weight": ""
+      },
+      {
+        "name": "23亦庄01",
+        "weight": ""
+      },
+      {
+        "name": "23鄂交01",
+        "weight": ""
+      },
+      {
+        "name": "23广越04",
+        "weight": ""
+      }
     ],
     "volume": 3.7,
     "category": "债券"
@@ -1673,11 +2666,26 @@
     "issuer": "汇添富",
     "underlying": "10年期国债ETF指数",
     "top_holdings": [
-      "24福建28",
-      "24云南13",
-      "24浙江52",
-      "24湖南59",
-      "26江苏05"
+      {
+        "name": "24福建28",
+        "weight": ""
+      },
+      {
+        "name": "24云南13",
+        "weight": ""
+      },
+      {
+        "name": "24浙江52",
+        "weight": ""
+      },
+      {
+        "name": "24湖南59",
+        "weight": ""
+      },
+      {
+        "name": "26江苏05",
+        "weight": ""
+      }
     ],
     "volume": 15.9,
     "category": "债券"
@@ -1697,11 +2705,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "货币ETF指数",
     "top_holdings": [
-      "23宁安01",
-      "23浦房01",
-      "23HBST01",
-      "23兴泸02",
-      "23济城G6"
+      {
+        "name": "23宁安01",
+        "weight": ""
+      },
+      {
+        "name": "23浦房01",
+        "weight": ""
+      },
+      {
+        "name": "23HBST01",
+        "weight": ""
+      },
+      {
+        "name": "23兴泸02",
+        "weight": ""
+      },
+      {
+        "name": "23济城G6",
+        "weight": ""
+      }
     ],
     "volume": 6.5,
     "category": "货币"
@@ -1757,11 +2780,26 @@
     "issuer": "嘉实基金",
     "underlying": "中证500成长ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "深科技",
-      "深圳能源",
-      "深桑达Ａ",
-      "神州数码"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "深科技",
+        "weight": ""
+      },
+      {
+        "name": "深圳能源",
+        "weight": ""
+      },
+      {
+        "name": "深桑达Ａ",
+        "weight": ""
+      },
+      {
+        "name": "神州数码",
+        "weight": ""
+      }
     ],
     "volume": 2.2,
     "category": "宽基"
@@ -1781,11 +2819,26 @@
     "issuer": "汇添富",
     "underlying": "中证500ETF指数",
     "top_holdings": [
-      "伟星股份",
-      "华兰生物",
-      "大族激光",
-      "传化智联",
-      "盾安环境"
+      {
+        "name": "伟星股份",
+        "weight": ""
+      },
+      {
+        "name": "华兰生物",
+        "weight": ""
+      },
+      {
+        "name": "大族激光",
+        "weight": ""
+      },
+      {
+        "name": "传化智联",
+        "weight": ""
+      },
+      {
+        "name": "盾安环境",
+        "weight": ""
+      }
     ],
     "volume": 8.3,
     "category": "宽基"
@@ -1805,11 +2858,26 @@
     "issuer": "易方达",
     "underlying": "中证1000成长ETF指数",
     "top_holdings": [
-      "宁德时代 6.5%",
-      "比亚迪 5.2%",
-      "阳光电源 4.8%",
-      "汇川技术 4.2%",
-      "三花智控 3.5%"
+      {
+        "name": "宁德时代",
+        "weight": "6.5%"
+      },
+      {
+        "name": "比亚迪",
+        "weight": "5.2%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "4.8%"
+      },
+      {
+        "name": "汇川技术",
+        "weight": "4.2%"
+      },
+      {
+        "name": "三花智控",
+        "weight": "3.5%"
+      }
     ],
     "volume": 3.3,
     "category": "宽基"
@@ -1829,11 +2897,26 @@
     "issuer": "嘉实基金",
     "underlying": "创业板100ETF指数",
     "top_holdings": [
-      "神州泰岳",
-      "亿纬锂能",
-      "爱尔眼科",
-      "网宿科技",
-      "机器人"
+      {
+        "name": "神州泰岳",
+        "weight": ""
+      },
+      {
+        "name": "亿纬锂能",
+        "weight": ""
+      },
+      {
+        "name": "爱尔眼科",
+        "weight": ""
+      },
+      {
+        "name": "网宿科技",
+        "weight": ""
+      },
+      {
+        "name": "机器人",
+        "weight": ""
+      }
     ],
     "volume": 0.4,
     "category": "宽基"
@@ -1853,11 +2936,26 @@
     "issuer": "嘉实基金",
     "underlying": "环保ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "川能动力",
-      "绿发电力",
-      "太阳能",
-      "兴蓉环境"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "川能动力",
+        "weight": ""
+      },
+      {
+        "name": "绿发电力",
+        "weight": ""
+      },
+      {
+        "name": "太阳能",
+        "weight": ""
+      },
+      {
+        "name": "兴蓉环境",
+        "weight": ""
+      }
     ],
     "volume": 0.7,
     "category": "行业"
@@ -1877,11 +2975,26 @@
     "issuer": "南方基金",
     "underlying": "新材料ETF指数",
     "top_holdings": [
-      "TCL科技",
-      "太阳能",
-      "电投绿能",
-      "横店东磁",
-      "TCL中环"
+      {
+        "name": "TCL科技",
+        "weight": ""
+      },
+      {
+        "name": "太阳能",
+        "weight": ""
+      },
+      {
+        "name": "电投绿能",
+        "weight": ""
+      },
+      {
+        "name": "横店东磁",
+        "weight": ""
+      },
+      {
+        "name": "TCL中环",
+        "weight": ""
+      }
     ],
     "volume": 29.1,
     "category": "行业"
@@ -1901,11 +3014,26 @@
     "issuer": "华夏基金",
     "underlying": "新材料ETF指数",
     "top_holdings": [
-      "南  玻Ａ",
-      "深粮控股",
-      "国药一致",
-      "深深房Ａ",
-      "富奥股份"
+      {
+        "name": "南",
+        "weight": " 玻Ａ"
+      },
+      {
+        "name": "深粮控股",
+        "weight": ""
+      },
+      {
+        "name": "国药一致",
+        "weight": ""
+      },
+      {
+        "name": "深深房Ａ",
+        "weight": ""
+      },
+      {
+        "name": "富奥股份",
+        "weight": ""
+      }
     ],
     "volume": 44.1,
     "category": "行业"
@@ -1925,11 +3053,26 @@
     "issuer": "易方达",
     "underlying": "钢铁ETF指数",
     "top_holdings": [
-      "金岭矿业",
-      "中信特钢",
-      "河钢股份",
-      "中南股份",
-      "本钢板材"
+      {
+        "name": "金岭矿业",
+        "weight": ""
+      },
+      {
+        "name": "中信特钢",
+        "weight": ""
+      },
+      {
+        "name": "河钢股份",
+        "weight": ""
+      },
+      {
+        "name": "中南股份",
+        "weight": ""
+      },
+      {
+        "name": "本钢板材",
+        "weight": ""
+      }
     ],
     "volume": 13.5,
     "category": "行业"
@@ -1949,11 +3092,26 @@
     "issuer": "国泰基金",
     "underlying": "有色金属ETF指数",
     "top_holdings": [
-      "焦作万方",
-      "中色股份",
-      "英洛华",
-      "中国稀土",
-      "安泰科技"
+      {
+        "name": "焦作万方",
+        "weight": ""
+      },
+      {
+        "name": "中色股份",
+        "weight": ""
+      },
+      {
+        "name": "英洛华",
+        "weight": ""
+      },
+      {
+        "name": "中国稀土",
+        "weight": ""
+      },
+      {
+        "name": "安泰科技",
+        "weight": ""
+      }
     ],
     "volume": 18.6,
     "category": "行业"
@@ -1973,11 +3131,26 @@
     "issuer": "华宝基金",
     "underlying": "建材ETF指数",
     "top_holdings": [
-      "中联重科",
-      "潍柴动力",
-      "徐工机械",
-      "一汽解放",
-      "思源电气"
+      {
+        "name": "中联重科",
+        "weight": ""
+      },
+      {
+        "name": "潍柴动力",
+        "weight": ""
+      },
+      {
+        "name": "徐工机械",
+        "weight": ""
+      },
+      {
+        "name": "一汽解放",
+        "weight": ""
+      },
+      {
+        "name": "思源电气",
+        "weight": ""
+      }
     ],
     "volume": 2.6,
     "category": "行业"
@@ -1997,11 +3170,26 @@
     "issuer": "国泰基金",
     "underlying": "汽车ETF指数",
     "top_holdings": [
-      "万向钱潮",
-      "长安汽车",
-      "中鼎股份",
-      "万丰奥威",
-      "银轮股份"
+      {
+        "name": "万向钱潮",
+        "weight": ""
+      },
+      {
+        "name": "长安汽车",
+        "weight": ""
+      },
+      {
+        "name": "中鼎股份",
+        "weight": ""
+      },
+      {
+        "name": "万丰奥威",
+        "weight": ""
+      },
+      {
+        "name": "银轮股份",
+        "weight": ""
+      }
     ],
     "volume": 17.0,
     "category": "行业"
@@ -2021,11 +3209,26 @@
     "issuer": "嘉实基金",
     "underlying": "汽车零部件ETF指数",
     "top_holdings": [
-      "贵州茅台 6.8%",
-      "宁德时代 4.2%",
-      "中国平安 3.5%",
-      "招商银行 3.1%",
-      "五粮液 2.8%"
+      {
+        "name": "贵州茅台",
+        "weight": "6.8%"
+      },
+      {
+        "name": "宁德时代",
+        "weight": "4.2%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "3.5%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "3.1%"
+      },
+      {
+        "name": "五粮液",
+        "weight": "2.8%"
+      }
     ],
     "volume": 34.1,
     "category": "行业"
@@ -2045,11 +3248,26 @@
     "issuer": "华夏基金",
     "underlying": "人工智能ETF指数",
     "top_holdings": [
-      "中兴通讯",
-      "四川九洲",
-      "创维数字",
-      "恒宝股份",
-      "北斗星通"
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "四川九洲",
+        "weight": ""
+      },
+      {
+        "name": "创维数字",
+        "weight": ""
+      },
+      {
+        "name": "恒宝股份",
+        "weight": ""
+      },
+      {
+        "name": "北斗星通",
+        "weight": ""
+      }
     ],
     "volume": 1.0,
     "category": "主题"
@@ -2069,11 +3287,26 @@
     "issuer": "富国基金",
     "underlying": "量子通信ETF指数",
     "top_holdings": [
-      "申万宏源",
-      "东北证券",
-      "国元证券",
-      "国海证券",
-      "广发证券"
+      {
+        "name": "申万宏源",
+        "weight": ""
+      },
+      {
+        "name": "东北证券",
+        "weight": ""
+      },
+      {
+        "name": "国元证券",
+        "weight": ""
+      },
+      {
+        "name": "国海证券",
+        "weight": ""
+      },
+      {
+        "name": "广发证券",
+        "weight": ""
+      }
     ],
     "volume": 18.9,
     "category": "主题"
@@ -2093,11 +3326,26 @@
     "issuer": "华宝基金",
     "underlying": "金融科技ETF指数",
     "top_holdings": [
-      "神州信息",
-      "南天信息",
-      "新 大 陆",
-      "东信和平",
-      "东华软件"
+      {
+        "name": "神州信息",
+        "weight": ""
+      },
+      {
+        "name": "南天信息",
+        "weight": ""
+      },
+      {
+        "name": "新",
+        "weight": "大 陆"
+      },
+      {
+        "name": "东信和平",
+        "weight": ""
+      },
+      {
+        "name": "东华软件",
+        "weight": ""
+      }
     ],
     "volume": 34.5,
     "category": "主题"
@@ -2117,11 +3365,26 @@
     "issuer": "华宝基金",
     "underlying": "大数据ETF指数",
     "top_holdings": [
-      "中国长城",
-      "神州信息",
-      "紫光股份",
-      "浪潮信息",
-      "东华软件"
+      {
+        "name": "中国长城",
+        "weight": ""
+      },
+      {
+        "name": "神州信息",
+        "weight": ""
+      },
+      {
+        "name": "紫光股份",
+        "weight": ""
+      },
+      {
+        "name": "浪潮信息",
+        "weight": ""
+      },
+      {
+        "name": "东华软件",
+        "weight": ""
+      }
     ],
     "volume": 14.6,
     "category": "主题"
@@ -2141,11 +3404,26 @@
     "issuer": "华宝基金",
     "underlying": "数字经济ETF指数",
     "top_holdings": [
-      "北方国际",
-      "中信海直",
-      "凤凰航运",
-      "西部创业",
-      "浙商中拓"
+      {
+        "name": "北方国际",
+        "weight": ""
+      },
+      {
+        "name": "中信海直",
+        "weight": ""
+      },
+      {
+        "name": "凤凰航运",
+        "weight": ""
+      },
+      {
+        "name": "西部创业",
+        "weight": ""
+      },
+      {
+        "name": "浙商中拓",
+        "weight": ""
+      }
     ],
     "volume": 9.3,
     "category": "主题"
@@ -2165,11 +3443,26 @@
     "issuer": "汇添富",
     "underlying": "智能汽车ETF指数",
     "top_holdings": [
-      "中国宝安",
-      "东方盛虹",
-      "中兵红箭",
-      "中信特钢",
-      "国轩高科"
+      {
+        "name": "中国宝安",
+        "weight": ""
+      },
+      {
+        "name": "东方盛虹",
+        "weight": ""
+      },
+      {
+        "name": "中兵红箭",
+        "weight": ""
+      },
+      {
+        "name": "中信特钢",
+        "weight": ""
+      },
+      {
+        "name": "国轩高科",
+        "weight": ""
+      }
     ],
     "volume": 19.8,
     "category": "主题"
@@ -2189,11 +3482,26 @@
     "issuer": "汇添富",
     "underlying": "元宇宙ETF指数",
     "top_holdings": [
-      "平安银行",
-      "中兴通讯",
-      "中联重科",
-      "东方盛虹",
-      "美的集团"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "中兴通讯",
+        "weight": ""
+      },
+      {
+        "name": "中联重科",
+        "weight": ""
+      },
+      {
+        "name": "东方盛虹",
+        "weight": ""
+      },
+      {
+        "name": "美的集团",
+        "weight": ""
+      }
     ],
     "volume": 2.6,
     "category": "主题"
@@ -2213,11 +3521,26 @@
     "issuer": "华宝基金",
     "underlying": "虚拟现实ETF指数",
     "top_holdings": [
-      "东方盛虹",
-      "藏格矿业",
-      "博源化工",
-      "恒逸石化",
-      "盐湖股份"
+      {
+        "name": "东方盛虹",
+        "weight": ""
+      },
+      {
+        "name": "藏格矿业",
+        "weight": ""
+      },
+      {
+        "name": "博源化工",
+        "weight": ""
+      },
+      {
+        "name": "恒逸石化",
+        "weight": ""
+      },
+      {
+        "name": "盐湖股份",
+        "weight": ""
+      }
     ],
     "volume": 10.8,
     "category": "主题"
@@ -2237,11 +3560,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "恒生互联网ETF指数",
     "top_holdings": [
-      "商汤",
-      "金蝶国际",
-      "比亚迪电",
-      "中软国际",
-      "腾讯控股"
+      {
+        "name": "商汤",
+        "weight": ""
+      },
+      {
+        "name": "金蝶国际",
+        "weight": ""
+      },
+      {
+        "name": "比亚迪电",
+        "weight": ""
+      },
+      {
+        "name": "中软国际",
+        "weight": ""
+      },
+      {
+        "name": "腾讯控股",
+        "weight": ""
+      }
     ],
     "volume": 32.3,
     "category": "跨境"
@@ -2261,11 +3599,26 @@
     "issuer": "南方基金",
     "underlying": "恒生科技ETF指数",
     "top_holdings": [
-      "商汤",
-      "阿里健康",
-      "金蝶国际",
-      "比亚迪电",
-      "美的集团"
+      {
+        "name": "商汤",
+        "weight": ""
+      },
+      {
+        "name": "阿里健康",
+        "weight": ""
+      },
+      {
+        "name": "金蝶国际",
+        "weight": ""
+      },
+      {
+        "name": "比亚迪电",
+        "weight": ""
+      },
+      {
+        "name": "美的集团",
+        "weight": ""
+      }
     ],
     "volume": 21.9,
     "category": "跨境"
@@ -2285,11 +3638,26 @@
     "issuer": "嘉实基金",
     "underlying": "央视50ETF指数",
     "top_holdings": [
-      "平安银行",
-      "格力电器",
-      "五 粮 液",
-      "北方华创",
-      "立讯精密"
+      {
+        "name": "平安银行",
+        "weight": ""
+      },
+      {
+        "name": "格力电器",
+        "weight": ""
+      },
+      {
+        "name": "五",
+        "weight": "粮 液"
+      },
+      {
+        "name": "北方华创",
+        "weight": ""
+      },
+      {
+        "name": "立讯精密",
+        "weight": ""
+      }
     ],
     "volume": 0.2,
     "category": "宽基"
@@ -2309,11 +3677,26 @@
     "issuer": "华夏基金",
     "underlying": "红利ETF指数",
     "top_holdings": [
-      "天健集团",
-      "中联重科",
-      "藏格矿业",
-      "粤高速Ａ",
-      "格力电器"
+      {
+        "name": "天健集团",
+        "weight": ""
+      },
+      {
+        "name": "中联重科",
+        "weight": ""
+      },
+      {
+        "name": "藏格矿业",
+        "weight": ""
+      },
+      {
+        "name": "粤高速Ａ",
+        "weight": ""
+      },
+      {
+        "name": "格力电器",
+        "weight": ""
+      }
     ],
     "volume": 5.2,
     "category": "宽基"
@@ -2333,11 +3716,26 @@
     "issuer": "汇添富",
     "underlying": "中证500质量ETF指数",
     "top_holdings": [
-      "申万宏源",
-      "东北证券",
-      "锦龙股份",
-      "国元证券",
-      "国海证券"
+      {
+        "name": "申万宏源",
+        "weight": ""
+      },
+      {
+        "name": "东北证券",
+        "weight": ""
+      },
+      {
+        "name": "锦龙股份",
+        "weight": ""
+      },
+      {
+        "name": "国元证券",
+        "weight": ""
+      },
+      {
+        "name": "国海证券",
+        "weight": ""
+      }
     ],
     "volume": 4.2,
     "category": "宽基"
@@ -2357,11 +3755,26 @@
     "issuer": "华夏基金",
     "underlying": "创业板价值ETF指数",
     "top_holdings": [
-      "特锐德",
-      "神州泰岳",
-      "安科生物",
-      "华测检测",
-      "亿纬锂能"
+      {
+        "name": "特锐德",
+        "weight": ""
+      },
+      {
+        "name": "神州泰岳",
+        "weight": ""
+      },
+      {
+        "name": "安科生物",
+        "weight": ""
+      },
+      {
+        "name": "华测检测",
+        "weight": ""
+      },
+      {
+        "name": "亿纬锂能",
+        "weight": ""
+      }
     ],
     "volume": 14.3,
     "category": "宽基"
@@ -2381,11 +3794,26 @@
     "issuer": "华泰柏瑞",
     "underlying": "中证1000价值ETF指数",
     "top_holdings": [
-      "贵州茅台 5.8%",
-      "招商银行 4.5%",
-      "中国平安 4.2%",
-      "长江电力 3.8%",
-      "中国神华 3.5%"
+      {
+        "name": "贵州茅台",
+        "weight": "5.8%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "4.5%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "4.2%"
+      },
+      {
+        "name": "长江电力",
+        "weight": "3.8%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "3.5%"
+      }
     ],
     "volume": 16.3,
     "category": "宽基"

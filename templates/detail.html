@@ -424,18 +424,24 @@
                 createChart('1Y');
             </script>
             
-            <div class="section-title">💼 前五大持仓</div>
-            <div class="holdings-section">
-                <ul class="holdings-list">
-                    {% for holding in etf.top_holdings %}
-                        <li>
-                            <span class="holding-index">{{ loop.index }}.</span>
-                            <span class="holding-name">{{ holding.split(' ')[0] }}</span>
-                            <span class="holding-weight">{{ holding.split(' ')[1] }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <div class="section-title">💼 前五大持仓</div>
+                <div class="holdings-section">
+                    {% if etf.top_holdings %}
+                    <ul class="holdings-list">
+                        {% for holding in etf.top_holdings %}
+                            <li>
+                                <span class="holding-index">{{ loop.index }}.</span>
+                                <span class="holding-name">{{ holding.name }}</span>
+                                {% if holding.weight %}
+                                    <span class="holding-weight">{{ holding.weight }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p style="color:#8a8fa3; font-size:14px;">暂无持仓数据</p>
+                    {% endif %}
+                </div>
             
             <div class="meta-info">
                 <p><strong>跟踪标的：</strong>{{ etf.underlying }}</p>
