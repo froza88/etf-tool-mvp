@@ -5,6 +5,7 @@ ETF数据模块 - 从标准化数据文件直接加载
 """
 import json
 import os
+import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -30,19 +31,19 @@ def _load_etfs():
         try:
             with open(STANDARD_DATA_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            print(f"✅ 标准化数据：{len(data)} 只ETF", file=__import__('sys').stderr)
+            print(f"✅ 标准化数据：{len(data)} 只ETF", file=sys.stderr)
             return data
         except Exception as e:
-            print(f"⚠️  标准化数据加载失败：{e}", file=__import__('sys').stderr)
+            print(f"⚠️  标准化数据加载失败：{e}", file=sys.stderr)
 
     # 回退：用旧数据
     try:
         with open(SAMPLE_DATA_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
-        print(f"⚠️  回退数据：{SAMPLE_DATA_FILE.name} ({len(data)} 只)", file=__import__('sys').stderr)
+        print(f"⚠️  回退数据：{SAMPLE_DATA_FILE.name} ({len(data)} 只)", file=sys.stderr)
         return data
     except Exception as e:
-        print(f"❌ 无法加载数据：{e}", file=__import__('sys').stderr)
+        print(f"❌ 无法加载数据：{e}", file=sys.stderr)
         return []
 
 

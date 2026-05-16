@@ -41,3 +41,24 @@ Thumbs.db
 .venv
 env/
 venv/
+
+# SSH 密钥（误提交风险）
+# 一路回车*
+*.pub
+id_*
+
+# 临时数据文件（重建产物，不应提交）
+etf_codes_matched.json
+etf_complete_130_cleaned.json
+etf_complete_130_corrected.json
+etf_complete_130_final.json
+etf_complete_130_from_feitu.json
+etf_data_rebuilt.json
+
+# 旧脚本（已被新版本替代）
+fix_names.py
+refetch_holdings.py
+
+# enrich 日志（后台运行产生的）
+enrich_*.log
+rebuild*.log
