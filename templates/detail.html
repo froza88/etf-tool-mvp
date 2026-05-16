@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ etf.code }} - {{ etf.name }} - {{ etf.issuer }} - ETF详情 - ETF工具平台</title>
+    <title>{{ etf.code }} - {{ etf.name }}{% if etf.issuer %} - {{ etf.issuer }}{% endif %} - ETF详情 - ETF工具平台</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -241,10 +241,10 @@
     <div class="container">
         <div class="header">
             <a href="/" class="back-link">← 返回列表</a>
-            <h1>{{ etf.code }} - {{ etf.name }} - {{ etf.issuer }}</h1>
+            <h1>{{ etf.code }} - {{ etf.name }}{% if etf.issuer %} - {{ etf.issuer }}{% endif %}</h1>
             <div class="subtitle">
                 <span>代码：{{ etf.code }}</span>
-                <span>发行方：{{ etf.issuer }}</span>
+                {% if etf.issuer %}<span>发行方：{{ etf.issuer }}</span>{% endif %}
                 <span>成立日期：{{ etf.launch_date }}</span>
             </div>
         </div>
