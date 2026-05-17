@@ -23,29 +23,33 @@ jobs:
 
         # 1. 创建 bash 控制台
         CONSOLE_RESP=$(curl -s -H "${AUTH_HEADER}" \
+          -H "Content-Type: application/json" \
           "${BASE}/user/${PA_USERNAME}/consoles/" \
-          -X POST -d "executable=bash")
+          -X POST -d '{"executable": "bash"}')
         CONSOLE_ID=$(echo "${CONSOLE_RESP}" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
         echo "  控制台 ID: ${CONSOLE_ID}"
 
         # 2. git pull
         curl -s -H "${AUTH_HEADER}" \
+          -H "Content-Type: application/json" \
           "${BASE}/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/send_input/" \
           -X POST \
-          --data-urlencode "input=cd ~/etf-tool-mvp && git pull origin main\n"
+          -d "$(printf '{"input": "cd ~/etf-tool-mvp && git pull origin main\\n"}')"
         sleep 8
 
         # 3. touch wsgi 触发重载
         curl -s -H "${AUTH_HEADER}" \
+          -H "Content-Type: application/json" \
           "${BASE}/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/send_input/" \
           -X POST \
-          --data-urlencode "input=touch /var/www/${PA_USERNAME}_pythonanywhere_com_wsgi.py\n"
+          -d "$(printf '{"input": "touch /var/www/%s_pythonanywhere_com_wsgi.py\\n"}' "${PA_USERNAME}")"
         sleep 5
 
         # 4. 关闭控制台
         curl -s -H "${AUTH_HEADER}" \
+          -H "Content-Type: application/json" \
           "${BASE}/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/" \
-          -X PATCH -d "status=deleted"
+          -X PATCH -d '{"status": "deleted"}'
         echo "✅ 控制台已关闭"
 
         # 5. Web app reload
