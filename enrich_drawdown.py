@@ -42,6 +42,7 @@ with open(LOG_FILE, "w", encoding="utf-8") as lf:
         code = str(etf["code"])
         exch = get_exchange(code)
         try:
+            # 非凸OHLC API比AKShare稳定，无SSL兼容问题
             ohlc = ft_source.get_etf_ohlcs(code, exch, limit=150)
             if ohlc and len(ohlc.get("prices", [])) >= 30:
                 prices = ohlc["prices"]
@@ -73,7 +74,6 @@ with open(LOG_FILE, "w", encoding="utf-8") as lf:
 
         time.sleep(0.15)
 
-    # 最终保存
     existing = {}
     if os.path.exists(OUTPUT_FILE):
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
