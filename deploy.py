@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-PythonAnywhere 部署脚本 - 在 GitHub Actions 中运行
+PythonAnywhere 部署脚本
+先用 Console API 执行 git pull + touch wsgi，然后 Reload
+如果 Console 创建失败，回退为仅 Reload（依赖已有代码）
 """
 import json, os, sys, time
 import urllib.request
@@ -14,59 +16,58 @@ if not TOKEN or not USERNAME:
 
 BASE = f"https://www.pythonanywhere.com/api/v1/user/{USERNAME}"
 HEADERS = {"Authorization": f"Token {TOKEN}"}
+HAS_CONSOLE = False
 
-
-def api_call(method, path, data=None):
+def api(method, path, data=None):
     url = f"{BASE}{path}"
     req = urllib.request.Request(url, method=method, headers=HEADERS)
     if data is not None:
-        body = json.dumps(data).encode("utf-8")
-        req.data = body
+        req.data = json.dumps(data).encode("utf-8")
         req.add_header("Content-Type", "application/json")
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
-            text = resp.read().decode("utf-8")
-            return resp.status, text
+            return resp.status, resp.read().decode("utf-8", errors="replace")
     except urllib.error.HTTPError as e:
-        return e.code, e.read().decode("utf-8", errors="replace")
+        body = e.read().decode("utf-8", errors="replace")
+        return e.code, body
     except Exception as e:
         return 0, str(e)
 
-
-# Step 1: Create console
+# ===== Step 1: 创建控制台 =====
 print("📥 Creating bash console...")
-status, resp = api_call("POST", "/consoles/", {"executable": "bash"})
-print(f"  HTTP {status}: {resp[:200]}")
-if status != 201:
-    print("❌ Failed to create console")
-    sys.exit(1)
+s, r = api("POST", "/consoles/", {"executable": "bash"})
+print(f"  HTTP {s}: {r[:300]}")
+if s == 201:
+    console = json.loads(r)
+    cid = console["id"]
+    print(f"  Console ID: {cid}")
+    HAS_CONSOLE = True
 
-console = json.loads(resp)
-console_id = console["id"]
-print(f"  Console ID: {console_id}")
+    # Step 2: git pull
+    print("📦 git pull...")
+    api("POST", f"/consoles/{cid}/send_input/",
+        {"input": "cd ~/etf-tool-mvp && git pull origin main\n"})
+    time.sleep(8)
 
-# Step 2: Send git pull
-print("📦 Sending git pull...")
-status, resp = api_call("POST", f"/consoles/{console_id}/send_input/",
-                        {"input": "cd ~/etf-tool-mvp && git pull origin main\n"})
-print(f"  HTTP {status}: OK")
-time.sleep(8)
+    # Step 3: touch wsgi
+    print("🔄 touch wsgi...")
+    api("POST", f"/consoles/{cid}/send_input/",
+        {"input": f"touch /var/www/{USERNAME}_pythonanywhere_com_wsgi.py\n"})
+    time.sleep(3)
 
-# Step 3: Touch WSGI
-print("🔄 Sending touch wsgi...")
-status, resp = api_call("POST", f"/consoles/{console_id}/send_input/",
-                        {"input": f"touch /var/www/{USERNAME}_pythonanywhere_com_wsgi.py\n"})
-print(f"  HTTP {status}: OK")
-time.sleep(5)
+    # Step 4: 关闭控制台
+    api("PATCH", f"/consoles/{cid}/", {"status": "deleted"})
+    print("  Console closed")
+else:
+    print("⚠️  Console creation failed, will do reload only (code may be stale)")
 
-# Step 4: Close console
-print("🔒 Closing console...")
-status, resp = api_call("PATCH", f"/consoles/{console_id}/", {"status": "deleted"})
-print(f"  HTTP {status}: OK")
-
-# Step 5: Reload web app
+# ===== Step 5: Reload web app =====
 print("🔄 Reloading web app...")
-status, resp = api_call("POST", f"/webapps/{USERNAME}.pythonanywhere.com/reload/")
-print(f"  HTTP {status}: OK")
+s, r = api("POST", f"/webapps/{USERNAME}.pythonanywhere.com/reload/")
+print(f"  HTTP {s}: {r[:200]}")
 
-print("\n✅ Deploy complete!")
+if s == 200:
+    print("\n✅ Deploy complete!")
+else:
+    print("\n❌ Reload failed!")
+    sys.exit(1)
