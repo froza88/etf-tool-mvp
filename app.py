@@ -23,9 +23,9 @@ def get_etfs():
     }
     filters = {k: v for k, v in filters.items() if v}
     
-    # 排序
-    sort_by = request.args.get('sort_by', 'scale')
-    sort_order = request.args.get('sort_order', 'desc')
+    # 排序（默认按代码升序）
+    sort_by = request.args.get('sort_by', 'code')
+    sort_order = request.args.get('sort_order', 'asc')
     reverse = sort_order == 'desc'
     
     # 分页
