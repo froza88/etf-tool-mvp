@@ -176,20 +176,50 @@ def get_etf_api(code):
 
 @app.route('/api/risk/<code>')
 def get_risk_api(code):
-    """按需从盈米获取风险指标（动态查找CLI路径，Mac/PythonAnywhere通用）"""
+    """优先从本地盈米 JSON 读取，找不到再调 CLI"""
     import subprocess, json, shutil, os
 
-    # 动态查找 yingmi-skill-cli
+    ROOT = os.path.dirname(os.path.abspath(__file__))
+    YINGMI_FILE = os.path.join(ROOT, "etf_yingmi_metrics.json")
+
+    # 第1步：读本地 JSON 文件
+    if os.path.exists(YINGMI_FILE):
+        try:
+            with open(YINGMI_FILE, "r", encoding="utf-8") as f:
+                yingmi_data = json.load(f)
+            if code in yingmi_data:
+                d = yingmi_data[code]
+                result = {}
+                for p, r_field, vol_field, dd_field, sharpe_field in [
+                    ("oneYear", "year_1_return", "annual_vol_1y", "max_drawdown", "sharpe_ratio"),
+                    ("threeYear", "year_3_return", "annual_vol_3y", "dd_3y", "sharpe_3y"),
+                ]:
+                    ret = d.get(r_field, 0) or 0
+                    vol = d.get(vol_field, 0) or 0
+                    dd = d.get(dd_field, 0) or 0
+                    sharpe = d.get(sharpe_field, 0) or 0
+                    calmar = round(abs(ret / dd), 2) if dd and dd != 0 else 0
+                    result[p] = {
+                        "收益能力": ret,
+                        "抗波动能力": vol,
+                        "抗回撤能力": dd,
+                        "投资性价比": sharpe,
+                        "卡玛值": calmar,
+                    }
+                return jsonify(result)
+        except:
+            pass
+
+    # 第2步：JSON 文件中没有，尝试调 CLI
     cli = shutil.which("yingmi-skill-cli")
     if not cli:
-        # Mac 兜底路径
         mac_path = "/Users/apangduo/.workbuddy/binaries/node/versions/22.12.0/bin/yingmi-skill-cli"
         if os.path.exists(mac_path):
             cli = mac_path
     if not cli:
         return jsonify({"error": "盈米CLI未安装", "fallback": True}), 200
 
-    cmd = f'{cli} mcp call GetBatchFundPerformance --input \'{{"fundCodes":["{code}"]}}\' 2>/dev/null'
+    cmd = f'{cli} mcp call GetBatchFundPerformance --input \'{"fundCodes":["{code}"]}\' 2>/dev/null'
     try:
         r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
         raw = json.loads(r.stdout)
@@ -210,7 +240,6 @@ def get_risk_api(code):
                         ms[t] = float(v.replace('%', ''))
                     except:
                         ms[t] = v
-                # calmar = return / abs(drawdown)
                 ret = ms.get('收益能力', 0)
                 dd = ms.get('抗回撤能力', 0)
                 ms['卡玛值'] = round(ret / abs(dd), 2) if dd and dd != 0 else 0
