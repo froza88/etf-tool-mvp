@@ -28,7 +28,7 @@ OUTPUT = ROOT / "etf_standard_data.json"
 try:
     import akshare as ak
     import pandas as pd
-    HAS_AKSHARE = False  # 暂不启用AKShare补充，后续用enrich_all_v2.py统一运行
+    HAS_AKSHARE = False  # 持仓权重已由单独脚本更新到2026一季报
 except ImportError:
     HAS_AKSHARE = False
     print("⚠️  akshare 未安装，将跳过权重补充和净值计算")
@@ -137,7 +137,7 @@ def enrich_holdings_weights(gen_map_codes):
     for i, code in enumerate(target_codes):
         item = gen_map_codes[code]
         try:
-            df = ak.fund_portfolio_hold_em(symbol=code, date="2025")
+            df = ak.fund_portfolio_hold_em(symbol=code, date="2026")
             if df is not None and len(df) > 0:
                 # 构建 股票代码→权重 映射
                 weight_map = {}
@@ -167,6 +167,8 @@ def enrich_holdings_weights(gen_map_codes):
 
         if (i + 1) % 10 == 0:
             print(f"   进度: {i+1}/{len(target_codes)}  成功={updated} 失败={failed}")
+
+        time.sleep(0.15)
 
         time.sleep(0.5)
 

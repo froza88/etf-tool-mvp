@@ -46,7 +46,7 @@ class AKShareSource:
             })
         return results
 
-    def get_portfolio_hold(self, code, date="2025"):
+    def get_portfolio_hold(self, code, date="2026"):
         """获取ETF持仓权重（含股票名称+权重%）"""
         df = self.ak.fund_portfolio_hold_em(symbol=code, date=date)
         if df is None or len(df) == 0:
