@@ -6,175 +6,50 @@
     <title>ETF对比 - ETF工具平台</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #0a0e27; color: #e0e0e0; min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%); border: 1px solid #2a2f4a; border-radius: 12px; padding: 24px 30px; margin-bottom: 20px; }
+        .back-link { color: #8a8fa3; text-decoration: none; display: inline-block; margin-bottom: 12px; font-size: 14px; }
+        .back-link:hover { color: #3b82f6; }
+        .header h1 { font-size: 28px; color: #ffffff; margin-bottom: 6px; }
+        .header p { font-size: 14px; color: #8a8fa3; }
         
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: #0a0e27;
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 20px;
-        }
+        .compare-section { background: #111633; border: 1px solid #2a2f4a; border-radius: 12px; padding: 24px; margin-bottom: 20px; overflow-x: auto; }
+        .chart-section { background: #111633; border: 1px solid #2a2f4a; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+        .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .chart-box { background: #0a0e27; border-radius: 10px; padding: 16px; position: relative; }
+        .chart-box h3 { font-size: 14px; font-weight: 500; margin-bottom: 12px; color: #94a3b8; }
+        .chart-box canvas { width: 100% !important; height: 280px !important; }
         
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        .compare-table thead { background: #0a0e27; }
+        .compare-table th { padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; color: #8a8fa3; border-bottom: 1px solid #2a2f4a; white-space: nowrap; }
+        .compare-table tbody tr { border-bottom: 1px solid #1a1f3a; transition: background 0.2s; }
+        .compare-table tbody tr:hover { background: #151b38; }
+        .compare-table td { padding: 14px; font-size: 14px; color: #e0e0e0; min-width: 120px; }
+        .etf-name-header { font-size: 16px; font-weight: 600; color: #3b82f6; }
+        .positive { color: #ef4444; font-weight: 700; }
+        .negative { color: #22c55e; font-weight: 700; }
+        .neutral { color: #60a5fa; font-weight: 700; }
+        .best-value { outline: 2px solid #fbbf24; outline-offset: -2px; border-radius: 4px; background: rgba(251,191,36,0.08); }
+        .worst-value { opacity: 0.6; }
         
-        .header {
-            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
-            border: 1px solid #2a2f4a;
-            border-radius: 12px;
-            padding: 24px 30px;
-            margin-bottom: 20px;
-        }
+        .holdings-list { list-style: none; font-size: 13px; padding: 0; margin: 0; }
+        .holdings-list li { padding: 4px 0; border-bottom: 1px solid #1a1f3a; display: flex; justify-content: space-between; }
+        .holdings-list li:last-child { border-bottom: none; }
+        .holding-name { color: #e0e0e0; }
+        .holding-weight { color: #fbbf24; }
         
-        .back-link {
-            color: #8a8fa3;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 12px;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-        
-        .back-link:hover {
-            color: #3b82f6;
-        }
-        
-        .header h1 {
-            font-size: 28px;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
-        
-        .header p {
-            font-size: 14px;
-            color: #8a8fa3;
-        }
-        
-        .compare-section {
-            background: #111633;
-            border: 1px solid #2a2f4a;
-            border-radius: 12px;
-            padding: 24px;
-            overflow-x: auto;
-        }
-        
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 800px;
-        }
-        
-        .compare-table thead {
-            background: #0a0e27;
-        }
-        
-        .compare-table th {
-            padding: 16px 14px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 13px;
-            color: #8a8fa3;
-            border-bottom: 1px solid #2a2f4a;
-            white-space: nowrap;
-        }
-        
-        .compare-table tbody tr {
-            border-bottom: 1px solid #1a1f3a;
-            transition: background 0.2s;
-        }
-        
-        .compare-table tbody tr:hover {
-            background: #151b38;
-        }
-        
-        .compare-table td {
-            padding: 14px;
-            font-size: 14px;
-            color: #e0e0e0;
-            min-width: 120px;
-        }
-        
-        .etf-name-header {
-            font-size: 16px;
-            font-weight: 600;
-            color: #3b82f6;
-        }
-        
-        .positive {
-            color: #ef4444;
-            font-weight: 700;
-        }
-        
-        .negative {
-            color: #22c55e;
-            font-weight: 700;
-        }
-        
-        .holdings-list {
-            list-style: none;
-            font-size: 13px;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .holdings-list li {
-            padding: 4px 0;
-            border-bottom: 1px solid #1a1f3a;
-        }
-        
-        .holdings-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .btn {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background: #3b82f6;
-            color: white;
-            margin-top: 20px;
-        }
-        
-        .btn-primary:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
-        }
-        
-        .no-data {
-            text-align: center;
-            padding: 60px 20px;
-            color: #8a8fa3;
-            font-size: 16px;
-        }
-        
-        .no-data p:first-child {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
+        .btn { padding: 10px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: #3b82f6; color: white; margin-top: 20px; }
+        .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+        .no-data { text-align: center; padding: 60px 20px; color: #8a8fa3; font-size: 16px; }
         
         @media (max-width: 768px) {
-            .compare-table {
-                font-size: 12px;
-            }
-            
-            .compare-table th,
-            .compare-table td {
-                padding: 10px 8px;
-            }
+            .chart-grid { grid-template-columns: 1fr; }
+            .compare-table { font-size: 12px; }
+            .compare-table th, .compare-table td { padding: 10px 8px; }
         }
     </style>
 </head>
@@ -183,117 +58,137 @@
         <div class="header">
             <a href="/" class="back-link">← 返回列表</a>
             <h1>📊 ETF对比</h1>
-            <p>并排对比多只ETF的关键指标</p>
+            <p>并排对比多只ETF的关键指标 · 最佳值 <span style="color:#fbbf24;">★ 高亮</span></p>
         </div>
-        
-        <div class="compare-section">
-            {% if etfs|length == 0 %}
-                <div class="no-data">
-                    <p>😞</p>
-                    <p>没有选择ETF进行对比</p>
-                    <p style="margin-top: 12px; font-size: 14px;"><a href="/" style="color: #3b82f6; text-decoration: none;">返回列表选择ETF →</a></p>
+
+        {% if etfs|length == 0 %}
+            <div class="no-data"><p>😞</p><p>没有选择ETF进行对比</p><p style="margin-top:12px;font-size:14px;"><a href="/" style="color:#3b82f6;text-decoration:none;">返回列表选择ETF →</a></p></div>
+        {% else %}
+        <div class="chart-section">
+            <div class="chart-grid">
+                <div class="chart-box">
+                    <h3>关键指标对比雷达图</h3>
+                    <canvas id="radarChart"></canvas>
                 </div>
-            {% else %}
-                <table class="compare-table">
-                    <thead>
-                        <tr>
-                            <th>指标</th>
-                            {% for etf in etfs %}
-                                <th class="etf-name-header">{{ etf.name }}</th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>代码</strong></td>
-                            {% for etf in etfs %}
-                                <td style="color: #e0e0e0; font-weight: 600;">{{ etf.code }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>类型</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ etf.type }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>主题分类</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ etf.category }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>规模（亿元）</strong></td>
-                            {% for etf in etfs %}
-                                <td style="font-weight: 600;">{{ "%.2f"|format(etf.scale) }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>近1年收益</strong></td>
-                            {% for etf in etfs %}
-                                <td class="{% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">
-                                    {% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_1_return) }}%
-                                </td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>近3年收益</strong></td>
-                            {% for etf in etfs %}
-                                <td class="{% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">
-                                    {% if etf.year_1_return and not etf.year_3_return %}
-                                        不足3年
-                                    {% else %}
-                                        {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%
-                                    {% endif %}
-                                </td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>最大回撤</strong></td>
-                            {% for etf in etfs %}
-                                <td class="negative">{{ "%.2f"|format(etf.max_drawdown) }}%</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>夏普比率</strong></td>
-                            {% for etf in etfs %}
-                                <td style="color: #fbbf24; font-weight: 600;">{{ "%.2f"|format(etf.sharpe_ratio) }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>日均成交（亿元）</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ "%.2f"|format(etf.volume) }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>发行方</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ etf.issuer }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>前五大持仓</strong></td>
-                            {% for etf in etfs %}
-                                <td>
-                                    <ul class="holdings-list">
-                                        {% for holding in etf.top_holdings %}
-                                            <li>{{ holding }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>操作</strong></td>
-                            {% for etf in etfs %}
-                                <td><a href="/etf/{{ etf.code }}" style="color: #3b82f6; text-decoration: none; font-weight: 600; font-size: 13px;">查看详情 →</a></td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
-            {% endif %}
+                <div class="chart-box">
+                    <h3>规模 &amp; 收益率对比</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
         </div>
+
+        <div class="compare-section">
+            <table class="compare-table">
+                <thead><tr>
+                    <th>指标</th>
+                    {% for etf in etfs %}
+                        <th class="etf-name-header">{{ etf.code }} - {{ etf.name }}</th>
+                    {% endfor %}
+                </tr></thead>
+                <tbody>
+                    {% set row_data = [] %}
+                    <tr><td><strong>代码</strong></td>{% for etf in etfs %}<td style="font-weight:600;">{{ etf.code }}</td>{% endfor %}</tr>
+                    <tr><td><strong>类型</strong></td>{% for etf in etfs %}<td>{{ etf.category or etf.type }}</td>{% endfor %}</tr>
+                    <tr><td><strong>发行方</strong></td>{% for etf in etfs %}<td>{{ etf.issuer_short or etf.issuer }}</td>{% endfor %}</tr>
+                    <tr><td><strong>规模（亿元）</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='scale')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.scale == best %}best-value{% elif vals|unique|length > 1 and etf.scale == worst %}worst-value{% endif %}" style="font-weight:600;">{{ "%.2f"|format(etf.scale) }}</td>{% endfor %}</tr>
+                    <tr><td><strong>最新价</strong></td>{% for etf in etfs %}<td>{{ "%.3f"|format(etf.close) }}</td>{% endfor %}</tr>
+                    <tr><td><strong>涨跌幅</strong></td>{% for etf in etfs %}<td class="{% if etf.change_pct >= 0 %}positive{% else %}negative{% endif %}">{% if etf.change_pct >= 0 %}+{% endif %}{{ "%.2f"|format(etf.change_pct) }}%</td>{% endfor %}</tr>
+                    <tr><td><strong>近1年收益</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='year_1_return')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.year_1_return == best %}best-value{% elif vals|unique|list|length > 1 and etf.year_1_return == worst %}worst-value{% endif %} {% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">{% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_1_return) }}%</td>{% endfor %}</tr>
+                    <tr><td><strong>近3年收益</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='year_3_return')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.year_3_return == best %}best-value{% elif vals|unique|list|length > 1 and etf.year_3_return == worst %}worst-value{% endif %} {% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">{% if etf.year_1_return and not etf.year_3_return %}不足3年{% else %}{% if etf.year_3_return >= 0%}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%{% endif %}</td>{% endfor %}</tr>
+                    <tr><td><strong>最大回撤</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='max_drawdown')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.max_drawdown == best %}best-value{% elif vals|unique|list|length > 1 and etf.max_drawdown == worst %}worst-value{% endif %} negative">{{ "%.2f"|format(etf.max_drawdown) }}%</td>{% endfor %}</tr>
+                    <tr><td><strong>夏普比率</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='sharpe_ratio')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.sharpe_ratio == best %}best-value{% elif vals|unique|list|length > 1 and etf.sharpe_ratio == worst %}worst-value{% endif %}" style="color:#fbbf24;font-weight:600;">{{ "%.2f"|format(etf.sharpe_ratio) }}</td>{% endfor %}</tr>
+                    <tr><td><strong>日均成交（亿元）</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='volume')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.volume == best %}best-value{% elif vals|unique|list|length > 1 and etf.volume == worst %}worst-value{% endif %}">{{ "%.2f"|format(etf.volume) }}</td>{% endfor %}</tr>
+                    <tr><td><strong>前五大持仓</strong></td>
+                    {% for etf in etfs %}
+                        <td>
+                            <ul class="holdings-list">
+                                {% if etf.top_holdings and etf.top_holdings is iterable %}
+                                    {% for h in etf.top_holdings[:5] %}
+                                        <li><span class="holding-name">{{ h.name if h.name else h }}</span>{% if h.weight %}<span class="holding-weight">{{ h.weight }}</span>{% endif %}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li style="color:#8a8fa3;">暂无数据</li>
+                                {% endif %}
+                            </ul>
+                        </td>
+                    {% endfor %}
+                    </tr>
+                    <tr><td><strong>操作</strong></td>{% for etf in etfs %}<td><a href="/etf/{{ etf.code }}" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:13px;">查看详情 →</a></td>{% endfor %}</tr>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
     </div>
+
+    <script>
+        const etfs = {{ etfs|tojson|safe }};
+        
+        if (etfs.length > 0) {
+            const labels = etfs.map(e => e.code);
+            const colors = ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
+            
+            // Radar chart
+            const radarCtx = document.getElementById('radarChart');
+            if (radarCtx) {
+                new Chart(radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['规模(亿)', '近1年收益', '最大回撤', '夏普比率', '日均成交'],
+                        datasets: etfs.map((e, i) => ({
+                            label: e.code,
+                            data: [
+                                Math.min((e.scale || 0) / 100, 1) * 100,
+                                Math.max(-50, Math.min(50, e.year_1_return || 0)),
+                                Math.max(-50, Math.min(0, e.max_drawdown || -50)),
+                                Math.max(0, Math.min(3, e.sharpe_ratio || 0)) * 20,
+                                Math.min((e.volume || 0) * 10, 100)
+                            ],
+                            borderColor: colors[i % colors.length],
+                            backgroundColor: colors[i % colors.length] + '20',
+                            pointBackgroundColor: colors[i % colors.length],
+                        }))
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, padding: 12 } }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: 'rgba(148,163,184,0.2)' },
+                                grid: { color: 'rgba(148,163,184,0.2)' },
+                                pointLabels: { color: '#94a3b8', font: { size: 11 } },
+                                ticks: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Bar chart
+            const barCtx = document.getElementById('barChart');
+            if (barCtx) {
+                new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: etfs.map(e => e.code),
+                        datasets: [
+                            { label: '规模(亿)', data: etfs.map(e => e.scale || 0), backgroundColor: 'rgba(59,130,246,0.7)', borderColor: '#3b82f6', borderWidth: 1, yAxisID: 'y' },
+                            { label: '近1年收益(%)', data: etfs.map(e => e.year_1_return || 0), backgroundColor: 'rgba(34,197,94,0.7)', borderColor: '#22c55e', borderWidth: 1, yAxisID: 'y1' }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 } } } },
+                        scales: {
+                            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
+                            y: { position: 'left', ticks: { color: '#60a5fa' }, grid: { color: 'rgba(148,163,184,0.1)' }, title: { display: true, text: '规模(亿)', color: '#60a5fa' } },
+                            y1: { position: 'right', ticks: { color: '#22c55e', callback: v => v + '%' }, grid: { display: false }, title: { display: true, text: '收益%', color: '#22c55e' } }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 </body>
 </html>
