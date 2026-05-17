@@ -46,7 +46,7 @@ def get_etfs():
     paged = etfs[offset:offset + page_size]
     
     # 精简字段（列表页只需要这些）
-    list_fields = ['code', 'name', 'issuer', 'scale', 'change_pct',
+    list_fields = ['code', 'name', 'issuer', 'scale', 'shares', 'change_pct',
                    'year_1_return', 'year_3_return', 'close', 'volume', 'category']
     slim = [{k: e.get(k, 0) for k in list_fields} for e in paged]
     

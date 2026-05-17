@@ -292,6 +292,7 @@ for etf in full_data:
         scale_raw = mcap_ak / 1e8
     else:
         scale_raw = 0
+    shares_raw = mcap_ak / 1e8 if mcap_ak else 0  # AKShare 基金份额
     vol_raw = etf.get("volume", 0) or 0
     volume_val = vol_raw / 1e8 if vol_raw else 0
 
@@ -300,6 +301,7 @@ for etf in full_data:
         "name": name,
         "issuer": issuer,
         "scale": round(scale_raw, 1) if scale_raw else 0,
+        "shares": round(shares_raw, 1) if shares_raw else 0,
         "top_holdings": top_holdings,
         "change_pct": etf.get("change_pct"),
         "close": gen.get("close", 0),
