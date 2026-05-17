@@ -277,22 +277,28 @@ for etf in full_data:
             parts = h.split(" ", 1)
             top_holdings.append({"name": parts[0], "weight": parts[1] if len(parts) > 1 else ""})
 
+    # 静态字段从AKShare原始数据取，gen只覆盖新enrich产生的字段
+    mcap = etf.get("market_cap", 0) or 0
+    scale_raw = mcap / 1e8 if mcap > 1e8 else mcap
+    vol_raw = etf.get("volume", 0) or 0
+    volume_val = vol_raw / 1e8 if vol_raw > 1e8 else vol_raw
+
     standard_etf = {
         "code": code,
         "name": name,
         "issuer": issuer,
-        "type": gen.get("type", "股票型"),
-        "scale": gen.get("scale", etf.get("market_cap", 0) / 1e8 if etf.get("market_cap") else 0),
-        "fee": gen.get("fee", 0.6),
+        "type": "股票型",  # AKShare无此字段，用默认值
+        "scale": round(scale_raw, 1) if scale_raw else 0,
+        "fee": 0.6,  # 默认值，后续用AKShare补充
         "management_fee": 0.5,
         "custody_fee": 0.1,
-        "tracking_error": gen.get("tracking_error", 0.02),
-        "launch_date": gen.get("launch_date", ""),
-        "underlying": gen.get("underlying", ""),
+        "tracking_error": 0.02,
+        "launch_date": "",  # AKShare无此字段
+        "underlying": "",
         "top_holdings": top_holdings,
-        "change_pct": etf.get("change_pct"),  # 涨跌幅（AKShare快照）
-        "close": gen.get("close", 0),  # 最新价（非凸 API）
-        "volume": gen.get("volume", etf.get("volume", 0) / 1e8 if etf.get("volume") else 0),
+        "change_pct": etf.get("change_pct"),
+        "close": gen.get("close", 0),
+        "volume": round(volume_val, 1) if volume_val else 0,
         "year_1_return": gen.get("year_1_return", 0),
         "year_3_return": gen.get("year_3_return", 0),
         "max_drawdown": gen.get("max_drawdown", 0),
