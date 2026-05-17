@@ -340,14 +340,37 @@
                 gap: 16px;
             }
             
+            .table-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin-top: 12px;
+            }
+            
             .etf-table {
-                font-size: 12px;
+                font-size: 11px;
+                min-width: 700px;
             }
             
             .etf-table th,
             .etf-table td {
-                padding: 10px 8px;
+                padding: 8px 6px;
+                white-space: nowrap;
             }
+            
+            .etf-table th:nth-child(1),
+            .etf-table td:nth-child(1) { display: none; } /* checkbox */
+            .etf-table th:nth-child(4),
+            .etf-table td:nth-child(4) { display: none; } /* 代码列(已包含在名称) */
+            .etf-table th:nth-child(8),
+            .etf-table td:nth-child(8),
+            .etf-table th:nth-child(9),
+            .etf-table td:nth-child(9) { display: none; } /* prev_close, change_rate */
+            
+            .compare-bar {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .compare-bar .spacer { display: none; }
         }
         .footer-info {
             margin-top: 40px;
@@ -587,7 +610,7 @@
             html += `<button class="btn btn-secondary" onclick="loadETFs(${res.total_pages})" ${res.page >= res.total_pages ? 'disabled' : ''}>末页 »</button>`;
             html += `</div>`;
             
-            document.getElementById('etf-list').innerHTML = html;
+            document.getElementById('etf-list').innerHTML = '<div class="table-wrapper">' + html + '</div>';
         }
         
         // 重置筛选时回到第一页
