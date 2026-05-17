@@ -281,9 +281,9 @@ for etf in full_data:
 
     # 静态字段从AKShare原始数据取，gen只覆盖新enrich产生的字段
     mcap = etf.get("market_cap", 0) or 0
-    scale_raw = mcap / 1e8 if mcap > 1e8 else mcap
+    scale_raw = mcap / 1e8 if mcap else 0
     vol_raw = etf.get("volume", 0) or 0
-    volume_val = vol_raw / 1e8 if vol_raw > 1e8 else vol_raw
+    volume_val = vol_raw / 1e8 if vol_raw else 0
 
     standard_etf = {
         "code": code,
