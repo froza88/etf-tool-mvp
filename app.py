@@ -46,9 +46,9 @@ def get_etfs():
     paged = etfs[offset:offset + page_size]
     
     # 精简字段（列表页只需要这些）
-    list_fields = ['code', 'name', 'issuer', 'type', 'scale', 'fee',
-                   'year_1_return', 'year_3_return', 'volume', 'category']
-    slim = [{k: e[k] for k in list_fields} for e in paged]
+    list_fields = ['code', 'name', 'issuer', 'scale', 'change_pct',
+                   'year_1_return', 'year_3_return', 'close', 'volume', 'category']
+    slim = [{k: e.get(k, 0) for k in list_fields} for e in paged]
     
     return jsonify({
         'total': total,
@@ -117,48 +117,36 @@ def screening_demo():
     })
     
     # 第二层：费率对比（使用动态参数或默认值0.6%）
-    fee_threshold = float(request.args.get('fee_max', 0.6))
-    step2_passed = [etf for etf in step1_passed if etf['fee'] <= fee_threshold]
+    # 第二层：规模
+    step2_passed = [etf for etf in step1_passed if (etf.get('scale') or 0) >= 5]
     screening_steps.append({
         'step': 2,
-        'name': '第二层筛选：费率对比',
-        'criteria': f'总费率（管理费+托管费）≤ {fee_threshold}%',
+        'name': '第二层筛选：规模',
+        'criteria': '规模>= 5亿',
         'passed': step2_passed,
         'eliminated_count': len(step1_passed) - len(step2_passed)
     })
     
-    # 第三层：跟踪误差
-    step3_passed = [etf for etf in step2_passed if etf['tracking_error'] <= 0.05]
+    # 第三层：流动性
+    step3_passed = [etf for etf in step2_passed if (etf.get('volume') or 0) >= 1]
     screening_steps.append({
         'step': 3,
-        'name': '第三层筛选：跟踪误差',
-        'criteria': '年化跟踪误差 ≤ 0.05%',
+        'name': '第三层筛选：流动性',
+        'criteria': '日均成交额>= 1亿',
         'passed': step3_passed,
         'eliminated_count': len(step2_passed) - len(step3_passed)
     })
     
-    # 第四层：流动性
-    step4_passed = [etf for etf in step3_passed if etf['volume'] >= 1.0]
-    screening_steps.append({
-        'step': 4,
-        'name': '第四层筛选：流动性',
-        'criteria': '日均成交额 ≥ 1亿',
-        'passed': step4_passed,
-        'eliminated_count': len(step3_passed) - len(step4_passed)
-    })
-    
-    # 终选：综合对比
-    if step4_passed:
-        # 按综合评分排序（规模、费率、跟踪误差、流动性）
-        for etf in step4_passed:
+    # 终选：综合评分
+    if step3_passed:
+        for etf in step3_passed:
             score = 0
-            score += min(etf['scale'] / 100, 1) * 25  # 规模得分（最高25分）
-            score += (1 - etf['fee'] / 1.0) * 25  # 费率得分（最高25分）
-            score += (1 - etf['tracking_error'] / 0.2) * 25  # 跟踪误差得分（最高25分）
-            score += min(etf['volume'] / 10, 1) * 25  # 流动性得分（最高25分）
+            score += min((etf.get('scale') or 0) / 100, 1) * 40
+            score += max(min((etf.get('year_1_return') or 0) / 50, 1), 0) * 35
+            score += min((etf.get('volume') or 0) / 10, 1) * 25
             etf['score'] = round(score, 2)
         
-        finalists = sorted(step4_passed, key=lambda x: x['score'], reverse=True)
+        finalists = sorted(step3_passed, key=lambda x: x['score'], reverse=True)
         winner = finalists[0] if finalists else None
     else:
         finalists = []
