@@ -287,14 +287,7 @@ for etf in full_data:
         "code": code,
         "name": name,
         "issuer": issuer,
-        "type": "股票型",  # AKShare无此字段，用默认值
         "scale": round(scale_raw, 1) if scale_raw else 0,
-        "fee": 0.6,  # 默认值，后续用AKShare补充
-        "management_fee": 0.5,
-        "custody_fee": 0.1,
-        "tracking_error": 0.02,
-        "launch_date": "",  # AKShare无此字段
-        "underlying": "",
         "top_holdings": top_holdings,
         "change_pct": etf.get("change_pct"),
         "close": gen.get("close", 0),
