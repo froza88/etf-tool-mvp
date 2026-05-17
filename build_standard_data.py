@@ -290,11 +290,12 @@ for etf in full_data:
         "launch_date": gen.get("launch_date", ""),
         "underlying": gen.get("underlying", ""),
         "top_holdings": top_holdings,
+        "change_pct": etf.get("change_pct"),  # 涨跌幅（AKShare快照）
+        "volume": gen.get("volume", etf.get("volume", 0) / 1e8 if etf.get("volume") else 0),
         "year_1_return": gen.get("year_1_return", 0),
         "year_3_return": gen.get("year_3_return", 0),
         "max_drawdown": gen.get("max_drawdown", 0),
         "sharpe_ratio": gen.get("sharpe_ratio", 0.0),
-        "volume": gen.get("volume", etf.get("volume", 0) / 1e8 if etf.get("volume") else 0),
         "category": "宽基" if any(k in raw_name for k in ["沪深300", "中证500", "上证50", "科创50"]) else "行业",
     }
     standard_etfs.append(standard_etf)
