@@ -291,6 +291,7 @@ for etf in full_data:
         "underlying": gen.get("underlying", ""),
         "top_holdings": top_holdings,
         "change_pct": etf.get("change_pct"),  # 涨跌幅（AKShare快照）
+        "close": gen.get("close", 0),  # 最新价（非凸 API）
         "volume": gen.get("volume", etf.get("volume", 0) / 1e8 if etf.get("volume") else 0),
         "year_1_return": gen.get("year_1_return", 0),
         "year_3_return": gen.get("year_3_return", 0),
