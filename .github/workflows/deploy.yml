@@ -5,61 +5,20 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Deploy via PythonAnywhere API
+    - uses: actions/checkout@v4
+
+    - name: Deploy via Python script
       env:
         PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
         PA_USERNAME: ${{ secrets.PA_USERNAME }}
-      run: |
-        set -e
-        BASE="https://www.pythonanywhere.com/api/v1"
-        AUTH_HEADER="Authorization: Token ${PA_API_TOKEN}"
-
-        echo "📥 创建控制台执行 git pull..."
-
-        # 1. 创建 bash 控制台
-        CONSOLE_RESP=$(curl -s -H "${AUTH_HEADER}" \
-          -H "Content-Type: application/json" \
-          "${BASE}/user/${PA_USERNAME}/consoles/" \
-          -X POST -d '{"executable": "bash"}')
-        CONSOLE_ID=$(echo "${CONSOLE_RESP}" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
-        echo "  控制台 ID: ${CONSOLE_ID}"
-
-        # 2. git pull
-        curl -s -H "${AUTH_HEADER}" \
-          -H "Content-Type: application/json" \
-          "${BASE}/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/send_input/" \
-          -X POST \
-          -d "$(printf '{"input": "cd ~/etf-tool-mvp && git pull origin main\\n"}')"
-        sleep 8
-
-        # 3. touch wsgi 触发重载
-        curl -s -H "${AUTH_HEADER}" \
-          -H "Content-Type: application/json" \
-          "${BASE}/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/send_input/" \
-          -X POST \
-          -d "$(printf '{"input": "touch /var/www/%s_pythonanywhere_com_wsgi.py\\n"}' "${PA_USERNAME}")"
-        sleep 5
-
-        # 4. 关闭控制台
-        curl -s -H "${AUTH_HEADER}" \
-          -H "Content-Type: application/json" \
-          "${BASE}/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/" \
-          -X PATCH -d '{"status": "deleted"}'
-        echo "✅ 控制台已关闭"
-
-        # 5. Web app reload
-        echo "🔄 调用 reload API..."
-        curl -s -H "${AUTH_HEADER}" \
-          "${BASE}/user/${PA_USERNAME}/webapps/${PA_USERNAME}.pythonanywhere.com/reload/" \
-          -X POST
-        sleep 3
-
-        echo "✅ 部署完成！"
+      run: python3 deploy.py
 
     - name: Health Check
       run: |
@@ -69,5 +28,5 @@ jobs:
         if [ "${HTTP_CODE}" = "200" ]; then
           echo "✅ 健康检查通过 (HTTP ${HTTP_CODE})"
         else
-          echo "⚠️ 健康检查返回 HTTP ${HTTP_CODE}，可能需要等待几秒"
+          echo "⚠️ 健康检查返回 HTTP ${HTTP_CODE}"
         fi
