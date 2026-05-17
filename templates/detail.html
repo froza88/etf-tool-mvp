@@ -279,7 +279,7 @@
                 <span class="price-label">最新价</span>
                 <span class="price-value">{{ "%.3f"|format(etf.close) }}</span>
                 <span class="price-change {% if etf.change_pct >= 0 %}positive{% else %}negative{% endif %}">
-                    {% if etf.change_pct >= 0 %}+{% endif %}{{ "%.1f"|format(etf.change_pct) }}%
+                    {% if etf.change_pct >= 0 %}+{% endif %}{{ "%.2f"|format(etf.change_pct) }}%
                 </span>
             </div>
             <div class="subtitle">
@@ -298,7 +298,7 @@
                 
                 <div class="info-card" style="border-left-color: #f59e0b;">
                     <h3>📉 涨跌幅（%）</h3>
-                    <div class="value">{{ "%.1f"|format(etf.change_pct) }}</div>
+                    <div class="value">{{ "%.2f"|format(etf.change_pct) }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: {% if etf.year_1_return >= 0 %}#ef4444{% else %}#22c55e{% endif %};">

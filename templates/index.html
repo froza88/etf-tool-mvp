@@ -539,7 +539,7 @@
                 html += `<td>${etf.code}</td>`;
                 html += `<td><span class="badge ${badgeClass}">${etf.category || ''}</span></td>`;
                 html += `<td>${(etf.scale || 0).toFixed(1)}</td>`;
-                html += `<td>${(etf.change_pct || 0).toFixed(1)}</td>`;
+                html += `<td>${(etf.change_pct || 0).toFixed(2)}</td>`;
                 html += `<td>${(etf.close || 0).toFixed(3)}</td>`;
                 html += `<td class="${y1Cls}">${y1Sign}${y1.toFixed(1)}%</td>`;
                 html += `<td class="${y3Cls}">${y3Sign}${y3.toFixed(1)}%</td>`;
