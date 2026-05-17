@@ -14,19 +14,62 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Deploy via Python script
+    - name: Git pull + Reload
       env:
         PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
         PA_USERNAME: ${{ secrets.PA_USERNAME }}
-      run: python3 deploy.py
+      run: |
+        set -e
+        echo "=== Step 1: Create console ==="
+        HTTP_CODE=$(curl -s -o /tmp/console_resp.txt -w "%{http_code}" \
+          -H "Authorization: Token ${PA_API_TOKEN}" \
+          -H "Content-Type: application/json" \
+          "https://www.pythonanywhere.com/api/v1/user/${PA_USERNAME}/consoles/" \
+          -X POST -d '{"executable":"bash"}')
+        echo "HTTP: ${HTTP_CODE}"
+        cat /tmp/console_resp.txt
 
-    - name: Health Check
+        if [ "${HTTP_CODE}" != "201" ]; then
+          echo "Console creation failed, trying reload-only..."
+          curl -s -H "Authorization: Token ${PA_API_TOKEN}" \
+            "https://www.pythonanywhere.com/api/v1/user/${PA_USERNAME}/webapps/${PA_USERNAME}.pythonanywhere.com/reload/" \
+            -X POST
+          echo "Reload done (code may be stale)"
+          exit 0
+        fi
+
+        CONSOLE_ID=$(python3 -c "import json; print(json.load(open('/tmp/console_resp.txt'))['id'])")
+        echo "Console ID: ${CONSOLE_ID}"
+
+        echo "=== Step 2: git pull ==="
+        curl -s -H "Authorization: Token ${PA_API_TOKEN}" \
+          -H "Content-Type: application/json" \
+          "https://www.pythonanywhere.com/api/v1/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/send_input/" \
+          -X POST -d "{\"input\": \"cd ~/etf-tool-mvp && git pull origin main\\n\"}"
+        sleep 8
+
+        echo "=== Step 3: touch wsgi ==="
+        curl -s -H "Authorization: Token ${PA_API_TOKEN}" \
+          -H "Content-Type: application/json" \
+          "https://www.pythonanywhere.com/api/v1/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/send_input/" \
+          -X POST -d "{\"input\": \"touch /var/www/${PA_USERNAME}_pythonanywhere_com_wsgi.py\\n\"}"
+        sleep 3
+
+        echo "=== Step 4: Close console ==="
+        curl -s -H "Authorization: Token ${PA_API_TOKEN}" \
+          -H "Content-Type: application/json" \
+          "https://www.pythonanywhere.com/api/v1/user/${PA_USERNAME}/consoles/${CONSOLE_ID}/" \
+          -X PATCH -d '{"status":"deleted"}'
+
+        echo "=== Step 5: Reload ==="
+        curl -s -H "Authorization: Token ${PA_API_TOKEN}" \
+          "https://www.pythonanywhere.com/api/v1/user/${PA_USERNAME}/webapps/${PA_USERNAME}.pythonanywhere.com/reload/" \
+          -X POST
+
+        echo ""
+        echo "Done!"
+
+    - name: Verify
       run: |
         sleep 10
-        URL="https://${{ secrets.PA_USERNAME }}.pythonanywhere.com/"
-        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${URL}" || echo "000")
-        if [ "${HTTP_CODE}" = "200" ]; then
-          echo "✅ 健康检查通过 (HTTP ${HTTP_CODE})"
-        else
-          echo "⚠️ 健康检查返回 HTTP ${HTTP_CODE}"
-        fi
+        curl -s -o /dev/null -w "%{http_code}" "https://${{ secrets.PA_USERNAME }}.pythonanywhere.com/"
