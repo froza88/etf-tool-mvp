@@ -245,7 +245,6 @@
             <div class="subtitle">
                 <span>代码：{{ etf.code }}</span>
                 {% if etf.issuer %}<span>发行方：{{ etf.issuer }}</span>{% endif %}
-                <span>成立日期：{{ etf.launch_date }}</span>
             </div>
         </div>
         
@@ -258,8 +257,8 @@
                 </div>
                 
                 <div class="info-card" style="border-left-color: #f59e0b;">
-                    <h3>📉 管理费率（%）</h3>
-                    <div class="value">{{ "%.2f"|format(etf.fee) }}</div>
+                    <h3>📉 涨跌幅（%）</h3>
+                    <div class="value">{{ "%.1f"|format(etf.change_pct) }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: {% if etf.year_1_return >= 0 %}#ef4444{% else %}#22c55e{% endif %};">
@@ -288,7 +287,7 @@
                 
                 <div class="info-card" style="border-left-color: #8b5cf6;">
                     <h3>🎯 跟踪误差（%）</h3>
-                    <div class="value" style="color: #a78bfa;">{{ "%.2f"|format(etf.tracking_error) }}</div>
+                    <div class="value" style="color: #a78bfa;">{{ "%.1f"|format(etf.scale) }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #06b6d4;">
@@ -445,7 +444,7 @@
                 </div>
             
             <div class="meta-info">
-                <p><strong>跟踪标的：</strong>{{ etf.underlying }}</p>
+                <p><strong>最新价：</strong>{{ etf.close }} <span style="margin: 0 8px;">|</span> <strong>涨跌幅：</strong>{{ etf.change_pct }}%</p>
                 <p><strong>类型：</strong>{{ etf.type }} <span style="margin: 0 8px;">|</span> <strong>主题分类：</strong>{{ etf.category }}</p>
             </div>
             

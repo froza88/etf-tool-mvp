@@ -229,18 +229,6 @@
                             {% endfor %}
                         </tr>
                         <tr>
-                            <td><strong>管理费率（%）</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ "%.2f"|format(etf.fee) }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>跟踪误差（%）</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ "%.2f"|format(etf.tracking_error) }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
                             <td><strong>近1年收益</strong></td>
                             {% for etf in etfs %}
                                 <td class="{% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">
@@ -275,21 +263,9 @@
                             {% endfor %}
                         </tr>
                         <tr>
-                            <td><strong>成立日期</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ etf.launch_date }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
                             <td><strong>发行方</strong></td>
                             {% for etf in etfs %}
                                 <td>{{ etf.issuer }}</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <td><strong>跟踪标的</strong></td>
-                            {% for etf in etfs %}
-                                <td>{{ etf.underlying }}</td>
                             {% endfor %}
                         </tr>
                         <tr>

@@ -311,8 +311,8 @@
                             <td>{{ etf.name }}</td>
                             <td>{{ etf.code }}</td>
                             <td>{{ etf.scale }}</td>
-                            <td>{{ etf.fee }}%</td>
-                            <td>{{ etf.tracking_error }}%</td>
+                            <td>{{ etf.change_pct }}%</td>
+                            <td>{{ etf.category }}</td>
                             <td>{{ etf.volume }}亿</td>
                         </tr>
                         {% endfor %}
@@ -329,8 +329,7 @@
                             <h4>推荐理由：</h4>
                             <ul>
                                 <li>✅ <strong>规模最优：</strong>{{ step.winner.scale }}亿</li>
-                                <li>✅ <strong>费率最低：</strong>{{ step.winner.fee }}%</li>
-                                <li>✅ <strong>跟踪误差最小：</strong>{{ step.winner.tracking_error }}%</li>
+                                <li>✅ <strong>涨跌幅：</strong>{{ step.winner.change_pct }}%</li>
                                 <li>✅ <strong>流动性最佳：</strong>日均成交{{ step.winner.volume }}亿</li>
                             </ul>
                         </div>
