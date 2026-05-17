@@ -506,6 +506,7 @@
             html += '<th>类型</th>';
             html += `<th onclick="doSort('scale')" style="cursor:pointer">规模(亿)${sortArrow('scale')}</th>`;
             html += `<th onclick="doSort('change_pct')" style="cursor:pointer">涨跌幅(%)${sortArrow('change_pct')}</th>`;
+            html += `<th onclick="doSort('close')" style="cursor:pointer">价格${sortArrow('close')}</th>`;
             html += `<th onclick="doSort('year_1_return')" style="cursor:pointer">近1年${sortArrow('year_1_return')}</th>`;
             html += `<th onclick="doSort('year_3_return')" style="cursor:pointer">近3年${sortArrow('year_3_return')}</th>`;
             html += '<th>操作</th>';
@@ -533,6 +534,7 @@
                 html += `<td><span class="badge ${badgeClass}">${etf.type}</span></td>`;
                 html += `<td>${(etf.scale || 0).toFixed(1)}</td>`;
                 html += `<td>${(etf.change_pct || 0).toFixed(1)}</td>`;
+                html += `<td>${(etf.close || 0).toFixed(3)}</td>`;
                 html += `<td class="${y1Cls}">${y1Sign}${y1.toFixed(1)}%</td>`;
                 html += `<td class="${y3Cls}">${y3Sign}${y3.toFixed(1)}%</td>`;
                 html += `<td><a href="/etf/${etf.code}" style="font-size:13px;">详情 →</a></td>`;
