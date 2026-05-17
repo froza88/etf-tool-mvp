@@ -171,6 +171,18 @@ def get_full_name(short_name):
     return ISSUER_FULL_NAMES.get(short_name, short_name)
 
 
+# 全名→短名反向映射（取最短的那个短名）
+FULL_TO_SHORT = {}
+for short, full in ISSUER_FULL_NAMES.items():
+    if full not in FULL_TO_SHORT or len(short) < len(FULL_TO_SHORT[full]):
+        FULL_TO_SHORT[full] = short
+
+
+def get_short_name(full_name):
+    """全名→简写"""
+    return FULL_TO_SHORT.get(full_name, full_name)
+
+
 def build_known_names(generated_data, name_key='name', issuer_key='issuer'):
     """
     从已有数据（如 etf_data_generated.json）构建已知 name→issuer 映射

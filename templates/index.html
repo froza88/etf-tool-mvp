@@ -535,7 +535,7 @@
                 
                 html += '<tr>';
                 html += `<td><input type="checkbox" class="checkbox" value="${etf.code}" ${isSelected ? 'checked' : ''} onchange="toggleSelect(this)"></td>`;
-                html += `<td><a href="/etf/${etf.code}" class="etf-name">${etf.code} - ${etf.name}${etf.issuer ? ' - ' + etf.issuer : ''}</a></td>`;
+                html += `<td><a href="/etf/${etf.code}" class="etf-name">${etf.code} - ${etf.name}${etf.issuer_short ? ' - ' + etf.issuer_short : ''}</a></td>`;
                 html += `<td>${etf.code}</td>`;
                 html += `<td><span class="badge ${badgeClass}">${etf.category || ''}</span></td>`;
                 html += `<td>${(etf.scale || 0).toFixed(1)}</td>`;
