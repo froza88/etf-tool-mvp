@@ -217,4 +217,10 @@ def extract_name_issuer(raw_name, known_names=None, issuers=None):
                 rest = raw_name.replace(known_name, '', 1).strip()
                 if rest and len(rest) <= 12:
                     return known_name, known_issuer
+    # 优先级3: 前缀匹配（如"招商快线ETF" → 发行人"招商"）
+    for issuer in issuer_list:
+        if raw_name.startswith(issuer):
+            name = raw_name[len(issuer):].strip()
+            if name:
+                return name, issuer
     return raw_name, ""
