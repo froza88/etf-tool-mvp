@@ -14,11 +14,13 @@
         h1 { font-size: 20px; font-weight: 600; margin: 12px 0 4px; }
         .subtitle { color: #94a3b8; font-size: 13px; margin-bottom: 24px; }
 
-        .yingmi-banner { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .yingmi-banner p { color: #fbbf24; font-size: 13px; flex: 1; }
-        .btn-fetch { padding: 8px 20px; border-radius: 6px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; background: #fbbf24; color: #1a1a0a; transition: background 0.2s; }
+        .source-banner { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.25); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .source-banner p { color: #d1d5db; font-size: 13px; flex: 1; }
+        .source-banner p strong { color: #60a5fa; }
+        .btn-fetch { padding: 8px 20px; border-radius: 6px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; background: #fbbf24; color: #1a1a0a; transition: all 0.2s; }
         .btn-fetch:hover { background: #f59e0b; }
         .btn-fetch:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-fetch.done { background: #22c55e; color: #fff; }
 
         .period-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
         .period-tab { padding: 8px 18px; border-radius: 6px; background: #1e293b; color: #94a3b8; border: none; cursor: pointer; font-size: 13px; }
@@ -26,11 +28,11 @@
         .period-tab:hover { background: #334155; }
 
         .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
-        .metric-card { background: #1e293b; border-radius: 10px; padding: 16px; cursor: pointer; transition: background 0.2s, transform 0.15s; }
-        .metric-card:hover { background: #263548; transform: translateY(-2px); }
-        .metric-card.fetching { opacity: 0.6; pointer-events: none; }
+        .metric-card { background: #1e293b; border-radius: 10px; padding: 16px; transition: background 0.2s; }
         .metric-label { font-size: 12px; color: #94a3b8; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-        .metric-label .badge { font-size: 10px; background: rgba(251,191,36,0.15); color: #fbbf24; padding: 1px 6px; border-radius: 4px; }
+        .metric-label .source-tag { font-size: 10px; padding: 1px 6px; border-radius: 4px; }
+        .metric-label .source-tag.self { background: rgba(59,130,246,0.15); color: #60a5fa; }
+        .metric-label .source-tag.yingmi { background: rgba(251,191,36,0.15); color: #fbbf24; }
         .metric-value { font-size: 22px; font-weight: 600; }
         .metric-value.positive { color: #22c55e; }
         .metric-value.negative { color: #ef4444; }
@@ -50,10 +52,10 @@
         <h1 id="title">{{ code }}</h1>
         <div class="subtitle" id="subtitle">加载ETF信息...</div>
 
-        <!-- 盈米数据获取入口 -->
-        <div class="yingmi-banner" id="yingmi-banner">
-            <p>📊 风险指标（夏普、卡玛、波动率、回撤）来自盈米，点击下方指标卡片可实时获取。</p>
-            <button class="btn-fetch" id="btn-fetch-all" onclick="fetchYingmiAll()">一键获取盈米数据</button>
+        <!-- 数据源选择入口 -->
+        <div class="source-banner" id="source-banner">
+            <p>📊 以下为<strong>自算数据</strong>（基于历史净值），点击获取<strong>盈米</strong>数据可获得更准确的穿透式风险指标。</p>
+            <button class="btn-fetch" id="btn-fetch" onclick="fetchYingmi()">📡 获取盈米数据</button>
         </div>
 
         <div class="period-tabs" id="period-tabs">
@@ -64,37 +66,37 @@
         </div>
 
         <div class="metric-grid" id="metric-grid">
-            <div class="metric-card" id="card-return" onclick="fetchMetric('return')">
-                <div class="metric-label">累计收益 <span class="badge">点击获取</span></div>
-                <div class="metric-value empty" id="m-return">--</div>
+            <div class="metric-card">
+                <div class="metric-label">累计收益 <span class="source-tag self" id="tag-return">自算</span></div>
+                <div class="metric-value neutral" id="m-return">--</div>
             </div>
-            <div class="metric-card" id="card-volatility" onclick="fetchMetric('volatility')">
-                <div class="metric-label">年化波动率 <span class="badge">点击获取</span></div>
-                <div class="metric-value empty" id="m-volatility">--</div>
+            <div class="metric-card">
+                <div class="metric-label">年化波动率 <span class="source-tag self" id="tag-volatility">自算</span></div>
+                <div class="metric-value neutral" id="m-volatility">--</div>
             </div>
-            <div class="metric-card" id="card-drawdown" onclick="fetchMetric('drawdown')">
-                <div class="metric-label">最大回撤 <span class="badge">点击获取</span></div>
-                <div class="metric-value empty" id="m-drawdown">--</div>
+            <div class="metric-card">
+                <div class="metric-label">最大回撤 <span class="source-tag self" id="tag-drawdown">自算</span></div>
+                <div class="metric-value neutral" id="m-drawdown">--</div>
             </div>
-            <div class="metric-card" id="card-sharpe" onclick="fetchMetric('sharpe')">
-                <div class="metric-label">夏普比率 <span class="badge">点击获取</span></div>
-                <div class="metric-value empty" id="m-sharpe">--</div>
+            <div class="metric-card">
+                <div class="metric-label">夏普比率 <span class="source-tag self" id="tag-sharpe">自算</span></div>
+                <div class="metric-value neutral" id="m-sharpe">--</div>
             </div>
-            <div class="metric-card" id="card-calmar" onclick="fetchMetric('calmar')">
-                <div class="metric-label">卡玛值 <span class="badge">点击获取</span></div>
-                <div class="metric-value empty" id="m-calmar">--</div>
+            <div class="metric-card">
+                <div class="metric-label">卡玛值 <span class="source-tag self" id="tag-calmar">自算</span></div>
+                <div class="metric-value neutral" id="m-calmar">--</div>
             </div>
         </div>
 
-        <div class="chart-wrapper" id="chart-wrapper">
-            <h3>多周期指标对比（获取盈米数据后展示）</h3>
+        <div class="chart-wrapper">
+            <h3>多周期指标对比</h3>
             <div class="chart-box">
                 <canvas id="multiChart" role="img" aria-label="多周期风险指标对比图">浏览器不支持Canvas</canvas>
             </div>
         </div>
 
         <div class="footer-info">
-            风险数据来源：盈米/且慢（点击获取）<br>
+            风险数据来源：<span id="footer-source">自算（历史净值）</span><br>
             行情数据来源：非凸科技<br>
             数据仅供参考，不构成投资建议。
         </div>
@@ -105,47 +107,71 @@
         let allData = {};
         let currentPeriod = 'oneYear';
         let multiChart = null;
-        let yingmiLoaded = false;
 
-        // Load ETF detail
+        /** 页面加载时，先用自算数据填充 */
         fetch('/api/etf/' + code)
             .then(r => r.json())
             .then(etf => {
                 document.getElementById('title').innerHTML = code + ' - ' + (etf.name || '') + (etf.issuer_short ? ' - ' + etf.issuer_short : '');
                 document.getElementById('subtitle').innerHTML = '规模：' + (etf.scale || 0).toFixed(2) + '亿 ｜ 份额：' + (etf.shares || 0).toFixed(2) + '亿份 ｜ 最新价：' + (etf.close || 0).toFixed(3);
+
+                // 用自算数据填充 allData
+                allData = {
+                    oneYear: {
+                        '收益能力': etf.year_1_return || 0,
+                        '抗波动能力': etf.annual_vol || 0,
+                        '抗回撤能力': parseFloat((etf.max_drawdown || 0).toFixed(2)),
+                        '投资性价比': etf.sharpe_ratio || 0,
+                        '卡玛值': etf.year_1_return && etf.max_drawdown ? parseFloat((Math.abs(etf.year_1_return / Math.abs(etf.max_drawdown))).toFixed(2)) : 0
+                    },
+                    threeYear: {
+                        '收益能力': etf.year_3_return || 0,
+                        '抗波动能力': 0,
+                        '抗回撤能力': 0,
+                        '投资性价比': 0,
+                        '卡玛值': 0
+                    }
+                };
+                updateDisplay();
+                renderMultiChart();
             });
 
-        // Fetch all Yingmi data
-        function fetchYingmiAll() {
-            const btn = document.getElementById('btn-fetch-all');
+        /** 获取盈米数据 */
+        function fetchYingmi() {
+            const btn = document.getElementById('btn-fetch');
             btn.disabled = true;
             btn.textContent = '获取中...';
-            document.getElementById('yingmi-banner').querySelector('p').textContent = '⏳ 正在从盈米获取数据，请稍候...';
+            document.getElementById('source-banner').querySelector('p').innerHTML = '⏳ 正在从盈米获取数据，请稍候...';
 
             fetch('/api/risk/' + code)
                 .then(r => r.json())
                 .then(data => {
-                    yingmiLoaded = true;
+                    if (data.fallback || data.error) {
+                        document.getElementById('source-banner').querySelector('p').innerHTML = '⚠️ 盈米数据获取失败，当前仍为自算数据。<br>可稍后重试，或使用自算数据参考。';
+                        btn.disabled = false;
+                        btn.textContent = '重试获取';
+                        return;
+                    }
+
                     allData = data;
                     updateDisplay();
                     renderMultiChart();
-                    document.getElementById('yingmi-banner').querySelector('p').textContent = '✅ 盈米数据已加载，以下指标均为盈米数据。';
-                    btn.textContent = '已获取';
-                    // Remove clickable badges
-                    document.querySelectorAll('.badge').forEach(b => b.remove());
-                    document.querySelectorAll('.metric-card').forEach(c => c.onclick = null);
+
+                    // 更新标签为盈米
+                    document.querySelectorAll('.source-tag').forEach(t => {
+                        t.className = 'source-tag yingmi';
+                        t.textContent = '盈米';
+                    });
+                    document.getElementById('footer-source').textContent = '盈米/且慢';
+                    document.getElementById('source-banner').querySelector('p').innerHTML = '✅ 盈米数据已加载，以下指标均为盈米数据。';
+                    btn.className = 'btn-fetch done';
+                    btn.textContent = '已获取 ✓';
                 })
                 .catch(() => {
-                    document.getElementById('yingmi-banner').querySelector('p').textContent = '⚠️ 盈米数据获取失败，请稍后重试。';
+                    document.getElementById('source-banner').querySelector('p').innerHTML = '⚠️ 盈米数据获取失败，当前仍为自算数据。<br>可稍后重试，或使用自算数据参考。';
                     btn.disabled = false;
                     btn.textContent = '重试获取';
                 });
-        }
-
-        // Fetch single metric (not used currently, kept for future)
-        function fetchMetric(metric) {
-            if (yingmiLoaded) return;
-            fetchYingmiAll();
         }
 
         function switchPeriod(p) {
