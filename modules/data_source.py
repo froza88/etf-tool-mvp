@@ -127,3 +127,15 @@ class FTSource:
         names = data.get('components_name', [])
         codes = data.get('components', [])
         return [{'code': c, 'name': n} for c, n in zip(codes, names)]
+
+    def get_etf_ohlcs(self, code, exchange='XSHG', limit=150):
+        """获取ETF K线数据（用于计算回撤/夏普）"""
+        data = self._run_subskill('etf-ohlcs', etf=f'{code}.{exchange}', span='DAY1', limit=limit)
+        if not data or 'ohlcs' not in data:
+            return None
+        ohlcs = data['ohlcs']
+        if not ohlcs or len(ohlcs) < 20:
+            return None
+        prices = [float(o['c']) for o in ohlcs]
+        dates = [str(o.get('otm', '')) for o in ohlcs]
+        return {'prices': prices, 'dates': dates}
