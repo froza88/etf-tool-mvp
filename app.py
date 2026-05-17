@@ -22,35 +22,35 @@ def get_etfs():
         "keyword": request.args.get('keyword', '')
     }
     filters = {k: v for k, v in filters.items() if v}
-    
+
     # 排序（默认按代码升序）
     sort_by = request.args.get('sort_by', 'code')
     sort_order = request.args.get('sort_order', 'asc')
     reverse = sort_order == 'desc'
-    
+
     # 分页
     page = int(request.args.get('page', 1))
     page_size = int(request.args.get('page_size', 50))
     offset = (page - 1) * page_size
-    
+
     etfs = etf_data.filter_etfs(filters)
-    
+
     # 排序（安全处理None值）
     def sort_key(e):
         val = e.get(sort_by, 0)
         return val if val is not None else 0
-    
+
     etfs.sort(key=sort_key, reverse=reverse)
-    
+
     total = len(etfs)
     paged = etfs[offset:offset + page_size]
-    
+
     # 精简字段（列表页只需要这些）
     list_fields = ['code', 'name', 'issuer_short', 'scale', 'shares', 'change_pct',
                    'change_rate', 'close', 'prev_close', 'annual_vol',
                    'year_1_return', 'year_3_return', 'volume', 'category']
     slim = [{k: e.get(k, 0) for k in list_fields} for e in paged]
-    
+
     return jsonify({
         'total': total,
         'page': page,
@@ -72,21 +72,20 @@ def compare():
     """ETF对比页"""
     codes = request.args.get('codes', '').split(',')
     codes = [c for c in codes if c]  # 过滤空值
-    
+
     etfs = []
     for code in codes:
         etf = etf_data.get_etf_by_code(code)
         if etf:
             etfs.append(etf)
-    
+
     return render_template('compare.html', etfs=etfs)
 
 @app.route('/screening-demo')
 def screening_demo():
     """筛选演示页 - 新能源ETF筛选过程"""
-    # 获取所有新能源相关ETF
     all_etfs = etf_data.get_all_etfs()
-    
+
     # 筛选新能源相关ETF（名称包含关键词）
     keywords = ['新能源', '光伏', '新能源车', '电池', '风电', '电网', '碳中和']
     new_energy_etfs = []
@@ -95,7 +94,7 @@ def screening_demo():
             if keyword in etf['name']:
                 new_energy_etfs.append(etf)
                 break
-    
+
     # 去重（根据code）
     seen_codes = set()
     unique_etfs = []
@@ -103,10 +102,10 @@ def screening_demo():
         if etf['code'] not in seen_codes:
             unique_etfs.append(etf)
             seen_codes.add(etf['code'])
-    
+
     # 筛选过程
     screening_steps = []
-    
+
     # 第一层：规模过滤
     step1_passed = [etf for etf in unique_etfs if 10 <= etf['scale'] <= 150]
     screening_steps.append({
@@ -116,8 +115,7 @@ def screening_demo():
         'passed': step1_passed,
         'eliminated_count': len(unique_etfs) - len(step1_passed)
     })
-    
-    # 第二层：费率对比（使用动态参数或默认值0.6%）
+
     # 第二层：规模
     step2_passed = [etf for etf in step1_passed if (etf.get('scale') or 0) >= 5]
     screening_steps.append({
@@ -127,7 +125,7 @@ def screening_demo():
         'passed': step2_passed,
         'eliminated_count': len(step1_passed) - len(step2_passed)
     })
-    
+
     # 第三层：流动性
     step3_passed = [etf for etf in step2_passed if (etf.get('volume') or 0) >= 1]
     screening_steps.append({
@@ -137,7 +135,7 @@ def screening_demo():
         'passed': step3_passed,
         'eliminated_count': len(step2_passed) - len(step3_passed)
     })
-    
+
     # 终选：综合评分
     if step3_passed:
         for etf in step3_passed:
@@ -146,13 +144,13 @@ def screening_demo():
             score += max(min((etf.get('year_1_return') or 0) / 50, 1), 0) * 35
             score += min((etf.get('volume') or 0) / 10, 1) * 25
             etf['score'] = round(score, 2)
-        
+
         finalists = sorted(step3_passed, key=lambda x: x['score'], reverse=True)
         winner = finalists[0] if finalists else None
     else:
         finalists = []
         winner = None
-    
+
     screening_steps.append({
         'step': 5,
         'name': '最终对比：综合评分',
@@ -160,7 +158,7 @@ def screening_demo():
         'passed': finalists[:3] if len(finalists) > 3 else finalists,  # 取前3名
         'winner': winner
     })
-    
+
     return render_template(
         'screening-demo-v2.html',
         total_count=len(unique_etfs),
@@ -178,9 +176,20 @@ def get_etf_api(code):
 
 @app.route('/api/risk/<code>')
 def get_risk_api(code):
-    """按需从盈米获取风险指标"""
-    import subprocess, json
-    cmd = f'export PATH="$PATH:/Users/apangduo/.workbuddy/binaries/node/versions/22.12.0/bin" && yingmi-skill-cli mcp call GetBatchFundPerformance --input \'{{"fundCodes":["{code}"]}}\' 2>/dev/null'
+    """按需从盈米获取风险指标（动态查找CLI路径，Mac/PythonAnywhere通用）"""
+    import subprocess, json, shutil, os
+
+    # 动态查找 yingmi-skill-cli
+    cli = shutil.which("yingmi-skill-cli")
+    if not cli:
+        # Mac 兜底路径
+        mac_path = "/Users/apangduo/.workbuddy/binaries/node/versions/22.12.0/bin/yingmi-skill-cli"
+        if os.path.exists(mac_path):
+            cli = mac_path
+    if not cli:
+        return jsonify({"error": "盈米CLI未安装", "fallback": True}), 200
+
+    cmd = f'{cli} mcp call GetBatchFundPerformance --input \'{{"fundCodes":["{code}"]}}\' 2>/dev/null'
     try:
         r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
         raw = json.loads(r.stdout)
