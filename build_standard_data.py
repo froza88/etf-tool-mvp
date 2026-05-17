@@ -47,6 +47,16 @@ with open(GENERATED_DATA, "r", encoding="utf-8") as f:
     gen_data = json.load(f)
 print(f"   生成数据: {GENERATED_DATA.name} ({len(gen_data)} 条原始记录)")
 
+# 加载自算指标（独立文件，便于复用）
+CALC_FILE = Path(__file__).parent / "etf_calculated_metrics.json"
+calc_data = {}
+if CALC_FILE.exists():
+    with open(CALC_FILE, "r", encoding="utf-8") as f:
+        calc_data = json.load(f)
+    print(f"   自算指标: {len(calc_data)} 只")
+else:
+    print(f"   自算指标: 未找到 ({CALC_FILE.name})")
+
 # ---- 第2步：去重 generated 数据 ----
 print("\n2. 去重 generated 数据...")
 seen_codes = {}
@@ -324,10 +334,11 @@ for etf in full_data:
         "prev_close": gen.get("prev_close", 0),
         "change_rate": gen.get("change_rate", 0),
         "volume": round(volume_val, 1) if volume_val else 0,
-        "year_1_return": gen.get("year_1_return", 0),
-        "year_3_return": gen.get("year_3_return", 0) if abs((gen.get("year_3_return") or 0) - (gen.get("year_1_return") or 0)) > 0.1 else 0,
-        "max_drawdown": gen.get("max_drawdown", 0),
-        "sharpe_ratio": gen.get("sharpe_ratio", 0.0),
+        "year_1_return": calc_data.get(code, {}).get("year_1_return", 0) or gen.get("year_1_return", 0),
+        "year_3_return": calc_data.get(code, {}).get("year_3_return", 0) or 0,
+        "max_drawdown": calc_data.get(code, {}).get("max_drawdown", 0) or gen.get("max_drawdown", 0),
+        "sharpe_ratio": calc_data.get(code, {}).get("sharpe_ratio", 0) or gen.get("sharpe_ratio", 0.0),
+        "annual_vol": calc_data.get(code, {}).get("annual_vol", 0),
         "category": "宽基" if any(k in raw_name for k in ["沪深300", "中证500", "上证50", "科创50"]) else "行业",
     }
     standard_etfs.append(standard_etf)
