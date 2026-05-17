@@ -301,6 +301,11 @@
                     <div class="value">{{ "%.1f"|format(etf.shares) }}</div>
                 </div>
                 
+                <div class="info-card" style="border-left-color: #8b5cf6;">
+                    <h3>📊 前收盘价</h3>
+                    <div class="value">{{ "%.3f"|format(etf.prev_close) }}</div>
+                </div>
+                
                 <div class="info-card" style="border-left-color: #f59e0b;">
                     <h3>📉 涨跌幅（%）</h3>
                     <div class="value">{{ "%.2f"|format(etf.change_pct) }}</div>

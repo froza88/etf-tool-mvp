@@ -116,6 +116,8 @@ class FTSource:
             'return_3y': data.get('change_rate_3y'),
             'return_6m': data.get('change_rate_6m'),
             'close': data.get('close'),
+            'prev_close': data.get('prev_close'),
+            'change_rate': data.get('change_rate'),
             'market_cap': data.get('market_cap_total'),
         }
 

@@ -307,6 +307,8 @@ for etf in full_data:
         "top_holdings": top_holdings,
         "change_pct": etf.get("change_pct"),
         "close": gen.get("close", 0),
+        "prev_close": gen.get("prev_close", 0),
+        "change_rate": gen.get("change_rate", 0),
         "volume": round(volume_val, 1) if volume_val else 0,
         "year_1_return": gen.get("year_1_return", 0),
         "year_3_return": gen.get("year_3_return", 0),
