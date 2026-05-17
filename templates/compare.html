@@ -32,7 +32,7 @@
         .positive { color: #ef4444; font-weight: 700; }
         .negative { color: #22c55e; font-weight: 700; }
         .neutral { color: #60a5fa; font-weight: 700; }
-        .best-value { outline: 2px solid #fbbf24; outline-offset: -2px; border-radius: 4px; background: rgba(251,191,36,0.08); }
+        .best-value { outline: 1px solid #fbbf24; outline-offset: -1px; border-radius: 2px; background: rgba(251,191,36,0.06); font-weight: 800 !important; }
         .worst-value { opacity: 0.6; }
         
         .holdings-list { list-style: none; font-size: 13px; padding: 0; margin: 0; }
@@ -91,15 +91,15 @@
                     <tr><td><strong>类型</strong></td>{% for etf in etfs %}<td>{{ etf.category or etf.type }}</td>{% endfor %}</tr>
                     <tr><td><strong>发行方</strong></td>{% for etf in etfs %}<td>{{ etf.issuer_short or etf.issuer }}</td>{% endfor %}</tr>
                     <tr><td><strong>成立日期</strong></td>{% for etf in etfs %}<td>{{ etf.issue_date or "暂无" }}</td>{% endfor %}</tr>
-                    <tr><td><strong>规模（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='scale')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.scale == best %}best-value{% elif etf.scale == worst %}worst-value{% endif %}" style="font-weight:600;">{{ "%.2f"|format(etf.scale) }}</td>{% endfor %}</tr>
-                    <tr><td><strong>最新价</strong></td>{% for etf in etfs %}<td>{{ "%.3f"|format(etf.close) }}</td>{% endfor %}</tr>
-                    <tr><td><strong>涨跌幅</strong></td>{% for etf in etfs %}<td class="{% if etf.change_pct >= 0 %}positive{% else %}negative{% endif %}">{% if etf.change_pct >= 0 %}+{% endif %}{{ "%.2f"|format(etf.change_pct) }}%</td>{% endfor %}</tr>
+                    <!-- 核心对比指标 -->
+                    <tr><td><strong>规模（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='scale')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.scale == best %}best-value{% elif etf.scale == worst and best != worst %}worst-value{% endif %}" style="font-weight:600;">{{ "%.2f"|format(etf.scale) }}</td>{% endfor %}</tr>
+                    <tr><td><strong>日均成交（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='volume')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.volume == best %}best-value{% elif etf.volume == worst and best != worst %}worst-value{% endif %}">{{ "%.2f"|format(etf.volume) }}</td>{% endfor %}</tr>
                     <tr><td><strong>近1年收益</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='year_1_return')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.year_1_return == best %}best-value{% elif etf.year_1_return == worst and best != worst %}worst-value{% endif %} {% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">{% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_1_return) }}%</td>{% endfor %}</tr>
-                    <tr><td><strong>近3年收益</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='year_3_return')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.year_3_return == best %}best-value{% elif etf.year_3_return == worst and best != worst %}worst-value{% endif %} {% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">{% if etf.year_1_return and not etf.year_3_return %}不足3年{% else %}{% if etf.year_3_return >= 0%}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%{% endif %}</td>{% endfor %}</tr>
+                    <tr><td><strong>近3年收益</strong></td>{% for etf in etfs %}<td class="{% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">{% if etf.year_1_return and not etf.year_3_return %}不足3年{% else %}{% if etf.year_3_return >= 0%}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%{% endif %}</td>{% endfor %}</tr>
                     <tr><td><strong>最大回撤</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='max_drawdown')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.max_drawdown == best %}best-value{% elif etf.max_drawdown == worst and best != worst %}worst-value{% endif %} negative">{{ "%.2f"|format(etf.max_drawdown) }}%</td>{% endfor %}</tr>
                     <tr><td><strong>夏普比率</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='sharpe_ratio')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.sharpe_ratio == best %}best-value{% elif etf.sharpe_ratio == worst and best != worst %}worst-value{% endif %}" style="color:#fbbf24;font-weight:600;">{{ "%.2f"|format(etf.sharpe_ratio) }}</td>{% endfor %}</tr>
-                    <tr><td><strong>日均成交（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='volume')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.volume == best %}best-value{% elif etf.volume == worst and best != worst %}worst-value{% endif %}">{{ "%.2f"|format(etf.volume) }}</td>{% endfor %}</tr>
-                    <tr><td><strong>前五大持仓</strong></td>
+                    <tr><td><strong>涨跌幅</strong></td>{% for etf in etfs %}<td class="{% if etf.change_pct >= 0 %}positive{% else %}negative{% endif %}">{% if etf.change_pct >= 0 %}+{% endif %}{{ "%.2f"|format(etf.change_pct) }}%</td>{% endfor %}</tr>
+                    <tr><td><strong>前五大持仓</strong></td>                    <tr><td><strong>前五大持仓</strong></td>
                     {% for etf in etfs %}
                         <td>
                             <ul class="holdings-list">
