@@ -128,13 +128,13 @@
             const labels = etfs.map(e => e.code);
             const colors = ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
             
-            // Radar chart
+            // Radar chart with enhanced styling
             const radarCtx = document.getElementById('radarChart');
             if (radarCtx) {
                 new Chart(radarCtx, {
                     type: 'radar',
                     data: {
-                        labels: ['规模(亿)', '近1年收益', '最大回撤', '夏普比率', '日均成交'],
+                        labels: ['规模', '收益', '抗回撤', '夏普', '流动性'],
                         datasets: etfs.map((e, i) => ({
                             label: e.code,
                             data: [
@@ -145,28 +145,37 @@
                                 Math.min((e.volume || 0) * 10, 100)
                             ],
                             borderColor: colors[i % colors.length],
-                            backgroundColor: colors[i % colors.length] + '20',
+                            backgroundColor: colors[i % colors.length] + '18',
                             pointBackgroundColor: colors[i % colors.length],
+                            pointBorderColor: '#0a0e27',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 7,
+                            fill: true,
+                            tension: 0.3,
                         }))
                     },
                     options: {
                         responsive: true, maintainAspectRatio: false,
+                        animation: { duration: 800, easing: 'easeOutQuart' },
                         plugins: {
-                            legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, padding: 12 } }
+                            legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, padding: 12, usePointStyle: true } }
                         },
                         scales: {
                             r: {
-                                angleLines: { color: 'rgba(148,163,184,0.2)' },
-                                grid: { color: 'rgba(148,163,184,0.2)' },
-                                pointLabels: { color: '#94a3b8', font: { size: 11 } },
-                                ticks: { display: false }
+                                angleLines: { color: 'rgba(148,163,184,0.15)', lineWidth: 1 },
+                                grid: { color: 'rgba(148,163,184,0.12)', lineWidth: 1 },
+                                pointLabels: { color: '#c8cdd8', font: { size: 12, weight: '500' } },
+                                ticks: { display: false, stepSize: 20 },
+                                suggestedMin: -30,
+                                suggestedMax: 100
                             }
                         }
                     }
                 });
             }
-            
-            // Bar chart
+
+            // Bar chart with rounded corners and enhanced styling
             const barCtx = document.getElementById('barChart');
             if (barCtx) {
                 new Chart(barCtx, {
@@ -174,22 +183,44 @@
                     data: {
                         labels: etfs.map(e => e.code),
                         datasets: [
-                            { label: '规模(亿)', data: etfs.map(e => e.scale || 0), backgroundColor: 'rgba(59,130,246,0.7)', borderColor: '#3b82f6', borderWidth: 1, yAxisID: 'y' },
-                            { label: '日均成交(亿)', data: etfs.map(e => e.year_1_return || 0), backgroundColor: 'rgba(34,197,94,0.7)', borderColor: '#22c55e', borderWidth: 1, yAxisID: 'y1' }
+                            {
+                                label: '规模(亿)',
+                                data: etfs.map(e => e.scale || 0),
+                                backgroundColor: 'rgba(59,130,246,0.8)',
+                                borderColor: 'rgba(59,130,246,1)',
+                                borderWidth: 0,
+                                borderRadius: { topLeft: 6, topRight: 6 },
+                                borderSkipped: false,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: '日均成交(亿)',
+                                data: etfs.map(e => e.volume || 0),
+                                backgroundColor: 'rgba(34,197,94,0.8)',
+                                borderColor: 'rgba(34,197,94,1)',
+                                borderWidth: 0,
+                                borderRadius: { topLeft: 6, topRight: 6 },
+                                borderSkipped: false,
+                                yAxisID: 'y1'
+                            }
                         ]
                     },
                     options: {
                         responsive: true, maintainAspectRatio: false,
-                        plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 } } } },
+                        animation: { duration: 800, easing: 'easeOutQuart' },
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, usePointStyle: true } },
+                            tooltip: { backgroundColor: '#1e293b', titleColor: '#e2e8f0', bodyColor: '#94a3b8', borderColor: '#334155', borderWidth: 1, cornerRadius: 8, padding: 12 }
+                        },
                         scales: {
-                            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
-                            y: { position: 'left', ticks: { color: '#60a5fa' }, grid: { color: 'rgba(148,163,184,0.1)' }, title: { display: true, text: '规模(亿)', color: '#60a5fa' } },
-                            y1: { position: 'right', ticks: { color: '#22c55e', callback: v => v }, grid: { display: false }, title: { display: true, text: '日均成交(亿)', color: '#22c55e' } }
+                            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.06)' }, border: { display: false } },
+                            y: { position: 'left', ticks: { color: '#60a5fa', font: { size: 11 } }, grid: { color: 'rgba(148,163,184,0.08)' }, title: { display: true, text: '规模(亿)', color: '#60a5fa', font: { size: 12, weight: '500' } }, border: { display: false } },
+                            y1: { position: 'right', ticks: { color: '#22c55e', font: { size: 11 }, callback: v => v }, grid: { display: false }, title: { display: true, text: '日均成交(亿)', color: '#22c55e', font: { size: 12, weight: '500' } } }
                         }
                     }
                 });
             }
         }
-    </script>
+    </script>pt>
 </body>
 </html>
