@@ -279,9 +279,19 @@ for etf in full_data:
             parts = h.split(" ", 1)
             top_holdings.append({"name": parts[0], "weight": parts[1] if len(parts) > 1 else ""})
 
-    # 静态字段从AKShare原始数据取，gen只覆盖新enrich产生的字段
-    mcap = etf.get("market_cap", 0) or 0
-    scale_raw = mcap / 1e8 if mcap else 0
+    # 规模优先用非凸API（market_cap_total，真实AUM）
+    # 次选AKShare（可能是基金份额，需要乘以close换算）
+    mcap_ft = gen.get("market_cap", 0) or 0  # 非凸 API 真实AUM
+    mcap_ak = etf.get("market_cap", 0) or 0  # AKShare（基金份额）
+    close_price = gen.get("close", 0) or 0
+    if mcap_ft:
+        scale_raw = mcap_ft / 1e8
+    elif mcap_ak and close_price:
+        scale_raw = (mcap_ak * close_price) / 1e8  # 份额×净值=规模
+    elif mcap_ak:
+        scale_raw = mcap_ak / 1e8
+    else:
+        scale_raw = 0
     vol_raw = etf.get("volume", 0) or 0
     volume_val = vol_raw / 1e8 if vol_raw else 0
 
