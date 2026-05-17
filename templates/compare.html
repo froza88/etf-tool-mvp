@@ -225,14 +225,14 @@
                         <tr>
                             <td><strong>规模（亿元）</strong></td>
                             {% for etf in etfs %}
-                                <td style="font-weight: 600;">{{ "%.1f"|format(etf.scale) }}</td>
+                                <td style="font-weight: 600;">{{ "%.2f"|format(etf.scale) }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
                             <td><strong>近1年收益</strong></td>
                             {% for etf in etfs %}
                                 <td class="{% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">
-                                    {% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.1f"|format(etf.year_1_return) }}%
+                                    {% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_1_return) }}%
                                 </td>
                             {% endfor %}
                         </tr>
@@ -240,14 +240,14 @@
                             <td><strong>近3年收益</strong></td>
                             {% for etf in etfs %}
                                 <td class="{% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">
-                                    {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.1f"|format(etf.year_3_return) }}%
+                                    {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%
                                 </td>
                             {% endfor %}
                         </tr>
                         <tr>
                             <td><strong>最大回撤</strong></td>
                             {% for etf in etfs %}
-                                <td class="negative">{{ "%.1f"|format(etf.max_drawdown) }}%</td>
+                                <td class="negative">{{ "%.2f"|format(etf.max_drawdown) }}%</td>
                             {% endfor %}
                         </tr>
                         <tr>
@@ -259,7 +259,7 @@
                         <tr>
                             <td><strong>日均成交（亿元）</strong></td>
                             {% for etf in etfs %}
-                                <td>{{ "%.1f"|format(etf.volume) }}</td>
+                                <td>{{ "%.2f"|format(etf.volume) }}</td>
                             {% endfor %}
                         </tr>
                         <tr>

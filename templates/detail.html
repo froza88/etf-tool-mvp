@@ -293,12 +293,12 @@
             <div class="info-grid">
                 <div class="info-card" style="border-left-color: #3b82f6;">
                     <h3>💰 规模（亿元）</h3>
-                    <div class="value">{{ "%.1f"|format(etf.scale) }}</div>
+                    <div class="value">{{ "%.2f"|format(etf.scale) }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #6366f1;">
                     <h3>📦 份额（亿份）</h3>
-                    <div class="value">{{ "%.1f"|format(etf.shares) }}</div>
+                    <div class="value">{{ "%.2f"|format(etf.shares) }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #8b5cf6;">
@@ -314,20 +314,20 @@
                 <div class="info-card" style="border-left-color: {% if etf.year_1_return >= 0 %}#ef4444{% else %}#22c55e{% endif %};">
                     <h3>📈 近1年收益</h3>
                     <div class="value {% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">
-                        {% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.1f"|format(etf.year_1_return) }}%
+                        {% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_1_return) }}%
                     </div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: {% if etf.year_3_return >= 0 %}#ef4444{% else %}#22c55e{% endif %};">
                     <h3>📈 近3年收益</h3>
                     <div class="value {% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">
-                        {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.1f"|format(etf.year_3_return) }}%
+                        {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%
                     </div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #22c55e;">
                     <h3>📉 最大回撤</h3>
-                    <div class="value negative">{{ "%.1f"|format(etf.max_drawdown) }}%</div>
+                    <div class="value negative">{{ "%.2f"|format(etf.max_drawdown) }}%</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #fbbf24;">
@@ -337,12 +337,12 @@
                 
                 <div class="info-card" style="border-left-color: #8b5cf6;">
                     <h3>🎯 跟踪误差（%）</h3>
-                    <div class="value" style="color: #a78bfa;">{{ "%.1f"|format(etf.scale) }}</div>
+                    <div class="value" style="color: #a78bfa;">{{ "%.2f"|format(etf.scale) }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #06b6d4;">
                     <h3>💧 日均成交（亿元）</h3>
-                    <div class="value" style="color: #22d3ee;">{{ "%.1f"|format(etf.volume) }}</div>
+                    <div class="value" style="color: #22d3ee;">{{ "%.2f"|format(etf.volume) }}</div>
                 </div>
             </div>
             

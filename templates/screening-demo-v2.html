@@ -310,10 +310,10 @@
                         <tr class="passed">
                             <td>{{ etf.name }}</td>
                             <td>{{ etf.code }}</td>
-                            <td>{{ etf.scale }}</td>
-                            <td>{{ etf.change_pct }}%</td>
+                            <td>{{ "%.2f"|format(etf.scale) }}</td>
+                            <td>{{ "%.2f"|format(etf.change_pct) }}%</td>
                             <td>{{ etf.category }}</td>
-                            <td>{{ etf.volume }}亿</td>
+                            <td>{{ "%.2f"|format(etf.volume) }}亿</td>
                         </tr>
                         {% endfor %}
                     </tbody>
