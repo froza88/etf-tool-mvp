@@ -176,6 +176,47 @@ def get_etf_api(code):
         return jsonify({"error": "ETF不存在"}), 404
     return jsonify(etf)
 
+@app.route('/api/risk/<code>')
+def get_risk_api(code):
+    """按需从盈米获取风险指标"""
+    import subprocess, json
+    cmd = f'export PATH="$PATH:/Users/apangduo/.workbuddy/binaries/node/versions/22.12.0/bin" && yingmi-skill-cli mcp call GetBatchFundPerformance --input \'{{"fundCodes":["{code}"]}}\' 2>/dev/null'
+    try:
+        r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
+        raw = json.loads(r.stdout)
+        if not raw or 'error' in raw[0] if isinstance(raw, list) else True:
+            return jsonify({"error": "盈米数据不可用", "fallback": True}), 200
+        fund = raw[0]
+        da = fund.get('data', {})
+        metrics = da.get('metricsAnalyzes', [])
+        result = {}
+        for p in ['oneYear', 'twoYear', 'threeYear', 'fiveYear']:
+            pm = next((m for m in metrics if m['stageType'] == p), None)
+            if pm and pm.get('isValid'):
+                ms = {}
+                for mm in pm.get('metrics', []):
+                    t = mm.get('title', '')
+                    v = mm.get('metricsValueText', '')
+                    try:
+                        ms[t] = float(v.replace('%', ''))
+                    except:
+                        ms[t] = v
+                # calmar = return / abs(drawdown)
+                ret = ms.get('收益能力', 0)
+                dd = ms.get('抗回撤能力', 0)
+                ms['卡玛值'] = round(ret / abs(dd), 2) if dd and dd != 0 else 0
+                result[p] = ms
+            else:
+                result[p] = {"收益能力": 0, "抗波动能力": 0, "抗回撤能力": 0, "投资性价比": 0, "卡玛值": 0}
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e), "fallback": True}), 200
+
+@app.route('/risk/<code>')
+def risk_page(code):
+    """风险指标详情页"""
+    return render_template('risk.html', code=code)
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, host='0.0.0.0', port=port)

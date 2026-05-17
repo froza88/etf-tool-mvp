@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风险指标 - {{ code }}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: #0a0e27; color: #e2e8f0; }
+        .container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+        .back-link { color: #60a5fa; text-decoration: none; font-size: 14px; }
+        .back-link:hover { text-decoration: underline; }
+        h1 { font-size: 20px; font-weight: 600; margin: 12px 0 4px; }
+        .subtitle { color: #94a3b8; font-size: 13px; margin-bottom: 24px; }
+        .loading { text-align: center; padding: 60px 0; color: #94a3b8; font-size: 15px; }
+        .error-box { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 20px; text-align: center; color: #f87171; }
+        
+        .period-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .period-tab { padding: 8px 18px; border-radius: 6px; background: #1e293b; color: #94a3b8; border: none; cursor: pointer; font-size: 13px; }
+        .period-tab.active { background: #3b82f6; color: #fff; }
+        .period-tab:hover { background: #334155; }
+        
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+        .metric-card { background: #1e293b; border-radius: 10px; padding: 16px; }
+        .metric-label { font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+        .metric-value { font-size: 22px; font-weight: 600; }
+        .metric-value.positive { color: #22c55e; }
+        .metric-value.negative { color: #ef4444; }
+        .metric-value.neutral { color: #60a5fa; }
+        
+        .chart-wrapper { background: #1e293b; border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+        .chart-wrapper h3 { font-size: 14px; font-weight: 500; margin-bottom: 12px; color: #e2e8f0; }
+        .chart-box { position: relative; width: 100%; height: 280px; }
+        
+        .fallback-note { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3); border-radius: 8px; padding: 14px 18px; font-size: 13px; color: #fbbf24; margin-bottom: 20px; }
+        .footer-info { margin-top: 40px; padding-top: 16px; border-top: 1px solid #1e293b; color: #6b7280; font-size: 11px; line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 返回列表</a>
+        <h1 id="title">{{ code }}</h1>
+        <div class="subtitle" id="subtitle">加载ETF信息...</div>
+        
+        <div id="fallback-note" class="fallback-note" style="display:none;">
+            ⚠️ 盈米数据暂不可用，以下显示为自估算法的参考值。
+        </div>
+        
+        <div class="period-tabs" id="period-tabs">
+            <button class="period-tab active" onclick="switchPeriod('oneYear')">近1年</button>
+            <button class="period-tab" onclick="switchPeriod('twoYear')">近2年</button>
+            <button class="period-tab" onclick="switchPeriod('threeYear')">近3年</button>
+            <button class="period-tab" onclick="switchPeriod('fiveYear')">近5年</button>
+        </div>
+        
+        <div class="metric-grid" id="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">累计收益</div>
+                <div class="metric-value neutral" id="m-return">--</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">年化波动率</div>
+                <div class="metric-value neutral" id="m-volatility">--</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">最大回撤</div>
+                <div class="metric-value neutral" id="m-drawdown">--</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">夏普比率</div>
+                <div class="metric-value neutral" id="m-sharpe">--</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">卡玛值</div>
+                <div class="metric-value neutral" id="m-calmar">--</div>
+            </div>
+        </div>
+        
+        <div class="chart-wrapper" id="chart-wrapper">
+            <h3>多周期指标对比</h3>
+            <div class="chart-box">
+                <canvas id="multiChart" role="img" aria-label="多周期风险指标对比图">浏览器不支持Canvas</canvas>
+            </div>
+        </div>
+        
+        <div class="footer-info">
+            风险数据来源：盈米/且慢（按需查询）<br>
+            行情数据来源：非凸科技<br>
+            数据仅供参考，不构成投资建议。
+        </div>
+    </div>
+    
+    <script>
+        const code = '{{ code }}';
+        let allData = {};
+        let currentPeriod = 'oneYear';
+        let multiChart = null;
+        
+        // Load ETF detail
+        fetch('/api/etf/' + code)
+            .then(r => r.json())
+            .then(etf => {
+                document.getElementById('title').innerHTML = code + ' - ' + (etf.name || '') + (etf.issuer_short ? ' - ' + etf.issuer_short : '');
+                document.getElementById('subtitle').innerHTML = '规模：' + (etf.scale || 0).toFixed(2) + '亿 ｜ 份额：' + (etf.shares || 0).toFixed(2) + '亿份 ｜ 最新价：' + (etf.close || 0).toFixed(3);
+            });
+        
+        // Load risk data from yingmi
+        fetch('/api/risk/' + code)
+            .then(r => r.json())
+            .then(data => {
+                if (data.fallback) {
+                    document.getElementById('fallback-note').style.display = 'block';
+                    // Use our own computed data
+                    fetch('/api/etf/' + code)
+                        .then(r => r.json())
+                        .then(etf => {
+                            allData = {
+                                oneYear: {
+                                    '收益能力': etf.year_1_return || 0,
+                                    '抗波动能力': 0,
+                                    '抗回撤能力': parseFloat((etf.max_drawdown || 0).toFixed(2)),
+                                    '投资性价比': etf.sharpe_ratio || 0,
+                                    '卡玛值': etf.year_1_return && etf.max_drawdown ? parseFloat((etf.year_1_return / Math.abs(etf.max_drawdown)).toFixed(2)) : 0
+                                },
+                                threeYear: {
+                                    '收益能力': etf.year_3_return || 0,
+                                    '抗波动能力': 0,
+                                    '抗回撤能力': 0,
+                                    '投资性价比': 0,
+                                    '卡玛值': 0
+                                }
+                            };
+                            updateDisplay();
+                            renderMultiChart();
+                        });
+                } else {
+                    allData = data;
+                    updateDisplay();
+                    renderMultiChart();
+                }
+            })
+            .catch(() => {
+                document.getElementById('fallback-note').innerHTML = '⚠️ 数据加载失败，请稍后重试。';
+                document.getElementById('fallback-note').style.display = 'block';
+            });
+        
+        function switchPeriod(p) {
+            currentPeriod = p;
+            document.querySelectorAll('.period-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[onclick="switchPeriod('${p}')"]`).classList.add('active');
+            updateDisplay();
+        }
+        
+        function updateDisplay() {
+            const d = allData[currentPeriod] || {};
+            const ret = d['收益能力'] || 0;
+            const vol = d['抗波动能力'] || 0;
+            const dd = d['抗回撤能力'] || 0;
+            const sharpe = d['投资性价比'] || 0;
+            const calmar = d['卡玛值'] || 0;
+            
+            setVal('m-return', (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%', ret >= 0);
+            setVal('m-volatility', vol ? vol.toFixed(2) + '%' : '暂无', null);
+            setVal('m-drawdown', dd ? dd.toFixed(2) + '%' : '暂无', !dd || dd >= 0);
+            setVal('m-sharpe', sharpe ? sharpe.toFixed(2) : '暂无', !sharpe || sharpe >= 1);
+            setVal('m-calmar', calmar ? calmar.toFixed(2) : '暂无', !calmar || calmar >= 1);
+        }
+        
+        function setVal(id, text, isPositive) {
+            const el = document.getElementById(id);
+            el.textContent = text;
+            el.className = 'metric-value';
+            if (isPositive === true) el.classList.add('positive');
+            else if (isPositive === false) el.classList.add('negative');
+            else el.classList.add('neutral');
+        }
+        
+        function renderMultiChart() {
+            const periods = ['oneYear', 'twoYear', 'threeYear', 'fiveYear'];
+            const labels = ['近1年', '近2年', '近3年', '近5年'];
+            const rets = periods.map(p => allData[p] ? (allData[p]['收益能力'] || 0) : 0);
+            const vols = periods.map(p => allData[p] ? (allData[p]['抗波动能力'] || 0) : 0);
+            const dds = periods.map(p => allData[p] ? (allData[p]['抗回撤能力'] || 0) : 0);
+            
+            if (multiChart) multiChart.destroy();
+            
+            const ctx = document.getElementById('multiChart').getContext('2d');
+            multiChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: '累计收益(%)', data: rets, backgroundColor: 'rgba(34,197,94,0.6)', borderColor: '#22c55e', borderWidth: 1 },
+                        { label: '年化波动率(%)', data: vols, backgroundColor: 'rgba(96,165,250,0.6)', borderColor: '#60a5fa', borderWidth: 1 },
+                        { label: '最大回撤(%)', data: dds, backgroundColor: 'rgba(239,68,68,0.6)', borderColor: '#ef4444', borderWidth: 1 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8', font: { size: 11 } } } },
+                    scales: {
+                        x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
+                        y: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(148,163,184,0.1)' } }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

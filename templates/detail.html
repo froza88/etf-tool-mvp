@@ -359,9 +359,9 @@
                     <div class="value" style="color: #fbbf24;">{{ "%.2f"|format(etf.sharpe_ratio) }}</div>
                 </div>
                 
-                <div class="info-card" style="border-left-color: #8b5cf6;">
-                    <h3>🎯 跟踪误差（%）</h3>
-                    <div class="value" style="color: #a78bfa;">{{ "%.2f"|format(etf.scale) }}</div>
+                <div class="info-card" style="border-left-color: #8b5cf6; cursor:pointer;" onclick="window.location.href='/risk/{{ etf.code }}'">
+                    <h3>📊 风险指标详情 →</h3>
+                    <div class="value" style="color: #a78bfa; font-size: 13px;">波动率·回撤·夏普·卡玛</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #06b6d4;">
