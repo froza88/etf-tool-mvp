@@ -274,7 +274,7 @@
     <div class="container">
         <div class="header">
             <a href="/" class="back-link">← 返回列表</a>
-            <h1>{{ etf.code }} - {{ etf.name }}{% if etf.issuer %} - {{ etf.issuer }}{% endif %}</h1>
+            <h1>{{ etf.code }} - {{ etf.name }}{% if etf.issuer_short %} - {{ etf.issuer_short }}{% endif %}</h1>
             <div class="price-box">
                 <span class="price-label">最新价</span>
                 <span class="price-value">{{ "%.3f"|format(etf.close) }}</span>
