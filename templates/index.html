@@ -522,10 +522,11 @@
                 const y3Sign = y3 >= 0 ? '+' : '';
                 
                 let badgeClass = 'badge-stock';
-                if (etf.type.includes('QDII')) badgeClass = 'badge-qdii';
-                if (etf.type.includes('债券')) badgeClass = 'badge-bond';
-                if (etf.type.includes('商品')) badgeClass = 'badge-commodity';
-                if (etf.type.includes('货币')) badgeClass = 'badge-money';
+                const typeStr = etf.category || '';
+                if (etf.name && etf.name.includes('债券')) badgeClass = 'badge-bond';
+                if (typeStr.includes('QDII') || (etf.name && etf.name.includes('纳指'))) badgeClass = 'badge-qdii';
+                if (typeStr.includes('商品') || (etf.name && etf.name.includes('黄金'))) badgeClass = 'badge-commodity';
+                if (typeStr.includes('货币')) badgeClass = 'badge-money';
                 
                 html += '<tr>';
                 html += `<td><input type="checkbox" class="checkbox" value="${etf.code}" ${isSelected ? 'checked' : ''} onchange="toggleSelect(this)"></td>`;
