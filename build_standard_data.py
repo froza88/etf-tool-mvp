@@ -13,6 +13,7 @@ ETF 数据清洗和标准化脚本
 """
 import json
 import sys
+from modules.issuer_extract import get_full_name as full_issuer_name
 import time
 import math
 import warnings
@@ -261,6 +262,7 @@ for etf in full_data:
     gen = gen_map.get(code, {})
 
     name, issuer = extract_name_issuer(raw_name)
+    issuer = full_issuer_name(issuer)  # 短名→全名
     if gen:
         # gen数据只覆盖收益率/持仓等，不覆盖名称/发行人
         # 但若我们提取不到发行人而gen有，则用gen的
