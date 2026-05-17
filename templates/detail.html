@@ -358,6 +358,11 @@
                     <h3>💧 日均成交（亿元）</h3>
                     <div class="value" style="color: #22d3ee;">{{ "%.2f"|format(etf.volume) }}</div>
                 </div>
+
+                <div class="info-card" style="border-left-color: #64748b;">
+                    <h3>📅 成立日期</h3>
+                    <div class="value" style="font-size: 18px; color: #94a3b8;">{{ etf.issue_date or '暂无' }}</div>
+                </div>
             </div>
             
             <div class="section-title">📈 历史净值走势</div>

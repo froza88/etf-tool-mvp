@@ -90,6 +90,7 @@
                     <tr><td><strong>代码</strong></td>{% for etf in etfs %}<td style="font-weight:600;">{{ etf.code }}</td>{% endfor %}</tr>
                     <tr><td><strong>类型</strong></td>{% for etf in etfs %}<td>{{ etf.category or etf.type }}</td>{% endfor %}</tr>
                     <tr><td><strong>发行方</strong></td>{% for etf in etfs %}<td>{{ etf.issuer_short or etf.issuer }}</td>{% endfor %}</tr>
+                    <tr><td><strong>成立日期</strong></td>{% for etf in etfs %}<td>{{ etf.issue_date or "暂无" }}</td>{% endfor %}</tr>
                     <tr><td><strong>规模（亿元）</strong></td>{% for etf in etfs %}{% set vals = loop.parent.etfs|map(attribute='scale')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.scale == best %}best-value{% elif vals|unique|length > 1 and etf.scale == worst %}worst-value{% endif %}" style="font-weight:600;">{{ "%.2f"|format(etf.scale) }}</td>{% endfor %}</tr>
                     <tr><td><strong>最新价</strong></td>{% for etf in etfs %}<td>{{ "%.3f"|format(etf.close) }}</td>{% endfor %}</tr>
                     <tr><td><strong>涨跌幅</strong></td>{% for etf in etfs %}<td class="{% if etf.change_pct >= 0 %}positive{% else %}negative{% endif %}">{% if etf.change_pct >= 0 %}+{% endif %}{{ "%.2f"|format(etf.change_pct) }}%</td>{% endfor %}</tr>
