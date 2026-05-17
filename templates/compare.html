@@ -32,7 +32,7 @@
         .positive { color: #ef4444; font-weight: 700; }
         .negative { color: #22c55e; font-weight: 700; }
         .neutral { color: #60a5fa; font-weight: 700; }
-        .best-value { outline: 1px solid #fbbf24; outline-offset: -1px; border-radius: 2px; background: rgba(251,191,36,0.06); font-weight: 800 !important; }
+        .best-value { outline: 1px solid #fbbf24; border-radius: 1px; background: rgba(251,191,36,0.06); }
         .worst-value { opacity: 0.6; }
         
         .holdings-list { list-style: none; font-size: 13px; padding: 0; margin: 0; }
@@ -99,21 +99,7 @@
                     <tr><td><strong>最大回撤</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='max_drawdown')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.max_drawdown == best %}best-value{% elif etf.max_drawdown == worst and best != worst %}worst-value{% endif %} negative">{{ "%.2f"|format(etf.max_drawdown) }}%</td>{% endfor %}</tr>
                     <tr><td><strong>夏普比率</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='sharpe_ratio')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td class="{% if etf.sharpe_ratio == best %}best-value{% elif etf.sharpe_ratio == worst and best != worst %}worst-value{% endif %}" style="color:#fbbf24;font-weight:600;">{{ "%.2f"|format(etf.sharpe_ratio) }}</td>{% endfor %}</tr>
                     <tr><td><strong>涨跌幅</strong></td>{% for etf in etfs %}<td class="{% if etf.change_pct >= 0 %}positive{% else %}negative{% endif %}">{% if etf.change_pct >= 0 %}+{% endif %}{{ "%.2f"|format(etf.change_pct) }}%</td>{% endfor %}</tr>
-                    <tr><td><strong>前五大持仓</strong></td>                    <tr><td><strong>前五大持仓</strong></td>
-                    {% for etf in etfs %}
-                        <td>
-                            <ul class="holdings-list">
-                                {% if etf.top_holdings and etf.top_holdings is iterable %}
-                                    {% for h in etf.top_holdings[:5] %}
-                                        <li><span class="holding-name">{{ h.name if h.name else h }}</span>{% if h.weight %}<span class="holding-weight">{{ h.weight }}</span>{% endif %}</li>
-                                    {% endfor %}
-                                {% else %}
-                                    <li style="color:#8a8fa3;">暂无数据</li>
-                                {% endif %}
-                            </ul>
-                        </td>
-                    {% endfor %}
-                    </tr>
+
                     <tr><td><strong>操作</strong></td>{% for etf in etfs %}<td><a href="/etf/{{ etf.code }}" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:13px;">查看详情 →</a></td>{% endfor %}</tr>
                 </tbody>
             </table>
