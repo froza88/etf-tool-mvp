@@ -240,7 +240,11 @@
                             <td><strong>近3年收益</strong></td>
                             {% for etf in etfs %}
                                 <td class="{% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">
-                                    {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%
+                                    {% if etf.year_1_return and not etf.year_3_return %}
+                                        不足3年
+                                    {% else %}
+                                        {% if etf.year_3_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%
+                                    {% endif %}
                                 </td>
                             {% endfor %}
                         </tr>

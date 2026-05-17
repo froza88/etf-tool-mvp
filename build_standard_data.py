@@ -320,7 +320,7 @@ for etf in full_data:
         "change_rate": gen.get("change_rate", 0),
         "volume": round(volume_val, 1) if volume_val else 0,
         "year_1_return": gen.get("year_1_return", 0),
-        "year_3_return": gen.get("year_3_return", 0),
+        "year_3_return": gen.get("year_3_return", 0) if abs((gen.get("year_3_return") or 0) - (gen.get("year_1_return") or 0)) > 0.1 else 0,
         "max_drawdown": gen.get("max_drawdown", 0),
         "sharpe_ratio": gen.get("sharpe_ratio", 0.0),
         "category": "宽基" if any(k in raw_name for k in ["沪深300", "中证500", "上证50", "科创50"]) else "行业",

@@ -1013,7 +1013,7 @@
     "change_rate": -0.029062,
     "volume": 0.0,
     "year_1_return": -27.7,
-    "year_3_return": -27.7,
+    "year_3_return": 0,
     "max_drawdown": -31.2,
     "sharpe_ratio": -2.16,
     "category": "行业"
@@ -2677,7 +2677,7 @@
     "change_rate": -0.032051,
     "volume": 0.1,
     "year_1_return": -7.7,
-    "year_3_return": -7.7,
+    "year_3_return": 0,
     "max_drawdown": -34.9,
     "sharpe_ratio": -1.86,
     "category": "行业"
@@ -3197,7 +3197,7 @@
     "change_rate": -0.046187,
     "volume": 0.0,
     "year_1_return": -5.8,
-    "year_3_return": -5.8,
+    "year_3_return": 0,
     "max_drawdown": -28.3,
     "sharpe_ratio": -0.43,
     "category": "行业"
@@ -4757,7 +4757,7 @@
     "change_rate": -0.021368,
     "volume": 0.1,
     "year_1_return": -8.2,
-    "year_3_return": -8.2,
+    "year_3_return": 0,
     "max_drawdown": -28.3,
     "sharpe_ratio": -1.49,
     "category": "行业"
@@ -5157,7 +5157,7 @@
     "change_rate": -0.030688,
     "volume": 0.1,
     "year_1_return": -8.8,
-    "year_3_return": -8.8,
+    "year_3_return": 0,
     "max_drawdown": -36.5,
     "sharpe_ratio": -1.81,
     "category": "行业"
@@ -5955,7 +5955,7 @@
     "change_rate": -0.019055,
     "volume": 0.0,
     "year_1_return": 30.0,
-    "year_3_return": 30.0,
+    "year_3_return": 0,
     "max_drawdown": -27.7,
     "sharpe_ratio": 0.71,
     "category": "行业"
@@ -6419,7 +6419,7 @@
     "change_rate": -0.02706,
     "volume": 0.0,
     "year_1_return": -21.4,
-    "year_3_return": -21.4,
+    "year_3_return": 0,
     "max_drawdown": -32.3,
     "sharpe_ratio": -2.11,
     "category": "行业"
@@ -6619,7 +6619,7 @@
     "change_rate": -0.026961,
     "volume": 0.0,
     "year_1_return": -18.3,
-    "year_3_return": -18.3,
+    "year_3_return": 0,
     "max_drawdown": -22.7,
     "sharpe_ratio": -1.69,
     "category": "行业"
@@ -6659,7 +6659,7 @@
     "change_rate": -0.032425,
     "volume": 0.0,
     "year_1_return": 48.6,
-    "year_3_return": 48.6,
+    "year_3_return": 0,
     "max_drawdown": -31.8,
     "sharpe_ratio": 1.59,
     "category": "行业"
@@ -6779,7 +6779,7 @@
     "change_rate": -0.002566,
     "volume": 0.0,
     "year_1_return": 16.1,
-    "year_3_return": 16.1,
+    "year_3_return": 0,
     "max_drawdown": -6.4,
     "sharpe_ratio": 1.69,
     "category": "行业"
@@ -7678,7 +7678,7 @@
     "change_rate": -0.022819,
     "volume": 0.0,
     "year_1_return": -26.9,
-    "year_3_return": -26.9,
+    "year_3_return": 0,
     "max_drawdown": -27.7,
     "sharpe_ratio": -1.32,
     "category": "行业"
@@ -7958,7 +7958,7 @@
     "change_rate": -0.027569,
     "volume": 0.0,
     "year_1_return": -23.9,
-    "year_3_return": -23.9,
+    "year_3_return": 0,
     "max_drawdown": -25.9,
     "sharpe_ratio": -2.12,
     "category": "行业"
@@ -8238,7 +8238,7 @@
     "change_rate": -0.011312,
     "volume": 0.0,
     "year_1_return": 159.6,
-    "year_3_return": 159.6,
+    "year_3_return": 0,
     "max_drawdown": -13.9,
     "sharpe_ratio": 1.97,
     "category": "行业"
@@ -8358,7 +8358,7 @@
     "change_rate": 0.011851,
     "volume": 0.0,
     "year_1_return": 9.5,
-    "year_3_return": 9.5,
+    "year_3_return": 0,
     "max_drawdown": -10.4,
     "sharpe_ratio": 1.13,
     "category": "行业"
@@ -8678,7 +8678,7 @@
     "change_rate": 0.052072,
     "volume": 0.0,
     "year_1_return": 0.7,
-    "year_3_return": 0.7,
+    "year_3_return": 0,
     "max_drawdown": -20.9,
     "sharpe_ratio": 0.0,
     "category": "行业"
@@ -8758,7 +8758,7 @@
     "change_rate": -0.013798,
     "volume": 0.0,
     "year_1_return": 32.7,
-    "year_3_return": 32.7,
+    "year_3_return": 0,
     "max_drawdown": -19.3,
     "sharpe_ratio": 2.38,
     "category": "行业"
@@ -8998,7 +8998,7 @@
     "change_rate": -0.034006,
     "volume": 0.0,
     "year_1_return": 82.0,
-    "year_3_return": 82.0,
+    "year_3_return": 0,
     "max_drawdown": -31.8,
     "sharpe_ratio": 1.62,
     "category": "行业"
@@ -9657,7 +9657,7 @@
     "change_rate": -0.024865,
     "volume": 0.0,
     "year_1_return": -8.8,
-    "year_3_return": -8.8,
+    "year_3_return": 0,
     "max_drawdown": -30.9,
     "sharpe_ratio": -1.76,
     "category": "行业"
@@ -10017,7 +10017,7 @@
     "change_rate": 0.001656,
     "volume": 0.0,
     "year_1_return": 23.1,
-    "year_3_return": 23.1,
+    "year_3_return": 0,
     "max_drawdown": -14.6,
     "sharpe_ratio": 1.82,
     "category": "行业"
@@ -10057,7 +10057,7 @@
     "change_rate": -0.019643,
     "volume": 0.0,
     "year_1_return": 11.6,
-    "year_3_return": 11.6,
+    "year_3_return": 0,
     "max_drawdown": -28.5,
     "sharpe_ratio": 0.68,
     "category": "行业"
@@ -10457,7 +10457,7 @@
     "change_rate": -0.033195,
     "volume": 0.0,
     "year_1_return": -29.0,
-    "year_3_return": -29.0,
+    "year_3_return": 0,
     "max_drawdown": -30.0,
     "sharpe_ratio": -2.39,
     "category": "行业"
@@ -10497,7 +10497,7 @@
     "change_rate": 0.009615,
     "volume": 0.1,
     "year_1_return": 89.4,
-    "year_3_return": 89.4,
+    "year_3_return": 0,
     "max_drawdown": -12.8,
     "sharpe_ratio": 0.83,
     "category": "行业"
@@ -10636,7 +10636,7 @@
     "change_rate": -0.045503,
     "volume": 0.0,
     "year_1_return": -12.4,
-    "year_3_return": -12.4,
+    "year_3_return": 0,
     "max_drawdown": -27.6,
     "sharpe_ratio": -1.36,
     "category": "行业"
@@ -10916,7 +10916,7 @@
     "change_rate": -0.01768,
     "volume": 0.0,
     "year_1_return": 33.7,
-    "year_3_return": 33.7,
+    "year_3_return": 0,
     "max_drawdown": -16.8,
     "sharpe_ratio": 1.75,
     "category": "行业"
@@ -11036,7 +11036,7 @@
     "change_rate": -0.005568,
     "volume": 0.0,
     "year_1_return": -10.1,
-    "year_3_return": -10.1,
+    "year_3_return": 0,
     "max_drawdown": -23.9,
     "sharpe_ratio": -0.65,
     "category": "行业"
@@ -11276,7 +11276,7 @@
     "change_rate": 0.030548,
     "volume": 0.0,
     "year_1_return": 14.0,
-    "year_3_return": 14.0,
+    "year_3_return": 0,
     "max_drawdown": -19.7,
     "sharpe_ratio": 0.44,
     "category": "行业"
@@ -11876,7 +11876,7 @@
     "change_rate": -0.031149,
     "volume": 0.0,
     "year_1_return": 53.0,
-    "year_3_return": 53.0,
+    "year_3_return": 0,
     "max_drawdown": -31.6,
     "sharpe_ratio": 1.83,
     "category": "行业"
@@ -12495,7 +12495,7 @@
     "change_rate": -0.003401,
     "volume": 0.0,
     "year_1_return": 15.9,
-    "year_3_return": 15.9,
+    "year_3_return": 0,
     "max_drawdown": -14.6,
     "sharpe_ratio": 1.19,
     "category": "行业"
@@ -12655,7 +12655,7 @@
     "change_rate": -0.030084,
     "volume": 0.0,
     "year_1_return": -22.0,
-    "year_3_return": -22.0,
+    "year_3_return": 0,
     "max_drawdown": -34.8,
     "sharpe_ratio": -1.86,
     "category": "行业"
@@ -12695,7 +12695,7 @@
     "change_rate": -0.004985,
     "volume": 0.0,
     "year_1_return": 2.5,
-    "year_3_return": 2.5,
+    "year_3_return": 0,
     "max_drawdown": -5.7,
     "sharpe_ratio": 0.29,
     "category": "行业"
@@ -12815,7 +12815,7 @@
     "change_rate": -0.031511,
     "volume": 0.0,
     "year_1_return": 3.5,
-    "year_3_return": 3.5,
+    "year_3_return": 0,
     "max_drawdown": -14.4,
     "sharpe_ratio": 0.65,
     "category": "行业"
@@ -12855,7 +12855,7 @@
     "change_rate": -0.03316,
     "volume": 0.0,
     "year_1_return": 50.5,
-    "year_3_return": 50.5,
+    "year_3_return": 0,
     "max_drawdown": -31.6,
     "sharpe_ratio": 1.91,
     "category": "行业"
@@ -13354,7 +13354,7 @@
     "change_rate": -0.017263,
     "volume": 0.0,
     "year_1_return": -19.4,
-    "year_3_return": -19.4,
+    "year_3_return": 0,
     "max_drawdown": -28.0,
     "sharpe_ratio": -1.27,
     "category": "行业"
@@ -13434,7 +13434,7 @@
     "change_rate": 0.033938,
     "volume": 0.0,
     "year_1_return": 32.1,
-    "year_3_return": 32.1,
+    "year_3_return": 0,
     "max_drawdown": -19.4,
     "sharpe_ratio": 0.44,
     "category": "行业"
@@ -13733,7 +13733,7 @@
     "change_rate": -0.020484,
     "volume": 0.0,
     "year_1_return": 9.9,
-    "year_3_return": 9.9,
+    "year_3_return": 0,
     "max_drawdown": -17.0,
     "sharpe_ratio": 0.75,
     "category": "行业"
@@ -14152,7 +14152,7 @@
     "change_rate": -0.019499,
     "volume": 0.0,
     "year_1_return": 7.0,
-    "year_3_return": 7.0,
+    "year_3_return": 0,
     "max_drawdown": -19.8,
     "sharpe_ratio": 0.93,
     "category": "行业"
@@ -14312,7 +14312,7 @@
     "change_rate": -0.013252,
     "volume": 0.0,
     "year_1_return": -0.2,
-    "year_3_return": -0.2,
+    "year_3_return": 0,
     "max_drawdown": -13.5,
     "sharpe_ratio": -0.01,
     "category": "行业"
@@ -14451,7 +14451,7 @@
     "change_rate": 0.048649,
     "volume": 0.0,
     "year_1_return": 14.6,
-    "year_3_return": 14.6,
+    "year_3_return": 0,
     "max_drawdown": -20.6,
     "sharpe_ratio": -0.06,
     "category": "行业"
@@ -14571,7 +14571,7 @@
     "change_rate": -0.008014,
     "volume": 0.0,
     "year_1_return": 12.3,
-    "year_3_return": 12.3,
+    "year_3_return": 0,
     "max_drawdown": -11.6,
     "sharpe_ratio": 1.88,
     "category": "行业"
@@ -15230,7 +15230,7 @@
     "change_rate": -0.021302,
     "volume": 0.0,
     "year_1_return": -15.5,
-    "year_3_return": -15.5,
+    "year_3_return": 0,
     "max_drawdown": -20.8,
     "sharpe_ratio": -1.7,
     "category": "行业"
@@ -15270,7 +15270,7 @@
     "change_rate": -0.02369,
     "volume": 0.0,
     "year_1_return": 40.2,
-    "year_3_return": 40.2,
+    "year_3_return": 0,
     "max_drawdown": -16.5,
     "sharpe_ratio": 2.38,
     "category": "行业"
@@ -15310,7 +15310,7 @@
     "change_rate": -0.016575,
     "volume": 0.0,
     "year_1_return": 22.2,
-    "year_3_return": 22.2,
+    "year_3_return": 0,
     "max_drawdown": -19.1,
     "sharpe_ratio": 1.99,
     "category": "行业"
@@ -15510,7 +15510,7 @@
     "change_rate": -0.02994,
     "volume": 0.0,
     "year_1_return": -14.9,
-    "year_3_return": -14.9,
+    "year_3_return": 0,
     "max_drawdown": -20.8,
     "sharpe_ratio": -1.9,
     "category": "行业"
@@ -15670,7 +15670,7 @@
     "change_rate": -0.025189,
     "volume": 0.0,
     "year_1_return": -21.3,
-    "year_3_return": -21.3,
+    "year_3_return": 0,
     "max_drawdown": -25.5,
     "sharpe_ratio": -1.82,
     "category": "行业"
@@ -16108,7 +16108,7 @@
     "change_rate": -0.011737,
     "volume": 0.0,
     "year_1_return": 26.7,
-    "year_3_return": 26.7,
+    "year_3_return": 0,
     "max_drawdown": -9.4,
     "sharpe_ratio": 1.38,
     "category": "行业"
@@ -16167,7 +16167,7 @@
     "change_rate": -0.020818,
     "volume": 0.0,
     "year_1_return": 29.5,
-    "year_3_return": 29.5,
+    "year_3_return": 0,
     "max_drawdown": -27.6,
     "sharpe_ratio": 0.76,
     "category": "行业"
@@ -16626,7 +16626,7 @@
     "change_rate": -0.036207,
     "volume": 0.0,
     "year_1_return": -0.1,
-    "year_3_return": -0.1,
+    "year_3_return": 0,
     "max_drawdown": -31.9,
     "sharpe_ratio": 0.23,
     "category": "行业"
@@ -16866,7 +16866,7 @@
     "change_rate": -0.017453,
     "volume": 0.0,
     "year_1_return": 51.1,
-    "year_3_return": 51.1,
+    "year_3_return": 0,
     "max_drawdown": -17.9,
     "sharpe_ratio": 0.72,
     "category": "行业"
@@ -17066,7 +17066,7 @@
     "change_rate": -0.028868,
     "volume": 0.0,
     "year_1_return": -13.5,
-    "year_3_return": -13.5,
+    "year_3_return": 0,
     "max_drawdown": -19.7,
     "sharpe_ratio": -1.78,
     "category": "行业"
@@ -17266,7 +17266,7 @@
     "change_rate": -0.039959,
     "volume": 0.1,
     "year_1_return": -6.7,
-    "year_3_return": -6.7,
+    "year_3_return": 0,
     "max_drawdown": -24.8,
     "sharpe_ratio": -0.33,
     "category": "行业"
@@ -17485,7 +17485,7 @@
     "change_rate": -0.022594,
     "volume": 0.0,
     "year_1_return": 16.5,
-    "year_3_return": 16.5,
+    "year_3_return": 0,
     "max_drawdown": -24.6,
     "sharpe_ratio": 0.93,
     "category": "行业"
@@ -17685,7 +17685,7 @@
     "change_rate": -0.028796,
     "volume": 0.0,
     "year_1_return": -22.1,
-    "year_3_return": -22.1,
+    "year_3_return": 0,
     "max_drawdown": -22.9,
     "sharpe_ratio": -2.98,
     "category": "行业"
@@ -17843,7 +17843,7 @@
     "change_rate": -0.017557,
     "volume": 0.0,
     "year_1_return": 28.4,
-    "year_3_return": 28.4,
+    "year_3_return": 0,
     "max_drawdown": -15.0,
     "sharpe_ratio": 1.15,
     "category": "宽基"
@@ -17923,7 +17923,7 @@
     "change_rate": -0.026148,
     "volume": 0.0,
     "year_1_return": 38.8,
-    "year_3_return": 38.8,
+    "year_3_return": 0,
     "max_drawdown": -17.4,
     "sharpe_ratio": 2.29,
     "category": "行业"
@@ -18083,7 +18083,7 @@
     "change_rate": -0.019634,
     "volume": 0.0,
     "year_1_return": -23.5,
-    "year_3_return": -23.5,
+    "year_3_return": 0,
     "max_drawdown": -26.4,
     "sharpe_ratio": -1.4,
     "category": "行业"
@@ -18203,7 +18203,7 @@
     "change_rate": -0.016204,
     "volume": 0.0,
     "year_1_return": -11.7,
-    "year_3_return": -11.7,
+    "year_3_return": 0,
     "max_drawdown": -17.5,
     "sharpe_ratio": -1.24,
     "category": "行业"
@@ -18323,7 +18323,7 @@
     "change_rate": -0.014941,
     "volume": 0.0,
     "year_1_return": -5.2,
-    "year_3_return": -5.2,
+    "year_3_return": 0,
     "max_drawdown": -5.4,
     "sharpe_ratio": -2.34,
     "category": "行业"
@@ -18443,7 +18443,7 @@
     "change_rate": 0.007056,
     "volume": 0.0,
     "year_1_return": -3.4,
-    "year_3_return": -3.4,
+    "year_3_return": 0,
     "max_drawdown": -19.2,
     "sharpe_ratio": -0.35,
     "category": "行业"
@@ -18523,7 +18523,7 @@
     "change_rate": -0.019417,
     "volume": 0.0,
     "year_1_return": -1.5,
-    "year_3_return": -1.5,
+    "year_3_return": 0,
     "max_drawdown": -16.6,
     "sharpe_ratio": -0.12,
     "category": "行业"
@@ -18563,7 +18563,7 @@
     "change_rate": 0.049958,
     "volume": 0.0,
     "year_1_return": 150.1,
-    "year_3_return": 150.1,
+    "year_3_return": 0,
     "max_drawdown": -19.7,
     "sharpe_ratio": 2.19,
     "category": "行业"
@@ -18603,7 +18603,7 @@
     "change_rate": -0.007048,
     "volume": 0.0,
     "year_1_return": 11.1,
-    "year_3_return": 11.1,
+    "year_3_return": 0,
     "max_drawdown": -11.8,
     "sharpe_ratio": 1.64,
     "category": "行业"
@@ -18761,7 +18761,7 @@
     "change_rate": 7e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -13.45,
     "category": "行业"
@@ -18921,7 +18921,7 @@
     "change_rate": -0.019659,
     "volume": 0.0,
     "year_1_return": -25.9,
-    "year_3_return": -25.9,
+    "year_3_return": 0,
     "max_drawdown": -27.6,
     "sharpe_ratio": -1.4,
     "category": "行业"
@@ -18961,7 +18961,7 @@
     "change_rate": -0.006431,
     "volume": 0.0,
     "year_1_return": -6.0,
-    "year_3_return": -6.0,
+    "year_3_return": 0,
     "max_drawdown": -7.4,
     "sharpe_ratio": -1.25,
     "category": "行业"
@@ -19401,7 +19401,7 @@
     "change_rate": -0.011249,
     "volume": 0.0,
     "year_1_return": -7.6,
-    "year_3_return": -7.6,
+    "year_3_return": 0,
     "max_drawdown": -7.6,
     "sharpe_ratio": -2.21,
     "category": "行业"
@@ -19841,7 +19841,7 @@
     "change_rate": -0.02305,
     "volume": 0.0,
     "year_1_return": 16.2,
-    "year_3_return": 16.2,
+    "year_3_return": 0,
     "max_drawdown": -21.8,
     "sharpe_ratio": 0.88,
     "category": "行业"
@@ -19881,7 +19881,7 @@
     "change_rate": -0.022398,
     "volume": 0.0,
     "year_1_return": -24.2,
-    "year_3_return": -24.2,
+    "year_3_return": 0,
     "max_drawdown": -28.4,
     "sharpe_ratio": -1.52,
     "category": "行业"
@@ -19921,7 +19921,7 @@
     "change_rate": -0.007101,
     "volume": 0.0,
     "year_1_return": -17.0,
-    "year_3_return": -17.0,
+    "year_3_return": 0,
     "max_drawdown": -18.0,
     "sharpe_ratio": -1.76,
     "category": "行业"
@@ -20121,7 +20121,7 @@
     "change_rate": -0.002181,
     "volume": 0.0,
     "year_1_return": -7.7,
-    "year_3_return": -7.7,
+    "year_3_return": 0,
     "max_drawdown": -27.3,
     "sharpe_ratio": -0.24,
     "category": "行业"
@@ -20201,7 +20201,7 @@
     "change_rate": -0.006039,
     "volume": 0.0,
     "year_1_return": -16.0,
-    "year_3_return": -16.0,
+    "year_3_return": 0,
     "max_drawdown": -24.4,
     "sharpe_ratio": -0.69,
     "category": "行业"
@@ -20761,7 +20761,7 @@
     "change_rate": -0.009872,
     "volume": 0.0,
     "year_1_return": -1.0,
-    "year_3_return": -1.0,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -21441,7 +21441,7 @@
     "change_rate": -0.013943,
     "volume": 0.0,
     "year_1_return": 28.2,
-    "year_3_return": 28.2,
+    "year_3_return": 0,
     "max_drawdown": -9.5,
     "sharpe_ratio": 1.4,
     "category": "行业"
@@ -21460,7 +21460,7 @@
     "change_rate": -0.004299,
     "volume": 0.0,
     "year_1_return": 12.3,
-    "year_3_return": 12.3,
+    "year_3_return": 0,
     "max_drawdown": -18.0,
     "sharpe_ratio": 0.74,
     "category": "行业"
@@ -21599,7 +21599,7 @@
     "change_rate": -0.004792,
     "volume": 0.0,
     "year_1_return": 24.1,
-    "year_3_return": 24.2,
+    "year_3_return": 0,
     "max_drawdown": -7.0,
     "sharpe_ratio": 1.09,
     "category": "行业"
@@ -21719,7 +21719,7 @@
     "change_rate": 0.011927,
     "volume": 0.0,
     "year_1_return": 10.9,
-    "year_3_return": 10.9,
+    "year_3_return": 0,
     "max_drawdown": -10.5,
     "sharpe_ratio": 1.25,
     "category": "行业"
@@ -21839,7 +21839,7 @@
     "change_rate": -0.020134,
     "volume": 0.0,
     "year_1_return": 16.8,
-    "year_3_return": 16.8,
+    "year_3_return": 0,
     "max_drawdown": -16.9,
     "sharpe_ratio": 1.22,
     "category": "行业"
@@ -21919,7 +21919,7 @@
     "change_rate": -0.018265,
     "volume": 0.0,
     "year_1_return": -12.2,
-    "year_3_return": -12.2,
+    "year_3_return": 0,
     "max_drawdown": -17.4,
     "sharpe_ratio": -1.14,
     "category": "行业"
@@ -22079,7 +22079,7 @@
     "change_rate": -0.01766,
     "volume": 0.0,
     "year_1_return": -13.1,
-    "year_3_return": -13.1,
+    "year_3_return": 0,
     "max_drawdown": -21.0,
     "sharpe_ratio": -1.21,
     "category": "行业"
@@ -22159,7 +22159,7 @@
     "change_rate": -0.044517,
     "volume": 0.0,
     "year_1_return": -20.7,
-    "year_3_return": -20.7,
+    "year_3_return": 0,
     "max_drawdown": -29.1,
     "sharpe_ratio": -1.62,
     "category": "行业"
@@ -22319,7 +22319,7 @@
     "change_rate": 0.005978,
     "volume": 0.0,
     "year_1_return": 17.0,
-    "year_3_return": 17.0,
+    "year_3_return": 0,
     "max_drawdown": -15.5,
     "sharpe_ratio": 1.75,
     "category": "行业"
@@ -22439,7 +22439,7 @@
     "change_rate": -0.011299,
     "volume": 0.0,
     "year_1_return": 4.4,
-    "year_3_return": 4.4,
+    "year_3_return": 0,
     "max_drawdown": -6.5,
     "sharpe_ratio": 0.83,
     "category": "宽基"
@@ -22519,7 +22519,7 @@
     "change_rate": -0.023529,
     "volume": 0.0,
     "year_1_return": -17.5,
-    "year_3_return": -17.5,
+    "year_3_return": 0,
     "max_drawdown": -30.5,
     "sharpe_ratio": -1.8,
     "category": "行业"
@@ -22639,7 +22639,7 @@
     "change_rate": -0.011561,
     "volume": 0.0,
     "year_1_return": 19.8,
-    "year_3_return": 19.8,
+    "year_3_return": 0,
     "max_drawdown": -9.3,
     "sharpe_ratio": 1.34,
     "category": "行业"
@@ -22679,7 +22679,7 @@
     "change_rate": -0.002956,
     "volume": 0.0,
     "year_1_return": 0.3,
-    "year_3_return": 0.3,
+    "year_3_return": 0,
     "max_drawdown": -26.9,
     "sharpe_ratio": -0.28,
     "category": "行业"
@@ -22839,7 +22839,7 @@
     "change_rate": -0.032704,
     "volume": 0.0,
     "year_1_return": -21.4,
-    "year_3_return": -21.4,
+    "year_3_return": 0,
     "max_drawdown": -28.8,
     "sharpe_ratio": -2.02,
     "category": "行业"
@@ -22858,7 +22858,7 @@
     "change_rate": -0.000861,
     "volume": 0.0,
     "year_1_return": 11.3,
-    "year_3_return": 11.3,
+    "year_3_return": 0,
     "max_drawdown": -17.5,
     "sharpe_ratio": 0.71,
     "category": "行业"
@@ -22978,7 +22978,7 @@
     "change_rate": -0.008858,
     "volume": 0.0,
     "year_1_return": 3.4,
-    "year_3_return": 3.4,
+    "year_3_return": 0,
     "max_drawdown": -8.9,
     "sharpe_ratio": 0.29,
     "category": "行业"
@@ -23178,7 +23178,7 @@
     "change_rate": -0.014478,
     "volume": 0.0,
     "year_1_return": -5.4,
-    "year_3_return": -5.4,
+    "year_3_return": 0,
     "max_drawdown": -13.1,
     "sharpe_ratio": -0.93,
     "category": "行业"
@@ -23397,7 +23397,7 @@
     "change_rate": -0.012075,
     "volume": 0.0,
     "year_1_return": -6.5,
-    "year_3_return": -6.5,
+    "year_3_return": 0,
     "max_drawdown": -6.9,
     "sharpe_ratio": -1.79,
     "category": "行业"
@@ -23517,7 +23517,7 @@
     "change_rate": -0.016089,
     "volume": 0.0,
     "year_1_return": -21.4,
-    "year_3_return": -21.4,
+    "year_3_return": 0,
     "max_drawdown": -29.4,
     "sharpe_ratio": -1.32,
     "category": "行业"
@@ -23637,7 +23637,7 @@
     "change_rate": -0.008168,
     "volume": 0.0,
     "year_1_return": -16.0,
-    "year_3_return": -16.0,
+    "year_3_return": 0,
     "max_drawdown": -16.9,
     "sharpe_ratio": -1.47,
     "category": "行业"
@@ -23757,7 +23757,7 @@
     "change_rate": -0.023208,
     "volume": 0.0,
     "year_1_return": 43.2,
-    "year_3_return": 43.2,
+    "year_3_return": 0,
     "max_drawdown": -16.0,
     "sharpe_ratio": 2.68,
     "category": "行业"
@@ -23917,7 +23917,7 @@
     "change_rate": -0.01,
     "volume": 0.0,
     "year_1_return": 2.4,
-    "year_3_return": 2.4,
+    "year_3_return": 0,
     "max_drawdown": -8.3,
     "sharpe_ratio": 0.33,
     "category": "行业"
@@ -23957,7 +23957,7 @@
     "change_rate": -0.017837,
     "volume": 0.0,
     "year_1_return": -10.1,
-    "year_3_return": -10.1,
+    "year_3_return": 0,
     "max_drawdown": -16.0,
     "sharpe_ratio": -1.17,
     "category": "行业"
@@ -23997,7 +23997,7 @@
     "change_rate": -0.020576,
     "volume": 0.0,
     "year_1_return": -3.3,
-    "year_3_return": -3.3,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -24096,7 +24096,7 @@
     "change_rate": -0.00344,
     "volume": 0.0,
     "year_1_return": -14.7,
-    "year_3_return": -14.7,
+    "year_3_return": 0,
     "max_drawdown": -17.5,
     "sharpe_ratio": -1.81,
     "category": "行业"
@@ -24336,7 +24336,7 @@
     "change_rate": -0.03178,
     "volume": 0.0,
     "year_1_return": -6.5,
-    "year_3_return": -6.5,
+    "year_3_return": 0,
     "max_drawdown": -7.9,
     "sharpe_ratio": -1.31,
     "category": "行业"
@@ -24416,7 +24416,7 @@
     "change_rate": -0.02719,
     "volume": 0.0,
     "year_1_return": -3.1,
-    "year_3_return": -3.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -24696,7 +24696,7 @@
     "change_rate": -0.01383,
     "volume": 0.0,
     "year_1_return": -7.3,
-    "year_3_return": -7.3,
+    "year_3_return": 0,
     "max_drawdown": -7.6,
     "sharpe_ratio": -2.78,
     "category": "行业"
@@ -24896,7 +24896,7 @@
     "change_rate": -0.0175,
     "volume": 0.0,
     "year_1_return": 16.6,
-    "year_3_return": 16.6,
+    "year_3_return": 0,
     "max_drawdown": -13.4,
     "sharpe_ratio": 1.32,
     "category": "宽基"
@@ -25096,7 +25096,7 @@
     "change_rate": -0.002062,
     "volume": 0.0,
     "year_1_return": 94.6,
-    "year_3_return": 94.6,
+    "year_3_return": 0,
     "max_drawdown": -15.1,
     "sharpe_ratio": 1.82,
     "category": "行业"
@@ -25336,7 +25336,7 @@
     "change_rate": -0.02476,
     "volume": 0.0,
     "year_1_return": 19.7,
-    "year_3_return": 19.7,
+    "year_3_return": 0,
     "max_drawdown": -25.7,
     "sharpe_ratio": 0.37,
     "category": "行业"
@@ -25416,7 +25416,7 @@
     "change_rate": -0.012386,
     "volume": 0.0,
     "year_1_return": 18.4,
-    "year_3_return": 18.4,
+    "year_3_return": 0,
     "max_drawdown": -9.9,
     "sharpe_ratio": 1.34,
     "category": "行业"
@@ -25496,7 +25496,7 @@
     "change_rate": -0.035885,
     "volume": 0.0,
     "year_1_return": 19.6,
-    "year_3_return": 19.6,
+    "year_3_return": 0,
     "max_drawdown": -19.0,
     "sharpe_ratio": 1.61,
     "category": "行业"
@@ -25656,7 +25656,7 @@
     "change_rate": -0.014242,
     "volume": 0.0,
     "year_1_return": -1.4,
-    "year_3_return": -1.4,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -25755,7 +25755,7 @@
     "change_rate": -0.006767,
     "volume": 0.0,
     "year_1_return": 40.5,
-    "year_3_return": 40.5,
+    "year_3_return": 0,
     "max_drawdown": -14.7,
     "sharpe_ratio": 2.28,
     "category": "行业"
@@ -25955,7 +25955,7 @@
     "change_rate": -0.014523,
     "volume": 0.0,
     "year_1_return": -4.2,
-    "year_3_return": -4.2,
+    "year_3_return": 0,
     "max_drawdown": -14.0,
     "sharpe_ratio": -0.44,
     "category": "行业"
@@ -26275,7 +26275,7 @@
     "change_rate": -0.015106,
     "volume": 0.0,
     "year_1_return": 62.8,
-    "year_3_return": 62.8,
+    "year_3_return": 0,
     "max_drawdown": -18.7,
     "sharpe_ratio": 0.95,
     "category": "宽基"
@@ -26315,7 +26315,7 @@
     "change_rate": -0.006708,
     "volume": 0.0,
     "year_1_return": 92.3,
-    "year_3_return": 92.3,
+    "year_3_return": 0,
     "max_drawdown": -11.8,
     "sharpe_ratio": 1.42,
     "category": "行业"
@@ -26355,7 +26355,7 @@
     "change_rate": -0.007143,
     "volume": 0.0,
     "year_1_return": -16.3,
-    "year_3_return": -16.3,
+    "year_3_return": 0,
     "max_drawdown": -17.3,
     "sharpe_ratio": -1.84,
     "category": "行业"
@@ -26395,7 +26395,7 @@
     "change_rate": -0.025304,
     "volume": 0.0,
     "year_1_return": -2.5,
-    "year_3_return": -2.5,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -26435,7 +26435,7 @@
     "change_rate": -0.015739,
     "volume": 0.0,
     "year_1_return": 74.6,
-    "year_3_return": 74.6,
+    "year_3_return": 0,
     "max_drawdown": -18.9,
     "sharpe_ratio": 0.97,
     "category": "宽基"
@@ -26475,7 +26475,7 @@
     "change_rate": -0.032934,
     "volume": 0.0,
     "year_1_return": 28.2,
-    "year_3_return": 28.2,
+    "year_3_return": 0,
     "max_drawdown": -19.1,
     "sharpe_ratio": 2.08,
     "category": "行业"
@@ -26515,7 +26515,7 @@
     "change_rate": -0.035211,
     "volume": 0.0,
     "year_1_return": -1.9,
-    "year_3_return": -1.9,
+    "year_3_return": 0,
     "max_drawdown": -7.3,
     "sharpe_ratio": -0.45,
     "category": "行业"
@@ -26534,7 +26534,7 @@
     "change_rate": -0.00858,
     "volume": 0.0,
     "year_1_return": 4.9,
-    "year_3_return": 4.9,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -26614,7 +26614,7 @@
     "change_rate": -0.00502,
     "volume": 0.0,
     "year_1_return": -1.4,
-    "year_3_return": -1.4,
+    "year_3_return": 0,
     "max_drawdown": -6.0,
     "sharpe_ratio": -0.61,
     "category": "行业"
@@ -26802,7 +26802,7 @@
     "change_rate": -0.007021,
     "volume": 0.0,
     "year_1_return": -1.1,
-    "year_3_return": -1.1,
+    "year_3_return": 0,
     "max_drawdown": -5.4,
     "sharpe_ratio": -0.45,
     "category": "行业"
@@ -27082,7 +27082,7 @@
     "change_rate": -0.024583,
     "volume": 0.0,
     "year_1_return": 10.3,
-    "year_3_return": 10.3,
+    "year_3_return": 0,
     "max_drawdown": -30.3,
     "sharpe_ratio": 0.77,
     "category": "行业"
@@ -27282,7 +27282,7 @@
     "change_rate": 0.045064,
     "volume": 0.0,
     "year_1_return": 112.4,
-    "year_3_return": 112.4,
+    "year_3_return": 0,
     "max_drawdown": -21.3,
     "sharpe_ratio": 2.14,
     "category": "行业"
@@ -27581,7 +27581,7 @@
     "change_rate": -0.014157,
     "volume": 0.0,
     "year_1_return": -21.0,
-    "year_3_return": -21.0,
+    "year_3_return": 0,
     "max_drawdown": -29.6,
     "sharpe_ratio": -1.33,
     "category": "行业"
@@ -27661,7 +27661,7 @@
     "change_rate": -0.00485,
     "volume": 0.0,
     "year_1_return": -0.8,
-    "year_3_return": -0.8,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -27741,7 +27741,7 @@
     "change_rate": -0.013685,
     "volume": 0.0,
     "year_1_return": -0.9,
-    "year_3_return": -0.9,
+    "year_3_return": 0,
     "max_drawdown": -9.6,
     "sharpe_ratio": -0.17,
     "category": "行业"
@@ -27781,7 +27781,7 @@
     "change_rate": -0.026036,
     "volume": 0.0,
     "year_1_return": -19.8,
-    "year_3_return": -19.8,
+    "year_3_return": 0,
     "max_drawdown": -32.3,
     "sharpe_ratio": -2.04,
     "category": "行业"
@@ -27821,7 +27821,7 @@
     "change_rate": -0.004298,
     "volume": 0.0,
     "year_1_return": 42.7,
-    "year_3_return": 42.7,
+    "year_3_return": 0,
     "max_drawdown": -14.0,
     "sharpe_ratio": 2.13,
     "category": "行业"
@@ -27861,7 +27861,7 @@
     "change_rate": -0.022241,
     "volume": 0.0,
     "year_1_return": 20.4,
-    "year_3_return": 20.4,
+    "year_3_return": 0,
     "max_drawdown": -22.0,
     "sharpe_ratio": 0.59,
     "category": "行业"
@@ -27941,7 +27941,7 @@
     "change_rate": -0.004739,
     "volume": 0.0,
     "year_1_return": 6.4,
-    "year_3_return": 6.4,
+    "year_3_return": 0,
     "max_drawdown": -4.5,
     "sharpe_ratio": 1.28,
     "category": "行业"
@@ -28061,7 +28061,7 @@
     "change_rate": -0.030806,
     "volume": 0.0,
     "year_1_return": -19.2,
-    "year_3_return": -19.2,
+    "year_3_return": 0,
     "max_drawdown": -34.6,
     "sharpe_ratio": -1.84,
     "category": "行业"
@@ -28101,7 +28101,7 @@
     "change_rate": -0.021905,
     "volume": 0.0,
     "year_1_return": 7.5,
-    "year_3_return": 7.5,
+    "year_3_return": 0,
     "max_drawdown": -21.3,
     "sharpe_ratio": 0.85,
     "category": "行业"
@@ -28301,7 +28301,7 @@
     "change_rate": -0.012924,
     "volume": 0.0,
     "year_1_return": 20.3,
-    "year_3_return": 20.3,
+    "year_3_return": 0,
     "max_drawdown": -8.1,
     "sharpe_ratio": 1.29,
     "category": "行业"
@@ -28341,7 +28341,7 @@
     "change_rate": -0.003061,
     "volume": 0.0,
     "year_1_return": -2.8,
-    "year_3_return": -2.8,
+    "year_3_return": 0,
     "max_drawdown": -5.1,
     "sharpe_ratio": -0.88,
     "category": "行业"
@@ -28381,7 +28381,7 @@
     "change_rate": -0.008152,
     "volume": 0.0,
     "year_1_return": 6.1,
-    "year_3_return": 6.1,
+    "year_3_return": 0,
     "max_drawdown": -8.0,
     "sharpe_ratio": 0.98,
     "category": "行业"
@@ -28461,7 +28461,7 @@
     "change_rate": -0.001898,
     "volume": 0.0,
     "year_1_return": 3.7,
-    "year_3_return": 3.7,
+    "year_3_return": 0,
     "max_drawdown": -20.2,
     "sharpe_ratio": 0.54,
     "category": "行业"
@@ -28621,7 +28621,7 @@
     "change_rate": -0.021106,
     "volume": 0.0,
     "year_1_return": -2.1,
-    "year_3_return": -2.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -28741,7 +28741,7 @@
     "change_rate": -0.027491,
     "volume": 0.0,
     "year_1_return": -16.1,
-    "year_3_return": -16.1,
+    "year_3_return": 0,
     "max_drawdown": -22.3,
     "sharpe_ratio": -1.57,
     "category": "行业"
@@ -28901,7 +28901,7 @@
     "change_rate": -0.01285,
     "volume": 0.0,
     "year_1_return": -15.6,
-    "year_3_return": -15.6,
+    "year_3_return": 0,
     "max_drawdown": -18.1,
     "sharpe_ratio": -2.46,
     "category": "行业"
@@ -28981,7 +28981,7 @@
     "change_rate": -0.047374,
     "volume": 0.0,
     "year_1_return": -11.5,
-    "year_3_return": -11.5,
+    "year_3_return": 0,
     "max_drawdown": -28.3,
     "sharpe_ratio": -1.12,
     "category": "行业"
@@ -29061,7 +29061,7 @@
     "change_rate": -0.018497,
     "volume": 0.0,
     "year_1_return": -15.8,
-    "year_3_return": -15.8,
+    "year_3_return": 0,
     "max_drawdown": -20.4,
     "sharpe_ratio": -1.17,
     "category": "行业"
@@ -29141,7 +29141,7 @@
     "change_rate": -0.01035,
     "volume": 0.0,
     "year_1_return": 23.9,
-    "year_3_return": 23.9,
+    "year_3_return": 0,
     "max_drawdown": -9.6,
     "sharpe_ratio": 1.3,
     "category": "行业"
@@ -29261,7 +29261,7 @@
     "change_rate": -0.023864,
     "volume": 0.0,
     "year_1_return": -14.5,
-    "year_3_return": -14.5,
+    "year_3_return": 0,
     "max_drawdown": -19.7,
     "sharpe_ratio": -1.5,
     "category": "行业"
@@ -29421,7 +29421,7 @@
     "change_rate": 0.010363,
     "volume": 0.0,
     "year_1_return": 17.6,
-    "year_3_return": 17.6,
+    "year_3_return": 0,
     "max_drawdown": -10.7,
     "sharpe_ratio": 2.69,
     "category": "行业"
@@ -29461,7 +29461,7 @@
     "change_rate": -0.04467,
     "volume": 0.0,
     "year_1_return": -7.6,
-    "year_3_return": -7.6,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -29501,7 +29501,7 @@
     "change_rate": -0.005538,
     "volume": 0.0,
     "year_1_return": 60.2,
-    "year_3_return": 60.2,
+    "year_3_return": 0,
     "max_drawdown": -13.0,
     "sharpe_ratio": 1.46,
     "category": "行业"
@@ -29541,7 +29541,7 @@
     "change_rate": -0.050701,
     "volume": 0.0,
     "year_1_return": -5.5,
-    "year_3_return": -5.5,
+    "year_3_return": 0,
     "max_drawdown": -27.9,
     "sharpe_ratio": -0.41,
     "category": "行业"
@@ -29621,7 +29621,7 @@
     "change_rate": -0.044893,
     "volume": 0.0,
     "year_1_return": -14.0,
-    "year_3_return": -14.0,
+    "year_3_return": 0,
     "max_drawdown": -23.0,
     "sharpe_ratio": -1.96,
     "category": "行业"
@@ -29701,7 +29701,7 @@
     "change_rate": -0.014778,
     "volume": 0.0,
     "year_1_return": -22.8,
-    "year_3_return": -22.8,
+    "year_3_return": 0,
     "max_drawdown": -28.3,
     "sharpe_ratio": -1.28,
     "category": "行业"
@@ -29741,7 +29741,7 @@
     "change_rate": -0.02736,
     "volume": 0.0,
     "year_1_return": 42.8,
-    "year_3_return": 42.8,
+    "year_3_return": 0,
     "max_drawdown": -16.6,
     "sharpe_ratio": 2.6,
     "category": "行业"
@@ -29821,7 +29821,7 @@
     "change_rate": -0.012821,
     "volume": 0.0,
     "year_1_return": -7.5,
-    "year_3_return": -7.5,
+    "year_3_return": 0,
     "max_drawdown": -13.0,
     "sharpe_ratio": -0.74,
     "category": "行业"
@@ -29929,7 +29929,7 @@
     "change_rate": -0.020683,
     "volume": 0.0,
     "year_1_return": -4.2,
-    "year_3_return": -4.2,
+    "year_3_return": 0,
     "max_drawdown": -7.7,
     "sharpe_ratio": -1.18,
     "category": "行业"
@@ -29969,7 +29969,7 @@
     "change_rate": -0.012097,
     "volume": 0.0,
     "year_1_return": -1.9,
-    "year_3_return": -1.9,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -30089,7 +30089,7 @@
     "change_rate": -0.046729,
     "volume": 0.0,
     "year_1_return": -7.3,
-    "year_3_return": -7.3,
+    "year_3_return": 0,
     "max_drawdown": -27.6,
     "sharpe_ratio": -0.6,
     "category": "行业"
@@ -30169,7 +30169,7 @@
     "change_rate": -0.011134,
     "volume": 0.0,
     "year_1_return": -1.1,
-    "year_3_return": -1.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -30369,7 +30369,7 @@
     "change_rate": -0.014583,
     "volume": 0.0,
     "year_1_return": -5.4,
-    "year_3_return": -5.4,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -30489,7 +30489,7 @@
     "change_rate": -0.014184,
     "volume": 0.0,
     "year_1_return": -15.4,
-    "year_3_return": -15.4,
+    "year_3_return": 0,
     "max_drawdown": -28.1,
     "sharpe_ratio": -1.58,
     "category": "行业"
@@ -30529,7 +30529,7 @@
     "change_rate": 0.009735,
     "volume": 0.0,
     "year_1_return": 14.0,
-    "year_3_return": 14.0,
+    "year_3_return": 0,
     "max_drawdown": -8.3,
     "sharpe_ratio": 1.04,
     "category": "行业"
@@ -30569,7 +30569,7 @@
     "change_rate": -0.00404,
     "volume": 0.0,
     "year_1_return": -2.0,
-    "year_3_return": -2.0,
+    "year_3_return": 0,
     "max_drawdown": -6.3,
     "sharpe_ratio": -0.53,
     "category": "行业"
@@ -30609,7 +30609,7 @@
     "change_rate": -0.006763,
     "volume": 0.0,
     "year_1_return": 9.4,
-    "year_3_return": 9.4,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -30689,7 +30689,7 @@
     "change_rate": -0.016779,
     "volume": 0.0,
     "year_1_return": -6.7,
-    "year_3_return": -6.7,
+    "year_3_return": 0,
     "max_drawdown": -13.5,
     "sharpe_ratio": -0.87,
     "category": "行业"
@@ -30729,7 +30729,7 @@
     "change_rate": -0.011257,
     "volume": 0.0,
     "year_1_return": 3.3,
-    "year_3_return": 3.3,
+    "year_3_return": 0,
     "max_drawdown": -9.8,
     "sharpe_ratio": 0.38,
     "category": "行业"
@@ -30769,7 +30769,7 @@
     "change_rate": -0.018,
     "volume": 0.0,
     "year_1_return": -1.6,
-    "year_3_return": -1.6,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -30849,7 +30849,7 @@
     "change_rate": -0.014343,
     "volume": 0.0,
     "year_1_return": 24.1,
-    "year_3_return": 24.1,
+    "year_3_return": 0,
     "max_drawdown": -17.2,
     "sharpe_ratio": 2.22,
     "category": "行业"
@@ -31127,7 +31127,7 @@
     "change_rate": -0.029713,
     "volume": 0.0,
     "year_1_return": -4.2,
-    "year_3_return": -4.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -31287,7 +31287,7 @@
     "change_rate": -0.026906,
     "volume": 0.0,
     "year_1_return": 16.9,
-    "year_3_return": 16.9,
+    "year_3_return": 0,
     "max_drawdown": -29.8,
     "sharpe_ratio": 0.81,
     "category": "行业"
@@ -31367,7 +31367,7 @@
     "change_rate": -0.017467,
     "volume": 0.0,
     "year_1_return": -0.7,
-    "year_3_return": -0.7,
+    "year_3_return": 0,
     "max_drawdown": -13.7,
     "sharpe_ratio": 0.02,
     "category": "行业"
@@ -31687,7 +31687,7 @@
     "change_rate": -0.010741,
     "volume": 0.0,
     "year_1_return": -9.4,
-    "year_3_return": -9.4,
+    "year_3_return": 0,
     "max_drawdown": -18.6,
     "sharpe_ratio": -0.62,
     "category": "行业"
@@ -31727,7 +31727,7 @@
     "change_rate": -0.020731,
     "volume": 0.0,
     "year_1_return": -2.3,
-    "year_3_return": -2.3,
+    "year_3_return": 0,
     "max_drawdown": -16.4,
     "sharpe_ratio": -0.35,
     "category": "行业"
@@ -32007,7 +32007,7 @@
     "change_rate": -0.005102,
     "volume": 0.0,
     "year_1_return": -0.2,
-    "year_3_return": -0.2,
+    "year_3_return": 0,
     "max_drawdown": -6.8,
     "sharpe_ratio": -0.12,
     "category": "行业"
@@ -32047,7 +32047,7 @@
     "change_rate": -0.011078,
     "volume": 0.0,
     "year_1_return": -1.1,
-    "year_3_return": -1.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -32167,7 +32167,7 @@
     "change_rate": -0.008147,
     "volume": 0.0,
     "year_1_return": -1.7,
-    "year_3_return": -1.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -32327,7 +32327,7 @@
     "change_rate": -0.012658,
     "volume": 0.0,
     "year_1_return": 135.4,
-    "year_3_return": 135.4,
+    "year_3_return": 0,
     "max_drawdown": -13.6,
     "sharpe_ratio": 1.98,
     "category": "行业"
@@ -32447,7 +32447,7 @@
     "change_rate": -0.017699,
     "volume": 0.0,
     "year_1_return": -18.4,
-    "year_3_return": -18.4,
+    "year_3_return": 0,
     "max_drawdown": -27.9,
     "sharpe_ratio": -1.2,
     "category": "行业"
@@ -32487,7 +32487,7 @@
     "change_rate": -0.007722,
     "volume": 0.0,
     "year_1_return": 28.0,
-    "year_3_return": 28.0,
+    "year_3_return": 0,
     "max_drawdown": -9.0,
     "sharpe_ratio": 0.98,
     "category": "行业"
@@ -32586,7 +32586,7 @@
     "change_rate": -0.022308,
     "volume": 0.0,
     "year_1_return": 17.7,
-    "year_3_return": 17.7,
+    "year_3_return": 0,
     "max_drawdown": -22.3,
     "sharpe_ratio": 0.61,
     "category": "行业"
@@ -32666,7 +32666,7 @@
     "change_rate": -0.012469,
     "volume": 0.0,
     "year_1_return": -18.6,
-    "year_3_return": -18.6,
+    "year_3_return": 0,
     "max_drawdown": -20.9,
     "sharpe_ratio": -2.47,
     "category": "行业"
@@ -32746,7 +32746,7 @@
     "change_rate": -0.02583,
     "volume": 0.0,
     "year_1_return": -21.0,
-    "year_3_return": -21.0,
+    "year_3_return": 0,
     "max_drawdown": -26.8,
     "sharpe_ratio": -1.66,
     "category": "行业"
@@ -32885,7 +32885,7 @@
     "change_rate": 0.005319,
     "volume": 0.0,
     "year_1_return": -6.7,
-    "year_3_return": -6.7,
+    "year_3_return": 0,
     "max_drawdown": -7.3,
     "sharpe_ratio": -2.66,
     "category": "行业"
@@ -32925,7 +32925,7 @@
     "change_rate": -0.01468,
     "volume": 0.0,
     "year_1_return": 11.9,
-    "year_3_return": 11.9,
+    "year_3_return": 0,
     "max_drawdown": -12.6,
     "sharpe_ratio": 0.97,
     "category": "行业"
@@ -32965,7 +32965,7 @@
     "change_rate": -0.010067,
     "volume": 0.0,
     "year_1_return": 21.0,
-    "year_3_return": 21.0,
+    "year_3_return": 0,
     "max_drawdown": -6.2,
     "sharpe_ratio": 2.82,
     "category": "行业"
@@ -33165,7 +33165,7 @@
     "change_rate": -0.017222,
     "volume": 0.0,
     "year_1_return": -18.2,
-    "year_3_return": -18.2,
+    "year_3_return": 0,
     "max_drawdown": -25.3,
     "sharpe_ratio": -2.08,
     "category": "行业"
@@ -33205,7 +33205,7 @@
     "change_rate": -0.019565,
     "volume": 0.0,
     "year_1_return": -9.9,
-    "year_3_return": -9.9,
+    "year_3_return": 0,
     "max_drawdown": -28.9,
     "sharpe_ratio": -1.79,
     "category": "行业"
@@ -33285,7 +33285,7 @@
     "change_rate": -0.015369,
     "volume": 0.0,
     "year_1_return": -1.5,
-    "year_3_return": -1.5,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -33325,7 +33325,7 @@
     "change_rate": -0.01022,
     "volume": 0.0,
     "year_1_return": 25.4,
-    "year_3_return": 25.4,
+    "year_3_return": 0,
     "max_drawdown": -13.6,
     "sharpe_ratio": 1.54,
     "category": "行业"
@@ -33485,7 +33485,7 @@
     "change_rate": -0.017401,
     "volume": 0.0,
     "year_1_return": -17.2,
-    "year_3_return": -17.2,
+    "year_3_return": 0,
     "max_drawdown": -21.8,
     "sharpe_ratio": -1.09,
     "category": "行业"
@@ -33565,7 +33565,7 @@
     "change_rate": 0.010969,
     "volume": 0.0,
     "year_1_return": 11.0,
-    "year_3_return": 11.0,
+    "year_3_return": 0,
     "max_drawdown": -9.5,
     "sharpe_ratio": 2.32,
     "category": "行业"
@@ -33645,7 +33645,7 @@
     "change_rate": -0.022017,
     "volume": 0.0,
     "year_1_return": 30.9,
-    "year_3_return": 30.9,
+    "year_3_return": 0,
     "max_drawdown": -23.3,
     "sharpe_ratio": 1.79,
     "category": "行业"
@@ -33765,7 +33765,7 @@
     "change_rate": -0.032911,
     "volume": 0.0,
     "year_1_return": -23.6,
-    "year_3_return": -23.6,
+    "year_3_return": 0,
     "max_drawdown": -28.7,
     "sharpe_ratio": -2.61,
     "category": "行业"
@@ -34325,7 +34325,7 @@
     "change_rate": -0.006376,
     "volume": 0.0,
     "year_1_return": -7.1,
-    "year_3_return": -7.1,
+    "year_3_return": 0,
     "max_drawdown": -7.1,
     "sharpe_ratio": -2.91,
     "category": "行业"
@@ -34565,7 +34565,7 @@
     "change_rate": -0.014448,
     "volume": 0.0,
     "year_1_return": -3.2,
-    "year_3_return": -3.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -34605,7 +34605,7 @@
     "change_rate": -0.000692,
     "volume": 0.0,
     "year_1_return": 42.9,
-    "year_3_return": 42.9,
+    "year_3_return": 0,
     "max_drawdown": -15.5,
     "sharpe_ratio": 1.77,
     "category": "行业"
@@ -34645,7 +34645,7 @@
     "change_rate": 0.009234,
     "volume": 0.0,
     "year_1_return": 9.1,
-    "year_3_return": 9.1,
+    "year_3_return": 0,
     "max_drawdown": -9.1,
     "sharpe_ratio": 2.09,
     "category": "行业"
@@ -34925,7 +34925,7 @@
     "change_rate": -0.01324,
     "volume": 0.0,
     "year_1_return": 26.9,
-    "year_3_return": 26.9,
+    "year_3_return": 0,
     "max_drawdown": -9.4,
     "sharpe_ratio": 1.26,
     "category": "行业"
@@ -35045,7 +35045,7 @@
     "change_rate": -0.008443,
     "volume": 0.0,
     "year_1_return": 2.9,
-    "year_3_return": 2.9,
+    "year_3_return": 0,
     "max_drawdown": -11.5,
     "sharpe_ratio": 0.67,
     "category": "行业"
@@ -35245,7 +35245,7 @@
     "change_rate": -0.009671,
     "volume": 0.0,
     "year_1_return": 0.3,
-    "year_3_return": 0.3,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -35285,7 +35285,7 @@
     "change_rate": -0.01677,
     "volume": 0.0,
     "year_1_return": 9.8,
-    "year_3_return": 9.8,
+    "year_3_return": 0,
     "max_drawdown": -26.1,
     "sharpe_ratio": 0.4,
     "category": "行业"
@@ -35325,7 +35325,7 @@
     "change_rate": -0.010549,
     "volume": 0.0,
     "year_1_return": 36.9,
-    "year_3_return": 36.9,
+    "year_3_return": 0,
     "max_drawdown": -12.4,
     "sharpe_ratio": 2.1,
     "category": "行业"
@@ -35605,7 +35605,7 @@
     "change_rate": 0.008459,
     "volume": 0.0,
     "year_1_return": 10.4,
-    "year_3_return": 10.4,
+    "year_3_return": 0,
     "max_drawdown": -23.2,
     "sharpe_ratio": 0.81,
     "category": "行业"
@@ -35805,7 +35805,7 @@
     "change_rate": -0.011637,
     "volume": 0.0,
     "year_1_return": 25.8,
-    "year_3_return": 25.8,
+    "year_3_return": 0,
     "max_drawdown": -10.3,
     "sharpe_ratio": 1.27,
     "category": "行业"
@@ -35885,7 +35885,7 @@
     "change_rate": -0.025554,
     "volume": 0.0,
     "year_1_return": 15.7,
-    "year_3_return": 15.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -36005,7 +36005,7 @@
     "change_rate": -0.00767,
     "volume": 0.0,
     "year_1_return": 3.9,
-    "year_3_return": 3.9,
+    "year_3_return": 0,
     "max_drawdown": -6.1,
     "sharpe_ratio": 0.0,
     "category": "行业"
@@ -36125,7 +36125,7 @@
     "change_rate": -0.004533,
     "volume": 0.0,
     "year_1_return": 9.8,
-    "year_3_return": 9.8,
+    "year_3_return": 0,
     "max_drawdown": -9.6,
     "sharpe_ratio": 2.08,
     "category": "行业"
@@ -36245,7 +36245,7 @@
     "change_rate": -0.008499,
     "volume": 0.0,
     "year_1_return": 39.3,
-    "year_3_return": 39.3,
+    "year_3_return": 0,
     "max_drawdown": -12.8,
     "sharpe_ratio": 1.49,
     "category": "行业"
@@ -36365,7 +36365,7 @@
     "change_rate": -0.081101,
     "volume": 0.0,
     "year_1_return": 27.2,
-    "year_3_return": 27.2,
+    "year_3_return": 0,
     "max_drawdown": -13.8,
     "sharpe_ratio": 1.78,
     "category": "行业"
@@ -36565,7 +36565,7 @@
     "change_rate": -0.013047,
     "volume": 0.0,
     "year_1_return": 26.7,
-    "year_3_return": 26.7,
+    "year_3_return": 0,
     "max_drawdown": -10.0,
     "sharpe_ratio": 1.23,
     "category": "行业"
@@ -36605,7 +36605,7 @@
     "change_rate": -0.015674,
     "volume": 0.0,
     "year_1_return": 111.3,
-    "year_3_return": 111.3,
+    "year_3_return": 0,
     "max_drawdown": -19.0,
     "sharpe_ratio": 1.58,
     "category": "行业"
@@ -36645,7 +36645,7 @@
     "change_rate": -0.021577,
     "volume": 0.0,
     "year_1_return": 19.3,
-    "year_3_return": 19.3,
+    "year_3_return": 0,
     "max_drawdown": -17.9,
     "sharpe_ratio": 0.78,
     "category": "行业"
@@ -36685,7 +36685,7 @@
     "change_rate": -0.005734,
     "volume": 0.0,
     "year_1_return": -10.3,
-    "year_3_return": -10.3,
+    "year_3_return": 0,
     "max_drawdown": -12.2,
     "sharpe_ratio": -1.57,
     "category": "行业"
@@ -36725,7 +36725,7 @@
     "change_rate": -0.019531,
     "volume": 0.0,
     "year_1_return": 23.8,
-    "year_3_return": 23.8,
+    "year_3_return": 0,
     "max_drawdown": -14.2,
     "sharpe_ratio": 1.28,
     "category": "宽基"
@@ -37005,7 +37005,7 @@
     "change_rate": -0.02398,
     "volume": 0.0,
     "year_1_return": 90.7,
-    "year_3_return": 90.7,
+    "year_3_return": 0,
     "max_drawdown": -15.3,
     "sharpe_ratio": 1.36,
     "category": "行业"
@@ -37365,7 +37365,7 @@
     "change_rate": -0.012207,
     "volume": 0.0,
     "year_1_return": 4.0,
-    "year_3_return": 4.0,
+    "year_3_return": 0,
     "max_drawdown": -7.8,
     "sharpe_ratio": 0.65,
     "category": "行业"
@@ -37405,7 +37405,7 @@
     "change_rate": -0.010019,
     "volume": 0.0,
     "year_1_return": 55.9,
-    "year_3_return": 55.9,
+    "year_3_return": 0,
     "max_drawdown": -12.8,
     "sharpe_ratio": 2.0,
     "category": "行业"
@@ -37565,7 +37565,7 @@
     "change_rate": -0.018973,
     "volume": 0.0,
     "year_1_return": -12.3,
-    "year_3_return": -12.3,
+    "year_3_return": 0,
     "max_drawdown": -14.2,
     "sharpe_ratio": -1.65,
     "category": "行业"
@@ -37605,7 +37605,7 @@
     "change_rate": -0.010225,
     "volume": 0.0,
     "year_1_return": -1.8,
-    "year_3_return": -1.8,
+    "year_3_return": 0,
     "max_drawdown": -10.1,
     "sharpe_ratio": -0.42,
     "category": "行业"
@@ -37765,7 +37765,7 @@
     "change_rate": -0.009534,
     "volume": 0.0,
     "year_1_return": -5.7,
-    "year_3_return": -5.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -37925,7 +37925,7 @@
     "change_rate": -0.007666,
     "volume": 0.0,
     "year_1_return": 17.9,
-    "year_3_return": 17.9,
+    "year_3_return": 0,
     "max_drawdown": -10.9,
     "sharpe_ratio": 1.25,
     "category": "行业"
@@ -38205,7 +38205,7 @@
     "change_rate": -0.009504,
     "volume": 0.0,
     "year_1_return": -4.4,
-    "year_3_return": -4.4,
+    "year_3_return": 0,
     "max_drawdown": -11.4,
     "sharpe_ratio": -0.82,
     "category": "行业"
@@ -38245,7 +38245,7 @@
     "change_rate": 0.018125,
     "volume": 0.0,
     "year_1_return": 27.5,
-    "year_3_return": 27.5,
+    "year_3_return": 0,
     "max_drawdown": -23.0,
     "sharpe_ratio": 0.84,
     "category": "行业"
@@ -38285,7 +38285,7 @@
     "change_rate": -0.025748,
     "volume": 0.0,
     "year_1_return": 37.0,
-    "year_3_return": 37.0,
+    "year_3_return": 0,
     "max_drawdown": -16.3,
     "sharpe_ratio": 2.46,
     "category": "行业"
@@ -38445,7 +38445,7 @@
     "change_rate": -0.008222,
     "volume": 0.0,
     "year_1_return": -3.4,
-    "year_3_return": -3.4,
+    "year_3_return": 0,
     "max_drawdown": -10.4,
     "sharpe_ratio": -0.7,
     "category": "行业"
@@ -38485,7 +38485,7 @@
     "change_rate": -0.036392,
     "volume": 0.0,
     "year_1_return": 30.1,
-    "year_3_return": 30.1,
+    "year_3_return": 0,
     "max_drawdown": -16.4,
     "sharpe_ratio": 2.68,
     "category": "行业"
@@ -38525,7 +38525,7 @@
     "change_rate": -0.036029,
     "volume": 0.0,
     "year_1_return": 22.6,
-    "year_3_return": 22.6,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -38565,7 +38565,7 @@
     "change_rate": -0.045455,
     "volume": 0.0,
     "year_1_return": -3.4,
-    "year_3_return": -3.4,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -38605,7 +38605,7 @@
     "change_rate": -0.015991,
     "volume": 0.0,
     "year_1_return": -7.4,
-    "year_3_return": -7.4,
+    "year_3_return": 0,
     "max_drawdown": -9.1,
     "sharpe_ratio": -2.42,
     "category": "行业"
@@ -38845,7 +38845,7 @@
     "change_rate": -0.013771,
     "volume": 0.0,
     "year_1_return": -3.8,
-    "year_3_return": -3.8,
+    "year_3_return": 0,
     "max_drawdown": -11.2,
     "sharpe_ratio": -0.35,
     "category": "行业"
@@ -38925,7 +38925,7 @@
     "change_rate": -0.02594,
     "volume": 0.0,
     "year_1_return": -27.9,
-    "year_3_return": -27.9,
+    "year_3_return": 0,
     "max_drawdown": -35.6,
     "sharpe_ratio": -2.53,
     "category": "行业"
@@ -39045,7 +39045,7 @@
     "change_rate": -0.001042,
     "volume": 0.0,
     "year_1_return": -3.9,
-    "year_3_return": -3.9,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -39245,7 +39245,7 @@
     "change_rate": -0.028736,
     "volume": 0.0,
     "year_1_return": -15.8,
-    "year_3_return": -15.8,
+    "year_3_return": 0,
     "max_drawdown": -23.1,
     "sharpe_ratio": -1.58,
     "category": "行业"
@@ -39405,7 +39405,7 @@
     "change_rate": -0.004648,
     "volume": 0.0,
     "year_1_return": 27.7,
-    "year_3_return": 27.7,
+    "year_3_return": 0,
     "max_drawdown": -17.1,
     "sharpe_ratio": 0.88,
     "category": "行业"
@@ -39565,7 +39565,7 @@
     "change_rate": -0.02022,
     "volume": 0.0,
     "year_1_return": 67.6,
-    "year_3_return": 67.6,
+    "year_3_return": 0,
     "max_drawdown": -21.9,
     "sharpe_ratio": 0.66,
     "category": "行业"
@@ -39605,7 +39605,7 @@
     "change_rate": -0.025496,
     "volume": 0.0,
     "year_1_return": 31.9,
-    "year_3_return": 31.9,
+    "year_3_return": 0,
     "max_drawdown": -16.3,
     "sharpe_ratio": 2.28,
     "category": "行业"
@@ -39645,7 +39645,7 @@
     "change_rate": -0.017341,
     "volume": 0.0,
     "year_1_return": 1.1,
-    "year_3_return": 1.1,
+    "year_3_return": 0,
     "max_drawdown": -8.0,
     "sharpe_ratio": 0.26,
     "category": "行业"
@@ -39685,7 +39685,7 @@
     "change_rate": -0.010691,
     "volume": 0.0,
     "year_1_return": 38.8,
-    "year_3_return": 38.8,
+    "year_3_return": 0,
     "max_drawdown": -9.1,
     "sharpe_ratio": 1.56,
     "category": "行业"
@@ -39725,7 +39725,7 @@
     "change_rate": 0.0,
     "volume": 0.0,
     "year_1_return": -4.4,
-    "year_3_return": -4.4,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -39765,7 +39765,7 @@
     "change_rate": -0.020321,
     "volume": 0.0,
     "year_1_return": -8.0,
-    "year_3_return": -8.0,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -39805,7 +39805,7 @@
     "change_rate": -0.016222,
     "volume": 0.0,
     "year_1_return": -13.0,
-    "year_3_return": -13.0,
+    "year_3_return": 0,
     "max_drawdown": -28.9,
     "sharpe_ratio": -0.82,
     "category": "行业"
@@ -39885,7 +39885,7 @@
     "change_rate": -0.013145,
     "volume": 0.0,
     "year_1_return": -0.3,
-    "year_3_return": -0.3,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -39965,7 +39965,7 @@
     "change_rate": -0.01631,
     "volume": 0.0,
     "year_1_return": -1.8,
-    "year_3_return": -1.8,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -40005,7 +40005,7 @@
     "change_rate": -0.008359,
     "volume": 0.0,
     "year_1_return": -2.3,
-    "year_3_return": -2.3,
+    "year_3_return": 0,
     "max_drawdown": -17.2,
     "sharpe_ratio": -1.56,
     "category": "行业"
@@ -40165,7 +40165,7 @@
     "change_rate": -0.011682,
     "volume": 0.0,
     "year_1_return": -11.6,
-    "year_3_return": -11.6,
+    "year_3_return": 0,
     "max_drawdown": -18.0,
     "sharpe_ratio": -1.76,
     "category": "行业"
@@ -40965,7 +40965,7 @@
     "change_rate": -0.026236,
     "volume": 0.0,
     "year_1_return": 0.1,
-    "year_3_return": 0.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -41045,7 +41045,7 @@
     "change_rate": 0.013001,
     "volume": 0.0,
     "year_1_return": -6.4,
-    "year_3_return": -6.4,
+    "year_3_return": 0,
     "max_drawdown": -21.5,
     "sharpe_ratio": -0.66,
     "category": "行业"
@@ -41125,7 +41125,7 @@
     "change_rate": -0.005566,
     "volume": 0.0,
     "year_1_return": 6.9,
-    "year_3_return": 6.9,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -41205,7 +41205,7 @@
     "change_rate": -0.015695,
     "volume": 0.0,
     "year_1_return": -15.1,
-    "year_3_return": -15.1,
+    "year_3_return": 0,
     "max_drawdown": -21.1,
     "sharpe_ratio": -1.46,
     "category": "行业"
@@ -41445,7 +41445,7 @@
     "change_rate": 0.007944,
     "volume": 0.0,
     "year_1_return": 15.0,
-    "year_3_return": 15.0,
+    "year_3_return": 0,
     "max_drawdown": -18.7,
     "sharpe_ratio": 1.33,
     "category": "行业"
@@ -42005,7 +42005,7 @@
     "change_rate": -0.023833,
     "volume": 0.0,
     "year_1_return": 0.4,
-    "year_3_return": 0.4,
+    "year_3_return": 0,
     "max_drawdown": -5.5,
     "sharpe_ratio": 0.18,
     "category": "行业"
@@ -42085,7 +42085,7 @@
     "change_rate": -0.011068,
     "volume": 0.0,
     "year_1_return": 78.7,
-    "year_3_return": 78.7,
+    "year_3_return": 0,
     "max_drawdown": -17.5,
     "sharpe_ratio": 1.08,
     "category": "行业"
@@ -42165,7 +42165,7 @@
     "change_rate": -0.01444,
     "volume": 0.0,
     "year_1_return": 37.3,
-    "year_3_return": 37.2,
+    "year_3_return": 0,
     "max_drawdown": -8.8,
     "sharpe_ratio": 1.01,
     "category": "行业"
@@ -42184,7 +42184,7 @@
     "change_rate": -1e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.0,
     "sharpe_ratio": -14.02,
     "category": "行业"
@@ -42464,7 +42464,7 @@
     "change_rate": -0.005894,
     "volume": 0.0,
     "year_1_return": 1.9,
-    "year_3_return": 1.9,
+    "year_3_return": 0,
     "max_drawdown": -5.9,
     "sharpe_ratio": 0.25,
     "category": "行业"
@@ -42504,7 +42504,7 @@
     "change_rate": -0.014493,
     "volume": 0.0,
     "year_1_return": 1.9,
-    "year_3_return": 1.9,
+    "year_3_return": 0,
     "max_drawdown": -14.0,
     "sharpe_ratio": -0.73,
     "category": "行业"
@@ -42624,7 +42624,7 @@
     "change_rate": -0.014752,
     "volume": 0.0,
     "year_1_return": -5.1,
-    "year_3_return": -5.1,
+    "year_3_return": 0,
     "max_drawdown": -13.4,
     "sharpe_ratio": -0.57,
     "category": "行业"
@@ -42664,7 +42664,7 @@
     "change_rate": 0.004587,
     "volume": 0.0,
     "year_1_return": 11.7,
-    "year_3_return": 11.7,
+    "year_3_return": 0,
     "max_drawdown": -10.8,
     "sharpe_ratio": 1.36,
     "category": "行业"
@@ -42824,7 +42824,7 @@
     "change_rate": 0.011444,
     "volume": 0.0,
     "year_1_return": 9.4,
-    "year_3_return": 9.4,
+    "year_3_return": 0,
     "max_drawdown": -12.9,
     "sharpe_ratio": 0.67,
     "category": "行业"
@@ -42984,7 +42984,7 @@
     "change_rate": -0.019627,
     "volume": 0.0,
     "year_1_return": 0.2,
-    "year_3_return": 0.2,
+    "year_3_return": 0,
     "max_drawdown": -16.7,
     "sharpe_ratio": 0.1,
     "category": "行业"
@@ -43024,7 +43024,7 @@
     "change_rate": 0.010055,
     "volume": 0.0,
     "year_1_return": 4.7,
-    "year_3_return": 4.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -43064,7 +43064,7 @@
     "change_rate": -0.00616,
     "volume": 0.0,
     "year_1_return": -3.4,
-    "year_3_return": -3.4,
+    "year_3_return": 0,
     "max_drawdown": -10.0,
     "sharpe_ratio": -0.66,
     "category": "行业"
@@ -43264,7 +43264,7 @@
     "change_rate": -0.014286,
     "volume": 0.0,
     "year_1_return": 17.8,
-    "year_3_return": 17.8,
+    "year_3_return": 0,
     "max_drawdown": -15.2,
     "sharpe_ratio": 1.77,
     "category": "行业"
@@ -43344,7 +43344,7 @@
     "change_rate": -0.01201,
     "volume": 0.0,
     "year_1_return": 25.9,
-    "year_3_return": 25.9,
+    "year_3_return": 0,
     "max_drawdown": -10.5,
     "sharpe_ratio": 1.82,
     "category": "行业"
@@ -43464,7 +43464,7 @@
     "change_rate": 0.00554,
     "volume": 0.0,
     "year_1_return": 10.3,
-    "year_3_return": 10.3,
+    "year_3_return": 0,
     "max_drawdown": -8.3,
     "sharpe_ratio": 2.59,
     "category": "行业"
@@ -43504,7 +43504,7 @@
     "change_rate": -0.014568,
     "volume": 0.0,
     "year_1_return": -4.0,
-    "year_3_return": -4.0,
+    "year_3_return": 0,
     "max_drawdown": -13.5,
     "sharpe_ratio": -0.56,
     "category": "行业"
@@ -43544,7 +43544,7 @@
     "change_rate": -0.015374,
     "volume": 0.0,
     "year_1_return": 37.3,
-    "year_3_return": 37.2,
+    "year_3_return": 0,
     "max_drawdown": -8.4,
     "sharpe_ratio": 1.13,
     "category": "行业"
@@ -43744,7 +43744,7 @@
     "change_rate": -0.022013,
     "volume": 0.0,
     "year_1_return": 24.6,
-    "year_3_return": 24.6,
+    "year_3_return": 0,
     "max_drawdown": -9.6,
     "sharpe_ratio": 3.26,
     "category": "行业"
@@ -43864,7 +43864,7 @@
     "change_rate": -0.015556,
     "volume": 0.0,
     "year_1_return": 33.7,
-    "year_3_return": 33.7,
+    "year_3_return": 0,
     "max_drawdown": -8.0,
     "sharpe_ratio": 1.3,
     "category": "行业"
@@ -43904,7 +43904,7 @@
     "change_rate": -0.01626,
     "volume": 0.0,
     "year_1_return": 22.1,
-    "year_3_return": 22.1,
+    "year_3_return": 0,
     "max_drawdown": -8.2,
     "sharpe_ratio": 0.42,
     "category": "行业"
@@ -44024,7 +44024,7 @@
     "change_rate": -0.03681,
     "volume": 0.0,
     "year_1_return": 44.2,
-    "year_3_return": 44.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -44104,7 +44104,7 @@
     "change_rate": -0.009091,
     "volume": 0.0,
     "year_1_return": -2.7,
-    "year_3_return": -2.7,
+    "year_3_return": 0,
     "max_drawdown": -5.8,
     "sharpe_ratio": -0.71,
     "category": "行业"
@@ -44304,7 +44304,7 @@
     "change_rate": -0.010827,
     "volume": 0.0,
     "year_1_return": 0.8,
-    "year_3_return": 0.8,
+    "year_3_return": 0,
     "max_drawdown": -7.4,
     "sharpe_ratio": 0.3,
     "category": "行业"
@@ -44544,7 +44544,7 @@
     "change_rate": -0.006024,
     "volume": 0.0,
     "year_1_return": -0.5,
-    "year_3_return": -0.5,
+    "year_3_return": 0,
     "max_drawdown": -6.0,
     "sharpe_ratio": 0.04,
     "category": "行业"
@@ -44624,7 +44624,7 @@
     "change_rate": -0.000928,
     "volume": 0.0,
     "year_1_return": 7.1,
-    "year_3_return": 7.1,
+    "year_3_return": 0,
     "max_drawdown": -19.0,
     "sharpe_ratio": 0.77,
     "category": "行业"
@@ -44704,7 +44704,7 @@
     "change_rate": -0.005923,
     "volume": 0.0,
     "year_1_return": 0.1,
-    "year_3_return": 0.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -44824,7 +44824,7 @@
     "change_rate": -0.012589,
     "volume": 0.0,
     "year_1_return": 24.5,
-    "year_3_return": 24.5,
+    "year_3_return": 0,
     "max_drawdown": -12.3,
     "sharpe_ratio": 2.8,
     "category": "行业"
@@ -44944,7 +44944,7 @@
     "change_rate": 0.011299,
     "volume": 0.0,
     "year_1_return": 81.0,
-    "year_3_return": 81.0,
+    "year_3_return": 0,
     "max_drawdown": -13.7,
     "sharpe_ratio": 0.79,
     "category": "行业"
@@ -44984,7 +44984,7 @@
     "change_rate": -0.005929,
     "volume": 0.0,
     "year_1_return": 1.4,
-    "year_3_return": 1.4,
+    "year_3_return": 0,
     "max_drawdown": -10.1,
     "sharpe_ratio": 0.6,
     "category": "行业"
@@ -45064,7 +45064,7 @@
     "change_rate": -0.006554,
     "volume": 0.0,
     "year_1_return": 6.8,
-    "year_3_return": 6.8,
+    "year_3_return": 0,
     "max_drawdown": -6.7,
     "sharpe_ratio": 0.84,
     "category": "行业"
@@ -45104,7 +45104,7 @@
     "change_rate": -0.004028,
     "volume": 0.0,
     "year_1_return": -2.8,
-    "year_3_return": -2.8,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -45144,7 +45144,7 @@
     "change_rate": 0.01012,
     "volume": 0.0,
     "year_1_return": 15.1,
-    "year_3_return": 15.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -45184,7 +45184,7 @@
     "change_rate": -0.011895,
     "volume": 0.0,
     "year_1_return": 15.4,
-    "year_3_return": 15.4,
+    "year_3_return": 0,
     "max_drawdown": -9.9,
     "sharpe_ratio": 1.3,
     "category": "行业"
@@ -45264,7 +45264,7 @@
     "change_rate": -0.004044,
     "volume": 0.0,
     "year_1_return": -2.6,
-    "year_3_return": -2.6,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -45304,7 +45304,7 @@
     "change_rate": -0.01717,
     "volume": 0.0,
     "year_1_return": 38.1,
-    "year_3_return": 38.1,
+    "year_3_return": 0,
     "max_drawdown": -14.7,
     "sharpe_ratio": 1.58,
     "category": "行业"
@@ -45344,7 +45344,7 @@
     "change_rate": -0.010638,
     "volume": 0.0,
     "year_1_return": 2.6,
-    "year_3_return": 2.6,
+    "year_3_return": 0,
     "max_drawdown": -18.7,
     "sharpe_ratio": -0.46,
     "category": "行业"
@@ -45384,7 +45384,7 @@
     "change_rate": -0.008475,
     "volume": 0.0,
     "year_1_return": 41.1,
-    "year_3_return": 41.1,
+    "year_3_return": 0,
     "max_drawdown": -15.0,
     "sharpe_ratio": 1.94,
     "category": "行业"
@@ -45424,7 +45424,7 @@
     "change_rate": -0.020017,
     "volume": 0.0,
     "year_1_return": 16.5,
-    "year_3_return": 16.5,
+    "year_3_return": 0,
     "max_drawdown": -30.5,
     "sharpe_ratio": 0.91,
     "category": "行业"
@@ -45584,7 +45584,7 @@
     "change_rate": -0.035422,
     "volume": 0.0,
     "year_1_return": 3.9,
-    "year_3_return": 3.9,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -45664,7 +45664,7 @@
     "change_rate": -0.00939,
     "volume": 0.0,
     "year_1_return": 107.5,
-    "year_3_return": 107.5,
+    "year_3_return": 0,
     "max_drawdown": -12.7,
     "sharpe_ratio": 1.41,
     "category": "行业"
@@ -45704,7 +45704,7 @@
     "change_rate": -0.015121,
     "volume": 0.0,
     "year_1_return": -1.6,
-    "year_3_return": -1.6,
+    "year_3_return": 0,
     "max_drawdown": -13.4,
     "sharpe_ratio": -0.81,
     "category": "行业"
@@ -45904,7 +45904,7 @@
     "change_rate": -0.013402,
     "volume": 0.0,
     "year_1_return": -4.6,
-    "year_3_return": -4.6,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -45984,7 +45984,7 @@
     "change_rate": -0.008094,
     "volume": 0.0,
     "year_1_return": 9.8,
-    "year_3_return": 9.8,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -46024,7 +46024,7 @@
     "change_rate": 0.003581,
     "volume": 0.0,
     "year_1_return": 6.7,
-    "year_3_return": 6.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -46128,7 +46128,7 @@
     "change_rate": -0.043537,
     "volume": 0.0,
     "year_1_return": 39.2,
-    "year_3_return": 39.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -46168,7 +46168,7 @@
     "change_rate": 0.009579,
     "volume": 0.0,
     "year_1_return": 3.1,
-    "year_3_return": 3.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -46208,7 +46208,7 @@
     "change_rate": -0.000915,
     "volume": 0.0,
     "year_1_return": 12.6,
-    "year_3_return": 12.6,
+    "year_3_return": 0,
     "max_drawdown": -7.5,
     "sharpe_ratio": 2.79,
     "category": "行业"
@@ -46328,7 +46328,7 @@
     "change_rate": -0.012336,
     "volume": 0.0,
     "year_1_return": 27.7,
-    "year_3_return": 27.7,
+    "year_3_return": 0,
     "max_drawdown": -10.1,
     "sharpe_ratio": 1.26,
     "category": "行业"
@@ -46528,7 +46528,7 @@
     "change_rate": -0.014354,
     "volume": 0.0,
     "year_1_return": 17.9,
-    "year_3_return": 17.9,
+    "year_3_return": 0,
     "max_drawdown": -19.3,
     "sharpe_ratio": 1.58,
     "category": "宽基"
@@ -46728,7 +46728,7 @@
     "change_rate": -0.017672,
     "volume": 0.0,
     "year_1_return": -6.3,
-    "year_3_return": -6.3,
+    "year_3_return": 0,
     "max_drawdown": -13.5,
     "sharpe_ratio": -1.16,
     "category": "行业"
@@ -46768,7 +46768,7 @@
     "change_rate": -0.036058,
     "volume": 0.0,
     "year_1_return": 22.4,
-    "year_3_return": 22.4,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -46848,7 +46848,7 @@
     "change_rate": -0.008909,
     "volume": 0.0,
     "year_1_return": 33.6,
-    "year_3_return": 33.6,
+    "year_3_return": 0,
     "max_drawdown": -9.0,
     "sharpe_ratio": 1.09,
     "category": "行业"
@@ -47008,7 +47008,7 @@
     "change_rate": -0.011505,
     "volume": 0.0,
     "year_1_return": 3.5,
-    "year_3_return": 3.5,
+    "year_3_return": 0,
     "max_drawdown": -6.8,
     "sharpe_ratio": 0.57,
     "category": "行业"
@@ -47088,7 +47088,7 @@
     "change_rate": -0.00995,
     "volume": 0.0,
     "year_1_return": -3.9,
-    "year_3_return": -3.9,
+    "year_3_return": 0,
     "max_drawdown": -10.1,
     "sharpe_ratio": -0.75,
     "category": "行业"
@@ -47448,7 +47448,7 @@
     "change_rate": -0.006129,
     "volume": 0.0,
     "year_1_return": -3.1,
-    "year_3_return": -3.1,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -47547,7 +47547,7 @@
     "change_rate": -0.000962,
     "volume": 0.0,
     "year_1_return": 4.2,
-    "year_3_return": 4.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -47587,7 +47587,7 @@
     "change_rate": -0.013503,
     "volume": 0.0,
     "year_1_return": 29.9,
-    "year_3_return": 29.9,
+    "year_3_return": 0,
     "max_drawdown": -14.6,
     "sharpe_ratio": 1.44,
     "category": "行业"
@@ -47867,7 +47867,7 @@
     "change_rate": -0.022183,
     "volume": 0.0,
     "year_1_return": 7.9,
-    "year_3_return": 7.9,
+    "year_3_return": 0,
     "max_drawdown": -25.5,
     "sharpe_ratio": 0.39,
     "category": "行业"
@@ -48067,7 +48067,7 @@
     "change_rate": -0.036501,
     "volume": 0.0,
     "year_1_return": 51.1,
-    "year_3_return": 51.1,
+    "year_3_return": 0,
     "max_drawdown": -19.1,
     "sharpe_ratio": 2.86,
     "category": "行业"
@@ -48227,7 +48227,7 @@
     "change_rate": -0.005178,
     "volume": 0.0,
     "year_1_return": 31.1,
-    "year_3_return": 31.1,
+    "year_3_return": 0,
     "max_drawdown": -8.4,
     "sharpe_ratio": 1.97,
     "category": "行业"
@@ -48267,7 +48267,7 @@
     "change_rate": -0.015572,
     "volume": 0.0,
     "year_1_return": 39.8,
-    "year_3_return": 39.8,
+    "year_3_return": 0,
     "max_drawdown": -16.3,
     "sharpe_ratio": 1.24,
     "category": "行业"
@@ -48387,7 +48387,7 @@
     "change_rate": -0.01385,
     "volume": 0.0,
     "year_1_return": 27.1,
-    "year_3_return": 27.2,
+    "year_3_return": 0,
     "max_drawdown": -7.1,
     "sharpe_ratio": 0.79,
     "category": "行业"
@@ -48427,7 +48427,7 @@
     "change_rate": -0.005005,
     "volume": 0.0,
     "year_1_return": -0.2,
-    "year_3_return": -0.2,
+    "year_3_return": 0,
     "max_drawdown": -5.8,
     "sharpe_ratio": 0.11,
     "category": "行业"
@@ -48547,7 +48547,7 @@
     "change_rate": -0.03525,
     "volume": 0.0,
     "year_1_return": 4.2,
-    "year_3_return": 4.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -48627,7 +48627,7 @@
     "change_rate": -0.00207,
     "volume": 0.0,
     "year_1_return": -4.7,
-    "year_3_return": -4.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -48787,7 +48787,7 @@
     "change_rate": -0.00885,
     "volume": 0.0,
     "year_1_return": 9.7,
-    "year_3_return": 9.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -48907,7 +48907,7 @@
     "change_rate": 0.001019,
     "volume": 0.0,
     "year_1_return": -2.0,
-    "year_3_return": -2.0,
+    "year_3_return": 0,
     "max_drawdown": -13.8,
     "sharpe_ratio": -0.29,
     "category": "行业"
@@ -49107,7 +49107,7 @@
     "change_rate": -0.008824,
     "volume": 0.0,
     "year_1_return": 0.5,
-    "year_3_return": 0.5,
+    "year_3_return": 0,
     "max_drawdown": -8.9,
     "sharpe_ratio": -0.05,
     "category": "行业"
@@ -49427,7 +49427,7 @@
     "change_rate": -0.018421,
     "volume": 0.0,
     "year_1_return": 11.7,
-    "year_3_return": 11.7,
+    "year_3_return": 0,
     "max_drawdown": -7.6,
     "sharpe_ratio": 1.17,
     "category": "行业"
@@ -49467,7 +49467,7 @@
     "change_rate": -0.010223,
     "volume": 0.0,
     "year_1_return": 6.9,
-    "year_3_return": 6.9,
+    "year_3_return": 0,
     "max_drawdown": -18.7,
     "sharpe_ratio": -0.41,
     "category": "行业"
@@ -49667,7 +49667,7 @@
     "change_rate": -0.011501,
     "volume": 0.0,
     "year_1_return": 83.8,
-    "year_3_return": 83.8,
+    "year_3_return": 0,
     "max_drawdown": -16.2,
     "sharpe_ratio": 1.28,
     "category": "行业"
@@ -49747,7 +49747,7 @@
     "change_rate": -0.012531,
     "volume": 0.0,
     "year_1_return": 20.7,
-    "year_3_return": 20.7,
+    "year_3_return": 0,
     "max_drawdown": -9.9,
     "sharpe_ratio": 1.57,
     "category": "行业"
@@ -49827,7 +49827,7 @@
     "change_rate": -0.007508,
     "volume": 0.0,
     "year_1_return": 30.9,
-    "year_3_return": 30.9,
+    "year_3_return": 0,
     "max_drawdown": -8.8,
     "sharpe_ratio": 0.82,
     "category": "行业"
@@ -50027,7 +50027,7 @@
     "change_rate": -0.006914,
     "volume": 0.0,
     "year_1_return": 13.6,
-    "year_3_return": 13.6,
+    "year_3_return": 0,
     "max_drawdown": -8.4,
     "sharpe_ratio": 0.17,
     "category": "行业"
@@ -50387,7 +50387,7 @@
     "change_rate": -0.036667,
     "volume": 0.0,
     "year_1_return": 14.5,
-    "year_3_return": 14.5,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -50547,7 +50547,7 @@
     "change_rate": -0.004611,
     "volume": 0.0,
     "year_1_return": 50.2,
-    "year_3_return": 50.2,
+    "year_3_return": 0,
     "max_drawdown": -20.3,
     "sharpe_ratio": 0.56,
     "category": "行业"
@@ -50747,7 +50747,7 @@
     "change_rate": -0.013729,
     "volume": 0.0,
     "year_1_return": 79.4,
-    "year_3_return": 79.4,
+    "year_3_return": 0,
     "max_drawdown": -17.1,
     "sharpe_ratio": 1.1,
     "category": "行业"
@@ -51267,7 +51267,7 @@
     "change_rate": 0.005911,
     "volume": 0.0,
     "year_1_return": 0.2,
-    "year_3_return": 0.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -51307,7 +51307,7 @@
     "change_rate": -0.009814,
     "volume": 0.0,
     "year_1_return": 0.2,
-    "year_3_return": 0.2,
+    "year_3_return": 0,
     "max_drawdown": -8.5,
     "sharpe_ratio": 0.06,
     "category": "行业"
@@ -51387,7 +51387,7 @@
     "change_rate": 0.006993,
     "volume": 0.0,
     "year_1_return": 18.5,
-    "year_3_return": 18.5,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -51507,7 +51507,7 @@
     "change_rate": -0.02414,
     "volume": 0.0,
     "year_1_return": 33.3,
-    "year_3_return": 33.3,
+    "year_3_return": 0,
     "max_drawdown": -7.6,
     "sharpe_ratio": 1.01,
     "category": "行业"
@@ -51547,7 +51547,7 @@
     "change_rate": -0.013267,
     "volume": 0.0,
     "year_1_return": 78.3,
-    "year_3_return": 78.3,
+    "year_3_return": 0,
     "max_drawdown": -17.3,
     "sharpe_ratio": 1.07,
     "category": "行业"
@@ -51667,7 +51667,7 @@
     "change_rate": -0.017673,
     "volume": 0.0,
     "year_1_return": 32.6,
-    "year_3_return": 32.6,
+    "year_3_return": 0,
     "max_drawdown": -7.1,
     "sharpe_ratio": 0.98,
     "category": "宽基"
@@ -51787,7 +51787,7 @@
     "change_rate": -0.01059,
     "volume": 0.0,
     "year_1_return": 30.1,
-    "year_3_return": 30.1,
+    "year_3_return": 0,
     "max_drawdown": -9.2,
     "sharpe_ratio": 1.55,
     "category": "行业"
@@ -51907,7 +51907,7 @@
     "change_rate": -0.008744,
     "volume": 0.0,
     "year_1_return": 21.1,
-    "year_3_return": 21.1,
+    "year_3_return": 0,
     "max_drawdown": -9.1,
     "sharpe_ratio": 1.29,
     "category": "行业"
@@ -51947,7 +51947,7 @@
     "change_rate": 0.005348,
     "volume": 0.0,
     "year_1_return": 10.2,
-    "year_3_return": 10.2,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -52027,7 +52027,7 @@
     "change_rate": -0.013479,
     "volume": 0.0,
     "year_1_return": 15.7,
-    "year_3_return": 15.7,
+    "year_3_return": 0,
     "max_drawdown": -9.9,
     "sharpe_ratio": 1.91,
     "category": "行业"
@@ -52187,7 +52187,7 @@
     "change_rate": 0.006481,
     "volume": 0.0,
     "year_1_return": 10.7,
-    "year_3_return": 10.7,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -52267,7 +52267,7 @@
     "change_rate": -0.006944,
     "volume": 0.0,
     "year_1_return": 28.3,
-    "year_3_return": 28.3,
+    "year_3_return": 0,
     "max_drawdown": -9.7,
     "sharpe_ratio": 1.34,
     "category": "行业"
@@ -52307,7 +52307,7 @@
     "change_rate": -0.015977,
     "volume": 0.0,
     "year_1_return": 2.5,
-    "year_3_return": 2.5,
+    "year_3_return": 0,
     "max_drawdown": -9.4,
     "sharpe_ratio": 0.43,
     "category": "行业"
@@ -52747,7 +52747,7 @@
     "change_rate": -0.00858,
     "volume": 0.0,
     "year_1_return": 0.6,
-    "year_3_return": 0.6,
+    "year_3_return": 0,
     "max_drawdown": -6.9,
     "sharpe_ratio": -0.01,
     "category": "行业"
@@ -52787,7 +52787,7 @@
     "change_rate": -0.002519,
     "volume": 0.0,
     "year_1_return": 56.2,
-    "year_3_return": 56.2,
+    "year_3_return": 0,
     "max_drawdown": -15.4,
     "sharpe_ratio": 1.71,
     "category": "行业"
@@ -52867,7 +52867,7 @@
     "change_rate": -0.012472,
     "volume": 0.0,
     "year_1_return": 32.0,
-    "year_3_return": 32.0,
+    "year_3_return": 0,
     "max_drawdown": -19.0,
     "sharpe_ratio": 0.57,
     "category": "行业"
@@ -52987,7 +52987,7 @@
     "change_rate": 0.004789,
     "volume": 0.0,
     "year_1_return": 5.6,
-    "year_3_return": 5.6,
+    "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
     "category": "行业"
@@ -53067,7 +53067,7 @@
     "change_rate": -0.014451,
     "volume": 0.0,
     "year_1_return": 1.1,
-    "year_3_return": 1.1,
+    "year_3_return": 0,
     "max_drawdown": -13.2,
     "sharpe_ratio": -0.72,
     "category": "行业"
@@ -53907,7 +53907,7 @@
     "change_rate": -0.01719,
     "volume": 0.0,
     "year_1_return": 27.1,
-    "year_3_return": 27.1,
+    "year_3_return": 0,
     "max_drawdown": -9.5,
     "sharpe_ratio": 1.52,
     "category": "行业"
@@ -54926,7 +54926,7 @@
     "change_rate": -0.012301,
     "volume": 0.0,
     "year_1_return": 36.6,
-    "year_3_return": 36.6,
+    "year_3_return": 0,
     "max_drawdown": -8.6,
     "sharpe_ratio": 1.12,
     "category": "行业"
@@ -54966,7 +54966,7 @@
     "change_rate": -0.035975,
     "volume": 0.0,
     "year_1_return": 85.8,
-    "year_3_return": 85.8,
+    "year_3_return": 0,
     "max_drawdown": -16.4,
     "sharpe_ratio": 1.6,
     "category": "行业"
@@ -55086,7 +55086,7 @@
     "change_rate": -0.012277,
     "volume": 0.0,
     "year_1_return": 61.1,
-    "year_3_return": 61.1,
+    "year_3_return": 0,
     "max_drawdown": -15.1,
     "sharpe_ratio": 1.37,
     "category": "行业"
@@ -55126,7 +55126,7 @@
     "change_rate": -0.007031,
     "volume": 0.0,
     "year_1_return": 25.2,
-    "year_3_return": 25.2,
+    "year_3_return": 0,
     "max_drawdown": -9.5,
     "sharpe_ratio": 1.27,
     "category": "行业"
@@ -55545,7 +55545,7 @@
     "change_rate": 7e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -12.34,
     "category": "行业"
@@ -55745,7 +55745,7 @@
     "change_rate": -0.010932,
     "volume": 0.0,
     "year_1_return": 52.3,
-    "year_3_return": 52.3,
+    "year_3_return": 0,
     "max_drawdown": -15.0,
     "sharpe_ratio": 0.96,
     "category": "行业"
@@ -55825,7 +55825,7 @@
     "change_rate": -0.002754,
     "volume": 0.0,
     "year_1_return": 111.4,
-    "year_3_return": 111.4,
+    "year_3_return": 0,
     "max_drawdown": -13.5,
     "sharpe_ratio": 1.74,
     "category": "行业"
@@ -56105,7 +56105,7 @@
     "change_rate": -0.00626,
     "volume": 0.0,
     "year_1_return": 25.7,
-    "year_3_return": 25.7,
+    "year_3_return": 0,
     "max_drawdown": -7.8,
     "sharpe_ratio": 0.84,
     "category": "行业"
@@ -56265,7 +56265,7 @@
     "change_rate": -0.012934,
     "volume": 0.0,
     "year_1_return": 69.1,
-    "year_3_return": 69.1,
+    "year_3_return": 0,
     "max_drawdown": -15.4,
     "sharpe_ratio": 1.55,
     "category": "行业"
@@ -56324,7 +56324,7 @@
     "change_rate": 6e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -14.4,
     "category": "行业"
@@ -56663,7 +56663,7 @@
     "change_rate": 2e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.0,
     "sharpe_ratio": -18.73,
     "category": "行业"
@@ -56922,7 +56922,7 @@
     "change_rate": 6e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -1.1,
     "sharpe_ratio": -1.01,
     "category": "行业"
@@ -56962,7 +56962,7 @@
     "change_rate": -0.016926,
     "volume": 0.0,
     "year_1_return": 43.9,
-    "year_3_return": 43.9,
+    "year_3_return": 0,
     "max_drawdown": -8.5,
     "sharpe_ratio": 0.86,
     "category": "行业"
@@ -56981,7 +56981,7 @@
     "change_rate": 3e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.4,
     "sharpe_ratio": -2.44,
     "category": "行业"
@@ -57000,7 +57000,7 @@
     "change_rate": 1e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.0,
     "sharpe_ratio": -37.13,
     "category": "行业"
@@ -57019,7 +57019,7 @@
     "change_rate": 8e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.7,
     "sharpe_ratio": -1.54,
     "category": "行业"
@@ -57038,7 +57038,7 @@
     "change_rate": 7e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -8.94,
     "category": "行业"
@@ -57076,7 +57076,7 @@
     "change_rate": 6e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.2,
     "sharpe_ratio": -4.75,
     "category": "行业"
@@ -57095,7 +57095,7 @@
     "change_rate": 6e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -3.9,
     "sharpe_ratio": -0.25,
     "category": "行业"
@@ -57114,7 +57114,7 @@
     "change_rate": 3e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -7.61,
     "category": "行业"
@@ -57133,7 +57133,7 @@
     "change_rate": 3e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.3,
     "sharpe_ratio": -3.9,
     "category": "行业"
@@ -57152,7 +57152,7 @@
     "change_rate": 9e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -11.15,
     "category": "行业"
@@ -57171,7 +57171,7 @@
     "change_rate": 3e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -5.0,
     "sharpe_ratio": -0.18,
     "category": "行业"
@@ -57190,7 +57190,7 @@
     "change_rate": 6e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": -0.1,
+    "year_3_return": 0,
     "max_drawdown": -0.3,
     "sharpe_ratio": -4.3,
     "category": "行业"
@@ -57209,7 +57209,7 @@
     "change_rate": 1e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": -0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.5,
     "sharpe_ratio": -2.49,
     "category": "行业"
@@ -57228,7 +57228,7 @@
     "change_rate": 4e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.2,
     "sharpe_ratio": -4.57,
     "category": "行业"
@@ -57247,7 +57247,7 @@
     "change_rate": 6e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": -0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.3,
     "sharpe_ratio": -3.81,
     "category": "行业"
@@ -57266,7 +57266,7 @@
     "change_rate": -5e-05,
     "volume": 0.0,
     "year_1_return": -0.1,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -1.2,
     "sharpe_ratio": -1.12,
     "category": "行业"
@@ -57285,7 +57285,7 @@
     "change_rate": 5e-05,
     "volume": 0.0,
     "year_1_return": 0.0,
-    "year_3_return": -0.1,
+    "year_3_return": 0,
     "max_drawdown": -0.2,
     "sharpe_ratio": -5.55,
     "category": "行业"
@@ -57304,7 +57304,7 @@
     "change_rate": 3e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": -0.1,
+    "year_3_return": 0,
     "max_drawdown": -2.9,
     "sharpe_ratio": -0.35,
     "category": "行业"
@@ -57323,7 +57323,7 @@
     "change_rate": 3e-05,
     "volume": 0.0,
     "year_1_return": -0.0,
-    "year_3_return": 0.0,
+    "year_3_return": 0,
     "max_drawdown": -0.1,
     "sharpe_ratio": -6.83,
     "category": "行业"

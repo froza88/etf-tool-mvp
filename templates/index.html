@@ -522,9 +522,10 @@
                 const y1 = etf.year_1_return || 0;
                 const y3 = etf.year_3_return || 0;
                 const y1Cls = y1 >= 0 ? 'positive' : 'negative';
-                const y3Cls = y3 >= 0 ? 'positive' : 'negative';
                 const y1Sign = y1 >= 0 ? '+' : '';
-                const y3Sign = y3 >= 0 ? '+' : '';
+                
+                const y3Cls = (y1 && !y3) ? '' : (y3 >= 0 ? 'positive' : 'negative');
+                const y3Label = (y1 && !y3) ? '不足3年' : (y3 >= 0 ? '+' : '') + y3.toFixed(2) + '%';
                 
                 let badgeClass = 'badge-stock';
                 const typeStr = etf.category || '';
@@ -542,7 +543,7 @@
                 html += `<td>${(etf.change_pct || 0).toFixed(2)}</td>`;
                 html += `<td>${(etf.close || 0).toFixed(3)}</td>`;
                 html += `<td class="${y1Cls}">${y1Sign}${y1.toFixed(2)}%</td>`;
-                html += `<td class="${y3Cls}">${y3Sign}${y3.toFixed(2)}%</td>`;
+                html += `<td class="${y3Cls}">${y3Label}</td>`;
                 html += `<td><a href="/etf/${etf.code}" style="font-size:13px;">详情 →</a></td>`;
                 html += '</tr>';
             });
