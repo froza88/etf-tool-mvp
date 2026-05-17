@@ -450,11 +450,13 @@
         let totalPages = 1;
         
         function loadETFs(page) {
+            try {
             if (page) currentPage = page;
             
             const params = new URLSearchParams();
             ['keyword','type','category','scale_min','scale_max','fee_max','return_min'].forEach(id => {
-                const v = document.getElementById(id).value;
+                const el = document.getElementById(id);
+                const v = el ? el.value : '';
                 if (v) params.append(id, v);
             });
             params.append('page', currentPage);
@@ -473,6 +475,9 @@
                 .catch(() => {
                     document.getElementById('etf-list').innerHTML = '<div class="no-data">加载失败，请刷新重试</div>';
                 });
+            } catch(e) {
+                document.getElementById('etf-list').innerHTML = '<div class="no-data">加载失败，请刷新重试</div>';
+            }
         }
         
         function doSort(field) {
@@ -638,9 +643,11 @@
             loadETFs(1);
         }
         
-        window.onload = function() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => loadETFs(1));
+        } else {
             loadETFs(1);
-        };
+        }
     </script>
 </body>
 </html>
