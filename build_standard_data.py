@@ -299,6 +299,23 @@ for etf in full_data:
             parts = h.split(" ", 1)
             top_holdings.append({"name": parts[0], "weight": parts[1] if len(parts) > 1 else ""})
 
+    # 非凸没有持仓时，用 AKShare 兜底
+    if not top_holdings and HAS_AKSHARE:
+        try:
+            df = ak.fund_portfolio_hold_em(symbol=code, date="2026")
+            if df is not None and len(df) > 0:
+                for _, r in df.iterrows():
+                    try:
+                        name = str(r.iloc[2]).strip()
+                        weight = float(r.iloc[3])
+                        top_holdings.append({"name": name, "weight": f"{weight:.2f}%"})
+                    except:
+                        pass
+                    if len(top_holdings) >= 5:
+                        break
+        except:
+            pass
+
     # 规模优先用非凸API（market_cap_total，真实AUM）
     # 次选AKShare（可能是基金份额，需要乘以close换算）
     mcap_ft = gen.get("market_cap", 0) or 0  # 非凸 API 真实AUM
