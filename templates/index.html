@@ -349,6 +349,27 @@
                 padding: 10px 8px;
             }
         }
+        .footer-info {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #2a2f4a;
+            background: #0a0e27;
+        }
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #8a8fa3;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .footer-note {
+            color: #6b7280;
+            font-size: 11px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #1e293b;
+        }
     </style>
 </head>
 <body>
@@ -650,5 +671,21 @@
             loadETFs(1);
         }
     </script>
+    <div class="footer-info">
+        <div class="container">
+            <div class="footer-row">
+                <span><strong>数据来源</strong>：非凸科技（实时行情/收益率） + 东方财富/AKShare（持仓/规模）</span>
+                <span><strong>持仓数据</strong>：2026年基金一季报</span>
+            </div>
+            <div class="footer-row">
+                <span><strong>价格</strong>：实时（非凸）</span>
+                <span><strong>规模</strong>：静态快照</span>
+                <span><strong>收益率</strong>：截至上一个交易日</span>
+            </div>
+            <div class="footer-note">
+                ⚠️ 数据仅供参考，不构成投资建议。不同数据源间可能存在差异。
+            </div>
+        </div>
+    </div>
 </body>
 </html>

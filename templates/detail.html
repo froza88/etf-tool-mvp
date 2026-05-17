@@ -268,6 +268,26 @@
             color: #ef4444;
             background: rgba(239,68,68,0.1);
         }
+        .footer-info {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #2a2f4a;
+        }
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #8a8fa3;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .footer-note {
+            color: #6b7280;
+            font-size: 11px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #1e293b;
+        }
     </style>
 </head>
 <body>
@@ -505,6 +525,20 @@
             <div>
                 <button class="btn btn-primary" onclick="window.location.href='/compare?codes={{ etf.code }}'">📊 对比这只ETF</button>
                 <button class="btn btn-secondary" onclick="window.location.href='/'">← 返回列表</button>
+            </div>
+        </div>
+    <div class="footer-info">
+        <div class="container">
+            <div class="footer-row">
+                <span><strong>数据来源</strong>：非凸科技（行情/收益率） + 东方财富/AKShare（持仓/规模）</span>
+                <span><strong>持仓</strong>：2026年基金一季报</span>
+            </div>
+            <div class="footer-row">
+                <span><strong>价格</strong>：实时（非凸）</span>
+                <span><strong>收益率</strong>：截至上一个交易日</span>
+            </div>
+            <div class="footer-note">
+                ⚠️ 数据仅供参考。不同数据源间可能存在差异，市场数据参差不齐，请自行核实。
             </div>
         </div>
     </div>
