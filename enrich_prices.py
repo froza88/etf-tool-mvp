@@ -33,6 +33,7 @@ for i, (code, name) in enumerate(codes):
             prices[code] = {
                 'close': detail['close'],
                 'change_rate': detail.get('return_6m'),  # 非凸的涨跌幅字段
+                'volume': detail.get('volume', 0) or 0,  # 新增：保存成交量
             }
             ok += 1
         else:

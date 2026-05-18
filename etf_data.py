@@ -80,9 +80,6 @@ def filter_etfs(filters):
         if "scale_max" in filters and filters["scale_max"]:
             if etf["scale"] > float(filters["scale_max"]):
                 continue
-        if "fee_max" in filters and filters["fee_max"]:
-            if etf["fee"] > float(filters["fee_max"]):
-                continue
         if "return_min" in filters and filters["return_min"]:
             if etf["year_1_return"] < float(filters["return_min"]):
                 continue

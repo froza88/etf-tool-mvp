@@ -376,15 +376,32 @@
                 <button class="btn btn-secondary" onclick="updateChart('3Y')">3年</button>
             </div>
             
-            <script>
-                // 生成模拟数据（基于ETF收益率）
+                <script>
+                const etfCode = "{{ etf.code }}";
+                let chart;
+                
+                // 从API获取真实历史数据
+                async function fetchHistory(period) {
+                    try {
+                        const resp = await fetch(`/api/etf/${etfCode}/history?period=${period}`);
+                        const data = await resp.json();
+                        if (data.error || !data.prices || data.prices.length === 0) {
+                            return null;
+                        }
+                        return data;
+                    } catch (e) {
+                        console.error('获取历史数据失败', e);
+                        return null;
+                    }
+                }
+                
+                // 生成模拟数据（备用）
                 function generateData(days, annualReturn) {
                     const data = [];
                     let value = 1.0;
-                    const dailyReturn = annualReturn / 252;  // 252个交易日
+                    const dailyReturn = annualReturn / 252;
                     
                     for (let i = 0; i < days; i++) {
-                        // 添加随机波动
                         const volatility = 0.02;
                         const randomReturn = (Math.random() - 0.5) * 2 * volatility + dailyReturn;
                         value = value * (1 + randomReturn);
@@ -394,25 +411,10 @@
                     return data;
                 }
                 
-                // 生成日期标签
-                function generateLabels(days) {
-                    const labels = [];
-                    const today = new Date();
-                    
-                    for (let i = days - 1; i >= 0; i--) {
-                        const date = new Date(today);
-                        date.setDate(date.getDate() - i);
-                        labels.push(date.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }));
-                    }
-                    
-                    return labels;
-                }
-                
                 // 创建图表
                 const ctx = document.getElementById('performanceChart').getContext('2d');
-                let chart;
                 
-                function createChart(period) {
+                async function createChart(period) {
                     const periods = {
                         '1M': 22,
                         '3M': 66,
@@ -421,8 +423,19 @@
                     };
                     
                     const days = periods[period];
-                    const data = generateData(days, {{ etf.year_1_return }} / 100);
-                    const labels = generateLabels(days);
+                    
+                    // 尝试获取真实数据
+                    let prices = await fetchHistory(period);
+                    let data, labelPrefix;
+                    
+                    if (prices && prices.prices) {
+                        data = prices.prices;
+                        labelPrefix = '[真实数据] ';
+                    } else {
+                        // API失败，使用模拟数据
+                        data = generateData(days, {{ etf.year_1_return | default(0) }} / 100);
+                        labelPrefix = '[模拟数据] ';
+                    }
                     
                     if (chart) {
                         chart.destroy();
@@ -431,9 +444,9 @@
                     chart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: labels,
+                            labels: data.map((_, i) => i + 1),
                             datasets: [{
-                                label: '{{ etf.name }}',
+                                label: labelPrefix + '{{ etf.name }}',
                                 data: data,
                                 borderColor: '{{ etf.year_1_return >= 0 and "#ef4444" or "#22c55e" }}',
                                 backgroundColor: '{{ etf.year_1_return >= 0 and "rgba(239, 68, 68, 0.1)" or "rgba(34, 197, 94, 0.1)" }}',

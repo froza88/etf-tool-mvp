@@ -7,7 +7,14 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """首页 - ETF列表和筛选器"""
-    return render_template('index.html')
+    import time
+    # 计算数据新鲜度
+    data_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "etf_standard_data.json")
+    data_mtime = "未知"
+    if os.path.exists(data_file):
+        mtime = os.path.getmtime(data_file)
+        data_mtime = time.strftime("%Y-%m-%d %H:%M", time.localtime(mtime))
+    return render_template('index.html', data_mtime=data_mtime)
 
 @app.route('/api/etfs')
 def get_etfs():
@@ -16,7 +23,6 @@ def get_etfs():
         "type": request.args.get('type', ''),
         "scale_min": request.args.get('scale_min', ''),
         "scale_max": request.args.get('scale_max', ''),
-        "fee_max": request.args.get('fee_max', ''),
         "return_min": request.args.get('return_min', ''),
         "category": request.args.get('category', ''),
         "keyword": request.args.get('keyword', '')
@@ -173,6 +179,41 @@ def get_etf_api(code):
     if not etf:
         return jsonify({"error": "ETF不存在"}), 404
     return jsonify(etf)
+
+
+
+@app.route('/api/etf/<code>/history')
+def get_etf_history(code):
+    """API：获取ETF历史净值（用于走势图）"""
+    import sys, os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from modules.data_source import FTSource
+    
+    period = request.args.get('period', '1Y')
+    periods_map = {'1M': 22, '3M': 66, '1Y': 252, '3Y': 756}
+    limit = periods_map.get(period, 252)
+    
+    try:
+        ft = FTSource()
+        exchange = 'XSHG' if str(code).startswith('5') else 'XSHE'
+        ohlc = ft.get_etf_ohlcs(str(code), exchange, limit=limit)
+        
+        if not ohlc or 'prices' not in ohlc:
+            return jsonify({"error": "无历史数据", "prices": []}), 200
+        
+        prices = ohlc['prices']
+        # 返回归一化净值（首日=1.0）
+        base = prices[0]
+        normalized = [round(p / base, 4) for p in prices]
+        
+        return jsonify({
+            "code": code,
+            "period": period,
+            "prices": normalized,
+            "base_value": base
+        })
+    except Exception as e:
+        return jsonify({"error": str(e), "prices": []}), 200
 
 @app.route('/api/risk/<code>')
 def get_risk_api(code):

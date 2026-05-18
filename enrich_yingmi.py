@@ -46,6 +46,14 @@ for bi, batch in enumerate(batches):
                 metrics = da.get("metricsAnalyzes", [])
                 
                 entry = {}
+                # 调试：打印第一个ETF的API返回字段
+                if bi == 0 and ok == 0:
+                    print(f"  调试：盈米API返回示例 (code={code})")
+                    for period in ["oneYear", "twoYear", "threeYear"]:
+                        pm = next((m for m in metrics if m["stageType"] == period), None)
+                        if pm and pm.get("isValid", False):
+                            print(f"    {period}: {[mm.get('title') for mm in pm.get('metrics', [])]}")
+                
                 for period in ["oneYear", "twoYear", "threeYear"]:
                     pm = next((m for m in metrics if m["stageType"] == period), None)
                     if pm and pm.get("isValid", False):

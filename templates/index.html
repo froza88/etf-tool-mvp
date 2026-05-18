@@ -401,6 +401,7 @@
             <div class="header-left">
                 <h1>📊 ETF工具平台</h1>
                 <p>智能筛选 · 深度对比 · 辅助投资决策</p>
+                <p style="font-size:12px; color:#64748b; margin-top:4px;">数据更新：{{ data_mtime }}</p>
             </div>
             <div class="header-right">
                 <button class="btn btn-secondary" onclick="location.href='/'">刷新数据</button>
@@ -450,10 +451,6 @@
                     <input type="number" id="scale_max" placeholder="例如：500" onkeyup="if(event.key==='Enter') applyFilter()">
                 </div>
                 <div class="filter-group">
-                    <label>最大费率（%）</label>
-                    <input type="number" id="fee_max" step="0.1" placeholder="例如：0.5" onkeyup="if(event.key==='Enter') applyFilter()">
-                </div>
-                <div class="filter-group">
                     <label>最小年化收益（%）</label>
                     <input type="number" id="return_min" step="0.1" placeholder="例如：5" onkeyup="if(event.key==='Enter') applyFilter()">
                 </div>
@@ -498,7 +495,7 @@
             if (page) currentPage = page;
             
             const params = new URLSearchParams();
-            ['keyword','type','category','scale_min','scale_max','fee_max','return_min'].forEach(id => {
+            ['keyword','type','category','scale_min','scale_max','return_min'].forEach(id => {
                 const el = document.getElementById(id);
                 const v = el ? el.value : '';
                 if (v) params.append(id, v);
@@ -558,6 +555,7 @@
             html += `<th onclick="doSort('close')" style="cursor:pointer">价格${sortArrow('close')}</th>`;
             html += `<th onclick="doSort('year_1_return')" style="cursor:pointer">近1年${sortArrow('year_1_return')}</th>`;
             html += `<th onclick="doSort('year_3_return')" style="cursor:pointer">近3年${sortArrow('year_3_return')}</th>`;
+            html += '<th>风险指标</th>';
             html += '<th>操作</th>';
             html += '</tr></thead><tbody>';
             
@@ -568,8 +566,18 @@
                 const y1Cls = y1 >= 0 ? 'positive' : 'negative';
                 const y1Sign = y1 >= 0 ? '+' : '';
                 
-                const y3Cls = (y1 && !y3) ? '' : (y3 >= 0 ? 'positive' : 'negative');
-                const y3Label = (y1 && !y3) ? '不足3年' : (y3 >= 0 ? '+' : '') + y3.toFixed(2) + '%';
+                // 修复：结合issue_date判断是否满3年
+                let listedYears = 0;
+                if (etf.issue_date && etf.issue_date !== '暂无') {
+                    const issueDate = new Date(etf.issue_date);
+                    if (!isNaN(issueDate)) {
+                        listedYears = (new Date() - issueDate) / (1000 * 60 * 60 * 24 * 365);
+                    }
+                }
+                const isEnough3Years = listedYears >= 3;
+                
+                const y3Cls = !isEnough3Years ? '' : (y3 >= 0 ? 'positive' : 'negative');
+                const y3Label = !isEnough3Years ? '不足3年' : (y3 === 0 ? '-' : (y3 >= 0 ? '+' : '') + y3.toFixed(2) + '%');
                 
                 let badgeClass = 'badge-stock';
                 const typeStr = etf.category || '';
@@ -588,6 +596,7 @@
                 html += `<td>${(etf.close || 0).toFixed(3)}</td>`;
                 html += `<td class="${y1Cls}">${y1Sign}${y1.toFixed(2)}%</td>`;
                 html += `<td class="${y3Cls}">${y3Label}</td>`;
+                html += `<td><a href="/risk/${etf.code}" style="font-size:13px;">风险</a></td>`;
                 html += `<td><a href="/etf/${etf.code}" style="font-size:13px;">详情 →</a></td>`;
                 html += '</tr>';
             });
@@ -683,7 +692,6 @@
             document.getElementById('category').value = '';
             document.getElementById('scale_min').value = '';
             document.getElementById('scale_max').value = '';
-            document.getElementById('fee_max').value = '';
             document.getElementById('return_min').value = '';
             loadETFs(1);
         }

@@ -340,6 +340,7 @@ for etf in full_data:
         "code": code,
         "name": name,
         "issuer": issuer,
+        "issuer_full": issuer,
         "issuer_short": issuer_short,
         "scale": round(scale_raw, 1) if scale_raw else 0,
         "shares": round(shares_raw, 1) if shares_raw else 0,
