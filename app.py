@@ -87,6 +87,18 @@ def compare():
 
     return render_template('compare.html', etfs=etfs)
 
+@app.route('/compare/wind')
+def compare_wind():
+    """ETF对比页 - Wind风格专业版"""
+    codes = request.args.get('codes', '').split(',')
+    codes = [c for c in codes if c]
+    etfs = []
+    for code in codes:
+        etf = etf_data.get_etf_by_code(code)
+        if etf:
+            etfs.append(etf)
+    return render_template('compare_v2_wind.html', etfs=etfs)
+
 @app.route('/screening-demo')
 def screening_demo():
     """筛选演示页 - 新能源ETF筛选过程"""
