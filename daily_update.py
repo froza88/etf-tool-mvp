@@ -97,11 +97,11 @@ def update_prices(etfs):
         price_map = {}
         for _, row in df.iterrows():
             try:
-                code = str(row.iloc[0]).strip()
-                close = float(row.iloc[2]) if len(row) > 2 else 0  # 最新价
-                change_pct = float(row.iloc[3]) if len(row) > 3 else 0  # 涨跌幅
-                prev_close = float(row.iloc[4]) if len(row) > 4 else 0  # 昨收
-                volume = float(row.iloc[7]) if len(row) > 7 else 0  # 成交额
+                code = str(row['代码']).strip()
+                close = float(row['最新价'])  # 最新价
+                change_pct = float(row['涨跌幅'])  # 涨跌幅
+                prev_close = float(row['昨收'])  # 昨收
+                volume = float(row['成交额'])  # 成交额
                 
                 price_map[code] = {
                     'close': close,
