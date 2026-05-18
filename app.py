@@ -88,11 +88,14 @@ def etf_detail(code):
         if df is not None and len(df) > 0:
             latest = df.iloc[-1]
             etf['close'] = float(latest['收盘'])
-            etf['prev_close'] = float(latest['开盘'])  # 用开盘作为前收近似
+            # 用昨天收盘作为前收（需要至少2条数据）
+            if len(df) >= 2:
+                etf['prev_close'] = float(df.iloc[-2]['收盘'])
+            else:
+                etf['prev_close'] = float(latest['收盘'])
             # 计算涨跌幅
-            prev = etf.get('prev_close', etf['close'])
-            if prev and prev > 0:
-                etf['change_pct'] = round((etf['close'] - prev) / prev * 100, 2)
+            if etf['prev_close'] > 0:
+                etf['change_pct'] = round((etf['close'] - etf['prev_close']) / etf['prev_close'] * 100, 2)
             # 成交额（亿元）
             amt = float(latest['成交额']) if '成交额' in latest else 0
             if amt > 1e8:
