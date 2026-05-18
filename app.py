@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
+from datetime import datetime, timedelta
 import etf_data
 import os
+import sys
 
 app = Flask(__name__)
 
@@ -67,10 +69,39 @@ def get_etfs():
 
 @app.route('/etf/<code>')
 def etf_detail(code):
-    """ETF详情页"""
+    """ETF详情页 - 优先用 AKShare 实时价格覆盖静态数据"""
     etf = etf_data.get_etf_by_code(code)
     if not etf:
         return "ETF不存在", 404
+
+    # 尝试用 AKShare 获取实时行情（单次单只，避免全量扫描性能问题）
+    try:
+        import akshare as ak
+        # 使用 fund_etf_hist_em 获取最新一条日线数据（比 spot 更轻量）
+        df = ak.fund_etf_hist_em(
+            symbol=str(code),
+            period='daily',
+            start_date=(datetime.now() - timedelta(days=7)).strftime('%Y%m%d'),
+            end_date=datetime.now().strftime('%Y%m%d'),
+            adjust='qfq'
+        )
+        if df is not None and len(df) > 0:
+            latest = df.iloc[-1]
+            etf['close'] = float(latest['收盘'])
+            etf['prev_close'] = float(latest['开盘'])  # 用开盘作为前收近似
+            # 计算涨跌幅
+            prev = etf.get('prev_close', etf['close'])
+            if prev and prev > 0:
+                etf['change_pct'] = round((etf['close'] - prev) / prev * 100, 2)
+            # 成交额（亿元）
+            amt = float(latest['成交额']) if '成交额' in latest else 0
+            if amt > 1e8:
+                etf['volume'] = round(amt / 1e8, 2)
+            etf['_price_source'] = 'akshare_realtime'
+    except Exception as e:
+        print(f"实时价格获取失败 [{code}]: {e}", file=sys.stderr)
+        etf['_price_source'] = 'static_cache'
+
     return render_template('detail.html', etf=etf)
 
 @app.route('/compare')
@@ -196,36 +227,104 @@ def get_etf_api(code):
 
 @app.route('/api/etf/<code>/history')
 def get_etf_history(code):
-    """API：获取ETF历史净值（用于走势图）"""
-    import sys, os
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    from modules.data_source import FTSource
-    
+    """API：获取ETF历史净值（用于走势图）
+    策略：首选AKShare实时 → 回退非凸本地缓存 → 最终兜底模拟数据
+    """
+    import sys, os, math
+    from datetime import datetime, timedelta
+
+    ROOT = os.path.dirname(os.path.abspath(__file__))
     period = request.args.get('period', '1Y')
     periods_map = {'1M': 22, '3M': 66, '1Y': 252, '3Y': 756}
     limit = periods_map.get(period, 252)
-    
+
+    # 计算日期范围
+    end_date = datetime.now()
+    if period == '1M':
+        start_date = end_date - timedelta(days=35)
+    elif period == '3M':
+        start_date = end_date - timedelta(days=100)
+    elif period == '1Y':
+        start_date = end_date - timedelta(days=400)
+    else:  # 3Y
+        start_date = end_date - timedelta(days=1100)
+
+    # ========== 策略1：首选 AKShare 实时 ==========
     try:
+        import akshare as ak
+        df = ak.fund_etf_hist_em(
+            symbol=str(code),
+            period='daily',
+            start_date=start_date.strftime('%Y%m%d'),
+            end_date=end_date.strftime('%Y%m%d'),
+            adjust='qfq'
+        )
+        if df is not None and len(df) > 0:
+            prices = [float(v) for v in list(df['收盘'])]
+            dates = [str(d) for d in list(df['日期'])]
+            if len(prices) >= 5:
+                base = prices[0]
+                normalized = [round(p / base, 4) for p in prices]
+                return jsonify({
+                    "code": code,
+                    "period": period,
+                    "prices": normalized,
+                    "dates": dates,
+                    "base_value": base,
+                    "source": "akshare_realtime",
+                    "count": len(prices)
+                })
+    except Exception as e:
+        print(f"AKShare 历史数据失败 [{code}]: {e}", file=sys.stderr)
+
+    # ========== 策略2：回退非凸本地缓存 ==========
+    try:
+        sys.path.insert(0, ROOT)
+        from modules.data_source import FTSource
         ft = FTSource()
         exchange = 'XSHG' if str(code).startswith('5') else 'XSHE'
         ohlc = ft.get_etf_ohlcs(str(code), exchange, limit=limit)
-        
-        if not ohlc or 'prices' not in ohlc:
-            return jsonify({"error": "无历史数据", "prices": []}), 200
-        
-        prices = ohlc['prices']
-        # 返回归一化净值（首日=1.0）
-        base = prices[0]
-        normalized = [round(p / base, 4) for p in prices]
-        
-        return jsonify({
-            "code": code,
-            "period": period,
-            "prices": normalized,
-            "base_value": base
-        })
+        if ohlc and 'prices' in ohlc:
+            prices = ohlc['prices']
+            dates = ohlc.get('dates', [])
+            base = prices[0]
+            normalized = [round(p / base, 4) for p in prices]
+            return jsonify({
+                "code": code,
+                "period": period,
+                "prices": normalized,
+                "dates": dates,
+                "base_value": base,
+                "source": "ft_cached",
+                "count": len(prices)
+            })
     except Exception as e:
-        return jsonify({"error": str(e), "prices": []}), 200
+        print(f"非凸回退失败 [{code}]: {e}", file=sys.stderr)
+
+    # ========== 策略3：模拟数据（最终兜底） ==========
+    etf = etf_data.get_etf_by_code(code)
+    annual_return = etf.get('year_1_return', 0) if etf else 0
+
+    data = []
+    value = 1.0
+    daily_return = (annual_return / 100) / 252
+
+    for i in range(limit):
+        volatility = 0.02
+        randomReturn = (math.sin(i * 0.1) * 0.01) + daily_return + (math.cos(i * 0.3) * 0.005)
+        value = value * (1 + randomReturn)
+        data.append(round(value, 4))
+
+    return jsonify({
+        "code": code,
+        "period": period,
+        "prices": data,
+        "dates": [],
+        "base_value": 1.0,
+        "source": "simulated",
+        "count": len(data),
+        "note": "实时数据暂不可用，显示模拟数据"
+    })
 
 @app.route('/api/risk/<code>')
 def get_risk_api(code):

@@ -369,6 +369,9 @@
             <div class="chart-container">
                 <canvas id="performanceChart" width="400" height="200"></canvas>
             </div>
+            <div style="text-align: center; margin-top: 8px; font-size: 12px; color: #6b7280;">
+                <span id="chartSourceInfo">正在加载...</span>
+            </div>
             <div class="chart-controls" style="margin-top: 15px; text-align: center;">
                 <button class="btn btn-secondary" onclick="updateChart('1M')">1个月</button>
                 <button class="btn btn-secondary" onclick="updateChart('3M')">3个月</button>
@@ -385,7 +388,7 @@
                     try {
                         const resp = await fetch(`/api/etf/${etfCode}/history?period=${period}`);
                         const data = await resp.json();
-                        if (data.error || !data.prices || data.prices.length === 0) {
+                        if (!data.prices || data.prices.length === 0) {
                             return null;
                         }
                         return data;
@@ -394,26 +397,24 @@
                         return null;
                     }
                 }
-                
-                // 生成模拟数据（备用）
+
+                // 生成模拟数据（最终兜底）
                 function generateData(days, annualReturn) {
                     const data = [];
                     let value = 1.0;
                     const dailyReturn = annualReturn / 252;
-                    
                     for (let i = 0; i < days; i++) {
                         const volatility = 0.02;
                         const randomReturn = (Math.random() - 0.5) * 2 * volatility + dailyReturn;
                         value = value * (1 + randomReturn);
                         data.push(value);
                     }
-                    
                     return data;
                 }
-                
+
                 // 创建图表
                 const ctx = document.getElementById('performanceChart').getContext('2d');
-                
+
                 async function createChart(period) {
                     const periods = {
                         '1M': 22,
@@ -421,30 +422,46 @@
                         '1Y': 252,
                         '3Y': 756
                     };
-                    
                     const days = periods[period];
-                    
+
                     // 尝试获取真实数据
-                    let prices = await fetchHistory(period);
-                    let data, labelPrefix;
-                    
-                    if (prices && prices.prices) {
-                        data = prices.prices;
-                        labelPrefix = '[真实数据] ';
+                    const raw = await fetchHistory(period);
+                    let data, labels, labelPrefix, sourceInfo = '';
+
+                    if (raw && raw.prices) {
+                        data = raw.prices;
+                        // 有日期就用日期，没有就用序号
+                        if (raw.dates && raw.dates.length === data.length) {
+                            labels = raw.dates;
+                        } else {
+                            labels = data.map((_, i) => i + 1);
+                        }
+                        if (raw.source === 'akshare_realtime') {
+                            labelPrefix = '[实时] ';
+                            sourceInfo = '数据源：东方财富（AKShare）';
+                        } else if (raw.source === 'ft_cached') {
+                            labelPrefix = '[缓存] ';
+                            sourceInfo = '数据源：非凸科技（本地缓存）';
+                        } else {
+                            labelPrefix = '[模拟] ';
+                            sourceInfo = raw.note || '数据源：模拟生成';
+                        }
                     } else {
-                        // API失败，使用模拟数据
+                        // API 完全失败，使用模拟数据
                         data = generateData(days, {{ etf.year_1_return | default(0) }} / 100);
-                        labelPrefix = '[模拟数据] ';
+                        labels = data.map((_, i) => i + 1);
+                        labelPrefix = '[模拟] ';
+                        sourceInfo = '数据源：模拟生成（API暂不可用）';
                     }
-                    
+
                     if (chart) {
                         chart.destroy();
                     }
-                    
+
                     chart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: data.map((_, i) => i + 1),
+                            labels: labels,
                             datasets: [{
                                 label: labelPrefix + '{{ etf.name }}',
                                 data: data,
@@ -463,13 +480,25 @@
                                     labels: {
                                         color: '#e0e0e0'
                                     }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        title: function(context) {
+                                            return context[0].label;
+                                        },
+                                        label: function(context) {
+                                            const val = context.parsed.y;
+                                            const pct = ((val - 1) * 100).toFixed(2);
+                                            return `净值: ${val.toFixed(4)} (${pct >= 0 ? '+' : ''}${pct}%)`;
+                                        }
+                                    }
                                 }
                             },
                             scales: {
                                 x: {
                                     ticks: {
                                         color: '#6b7280',
-                                        maxTicksLimit: 10
+                                        maxTicksLimit: 8
                                     },
                                     grid: {
                                         color: '#1a1f3a'
@@ -489,6 +518,12 @@
                             }
                         }
                     });
+
+                    // 更新数据源说明
+                    const sourceEl = document.getElementById('chartSourceInfo');
+                    if (sourceEl) {
+                        sourceEl.textContent = sourceInfo;
+                    }
                 }
                 
                 // 更新图表
