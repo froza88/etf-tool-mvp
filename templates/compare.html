@@ -21,6 +21,9 @@
         .chart-box { background: #0a0e27; border-radius: 10px; padding: 16px; position: relative; }
         .chart-box h3 { font-size: 14px; font-weight: 500; margin-bottom: 12px; color: #94a3b8; }
         .chart-box { min-height: 320px; } .chart-box canvas { width: 100% !important; height: 280px !important; display: block; }
+        .metric-chip { display: inline-block; padding: 5px 14px; border-radius: 14px; font-size: 12px; cursor: pointer; transition: all 0.2s; background: #1e293b; color: #94a3b8; border: 1px solid transparent; user-select: none; }
+        .metric-chip:hover { background: #334155; }
+        .metric-chip.active { background: rgba(59,130,246,0.2); color: #60a5fa; border-color: #3b82f6; }
         
         .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
         .compare-table thead { background: #0a0e27; }
@@ -71,8 +74,15 @@
                     <h3>关键指标对比雷达图</h3>
                     <canvas id="radarChart"></canvas>
                 </div>
-                <div class="chart-box">
-                    <h3>规模 &amp; 日均成交对比</h3>
+                <div class="chart-box" style="grid-column: 1 / -1;">
+                    <h3>指标对比柱状图 <span style="font-size:11px;color:#6b7280;font-weight:400;">点击下方指标切换</span></h3>
+                    <div id="metric-chips" style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+                        <span class="metric-chip active" data-key="scale" onclick="toggleMetric('scale')">规模(亿)</span>
+                        <span class="metric-chip active" data-key="volume" onclick="toggleMetric('volume')">成交额(亿)</span>
+                        <span class="metric-chip" data-key="return" onclick="toggleMetric('return')">收益(%)</span>
+                        <span class="metric-chip" data-key="drawdown" onclick="toggleMetric('drawdown')">回撤(%)</span>
+                        <span class="metric-chip" data-key="sharpe" onclick="toggleMetric('sharpe')">夏普</span>
+                    </div>
                     <canvas id="barChart"></canvas>
                 </div>
             </div>
