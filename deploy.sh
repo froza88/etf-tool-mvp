@@ -11,7 +11,7 @@ echo ""
 
 # Step 1: 拉取最新代码
 echo "[1/5] 拉取最新代码..."
-cd ~/ETF-tool-MVP
+cd ~/etf-tool-mvp
 git pull origin main
 echo "✅ 代码已更新"
 echo ""
