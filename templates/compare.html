@@ -60,7 +60,6 @@
             <h1>📊 ETF对比</h1>
             <p>并排对比多只ETF的关键指标 · 最佳值 <span style="color:#fbbf24;">★ 高亮</span>
             · <span id="risk-source" style="color:#60a5fa;">风险指标：自算</span></p>
-            <button class="btn btn-secondary" id="btn-yingmi" onclick="fetchYingmiCompare()" style="margin-top:8px;font-size:12px;padding:6px 14px;">📡 获取盈米风险数据</button>
         </div>
 
         {% if etfs|length == 0 %}
@@ -77,6 +76,14 @@
                     <canvas id="barChart"></canvas>
                 </div>
             </div>
+        </div>
+
+        <!-- 数据源切换 -->
+        <div class="compare-section" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 20px;">
+            <span style="color:#94a3b8;font-size:13px;">📊 风险数据源：</span>
+            <button class="btn btn-secondary" id="btn-self" style="font-size:12px;padding:6px 14px;" disabled>自算数据</button>
+            <button class="btn btn-primary" id="btn-yingmi" onclick="fetchYingmiCompare()" style="font-size:12px;padding:6px 14px;">📡 获取盈米数据</button>
+            <span id="risk-source-note" style="color:#8a8fa3;font-size:12px;">自算数据基于历史净值</span>
         </div>
 
         <div class="compare-section">
