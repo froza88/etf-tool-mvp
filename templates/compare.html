@@ -20,7 +20,7 @@
         .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .chart-box { background: #0a0e27; border-radius: 10px; padding: 16px; position: relative; }
         .chart-box h3 { font-size: 14px; font-weight: 500; margin-bottom: 12px; color: #94a3b8; }
-        .chart-box canvas { width: 100% !important; height: 280px !important; }
+        .chart-box { min-height: 320px; } .chart-box canvas { width: 100% !important; height: 280px !important; display: block; }
         
         .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
         .compare-table thead { background: #0a0e27; }
@@ -78,14 +78,6 @@
             </div>
         </div>
 
-        <!-- 数据源切换 -->
-        <div class="compare-section" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 20px;">
-            <span style="color:#94a3b8;font-size:13px;">📊 风险数据源：</span>
-            <button class="btn btn-secondary" id="btn-self" style="font-size:12px;padding:6px 14px;" disabled>自算数据</button>
-            <button class="btn btn-primary" id="btn-yingmi" onclick="fetchYingmiCompare()" style="font-size:12px;padding:6px 14px;">📡 获取盈米数据</button>
-            <span id="risk-source-note" style="color:#8a8fa3;font-size:12px;">自算数据基于历史净值</span>
-        </div>
-
         <div class="compare-section">
             <table class="compare-table">
                 <thead><tr>
@@ -102,7 +94,7 @@
                     <tr><td><strong>成立日期</strong></td>{% for etf in etfs %}<td>{{ etf.issue_date or "暂无" }}</td>{% endfor %}</tr>
                     <!-- 核心对比指标 -->
                     <tr><td><strong>规模（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='scale')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td{% if etf.scale == worst and best != worst %} style="opacity:0.6"{% endif %}>{% if best == worst %}<span class="tie-value">{{ "%.2f"|format(etf.scale) }}</span>{% elif etf.scale == best %}<span class="best-value">{{ "%.2f"|format(etf.scale) }}</span>{% else %}<span style="font-weight:600">{{ "%.2f"|format(etf.scale) }}</span>{% endif %}</td>{% endfor %}</tr>
-                    <tr><td><strong>日均成交（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='volume')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td{% if etf.volume == worst and best != worst %} style="opacity:0.6"{% endif %}>{% if best == worst %}<span class="tie-value">{{ "%.2f"|format(etf.volume) }}</span>{% elif etf.volume == best %}<span class="best-value">{{ "%.2f"|format(etf.volume) }}</span>{% else %}{{ "%.2f"|format(etf.volume) }}{% endif %}</td>{% endfor %}</tr>
+                    <tr><td><strong>日均成交（亿元）</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='volume')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td{% if etf.volume == worst and best != worst %} style="opacity:0.6"{% endif %}>{% if best == worst %}<span class="tie-value">{% if etf.volume %}{{ "%.2f"|format(etf.volume) }}{% else %}暂无{% endif %}</span>{% elif etf.volume == best %}<span class="best-value">{% if etf.volume %}{{ "%.2f"|format(etf.volume) }}{% else %}暂无{% endif %}</span>{% else %}{% if etf.volume %}{{ "%.2f"|format(etf.volume) }}{% else %}暂无{% endif %}{% endif %}</td>{% endfor %}</tr>
                     <tr><td><strong>近1年收益</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='year_1_return')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td{% if etf.year_1_return == worst and best != worst %} style="opacity:0.6"{% endif %} class="{% if etf.year_1_return >= 0 %}positive{% else %}negative{% endif %}">{% if best == worst %}<span class="tie-value">{% else %}{% if etf.year_1_return == best %}<span class="best-value">{% endif %}{% endif %}{% if etf.year_1_return >= 0 %}+{% endif %}{{ "%.2f"|format(etf.year_1_return) }}%{% if best == worst %}</span>{% elif etf.year_1_return == best %}</span>{% endif %}</td>{% endfor %}</tr>
                     <tr><td><strong>近3年收益</strong></td>{% for etf in etfs %}<td class="{% if etf.year_3_return >= 0 %}positive{% else %}negative{% endif %}">{% if etf.year_1_return and not etf.year_3_return %}不足3年{% else %}{% if etf.year_3_return >= 0%}+{% endif %}{{ "%.2f"|format(etf.year_3_return) }}%{% endif %}</td>{% endfor %}</tr>
                     <tr><td><strong>最大回撤</strong></td>{% for etf in etfs %}{% set vals = etfs|map(attribute='max_drawdown')|list %}{% set best = vals|max %}{% set worst = vals|min %}<td{% if etf.max_drawdown == worst and best != worst %} style="opacity:0.6"{% endif %} class="negative">{% if best == worst %}<span class="tie-value">{% else %}{% if etf.max_drawdown == best %}<span class="best-value">{% endif %}{% endif %}{{ "%.2f"|format(etf.max_drawdown) }}%{% if best == worst %}</span>{% elif etf.max_drawdown == best %}</span>{% endif %}</td>{% endfor %}</tr>
@@ -112,6 +104,14 @@
                     <tr><td><strong>操作</strong></td>{% for etf in etfs %}<td><a href="/etf/{{ etf.code }}" style="color:#3b82f6;text-decoration:none;font-weight:600;font-size:13px;">查看详情 →</a></td>{% endfor %}</tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- 数据源切换 -->
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:8px 12px; margin-bottom:20px;">
+            <span style="color:#94a3b8;font-size:12px;">📊 风险数据源：</span>
+            <button class="btn btn-secondary" id="btn-self" style="font-size:12px;padding:5px 12px;" disabled>自算数据</button>
+            <button class="btn btn-primary" id="btn-yingmi" onclick="fetchYingmiCompare()" style="font-size:12px;padding:5px 12px;">📡 获取盈米数据</button>
+            <span id="risk-source-note" style="color:#6b7280;font-size:11px;">自算基于历史净值</span>
         </div>
         {% endif %}
     </div>
@@ -217,6 +217,68 @@
                 });
             }
         }
-    </script>pt>
+
+        // Data source toggle
+        let originalRadarData = null;
+        let yingmiRadarData = null;
+
+        function switchSource(src) {
+            if (!originalRadarData || !yingmiRadarData || !radarChart) return;
+            const data = src === 'self' ? originalRadarData : yingmiRadarData;
+            radarChart.data.datasets.forEach((ds, i) => { ds.data = data[i]; });
+            radarChart.update();
+            document.getElementById('risk-source').textContent = '风险指标：' + (src === 'self' ? '自算' : '盈米');
+            document.getElementById('risk-source-note').textContent = src === 'self' ? '自算基于历史净值' : '盈米穿透式风险指标';
+            document.getElementById('btn-self').disabled = src === 'self';
+            document.getElementById('btn-yingmi').disabled = src === 'yingmi';
+        }
+
+        function fetchYingmiCompare() {
+            const codes = etfs.map(e => e.code);
+            const promises = codes.map(code =>
+                fetch('/api/risk/' + code).then(r => r.json()).catch(() => null)
+            );
+
+            document.getElementById('btn-yingmi').disabled = true;
+            document.getElementById('btn-yingmi').textContent = '获取中...';
+
+            Promise.allSettled(promises).then(results => {
+                let successCount = 0;
+                const yingmiData = {};
+                results.forEach((res, i) => {
+                    if (res.status === 'fulfilled' && res.value && !res.value.fallback) {
+                        const d = res.value;
+                        yingmiData[codes[i]] = {
+                            ret: d.oneYear ? (d.oneYear['收益能力'] || 0) : 0,
+                            vol: d.oneYear ? (d.oneYear['抗波动能力'] || 0) : 0,
+                            dd: d.oneYear ? (d.oneYear['抗回撤能力'] || 0) : 0,
+                            sharpe: d.oneYear ? (d.oneYear['投资性价比'] || 0) : 0,
+                        };
+                        successCount++;
+                    }
+                });
+
+                if (successCount === 0) {
+                    document.getElementById('risk-source').textContent = '风险指标：盈米获取失败';
+                    document.getElementById('btn-yingmi').disabled = false;
+                    document.getElementById('btn-yingmi').textContent = '重试获取';
+                    return;
+                }
+
+                originalRadarData = radarChart.data.datasets.map(ds => [...ds.data]);
+                yingmiRadarData = radarChart.data.datasets.map((ds, i) => {
+                    const ym = yingmiData[codes[i]];
+                    return ym ? [
+                        ds.data[0],
+                        Math.max(-50, Math.min(50, ym.ret || ds.data[1])),
+                        Math.max(-50, Math.min(0, ym.dd || ds.data[2])),
+                        Math.max(0, Math.min(3, ym.sharpe || 0)) * 20,
+                        ds.data[4]
+                    ] : ds.data;
+                });
+                switchSource('yingmi');
+            });
+        }
+    </script>
 </body>
 </html>
