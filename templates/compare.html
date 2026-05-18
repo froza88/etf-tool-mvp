@@ -58,7 +58,9 @@
         <div class="header">
             <a href="/" class="back-link">← 返回列表</a>
             <h1>📊 ETF对比</h1>
-            <p>并排对比多只ETF的关键指标 · 最佳值 <span style="color:#fbbf24;">★ 高亮</span></p>
+            <p>并排对比多只ETF的关键指标 · 最佳值 <span style="color:#fbbf24;">★ 高亮</span>
+            · <span id="risk-source" style="color:#60a5fa;">风险指标：自算</span></p>
+            <button class="btn btn-secondary" id="btn-yingmi" onclick="fetchYingmiCompare()" style="margin-top:8px;font-size:12px;padding:6px 14px;">📡 获取盈米风险数据</button>
         </div>
 
         {% if etfs|length == 0 %}
@@ -109,15 +111,16 @@
 
     <script>
         const etfs = {{ etfs|tojson|safe }};
+        let radarChart = null;
+        let barChart = null;
         
         if (etfs.length > 0) {
             const labels = etfs.map(e => e.code);
             const colors = ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
             
-            // Radar chart with enhanced styling
             const radarCtx = document.getElementById('radarChart');
             if (radarCtx) {
-                new Chart(radarCtx, {
+                radarChart = new Chart(radarCtx, {
                     type: 'radar',
                     data: {
                         labels: ['规模', '收益', '抗回撤', '夏普', '流动性'],
@@ -164,7 +167,7 @@
             // Bar chart with rounded corners and enhanced styling
             const barCtx = document.getElementById('barChart');
             if (barCtx) {
-                new Chart(barCtx, {
+                barChart = new Chart(barCtx, {
                     type: 'bar',
                     data: {
                         labels: etfs.map(e => e.code),
