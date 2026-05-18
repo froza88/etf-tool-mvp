@@ -246,7 +246,7 @@
         function fetchYingmiCompare() {
             const codes = etfs.map(e => e.code);
             const promises = codes.map(code =>
-                fetch('/api/risk/' + code, {signal: AbortSignal.timeout(10000)}).then(r => r.json()).catch(() => null)
+                fetchWithTimeout('/api/risk/' + code, 10000)
             );
 
             document.getElementById('btn-yingmi').disabled = true;
