@@ -1,22 +1,40 @@
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime, timedelta
 import etf_data
+import json
 import os
 import sys
+from pathlib import Path
 
 app = Flask(__name__)
+
+ROOT = Path(__file__).parent
+
 
 @app.route('/')
 def index():
     """首页 - ETF列表和筛选器"""
     import time
     # 计算数据新鲜度
-    data_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "etf_standard_data.json")
+    data_file = ROOT / "etf_standard_data.json"
     data_mtime = "未知"
-    if os.path.exists(data_file):
+    if data_file.exists():
         mtime = os.path.getmtime(data_file)
         data_mtime = time.strftime("%Y-%m-%d %H:%M", time.localtime(mtime))
-    return render_template('index.html', data_mtime=data_mtime)
+
+    # 读取版本信息
+    meta_file = ROOT / "data" / "meta.json"
+    version_info = ""
+    if meta_file.exists():
+        try:
+            with open(meta_file, "r", encoding="utf-8") as f:
+                meta = json.load(f)
+            version_info = meta.get("last_update", "")
+        except Exception:
+            pass
+
+    return render_template('index.html', data_mtime=data_mtime, version_info=version_info)
+
 
 @app.route('/api/etfs')
 def get_etfs():
@@ -67,51 +85,28 @@ def get_etfs():
         'etfs': slim
     })
 
+
 @app.route('/etf/<code>')
 def etf_detail(code):
-    """ETF详情页 - 优先用 AKShare 实时价格覆盖静态数据"""
+    """ETF详情页 - 纯本地数据渲染，不再实时调API
+    v2: 移除了 AKShare 实时调用（PythonAnywhere 会超时）
+    数据由 pipeline 定期更新，实时性依赖 pipeline 更新频率
+    """
     etf = etf_data.get_etf_by_code(code)
     if not etf:
         return "ETF不存在", 404
 
-    # 尝试用 AKShare 获取实时行情（单次单只，避免全量扫描性能问题）
-    try:
-        import akshare as ak
-        # 使用 fund_etf_hist_em 获取最新一条日线数据（比 spot 更轻量）
-        df = ak.fund_etf_hist_em(
-            symbol=str(code),
-            period='daily',
-            start_date=(datetime.now() - timedelta(days=7)).strftime('%Y%m%d'),
-            end_date=datetime.now().strftime('%Y%m%d'),
-            adjust='qfq'
-        )
-        if df is not None and len(df) > 0:
-            latest = df.iloc[-1]
-            etf['close'] = float(latest['收盘'])
-            # 用昨天收盘作为前收（需要至少2条数据）
-            if len(df) >= 2:
-                etf['prev_close'] = float(df.iloc[-2]['收盘'])
-            else:
-                etf['prev_close'] = float(latest['收盘'])
-            # 计算涨跌幅
-            if etf['prev_close'] > 0:
-                etf['change_pct'] = round((etf['close'] - etf['prev_close']) / etf['prev_close'] * 100, 2)
-            # 成交额（亿元）
-            amt = float(latest['成交额']) if '成交额' in latest else 0
-            if amt > 1e8:
-                etf['volume'] = round(amt / 1e8, 2)
-            etf['_price_source'] = 'akshare_realtime'
-    except Exception as e:
-        print(f"实时价格获取失败 [{code}]: {e}", file=sys.stderr)
-        etf['_price_source'] = 'static_cache'
+    # 标记数据来源
+    etf['_price_source'] = 'local_cache'
 
     return render_template('detail.html', etf=etf)
+
 
 @app.route('/compare')
 def compare():
     """ETF对比页"""
     codes = request.args.get('codes', '').split(',')
-    codes = [c for c in codes if c]  # 过滤空值
+    codes = [c for c in codes if c]
 
     etfs = []
     for code in codes:
@@ -120,6 +115,7 @@ def compare():
             etfs.append(etf)
 
     return render_template('compare.html', etfs=etfs)
+
 
 @app.route('/compare/wind')
 def compare_wind():
@@ -133,6 +129,7 @@ def compare_wind():
             etfs.append(etf)
     return render_template('compare_v2_wind.html', etfs=etfs)
 
+
 @app.route('/screening-demo')
 def screening_demo():
     """筛选演示页 - 新能源ETF筛选过程"""
@@ -143,7 +140,7 @@ def screening_demo():
     new_energy_etfs = []
     for etf in all_etfs:
         for keyword in keywords:
-            if keyword in etf['name']:
+            if keyword in etf.get('name', ''):
                 new_energy_etfs.append(etf)
                 break
 
@@ -207,7 +204,7 @@ def screening_demo():
         'step': 5,
         'name': '最终对比：综合评分',
         'criteria': '规模、费率、跟踪误差、流动性综合评分',
-        'passed': finalists[:3] if len(finalists) > 3 else finalists,  # 取前3名
+        'passed': finalists[:3] if len(finalists) > 3 else finalists,
         'winner': winner
     })
 
@@ -218,6 +215,7 @@ def screening_demo():
         winner=winner
     )
 
+
 @app.route('/api/etf/<code>')
 def get_etf_api(code):
     """API：获取单个ETF详情"""
@@ -227,24 +225,44 @@ def get_etf_api(code):
     return jsonify(etf)
 
 
-
 @app.route('/api/etf/<code>/history')
 def get_etf_history(code):
     """API：获取ETF历史净值（用于走势图）
-    策略：首选本地缓存 → 回退AKShare实时 → 最终兜底模拟数据
+    v2策略：本地历史文件 → 本地缓存 → AKShare实时 → 模拟数据
     """
-    import sys, os, math
-    from datetime import datetime, timedelta
+    import math
 
-    ROOT = os.path.dirname(os.path.abspath(__file__))
     period = request.args.get('period', '1Y')
     periods_map = {'1M': 22, '3M': 66, '1Y': 252, '3Y': 756}
     limit = periods_map.get(period, 252)
 
-    # ========== 策略1：首选本地历史缓存（最稳定，PA推荐） ==========
+    # ========== 策略1：从 data/history/ 独立文件读取（最稳定） ==========
     try:
-        cache_file = os.path.join(ROOT, "etf_history_cache.json")
-        if os.path.exists(cache_file):
+        sys.path.insert(0, str(ROOT))
+        from modules.local_store import load_etf_history as _load_history
+        hist = _load_history(code)
+        if hist and len(hist.get('prices', [])) >= limit:
+            prices = hist['prices'][-limit:]
+            dates = hist.get('dates', [])[-limit:] if hist.get('dates') else []
+            base = prices[0]
+            normalized = [round(p / base, 4) for p in prices]
+            return jsonify({
+                "code": code,
+                "period": period,
+                "prices": normalized,
+                "dates": dates,
+                "base_value": base,
+                "source": "local_history",
+                "count": len(prices),
+                "updated": hist.get('updated', '')
+            })
+    except Exception as e:
+        print(f"本地历史文件读取失败 [{code}]: {e}", file=sys.stderr)
+
+    # ========== 策略2：从旧的全局缓存文件读取 ==========
+    try:
+        cache_file = ROOT / "etf_history_cache.json"
+        if cache_file.exists():
             with open(cache_file, encoding="utf-8") as f:
                 cache = json.load(f)
             if code in cache:
@@ -252,7 +270,6 @@ def get_etf_history(code):
                 prices = entry.get('prices', [])
                 dates = entry.get('dates', [])
                 if len(prices) >= limit:
-                    # 按周期截取
                     prices = prices[-limit:]
                     dates = dates[-limit:] if dates else []
                     base = prices[0]
@@ -270,45 +287,52 @@ def get_etf_history(code):
     except Exception as e:
         print(f"本地缓存读取失败 [{code}]: {e}", file=sys.stderr)
 
-    # ========== 策略2：回退AKShare实时（本地开发用） ==========
-    try:
-        import akshare as ak
-        end_date = datetime.now()
-        if period == '1M':
-            start_date = end_date - timedelta(days=35)
-        elif period == '3M':
-            start_date = end_date - timedelta(days=100)
-        elif period == '1Y':
-            start_date = end_date - timedelta(days=400)
-        else:
-            start_date = end_date - timedelta(days=1100)
+    # ========== 策略3：AKShare实时（仅本地开发用，PythonAnywhere会超时） ==========
+    if os.environ.get('FLASK_ENV') != 'production':
+        try:
+            import akshare as ak
+            end_date = datetime.now()
+            if period == '1M':
+                start_date = end_date - timedelta(days=35)
+            elif period == '3M':
+                start_date = end_date - timedelta(days=100)
+            elif period == '1Y':
+                start_date = end_date - timedelta(days=400)
+            else:
+                start_date = end_date - timedelta(days=1100)
 
-        df = ak.fund_etf_hist_em(
-            symbol=str(code),
-            period='daily',
-            start_date=start_date.strftime('%Y%m%d'),
-            end_date=end_date.strftime('%Y%m%d'),
-            adjust='qfq'
-        )
-        if df is not None and len(df) > 0:
-            prices = [float(v) for v in list(df['收盘'])]
-            dates = [str(d) for d in list(df['日期'])]
-            if len(prices) >= 5:
-                base = prices[0]
-                normalized = [round(p / base, 4) for p in prices]
-                return jsonify({
-                    "code": code,
-                    "period": period,
-                    "prices": normalized,
-                    "dates": dates,
-                    "base_value": base,
-                    "source": "akshare_realtime",
-                    "count": len(prices)
-                })
-    except Exception as e:
-        print(f"AKShare 历史数据失败 [{code}]: {e}", file=sys.stderr)
+            df = ak.fund_etf_hist_em(
+                symbol=str(code),
+                period='daily',
+                start_date=start_date.strftime('%Y%m%d'),
+                end_date=end_date.strftime('%Y%m%d'),
+                adjust='qfq'
+            )
+            if df is not None and len(df) > 0:
+                prices = [float(v) for v in list(df['收盘'])]
+                dates = [str(d) for d in list(df['日期'])]
+                if len(prices) >= 5:
+                    base = prices[0]
+                    normalized = [round(p / base, 4) for p in prices]
+                    # 同时保存到本地
+                    try:
+                        from modules.local_store import save_etf_history
+                        save_etf_history(code, prices, dates, source="akshare")
+                    except Exception:
+                        pass
+                    return jsonify({
+                        "code": code,
+                        "period": period,
+                        "prices": normalized,
+                        "dates": dates,
+                        "base_value": base,
+                        "source": "akshare_realtime",
+                        "count": len(prices)
+                    })
+        except Exception as e:
+            print(f"AKShare 历史数据失败 [{code}]: {e}", file=sys.stderr)
 
-    # ========== 策略3：模拟数据（最终兜底） ==========
+    # ========== 策略4：模拟数据（最终兜底） ==========
     etf = etf_data.get_etf_by_code(code)
     annual_return = etf.get('year_1_return', 0) if etf else 0
 
@@ -333,16 +357,16 @@ def get_etf_history(code):
         "note": "数据暂不可用，显示模拟数据"
     })
 
+
 @app.route('/api/risk/<code>')
 def get_risk_api(code):
     """优先从本地盈米 JSON 读取，找不到再调 CLI"""
-    import subprocess, json, shutil, os
+    import subprocess, shutil
 
-    ROOT = os.path.dirname(os.path.abspath(__file__))
-    YINGMI_FILE = os.path.join(ROOT, "etf_yingmi_metrics.json")
+    YINGMI_FILE = ROOT / "etf_yingmi_metrics.json"
 
     # 第1步：读本地 JSON 文件
-    if os.path.exists(YINGMI_FILE):
+    if YINGMI_FILE.exists():
         try:
             with open(YINGMI_FILE, "r", encoding="utf-8") as f:
                 yingmi_data = json.load(f)
@@ -366,7 +390,7 @@ def get_risk_api(code):
                         "卡玛值": calmar,
                     }
                 return jsonify(result)
-        except:
+        except Exception:
             pass
 
     # 第2步：JSON 文件中没有，尝试调 CLI
@@ -378,7 +402,7 @@ def get_risk_api(code):
     if not cli:
         return jsonify({"error": "盈米CLI未安装", "fallback": True}), 200
 
-    cmd = f'{cli} mcp call GetBatchFundPerformance --input \'{"fundCodes":["{code}"]}\' 2>/dev/null'
+    cmd = f'{cli} mcp call GetBatchFundPerformance --input \'{{"fundCodes":["{code}"]}}\' 2>/dev/null'
     try:
         r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
         raw = json.loads(r.stdout)
@@ -397,7 +421,7 @@ def get_risk_api(code):
                     v = mm.get('metricsValueText', '')
                     try:
                         ms[t] = float(v.replace('%', ''))
-                    except:
+                    except Exception:
                         ms[t] = v
                 ret = ms.get('收益能力', 0)
                 dd = ms.get('抗回撤能力', 0)
@@ -409,10 +433,44 @@ def get_risk_api(code):
     except Exception as e:
         return jsonify({"error": str(e), "fallback": True}), 200
 
+
 @app.route('/risk/<code>')
 def risk_page(code):
     """风险指标详情页"""
     return render_template('risk.html', code=code)
+
+
+@app.route('/api/data-status')
+def data_status():
+    """API：数据状态概览"""
+    meta_file = ROOT / "data" / "meta.json"
+    status = {
+        "version": "v2",
+        "features": ["local_store", "versioned_snapshots", "redundant_backup", "per_etf_history"],
+    }
+
+    if meta_file.exists():
+        try:
+            with open(meta_file, "r", encoding="utf-8") as f:
+                meta = json.load(f)
+            status["last_update"] = meta.get("last_update", "")
+            status["last_step"] = meta.get("last_step", "")
+            status["stats"] = meta.get("current_stats", {})
+        except Exception:
+            pass
+
+    # 快照数量
+    snapshots_dir = ROOT / "data" / "snapshots"
+    if snapshots_dir.exists():
+        status["snapshot_count"] = len(list(snapshots_dir.glob("v_*.json")))
+
+    # 历史数据覆盖
+    history_dir = ROOT / "data" / "history"
+    if history_dir.exists():
+        status["history_etf_count"] = len(list(history_dir.glob("*.json")))
+
+    return jsonify(status)
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

@@ -62,3 +62,14 @@ refetch_holdings.py
 # enrich 日志（后台运行产生的）
 enrich_*.log
 rebuild*.log
+
+# 数据目录（大文件，由 pipeline 生成，不应提交到 git）
+# data/history/ 下的文件太大，不提交
+data/history/*.json
+# data/backup/ 下的备份文件，不提交
+data/backup/
+# data/snapshots/ 下的快照文件，不提交（太大）
+data/snapshots/
+# data/realtime/ 缓存文件，不提交
+data/realtime/
+# meta.json 可以提交（很小，记录版本信息）
