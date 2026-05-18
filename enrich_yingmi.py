@@ -26,7 +26,7 @@ for bi, batch in enumerate(batches):
         try:
             r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
             raw = r.stdout.strip()
-            if not raw.startswith("{"):
+            if not (raw.startswith("{") or raw.startswith("[")):
                 if attempt < 4:
                     wait = 3 + attempt * 2
                     print(f"  批次{bi+1} 重试({attempt+1}/5): 等待{wait}s")
