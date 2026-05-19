@@ -3,11 +3,16 @@
 """
 从 westock-data 吸收 ETF 数据到本地数据库
 填表式吸收：只填充缺失或空的字段
+
+使用方式：
+  python3 absorb_westock_etf_data.py           # 处理所有ETF
+  python3 absorb_westock_etf_data.py --incremental  # 只处理缺失year_3_return的ETF
 """
 import json
 import subprocess
 import re
 import time
+import sys
 from pathlib import Path
 from datetime import datetime
 
@@ -26,6 +31,12 @@ with open(STANDARD_DATA, 'r', encoding='utf-8') as f:
     etf_data = json.load(f)
 
 print(f"  加载 {len(etf_data)} 只 ETF\n")
+
+# 检查是否增量模式
+incremental = '--incremental' in sys.argv
+if incremental:
+    etf_data = [etf for etf in etf_data if not etf.get('year_3_return') or etf.get('year_3_return') == 0]
+    print(f"  ⚡ 增量模式：只处理缺失 year_3_return 的 {len(etf_data)} 只 ETF\n")
 
 # ============================================================
 # 第2步：定义工具和函数
