@@ -63,13 +63,12 @@ refetch_holdings.py
 enrich_*.log
 rebuild*.log
 
-# 数据目录（大文件，由 pipeline 生成，不应提交到 git）
-# data/history/ 下的文件太大，不提交
-data/history/*.json
-# data/backup/ 下的备份文件，不提交
+# 数据目录
+# data/history/ 历史K线 - 保留（每只ETF约5KB，版本控制）
+# data/backup/ 备份 - 排除（可重新生成）
 data/backup/
-# data/snapshots/ 下的快照文件，不提交（太大）
+# data/snapshots/ 快照 - 排除（可重新生成）
 data/snapshots/
-# data/realtime/ 缓存文件，不提交
+# data/realtime/ 实时缓存 - 排除（可重新获取）
 data/realtime/
-# meta.json 可以提交（很小，记录版本信息）
+# meta.json 保留（版本元数据，很小）

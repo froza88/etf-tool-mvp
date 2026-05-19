@@ -58,6 +58,24 @@ def log(msg):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 
 
+def _trigger_pa_sync():
+    """推送成功后触发 PythonAnywhere 同步（调用 /api/sync）"""
+    import os
+    pa_url = os.environ.get('PA_URL', 'https://froza.pythonanywhere.com')
+    if not pa_url:
+        return
+    try:
+        import requests
+        resp = requests.post(f'{pa_url}/api/sync', timeout=10)
+        if resp.status_code == 200:
+            data = resp.json()
+            log(f"  PA 同步成功: {data.get('status', '')} | {data.get('git_output', '')[:80]}")
+        else:
+            log(f"  PA 同步 HTTP 失败: {resp.status_code} | {resp.text[:80]}")
+    except Exception as e:
+        log(f"  PA 同步请求失败: {e}")
+
+
 def get_akshare():
     """懒加载 AKShare，过滤警告"""
     import warnings
@@ -597,6 +615,8 @@ def step_deploy():
             )
             if push.returncode == 0:
                 log("  git push 成功")
+                # 触发 PythonAnywhere 同步
+                _trigger_pa_sync()
                 # 部署后快照
                 create_snapshot("deploy")
                 return True

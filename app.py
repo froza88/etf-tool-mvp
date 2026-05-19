@@ -472,6 +472,33 @@ def data_status():
     return jsonify(status)
 
 
+@ app.route('/api/sync', methods=['POST'])
+def sync_data():
+    """同步数据：从 GitHub 拉取最新数据（供 pipeline 推送后触发）"""
+    import subprocess
+    repo_dir = str(ROOT)
+    try:
+        result = subprocess.run(
+            ['git', 'pull', 'origin', 'main'],
+            cwd=repo_dir, capture_output=True, text=True, timeout=30
+        )
+        if result.returncode != 0:
+            return jsonify({"error": result.stderr, "stdout": result.stdout}), 500
+
+        # touch WSGI 文件触发 reload
+        wsgi_file = '/var/www/froza_pythonanywhere_com_wsgi.py'
+        if os.path.exists(wsgi_file):
+            os.utime(wsgi_file, None)
+
+        return jsonify({
+            "status": "success",
+            "git_output": result.stdout,
+            "git_error": result.stderr
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, host='0.0.0.0', port=port)

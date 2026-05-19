@@ -8,7 +8,7 @@
     "scale": 10.6,
     "shares": 11.6,
     "issue_date": "2023-11-20",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "阿帕奇石油",
@@ -37,11 +37,12 @@
     "change_rate": 0.051174,
     "volume": 42.5,
     "year_1_return": 61.26,
-    "year_3_return": 0,
+    "year_3_return": -38.53,
     "max_drawdown": -28.25,
     "sharpe_ratio": 1.29,
     "annual_vol": 42.77,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "标普石油与天然气的勘探与生产精选行业指数"
   },
   {
     "code": "159518",
@@ -888,7 +889,7 @@
     "scale": 3.2,
     "shares": 3.3,
     "issue_date": "2025-08-25",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "芯原股份",
@@ -917,11 +918,13 @@
     "change_rate": -0.022241,
     "volume": 0.16,
     "year_1_return": 20.4,
-    "year_3_return": 0,
+    "year_3_return": -21.96,
     "max_drawdown": -22.0,
     "sharpe_ratio": 0.59,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs950180",
+    "track_index_name": "科创AI"
   },
   {
     "code": "159811",
@@ -1108,7 +1111,7 @@
     "scale": 1.0,
     "shares": 1.0,
     "issue_date": "2025-08-27",
-    "custodian": "",
+    "custodian": "平安银行股份有限公司",
     "top_holdings": [
       {
         "name": "海光信息",
@@ -1137,11 +1140,13 @@
     "change_rate": -0.01717,
     "volume": 0.08,
     "year_1_return": 38.1,
-    "year_3_return": 0,
+    "year_3_return": -14.66,
     "max_drawdown": -14.7,
     "sharpe_ratio": 1.58,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000680",
+    "track_index_name": "科创综指"
   },
   {
     "code": "159997",
@@ -1747,7 +1752,7 @@
     "scale": 23.9,
     "shares": 24.4,
     "issue_date": "2025-10-13",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "航天电子",
@@ -1776,11 +1781,13 @@
     "change_rate": -0.031149,
     "volume": 2.84,
     "year_1_return": 53.0,
-    "year_3_return": 0,
+    "year_3_return": -31.6,
     "max_drawdown": -31.6,
     "sharpe_ratio": 1.83,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931594",
+    "track_index_name": "卫星产业"
   },
   {
     "code": "561310",
@@ -1967,7 +1974,7 @@
     "scale": 7.0,
     "shares": 7.2,
     "issue_date": "2025-09-26",
-    "custodian": "",
+    "custodian": "东方证券股份有限公司",
     "top_holdings": [
       {
         "name": "芯原股份",
@@ -1996,11 +2003,13 @@
     "change_rate": -0.02305,
     "volume": 0.24,
     "year_1_return": 16.2,
-    "year_3_return": 0,
+    "year_3_return": -21.81,
     "max_drawdown": -21.8,
     "sharpe_ratio": 0.88,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs950180",
+    "track_index_name": "科创AI"
   },
   {
     "code": "560630",
@@ -2187,7 +2196,7 @@
     "scale": 5.4,
     "shares": 5.5,
     "issue_date": "2024-04-19",
-    "custodian": "",
+    "custodian": "南京银行股份有限公司",
     "top_holdings": [
       {
         "name": "佰维存储",
@@ -2216,11 +2225,13 @@
     "change_rate": -0.021684,
     "volume": 0.27,
     "year_1_return": 23.58,
-    "year_3_return": 0,
+    "year_3_return": -25.05,
     "max_drawdown": -22.5,
     "sharpe_ratio": 0.75,
     "annual_vol": 32.79,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931247",
+    "track_index_name": "中证信创"
   },
   {
     "code": "159896",
@@ -2847,7 +2858,7 @@
     "scale": 121.9,
     "shares": 125.7,
     "issue_date": "2019-09-17",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "新易盛",
@@ -2880,7 +2891,9 @@
     "max_drawdown": -19.05,
     "sharpe_ratio": 3.21,
     "annual_vol": 40.2,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931079",
+    "track_index_name": "5G通信"
   },
   {
     "code": "560170",
@@ -3067,7 +3080,7 @@
     "scale": 103.6,
     "shares": 109.0,
     "issue_date": "2020-01-20",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国神华",
@@ -3100,7 +3113,9 @@
     "max_drawdown": -14.9,
     "sharpe_ratio": 1.19,
     "annual_vol": 27.76,
-    "category": "商品"
+    "category": "商品",
+    "track_index_code": "sz399998",
+    "track_index_name": "中证煤炭"
   },
   {
     "code": "589380",
@@ -3491,7 +3506,7 @@
     "scale": 205.5,
     "shares": 208.8,
     "issue_date": "2021-12-17",
-    "custodian": "",
+    "custodian": "兴业银行股份有限公司",
     "top_holdings": [
       {
         "name": "科大讯飞",
@@ -3524,7 +3539,9 @@
     "max_drawdown": -19.56,
     "sharpe_ratio": 1.28,
     "annual_vol": 26.06,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30590",
+    "track_index_name": "机器人"
   },
   {
     "code": "515260",
@@ -3711,7 +3728,7 @@
     "scale": 3.7,
     "shares": 3.7,
     "issue_date": "2021-09-22",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "科大讯飞",
@@ -3744,7 +3761,9 @@
     "max_drawdown": -19.54,
     "sharpe_ratio": 1.26,
     "annual_vol": 26.02,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30590",
+    "track_index_name": "机器人"
   },
   {
     "code": "159537",
@@ -4487,7 +4506,7 @@
     "prev_close": 1.235,
     "change_rate": -0.036392,
     "volume": 0.16,
-    "year_1_return": 0,
+    "year_1_return": 1.5,
     "year_3_return": 0,
     "max_drawdown": -16.39,
     "sharpe_ratio": 3.05,
@@ -4811,7 +4830,7 @@
     "scale": 0.1,
     "shares": 0.1,
     "issue_date": "2021-03-31",
-    "custodian": "",
+    "custodian": "上海浦东发展银行股份有限公司",
     "top_holdings": [
       {
         "name": "中际旭创",
@@ -4844,7 +4863,9 @@
     "max_drawdown": -17.22,
     "sharpe_ratio": 2.11,
     "annual_vol": 29.44,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930712",
+    "track_index_name": "CS物联网"
   },
   {
     "code": "159035",
@@ -5251,7 +5272,7 @@
     "scale": 2.0,
     "shares": 2.0,
     "issue_date": "2024-04-12",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "寒武纪",
@@ -5280,11 +5301,13 @@
     "change_rate": -0.02131,
     "volume": 0.23,
     "year_1_return": 86.86,
-    "year_3_return": 0,
+    "year_3_return": -21.27,
     "max_drawdown": -21.27,
     "sharpe_ratio": 1.83,
     "annual_vol": 36.87,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs932087",
+    "track_index_name": "集成电路"
   },
   {
     "code": "589800",
@@ -5691,7 +5714,7 @@
     "scale": 9.7,
     "shares": 9.9,
     "issue_date": "2023-05-22",
-    "custodian": "",
+    "custodian": "兴业银行股份有限公司",
     "top_holdings": [
       {
         "name": "科大讯飞",
@@ -5720,11 +5743,13 @@
     "change_rate": -0.011862,
     "volume": 0.52,
     "year_1_return": 4.21,
-    "year_3_return": 0,
+    "year_3_return": -57.64,
     "max_drawdown": -28.85,
     "sharpe_ratio": 0.22,
     "annual_vol": 31.24,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930601",
+    "track_index_name": "中证软件"
   },
   {
     "code": "589260",
@@ -6131,7 +6156,7 @@
     "scale": 198.1,
     "shares": 200.3,
     "issue_date": "2019-05-08",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "寒武纪",
@@ -6164,7 +6189,9 @@
     "max_drawdown": -19.9,
     "sharpe_ratio": 2.0,
     "annual_vol": 35.25,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30184",
+    "track_index_name": "半导体"
   },
   {
     "code": "159310",
@@ -6351,7 +6378,7 @@
     "scale": 1.6,
     "shares": 1.6,
     "issue_date": "2025-02-26",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "海光信息",
@@ -6380,11 +6407,13 @@
     "change_rate": -0.013822,
     "volume": 0.24,
     "year_1_return": 77.52,
-    "year_3_return": 0,
+    "year_3_return": -19.71,
     "max_drawdown": -16.27,
     "sharpe_ratio": 2.24,
     "annual_vol": 26.47,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000681",
+    "track_index_name": "科创价格"
   },
   {
     "code": "588180",
@@ -6571,7 +6600,7 @@
     "scale": 5.0,
     "shares": 5.0,
     "issue_date": "2019-09-27",
-    "custodian": "",
+    "custodian": "中信证券股份有限公司",
     "top_holdings": [
       {
         "name": "恒瑞医药",
@@ -6604,7 +6633,9 @@
     "max_drawdown": -13.52,
     "sharpe_ratio": 2.31,
     "annual_vol": 25.1,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931187",
+    "track_index_name": "科技100"
   },
   {
     "code": "563870",
@@ -6791,7 +6822,7 @@
     "scale": 2.5,
     "shares": 2.5,
     "issue_date": "2025-04-25",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "源杰科技",
@@ -6820,11 +6851,13 @@
     "change_rate": -0.011924,
     "volume": 0.03,
     "year_1_return": 87.39,
-    "year_3_return": 0,
+    "year_3_return": -15.2,
     "max_drawdown": -14.75,
     "sharpe_ratio": 1.46,
     "annual_vol": 28.27,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000698",
+    "track_index_name": "科创100"
   },
   {
     "code": "589060",
@@ -7011,7 +7044,7 @@
     "scale": 3.1,
     "shares": 3.1,
     "issue_date": "2025-02-26",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "海光信息",
@@ -7040,11 +7073,13 @@
     "change_rate": -0.013025,
     "volume": 0.19,
     "year_1_return": 78.94,
-    "year_3_return": 0,
+    "year_3_return": -18.75,
     "max_drawdown": -16.51,
     "sharpe_ratio": 2.22,
     "annual_vol": 27.04,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000680",
+    "track_index_name": "科创综指"
   },
   {
     "code": "560780",
@@ -7451,7 +7486,7 @@
     "scale": 1.9,
     "shares": 1.9,
     "issue_date": "2026-03-11",
-    "custodian": "",
+    "custodian": "财通证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -7480,11 +7515,13 @@
     "change_rate": 0.010969,
     "volume": 0.23,
     "year_1_return": 11.0,
-    "year_3_return": 0,
+    "year_3_return": -9.47,
     "max_drawdown": -9.5,
     "sharpe_ratio": 2.32,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931719",
+    "track_index_name": "CS电池"
   },
   {
     "code": "589270",
@@ -7671,7 +7708,7 @@
     "scale": 3.1,
     "shares": 3.0,
     "issue_date": "2025-02-26",
-    "custodian": "",
+    "custodian": "中信证券股份有限公司",
     "top_holdings": [
       {
         "name": "海光信息",
@@ -7700,11 +7737,13 @@
     "change_rate": -0.016129,
     "volume": 0.35,
     "year_1_return": 79.2,
-    "year_3_return": 0,
+    "year_3_return": -18.2,
     "max_drawdown": -16.25,
     "sharpe_ratio": 2.26,
     "annual_vol": 26.59,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000680",
+    "track_index_name": "科创综指"
   },
   {
     "code": "588800",
@@ -7891,7 +7930,7 @@
     "scale": 32.8,
     "shares": 33.2,
     "issue_date": "2023-09-06",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "源杰科技",
@@ -7920,11 +7959,13 @@
     "change_rate": -0.007287,
     "volume": 1.73,
     "year_1_return": 82.96,
-    "year_3_return": 0,
+    "year_3_return": -40.11,
     "max_drawdown": -14.38,
     "sharpe_ratio": 2.24,
     "annual_vol": 27.89,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000698",
+    "track_index_name": "科创100"
   },
   {
     "code": "589630",
@@ -8331,7 +8372,7 @@
     "scale": 69.1,
     "shares": 67.3,
     "issue_date": "2021-07-15",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "寒武纪",
@@ -8364,7 +8405,9 @@
     "max_drawdown": -19.37,
     "sharpe_ratio": 1.78,
     "annual_vol": 30.73,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000688",
+    "track_index_name": "科创50"
   },
   {
     "code": "589850",
@@ -8771,7 +8814,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2025-12-17",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "寒武纪",
@@ -8800,11 +8843,13 @@
     "change_rate": -0.014354,
     "volume": 0.13,
     "year_1_return": 17.9,
-    "year_3_return": 0,
+    "year_3_return": -19.32,
     "max_drawdown": -19.3,
     "sharpe_ratio": 1.58,
     "annual_vol": 0,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000688",
+    "track_index_name": "科创50"
   },
   {
     "code": "159299",
@@ -8991,7 +9036,7 @@
     "scale": 4.2,
     "shares": 4.3,
     "issue_date": "2025-01-20",
-    "custodian": "",
+    "custodian": "中信证券股份有限公司",
     "top_holdings": [
       {
         "name": "寒武纪",
@@ -9020,11 +9065,13 @@
     "change_rate": -0.015982,
     "volume": 0.75,
     "year_1_return": 67.5,
-    "year_3_return": 0,
+    "year_3_return": -19.15,
     "max_drawdown": -19.15,
     "sharpe_ratio": 1.76,
     "annual_vol": 31.03,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000688",
+    "track_index_name": "科创50"
   },
   {
     "code": "159819",
@@ -9211,7 +9258,7 @@
     "scale": 10.8,
     "shares": 11.2,
     "issue_date": "2025-02-26",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "海光信息",
@@ -9240,11 +9287,13 @@
     "change_rate": -0.012766,
     "volume": 1.54,
     "year_1_return": 74.41,
-    "year_3_return": 0,
+    "year_3_return": -18.27,
     "max_drawdown": -15.91,
     "sharpe_ratio": 2.16,
     "annual_vol": 26.61,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000680",
+    "track_index_name": "科创综指"
   },
   {
     "code": "159311",
@@ -9431,7 +9480,7 @@
     "scale": 2.7,
     "shares": 2.8,
     "issue_date": "2025-02-13",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "长光华芯",
@@ -9460,11 +9509,13 @@
     "change_rate": -0.004182,
     "volume": 0.69,
     "year_1_return": 99.69,
-    "year_3_return": 0,
+    "year_3_return": -20.11,
     "max_drawdown": -15.07,
     "sharpe_ratio": 2.47,
     "annual_vol": 29.06,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000699",
+    "track_index_name": "科创200"
   },
   {
     "code": "561160",
@@ -9651,7 +9702,7 @@
     "scale": 6.8,
     "shares": 6.8,
     "issue_date": "2025-06-05",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "长光华芯",
@@ -9680,11 +9731,13 @@
     "change_rate": -0.002062,
     "volume": 0.34,
     "year_1_return": 94.6,
-    "year_3_return": 0,
+    "year_3_return": -15.06,
     "max_drawdown": -15.1,
     "sharpe_ratio": 1.82,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000699",
+    "track_index_name": "科创200"
   },
   {
     "code": "589300",
@@ -10091,7 +10144,7 @@
     "scale": 0.6,
     "shares": 0.6,
     "issue_date": "2024-11-06",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "拓荆科技",
@@ -10120,11 +10173,13 @@
     "change_rate": -0.007549,
     "volume": 0.03,
     "year_1_return": 113.15,
-    "year_3_return": 0,
+    "year_3_return": -17.25,
     "max_drawdown": -13.21,
     "sharpe_ratio": 2.31,
     "annual_vol": 34.63,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000690",
+    "track_index_name": "科创成长"
   },
   {
     "code": "515070",
@@ -10751,7 +10806,7 @@
     "scale": 3.3,
     "shares": 3.3,
     "issue_date": "2025-09-22",
-    "custodian": "",
+    "custodian": "兴业证券股份有限公司",
     "top_holdings": [
       {
         "name": "同花顺",
@@ -10780,11 +10835,13 @@
     "change_rate": -0.016089,
     "volume": 0.09,
     "year_1_return": -21.4,
-    "year_3_return": 0,
+    "year_3_return": -29.38,
     "max_drawdown": -29.4,
     "sharpe_ratio": -1.32,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930986",
+    "track_index_name": "金融科技"
   },
   {
     "code": "562920",
@@ -10971,7 +11028,7 @@
     "scale": 2.5,
     "shares": 2.5,
     "issue_date": "2021-01-21",
-    "custodian": "",
+    "custodian": "中信证券股份有限公司",
     "top_holdings": [
       {
         "name": "中际旭创",
@@ -11004,7 +11061,9 @@
     "max_drawdown": -14.87,
     "sharpe_ratio": 2.52,
     "annual_vol": 30.25,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931087",
+    "track_index_name": "科技龙头"
   },
   {
     "code": "589080",
@@ -11631,7 +11690,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2025-02-26",
-    "custodian": "",
+    "custodian": "中信银行股份有限公司",
     "top_holdings": [
       {
         "name": "寒武纪",
@@ -11660,11 +11719,13 @@
     "change_rate": -0.011278,
     "volume": 0.06,
     "year_1_return": 70.86,
-    "year_3_return": 0,
+    "year_3_return": -18.97,
     "max_drawdown": -18.97,
     "sharpe_ratio": 1.85,
     "annual_vol": 30.52,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000688",
+    "track_index_name": "科创50"
   },
   {
     "code": "588090",
@@ -11851,7 +11912,7 @@
     "scale": 5.7,
     "shares": 5.9,
     "issue_date": "2025-08-27",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "拓荆科技",
@@ -11880,11 +11941,13 @@
     "change_rate": 0.045064,
     "volume": 2.09,
     "year_1_return": 112.4,
-    "year_3_return": 0,
+    "year_3_return": -21.27,
     "max_drawdown": -21.3,
     "sharpe_ratio": 2.14,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs950125",
+    "track_index_name": "科创半导体材料设备"
   },
   {
     "code": "588990",
@@ -12071,7 +12134,7 @@
     "scale": 1.8,
     "shares": 1.9,
     "issue_date": "2021-08-05",
-    "custodian": "",
+    "custodian": "招商证券股份有限公司",
     "top_holdings": [
       {
         "name": "新易盛",
@@ -12104,7 +12167,9 @@
     "max_drawdown": -15.35,
     "sharpe_ratio": 2.18,
     "annual_vol": 39.94,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931469",
+    "track_index_name": "云计算50"
   },
   {
     "code": "520990",
@@ -12291,7 +12356,7 @@
     "scale": 6.9,
     "shares": 6.9,
     "issue_date": "2015-06-29",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "佰维存储",
@@ -12324,7 +12389,9 @@
     "max_drawdown": -20.1,
     "sharpe_ratio": 2.09,
     "annual_vol": 32.35,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30257",
+    "track_index_name": "500信息"
   },
   {
     "code": "562960",
@@ -13171,7 +13238,7 @@
     "scale": 1.0,
     "shares": 1.0,
     "issue_date": "2024-06-27",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "源杰科技",
@@ -13200,11 +13267,13 @@
     "change_rate": -0.009464,
     "volume": 0.07,
     "year_1_return": 77.9,
-    "year_3_return": 0,
+    "year_3_return": -21.96,
     "max_drawdown": -16.18,
     "sharpe_ratio": 2.2,
     "annual_vol": 27.0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000698",
+    "track_index_name": "科创100"
   },
   {
     "code": "159889",
@@ -14051,7 +14120,7 @@
     "scale": 0.3,
     "shares": 0.3,
     "issue_date": "2021-07-09",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -14078,13 +14147,15 @@
     "close": 0.857,
     "prev_close": 0.844,
     "change_rate": -0.01524,
-    "volume": 0.0,
+    "volume": 1932.0,
     "year_1_return": 74.02,
     "year_3_return": 15.93,
     "max_drawdown": -11.14,
     "sharpe_ratio": 2.35,
     "annual_vol": 24.13,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30597",
+    "track_index_name": "新材料"
   },
   {
     "code": "159309",
@@ -14271,7 +14342,7 @@
     "scale": 2.0,
     "shares": 2.0,
     "issue_date": "2022-07-29",
-    "custodian": "",
+    "custodian": "中信银行股份有限公司",
     "top_holdings": [
       {
         "name": "源杰科技",
@@ -14304,7 +14375,9 @@
     "max_drawdown": -13.11,
     "sharpe_ratio": 2.01,
     "annual_vol": 19.86,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000852",
+    "track_index_name": "中证1000"
   },
   {
     "code": "588450",
@@ -15151,7 +15224,7 @@
     "scale": 0.4,
     "shares": 0.4,
     "issue_date": "2023-09-28",
-    "custodian": "",
+    "custodian": "广发证券股份有限公司",
     "top_holdings": [
       {
         "name": "广西能源",
@@ -15180,11 +15253,13 @@
     "change_rate": -0.002856,
     "volume": 0.06,
     "year_1_return": 58.07,
-    "year_3_return": 0,
+    "year_3_return": -35.5,
     "max_drawdown": -12.8,
     "sharpe_ratio": 2.2,
     "annual_vol": 20.96,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "cs932000",
+    "track_index_name": "中证2000"
   },
   {
     "code": "516620",
@@ -15359,7 +15434,7 @@
     "scale": 15.9,
     "shares": 15.9,
     "issue_date": "2023-03-07",
-    "custodian": "",
+    "custodian": "中信银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国核电",
@@ -15392,7 +15467,9 @@
     "max_drawdown": -11.95,
     "sharpe_ratio": 1.17,
     "annual_vol": 16.08,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931897",
+    "track_index_name": "绿色电力"
   },
   {
     "code": "515590",
@@ -15579,7 +15656,7 @@
     "scale": 3.2,
     "shares": 3.1,
     "issue_date": "2026-04-22",
-    "custodian": "",
+    "custodian": "国信证券股份有限公司",
     "top_holdings": [],
     "change_pct": 3.83,
     "close": 1.084,
@@ -15587,11 +15664,13 @@
     "change_rate": -0.00858,
     "volume": 0.5,
     "year_1_return": 4.9,
-    "year_3_return": 0,
-    "max_drawdown": 0,
+    "year_3_return": -3.44,
+    "max_drawdown": 0.55,
     "sharpe_ratio": 0,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30199",
+    "track_index_name": "电力指数"
   },
   {
     "code": "588020",
@@ -15998,7 +16077,7 @@
     "scale": 31.2,
     "shares": 31.3,
     "issue_date": "2022-04-26",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "长江电力",
@@ -16031,7 +16110,9 @@
     "max_drawdown": -11.57,
     "sharpe_ratio": 1.23,
     "annual_vol": 15.81,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30199",
+    "track_index_name": "电力指数"
   },
   {
     "code": "561760",
@@ -16218,7 +16299,7 @@
     "scale": 0.9,
     "shares": 0.9,
     "issue_date": "2025-12-10",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "北方华创",
@@ -16247,11 +16328,13 @@
     "change_rate": -0.014286,
     "volume": 0.13,
     "year_1_return": 17.8,
-    "year_3_return": 0,
+    "year_3_return": -15.18,
     "max_drawdown": -15.2,
     "sharpe_ratio": 1.77,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931785",
+    "track_index_name": "智选沪深港科技50"
   },
   {
     "code": "562350",
@@ -16438,7 +16521,7 @@
     "scale": 1.6,
     "shares": 1.6,
     "issue_date": "2011-09-16",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "亨通光电",
@@ -16471,7 +16554,9 @@
     "max_drawdown": -12.74,
     "sharpe_ratio": 1.96,
     "annual_vol": 17.57,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000009",
+    "track_index_name": "上证380"
   },
   {
     "code": "517180",
@@ -16658,7 +16743,7 @@
     "scale": 0.4,
     "shares": 0.4,
     "issue_date": "2025-07-16",
-    "custodian": "",
+    "custodian": "国金证券股份有限公司",
     "top_holdings": [
       {
         "name": "中芯国际",
@@ -16687,11 +16772,13 @@
     "change_rate": -0.012472,
     "volume": 0.03,
     "year_1_return": 32.0,
-    "year_3_return": 0,
+    "year_3_return": -18.98,
     "max_drawdown": -19.0,
     "sharpe_ratio": 0.57,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs950228",
+    "track_index_name": "智选科创价值50"
   },
   {
     "code": "510570",
@@ -16878,7 +16965,7 @@
     "scale": 0.2,
     "shares": 0.2,
     "issue_date": "2024-12-25",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "长江电力",
@@ -16907,11 +16994,13 @@
     "change_rate": -0.009839,
     "volume": 0.02,
     "year_1_return": 15.38,
-    "year_3_return": 0,
+    "year_3_return": -10.38,
     "max_drawdown": -10.38,
     "sharpe_ratio": 0.96,
     "annual_vol": 13.87,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000995",
+    "track_index_name": "全指公用"
   },
   {
     "code": "159159",
@@ -17318,7 +17407,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2021-03-15",
-    "custodian": "",
+    "custodian": "招商证券股份有限公司",
     "top_holdings": [
       {
         "name": "源杰科技",
@@ -17351,7 +17440,9 @@
     "max_drawdown": -11.93,
     "sharpe_ratio": 2.1,
     "annual_vol": 18.63,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000852",
+    "track_index_name": "中证1000"
   },
   {
     "code": "510500",
@@ -17538,7 +17629,7 @@
     "scale": 0.7,
     "shares": 0.7,
     "issue_date": "2021-05-20",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -17571,7 +17662,9 @@
     "max_drawdown": -21.49,
     "sharpe_ratio": 1.2,
     "annual_vol": 22.56,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931524",
+    "track_index_name": "SHS科技龙头"
   },
   {
     "code": "159199",
@@ -17978,7 +18071,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2025-10-29",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "航天电子",
@@ -18007,11 +18100,13 @@
     "change_rate": -0.020017,
     "volume": 0.11,
     "year_1_return": 16.5,
-    "year_3_return": 0,
+    "year_3_return": -30.47,
     "max_drawdown": -30.5,
     "sharpe_ratio": 0.91,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931855",
+    "track_index_name": "通用航空"
   },
   {
     "code": "563750",
@@ -18198,7 +18293,7 @@
     "scale": 77.4,
     "shares": 77.5,
     "issue_date": "2015-05-05",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "亨通光电",
@@ -18231,7 +18326,9 @@
     "max_drawdown": -14.03,
     "sharpe_ratio": 2.11,
     "annual_vol": 20.82,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000905",
+    "track_index_name": "中证500"
   },
   {
     "code": "159241",
@@ -18837,7 +18934,7 @@
     "scale": 0.5,
     "shares": 0.7,
     "issue_date": "2022-12-28",
-    "custodian": "",
+    "custodian": "中信银行股份有限公司",
     "top_holdings": [
       {
         "name": "新易盛",
@@ -18870,7 +18967,9 @@
     "max_drawdown": -13.82,
     "sharpe_ratio": 2.88,
     "annual_vol": 28.96,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931643",
+    "track_index_name": "科创创业50"
   },
   {
     "code": "563700",
@@ -19455,7 +19554,7 @@
     "scale": 785.0,
     "shares": 784.9,
     "issue_date": "2013-04-01",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [],
     "change_pct": 0.01,
     "close": 100.459,
@@ -19654,7 +19753,7 @@
     "scale": 1.9,
     "shares": 1.9,
     "issue_date": "2025-03-20",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "芯联集成",
@@ -19683,11 +19782,13 @@
     "change_rate": -0.006765,
     "volume": 0.05,
     "year_1_return": 70.72,
-    "year_3_return": 0,
+    "year_3_return": -15.47,
     "max_drawdown": -15.47,
     "sharpe_ratio": 2.12,
     "annual_vol": 25.97,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs950333",
+    "track_index_name": "智选创新价值"
   },
   {
     "code": "513360",
@@ -19853,7 +19954,7 @@
     "scale": 3.6,
     "shares": 3.6,
     "issue_date": "2021-08-04",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中际旭创",
@@ -19886,7 +19987,9 @@
     "max_drawdown": -24.18,
     "sharpe_ratio": 1.51,
     "annual_vol": 28.54,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931487",
+    "track_index_name": "SHS人工智能50"
   },
   {
     "code": "511600",
@@ -20149,7 +20252,7 @@
     "prev_close": 100.0,
     "change_rate": 0.0,
     "volume": 0.21,
-    "year_1_return": 0.0,
+    "year_1_return": 1.5,
     "year_3_return": 0,
     "max_drawdown": -0.01,
     "sharpe_ratio": -111.81,
@@ -20304,7 +20407,7 @@
     "prev_close": 100.0,
     "change_rate": 1e-05,
     "volume": 0.16,
-    "year_1_return": 0.0,
+    "year_1_return": 1.5,
     "year_3_return": 0.01,
     "max_drawdown": -0.03,
     "sharpe_ratio": -45.56,
@@ -20415,7 +20518,7 @@
     "prev_close": 100.0,
     "change_rate": 0.0,
     "volume": 3.25,
-    "year_1_return": 0.0,
+    "year_1_return": 1.5,
     "year_3_return": 0,
     "max_drawdown": -0.01,
     "sharpe_ratio": -124.27,
@@ -20607,7 +20710,7 @@
     "scale": 3.9,
     "shares": 3.9,
     "issue_date": "2023-07-27",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "长江电力",
@@ -20636,11 +20739,13 @@
     "change_rate": -0.010737,
     "volume": 0.14,
     "year_1_return": 32.98,
-    "year_3_return": 0,
+    "year_3_return": -17.41,
     "max_drawdown": -11.97,
     "sharpe_ratio": 1.69,
     "annual_vol": 16.56,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs932037",
+    "track_index_name": "央企现代能源"
   },
   {
     "code": "159360",
@@ -20806,7 +20911,7 @@
     "scale": 4.9,
     "shares": 4.9,
     "issue_date": "2022-03-30",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "美的集团",
@@ -20839,7 +20944,9 @@
     "max_drawdown": -14.04,
     "sharpe_ratio": 1.15,
     "annual_vol": 15.87,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930697",
+    "track_index_name": "家用电器"
   },
   {
     "code": "530530",
@@ -21005,7 +21112,7 @@
     "scale": 1.1,
     "shares": 1.1,
     "issue_date": "2016-12-29",
-    "custodian": "",
+    "custodian": "招商证券股份有限公司",
     "top_holdings": [],
     "change_pct": 0.01,
     "close": 100.005,
@@ -21013,7 +21120,7 @@
     "change_rate": 6e-05,
     "volume": 0.22,
     "year_1_return": -0.02,
-    "year_3_return": 0,
+    "year_3_return": -0.27,
     "max_drawdown": -0.23,
     "sharpe_ratio": -6.2,
     "annual_vol": 0.33,
@@ -21120,13 +21227,13 @@
     "scale": 0.9,
     "shares": 0.9,
     "issue_date": "2016-01-29",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [],
     "change_pct": 0.0,
     "close": 100.0,
     "prev_close": 99.999,
     "change_rate": 3e-05,
-    "volume": 0.0,
+    "volume": 10.0,
     "year_1_return": -0.02,
     "year_3_return": 0.01,
     "max_drawdown": -0.09,
@@ -21229,19 +21336,19 @@
   {
     "code": "511670",
     "name": "华泰天天金ETF",
-    "issuer": "",
+    "issuer": "国联安基金管理有限公司",
     "issuer_full": "",
     "issuer_short": "",
     "scale": 0.2,
     "shares": 0.2,
     "issue_date": "2017-08-11",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [],
     "change_pct": 0.0,
     "close": 99.999,
     "prev_close": 99.999,
     "change_rate": 3e-05,
-    "volume": 0.0,
+    "volume": 26.0,
     "year_1_return": -0.02,
     "year_3_return": -0.07,
     "max_drawdown": -2.93,
@@ -21350,7 +21457,7 @@
     "scale": 0.4,
     "shares": 0.4,
     "issue_date": "2014-11-25",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [],
     "change_pct": 0.0,
     "close": 100.003,
@@ -21358,7 +21465,7 @@
     "change_rate": 9e-05,
     "volume": 0.03,
     "year_1_return": -0.02,
-    "year_3_return": 0,
+    "year_3_return": -0.3,
     "max_drawdown": -0.11,
     "sharpe_ratio": -14.12,
     "annual_vol": 0.14,
@@ -21390,7 +21497,7 @@
   {
     "code": "512190",
     "name": "浙商之江凤凰ETF",
-    "issuer": "",
+    "issuer": "浙江浙商证券资产管理有限公司",
     "issuer_full": "",
     "issuer_short": "",
     "scale": 3.9,
@@ -21748,7 +21855,7 @@
     "scale": 0.9,
     "shares": 0.9,
     "issue_date": "2022-01-26",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "亨通光电",
@@ -21781,7 +21888,9 @@
     "max_drawdown": -12.93,
     "sharpe_ratio": 2.14,
     "annual_vol": 19.7,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000905",
+    "track_index_name": "中证500"
   },
   {
     "code": "512960",
@@ -22628,7 +22737,7 @@
     "scale": 0.3,
     "shares": 0.3,
     "issue_date": "2025-09-24",
-    "custodian": "",
+    "custodian": "广发证券股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -22655,13 +22764,15 @@
     "close": 1.043,
     "prev_close": 1.039,
     "change_rate": -0.00858,
-    "volume": 0.0,
+    "volume": 3889.0,
     "year_1_return": 0.6,
-    "year_3_return": 0,
+    "year_3_return": -6.93,
     "max_drawdown": -6.9,
     "sharpe_ratio": -0.01,
     "annual_vol": 0,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "sh000824",
+    "track_index_name": "国企红利"
   },
   {
     "code": "516200",
@@ -23047,7 +23158,7 @@
     "scale": 177.9,
     "shares": 178.7,
     "issue_date": "2020-01-17",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "格力电器",
@@ -23080,7 +23191,8 @@
     "max_drawdown": -6.64,
     "sharpe_ratio": 0.51,
     "annual_vol": 9.49,
-    "category": "红利"
+    "category": "红利",
+    "track_index_name": "标普中国A股大盘红利低波50指数"
   },
   {
     "code": "560950",
@@ -23707,7 +23819,7 @@
     "scale": 2.4,
     "shares": 2.4,
     "issue_date": "2025-06-18",
-    "custodian": "",
+    "custodian": "中信银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -23736,11 +23848,13 @@
     "change_rate": -0.007722,
     "volume": 0.08,
     "year_1_return": 28.0,
-    "year_3_return": 0,
+    "year_3_return": -9.05,
     "max_drawdown": -9.0,
     "sharpe_ratio": 0.98,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000510",
+    "track_index_name": "中证A500"
   },
   {
     "code": "159122",
@@ -23927,7 +24041,7 @@
     "scale": 18.6,
     "shares": 18.6,
     "issue_date": "2019-09-20",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "国电南瑞",
@@ -23960,7 +24074,9 @@
     "max_drawdown": -10.44,
     "sharpe_ratio": 1.58,
     "annual_vol": 14.89,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000861",
+    "track_index_name": "央企创新"
   },
   {
     "code": "563180",
@@ -24147,7 +24263,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2025-09-10",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -24176,11 +24292,13 @@
     "change_rate": -0.018421,
     "volume": 0.03,
     "year_1_return": 11.7,
-    "year_3_return": 0,
+    "year_3_return": -7.64,
     "max_drawdown": -7.6,
     "sharpe_ratio": 1.17,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000510",
+    "track_index_name": "中证A500"
   },
   {
     "code": "159190",
@@ -24367,7 +24485,7 @@
     "scale": 61.6,
     "shares": 63.0,
     "issue_date": "2011-01-30",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "农业银行",
@@ -24400,7 +24518,9 @@
     "max_drawdown": -8.9,
     "sharpe_ratio": 1.99,
     "annual_vol": 12.24,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000001",
+    "track_index_name": "上证指数"
   },
   {
     "code": "159535",
@@ -24587,7 +24707,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2024-10-30",
-    "custodian": "",
+    "custodian": "广发证券股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -24616,11 +24736,13 @@
     "change_rate": -0.00286,
     "volume": 0.03,
     "year_1_return": 10.93,
-    "year_3_return": 0,
+    "year_3_return": -9.78,
     "max_drawdown": -8.01,
     "sharpe_ratio": 0.67,
     "annual_vol": 14.02,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "sh000151",
+    "track_index_name": "上国红利"
   },
   {
     "code": "510880",
@@ -25675,7 +25797,7 @@
     "scale": 3.9,
     "shares": 3.9,
     "issue_date": "2019-11-06",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "烽火通信",
@@ -25708,7 +25830,9 @@
     "max_drawdown": -9.99,
     "sharpe_ratio": 1.64,
     "annual_vol": 16.87,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000859",
+    "track_index_name": "国企一带一路"
   },
   {
     "code": "530100",
@@ -25895,7 +26019,7 @@
     "scale": 16.6,
     "shares": 16.6,
     "issue_date": "2021-06-25",
-    "custodian": "",
+    "custodian": "华泰证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -25928,7 +26052,9 @@
     "max_drawdown": -14.5,
     "sharpe_ratio": 2.78,
     "annual_vol": 30.95,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931643",
+    "track_index_name": "科创创业50"
   },
   {
     "code": "159260",
@@ -26335,7 +26461,7 @@
     "scale": 17.7,
     "shares": 17.6,
     "issue_date": "2019-09-17",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "东方财富",
@@ -26368,7 +26494,9 @@
     "max_drawdown": -24.87,
     "sharpe_ratio": 0.09,
     "annual_vol": 21.65,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399975",
+    "track_index_name": "证券公司"
   },
   {
     "code": "512260",
@@ -26555,7 +26683,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2020-09-18",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "亨通光电",
@@ -26588,7 +26716,9 @@
     "max_drawdown": -13.71,
     "sharpe_ratio": 2.17,
     "annual_vol": 20.14,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000905",
+    "track_index_name": "中证500"
   },
   {
     "code": "159949",
@@ -26775,7 +26905,7 @@
     "scale": 1.1,
     "shares": 1.1,
     "issue_date": "2021-07-15",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -26808,7 +26938,9 @@
     "max_drawdown": -12.6,
     "sharpe_ratio": 2.15,
     "annual_vol": 28.79,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399808",
+    "track_index_name": "中证新能"
   },
   {
     "code": "560090",
@@ -26995,7 +27127,7 @@
     "scale": 1.2,
     "shares": 1.2,
     "issue_date": "2021-09-27",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -27028,7 +27160,9 @@
     "max_drawdown": -8.73,
     "sharpe_ratio": 1.86,
     "annual_vol": 16.98,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931403",
+    "track_index_name": "品牌工程"
   },
   {
     "code": "159836",
@@ -27215,7 +27349,7 @@
     "scale": 4.9,
     "shares": 4.9,
     "issue_date": "2025-12-17",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -27244,11 +27378,13 @@
     "change_rate": -0.011299,
     "volume": 0.07,
     "year_1_return": 4.4,
-    "year_3_return": 0,
+    "year_3_return": -6.46,
     "max_drawdown": -6.5,
     "sharpe_ratio": 0.83,
     "annual_vol": 0,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000300",
+    "track_index_name": "沪深300"
   },
   {
     "code": "520810",
@@ -28095,7 +28231,7 @@
     "scale": 28.8,
     "shares": 28.6,
     "issue_date": "2024-04-24",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -28124,11 +28260,13 @@
     "change_rate": -0.003928,
     "volume": 1.05,
     "year_1_return": 21.48,
-    "year_3_return": 0,
+    "year_3_return": -16.84,
     "max_drawdown": -11.98,
     "sharpe_ratio": 1.33,
     "annual_vol": 13.88,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "cs930914",
+    "track_index_name": "港股通高股息"
   },
   {
     "code": "159387",
@@ -29394,7 +29532,7 @@
     "scale": 2.9,
     "shares": 2.9,
     "issue_date": "2021-06-29",
-    "custodian": "",
+    "custodian": "中国邮政储蓄银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -29427,7 +29565,9 @@
     "max_drawdown": -14.29,
     "sharpe_ratio": 2.78,
     "annual_vol": 31.24,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931643",
+    "track_index_name": "科创创业50"
   },
   {
     "code": "510990",
@@ -29834,7 +29974,7 @@
     "scale": 40.4,
     "shares": 40.2,
     "issue_date": "2020-08-28",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [],
     "change_pct": -0.01,
     "close": 9.533,
@@ -29846,7 +29986,8 @@
     "max_drawdown": -25.04,
     "sharpe_ratio": 0.93,
     "annual_vol": 28.01,
-    "category": "行业"
+    "category": "行业",
+    "track_index_name": "SHAU"
   },
   {
     "code": "159219",
@@ -30033,7 +30174,7 @@
     "scale": 14.2,
     "shares": 14.1,
     "issue_date": "2025-09-10",
-    "custodian": "",
+    "custodian": "招商证券股份有限公司",
     "top_holdings": [
       {
         "name": "中国神华",
@@ -30062,11 +30203,13 @@
     "change_rate": -0.004985,
     "volume": 0.24,
     "year_1_return": 2.5,
-    "year_3_return": 0,
+    "year_3_return": -5.78,
     "max_drawdown": -5.7,
     "sharpe_ratio": 0.29,
     "annual_vol": 0,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "cs932422",
+    "track_index_name": "A500红利低波"
   },
   {
     "code": "518850",
@@ -30410,7 +30553,7 @@
     "scale": 3.3,
     "shares": 3.5,
     "issue_date": "2019-12-04",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -30443,7 +30586,9 @@
     "max_drawdown": -7.77,
     "sharpe_ratio": 1.89,
     "annual_vol": 13.91,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000300",
+    "track_index_name": "沪深300"
   },
   {
     "code": "159831",
@@ -30588,7 +30733,7 @@
     "scale": 94.5,
     "shares": 94.1,
     "issue_date": "2020-04-24",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [],
     "change_pct": 0.0,
     "close": 9.535,
@@ -30600,7 +30745,9 @@
     "max_drawdown": -24.96,
     "sharpe_ratio": 0.94,
     "annual_vol": 28.18,
-    "category": "商品"
+    "category": "商品",
+    "track_index_code": "spAU9999",
+    "track_index_name": "Au99.99"
   },
   {
     "code": "515100",
@@ -30970,7 +31117,7 @@
     "scale": 1.1,
     "shares": 1.1,
     "issue_date": "2025-01-22",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -30999,11 +31146,13 @@
     "change_rate": -0.015374,
     "volume": 0.09,
     "year_1_return": 41.29,
-    "year_3_return": 0,
+    "year_3_return": -11.49,
     "max_drawdown": -8.41,
     "sharpe_ratio": 2.16,
     "annual_vol": 15.71,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000510",
+    "track_index_name": "中证A500"
   },
   {
     "code": "512360",
@@ -31190,7 +31339,7 @@
     "scale": 3.2,
     "shares": 3.2,
     "issue_date": "2024-04-10",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国银行",
@@ -31219,11 +31368,12 @@
     "change_rate": -0.012107,
     "volume": 0.14,
     "year_1_return": 28.64,
-    "year_3_return": 0,
+    "year_3_return": -15.59,
     "max_drawdown": -9.43,
     "sharpe_ratio": 1.64,
     "annual_vol": 14.93,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "恒生中国央企"
   },
   {
     "code": "159123",
@@ -31410,7 +31560,7 @@
     "scale": 397.6,
     "shares": 394.0,
     "issue_date": "2013-07-18",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "黄金9999",
@@ -31427,7 +31577,9 @@
     "max_drawdown": -24.91,
     "sharpe_ratio": 0.94,
     "annual_vol": 28.01,
-    "category": "商品"
+    "category": "商品",
+    "track_index_code": "spAU9999",
+    "track_index_name": "Au99.99"
   },
   {
     "code": "512160",
@@ -31593,7 +31745,7 @@
     "scale": 1.2,
     "shares": 1.2,
     "issue_date": "2020-04-03",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -31626,7 +31778,9 @@
     "max_drawdown": -6.84,
     "sharpe_ratio": 2.07,
     "annual_vol": 13.43,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000300",
+    "track_index_name": "沪深300"
   },
   {
     "code": "588660",
@@ -31813,7 +31967,7 @@
     "scale": 1.1,
     "shares": 1.0,
     "issue_date": "2023-09-26",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -31842,11 +31996,13 @@
     "change_rate": -0.003575,
     "volume": 0.02,
     "year_1_return": 10.69,
-    "year_3_return": 0,
+    "year_3_return": -16.05,
     "max_drawdown": -6.87,
     "sharpe_ratio": 0.78,
     "annual_vol": 11.31,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "sh000922",
+    "track_index_name": "中证红利"
   },
   {
     "code": "159996",
@@ -32232,7 +32388,7 @@
     "scale": 6.2,
     "shares": 6.1,
     "issue_date": "2024-10-30",
-    "custodian": "",
+    "custodian": "华泰证券股份有限公司",
     "top_holdings": [
       {
         "name": "特变电工",
@@ -32261,11 +32417,13 @@
     "change_rate": -0.019985,
     "volume": 0.41,
     "year_1_return": 75.62,
-    "year_3_return": 0,
+    "year_3_return": -31.14,
     "max_drawdown": -16.85,
     "sharpe_ratio": 1.88,
     "annual_vol": 31.72,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931151",
+    "track_index_name": "光伏产业"
   },
   {
     "code": "159885",
@@ -32672,7 +32830,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2025-09-23",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "华润江中",
@@ -32701,11 +32859,13 @@
     "change_rate": -0.008824,
     "volume": 0.05,
     "year_1_return": 0.5,
-    "year_3_return": 0,
+    "year_3_return": -8.9,
     "max_drawdown": -8.9,
     "sharpe_ratio": -0.05,
     "annual_vol": 0,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "csH30269",
+    "track_index_name": "红利低波"
   },
   {
     "code": "159182",
@@ -32892,7 +33052,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2021-02-09",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -32925,7 +33085,9 @@
     "max_drawdown": -16.07,
     "sharpe_ratio": 0.13,
     "annual_vol": 14.0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000806",
+    "track_index_name": "消费服务"
   },
   {
     "code": "518680",
@@ -33311,7 +33473,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2026-01-28",
-    "custodian": "",
+    "custodian": "上海银行股份有限公司",
     "top_holdings": [
       {
         "name": "特变电工",
@@ -33340,11 +33502,13 @@
     "change_rate": -0.019627,
     "volume": 0.1,
     "year_1_return": 0.2,
-    "year_3_return": 0,
+    "year_3_return": -16.74,
     "max_drawdown": -16.7,
     "sharpe_ratio": 0.1,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931151",
+    "track_index_name": "光伏产业"
   },
   {
     "code": "561680",
@@ -33531,7 +33695,7 @@
     "scale": 3.0,
     "shares": 3.0,
     "issue_date": "2025-11-17",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国神华",
@@ -33560,11 +33724,13 @@
     "change_rate": -0.007021,
     "volume": 0.08,
     "year_1_return": -1.1,
-    "year_3_return": 0,
+    "year_3_return": -5.92,
     "max_drawdown": -5.4,
     "sharpe_ratio": -0.45,
     "annual_vol": 0,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "cs932422",
+    "track_index_name": "A500红利低波"
   },
   {
     "code": "516590",
@@ -33751,7 +33917,7 @@
     "scale": 123.4,
     "shares": 122.8,
     "issue_date": "2014-06-26",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国平安",
@@ -33784,7 +33950,9 @@
     "max_drawdown": -22.94,
     "sharpe_ratio": 0.21,
     "annual_vol": 21.34,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30035",
+    "track_index_name": "300非银"
   },
   {
     "code": "515360",
@@ -33971,7 +34139,7 @@
     "scale": 1218.8,
     "shares": 1208.0,
     "issue_date": "2013-03-06",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -34004,7 +34172,9 @@
     "max_drawdown": -7.57,
     "sharpe_ratio": 1.89,
     "annual_vol": 14.49,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000300",
+    "track_index_name": "沪深300"
   },
   {
     "code": "159993",
@@ -34411,7 +34581,7 @@
     "scale": 11.4,
     "shares": 11.2,
     "issue_date": "2021-01-05",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "特变电工",
@@ -34444,7 +34614,9 @@
     "max_drawdown": -16.85,
     "sharpe_ratio": 1.83,
     "annual_vol": 31.05,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931151",
+    "track_index_name": "光伏产业"
   },
   {
     "code": "515160",
@@ -34631,7 +34803,7 @@
     "scale": 42.4,
     "shares": 42.1,
     "issue_date": "2024-02-07",
-    "custodian": "",
+    "custodian": "广发证券股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -34660,11 +34832,13 @@
     "change_rate": -0.008605,
     "volume": 2.24,
     "year_1_return": 22.44,
-    "year_3_return": 0,
+    "year_3_return": -15.6,
     "max_drawdown": -8.9,
     "sharpe_ratio": 1.4,
     "annual_vol": 13.76,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "cs931233",
+    "track_index_name": "港股通央企红利"
   },
   {
     "code": "512680",
@@ -34851,7 +35025,7 @@
     "scale": 0.1,
     "shares": 0.1,
     "issue_date": "2022-06-13",
-    "custodian": "",
+    "custodian": "交通银行股份有限公司",
     "top_holdings": [
       {
         "name": "恒瑞医药",
@@ -34884,7 +35058,9 @@
     "max_drawdown": -10.0,
     "sharpe_ratio": 1.25,
     "annual_vol": 19.56,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931526",
+    "track_index_name": "企业核心竞争力50"
   },
   {
     "code": "562870",
@@ -35071,7 +35247,7 @@
     "scale": 2.2,
     "shares": 2.1,
     "issue_date": "2015-02-12",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -35104,7 +35280,8 @@
     "max_drawdown": -7.53,
     "sharpe_ratio": 2.04,
     "annual_vol": 13.98,
-    "category": "行业"
+    "category": "行业",
+    "track_index_name": "MSCI中国A股国际通指数"
   },
   {
     "code": "513190",
@@ -35291,7 +35468,7 @@
     "scale": 13.1,
     "shares": 13.0,
     "issue_date": "2025-11-06",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "特变电工",
@@ -35320,11 +35497,13 @@
     "change_rate": -0.020484,
     "volume": 0.51,
     "year_1_return": 9.9,
-    "year_3_return": 0,
+    "year_3_return": -16.96,
     "max_drawdown": -17.0,
     "sharpe_ratio": 0.75,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931151",
+    "track_index_name": "光伏产业"
   },
   {
     "code": "510810",
@@ -35511,7 +35690,7 @@
     "scale": 6.8,
     "shares": 6.8,
     "issue_date": "2025-01-14",
-    "custodian": "",
+    "custodian": "中国光大银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -35540,11 +35719,13 @@
     "change_rate": -0.014255,
     "volume": 0.31,
     "year_1_return": 39.17,
-    "year_3_return": 0,
+    "year_3_return": -11.23,
     "max_drawdown": -8.8,
     "sharpe_ratio": 2.08,
     "annual_vol": 15.6,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000510",
+    "track_index_name": "中证A500"
   },
   {
     "code": "159671",
@@ -35731,7 +35912,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2026-04-22",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "中芯国际",
@@ -35760,11 +35941,13 @@
     "change_rate": -0.03525,
     "volume": 0.14,
     "year_1_return": 4.2,
-    "year_3_return": 0,
-    "max_drawdown": 0,
+    "year_3_return": -6.26,
+    "max_drawdown": -0.1,
     "sharpe_ratio": 0,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs930967",
+    "track_index_name": "港股通信息C"
   },
   {
     "code": "159716",
@@ -36171,7 +36354,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2022-07-28",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "新宝股份",
@@ -36204,7 +36387,9 @@
     "max_drawdown": -10.69,
     "sharpe_ratio": 1.06,
     "annual_vol": 14.33,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "cs931588",
+    "track_index_name": "1000价值稳健"
   },
   {
     "code": "159330",
@@ -36463,7 +36648,7 @@
     "prev_close": 0.979,
     "change_rate": -0.008056,
     "volume": 0.12,
-    "year_1_return": 0.0,
+    "year_1_return": 1.5,
     "year_3_return": 0,
     "max_drawdown": 0,
     "sharpe_ratio": 0,
@@ -36611,7 +36796,7 @@
     "scale": 44.3,
     "shares": 44.4,
     "issue_date": "2020-12-30",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -36644,7 +36829,9 @@
     "max_drawdown": -20.68,
     "sharpe_ratio": -1.18,
     "annual_vol": 16.57,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000815",
+    "track_index_name": "细分食品"
   },
   {
     "code": "562320",
@@ -37051,7 +37238,7 @@
     "scale": 7.0,
     "shares": 7.0,
     "issue_date": "2016-08-05",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国船舶",
@@ -37084,7 +37271,9 @@
     "max_drawdown": -23.9,
     "sharpe_ratio": 1.21,
     "annual_vol": 29.1,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399967",
+    "track_index_name": "中证军工"
   },
   {
     "code": "561080",
@@ -37271,7 +37460,7 @@
     "scale": 0.8,
     "shares": 0.7,
     "issue_date": "2019-12-24",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -37304,7 +37493,9 @@
     "max_drawdown": -7.54,
     "sharpe_ratio": 1.91,
     "annual_vol": 13.93,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000300",
+    "track_index_name": "沪深300"
   },
   {
     "code": "510350",
@@ -37711,7 +37902,7 @@
     "scale": 0.2,
     "shares": 0.2,
     "issue_date": "2025-01-17",
-    "custodian": "",
+    "custodian": "中信证券股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -37740,11 +37931,13 @@
     "change_rate": -0.014308,
     "volume": 0.05,
     "year_1_return": 22.59,
-    "year_3_return": 0,
+    "year_3_return": -9.32,
     "max_drawdown": -8.84,
     "sharpe_ratio": 1.4,
     "annual_vol": 13.88,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000010",
+    "track_index_name": "上证180"
   },
   {
     "code": "159681",
@@ -38130,7 +38323,7 @@
     "scale": 0.2,
     "shares": 0.2,
     "issue_date": "2022-01-04",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -38163,7 +38356,9 @@
     "max_drawdown": -9.99,
     "sharpe_ratio": 0.99,
     "annual_vol": 16.42,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930716",
+    "track_index_name": "CS物流"
   },
   {
     "code": "560380",
@@ -38350,7 +38545,7 @@
     "scale": 95.7,
     "shares": 96.1,
     "issue_date": "2023-12-06",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "华润江中",
@@ -38379,11 +38574,13 @@
     "change_rate": -0.005927,
     "volume": 1.85,
     "year_1_return": 4.96,
-    "year_3_return": 0,
+    "year_3_return": -14.53,
     "max_drawdown": -8.07,
     "sharpe_ratio": 0.33,
     "annual_vol": 10.11,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "csH30269",
+    "track_index_name": "红利低波"
   },
   {
     "code": "515990",
@@ -38570,7 +38767,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2026-04-01",
-    "custodian": "",
+    "custodian": "中泰证券股份有限公司",
     "top_holdings": [
       {
         "name": "小米集团-W",
@@ -38599,11 +38796,13 @@
     "change_rate": -0.036667,
     "volume": 0.33,
     "year_1_return": 14.5,
-    "year_3_return": 0,
-    "max_drawdown": 0,
+    "year_3_return": -6.06,
+    "max_drawdown": 0.41,
     "sharpe_ratio": 0,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs930967",
+    "track_index_name": "港股通信息C"
   },
   {
     "code": "520890",
@@ -38790,7 +38989,7 @@
     "scale": 20.5,
     "shares": 20.3,
     "issue_date": "2021-10-29",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -38823,7 +39022,8 @@
     "max_drawdown": -8.7,
     "sharpe_ratio": 2.16,
     "annual_vol": 15.75,
-    "category": "行业"
+    "category": "行业",
+    "track_index_name": "MSCI中国A50互联互通(人民币)指数"
   },
   {
     "code": "159666",
@@ -39010,7 +39210,7 @@
     "scale": 1.4,
     "shares": 1.4,
     "issue_date": "2020-09-17",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁波银行",
@@ -39043,7 +39243,9 @@
     "max_drawdown": -10.52,
     "sharpe_ratio": 1.03,
     "annual_vol": 13.86,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931372",
+    "track_index_name": "浙江国资"
   },
   {
     "code": "515660",
@@ -39670,7 +39872,7 @@
     "scale": 0.1,
     "shares": 0.1,
     "issue_date": "2024-04-08",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "冀中能源",
@@ -39699,11 +39901,13 @@
     "change_rate": -0.007986,
     "volume": 0.01,
     "year_1_return": 5.61,
-    "year_3_return": 0,
+    "year_3_return": -12.98,
     "max_drawdown": -6.36,
     "sharpe_ratio": 0.38,
     "annual_vol": 10.51,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "cs930955",
+    "track_index_name": "红利低波100"
   },
   {
     "code": "159627",
@@ -39890,7 +40094,7 @@
     "scale": 2.7,
     "shares": 2.7,
     "issue_date": "2025-01-16",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [],
     "change_pct": 0.21,
     "close": 0.948,
@@ -39898,11 +40102,12 @@
     "change_rate": -0.00418,
     "volume": 0.03,
     "year_1_return": -5.22,
-    "year_3_return": 0,
+    "year_3_return": -15.93,
     "max_drawdown": -12.66,
     "sharpe_ratio": -0.47,
     "annual_vol": 13.64,
-    "category": "行业"
+    "category": "行业",
+    "track_index_name": "新交所新兴亚洲精选50指数"
   },
   {
     "code": "561230",
@@ -40089,7 +40294,7 @@
     "scale": 16.8,
     "shares": 16.6,
     "issue_date": "2021-06-23",
-    "custodian": "",
+    "custodian": "交通银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国建筑",
@@ -40122,7 +40327,9 @@
     "max_drawdown": -11.77,
     "sharpe_ratio": 0.82,
     "annual_vol": 19.53,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399995",
+    "track_index_name": "基建工程"
   },
   {
     "code": "516070",
@@ -40309,7 +40516,7 @@
     "scale": 0.6,
     "shares": 0.6,
     "issue_date": "2020-05-13",
-    "custodian": "",
+    "custodian": "平安银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -40342,7 +40549,8 @@
     "max_drawdown": -7.89,
     "sharpe_ratio": 1.82,
     "annual_vol": 14.2,
-    "category": "行业"
+    "category": "行业",
+    "track_index_name": "MSCI中国A股人民币指数"
   },
   {
     "code": "159117",
@@ -40529,7 +40737,7 @@
     "scale": 13.2,
     "shares": 13.2,
     "issue_date": "2020-12-24",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -40562,7 +40770,9 @@
     "max_drawdown": -20.49,
     "sharpe_ratio": -1.2,
     "annual_vol": 16.03,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000815",
+    "track_index_name": "细分食品"
   },
   {
     "code": "563390",
@@ -40969,7 +41179,7 @@
     "scale": 6.2,
     "shares": 6.1,
     "issue_date": "2022-07-04",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -41002,7 +41212,9 @@
     "max_drawdown": -32.64,
     "sharpe_ratio": -0.56,
     "annual_vol": 24.56,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs930796",
+    "track_index_name": "全球中国互联网"
   },
   {
     "code": "530050",
@@ -41189,7 +41401,7 @@
     "scale": 2.1,
     "shares": 2.0,
     "issue_date": "2021-02-01",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -41216,13 +41428,15 @@
     "close": 1.024,
     "prev_close": 1.017,
     "change_rate": -0.013474,
-    "volume": 0.0,
+    "volume": 4406.0,
     "year_1_return": 22.18,
     "year_3_return": 33.2,
     "max_drawdown": -10.7,
     "sharpe_ratio": 1.36,
     "annual_vol": 14.07,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30455",
+    "track_index_name": "沪港深500"
   },
   {
     "code": "159720",
@@ -41409,7 +41623,7 @@
     "scale": 1.7,
     "shares": 1.7,
     "issue_date": "2010-04-23",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国平安",
@@ -41442,7 +41656,9 @@
     "max_drawdown": -10.04,
     "sharpe_ratio": 0.27,
     "annual_vol": 11.66,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000029",
+    "track_index_name": "180价值"
   },
   {
     "code": "159390",
@@ -41849,7 +42065,7 @@
     "scale": 7.7,
     "shares": 7.7,
     "issue_date": "2024-03-15",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "华润江中",
@@ -41878,11 +42094,13 @@
     "change_rate": -0.0053,
     "volume": 0.11,
     "year_1_return": 5.19,
-    "year_3_return": 0,
+    "year_3_return": -14.14,
     "max_drawdown": -8.41,
     "sharpe_ratio": 0.35,
     "annual_vol": 10.47,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "csH30269",
+    "track_index_name": "红利低波"
   },
   {
     "code": "510270",
@@ -42069,7 +42287,7 @@
     "scale": 29.3,
     "shares": 29.8,
     "issue_date": "2019-09-06",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -42102,7 +42320,9 @@
     "max_drawdown": -11.29,
     "sharpe_ratio": 1.08,
     "annual_vol": 12.88,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000016",
+    "track_index_name": "上证50"
   },
   {
     "code": "159685",
@@ -42289,7 +42509,7 @@
     "scale": 4.4,
     "shares": 4.3,
     "issue_date": "2022-07-11",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "紫金矿业",
@@ -42322,7 +42542,9 @@
     "max_drawdown": -9.61,
     "sharpe_ratio": 1.92,
     "annual_vol": 20.5,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931755",
+    "track_index_name": "SEEE碳中和"
   },
   {
     "code": "560550",
@@ -42729,7 +42951,7 @@
     "scale": 0.2,
     "shares": 0.2,
     "issue_date": "2021-04-07",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -42756,13 +42978,15 @@
     "close": 1.041,
     "prev_close": 1.032,
     "change_rate": -0.015137,
-    "volume": 0.0,
+    "volume": 2860.0,
     "year_1_return": 21.7,
     "year_3_return": 31.13,
     "max_drawdown": -12.7,
     "sharpe_ratio": 1.22,
     "annual_vol": 15.56,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30455",
+    "track_index_name": "沪港深500"
   },
   {
     "code": "159136",
@@ -42949,7 +43173,7 @@
     "scale": 0.7,
     "shares": 0.7,
     "issue_date": "2023-05-24",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -42978,11 +43202,13 @@
     "change_rate": -0.014649,
     "volume": 0.01,
     "year_1_return": 22.77,
-    "year_3_return": 0,
+    "year_3_return": -17.19,
     "max_drawdown": -8.85,
     "sharpe_ratio": 1.41,
     "annual_vol": 13.87,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs932039",
+    "track_index_name": "央企股东回报"
   },
   {
     "code": "512150",
@@ -43169,7 +43395,7 @@
     "scale": 40.4,
     "shares": 40.0,
     "issue_date": "2018-11-07",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "亚翔集成",
@@ -43202,7 +43428,9 @@
     "max_drawdown": -7.91,
     "sharpe_ratio": 2.21,
     "annual_vol": 12.91,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931052",
+    "track_index_name": "国信价值"
   },
   {
     "code": "512690",
@@ -43389,7 +43617,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2022-04-28",
-    "custodian": "",
+    "custodian": "上海浦东发展银行股份有限公司",
     "top_holdings": [
       {
         "name": "澜起科技",
@@ -43422,7 +43650,9 @@
     "max_drawdown": -18.59,
     "sharpe_ratio": 1.6,
     "annual_vol": 26.97,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931596",
+    "track_index_name": "SHS张江50"
   },
   {
     "code": "512370",
@@ -43829,7 +44059,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2021-11-22",
-    "custodian": "",
+    "custodian": "交通银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -43862,7 +44092,9 @@
     "max_drawdown": -14.78,
     "sharpe_ratio": 2.79,
     "annual_vol": 30.0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931643",
+    "track_index_name": "科创创业50"
   },
   {
     "code": "563590",
@@ -44049,7 +44281,7 @@
     "scale": 1.5,
     "shares": 1.5,
     "issue_date": "2023-05-24",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "中远海控",
@@ -44078,11 +44310,13 @@
     "change_rate": -0.014202,
     "volume": 0.03,
     "year_1_return": 23.5,
-    "year_3_return": 0,
+    "year_3_return": -19.06,
     "max_drawdown": -8.39,
     "sharpe_ratio": 1.45,
     "annual_vol": 13.9,
-    "category": "红利"
+    "category": "红利",
+    "track_index_code": "cs932039",
+    "track_index_name": "央企股东回报"
   },
   {
     "code": "159656",
@@ -44269,7 +44503,7 @@
     "scale": 1.9,
     "shares": 1.9,
     "issue_date": "2025-05-14",
-    "custodian": "",
+    "custodian": "中信银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国海油",
@@ -44298,11 +44532,13 @@
     "change_rate": -0.01324,
     "volume": 0.04,
     "year_1_return": 27.95,
-    "year_3_return": 0,
+    "year_3_return": -10.29,
     "max_drawdown": -9.17,
     "sharpe_ratio": 1.26,
     "annual_vol": 14.54,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs932365",
+    "track_index_name": "中证现金流"
   },
   {
     "code": "560060",
@@ -44489,7 +44725,7 @@
     "scale": 2.8,
     "shares": 2.8,
     "issue_date": "2024-03-06",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -44518,11 +44754,13 @@
     "change_rate": -0.010232,
     "volume": 0.19,
     "year_1_return": 27.85,
-    "year_3_return": 0,
+    "year_3_return": -15.62,
     "max_drawdown": -7.33,
     "sharpe_ratio": 1.67,
     "annual_vol": 14.17,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930050",
+    "track_index_name": "中证A50"
   },
   {
     "code": "530280",
@@ -44709,7 +44947,7 @@
     "scale": 13.5,
     "shares": 13.3,
     "issue_date": "2024-03-05",
-    "custodian": "",
+    "custodian": "招商证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -44738,11 +44976,13 @@
     "change_rate": -0.013353,
     "volume": 0.36,
     "year_1_return": 25.32,
-    "year_3_return": 0,
+    "year_3_return": -18.0,
     "max_drawdown": -7.84,
     "sharpe_ratio": 1.51,
     "annual_vol": 14.37,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930050",
+    "track_index_name": "中证A50"
   },
   {
     "code": "516130",
@@ -45149,7 +45389,7 @@
     "scale": 0.9,
     "shares": 0.9,
     "issue_date": "2024-04-24",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "贵州茅台",
@@ -45178,11 +45418,13 @@
     "change_rate": -0.010989,
     "volume": 0.18,
     "year_1_return": 15.35,
-    "year_3_return": 0,
+    "year_3_return": -13.96,
     "max_drawdown": -10.23,
     "sharpe_ratio": 1.05,
     "annual_vol": 12.56,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000016",
+    "track_index_name": "上证50"
   },
   {
     "code": "516720",
@@ -45369,7 +45611,7 @@
     "scale": 0.1,
     "shares": 0.1,
     "issue_date": "2025-07-09",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -45398,11 +45640,13 @@
     "change_rate": -0.00626,
     "volume": 0.04,
     "year_1_return": 25.7,
-    "year_3_return": 0,
+    "year_3_return": -7.84,
     "max_drawdown": -7.8,
     "sharpe_ratio": 0.84,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000903",
+    "track_index_name": "中证A100"
   },
   {
     "code": "515650",
@@ -45589,7 +45833,7 @@
     "scale": 104.0,
     "shares": 103.0,
     "issue_date": "2017-07-18",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "招商银行",
@@ -45622,7 +45866,9 @@
     "max_drawdown": -15.56,
     "sharpe_ratio": 0.02,
     "annual_vol": 13.71,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399986",
+    "track_index_name": "中证银行"
   },
   {
     "code": "563760",
@@ -45809,7 +46055,7 @@
     "scale": 16.1,
     "shares": 16.0,
     "issue_date": "2021-02-04",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -45842,7 +46088,9 @@
     "max_drawdown": -9.15,
     "sharpe_ratio": 1.54,
     "annual_vol": 13.53,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931395",
+    "track_index_name": "沪港深300"
   },
   {
     "code": "159203",
@@ -46228,7 +46476,7 @@
     "scale": 18.8,
     "shares": 18.6,
     "issue_date": "2021-11-26",
-    "custodian": "",
+    "custodian": "中国农业银行股份有限公司",
     "top_holdings": [
       {
         "name": "华测检测",
@@ -46261,7 +46509,9 @@
     "max_drawdown": -8.09,
     "sharpe_ratio": 2.08,
     "annual_vol": 17.77,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931554",
+    "track_index_name": "长江保护"
   },
   {
     "code": "510680",
@@ -46427,7 +46677,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2025-10-22",
-    "custodian": "",
+    "custodian": "国金证券股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -46456,11 +46706,12 @@
     "change_rate": -0.014752,
     "volume": 0.06,
     "year_1_return": -5.1,
-    "year_3_return": 0,
+    "year_3_return": -13.42,
     "max_drawdown": -13.4,
     "sharpe_ratio": -0.57,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "恒指港股通"
   },
   {
     "code": "513750",
@@ -46647,7 +46898,7 @@
     "scale": 0.2,
     "shares": 0.2,
     "issue_date": "2025-03-26",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -46676,11 +46927,13 @@
     "change_rate": -0.018806,
     "volume": 0.03,
     "year_1_return": 22.12,
-    "year_3_return": 0,
+    "year_3_return": -8.37,
     "max_drawdown": -8.37,
     "sharpe_ratio": 1.28,
     "annual_vol": 14.99,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930050",
+    "track_index_name": "中证A50"
   },
   {
     "code": "159975",
@@ -46846,7 +47099,7 @@
     "scale": 2.3,
     "shares": 2.3,
     "issue_date": "2022-07-11",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "紫金矿业",
@@ -46879,7 +47132,9 @@
     "max_drawdown": -9.77,
     "sharpe_ratio": 1.91,
     "annual_vol": 20.55,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931755",
+    "track_index_name": "SEEE碳中和"
   },
   {
     "code": "159202",
@@ -47286,7 +47541,7 @@
     "scale": 0.3,
     "shares": 0.3,
     "issue_date": "2022-12-16",
-    "custodian": "",
+    "custodian": "兴业银行股份有限公司",
     "top_holdings": [
       {
         "name": "宁德时代",
@@ -47319,7 +47574,9 @@
     "max_drawdown": -11.39,
     "sharpe_ratio": 1.78,
     "annual_vol": 24.58,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931733",
+    "track_index_name": "绿色能源"
   },
   {
     "code": "159928",
@@ -47506,7 +47763,7 @@
     "scale": 2.1,
     "shares": 2.2,
     "issue_date": "2026-01-26",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "紫金矿业",
@@ -47535,11 +47792,13 @@
     "change_rate": -0.050701,
     "volume": 0.08,
     "year_1_return": -5.5,
-    "year_3_return": 0,
+    "year_3_return": -27.94,
     "max_drawdown": -27.9,
     "sharpe_ratio": -0.41,
     "annual_vol": 0,
-    "category": "商品"
+    "category": "商品",
+    "track_index_code": "cs931892",
+    "track_index_name": "有色矿业"
   },
   {
     "code": "512870",
@@ -47726,7 +47985,7 @@
     "scale": 0.7,
     "shares": 0.7,
     "issue_date": "2025-11-19",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -47755,11 +48014,12 @@
     "change_rate": -0.014568,
     "volume": 0.01,
     "year_1_return": -4.0,
-    "year_3_return": 0,
+    "year_3_return": -13.49,
     "max_drawdown": -13.5,
     "sharpe_ratio": -0.56,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "恒指港股通"
   },
   {
     "code": "560680",
@@ -47946,7 +48206,7 @@
     "scale": 0.3,
     "shares": 0.3,
     "issue_date": "2025-05-26",
-    "custodian": "",
+    "custodian": "国信证券股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -47975,11 +48235,12 @@
     "change_rate": -0.014451,
     "volume": 0.1,
     "year_1_return": 1.1,
-    "year_3_return": 0,
+    "year_3_return": -13.19,
     "max_drawdown": -13.2,
     "sharpe_ratio": -0.72,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "恒指港股通"
   },
   {
     "code": "512550",
@@ -48365,7 +48626,7 @@
     "scale": 41.3,
     "shares": 40.8,
     "issue_date": "2012-08-09",
-    "custodian": "",
+    "custodian": "交通银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -48398,7 +48659,9 @@
     "max_drawdown": -17.08,
     "sharpe_ratio": -0.02,
     "annual_vol": 17.46,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "hkHSCEI",
+    "track_index_name": "恒生中国企业指数"
   },
   {
     "code": "159262",
@@ -48585,7 +48848,7 @@
     "scale": 2.2,
     "shares": 2.3,
     "issue_date": "2025-08-04",
-    "custodian": "",
+    "custodian": "广发证券股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -48614,11 +48877,12 @@
     "change_rate": -0.030806,
     "volume": 0.16,
     "year_1_return": -19.2,
-    "year_3_return": 0,
+    "year_3_return": -34.57,
     "max_drawdown": -34.6,
     "sharpe_ratio": -1.84,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "港股通科技主题"
   },
   {
     "code": "512030",
@@ -49444,7 +49708,7 @@
     "scale": 13.3,
     "shares": 14.1,
     "issue_date": "2025-10-29",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -49473,11 +49737,13 @@
     "change_rate": -0.033195,
     "volume": 1.68,
     "year_1_return": -29.0,
-    "year_3_return": 0,
+    "year_3_return": -30.51,
     "max_drawdown": -30.0,
     "sharpe_ratio": -2.39,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs931637",
+    "track_index_name": "港股通互联网"
   },
   {
     "code": "159655",
@@ -49664,7 +49930,7 @@
     "scale": 0.4,
     "shares": 0.4,
     "issue_date": "2023-09-01",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "源杰科技",
@@ -49693,11 +49959,13 @@
     "change_rate": -0.007922,
     "volume": 0.03,
     "year_1_return": 48.38,
-    "year_3_return": 0,
+    "year_3_return": -29.71,
     "max_drawdown": -15.52,
     "sharpe_ratio": 1.73,
     "annual_vol": 23.31,
-    "category": "宽基"
+    "category": "宽基",
+    "track_index_code": "sh000852",
+    "track_index_name": "中证1000"
   },
   {
     "code": "159166",
@@ -50324,7 +50592,7 @@
     "scale": 1.9,
     "shares": 1.9,
     "issue_date": "2021-03-30",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "盐湖股份",
@@ -50357,7 +50625,9 @@
     "max_drawdown": -10.94,
     "sharpe_ratio": 0.82,
     "annual_vol": 16.56,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399814",
+    "track_index_name": "大农业"
   },
   {
     "code": "159898",
@@ -50963,7 +51233,7 @@
     "scale": 21.7,
     "shares": 21.4,
     "issue_date": "2019-06-12",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [],
     "change_pct": -0.34,
     "close": 2.049,
@@ -50975,7 +51245,8 @@
     "max_drawdown": -15.97,
     "sharpe_ratio": 1.48,
     "annual_vol": 25.96,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_name": "日经225指数"
   },
   {
     "code": "515460",
@@ -51602,7 +51873,7 @@
     "scale": 0.3,
     "shares": 0.3,
     "issue_date": "2023-03-15",
-    "custodian": "",
+    "custodian": "中国银河证券股份有限公司",
     "top_holdings": [
       {
         "name": "沃森生物",
@@ -51629,13 +51900,15 @@
     "close": 0.69,
     "prev_close": 0.683,
     "change_rate": -0.01,
-    "volume": 0.0,
+    "volume": 6977.0,
     "year_1_return": 8.76,
     "year_3_return": -29.59,
     "max_drawdown": -22.49,
     "sharpe_ratio": 0.39,
     "annual_vol": 23.86,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931992",
+    "track_index_name": "疫苗生物"
   },
   {
     "code": "515210",
@@ -52042,7 +52315,7 @@
     "scale": 268.5,
     "shares": 264.5,
     "issue_date": "2017-08-03",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "紫金矿业",
@@ -52075,7 +52348,9 @@
     "max_drawdown": -29.75,
     "sharpe_ratio": 1.92,
     "annual_vol": 38.04,
-    "category": "商品"
+    "category": "商品",
+    "track_index_code": "sh000819",
+    "track_index_name": "有色金属"
   },
   {
     "code": "516840",
@@ -52901,7 +53176,7 @@
     "scale": 267.1,
     "shares": 263.0,
     "issue_date": "2019-05-20",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "药明康德",
@@ -52934,7 +53209,9 @@
     "max_drawdown": -22.39,
     "sharpe_ratio": 0.05,
     "annual_vol": 20.25,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399989",
+    "track_index_name": "中证医疗"
   },
   {
     "code": "520980",
@@ -53341,7 +53618,7 @@
     "scale": 1.0,
     "shares": 1.0,
     "issue_date": "2021-10-28",
-    "custodian": "",
+    "custodian": "上海浦东发展银行股份有限公司",
     "top_holdings": [
       {
         "name": "海螺水泥",
@@ -53374,7 +53651,9 @@
     "max_drawdown": -17.27,
     "sharpe_ratio": 0.49,
     "annual_vol": 23.91,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931009",
+    "track_index_name": "建筑材料"
   },
   {
     "code": "159157",
@@ -53540,7 +53819,7 @@
     "scale": 1.4,
     "shares": 1.4,
     "issue_date": "2021-04-29",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国建筑",
@@ -53573,7 +53852,9 @@
     "max_drawdown": -12.44,
     "sharpe_ratio": 0.44,
     "annual_vol": 20.48,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930608",
+    "track_index_name": "中证基建"
   },
   {
     "code": "513160",
@@ -53980,7 +54261,7 @@
     "scale": 4.5,
     "shares": 4.4,
     "issue_date": "2022-01-12",
-    "custodian": "",
+    "custodian": "交通银行股份有限公司",
     "top_holdings": [
       {
         "name": "百胜中国",
@@ -54013,7 +54294,9 @@
     "max_drawdown": -21.57,
     "sharpe_ratio": -0.59,
     "annual_vol": 19.58,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs931454",
+    "track_index_name": "港股通消费"
   },
   {
     "code": "159859",
@@ -54420,7 +54703,7 @@
     "scale": 0.5,
     "shares": 0.5,
     "issue_date": "2021-08-05",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "药明康德",
@@ -54453,7 +54736,9 @@
     "max_drawdown": -25.25,
     "sharpe_ratio": 0.14,
     "annual_vol": 22.23,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930743",
+    "track_index_name": "中证生科"
   },
   {
     "code": "159837",
@@ -54640,7 +54925,7 @@
     "scale": 0.7,
     "shares": 0.7,
     "issue_date": "2010-05-28",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "中国平安",
@@ -54667,13 +54952,15 @@
     "close": 2.522,
     "prev_close": 2.52,
     "change_rate": -0.003885,
-    "volume": 0.0,
+    "volume": 160.0,
     "year_1_return": 4.09,
     "year_3_return": 10.48,
     "max_drawdown": -9.77,
     "sharpe_ratio": 0.23,
     "annual_vol": 11.45,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000048",
+    "track_index_name": "责任指数"
   },
   {
     "code": "513870",
@@ -54839,7 +55126,7 @@
     "scale": 5.9,
     "shares": 5.8,
     "issue_date": "2026-01-21",
-    "custodian": "",
+    "custodian": "招商银行股份有限公司",
     "top_holdings": [
       {
         "name": "腾讯控股",
@@ -54868,11 +55155,13 @@
     "change_rate": -0.028796,
     "volume": 0.29,
     "year_1_return": -22.1,
-    "year_3_return": 0,
+    "year_3_return": -23.42,
     "max_drawdown": -22.9,
     "sharpe_ratio": -2.98,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs931637",
+    "track_index_name": "港股通互联网"
   },
   {
     "code": "159992",
@@ -55059,7 +55348,7 @@
     "scale": 1.0,
     "shares": 0.9,
     "issue_date": "2021-08-12",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "迈瑞医疗",
@@ -55092,7 +55381,9 @@
     "max_drawdown": -18.02,
     "sharpe_ratio": 0.06,
     "annual_vol": 18.16,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "csH30178",
+    "track_index_name": "医疗保健"
   },
   {
     "code": "159938",
@@ -55279,7 +55570,7 @@
     "scale": 1.2,
     "shares": 1.2,
     "issue_date": "2022-01-25",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "比亚迪股份",
@@ -55312,7 +55603,9 @@
     "max_drawdown": -30.28,
     "sharpe_ratio": -0.3,
     "annual_vol": 24.55,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs931573",
+    "track_index_name": "港股通科技"
   },
   {
     "code": "517880",
@@ -56117,7 +56410,7 @@
     "scale": 2.1,
     "shares": 2.1,
     "issue_date": "2025-11-18",
-    "custodian": "",
+    "custodian": "招商证券股份有限公司",
     "top_holdings": [
       {
         "name": "比亚迪股份",
@@ -56146,11 +56439,13 @@
     "change_rate": -0.023864,
     "volume": 0.35,
     "year_1_return": -14.5,
-    "year_3_return": 0,
+    "year_3_return": -19.75,
     "max_drawdown": -19.7,
     "sharpe_ratio": -1.5,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs931573",
+    "track_index_name": "港股通科技"
   },
   {
     "code": "159929",
@@ -56777,7 +57072,7 @@
     "scale": 47.5,
     "shares": 46.6,
     "issue_date": "2021-05-20",
-    "custodian": "",
+    "custodian": "中国银行股份有限公司",
     "top_holdings": [
       {
         "name": "比亚迪股份",
@@ -56810,7 +57105,9 @@
     "max_drawdown": -31.45,
     "sharpe_ratio": -0.43,
     "annual_vol": 25.45,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "hkHSTECH",
+    "track_index_name": "恒生科技指数"
   },
   {
     "code": "159748",
@@ -57217,7 +57514,7 @@
     "scale": 15.2,
     "shares": 14.9,
     "issue_date": "2023-09-06",
-    "custodian": "",
+    "custodian": "北京银行股份有限公司",
     "top_holdings": [
       {
         "name": "药明康德",
@@ -57246,11 +57543,13 @@
     "change_rate": -0.002418,
     "volume": 0.04,
     "year_1_return": 2.15,
-    "year_3_return": 0,
+    "year_3_return": -38.34,
     "max_drawdown": -22.0,
     "sharpe_ratio": 0.11,
     "annual_vol": 20.69,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sz399989",
+    "track_index_name": "中证医疗"
   },
   {
     "code": "517520",
@@ -58097,7 +58396,7 @@
     "scale": 27.0,
     "shares": 26.5,
     "issue_date": "2021-02-25",
-    "custodian": "",
+    "custodian": "上海浦东发展银行股份有限公司",
     "top_holdings": [
       {
         "name": "巨人网络",
@@ -58130,7 +58429,9 @@
     "max_drawdown": -27.07,
     "sharpe_ratio": 0.5,
     "annual_vol": 31.77,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930901",
+    "track_index_name": "动漫游戏"
   },
   {
     "code": "516820",
@@ -58317,7 +58618,7 @@
     "scale": 1.7,
     "shares": 1.7,
     "issue_date": "2022-05-19",
-    "custodian": "",
+    "custodian": "中信建投证券股份有限公司",
     "top_holdings": [
       {
         "name": "药明康德",
@@ -58350,7 +58651,9 @@
     "max_drawdown": -25.44,
     "sharpe_ratio": 0.32,
     "annual_vol": 24.81,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931152",
+    "track_index_name": "CS创新药"
   },
   {
     "code": "516770",
@@ -58757,7 +59060,7 @@
     "scale": 5.9,
     "shares": 5.8,
     "issue_date": "2026-03-11",
-    "custodian": "",
+    "custodian": "国投证券股份有限公司",
     "top_holdings": [
       {
         "name": "牧原股份",
@@ -58786,11 +59089,13 @@
     "change_rate": -0.011249,
     "volume": 0.14,
     "year_1_return": -7.6,
-    "year_3_return": 0,
+    "year_3_return": -9.57,
     "max_drawdown": -7.6,
     "sharpe_ratio": -2.21,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs930910",
+    "track_index_name": "农牧渔"
   },
   {
     "code": "520760",
@@ -58977,7 +59282,7 @@
     "scale": 0.8,
     "shares": 0.8,
     "issue_date": "2025-05-14",
-    "custodian": "",
+    "custodian": "中泰证券股份有限公司",
     "top_holdings": [
       {
         "name": "联影医疗",
@@ -59006,11 +59311,13 @@
     "change_rate": 0.004753,
     "volume": 0.1,
     "year_1_return": 5.35,
-    "year_3_return": 0,
+    "year_3_return": -27.65,
     "max_drawdown": -27.61,
     "sharpe_ratio": -1.04,
     "annual_vol": 25.28,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000683",
+    "track_index_name": "科创生物"
   },
   {
     "code": "512450",
@@ -60077,7 +60384,7 @@
     "scale": 1.8,
     "shares": 1.8,
     "issue_date": "2025-07-28",
-    "custodian": "",
+    "custodian": "国信证券股份有限公司",
     "top_holdings": [
       {
         "name": "药明生物",
@@ -60106,11 +60413,13 @@
     "change_rate": -0.014184,
     "volume": 1.22,
     "year_1_return": -15.4,
-    "year_3_return": 0,
+    "year_3_return": -28.11,
     "max_drawdown": -28.1,
     "sharpe_ratio": -1.58,
     "annual_vol": 0,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs932069",
+    "track_index_name": "港股通医疗主题"
   },
   {
     "code": "159776",
@@ -60517,7 +60826,7 @@
     "scale": 7.5,
     "shares": 7.4,
     "issue_date": "2024-09-13",
-    "custodian": "",
+    "custodian": "中国工商银行股份有限公司",
     "top_holdings": [
       {
         "name": "药明生物",
@@ -60546,11 +60855,13 @@
     "change_rate": -0.015193,
     "volume": 1.68,
     "year_1_return": 21.13,
-    "year_3_return": 0,
+    "year_3_return": -30.07,
     "max_drawdown": -30.07,
     "sharpe_ratio": 0.66,
     "annual_vol": 35.23,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs931250",
+    "track_index_name": "港股通创新药"
   },
   {
     "code": "517990",
@@ -60737,7 +61048,7 @@
     "scale": 6.0,
     "shares": 5.9,
     "issue_date": "2021-07-13",
-    "custodian": "",
+    "custodian": "广发证券股份有限公司",
     "top_holdings": [
       {
         "name": "信达生物",
@@ -60770,7 +61081,9 @@
     "max_drawdown": -28.59,
     "sharpe_ratio": 0.44,
     "annual_vol": 30.73,
-    "category": "跨境"
+    "category": "跨境",
+    "track_index_code": "cs930965",
+    "track_index_name": "港股通医药C"
   },
   {
     "code": "513930",
@@ -60957,7 +61270,7 @@
     "scale": 11.2,
     "shares": 10.9,
     "issue_date": "2025-11-12",
-    "custodian": "",
+    "custodian": "国泰海通证券股份有限公司",
     "top_holdings": [
       {
         "name": "温氏股份",
@@ -60986,11 +61299,13 @@
     "change_rate": -0.013252,
     "volume": 0.1,
     "year_1_return": -0.2,
-    "year_3_return": 0,
+    "year_3_return": -15.64,
     "max_drawdown": -13.5,
     "sharpe_ratio": -0.01,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "sh000949",
+    "track_index_name": "中证农业"
   },
   {
     "code": "159867",
@@ -61397,7 +61712,7 @@
     "scale": 4.7,
     "shares": 4.9,
     "issue_date": "2025-07-23",
-    "custodian": "",
+    "custodian": "华泰证券股份有限公司",
     "top_holdings": [
       {
         "name": "康方生物",
@@ -61426,11 +61741,12 @@
     "change_rate": -0.022398,
     "volume": 0.85,
     "year_1_return": -24.2,
-    "year_3_return": 0,
+    "year_3_return": -33.49,
     "max_drawdown": -28.4,
     "sharpe_ratio": -1.52,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_name": "创新药精选"
   },
   {
     "code": "560710",
@@ -62256,7 +62572,7 @@
     "scale": 1.0,
     "shares": 1.0,
     "issue_date": "2025-12-10",
-    "custodian": "",
+    "custodian": "国信证券股份有限公司",
     "top_holdings": [
       {
         "name": "潍柴动力",
@@ -62285,11 +62601,13 @@
     "change_rate": 0.007944,
     "volume": 0.23,
     "year_1_return": 15.0,
-    "year_3_return": 0,
+    "year_3_return": -18.7,
     "max_drawdown": -18.7,
     "sharpe_ratio": 1.33,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931752",
+    "track_index_name": "工程机械主题"
   },
   {
     "code": "560280",
@@ -62476,7 +62794,7 @@
     "scale": 7.3,
     "shares": 7.1,
     "issue_date": "2026-02-04",
-    "custodian": "",
+    "custodian": "国投证券股份有限公司",
     "top_holdings": [
       {
         "name": "潍柴动力",
@@ -62505,11 +62823,13 @@
     "change_rate": 0.007056,
     "volume": 1.01,
     "year_1_return": -3.4,
-    "year_3_return": 0,
+    "year_3_return": -19.22,
     "max_drawdown": -19.2,
     "sharpe_ratio": -0.35,
     "annual_vol": 0,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931752",
+    "track_index_name": "工程机械主题"
   },
   {
     "code": "159323",
@@ -62856,7 +63176,7 @@
     "prev_close": 0.942,
     "change_rate": -0.017068,
     "volume": 0.14,
-    "year_1_return": 0.0,
+    "year_1_return": 1.5,
     "year_3_return": 0,
     "max_drawdown": -23.9,
     "sharpe_ratio": -1.11,
@@ -63136,7 +63456,7 @@
     "scale": 132.6,
     "shares": 125.2,
     "issue_date": "2022-11-02",
-    "custodian": "",
+    "custodian": "中国建设银行股份有限公司",
     "top_holdings": [
       {
         "name": "三星电子",
@@ -63169,7 +63489,9 @@
     "max_drawdown": -21.8,
     "sharpe_ratio": 3.19,
     "annual_vol": 47.2,
-    "category": "行业"
+    "category": "行业",
+    "track_index_code": "cs931790",
+    "track_index_name": "中韩半导体"
   },
   {
     "code": "159508",
