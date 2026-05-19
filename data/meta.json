@@ -1,13 +1,13 @@
 {
-  "last_update": "2026-05-19 02:08:10",
-  "last_step": "deploy",
+  "last_update": "2026-05-20 02:04:25",
+  "last_step": "pre_deploy",
   "current_stats": {
-    "total_etfs": 1467,
+    "total_etfs": 1468,
     "has_price": 1466,
     "has_return": 1459,
     "has_sharpe": 1406,
     "has_holdings": 1407,
-    "has_issuer": 1465,
+    "has_issuer": 1466,
     "metrics_count": 1466,
     "yingmi_count": 1440,
     "history_count": 5
@@ -128,6 +128,81 @@
         "has_sharpe": 1406,
         "has_holdings": 1407,
         "has_issuer": 1465,
+        "metrics_count": 1466,
+        "yingmi_count": 1440,
+        "history_count": 5
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "step": "sync",
+      "stats": {
+        "total_etfs": 1467,
+        "has_price": 1467,
+        "has_return": 1464,
+        "has_sharpe": 1406,
+        "has_holdings": 1407,
+        "has_issuer": 1467,
+        "metrics_count": 1466,
+        "yingmi_count": 1440,
+        "history_count": 10
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "step": "enrich",
+      "stats": {
+        "total_etfs": 1467,
+        "has_price": 1467,
+        "has_return": 1464,
+        "has_sharpe": 1406,
+        "has_holdings": 1407,
+        "has_issuer": 1467,
+        "metrics_count": 1466,
+        "yingmi_count": 1440,
+        "history_count": 10
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "step": "calc",
+      "stats": {
+        "total_etfs": 1467,
+        "has_price": 1467,
+        "has_return": 1464,
+        "has_sharpe": 1406,
+        "has_holdings": 1407,
+        "has_issuer": 1467,
+        "metrics_count": 1466,
+        "yingmi_count": 1440,
+        "history_count": 5
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "step": "build",
+      "stats": {
+        "total_etfs": 1468,
+        "has_price": 1466,
+        "has_return": 1459,
+        "has_sharpe": 1406,
+        "has_holdings": 1407,
+        "has_issuer": 1466,
+        "metrics_count": 1466,
+        "yingmi_count": 1440,
+        "history_count": 5
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "step": "pre_deploy",
+      "stats": {
+        "total_etfs": 1468,
+        "has_price": 1466,
+        "has_return": 1459,
+        "has_sharpe": 1406,
+        "has_holdings": 1407,
+        "has_issuer": 1466,
         "metrics_count": 1466,
         "yingmi_count": 1440,
         "history_count": 5
