@@ -489,10 +489,11 @@ def get_version():
 
 @ app.route('/api/sync', methods=['POST'])
 def sync_data():
-    """同步数据：从 GitHub 拉取最新数据（供 pipeline 推送后触发）"""
+    """同步数据：从 GitHub 拉取最新数据并更新版本（供 GitHub webhook 触发）"""
     import subprocess
     repo_dir = str(ROOT)
     try:
+        # 1. git pull 拉取最新代码
         result = subprocess.run(
             ['git', 'pull', 'origin', 'main'],
             cwd=repo_dir, capture_output=True, text=True, timeout=30
@@ -500,7 +501,13 @@ def sync_data():
         if result.returncode != 0:
             return jsonify({"error": result.stderr, "stdout": result.stdout}), 500
 
-        # touch WSGI 文件触发 reload
+        # 2. 更新 data_version.json（标记为 pythonanywhere 来源）
+        version_result = subprocess.run(
+            ['python3', 'update_data_version.py', '--source', 'pythonanywhere'],
+            cwd=repo_dir, capture_output=True, text=True, timeout=30
+        )
+
+        # 3. touch WSGI 文件触发 reload
         wsgi_file = '/var/www/froza_pythonanywhere_com_wsgi.py'
         if os.path.exists(wsgi_file):
             os.utime(wsgi_file, None)
@@ -508,7 +515,8 @@ def sync_data():
         return jsonify({
             "status": "success",
             "git_output": result.stdout,
-            "git_error": result.stderr
+            "version_output": version_result.stdout,
+            "version_error": version_result.stderr
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
