@@ -1,7 +1,7 @@
 {
-  "version": "2026-05-20T09:43:17.967622+08:00",
+  "version": "2026-05-21T00:30:02.757852+08:00",
   "source": "local",
-  "checksum": "52c4327861d3f924c15eecca057e6fc9",
+  "checksum": "fa09c647285e1528d965717cbbf79754",
   "etf_count": 1468,
   "fields_coverage": {
     "year_3_return": 1.0,
