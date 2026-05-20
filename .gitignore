@@ -64,7 +64,7 @@ enrich_*.log
 rebuild*.log
 
 # 数据目录
-# data/history/ 历史K线 - 保留（每只ETF约5KB，版本控制）
+data/history/ 历史K线 - 保留（每只ETF约5KB，版本控制）
 # data/backup/ 备份 - 排除（可重新生成）
 data/backup/
 # data/snapshots/ 快照 - 排除（可重新生成）
