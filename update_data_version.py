@@ -63,19 +63,24 @@ def update_version(data_file='etf_standard_data.json',
     else:
         old_version = {}
     
-    # 创建新版本信息
+    # 创建新版本信息（合并已有的 sync_status）
     now = datetime.now(timezone(timedelta(hours=8)))
+    
+    # 合并 sync_status：保留旧状态，只更新当前 source 为 True
+    old_sync_status = old_version.get('sync_status', {})
+    new_sync_status = {
+        'local': old_sync_status.get('local', False) or source == 'local',
+        'github': old_sync_status.get('github', False) or source == 'github',
+        'pythonanywhere': old_sync_status.get('pythonanywhere', False) or source == 'pythonanywhere'
+    }
+    
     new_version = {
         'version': now.isoformat(),
         'source': source,
         'checksum': calculate_checksum(data),
         'etf_count': len(data),
         'fields_coverage': coverage,
-        'sync_status': {
-            'local': source == 'local',
-            'github': source == 'github',
-            'pythonanywhere': source == 'pythonanywhere'
-        }
+        'sync_status': new_sync_status
     }
     
     # 保存
