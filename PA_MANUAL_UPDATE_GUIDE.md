@@ -18,7 +18,7 @@
 
 #### 步骤 2: 打开 "Files" 标签
 - 点击顶部 **"Files"** 标签
-- 浏览到你的项目目录：`/home/froza/ETF-tool-MVP`
+- 浏览到你的项目目录：`/home/froza/etf-tool-mvp`
 
 #### 步骤 3: 打开 Console（控制台）
 - 点击顶部 **"Consoles"** 标签
@@ -26,7 +26,7 @@
 
 #### 步骤 4: 在 Console 中执行 Git Pull
 ```bash
-cd /home/froza/ETF-tool-MVP
+cd /home/froza/etf-tool-mvp
 git pull origin main
 ```
 

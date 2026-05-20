@@ -2,7 +2,7 @@
 
 **文档版本**: 1.0  
 **创建时间**: 2026-05-20  
-**适用项目**: ETF-tool-MVP (froza.pythonanywhere.com)  
+**适用项目**: etf-tool-mvp (froza.pythonanywhere.com)  
 **账号类型**: PythonAnywhere 免费版 (Free tier)
 
 ---
@@ -104,7 +104,7 @@
 2. 点击 "Consoles" → "Start a new console" → "Bash"
 3. 在终端执行：
    ```bash
-   cd /home/froza/ETF-tool-MVP
+   cd /home/froza/etf-tool-mvp
    git pull origin main
    ```
 4. 如果提示冲突，执行：
@@ -128,7 +128,7 @@
 - ✅ `/api/sync` 接口可访问（返回 200 不是 404）
 
 **配置步骤：**
-1. 访问：https://github.com/froza88/ETF-tool-MVP/settings/hooks
+1. 访问：https://github.com/froza88/etf-tool-mvp/settings/hooks
 2. 点击 "Add webhook"
 3. 填写：
    - **Payload URL**: `https://froza.pythonanywhere.com/api/sync`
@@ -167,7 +167,7 @@ git push origin main
 2. `git push origin main`
 3. 登录 PythonAnywhere
 4. 打开 "Consoles" → Bash console
-5. 执行：`cd /home/froza/ETF-tool-MVP && git pull origin main`
+5. 执行：`cd /home/froza/etf-tool-mvp && git pull origin main`
 6. 点击 "Web" → "Reload"
 
 **优点：** 简单，不需要配置  

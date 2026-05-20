@@ -24,7 +24,7 @@ git push origin main
 ### 步骤2：等待Webhook触发（10秒）
 
 ### 步骤3：检查GitHub Webhook Delivery
-1. 浏览器打开：`https://github.com/froza88/ETF-tool-MVP/settings/hooks`
+1. 浏览器打开：`https://github.com/froza88/etf-tool-mvp/settings/hooks`
 2. 点击你的Webhook（进入详情页）
 3. 滚动到页面底部，找到 **"Recent deliveries"** 区域
 4. 找到刚才push对应的记录（几分钟前）

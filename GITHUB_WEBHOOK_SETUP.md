@@ -24,11 +24,11 @@
 ### 步骤 2: 在 GitHub 上配置 Webhook
 
 #### 2.1 登录 GitHub
-- 访问：https://github.com/froza88/ETF-tool-MVP
+- 访问：https://github.com/froza88/etf-tool-mvp
 - 点击右上角你的头像 → Settings
 
 #### 2.2 进入仓库设置
-- 或者直接访问：https://github.com/froza88/ETF-tool-MVP/settings/hooks
+- 或者直接访问：https://github.com/froza88/etf-tool-mvp/settings/hooks
 - 点击 **"Add webhook"** 按钮
 
 #### 2.3 填写 Webhook 配置
@@ -77,7 +77,7 @@ git push origin main
 ```
 
 #### 3.2 检查 GitHub Webhook 状态
-1. 访问：https://github.com/froza88/ETF-tool-MVP/settings/hooks
+1. 访问：https://github.com/froza88/etf-tool-mvp/settings/hooks
 2. 点击你的 webhook
 3. 查看 "Recent Deliveries"
 4. 应该能看到一个新的 delivery（对应刚才的 push）
@@ -143,7 +143,7 @@ curl https://froza.pythonanywhere.com/api/version
    - 在 GitHub 生成 Personal Access Token
    - 修改 PA 上的 remote URL：
      ```bash
-     git remote set-url origin https://<token>@github.com/froza88/ETF-tool-MVP.git
+     git remote set-url origin https://<token>@github.com/froza88/etf-tool-mvp.git
      ```
    
 2. **或者使用 SSH key**
@@ -167,7 +167,7 @@ curl https://froza.pythonanywhere.com/api/version
 3. **添加定时任务**
    - **Command**: 
      ```bash
-     cd /home/froza/ETF-tool-MVP && git pull origin main
+     cd /home/froza/etf-tool-mvp && git pull origin main
      ```
    - **Hour**: `*/10` (每 10 分钟)
    - **Minute**: `0` (整点)
