@@ -1,0 +1,20 @@
+{
+  "version": "2026-05-20T08:43:34.966084+08:00",
+  "source": "local",
+  "checksum": "52c4327861d3f924c15eecca057e6fc9",
+  "etf_count": 1468,
+  "fields_coverage": {
+    "year_3_return": 1.0,
+    "issuer": 0.9986,
+    "shares": 1.0,
+    "scale": 1.0,
+    "holdings": 0.0,
+    "return_1y": 0.0,
+    "sharp_ratio": 0.0
+  },
+  "sync_status": {
+    "local": true,
+    "github": false,
+    "pythonanywhere": false
+  }
+}
