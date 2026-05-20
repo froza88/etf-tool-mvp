@@ -1,111 +1,131 @@
-# PythonAnywhere 手动更新指南（无 SSH 方案）
+# PythonAnywhere 手动更新指南（优化版）
 
-## 问题诊断
+## ⚠️ 重要：不要使用 `git pull`
 
-`https://froza.pythonanywhere.com/api/version` 返回 404，说明：
-- PythonAnywhere 运行的是**旧版本代码**（`/api/version` 端点不存在）
-- 需要手动触发更新
+**经验教训（2026-05-21）**：手动执行 `git pull` 容易导致死循环，因为：
+- PA的 `origin` URL 可能过时（例如仓库重命名后）
+- `git pull` 会比对过时的 remote ref，一直说 "Already up to date"
+- 诊断过程碎片化，来回多轮才能发现问题
+
+**正确做法**：使用 `pa_deploy.sh` 一键部署脚本（推荐）或手动执行 `git reset --hard origin/main`
 
 ---
 
-## 解决方案：通过 PythonAnywhere Web UI 操作
+## 推荐方案：使用 `pa_deploy.sh` 一键部署
 
-### 方案 A: 使用 PythonAnywhere "Run in console" 功能（推荐）
-
-#### 步骤 1: 登录 PythonAnywhere
+### 步骤 1: 登录 PythonAnywhere
 - 访问：https://www.pythonanywhere.com/
 - 登录你的账号
 
-#### 步骤 2: 打开 "Files" 标签
-- 点击顶部 **"Files"** 标签
-- 浏览到你的项目目录：`/home/froza/etf-tool-mvp`
-
-#### 步骤 3: 打开 Console（控制台）
+### 步骤 2: 打开 Console
 - 点击顶部 **"Consoles"** 标签
 - 点击 **"Create a new console"** 或打开已有的 Bash console
 
-#### 步骤 4: 在 Console 中执行 Git Pull
+### 步骤 3: 运行一键部署脚本
 ```bash
-cd /home/froza/etf-tool-mvp
-git pull origin main
+cd ~/etf-tool-mvp
+bash pa_deploy.sh
 ```
 
-**如果成功**，会看到类似输出：
-```
-remote: Enumerating objects: 5, done.
-remote: Counting objects: 100% (5/5), done.
-...
-Fast-forward
-```
+**脚本会自动完成：**
+1. ✅ 检查并修复 git remote URL（防止死循环）
+2. ✅ `git fetch origin`（获取最新代码）
+3. ✅ `git reset --hard origin/main`（强制同步，不合并）
+4. ✅ `touch /var/www/froza_pythonanywhere_com_wsgi.py`（重载应用）
+5. ✅ `python3 update_data_version.py --source pythonanywhere`（标记PA已同步）
+6. ✅ 自动 commit 并 push 回 GitHub（让GitHub知道PA已同步）
 
-#### 步骤 5: 重启 Web 应用（Touch WSGI）
-**方法 1: 通过 Web UI**
-1. 点击顶部 **"Web"** 标签
-2. 找到你的应用：`froza.pythonanywhere.com`
-3. 点击 **"Reload froza.pythonanywhere.com"** 按钮（绿色）
-
-**方法 2: 在 Console 中执行**
-```bash
-touch /var/www/froza_pythonanywhere_com_wsgi.py
-```
-
-#### 步骤 6: 验证
+### 步骤 4: 验证部署
 在浏览器访问：`https://froza.pythonanywhere.com/api/version`
 
-**应该看到 JSON 响应**（不再 404）
+**应该看到 JSON 响应**，例如：
+```json
+{
+  "version": "2026-05-21T00:30:02+08:00",
+  "source": "pythonanywhere",
+  "sync_status": {
+    "local": true,
+    "github": true,
+    "pythonanywhere": true
+  }
+}
+```
 
 ---
 
-### 方案 B: 如果无法使用 Console（备选）
+## 备选方案：手动执行（如果不想用脚本）
 
-#### 使用 PythonAnywhere "Editor" 临时修改代码
+### 正确的手动步骤（避免死循环）
 
-**原理：** 通过 Web 编辑器临时添加 `/api/version` 端点，让接口先可用，然后再通过正常流程更新
+```bash
+cd ~/etf-tool-mvp
 
-**不推荐**，太复杂且容易出错。建议还是用方案 A。
+# 1. 检查 git remote URL（关键！）
+git remote -v
+# 应该显示: https://github.com/apangduo/etf-tool-mvp.git
+# 如果不是，执行: git remote set-url origin https://github.com/apangduo/etf-tool-mvp.git
 
----
+# 2. Fetch 最新代码（必须 fetch，不能只 pull）
+git fetch origin
 
-### 方案 C: 检查 PythonAnywhere 是否已经自动拉取（如果配置了定时任务）
+# 3. 检查 origin/main 是否有新提交
+git log HEAD..origin/main --oneline
 
-如果你之前已经配置了 PythonAnywhere 定时任务（每 10 分钟 pull），可能：
-- 定时任务还没执行（刚配置完）
-- 定时任务执行失败（查看日志）
+# 4. 如果有新提交，reset 到 origin/main（强制同步）
+git reset --hard origin/main
 
-#### 检查定时任务状态
-1. 点击 **"Tasks"** 或 **"Schedule"** 标签
-2. 查看是否有 `git pull` 任务
-3. 查看任务执行历史（Last run status）
+# 5. Touch WSGI 文件重载应用
+touch /var/www/froza_pythonanywhere_com_wsgi.py
+
+# 6. 验证
+git log -1 --oneline
+```
+
+### ❌ 错误的手动步骤（导致死循环）
+
+```bash
+# ❌ 不要这样做！
+git pull origin main  # 如果 remote URL 过时，会一直说 "Already up to date"
+```
 
 ---
 
 ## 快速验证：PythonAnywhere 当前运行的是哪个版本？
 
-### 方法：访问首页查看数据更新时间
+### 方法 1: 访问 `/api/version` 接口
+在浏览器访问：`https://froza.pythonanywhere.com/api/version`
 
+**如果返回 JSON** → PA 运行的是新版本  
+**如果返回 404** → PA 运行的是旧版本（缺少 `/api/version` 端点）
+
+### 方法 2: 访问首页查看数据更新时间
 1. 访问：https://froza.pythonanywhere.com/
 2. 查看页面底部显示的数据更新时间
 3. 对比本地 `data/meta.json` 中的 `last_update` 时间
 
 **如果时间不一样** → PA 运行的是旧版本  
-**如果时间一样** → PA 运行的是新版本（但 `/api/version` 还是 404，说明路由有问题）
+**如果时间一样** → PA 运行的是新版本
 
 ---
 
-## 临时方案：先不配置 Webhook，用手动同步
+## 故障排查
 
-如果 PythonAnywhere 更新太麻烦，我们可以**暂时用手动同步方案**：
+### 问题 1: `pa_deploy.sh` 说 "已是最新版本，无需更新"
+**原因**：本地已经是最新版本  
+**解决**：检查 GitHub 上是否有新提交。如果没有，说明无需更新。
 
-### 手动同步流程
-1. 本地修改代码/数据
-2. `git push origin main`
-3. 登录 PythonAnywhere
-4. 打开 Console
-5. 执行 `git pull origin main`
-6. 点击 "Reload" 按钮
+### 问题 2: `git reset --hard origin/main` 后版本不对
+**原因**：`origin/main` 指向的提交不是最新的  
+**解决**：
+```bash
+git fetch origin  # 再次 fetch
+git log origin/main --oneline -3  # 检查 origin/main 是否正确
+git reset --hard origin/main  # 再次 reset
+```
 
-**优点：** 简单直接，不需要配置 Webhook  
-**缺点：** 每次都要手动操作（容易忘记）
+### 问题 3: Touch WSGI 后应用没更新
+**原因**：WSGI 文件重载有延迟（几秒到几十秒）  
+**解决**：等待 30 秒后再验证，或手动在 Web UI 点击 "Reload" 按钮
 
 ---
 
@@ -113,9 +133,9 @@ touch /var/www/froza_pythonanywhere_com_wsgi.py
 
 **优先级顺序：**
 
-1. **先试方案 A**（通过 Console 执行 `git pull`）→ 最快
-2. **如果 Console 用不了** → 试方案 C（检查定时任务）
-3. **如果都不行** → 暂时用手动同步（先不配 Webhook）
+1. **首选：`pa_deploy.sh` 一键部署** → 最简单，防死循环
+2. **备选：手动执行正确步骤** → 如果脚本出问题，按"正确的手动步骤"操作
+3. **禁止：使用 `git pull`** → 容易导致死循环
 
 ---
 
@@ -123,9 +143,9 @@ touch /var/www/froza_pythonanywhere_com_wsgi.py
 
 **你需要：**
 1. 登录 PythonAnywhere
-2. 打开 Console（或 Files → 找到项目）
-3. 执行 `git pull origin main`
-4. Reload Web 应用
-5. 再测试 `https://froza.pythonanywhere.com/api/version`
+2. 打开 Console
+3. 执行 `cd ~/etf-tool-mvp && bash pa_deploy.sh`
+4. 等待脚本完成（约 10-30 秒）
+5. 验证 `https://froza.pythonanywhere.com/api/version`
 
 **遇到问题就把错误信息/截图发给我！**
