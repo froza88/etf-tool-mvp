@@ -493,6 +493,16 @@ def sync_data():
     import subprocess
     repo_dir = str(ROOT)
     try:
+        # 0. 强制同步到远程版本（丢弃本地修改，如 data_version.json）
+        reset_result = subprocess.run(
+            ['git', 'fetch', 'origin', 'main'],
+            cwd=repo_dir, capture_output=True, text=True, timeout=30
+        )
+        reset_result = subprocess.run(
+            ['git', 'reset', '--hard', 'origin/main'],
+            cwd=repo_dir, capture_output=True, text=True, timeout=30
+        )
+
         # 1. git pull 拉取最新代码
         result = subprocess.run(
             ['git', 'pull', 'origin', 'main'],
@@ -514,6 +524,7 @@ def sync_data():
 
         return jsonify({
             "status": "success",
+            "git_reset": reset_result.stdout,
             "git_output": result.stdout,
             "version_output": version_result.stdout,
             "version_error": version_result.stderr
