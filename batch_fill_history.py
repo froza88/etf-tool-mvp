@@ -23,6 +23,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import Semaphore
 
 ROOT = Path(__file__).parent
 STANDARD_FILE = ROOT / "etf_standard_data.json"
@@ -30,6 +31,12 @@ HISTORY_DIR = ROOT / "data" / "history"
 PROGRESS_FILE = ROOT / "data" / "history_progress.json"
 FAILED_FILE = ROOT / "data" / "failed_etfs.json"
 FT_RUN_PY = Path(os.path.expanduser("~")) / ".workbuddy" / "skills" / "ftshare-market-data" / "run.py"
+
+# API限流保护：最多10个并发请求（防止被非凸封禁）
+RATE_LIMITER = Semaphore(10)
+# 重试配置
+MAX_RETRIES = 3
+RETRY_DELAY_BASE = 2  # 指数退避基数（秒）
 
 # 市场后缀映射
 MARKET_SUFFIX = {
@@ -132,7 +139,7 @@ def save_failed(failed):
 
 def fetch_one_etf(etf_info):
     """
-    获取单只ETF历史数据并保存
+    获取单只ETF历史数据并保存（含限流保护和重试）
     
     Args:
         etf_info: dict with 'code', 'name', 'scale'
@@ -143,19 +150,35 @@ def fetch_one_etf(etf_info):
     code = etf_info["code"]
     name = etf_info.get("name", "")
     
-    try:
-        etf_market = code_to_market(code)
-        api_data = get_ohlcs(etf_market)
-        
-        ohlcs = api_data.get("ohlcs", [])
-        if not ohlcs:
-            return (code, False, "无K线数据", 0)
-        
-        count = save_history(code, ohlcs)
-        return (code, True, None, count)
-        
-    except Exception as e:
-        return (code, False, str(e), 0)
+    # 重试循环（指数退避）
+    for attempt in range(MAX_RETRIES):
+        try:
+            # 限流保护：获取信号量（最多10个并发）
+            with RATE_LIMITER:
+                etf_market = code_to_market(code)
+                api_data = get_ohlcs(etf_market)
+            
+            # 稍微休眠， Spread 请求（防止瞬时 burst）
+            time.sleep(0.05)
+            
+            ohlcs = api_data.get("ohlcs", [])
+            if not ohlcs:
+                return (code, False, "无K线数据", 0)
+            
+            count = save_history(code, ohlcs)
+            return (code, True, None, count)
+            
+        except Exception as e:
+            error = str(e)
+            # 如果是最后一次重试，返回失败；否则继续重试
+            if attempt == MAX_RETRIES - 1:
+                return (code, False, error, 0)
+            # 指数退避等待：2s, 4s, 8s...
+            delay = RETRY_DELAY_BASE ** (attempt + 1)
+            time.sleep(min(delay, 30))  # 最多等30秒
+    
+    # 理论上不会到这里
+    return (code, False, "重试次数用尽", 0)
 
 
 def main():
@@ -258,7 +281,7 @@ def main():
             scale = etf.get("scale", 0)
             
             try:
-                result_code, success, error, count = future.result()
+                result_code, success, error, count = future.result(timeout=30)
                 
                 if success:
                     ok += 1
@@ -282,6 +305,10 @@ def main():
                     if failed_list:
                         save_failed(failed_list)
                         
+            except concurrent.futures.TimeoutError:
+                fail += 1
+                failed_list.append({"code": code, "name": name, "error": "超时(30s)"})
+                print(f"  [{i:3d}/{total}] {code} {name[:20]:20s} ❌ 超时")
             except Exception as e:
                 fail += 1
                 failed_list.append({"code": code, "name": name, "error": str(e)})
