@@ -23,7 +23,7 @@
 |  11 | 2026-05-18 | 126ec9a | feat: daily_update + 历史净值优先本地缓存 | 新功能 |
 |  12 | 2026-05-18 | cef564f | feat: 历史净值首选AKShare实时，详情页实时价格覆盖 | 新功能 |
 |  13 | 2026-05-18 | 44f379c | feat: add Wind-style professional compare page with report export | 新功能 |
-|  14 | 2026-05-18 | 04ced78 | fix: deploy.sh directory path (ETF-tool-MVP -> etf-tool-mvp) | 修复Bug, 部署相关 |
+|  14 | 2026-05-18 | 04ced78 | fix: deploy.sh directory path (etf-tool-mvp -> etf-tool-mvp) | 修复Bug, 部署相关 |
 |  15 | 2026-05-18 | d329a0f | chore: add one-click deploy script for PythonAnywhere | 部署相关, 杂项 |
 |  16 | 2026-05-18 | b40d2cf | fix: P0/P1修复，补充风险指标，改进UX | 修复Bug |
 |  17 | 2026-05-18 | 7a06082 | fix: compatible fetch timeout + cleaner bar chart | 修复Bug |
