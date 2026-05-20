@@ -472,6 +472,21 @@ def data_status():
     return jsonify(status)
 
 
+@ app.route('/api/version', methods=['GET'])
+def get_version():
+    """获取数据版本信息（供 verify_sync.py 检查）"""
+    version_file = ROOT / "data_version.json"
+    if not version_file.exists():
+        return jsonify({"error": "data_version.json not found"}), 404
+    
+    try:
+        with open(version_file, "r", encoding="utf-8") as f:
+            version_data = json.load(f)
+        return jsonify(version_data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @ app.route('/api/sync', methods=['POST'])
 def sync_data():
     """同步数据：从 GitHub 拉取最新数据（供 pipeline 推送后触发）"""
