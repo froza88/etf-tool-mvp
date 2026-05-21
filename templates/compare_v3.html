@@ -727,15 +727,16 @@
                 document.getElementById('ringGrid').innerHTML += row;
             });
 
-            // Animate rings after render
-            setTimeout(() => {
-                document.querySelectorAll('.ring-fill').forEach(el => {
-                    el.style.strokeDashoffset = el.dataset.offset;
-                });
-            }, 200);
+        // Animate rings after render
+        setTimeout(() => {
+            document.querySelectorAll('.ring-fill').forEach(el => {
+                el.style.strokeDashoffset = el.dataset.offset;
+            });
+        }, 200);
+    }
 
-        // ── Bar Charts ──
-        function createBarCharts() {
+    // ── Bar Charts ──
+    function createBarCharts() {
             const chartOptions = (unit) => ({
                 responsive: true,
                 maintainAspectRatio: false,
@@ -972,6 +973,8 @@
                 box.style.display = isVisible ? 'block' : 'none';
             });
         }
+        
+        function toggleExportMenu() {
             const menu = document.getElementById('exportMenu');
             menu.classList.toggle('show');
             // 点击其他地方关闭菜单
