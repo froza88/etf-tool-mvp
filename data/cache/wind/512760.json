@@ -1,0 +1,12 @@
+{
+  "code": "512760",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:04:32.252950",
+  "data": {
+    "issuer": "国泰基金管理有限公司",
+    "issue_date": "2019-05-16",
+    "benchmark": "中华交易服务半导体芯片行业指数收益率"
+  },
+  "ttl_days": 7
+}

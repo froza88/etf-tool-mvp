@@ -1,0 +1,12 @@
+{
+  "code": "159801",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:03:14.748308",
+  "data": {
+    "issuer": "广发基金管理有限公司",
+    "issue_date": "2020-01-20",
+    "benchmark": "国证半导体芯片指数收益率"
+  },
+  "ttl_days": 7
+}

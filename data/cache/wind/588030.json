@@ -1,0 +1,12 @@
+{
+  "code": "588030",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:10:56.439870",
+  "data": {
+    "issuer": "博时基金管理有限公司",
+    "issue_date": "2023-09-06",
+    "benchmark": "上证科创板100指数收益率"
+  },
+  "ttl_days": 7
+}

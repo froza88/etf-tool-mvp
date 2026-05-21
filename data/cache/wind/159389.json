@@ -1,0 +1,12 @@
+{
+  "code": "159389",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:13:31.378254",
+  "data": {
+    "issuer": "嘉实基金管理有限公司",
+    "issue_date": "2025-05-22",
+    "benchmark": "中证诚通国企数字经济指数收益率"
+  },
+  "ttl_days": 7
+}

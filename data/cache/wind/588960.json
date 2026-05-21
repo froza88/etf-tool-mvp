@@ -1,0 +1,12 @@
+{
+  "code": "588960",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:13:44.890683",
+  "data": {
+    "issuer": "富国基金管理有限公司",
+    "issue_date": "2025-02-06",
+    "benchmark": "上证科创板新能源指数收益率"
+  },
+  "ttl_days": 7
+}

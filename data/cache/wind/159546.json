@@ -1,0 +1,12 @@
+{
+  "code": "159546",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:04:46.365171",
+  "data": {
+    "issuer": "国泰基金管理有限公司",
+    "issue_date": "2023-10-11",
+    "benchmark": "中证全指集成电路指数收益率"
+  },
+  "ttl_days": 7
+}

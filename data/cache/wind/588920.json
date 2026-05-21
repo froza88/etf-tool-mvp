@@ -1,0 +1,12 @@
+{
+  "code": "588920",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:03:34.310999",
+  "data": {
+    "issuer": "鹏华基金管理有限公司",
+    "issue_date": "2025-07-16",
+    "benchmark": "上证科创板芯片指数收益率"
+  },
+  "ttl_days": 7
+}

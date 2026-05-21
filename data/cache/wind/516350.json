@@ -1,0 +1,12 @@
+{
+  "code": "516350",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:04:22.876810",
+  "data": {
+    "issuer": "易方达基金管理有限公司",
+    "issue_date": "2021-12-15",
+    "benchmark": "中证芯片产业指数收益率"
+  },
+  "ttl_days": 7
+}

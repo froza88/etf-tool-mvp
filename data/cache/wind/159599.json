@@ -1,0 +1,12 @@
+{
+  "code": "159599",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:03:58.006411",
+  "data": {
+    "issuer": "东财基金管理有限公司",
+    "issue_date": "2024-04-19",
+    "benchmark": "中证芯片产业指数收益率"
+  },
+  "ttl_days": 7
+}

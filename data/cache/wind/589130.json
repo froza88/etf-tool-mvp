@@ -1,0 +1,12 @@
+{
+  "code": "589130",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:02:54.860743",
+  "data": {
+    "issuer": "易方达基金管理有限公司",
+    "issue_date": "2025-12-29",
+    "benchmark": "上证科创板芯片指数收益率"
+  },
+  "ttl_days": 7
+}

@@ -1,0 +1,12 @@
+{
+  "code": "588260",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:05:31.648411",
+  "data": {
+    "issuer": "华安基金管理有限公司",
+    "issue_date": "2022-05-18",
+    "benchmark": "上证科创板新一代信息技术指数收益率"
+  },
+  "ttl_days": 7
+}

@@ -1,0 +1,12 @@
+{
+  "code": "588020",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:05:16.589195",
+  "data": {
+    "issuer": "易方达基金管理有限公司",
+    "issue_date": "2023-08-23",
+    "benchmark": "上证科创板成长指数收益率"
+  },
+  "ttl_days": 7
+}

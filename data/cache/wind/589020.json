@@ -1,0 +1,12 @@
+{
+  "code": "589020",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:01:52.446396",
+  "data": {
+    "issuer": "鹏华基金管理有限公司",
+    "issue_date": "2025-08-27",
+    "benchmark": "上证科创板半导体材料设备主题指数收益率"
+  },
+  "ttl_days": 7
+}

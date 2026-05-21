@@ -1,0 +1,12 @@
+{
+  "code": "589270",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:12:56.447319",
+  "data": {
+    "issuer": "前海开源基金管理有限公司",
+    "issue_date": "2026-04-09",
+    "benchmark": "上证科创板100指数收益率"
+  },
+  "ttl_days": 7
+}

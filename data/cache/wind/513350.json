@@ -1,0 +1,12 @@
+{
+  "code": "513350",
+  "source": "wind",
+  "endpoint": "get_fund_info",
+  "fetched_at": "2026-05-22T02:05:25.406347",
+  "data": {
+    "issuer": "富国基金管理有限公司",
+    "issue_date": "2023-11-20",
+    "benchmark": "标普石油天然气勘探及生产精选行业指数收益率(经汇率调整后)"
+  },
+  "ttl_days": 7
+}
