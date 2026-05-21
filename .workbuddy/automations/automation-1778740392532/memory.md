@@ -1,5 +1,20 @@
 # ETF数据每日自动更新 - 执行历史
 
+## 2026-05-21 (周四 02:00)
+- **状态**: ⚠️ 部分成功（配置不匹配 + Git推送失败）
+- **执行的脚本**: pipeline.py（auto_update_etf_data.py 不存在）
+- **总ETF数**: 1470 只（比昨日增加2只，非用户请求的99只）
+- **输出文件**: etf_standard_data.json (1470只)
+- **数据源**: AKShare + 本地存储（pipeline.py）
+- **Git状态**: 本地提交成功(722c6ab)，但推送失败（与远程分支冲突）
+- **问题**:
+  1. 用户请求运行 auto_update_etf_data.py，但该脚本不存在，改运行 pipeline.py
+  2. 用户期望更新99只ETF并保存到 etf_complete_130.json，但实际更新了1470只ETF到 etf_standard_data.json
+  3. Git推送失败：本地与远程分支分叉，尝试rebase遇到冲突（data_completeness_report.md, deploy.sh），已中止rebase
+  4. 微信推送未执行：企业微信连接器断开
+- **错误日志**: logs/etf_update_20260521.log（含中文编码问题）
+- **注意**: 用户配置基于旧版本（99只/130只ETF），当前系统有1470只ETF。需确认是否要更新自动化配置。
+
 ## 2026-05-20 (周三)
 - **状态**: ✅ 成功（但配置不匹配）
 - **总ETF数**: 1468 只（比昨日增加1只，非用户请求的99只）

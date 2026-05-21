@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF 对比报告 · 导出</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @page { size: A4; margin: 12mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 13px; line-height: 1.6; color: #1a1a2e;
+            background: #ffffff; padding: 32px 40px;
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        /* ── Toolbar (hidden on print) ── */
+        .toolbar {
+            position: sticky; top: 0; z-index: 100;
+            background: #fff; border-bottom: 1px solid #e5e7eb;
+            padding: 12px 0; margin-bottom: 24px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .toolbar-title { font-size: 15px; font-weight: 700; color: #111; flex: 1; }
+        .btn {
+            padding: 8px 18px; border-radius: 8px; font-size: 13px;
+            font-weight: 600; cursor: pointer; border: none;
+            display: flex; align-items: center; gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-screenshot {
+            background: linear-gradient(135deg, #0066ff, #0044cc);
+            color: #fff; box-shadow: 0 2px 8px rgba(0,102,255,0.25);
+        }
+        .btn-screenshot:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,102,255,0.35); }
+        .btn-pdf { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+        .btn-pdf:hover { background: #e5e7eb; }
+        .btn-close { background: #f3f4f6; color: #6b7280; border: 1px solid #d1d5db; font-size: 18px; padding: 6px 12px; }
+        .btn-close:hover { background: #e5e7eb; }
+
+        /* ── Report Header ── */
+        .report-header {
+            text-align: center; padding: 28px 0 24px;
+            border-bottom: 2px solid #e5e7eb; margin-bottom: 28px;
+        }
+        .report-header h1 {
+            font-size: 28px; font-weight: 800; color: #111;
+            letter-spacing: -0.5px;
+        }
+        .report-header h1 .pro {
+            background: linear-gradient(135deg, #0066ff, #7c3aed);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .report-meta {
+            color: #9ca3af; font-size: 12px; margin-top: 6px;
+        }
+
+        /* ── ETF Tags ── */
+        .etf-tags { display: flex; gap: 10px; justify-content: center; margin: 20px 0 0; flex-wrap: wrap; }
+        .etf-tag {
+            display: flex; align-items: center; gap: 6px;
+            background: #f8fafc; border: 1px solid #e2e8f0;
+            border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+        }
+        .etf-tag .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+        /* ── Section ── */
+        .section { margin-bottom: 28px; }
+        .section-title {
+            font-size: 16px; font-weight: 700; color: #111;
+            margin-bottom: 14px; padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* ── Trophy Grid ── */
+        .trophy-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .trophy-card {
+            background: #f8fafc; border: 1px solid #e2e8f0;
+            border-radius: 12px; padding: 16px; text-align: center;
+        }
+        .trophy-card.gold { border-color: #fbbf24; background: #fffbeb; }
+        .trophy-icon { font-size: 24px; margin-bottom: 6px; }
+        .trophy-label { font-size: 11px; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .trophy-winner { font-size: 14px; font-weight: 700; color: #111; margin-top: 4px; }
+        .trophy-value { font-size: 18px; font-weight: 800; margin-top: 2px; }
+        .trophy-value.pos { color: #16a34a; }
+        .trophy-value.neg { color: #dc2626; }
+        .badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+        .badge-gold { background: #fef3c7; color: #92400e; }
+        .badge-silver { background: #f3f4f6; color: #4b5563; }
+        .badge-bronze { background: #fed7aa; color: #9a3412; }
+
+        /* ── Data Tables ── */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 0; }
+        th, td { border: 1px solid #e5e7eb; padding: 8px 12px; text-align: left; font-size: 12px; }
+        th { background: #f8fafc; font-weight: 700; color: #374151; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .num { text-align: right; font-family: "SF Mono", "Menlo", monospace; font-size: 12px; }
+        .green { color: #16a34a; font-weight: 600; }
+        .red { color: #dc2626; font-weight: 600; }
+        .best-cell { background: #eff6ff; font-weight: 700; }
+
+        /* ── Charts ── */
+        .chart-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 16px; margin-bottom: 8px;
+        }
+        .chart-box {
+            background: #f8fafc; border: 1px solid #e2e8f0;
+            border-radius: 10px; padding: 16px;
+        }
+        .chart-box h4 { font-size: 12px; color: #6b7280; margin-bottom: 10px; font-weight: 600; }
+        .chart-box canvas { max-height: 220px; }
+
+        /* ── Footer ── */
+        .report-footer {
+            margin-top: 32px; padding-top: 12px;
+            border-top: 1px solid #e5e7eb; font-size: 11px;
+            color: #9ca3af; text-align: center;
+        }
+
+        @media print {
+            body { padding: 0; }
+            .toolbar { display: none !important; }
+            .report-header { padding: 16px 0 12px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-title">📄 ETF 对比报告 · 导出</div>
+        <button class="btn btn-screenshot" id="btnScreenshot" onclick="captureScreenshot()">🖥️ 截图保存</button>
+        <button class="btn btn-pdf" onclick="window.print()">📋 打印/PDF</button>
+        <button class="btn btn-close" onclick="window.close()">✕</button>
+    </div>
+
+    <!-- Report Header -->
+    <div class="report-header">
+        <h1>ETF <span class="pro">Pro</span> 对比报告</h1>
+        <div class="report-meta">生成时间：{{ now }} &nbsp;|&nbsp; 对比标的：{{ etfs|length }} 只</div>
+        <div class="etf-tags">
+            {% for etf in etfs %}
+            <div class="etf-tag">
+                <span class="dot" style="background:{{ colors[loop.index0] }}"></span>
+                <span>{{ etf.code }} {{ (etf.name or '')[:16] }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Trophy Section -->
+    <div class="section">
+        <div class="section-title">🏆 指标冠军榜</div>
+        <div class="trophy-grid" id="trophyGrid"></div>
+    </div>
+
+    <!-- Charts -->
+    <div class="section">
+        <div class="section-title">📊 多维对比</div>
+        <div class="chart-grid">
+            <div class="chart-box">
+                <h4>收益率对比</h4>
+                <canvas id="chartReturn"></canvas>
+            </div>
+            <div class="chart-box">
+                <h4>规模 & 流动性</h4>
+                <canvas id="chartScaleVol"></canvas>
+            </div>
+        </div>
+        <div class="chart-grid" style="margin-top:12px">
+            <div class="chart-box">
+                <h4>夏普比率</h4>
+                <canvas id="chartSharpe"></canvas>
+            </div>
+            <div class="chart-box">
+                <h4>最大回撤</h4>
+                <canvas id="chartDrawdown"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Tables -->
+    <div class="section">
+        <div class="section-title">📋 详细数据</div>
+        <table id="dataTable"></table>
+    </div>
+
+    <!-- Footer -->
+    <div class="report-footer">
+        本报告由 ETF Pro 对比工具自动生成，数据仅供参考，不构成投资建议。
+    </div>
+
+    <script>
+        const etfs = {{ etfs|tojson|safe }};
+        const colors = ['#0066ff', '#f59e0b', '#10b981', '#7c3aed', '#ec4899', '#06b6d4'];
+
+        function fmt(v, d=2, unit='') {
+            if (v === undefined || v === null || v === '') return '-';
+            return (typeof v === 'number' ? v.toFixed(d) : v) + unit;
+        }
+        function fmtSigned(v, d=2, unit='%') {
+            if (v === undefined || v === null) return '-';
+            return (typeof v === 'number' ? (v >= 0 ? '+' : '') + v.toFixed(d) : v) + unit;
+        }
+
+        // ── Trophy Section ──
+        const trophies = [
+            { icon: '🚀', label: '最高收益（1年）', key: 'year_1_return', fmt: v => fmtSigned(v), posNeg: true },
+            { icon: '🛡️', label: '最低回撤', key: 'max_drawdown', fmt: v => fmt(v,2,'%'), reverse: true },
+            { icon: '⭐', label: '最佳夏普', key: 'sharpe_ratio', fmt: v => fmt(v,2) },
+            { icon: '🏦', label: '最大规模', key: 'scale', fmt: v => fmt(v,1,'亿') },
+        ];
+
+        document.getElementById('trophyGrid').innerHTML = trophies.map(t => {
+            let vals = etfs.map(e => e[t.key]).filter(v => typeof v === 'number');
+            if (!vals.length) return '';
+            const bestVal = t.reverse ? Math.min(...vals) : Math.max(...vals);
+            const bestIdx = etfs.findIndex(e => e[t.key] === bestVal);
+            const etf = etfs[bestIdx];
+            return `<div class="trophy-card ${bestIdx === 0 ? 'gold' : ''}">
+                <div class="trophy-icon">${t.icon}</div>
+                <div class="trophy-label">${t.label}</div>
+                <div class="trophy-winner">🥇 ${etf.code} ${(etf.name||'').slice(0,10)}</div>
+                <div class="trophy-value ${t.posNeg ? (bestVal >= 0 ? 'pos' : 'neg') : ''}">${t.fmt(bestVal)}</div>
+            </div>`;
+        }).join('');
+
+        // ── Charts ──
+        const chartOpts = (unit) => ({
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+                legend: { labels: { color: '#374151', usePointStyle: true, font: {size: 11} } },
+                tooltip: { backgroundColor: '#1a1a2e', titleColor: '#fff', bodyColor: '#d1d5db', cornerRadius: 6,
+                    callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + unit }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#6b7280', font: {size: 11} }, grid: { display: false } },
+                y: { ticks: { color: '#6b7280', font: {size: 10} }, grid: { color: '#f3f4f6' } }
+            }
+        });
+
+        // Return chart (grouped)
+        new Chart(document.getElementById('chartReturn'), {
+            type: 'bar',
+            data: {
+                labels: etfs.map(e => e.code),
+                datasets: [
+                    { label: '近1年', data: etfs.map(e => e.year_1_return || 0), backgroundColor: '#0066ff88', borderColor: '#0066ff', borderWidth: 1, borderRadius: 4 },
+                    { label: '近3年', data: etfs.map(e => e.year_3_return || 0), backgroundColor: '#7c3aed88', borderColor: '#7c3aed', borderWidth: 1, borderRadius: 4 }
+                ]
+            },
+            options: chartOpts('%')
+        });
+
+        // Scale + Volume
+        new Chart(document.getElementById('chartScaleVol'), {
+            type: 'bar',
+            data: {
+                labels: etfs.map(e => e.code),
+                datasets: [
+                    { label: '规模(亿)', data: etfs.map(e => e.scale || 0), backgroundColor: '#f59e0b88', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 4 },
+                    { label: '日均成交(亿)', data: etfs.map(e => e.volume || 0), backgroundColor: '#10b98188', borderColor: '#10b981', borderWidth: 1, borderRadius: 4 }
+                ]
+            },
+            options: chartOpts('亿')
+        });
+
+        // Sharpe
+        new Chart(document.getElementById('chartSharpe'), {
+            type: 'bar',
+            data: {
+                labels: etfs.map(e => e.code),
+                datasets: [{ label: '夏普比率', data: etfs.map(e => e.sharpe_ratio || 0), backgroundColor: etfs.map((e,i) => colors[i] + '88'), borderColor: etfs.map((e,i) => colors[i]), borderWidth: 1, borderRadius: 4 }]
+            },
+            options: chartOpts('')
+        });
+
+        // Drawdown
+        new Chart(document.getElementById('chartDrawdown'), {
+            type: 'bar',
+            data: {
+                labels: etfs.map(e => e.code),
+                datasets: [{ label: '最大回撤', data: etfs.map(e => e.max_drawdown || 0), backgroundColor: '#dc262688', borderColor: '#dc2626', borderWidth: 1, borderRadius: 4 }]
+            },
+            options: chartOpts('%')
+        });
+
+        // ── Data Table ──
+        const metrics = [
+            { key: 'year_1_return', label: '近1年收益', fmt: v => fmtSigned(v), higherBetter: true },
+            { key: 'year_3_return', label: '近3年收益', fmt: v => fmtSigned(v), higherBetter: true },
+            { key: 'sharpe_ratio', label: '夏普比率', fmt: v => fmt(v,2), higherBetter: true },
+            { key: 'max_drawdown', label: '最大回撤', fmt: v => fmt(v,2,'%'), higherBetter: false },
+            { key: 'annual_vol', label: '年化波动率', fmt: v => fmt(v,2,'%'), higherBetter: false },
+            { key: 'scale', label: '规模(亿)', fmt: v => fmt(v,1,'亿'), higherBetter: true },
+            { key: 'volume', label: '日均成交(亿)', fmt: v => fmt(v,1,'亿'), higherBetter: true },
+            { key: 'category', label: '分类', fmt: v => v||'-', higherBetter: null },
+            { key: 'issuer_short', label: '发行方', fmt: v => v||'-', higherBetter: null },
+        ];
+
+        let html = '<thead><tr><th>指标</th>';
+        etfs.forEach((e, i) => { html += `<th style="color:${colors[i]}">${e.code}</th>`; });
+        html += '</tr></thead><tbody>';
+
+        metrics.forEach(m => {
+            const vals = etfs.map(e => typeof e[m.key] === 'number' ? e[m.key] : null);
+            const nums = vals.filter(v => v !== null);
+            const minV = nums.length ? Math.min(...nums) : 0;
+            const maxV = nums.length ? Math.max(...nums) : 0;
+            const range = maxV - minV || 1;
+            const bestIdx = m.higherBetter !== null ? (m.higherBetter
+                ? vals.indexOf(Math.max(...nums))
+                : vals.indexOf(Math.min(...nums))) : -1;
+
+            html += '<tr><td><strong>' + m.label + '</strong></td>';
+            vals.forEach((v, i) => {
+                let cls = 'num';
+                if (m.higherBetter !== null && v !== null && nums.length > 1) {
+                    const score = m.higherBetter ? (v - minV) / range : (maxV - v) / range;
+                    if (score > 0.7) cls += ' green';
+                    else if (score < 0.3 && m.higherBetter) cls += ' red';
+                }
+                if (i === bestIdx && nums.length > 1) cls += ' best-cell';
+                if (m.key === 'year_1_return' || m.key === 'year_3_return') {
+                    if (v !== null && v > 0) cls += ' green';
+                    else if (v !== null && v < 0) cls += ' red';
+                }
+                html += `<td class="${cls}">${m.fmt(v)}</td>`;
+            });
+            html += '</tr>';
+        });
+        html += '</tbody>';
+        document.getElementById('dataTable').innerHTML = html;
+
+        // ── Screenshot (getDisplayMedia) ──
+        async function captureScreenshot() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+                alert('浏览器不支持屏幕截图，请使用系统快捷键：\nMac: Cmd+Shift+4\nWindows: Win+Shift+S');
+                return;
+            }
+
+            const btn = document.getElementById('btnScreenshot');
+            const origText = btn.textContent;
+            btn.textContent = '选择屏幕...'; btn.disabled = true;
+
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: { displaySurface: 'browser', width: {ideal: 3840}, height: {ideal: 2160} },
+                    preferCurrentTab: true, selfBrowserSurface: 'include'
+                });
+
+                const video = document.createElement('video');
+                video.srcObject = stream; video.muted = true;
+
+                await new Promise((resolve, reject) => {
+                    video.onloadedmetadata = () => video.play().then(resolve).catch(reject);
+                    video.onerror = reject;
+                });
+
+                await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0);
+
+                stream.getTracks().forEach(t => t.stop());
+                video.srcObject = null;
+
+                canvas.toBlob(function(blob) {
+                    btn.disabled = false; btn.textContent = origText;
+                    if (!blob) { alert('截图生成失败'); return; }
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.download = 'ETF_对比报告_' + new Date().toISOString().slice(0,10) + '.png';
+                    a.href = url; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                    setTimeout(() => URL.revokeObjectURL(url), 5000);
+                }, 'image/png');
+            } catch (err) {
+                btn.disabled = false; btn.textContent = origText;
+                if (err.name !== 'NotAllowedError') {
+                    alert('截图失败: ' + err.message);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -35,6 +35,9 @@ from collections import defaultdict
 
 ROOT = Path(__file__).parent
 
+# Wind 数据文件（查询即存储缓存）
+WIND_DATA_FILE = ROOT / "etf_wind_data.json"
+
 # 本地存储模块
 sys.path.insert(0, str(ROOT))
 from modules.local_store import (
@@ -197,6 +200,96 @@ def step_enrich():
 
     # 自动快照
     create_snapshot("enrich")
+
+
+# ============ Step 2.5: 从 Wind 补充基础信息 ============
+
+def step_enrich_wind():
+    """从 Wind API 补充 ETF 基础信息（托管人/基准/费率）- 查询即存储
+    每次调用自动缓存到 data/cache/wind/{code}.json，优先读缓存
+    """
+    log("Step 2.5: 从 Wind 补充基础信息")
+
+    from fetchers.wind_fetcher import WindFetcher
+
+    standard_file = LEGACY_FILES["standard"]
+    if not standard_file.exists():
+        log("  无标准化数据，请先运行 build 步骤")
+        return
+
+    # 加载现有数据
+    standard_data = load_json(standard_file)
+
+    # 加载已有 Wind 缓存（etf_wind_data.json 汇总，增量补充）
+    wind_data = {}
+    if WIND_DATA_FILE.exists():
+        wind_data = load_json(WIND_DATA_FILE) or {}
+
+    # 找出需要 Wind 数据的 ETF（缺失 custodian / benchmark / management_fee_rate）
+    need_wind = []
+    for e in standard_data:
+        code = e.get("code", "")
+        if not code:
+            continue
+        existing = wind_data.get(code, {})
+        missing = []
+        if not e.get("custodian") and not existing.get("custodian"):
+            missing.append("custodian")
+        if not e.get("benchmark") and not existing.get("benchmark"):
+            missing.append("benchmark")
+        if not e.get("management_fee_rate") and not existing.get("management_fee_rate"):
+            missing.append("management_fee_rate")
+        if missing:
+            need_wind.append((code, e.get("name", ""), missing))
+
+    if not need_wind:
+        log("  所有 ETF 已有 Wind 基础信息，跳过")
+        return
+
+    log(f"  需补充 Wind 数据: {len(need_wind)} 只（已缓存: {len(wind_data)}）")
+
+    # 每日限制：每次调用 ~6.67 积分，保留余量不耗尽
+    # 剩余 ~934 积分 → 上限 100 次（约 667 积分）
+    daily_limit = min(len(need_wind), 100)
+    batch = need_wind[:daily_limit]
+    if len(need_wind) > daily_limit:
+        log(f"  今日处理前 {daily_limit} 只，剩余 {len(need_wind) - daily_limit} 只（后续可继续）")
+
+    fetcher = WindFetcher()
+    api_calls = 0
+    updated = 0
+
+    for i, (code, name, missing_fields) in enumerate(batch):
+        short_name = name[:25] if name else ""
+
+        try:
+            wind_result = fetcher.fetch_etf_info(code, name)
+            if wind_result:
+                # 存储到汇总文件
+                wind_data[code] = wind_data.get(code, {})
+                for field in missing_fields:
+                    if field in wind_result and wind_result[field]:
+                        wind_data[code][field] = wind_result[field]
+                updated += 1
+                api_calls += 1
+            else:
+                log(f"  [{i+1}/{len(batch)}] {code} {short_name} ✗ 获取失败")
+        except Exception as e:
+            log(f"  [{i+1}/{len(batch)}] {code} {short_name} ✗ 异常: {e}")
+
+        if (i + 1) % 20 == 0:
+            log(f"  进度: {i+1}/{len(batch)} 成功={updated}")
+
+        # 避免 QPS 限制
+        time.sleep(0.5)
+
+    # 保存 Wind 汇总数据
+    save_json(WIND_DATA_FILE, wind_data)
+
+    log(f"  Wind 补充: 更新 {updated}/{len(batch)} 只，API 调用 ~{api_calls} 次")
+    log(f"  Wind 汇总缓存: {len(wind_data)} 只")
+
+    create_snapshot("enrich_wind")
 
 
 # ============ Step 3: 计算风险指标（唯一实现） ============
@@ -409,6 +502,12 @@ def step_build():
     if LEGACY_FILES["yingmi"].exists():
         yingmi_data = load_json(LEGACY_FILES["yingmi"]) or {}
 
+    # 加载 Wind 补充数据
+    wind_data = {}
+    if WIND_DATA_FILE.exists():
+        wind_data = load_json(WIND_DATA_FILE) or {}
+        log(f"  Wind 数据: {len(wind_data)} 只")
+
     # 建立 name→issuer 映射
     known_names = {}
     for item in gen_data:
@@ -538,6 +637,17 @@ def step_build():
         sharpe_ratio = calc.get("sharpe_ratio", 0) or ym.get("sharpe_ratio", 0) or gen.get("sharpe_ratio", 0.0)
         annual_vol = calc.get("annual_vol", 0) or ym.get("annual_vol_1y", 0) or 0
 
+        # Wind 补充数据
+        wd = wind_data.get(code, {})
+
+        # custodian: Wind > gen
+        custodian = wd.get("custodian", "") or gen.get("custodian", "")
+        # benchmark: Wind（之前 gen 没有此字段）
+        benchmark = wd.get("benchmark", "") or gen.get("benchmark", "")
+        # 费率: Wind > gen
+        mgmt_fee = wd.get("management_fee_rate", 0) or gen.get("management_fee_rate", 0)
+        custody_fee = wd.get("custody_fee_rate", 0) or gen.get("custody_fee_rate", 0)
+
         standard_etf = {
             "code": code,
             "name": name,
@@ -547,7 +657,7 @@ def step_build():
             "scale": round(scale_raw, 1) if scale_raw else 0,
             "shares": round(shares_raw, 1) if shares_raw else 0,
             "issue_date": gen.get("issue_date", ""),
-            "custodian": gen.get("custodian", ""),
+            "custodian": custodian,
             "top_holdings": top_holdings,
             "change_pct": etf.get("change_pct"),
             "close": gen.get("close", 0),
@@ -560,6 +670,9 @@ def step_build():
             "sharpe_ratio": sharpe_ratio,
             "annual_vol": annual_vol,
             "category": classify_category(raw_name),
+            "benchmark": benchmark,
+            "management_fee_rate": mgmt_fee,
+            "custody_fee_rate": custody_fee,
         }
         standard_etfs.append(standard_etf)
 
@@ -659,6 +772,7 @@ def step_migrate():
 STEPS = {
     "sync": ("同步 ETF 列表", step_sync_list),
     "enrich": ("补充数据（价格+持仓）", step_enrich),
+    "enrich_wind": ("从 Wind 补充基础信息", step_enrich_wind),
     "calc": ("计算风险指标", step_calc_metrics),
     "build": ("生成标准化数据", step_build),
     "deploy": ("部署（git push）", step_deploy),
@@ -667,7 +781,7 @@ STEPS = {
     "migrate": ("迁移旧数据到本地存储", step_migrate),
 }
 
-STEP_ORDER = ["sync", "enrich", "calc", "build", "deploy"]
+STEP_ORDER = ["sync", "enrich", "enrich_wind", "calc", "build", "deploy"]
 
 
 def main():

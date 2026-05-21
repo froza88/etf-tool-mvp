@@ -93,6 +93,11 @@ def etf_detail(code):
     数据由 pipeline 定期更新，实时性依赖 pipeline 更新频率
     """
     etf = etf_data.get_etf_by_code(code)
+
+    # 查询即存储：后台触发缓存更新
+    from services.cache_updater import update_etf_cache_background
+    update_etf_cache_background([code], source="detail_page")
+
     if not etf:
         return "ETF不存在", 404
 
@@ -122,12 +127,42 @@ def compare_wind():
     """ETF对比页 - Wind风格专业版"""
     codes = request.args.get('codes', '').split(',')
     codes = [c for c in codes if c]
+
+    # 查询即存储：后台触发缓存更新
+    from services.cache_updater import update_etf_cache_background
+    update_etf_cache_background(codes, source="compare_page")
+
     etfs = []
     for code in codes:
         etf = etf_data.get_etf_by_code(code)
         if etf:
             etfs.append(etf)
     return render_template('compare_v2_wind.html', etfs=etfs)
+
+@app.route('/compare/v3')
+def compare_v3():
+    """ETF对比页 - Pro Terminal v3 炫酷版"""
+    codes = request.args.get('codes', '').split(',')
+    codes = [c for c in codes if c]
+    etfs = []
+    for code in codes:
+        etf = etf_data.get_etf_by_code(code)
+        if etf:
+            etfs.append(etf)
+    return render_template('compare_v3.html', etfs=etfs)
+
+@app.route('/compare/v3/print')
+def compare_v3_print():
+    """ETF对比页 - 打印友好版"""
+    codes = request.args.get('codes', '').split(',')
+    codes = [c for c in codes if c]
+    etfs = []
+    for code in codes:
+        etf = etf_data.get_etf_by_code(code)
+        if etf:
+            etfs.append(etf)
+    from datetime import datetime
+    return render_template('compare_print.html', etfs=etfs, now=datetime.now().strftime('%Y-%m-%d %H:%M'))
 
 
 @app.route('/screening-demo')

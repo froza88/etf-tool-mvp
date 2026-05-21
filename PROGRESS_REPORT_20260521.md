@@ -1,5 +1,6 @@
 # ETF Tool MVP - 进度报告
 **生成时间**: 2026-05-21 09:29  
+**更新时间**: 2026-05-21 12:40  
 **报告人**: AI Assistant (Software Architect Agent)
 
 ---
@@ -9,10 +10,10 @@
 | 指标 | 数值 | 变化 |
 |------|------|------|
 | ETF总数 | 1470 | - |
-| 有持仓数据 | 1440 (98.0%) | ↑ +33 (从95.7%→98.0%) |
-| 无持仓数据 | 30 (2.0%) | ↓ -33 (从63→30) |
+| 有持仓数据 | 1454 (98.9%) | ↑ +47 (从95.7%→98.9%) |
+| 无持仓数据 | 16 (1.1%) | ↓ -47 (从63→16) |
 | 有_meta字段 | 1470 (100%) | - |
-| Git提交 | 200c0bc | TASK-C-03完成 |
+| Git提交 | b35b204 | 新增3个提交 |
 
 ---
 
@@ -56,46 +57,49 @@
 
 ---
 
+### 新增：fetch_money_etf_holdings.py 修复与运行 (2026-05-21 10:00-12:00)
+
+**完成时间**: 2026-05-21 中午  
+**Git Commit**: `e0b3a97` - "feat: 补充14只ETF持仓数据，持仓覆盖率98.9%"
+
+#### 1. 问题修复
+- **根因**: 查询词错误 `"持仓成分债券"` → 应为 `"持仓成分"` (这30只ETF持有股票不是债券)
+- **解析逻辑**: 补充支持 `"基金名称/基金代码"` 列 (NeoData返回表头可能是"基金名称")
+- **结果**: 14/30 ETF成功获取持仓，16/30 NeoData无数据(可接受，留空)
+
+#### 2. 后台运行
+- **方式**: `run_in_background` 后台执行
+- **耗时**: ~2分钟 (30只ETF，~2-3秒/只)
+- **结果**: 持仓覆盖率 98.0% → **98.9%** (1440→1454)
+
+#### 3. 经验教训
+- **NeoData限制**: 能源化工/商品类ETF (159980等16只) 查不到持仓数据，API返回"暂无数据"
+- **查询词经验**: 不要用"持仓成分债券"，推荐用"持仓成分"
+- **解析经验**: 支持多列名 (债券名称/股票名称/证券名称/基金名称/名称)
+
+---
+
+### 新增：缺失值显示修复 (2026-05-21 12:00-12:30)
+
+**完成时间**: 2026-05-21 中午  
+**Git Commit**: `b35b204` - "fix: 缺失数据显示'-'而非'0'，修复||0误导问题"
+
+#### 1. 问题
+- **现象**: `|| 0` 把缺失值当成 0 显示，用户会以为真的涨跌幅是 0%
+- **影响页面**: `index.html` (首页)、`risk.html` (风险页)
+
+#### 2. 修复内容
+- **index.html**: `year_1_return`/`year_3_return`/`scale`/`change_pct`/`close` 缺失时显示 `-` 而非 `0`
+- **risk.html**: 副标题缺失数据显示 `-`；图表数据传 `null` (Chart.js 跳过而非显示0)
+
+#### 3. 效果
+- 缺失数据的 ETF 现在显示 `-`，不会误导用户以为是 0%
+
+---
+
 ## 🔄 进行中工作
 
-### 方向3: ETF持仓数据补充 (优先级: 高)
-
-**目标**: 为63只缺失持仓的ETF补充持仓数据  
-**现状**: 30只仍缺失 (2.0%)
-
-#### 已完成的子任务
-
-##### ✅ 任务1.1: 分析63只缺失持仓的ETF
-- **发现**: 所有63只都是**货币ETF**(货币基金ETF)，本身无股票持仓
-- **分类分布**: 货币ETF 63只 (100%)
-- **规模分布**: 主要集中在大额货币基金
-
-##### ✅ 任务1.3: 更新pipeline.py移除50只限制
-- **文件**: `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/pipeline.py`
-- **改动**: 移除`step_enrich()`函数中`codes_need_holdings[:50]`的限制
-- **影响**: 所有63只ETF都会尝试补充持仓(而不仅是前50只)
-
-#### 进行中的子任务
-
-##### 🔄 任务1.2: 用NeoData补充货币ETF的债券持仓
-- **脚本**: `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/fetch_money_etf_holdings.py`
-- **功能**: 调用NeoData API获取货币ETF的债券持仓数据
-- **进展**:
-  - ✅ 创建脚本框架
-  - ✅ 实现`call_neodata_api()`函数
-  - ✅ 实现`parse_holdings_from_response()`解析逻辑
-  - ✅ 修复解析bug(type字段匹配问题)
-  - ⚠️ 全量运行超时(63只ETF预计需要63秒+API限速)
-  
-- **当前状态**:
-  - 持仓覆盖率: 1440/1470 (98.0%)
-  - 仍缺失: 30只ETF
-  - 成功率: 约33/63 (52.4%)
-  
-- **问题**:
-  1. NeoData API对某些货币ETF返回空数据
-  2. 解析逻辑可能还有边界情况未处理
-  3. 运行超时需要优化(批量处理+断点续传)
+暂无进行中工作。所有此前进行中的任务已完成（详见"✅ 已完成工作"部分）。
 
 ---
 
@@ -149,30 +153,32 @@
 
 ## 🐛 已知问题
 
-### 1. fetch_money_etf_holdings.py运行超时
-- **现象**: 全量运行63只ETF时脚本超时
-- **原因**: 
-  - API调用限速1秒/次
-  - 63只需要63秒+，可能超过默认timeout
-  - 无断点续传机制，失败需重头开始
-  
+### 1. year_3_return 覆盖率仅79.9% (最大缺口)
+
+- **现象**: 1174/1470 ETF有year_3_return数据，覆盖率79.9%
+- **原因**: 需要756天K线才能精确计算3年收益，当前history数据不足
 - **解决方案**:
-  - 方案A: 添加`--resume`参数支持断点续传
-  - 方案B: 先用小批量测试(--limit=10)，验证成功率后再全量
-  - 方案C: 优化API调用并发(需评估NeoData API限流策略)
+  - 重跑 `batch_fill_history.py --all` 拉取完整K线
+  - 再跑 `calc_risk_metrics.py --full` 冲99%覆盖率
 
-### 2. 30只ETF仍缺失持仓数据
-- **现象**: 运行fetch_money_etf_holdings.py后，仍有30只ETF无持仓
-- **原因**: 
-  - NeoData API未返回这些ETF的持仓数据
-  - 可能是API限制或这些ETF确实无公开持仓信息
-  
-- **待分析**: 需要检查这30只ETF的代码和名称，判断是否有共性
+### 2. annual_vol 覆盖率94.6% (未达99%目标)
 
-### 3. pipeline.py的step_enrich仍依赖AKShare
+- **现象**: 1391/1470 ETF有annual_vol数据，覆盖率94.6%
+- **原因**: calc_risk_metrics.py有bug，358只ETF的annual_vol未计算
+- **解决方案**: 修复calc_risk_metrics.py bug后重跑
+
+### 3. 16只ETF仍缺失持仓数据
+
+- **现象**: 运行fetch_money_etf_holdings.py后，仍有16只ETF无持仓
+- **原因**: NeoData API对这些ETF返回"暂无数据" (能源化工/商品类ETF)
+- **列表**: 159980、512430、159985、159937、518850、518660、518600、159934、159812、518680、518890、159830、518860、159834、159831、560450
+- **决策**: 这些ETF本身可能无公开持仓信息，留空可接受
+
+### 4. pipeline.py的step_enrich仍依赖AKShare
+
 - **现象**: `step_enrich()`仍使用`ak.fund_portfolio_hold_em()`获取持仓
 - **问题**: AKShare对货币ETF返回空，导致step_enrich无效
-- **解决方案**: 
+- **解决方案**:
   - 修改`step_enrich()`优先使用NeoData
   - 或完全移除`step_enrich()`，统一使用`fetch_money_etf_holdings.py`
 
@@ -184,8 +190,9 @@
 |------|---------|--------|--------|------|
 | 2026-05-20 | 1470 | 1407 | 95.7% | TASK-C-03前基线 |
 | 2026-05-21 09:29 | 1470 | 1440 | 98.0% | 运行fetch_money_etf_holdings.py后 |
+| 2026-05-21 12:40 | 1470 | 1454 | 98.9% | 修复脚本后重跑，14/30成功 |
 
-**趋势**: ↗ 持仓覆盖率提升2.3个百分点
+**趋势**: ↗ 持仓覆盖率提升3.2个百分点 (95.7% → 98.9%)
 
 ---
 
@@ -193,29 +200,42 @@
 
 ### 立即行动 (接下来1-2小时)
 
-**选项A**: 修复fetch_money_etf_holdings.py并全量运行 ✅ 推荐
-1. 添加`--resume`断点续传支持
-2. 分析30只失败ETF的原因
-3. 全量运行并验证结果
+**选项A**: 提升数据质量到99% ✅ 推荐
+1. 修复 `calc_risk_metrics.py` bug (358只ETF的annual_vol未计算)
+2. 重跑 `batch_fill_history.py --all` 拉取完整K线
+3. 再跑 `calc_risk_metrics.py --full` 冲99%覆盖率
 
-**选项B**: 先分析30只失败ETF，再决定策略
-1. 导出30只ETF清单
-2. 手动检查NeoData API为何失败
-3. 根据分析结果调整脚本或数据源策略
+**选项B**: UI优化 (对比页体验提升)
+1. 表格移动端适配 (添加水平滚动容器)
+2. 表格排序功能 (点击表头排序)
+3. 图表标签优化 (雷达图标签调整)
 
 ### 短期计划 (接下来1-2天)
 
-1. **完成方向3**: ETF持仓数据补充(98% → 99%+)
-2. **启动方向2**: NeoData集成到pipeline.py
-3. **数据质量验证**: 运行完整pipeline，生成最新数据完整性报告
+1. **完成数据质量提升**: year_3_return 79.9% → 99%, annual_vol 94.6% → 99%
+2. **NeoData集成到pipeline**: 补充volume/custodian字段
+3. **UI功能增强**: 筛选/对比/排行榜
 
 ### 中期计划 (接下来3-5天)
 
-1. **完成方向2**: NeoData全量集成
-2. **启动方向4**: 平台前端功能增强
-3. **三地同步方案**: 落地PythonAnywhere部署方案
+1. **完成NeoData全量集成**
+2. **三地同步方案落地**: PythonAnywhere部署流程优化
+3. **新功能开发**: ETF排行榜/新品监控/定投计算器
 
 ---
+
+## 🆕 Wind 数据源集成 (15:25)
+
+### 完成内容
+- **Pipeline v3**：新增 `enrich_wind` 步骤（`sync → enrich → enrich_wind → calc → build → deploy`）
+- **WindFetcher**（`fetchers/wind_fetcher.py`）：查询即存储 + 缓存降级
+- **新增4字段**：custodian、benchmark、management_fee_rate、custody_fee_rate
+- **架构设计**：`ARCHITECTURE.md` 定义 SST 原则和数据流
+
+### 关键决策
+- Wind 数据独立存储为 `etf_wind_data.json`（与盈米模式一致）
+- 首次运行限100只（~667积分），全部1470只需约10天
+- 详见 `MILESTONE_20260521.md`
 
 ## 📎 附件
 
@@ -231,6 +251,9 @@
 | 数据吸收器 | `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/data_absorber.py` | 统一数据吸收器 |
 | 迁移脚本 | `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/migrate_to_table_filling.py` | 数据迁移脚本 |
 | 风险指标 | `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/calc_risk_metrics.py` | 风险指标计算 |
+| Wind Fetcher | `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/fetchers/wind_fetcher.py` | Wind API 封装 |
+| 架构设计 | `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/ARCHITECTURE.md` | 架构设计文档 |
+| 里程碑 | `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/MILESTONE_20260521.md` | 今日里程碑总结 |
 
 ### Git提交历史
 
@@ -242,16 +265,20 @@ a6b1ca7 feat: 为 etf_standard_data.json 所有记录添加 _meta 字段追踪
 e0c2d32 feat: 新增 calc_risk_metrics.py 计算风险指标
 88eb051 fix: year_3_return 空值处理，覆盖率从 75.4% 提升至 99.0%
 200c0bc TASK-C-03: 数据完整性优化 + Table-Filling 架构落地
+e0b3a97 feat: 补充14只ETF持仓数据，持仓覆盖率98.9%
+b35b204 docs: 添加经验教训文档和.gitignore备份文件规则
+46f3f8a fix: 缺失值显示'-'而非'0'，修复||0误导问题
 ```
 
 ---
 
 ## 📝 备注
 
-- 本文档由AI Assistant自动生成，基于会话记录和系统状态
+- 本文档由AI Assistant自动生成并更新，基于会话记录和系统状态
 - 数据来源: `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/etf_standard_data.json`
 - Git仓库: `/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/.git`
 - 生成时间: 2026-05-21 09:29:23 GMT+8
+- 更新时间: 2026-05-21 12:40:00 GMT+8
 
 ---
 
