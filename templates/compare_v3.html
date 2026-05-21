@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF 专业对比 · Pro Terminal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #080d18;
+            --surface: #101829;
+            --surface2: #162032;
+            --border: #1e2d45;
+            --text: #a8b8cc;
+            --text2: #6b7d99;
+            --accent: #00d4ff;
+            --accent2: #7c3aed;
+            --green: #10b981;
+            --red: #ef4444;
+            --gold: #f59e0b;
+            --gold2: #d97706;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,212,255,0.06), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.04), transparent);
+        }
+        
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(180deg, rgba(16,24,41,0.95), rgba(8,13,24,0.98));
+            backdrop-filter: blur(20px) saturate(1.5);
+            border-bottom: 1px solid var(--border);
+            padding: 0 28px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-size: 19px; font-weight: 800; letter-spacing: -0.5px; }
+        .logo span:first-child { color: #fff; }
+        .logo .dot { color: var(--accent); margin: 0 1px; }
+        .logo .pro {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header-actions { display: flex; gap: 10px; }
+        .btn {
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+            text-decoration: none;
+        }
+        .btn-back { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+        .btn-back:hover { background: #1e3048; color: #fff; }
+        .btn-export {
+            background: linear-gradient(135deg, var(--accent), #0088cc);
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(0,212,255,0.2);
+        }
+        .btn-export:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,212,255,0.35); }
+        .export-dropdown { position: relative; display: inline-flex; }
+        .export-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 6px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 6px;
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            z-index: 200;
+        }
+        .export-menu.show { display: block; }
+        .export-menu-item {
+            padding: 10px 14px;
+            border-radius: 7px;
+            font-size: 13px;
+            color: var(--text);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .export-menu-item:hover { background: rgba(0,212,255,0.1); color: var(--accent); }
+
+        /* ── Container ── */
+        .container { max-width: 1480px; margin: 0 auto; padding: 24px 20px 60px; }
+
+        /* ── Hero Banner ── */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(124,58,237,0.06));
+            border: 1px solid rgba(0,212,255,0.12);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .hero-tags { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .hero-tag:hover { border-color: var(--accent); transform: translateY(-1px); }
+        .hero-tag .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .hero-summary { display: flex; gap: 28px; }
+        .hero-stat { text-align: center; }
+        .hero-stat .val {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-stat .lbl { font-size: 11px; color: var(--text2); margin-top: 2px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ── Trophy Row ── */
+        .trophy-section { margin-bottom: 24px; }
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+        .trophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+        }
+        .trophy-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .trophy-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
+        .trophy-card .icon { font-size: 28px; margin-bottom: 8px; }
+        .trophy-card .label { font-size: 12px; color: var(--text2); margin-bottom: 6px; }
+        .trophy-card .winner {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .trophy-card .winner .badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .badge-gold { background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.15)); color: var(--gold); border: 1px solid rgba(245,158,11,0.3); }
+        .badge-silver { background: rgba(148,163,184,0.12); color: #94a3b8; border: 1px solid rgba(148,163,184,0.25); }
+        .badge-bronze { background: rgba(180,130,80,0.12); color: #d4a574; border: 1px solid rgba(180,130,80,0.2); }
+        .trophy-card .value { font-size: 22px; font-weight: 800; margin-top: 6px; }
+        .trophy-card .value.pos { color: var(--green); }
+        .trophy-card .value.neg { color: var(--red); }
+        .trophy-card .glow {
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,212,255,0.04), transparent);
+            pointer-events: none;
+        }
+        .trophy-card.gold { border-color: rgba(245,158,11,0.25); }
+        .trophy-card.gold .glow { background: radial-gradient(circle, rgba(245,158,11,0.06), transparent); }
+
+        /* ── Ring Cards ── */
+        .ring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .ring-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .ring-card .ring-label { font-size: 12px; color: var(--text2); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ring-container { position: relative; width: 100px; height: 100px; margin: 0 auto 8px; }
+        .ring-container svg { transform: rotate(-90deg); }
+        .ring-bg { fill: none; stroke: var(--border); stroke-width: 8; }
+        .ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .ring-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .ring-center .big { font-size: 20px; font-weight: 800; color: #fff; }
+        .ring-center .unit { font-size: 10px; color: var(--text2); }
+        .ring-card .etf-name { font-size: 12px; color: var(--text); margin-top: 4px; font-weight: 600; }
+
+        /* ── Charts Grid ── */
+        .chart-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 22px;
+        }
+        .chart-block h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chart-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        .chart-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            position: relative;
+        }
+        .chart-box h4 { font-size: 12px; color: var(--text2); margin-bottom: 12px; font-weight: 600; letter-spacing: 0.3px; }
+        .chart-box canvas { max-height: 240px; }
+        .chart-box .best-tag {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(0,212,255,0.1);
+            color: var(--accent);
+            border: 1px solid rgba(0,212,255,0.2);
+        }
+
+        /* ── Heatmap Table ── */
+        .heatmap-section { margin-bottom: 22px; }
+        .heatmap-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+        .heatmap-table thead th {
+            background: var(--surface2);
+            padding: 14px 16px;
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 60px;
+            z-index: 5;
+        }
+        .heatmap-table thead th:first-child { text-align: left; border-radius: 10px 0 0 0; }
+        .heatmap-table thead th:last-child { border-radius: 0 10px 0 0; }
+        .heatmap-table tbody td {
+            padding: 12px 16px;
+            text-align: center;
+            border-bottom: 1px solid rgba(30,45,69,0.6);
+            transition: all 0.2s;
+        }
+        .heatmap-table tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text2);
+            font-size: 12px;
+            letter-spacing: 0.3px;
+        }
+        .heatmap-table tbody tr:hover td { background: rgba(0,212,255,0.03); }
+        .heatmap-table tbody tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+        .heatmap-table tbody tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+        .heat-cell { font-weight: 700; }
+        .heat-cell.intensity-5 { background: rgba(16,185,129,0.18); color: #34d399; }
+        .heat-cell.intensity-4 { background: rgba(16,185,129,0.10); color: #6ee7b7; }
+        .heat-cell.intensity-3 { background: rgba(245,158,11,0.10); color: #fbbf24; }
+        .heat-cell.intensity-2 { background: rgba(239,68,68,0.06); color: #f87171; }
+        .heat-cell.intensity-1 { background: rgba(239,68,68,0.12); color: #fca5a5; }
+        .heat-cell.best-cell {
+            box-shadow: inset 0 0 0 2px var(--accent);
+            border-radius: 6px;
+        }
+
+        /* ── Radar ── */
+        .radar-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .radar-wrapper h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .radar-wrapper canvas { max-height: 420px; }
+
+        /* ── Footer Actions ── */
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 20px; }
+            .hero-summary { width: 100%; justify-content: space-around; }
+            .chart-row { grid-template-columns: 1fr; }
+            .trophy-grid { grid-template-columns: repeat(2, 1fr); }
+            .ring-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeUp 0.5s ease-out both; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><span>ETF</span><span class="dot">·</span><span class="pro">Pro Terminal</span></div>
+        <div class="header-actions">
+            <a href="/" class="btn btn-back">← 返回列表</a>
+            <div class="export-dropdown" id="exportDropdown">
+                <button class="btn btn-export" onclick="toggleExportMenu()">📸 导出 ▾</button>
+                <div class="export-menu" id="exportMenu">
+                    <div class="export-menu-item" onclick="screenCapture()">🖥️ 屏幕截图</div>
+                    <div class="export-menu-item" onclick="openPrintPage()">🖨️ 打印版页面（新标签页）</div>
+                    <div class="export-menu-item" onclick="window.print()">🖨️ 直接打印当前页</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="reportArea">
+        <!-- Hero Banner -->
+        <div class="hero animate-in" style="animation-delay:0s">
+            <div class="hero-tags" id="heroTags"></div>
+            <div class="hero-summary" id="heroSummary"></div>
+        </div>
+
+        <!-- Trophy Section -->
+        <div class="trophy-section animate-in" style="animation-delay:0.1s">
+            <div class="section-title">🏆 指标冠军榜</div>
+            <div class="trophy-grid" id="trophyGrid"></div>
+        </div>
+
+        <!-- Risk Rings -->
+        <div class="animate-in" style="animation-delay:0.2s">
+            <div class="section-title">⭕ 风险收益概览</div>
+            <div class="ring-grid" id="ringGrid"></div>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-block animate-in" style="animation-delay:0.25s">
+            <h3>📊 多维对比</h3>
+            <div class="chart-row">
+                <div class="chart-box">
+                    <h4>收益率对比</h4>
+                    <canvas id="chartReturn"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h4>规模 & 流动性</h4>
+                    <canvas id="chartScaleVol"></canvas>
+                </div>
+            </div>
+            <div class="chart-row" style="margin-top:16px">
+                <div class="chart-box">
+                    <h4>夏普比率</h4>
+                    <canvas id="chartSharpe"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h4>最大回撤</h4>
+                    <canvas id="chartDrawdown"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Radar -->
+        <div class="radar-wrapper animate-in" style="animation-delay:0.3s">
+            <h3>🎯 综合雷达</h3>
+            <canvas id="radarChart"></canvas>
+        </div>
+
+        <!-- Heatmap Table -->
+        <div class="heatmap-section animate-in" style="animation-delay:0.35s">
+            <div class="section-title">📋 详细数据（热力图）</div>
+            <div style="overflow-x:auto">
+                <table class="heatmap-table" id="heatmapTable"></table>
+            </div>
+        </div>
+
+        <div class="footer-actions animate-in" style="animation-delay:0.4s">
+            <div class="export-dropdown">
+                <button class="btn btn-export" onclick="toggleExportMenuFooter()">📸 导出 ▾</button>
+                <div class="export-menu" id="exportMenuFooter">
+                    <div class="export-menu-item" onclick="screenCapture()">🖥️ 屏幕截图</div>
+                    <div class="export-menu-item" onclick="openPrintPage()">🖨️ 打印版页面（新标签页）</div>
+                    <div class="export-menu-item" onclick="window.print()">🖨️ 直接打印当前页</div>
+                </div>
+            </div>
+            <a href="/" class="btn btn-back">返回 ETF 列表</a>
+        </div>
+    </div>
+
+    <script>
+        const etfs = {{ etfs|tojson|safe }};
+        const colors = ['#00d4ff', '#f59e0b', '#10b981', '#7c3aed', '#ec4899', '#06b6d4'];
+        const charts = [];
+
+        function fmt(v, d=2, unit='') {
+            if (v === undefined || v === null || v === '' || v === 0 && typeof v !== 'number') return '-';
+            const s = typeof v === 'number' ? v.toFixed(d) : v;
+            return s + unit;
+        }
+        function fmtSigned(v, d=2, unit='%') {
+            if (v === undefined || v === null) return '-';
+            const p = typeof v === 'number' ? (v >= 0 ? '+' : '') + v.toFixed(d) : v;
+            return p + unit;
+        }
+
+        function best(etfs, key, reverse=false) {
+            let vals = etfs.map(e => e[key]).filter(v => typeof v === 'number');
+            if (!vals.length) return null;
+            return reverse ? Math.min(...vals) : Math.max(...vals);
+        }
+
+        function rank(etfs, key, reverse=false) {
+            const sorted = [...etfs].map((e, i) => ({ idx: i, val: e[key] }))
+                .filter(x => typeof x.val === 'number')
+                .sort((a, b) => reverse ? a.val - b.val : b.val - a.val);
+            return sorted;
+        }
+
+        function openPrintPage() {
+            const codes = etfs.map(e => e.code).join(',');
+            window.open('/compare/v3/print?codes=' + codes, '_blank');
+            document.getElementById('exportMenu').classList.remove('show');
+            document.getElementById('exportMenuFooter').classList.remove('show');
+        }
+        function init() {
+            if (!etfs.length) return;
+
+            // ── Hero Banner ──
+            document.getElementById('heroTags').innerHTML = etfs.map((e, i) => `
+                <div class="hero-tag">
+                    <span class="dot" style="background:${colors[i]}"></span>
+                    <span>${e.code} ${e.name?.slice(0,16)}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('heroSummary').innerHTML = `
+                <div class="hero-stat"><div class="val">${etfs.length}</div><div class="lbl">对比 ETF</div></div>
+                <div class="hero-stat"><div class="val">${fmt(etfs.reduce((s,e)=>s+(e.scale||0),0),1,'亿')}</div><div class="lbl">合计规模</div></div>
+                <div class="hero-stat"><div class="val">${fmt(etfs.reduce((s,e)=>s+(e.year_1_return||0),0)/etfs.length,2,'%')}</div><div class="lbl">平均收益</div></div>
+            `;
+
+            // ── Trophy Section ──
+            const trophies = [
+                { icon: '🚀', label: '最高收益（1年）', key: 'year_1_return', unit: '%', fmt: v => fmtSigned(v), posNeg: true },
+                { icon: '🛡️', label: '最低回撤', key: 'max_drawdown', unit: '%', fmt: v => fmt(v,2,'%'), reverse: true, posNeg: false },
+                { icon: '⭐', label: '最佳夏普', key: 'sharpe_ratio', unit: '', fmt: v => fmt(v,2), posNeg: false },
+                { icon: '🏦', label: '最大规模', key: 'scale', unit: '亿', fmt: v => fmt(v,1,'亿'), posNeg: false },
+                { icon: '💧', label: '最高流动性', key: 'volume', unit: '亿', fmt: v => fmt(v,1,'亿'), posNeg: false },
+                { icon: '📉', label: '最低波动率', key: 'annual_vol', unit: '%', fmt: v => fmt(v,2,'%'), reverse: true, posNeg: false },
+            ];
+
+            document.getElementById('trophyGrid').innerHTML = trophies.map(t => {
+                const ranks = rank(etfs, t.key, t.reverse);
+                const top3 = ranks.slice(0, 3);
+                const badges = ['badge-gold', 'badge-silver', 'badge-bronze'];
+                const medals = ['🥇', '🥈', '🥉'];
+                const colors_cls = ['gold', '', ''];
+
+                let html = `<div class="trophy-card ${top3.length ? colors_cls[0] : ''}">
+                    <div class="glow"></div>
+                    <div class="icon">${t.icon}</div>
+                    <div class="label">${t.label}</div>`;
+                top3.forEach((r, idx) => {
+                    const etf = etfs[r.idx];
+                    html += `<div class="winner" style="margin-top:${idx===0?0:4}px">
+                        <span class="badge ${badges[idx]}">${medals[idx]}</span>
+                        <span>${etf.code} ${etf.name?.slice(0,10)}</span>
+                        <span style="margin-left:auto;font-weight:800;font-size:14px;color:${t.posNeg?(r.val>=0?'var(--green)':'var(--red)'):'#fff'}">${t.fmt(r.val)}</span>
+                    </div>`;
+                });
+                html += '</div>';
+                return html;
+            }).join('');
+
+            // ── Ring Cards ──
+            const ringMetrics = [
+                { key: 'year_1_return', label: '1年收益', unit: '%', max: 80, color: '#10b981', signed: true },
+                { key: 'sharpe_ratio', label: '夏普比率', unit: '', max: 3, color: '#00d4ff', signed: false },
+                { key: 'max_drawdown', label: '最大回撤', unit: '%', max: 60, color: '#ef4444', signed: false, invert: true },
+                { key: 'annual_vol', label: '年化波动', unit: '%', max: 40, color: '#f59e0b', signed: false },
+            ];
+
+            document.getElementById('ringGrid').innerHTML = '';
+            ringMetrics.forEach(rm => {
+                let row = '<div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">';
+                etfs.forEach((e, i) => {
+                    const raw = e[rm.key] || 0;
+                    const val = typeof raw === 'number' ? raw : 0;
+                    const absVal = Math.abs(val);
+                    const pct = Math.min(absVal / rm.max, 1);
+                    const circumference = 2 * Math.PI * 42;
+                    const offset = circumference * (1 - pct);
+                    const displayVal = rm.signed ? (val >= 0 ? '+' : '') + val.toFixed(1) : val.toFixed(2);
+                    row += `
+                    <div class="ring-card">
+                        <div class="ring-label">${rm.label} · ${e.code}</div>
+                        <div class="ring-container">
+                            <svg width="100" height="100" viewBox="0 0 100 100">
+                                <circle class="ring-bg" cx="50" cy="50" r="42"/>
+                                <circle class="ring-fill" cx="50" cy="50" r="42"
+                                    stroke="${rm.invert ? (pct > 0.7 ? '#ef4444' : pct > 0.4 ? '#f59e0b' : '#10b981') : colors[i]}"
+                                    stroke-dasharray="${circumference}"
+                                    stroke-dashoffset="${circumference}"
+                                    data-offset="${offset}"
+                                    style="transition: stroke-dashoffset 1.2s ease-out"/>
+                            </svg>
+                            <div class="ring-center">
+                                <div class="big" style="color:${rm.signed ? (val>=0?'var(--green)':'var(--red)') : '#fff'}">${displayVal}</div>
+                                <div class="unit">${rm.unit}</div>
+                            </div>
+                        </div>
+                        <div class="etf-name">${e.name?.slice(0,12) || e.code}</div>
+                    </div>`;
+                });
+                row += '</div>';
+                document.getElementById('ringGrid').innerHTML += row;
+            });
+
+            // Animate rings after render
+            setTimeout(() => {
+                document.querySelectorAll('.ring-fill').forEach(el => {
+                    el.style.strokeDashoffset = el.dataset.offset;
+                });
+            }, 200);
+
+            // ── Bar Charts ──
+            const chartOptions = (title, unit) => ({
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#101829',
+                        titleColor: '#fff',
+                        bodyColor: '#a8b8cc',
+                        borderColor: '#1e2d45',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        callbacks: { label: ctx => ctx.raw + ' ' + unit }
+                    }
+                },
+                scales: {
+                    x: { ticks: { color: '#6b7d99', font: { size: 11 } }, grid: { display: false } },
+                    y: { ticks: { color: '#6b7d99', font: { size: 10 } }, grid: { color: 'rgba(30,45,69,0.4)' } }
+                }
+            });
+
+            function barChart(id, key, label, unit, isNeg=false) {
+                const canvas = document.getElementById(id);
+                if (!canvas) return;
+                const data = etfs.map(e => e[key] || 0);
+                const chart = new Chart(canvas, {
+                    type: 'bar',
+                    data: {
+                        labels: etfs.map(e => e.code),
+                        datasets: [{
+                            data,
+                            backgroundColor: etfs.map((e, i) => {
+                                const v = e[key] || 0;
+                                if (isNeg) return v >= 0 ? '#10b98199' : '#ef444499';
+                                return colors[i] + 'aa';
+                            }),
+                            borderColor: etfs.map((e, i) => {
+                                const v = e[key] || 0;
+                                if (isNeg) return v >= 0 ? '#10b981' : '#ef4444';
+                                return colors[i];
+                            }),
+                            borderWidth: 1,
+                            borderRadius: 6,
+                            borderSkipped: false,
+                        }]
+                    },
+                    options: chartOptions(label, unit)
+                });
+                charts.push(chart);
+            }
+
+            // Grouped bar for return (1Y + 3Y)
+            const rc = document.getElementById('chartReturn');
+            if (rc) {
+                const c = new Chart(rc, {
+                    type: 'bar',
+                    data: {
+                        labels: etfs.map(e => e.code),
+                        datasets: [
+                            {
+                                label: '近1年',
+                                data: etfs.map(e => e.year_1_return || 0),
+                                backgroundColor: '#00d4ff66',
+                                borderColor: '#00d4ff',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                            },
+                            {
+                                label: '近3年',
+                                data: etfs.map(e => e.year_3_return || 0),
+                                backgroundColor: '#7c3aed66',
+                                borderColor: '#7c3aed',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { color: '#8a93a8', usePointStyle: true, pointStyleWidth: 8 } },
+                            tooltip: { backgroundColor: '#101829', titleColor: '#fff', bodyColor: '#a8b8cc', borderColor: '#1e2d45', borderWidth: 1, cornerRadius: 8, callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw.toFixed(2) + '%' } }
+                        },
+                        scales: {
+                            x: { ticks: { color: '#6b7d99' }, grid: { display: false } },
+                            y: { ticks: { color: '#6b7d99', callback: v => v + '%' }, grid: { color: 'rgba(30,45,69,0.4)' } }
+                        }
+                    }
+                });
+                charts.push(c);
+            }
+
+            // Scale + Volume grouped
+            const sv = document.getElementById('chartScaleVol');
+            if (sv) {
+                const c = new Chart(sv, {
+                    type: 'bar',
+                    data: {
+                        labels: etfs.map(e => e.code),
+                        datasets: [
+                            {
+                                label: '规模(亿)',
+                                data: etfs.map(e => e.scale || 0),
+                                backgroundColor: '#f59e0b66',
+                                borderColor: '#f59e0b',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                            },
+                            {
+                                label: '日均成交(亿)',
+                                data: etfs.map(e => e.volume || 0),
+                                backgroundColor: '#10b98166',
+                                borderColor: '#10b981',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { color: '#8a93a8', usePointStyle: true } },
+                            tooltip: { backgroundColor: '#101829', titleColor: '#fff', bodyColor: '#a8b8cc', borderColor: '#1e2d45', borderWidth: 1, cornerRadius: 8 }
+                        },
+                        scales: {
+                            x: { ticks: { color: '#6b7d99' }, grid: { display: false } },
+                            y: { ticks: { color: '#6b7d99', callback: v => v + '亿' }, grid: { color: 'rgba(30,45,69,0.4)' } }
+                        }
+                    }
+                });
+                charts.push(c);
+            }
+
+            barChart('chartSharpe', 'sharpe_ratio', '夏普比率', '');
+            barChart('chartDrawdown', 'max_drawdown', '最大回撤(%)', '%');
+
+            // ── Radar ──
+            const radarCanvas = document.getElementById('radarChart');
+            if (radarCanvas) {
+                const radar = new Chart(radarCanvas, {
+                    type: 'radar',
+                    data: {
+                        labels: ['规模', '1年收益', '3年收益', '夏普比率', '抗回撤', '流动性'],
+                        datasets: etfs.map((e, i) => ({
+                            label: e.code + ' ' + (e.name?.slice(0,8) || ''),
+                            data: [
+                                Math.min((e.scale || 0) / 150, 1) * 100,
+                                Math.max(-40, Math.min(60, e.year_1_return || 0)) / 0.6 + 33,
+                                Math.max(-30, Math.min(40, e.year_3_return || 0)) / 0.4 + 37,
+                                Math.max(0, Math.min(2.5, e.sharpe_ratio || 0)) * 40,
+                                Math.max(0, Math.min(50, Math.abs(e.max_drawdown || 50))) / 0.5,
+                                Math.min((e.volume || 0) * 15, 100),
+                            ],
+                            borderColor: colors[i],
+                            backgroundColor: colors[i] + '15',
+                            pointBackgroundColor: colors[i],
+                            pointBorderColor: '#080d18',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            borderWidth: 2,
+                            fill: true,
+                        }))
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { color: '#a8b8cc', font: { size: 12 }, usePointStyle: true, padding: 20 }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: 'rgba(30,45,69,0.5)' },
+                                grid: { color: 'rgba(30,45,69,0.3)' },
+                                pointLabels: { color: '#a8b8cc', font: { size: 12, weight: '600' } },
+                                ticks: { display: false },
+                                suggestedMin: 0,
+                                suggestedMax: 100,
+                            }
+                        }
+                    }
+                });
+                charts.push(radar);
+            }
+
+            // ── Heatmap Table ──
+            const tableMetrics = [
+                { key: 'year_1_return', label: '近1年收益', unit: '%', fmt: v => fmtSigned(v), higherBetter: true },
+                { key: 'year_3_return', label: '近3年收益', unit: '%', fmt: v => fmtSigned(v), higherBetter: true },
+                { key: 'sharpe_ratio', label: '夏普比率', unit: '', fmt: v => fmt(v,2), higherBetter: true },
+                { key: 'max_drawdown', label: '最大回撤', unit: '%', fmt: v => fmt(v,2,'%'), higherBetter: false },
+                { key: 'annual_vol', label: '年化波动率', unit: '%', fmt: v => fmt(v,2,'%'), higherBetter: false },
+                { key: 'scale', label: '规模', unit: '亿', fmt: v => fmt(v,1,'亿'), higherBetter: true },
+                { key: 'volume', label: '日均成交', unit: '亿', fmt: v => fmt(v,1,'亿'), higherBetter: true },
+                { key: 'category', label: '分类', unit: '', fmt: v => v||'-', higherBetter: null },
+                { key: 'issuer_short', label: '发行方', unit: '', fmt: v => v||'-', higherBetter: null },
+            ];
+
+            let tHead = '<thead><tr><th>指标</th>';
+            etfs.forEach((e, i) => {
+                tHead += `<th style="color:${colors[i]}">${e.code}</th>`;
+            });
+            tHead += '</tr></thead><tbody>';
+
+            tableMetrics.forEach(m => {
+                let vals = etfs.map(e => {
+                    const v = e[m.key];
+                    return typeof v === 'number' ? v : null;
+                });
+                let numericVals = vals.filter(v => v !== null);
+                let minVal = numericVals.length ? Math.min(...numericVals) : 0;
+                let maxVal = numericVals.length ? Math.max(...numericVals) : 0;
+                let range = maxVal - minVal || 1;
+                let bestIdx = m.higherBetter !== null ? (m.higherBetter
+                    ? vals.indexOf(Math.max(...numericVals))
+                    : vals.indexOf(Math.min(...numericVals))) : -1;
+
+                tHead += '<tr>';
+                tHead += `<td>${m.label}</td>`;
+                vals.forEach((v, i) => {
+                    let cls = 'heat-cell';
+                    if (m.higherBetter !== null && v !== null) {
+                        let score = m.higherBetter
+                            ? (v - minVal) / range
+                            : (maxVal - v) / range;
+                        let intensity = Math.ceil(score * 5);
+                        cls += ' intensity-' + intensity;
+                    }
+                    if (i === bestIdx && numericVals.length > 1) cls += ' best-cell';
+                    tHead += `<td class="${cls}">${m.fmt(v)}</td>`;
+                });
+                tHead += '</tr>';
+            });
+
+            tHead += '</tbody>';
+            document.getElementById('heatmapTable').innerHTML = tHead;
+        }
+
+        /* 导出菜单切换 */
+        function toggleExportMenu() {
+            const menu = document.getElementById('exportMenu');
+            menu.classList.toggle('show');
+            // 点击其他地方关闭菜单
+            if (menu.classList.contains('show')) {
+                setTimeout(() => {
+                    document.addEventListener('click', function closeMenu(e) {
+                        if (!document.getElementById('exportDropdown').contains(e.target)) {
+                            menu.classList.remove('show');
+                            document.removeEventListener('click', closeMenu);
+                        }
+                    });
+                }, 10);
+            }
+        }
+
+
+        /* 导出菜单切换（页脚） */
+        function toggleExportMenuFooter() {
+            const menu = document.getElementById("exportMenuFooter");
+            menu.classList.toggle("show");
+            if (menu.classList.contains("show")) {
+                setTimeout(() => {
+                    document.addEventListener("click", function closeMenu(e) {
+                        if (!e.target.closest("#exportMenuFooter") && !e.target.closest('[onclick*="toggleExportMenuFooter"]')) {
+                            menu.classList.remove("show");
+                            document.removeEventListener("click", closeMenu);
+                        }
+                    });
+                }, 10);
+            }
+        }
+        init();
+
+        /* ── 屏幕截图（getDisplayMedia API） ── */
+        async function screenCapture() {
+            // 关闭导出菜单
+            document.getElementById('exportMenu') && document.getElementById('exportMenu').classList.remove('show');
+            document.getElementById('exportMenuFooter') && document.getElementById('exportMenuFooter').classList.remove('show');
+
+            // 检查浏览器是否支持
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+                alert('您的浏览器不支持屏幕截图功能，请使用 Chrome/Edge 浏览器，或用系统快捷键截图：\n\nMac: Cmd+Shift+4\nWindows: Win+Shift+S');
+                return;
+            }
+
+            const btnList = document.querySelectorAll('.btn-export');
+            const origTexts = [];
+            btnList.forEach(b => { origTexts.push(b.textContent); b.textContent = '选择屏幕...'; b.disabled = true; });
+
+            try {
+                // 请求用户选择要共享的屏幕/窗口/标签页
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        displaySurface: 'browser',  // 优先浏览器标签页
+                        width: { ideal: 3840 },
+                        height: { ideal: 2160 }
+                    },
+                    preferCurrentTab: true,  // 优先当前标签页（Chrome 104+）
+                    selfBrowserSurface: 'include'  // Chrome 107+
+                });
+
+                // 等一帧确保视频流就绪
+                const track = stream.getVideoTracks()[0];
+                const settings = track.getSettings();
+
+                // 创建 video 元素获取帧
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.muted = true;
+
+                await new Promise((resolve, reject) => {
+                    video.onloadedmetadata = () => {
+                        video.play().then(resolve).catch(reject);
+                    };
+                    video.onerror = reject;
+                });
+
+                // 等一帧确保画面渲染完成
+                await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+                // 绘制到 canvas
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0);
+
+                // 立即停止共享（用户已经不需要了）
+                stream.getTracks().forEach(t => t.stop());
+                video.srcObject = null;
+
+                // 下载
+                canvas.toBlob(function(blob) {
+                    btnList.forEach((b, i) => { b.disabled = false; b.textContent = origTexts[i]; });
+                    if (!blob) { alert('截图生成失败'); return; }
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.download = 'ETF_截图_' + new Date().toISOString().slice(0,10) + '.png';
+                    a.href = url;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
+                }, 'image/png');
+
+            } catch (err) {
+                btnList.forEach((b, i) => { b.disabled = false; b.textContent = origTexts[i]; });
+                if (err.name === 'NotAllowedError') {
+                    // 用户取消了屏幕选择，不需要弹窗提示
+                    console.log('用户取消了屏幕截图');
+                } else {
+                    console.error('截图失败:', err);
+                    alert('截图失败: ' + err.message);
+                }
+            }
+        }
+    </script>
+
+
+</body>
+</html>
