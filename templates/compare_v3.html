@@ -975,7 +975,8 @@
         }
         
         function toggleExportMenu() {
-            const menu = document.getElementById('exportMenu');
+            function toggleExportMenu() {
+    const menu = document.getElementById('exportMenu');
             menu.classList.toggle('show');
             // 点击其他地方关闭菜单
             if (menu.classList.contains('show')) {
