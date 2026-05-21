@@ -35,6 +35,9 @@ Thumbs.db
 *.bak
 *.backup
 *.tmp
+*.json.backup_*
+*_backup_*.json
+*.json.bak
 
 # 虚拟环境
 .env
