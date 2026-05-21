@@ -60,15 +60,16 @@ def code_to_market(code):
     return f"{code}.{suffix}"
 
 
-def get_ohlcs(etf_market, limit=500):
-    """调用非凸 OHLC API 获取ETF历史K线"""
+def get_ohlcs(etf_market, limit=None):
+    """调用非凸 OHLC API 获取ETF历史K线，不传limit则返回全部历史"""
     cmd = [
         sys.executable, str(FT_RUN_PY),
         "etf-ohlcs",
         "--etf", etf_market,
         "--span", "DAY1",
-        "--limit", str(limit),
     ]
+    if limit is not None:
+        cmd.extend(["--limit", str(limit)])
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
     if result.returncode != 0:
         raise RuntimeError(f"API调用失败: {result.stderr[:200]}")

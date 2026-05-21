@@ -170,7 +170,7 @@ def step_enrich():
 
     if codes_need_holdings:
         log(f"  需补充持仓: {len(codes_need_holdings)} 只")
-        for i, code in enumerate(codes_need_holdings[:50]):
+        for i, code in enumerate(codes_need_holdings):
             try:
                 df = ak.fund_portfolio_hold_em(symbol=code, date="2026")
                 if df is not None and len(df) > 0:
@@ -190,7 +190,7 @@ def step_enrich():
                 pass
             time.sleep(0.2)
             if (i + 1) % 20 == 0:
-                log(f"  持仓进度: {i+1}/{min(50, len(codes_need_holdings))}")
+                log(f"  持仓进度: {i+1}/{len(codes_need_holdings)}")
 
     log(f"  持仓补充: +{holdings_added} 只")
     save_json(gen_file, list(gen_map.values()))
