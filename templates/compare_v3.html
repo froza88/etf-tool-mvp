@@ -290,7 +290,7 @@
 
         /* ── Heatmap Table ── */
         .heatmap-section { margin-bottom: 22px; }
-        .heatmap-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+        .heatmap-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; table-layout: fixed; }
         .heatmap-table thead th {
             background: var(--surface2);
             padding: 14px 16px;
@@ -301,6 +301,9 @@
             position: sticky;
             top: 60px;
             z-index: 5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .heatmap-table thead th:first-child { text-align: left; border-radius: 10px 0 0 0; }
         .heatmap-table thead th:last-child { border-radius: 0 10px 0 0; }
@@ -309,6 +312,9 @@
             text-align: center;
             border-bottom: 1px solid rgba(30,45,69,0.6);
             transition: all 0.2s;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .heatmap-table tbody td:first-child {
             text-align: left;
@@ -316,6 +322,7 @@
             color: var(--text2);
             font-size: 12px;
             letter-spacing: 0.3px;
+            width: 140px;
         }
         .heatmap-table tbody tr:hover td { background: rgba(0,212,255,0.03); }
         .heatmap-table tbody tr:last-child td:first-child { border-radius: 0 0 0 10px; }
