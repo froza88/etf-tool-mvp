@@ -113,19 +113,19 @@
             .then(r => r.json())
             .then(etf => {
                 document.getElementById('title').innerHTML = code + ' - ' + (etf.name || '') + (etf.issuer_short ? ' - ' + etf.issuer_short : '');
-                document.getElementById('subtitle').innerHTML = '规模：' + (etf.scale || 0).toFixed(2) + '亿 ｜ 份额：' + (etf.shares || 0).toFixed(2) + '亿份 ｜ 最新价：' + (etf.close || 0).toFixed(3);
+                document.getElementById('subtitle').innerHTML = '规模：' + (etf.scale != null ? etf.scale.toFixed(2) : '-') + '亿 ｜ 份额：' + (etf.shares != null ? etf.shares.toFixed(2) : '-') + '亿份 ｜ 最新价：' + (etf.close != null ? etf.close.toFixed(3) : '-');
 
                 // 用自算数据填充 allData
                 allData = {
                     oneYear: {
-                        '收益能力': etf.year_1_return || 0,
-                        '抗波动能力': etf.annual_vol || 0,
-                        '抗回撤能力': parseFloat((etf.max_drawdown || 0).toFixed(2)),
-                        '投资性价比': etf.sharpe_ratio || 0,
-                        '卡玛值': etf.year_1_return && etf.max_drawdown ? parseFloat((Math.abs(etf.year_1_return / Math.abs(etf.max_drawdown))).toFixed(2)) : 0
+                        '收益能力': etf.year_1_return,
+                        '抗波动能力': etf.annual_vol,
+                        '抗回撤能力': etf.max_drawdown != null ? parseFloat(etf.max_drawdown.toFixed(2)) : null,
+                        '投资性价比': etf.sharpe_ratio,
+                        '卡玛值': etf.year_1_return != null && etf.max_drawdown != null ? parseFloat((Math.abs(etf.year_1_return / Math.abs(etf.max_drawdown))).toFixed(2)) : null
                     },
                     threeYear: {
-                        '收益能力': etf.year_3_return || 0,
+                        '收益能力': etf.year_3_return,
                         '抗波动能力': 0,
                         '抗回撤能力': 0,
                         '投资性价比': 0,
@@ -209,9 +209,9 @@
         function renderMultiChart() {
             const periods = ['oneYear', 'twoYear', 'threeYear', 'fiveYear'];
             const labels = ['近1年', '近2年', '近3年', '近5年'];
-            const rets = periods.map(p => allData[p] ? (allData[p]['收益能力'] || 0) : 0);
-            const vols = periods.map(p => allData[p] ? (allData[p]['抗波动能力'] || 0) : 0);
-            const dds = periods.map(p => allData[p] ? (allData[p]['抗回撤能力'] || 0) : 0);
+            const rets = periods.map(p => allData[p] ? allData[p]['收益能力'] : null);
+            const vols = periods.map(p => allData[p] ? allData[p]['抗波动能力'] : null);
+            const dds = periods.map(p => allData[p] ? allData[p]['抗回撤能力'] : null);
 
             if (multiChart) multiChart.destroy();
 

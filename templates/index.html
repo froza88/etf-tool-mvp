@@ -561,10 +561,10 @@
             
             etfs.forEach(etf => {
                 const isSelected = selectedETFs.includes(etf.code);
-                const y1 = etf.year_1_return || 0;
-                const y3 = etf.year_3_return || 0;
-                const y1Cls = y1 >= 0 ? 'positive' : 'negative';
-                const y1Sign = y1 >= 0 ? '+' : '';
+                const y1 = etf.year_1_return;
+                const y3 = etf.year_3_return;
+                const y1Cls = y1 == null ? '' : (y1 >= 0 ? 'positive' : 'negative');
+                const y1Sign = y1 == null ? '' : (y1 >= 0 ? '+' : '');
                 
                 // 修复：结合issue_date判断是否满3年
                 let listedYears = 0;
@@ -576,8 +576,8 @@
                 }
                 const isEnough3Years = listedYears >= 3;
                 
-                const y3Cls = !isEnough3Years ? '' : (y3 >= 0 ? 'positive' : 'negative');
-                const y3Label = !isEnough3Years ? '不足3年' : (y3 === 0 ? '-' : (y3 >= 0 ? '+' : '') + y3.toFixed(2) + '%');
+                const y3Cls = !isEnough3Years ? '' : (y3 == null ? '' : (y3 >= 0 ? 'positive' : 'negative'));
+                const y3Label = !isEnough3Years ? '不足3年' : (y3 == null ? '-' : (y3 >= 0 ? '+' : '') + y3.toFixed(2) + '%');
                 
                 let badgeClass = 'badge-stock';
                 const typeStr = etf.category || '';
@@ -591,10 +591,10 @@
                 html += `<td><a href="/etf/${etf.code}" class="etf-name">${etf.code} - ${etf.name}${etf.issuer_short ? ' - ' + etf.issuer_short : ''}</a></td>`;
                 html += `<td>${etf.code}</td>`;
                 html += `<td><span class="badge ${badgeClass}">${etf.category || ''}</span></td>`;
-                html += `<td>${(etf.scale || 0).toFixed(2)}</td>`;
-                html += `<td>${(etf.change_pct || 0).toFixed(2)}</td>`;
-                html += `<td>${(etf.close || 0).toFixed(3)}</td>`;
-                html += `<td class="${y1Cls}">${y1Sign}${y1.toFixed(2)}%</td>`;
+                html += `<td>${etf.scale != null ? etf.scale.toFixed(2) : '-'}</td>`;
+                html += `<td>${etf.change_pct != null ? etf.change_pct.toFixed(2) : '-'}</td>`;
+                html += `<td>${etf.close != null ? etf.close.toFixed(3) : '-'}</td>`;
+                html += `<td class="${y1Cls}">${y1 == null ? '-' : y1Sign + y1.toFixed(2) + '%'}</td>`;
                 html += `<td class="${y3Cls}">${y3Label}</td>`;
                 html += `<td><a href="/risk/${etf.code}" style="font-size:13px;">风险</a></td>`;
                 html += `<td><a href="/etf/${etf.code}" style="font-size:13px;">详情 →</a></td>`;
