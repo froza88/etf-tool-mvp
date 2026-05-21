@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETF 专业对比 · Pro Terminal</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <style>
         :root {
             --bg: #080d18;
@@ -101,8 +102,107 @@
         }
         .export-menu-item:hover { background: rgba(0,212,255,0.1); color: var(--accent); }
 
-        /* ── Container ── */
-        .container { max-width: 1480px; margin: 0 auto; padding: 24px 20px 60px; }
+        /* ── Filter Panel ── */
+        .filter-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.5s ease-out both;
+            animation-delay: 0.1s;
+        }
+        .filter-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 100px;
+        }
+        .filter-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .filter-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .filter-chip.active {
+            background: rgba(0,212,255,0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 8px rgba(0,212,255,0.2);
+        }
+        .filter-chip input { display: none; }
+        .filter-chip:hover { border-color: var(--accent); }
+        
+        /* ── Filter Panel ── */
+        .filter-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.5s ease-out both;
+            animation-delay: 0.1s;
+        }
+        .filter-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 100px;
+        }
+        .filter-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .filter-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .filter-chip.active {
+            background: rgba(0,212,255,0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 8px rgba(0,212,255,0.2);
+        }
+        .filter-chip input { display: none; }
+        .filter-chip:hover { border-color: var(--accent); }
 
         /* ── Hero Banner ── */
         .hero {
@@ -391,6 +491,34 @@
     </div>
 
     <div class="container" id="reportArea">
+        <!-- Filter Panel -->
+        <div class="filter-panel">
+            <div class="filter-title">⚙️ 对比指标</div>
+            <div class="filter-options" id="filterOptions">
+                <div class="filter-chip active" onclick="toggleMetric('year_1_return', this)">
+                    <input type="checkbox" checked value="year_1_return"> 1年收益
+                </div>
+                <div class="filter-chip active" onclick="toggleMetric('year_3_return', this)">
+                    <input type="checkbox" checked value="year_3_return"> 3年收益
+                </div>
+                <div class="filter-chip active" onclick="toggleMetric('sharpe_ratio', this)">
+                    <input type="checkbox" checked value="sharpe_ratio"> 夏普比率
+                </div>
+                <div class="filter-chip active" onclick="toggleMetric('max_drawdown', this)">
+                    <input type="checkbox" checked value="max_drawdown"> 最大回撤
+                </div>
+                <div class="filter-chip active" onclick="toggleMetric('scale', this)">
+                    <input type="checkbox" checked value="scale"> 规模
+                </div>
+                <div class="filter-chip active" onclick="toggleMetric('volume', this)">
+                    <input type="checkbox" checked value="volume"> 成交额
+                </div>
+                <div class="filter-chip active" onclick="toggleMetric('annual_vol', this)">
+                    <input type="checkbox" checked value="annual_vol"> 波动率
+                </div>
+            </div>
+        </div>
+
         <!-- Hero Banner -->
         <div class="hero animate-in" style="animation-delay:0s">
             <div class="hero-tags" id="heroTags"></div>
@@ -465,6 +593,10 @@
         const etfs = {{ etfs|tojson|safe }};
         const colors = ['#00d4ff', '#f59e0b', '#10b981', '#7c3aed', '#ec4899', '#06b6d4'];
         const charts = [];
+        let activeMetrics = ['year_1_return', 'year_3_return', 'sharpe_ratio', 'max_drawdown', 'scale', 'volume', 'annual_vol'];
+
+        // 注册 DataLabels 插件
+        Chart.register(ChartDataLabels);
 
         function fmt(v, d=2, unit='') {
             if (v === undefined || v === null || v === '' || v === 0 && typeof v !== 'number') return '-';
@@ -498,6 +630,9 @@
         }
         function init() {
             if (!etfs.length) return;
+
+            createBarCharts();
+            updateCharts();
 
             // ── Hero Banner ──
             document.getElementById('heroTags').innerHTML = etfs.map((e, i) => `
@@ -597,144 +732,97 @@
                 });
             }, 200);
 
-            // ── Bar Charts ──
-            const chartOptions = (title, unit) => ({
+        // ── Bar Charts ──
+        function createBarCharts() {
+            const chartOptions = (unit) => ({
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
+                    datalabels: {
+                        anchor: 'end', align: 'top', color: '#fff',
+                        font: { weight: 'bold', size: 11 },
+                        formatter: (value) => value === 0 ? '' : fmt(value, 2, unit),
+                        offset: 4
+                    },
                     tooltip: {
-                        backgroundColor: '#101829',
-                        titleColor: '#fff',
-                        bodyColor: '#a8b8cc',
-                        borderColor: '#1e2d45',
-                        borderWidth: 1,
-                        cornerRadius: 8,
+                        backgroundColor: '#101829', titleColor: '#fff', bodyColor: '#a8b8cc',
+                        borderColor: '#1e2d45', borderWidth: 1, cornerRadius: 8,
                         callbacks: { label: ctx => ctx.raw + ' ' + unit }
                     }
                 },
                 scales: {
                     x: { ticks: { color: '#6b7d99', font: { size: 11 } }, grid: { display: false } },
-                    y: { ticks: { color: '#6b7d99', font: { size: 10 } }, grid: { color: 'rgba(30,45,69,0.4)' } }
+                    y: { 
+                        ticks: { color: '#6b7d99', font: { size: 10 } }, 
+                        grid: { color: 'rgba(30,45,69,0.4)' },
+                        grace: '15%' 
+                    }
                 }
             });
 
-            function barChart(id, key, label, unit, isNeg=false) {
-                const canvas = document.getElementById(id);
-                if (!canvas) return;
-                const data = etfs.map(e => e[key] || 0);
-                const chart = new Chart(canvas, {
-                    type: 'bar',
-                    data: {
-                        labels: etfs.map(e => e.code),
-                        datasets: [{
-                            data,
-                            backgroundColor: etfs.map((e, i) => {
-                                const v = e[key] || 0;
-                                if (isNeg) return v >= 0 ? '#10b98199' : '#ef444499';
-                                return colors[i] + 'aa';
-                            }),
-                            borderColor: etfs.map((e, i) => {
-                                const v = e[key] || 0;
-                                if (isNeg) return v >= 0 ? '#10b981' : '#ef4444';
-                                return colors[i];
-                            }),
-                            borderWidth: 1,
-                            borderRadius: 6,
-                            borderSkipped: false,
-                        }]
-                    },
-                    options: chartOptions(label, unit)
-                });
-                charts.push(chart);
-            }
-
-            // Grouped bar for return (1Y + 3Y)
+            // 收益率对比 (1Y + 3Y)
             const rc = document.getElementById('chartReturn');
             if (rc) {
-                const c = new Chart(rc, {
+                if (charts['return']) charts['return'].destroy();
+                charts['return'] = new Chart(rc, {
                     type: 'bar',
                     data: {
                         labels: etfs.map(e => e.code),
                         datasets: [
-                            {
-                                label: '近1年',
-                                data: etfs.map(e => e.year_1_return || 0),
-                                backgroundColor: '#00d4ff66',
-                                borderColor: '#00d4ff',
-                                borderWidth: 1,
-                                borderRadius: 5,
-                            },
-                            {
-                                label: '近3年',
-                                data: etfs.map(e => e.year_3_return || 0),
-                                backgroundColor: '#7c3aed66',
-                                borderColor: '#7c3aed',
-                                borderWidth: 1,
-                                borderRadius: 5,
-                            }
+                            { label: '近1年', data: etfs.map(e => e.year_1_return || 0), backgroundColor: '#00d4ff66', borderColor: '#00d4ff', borderWidth: 1, borderRadius: 5 },
+                            { label: '近3年', data: etfs.map(e => e.year_3_return || 0), backgroundColor: '#7c3aed66', borderColor: '#7c3aed', borderWidth: 1, borderRadius: 5 }
                         ]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { labels: { color: '#8a93a8', usePointStyle: true, pointStyleWidth: 8 } },
-                            tooltip: { backgroundColor: '#101829', titleColor: '#fff', bodyColor: '#a8b8cc', borderColor: '#1e2d45', borderWidth: 1, cornerRadius: 8, callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw.toFixed(2) + '%' } }
-                        },
-                        scales: {
-                            x: { ticks: { color: '#6b7d99' }, grid: { display: false } },
-                            y: { ticks: { color: '#6b7d99', callback: v => v + '%' }, grid: { color: 'rgba(30,45,69,0.4)' } }
-                        }
-                    }
+                    options: { ...chartOptions('%'), plugins: { ...chartOptions().plugins, legend: { display: true, labels: { color: '#8a93a8', usePointStyle: true } } } }
                 });
-                charts.push(c);
             }
 
-            // Scale + Volume grouped
+            // 规模 + 流动性
             const sv = document.getElementById('chartScaleVol');
             if (sv) {
-                const c = new Chart(sv, {
+                if (charts['scale']) charts['scale'].destroy();
+                charts['scale'] = new Chart(sv, {
                     type: 'bar',
                     data: {
                         labels: etfs.map(e => e.code),
                         datasets: [
-                            {
-                                label: '规模(亿)',
-                                data: etfs.map(e => e.scale || 0),
-                                backgroundColor: '#f59e0b66',
-                                borderColor: '#f59e0b',
-                                borderWidth: 1,
-                                borderRadius: 5,
-                            },
-                            {
-                                label: '日均成交(亿)',
-                                data: etfs.map(e => e.volume || 0),
-                                backgroundColor: '#10b98166',
-                                borderColor: '#10b981',
-                                borderWidth: 1,
-                                borderRadius: 5,
-                            }
+                            { label: '规模(亿)', data: etfs.map(e => e.scale || 0), backgroundColor: '#f59e0b66', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 5 },
+                            { label: '日均成交(亿)', data: etfs.map(e => e.volume || 0), backgroundColor: '#10b98166', borderColor: '#10b981', borderWidth: 1, borderRadius: 5 }
                         ]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { labels: { color: '#8a93a8', usePointStyle: true } },
-                            tooltip: { backgroundColor: '#101829', titleColor: '#fff', bodyColor: '#a8b8cc', borderColor: '#1e2d45', borderWidth: 1, cornerRadius: 8 }
-                        },
-                        scales: {
-                            x: { ticks: { color: '#6b7d99' }, grid: { display: false } },
-                            y: { ticks: { color: '#6b7d99', callback: v => v + '亿' }, grid: { color: 'rgba(30,45,69,0.4)' } }
-                        }
-                    }
+                    options: { ...chartOptions('亿'), plugins: { ...chartOptions().plugins, legend: { display: true, labels: { color: '#8a93a8', usePointStyle: true } } } }
                 });
-                charts.push(c);
             }
 
-            barChart('chartSharpe', 'sharpe_ratio', '夏普比率', '');
-            barChart('chartDrawdown', 'max_drawdown', '最大回撤(%)', '%');
+            // 夏普比率
+            const sc = document.getElementById('chartSharpe');
+            if (sc) {
+                if (charts['sharpe']) charts['sharpe'].destroy();
+                charts['sharpe'] = new Chart(sc, {
+                    type: 'bar',
+                    data: {
+                        labels: etfs.map(e => e.code),
+                        datasets: [{ label: '夏普比率', data: etfs.map(e => e.sharpe_ratio || 0), backgroundColor: etfs.map((e,i) => colors[i] + 'aa'), borderColor: etfs.map((e,i) => colors[i]), borderWidth: 1, borderRadius: 6 }]
+                    },
+                    options: chartOptions('')
+                });
+            }
+
+            // 最大回撤
+            const dc = document.getElementById('chartDrawdown');
+            if (dc) {
+                if (charts['drawdown']) charts['drawdown'].destroy();
+                charts['drawdown'] = new Chart(dc, {
+                    type: 'bar',
+                    data: {
+                        labels: etfs.map(e => e.code),
+                        datasets: [{ label: '最大回撤', data: etfs.map(e => e.max_drawdown || 0), backgroundColor: '#ef4444aa', borderColor: '#ef4444', borderWidth: 1, borderRadius: 6 }]
+                    },
+                    options: chartOptions('%')
+                });
+            }
+        }
 
             // ── Radar ──
             const radarCanvas = document.getElementById('radarChart');
@@ -840,8 +928,48 @@
             document.getElementById('heatmapTable').innerHTML = tHead;
         }
 
-        /* 导出菜单切换 */
-        function toggleExportMenu() {
+        function toggleMetric(metric, el) {
+            el.classList.toggle('active');
+            const cb = el.querySelector('input');
+            cb.checked = !cb.checked;
+
+            if (cb.checked) {
+                if (!activeMetrics.includes(metric)) activeMetrics.push(metric);
+            } else {
+                activeMetrics = activeMetrics.filter(m => m !== metric);
+            }
+            
+            updateCharts();
+        }
+
+        function updateCharts() {
+            // 隐藏/显示对应的 Chart-Box
+            const mapping = {
+                'year_1_return': 'chartReturn',
+                'year_3_return': 'chartReturn',
+                'scale': 'chartScaleVol',
+                'volume': 'chartScaleVol',
+                'sharpe_ratio': 'chartSharpe',
+                'max_drawdown': 'chartDrawdown',
+                'annual_vol': 'chartVol' // Note: We need to create this chart
+            };
+
+            const visibleCharts = new Set();
+            activeMetrics.forEach(m => {
+                if (mapping[m]) visibleCharts.add(mapping[m]);
+            });
+
+            // 这里简单处理：所有 chart-box 初始可见，根据 activeMetrics 切换 display
+            // 实际上我们会动态重新渲染或者控制可见性
+            document.querySelectorAll('.chart-box').forEach(box => {
+                const id = box.querySelector('canvas')?.id;
+                if (!id) return;
+                
+                // 检查该图表对应的任何指标是否在 activeMetrics 中
+                const isVisible = Object.entries(mapping).some(([m, chartId]) => chartId === id && activeMetrics.includes(m));
+                box.style.display = isVisible ? 'block' : 'none';
+            });
+        }
             const menu = document.getElementById('exportMenu');
             menu.classList.toggle('show');
             // 点击其他地方关闭菜单
