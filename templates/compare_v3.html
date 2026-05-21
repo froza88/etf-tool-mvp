@@ -350,31 +350,33 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 24px;
-            margin-bottom: 22px;
+            margin-bottom: 32px;
         }
         .chart-block h3 {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .chart-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 32px;
         }
         .chart-box {
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 16px;
+            padding: 24px;
             position: relative;
+            width: 100%;
         }
-        .chart-box h4 { font-size: 12px; color: var(--text2); margin-bottom: 12px; font-weight: 600; letter-spacing: 0.3px; }
-        .chart-box canvas { max-height: 240px; }
+        .chart-box h4 { font-size: 14px; color: #fff; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.3px; }
+        .chart-box canvas { max-height: 320px; width: 100% !important; }
         .chart-box .best-tag {
             position: absolute;
             top: 12px;
