@@ -65,23 +65,36 @@
         /* Trophy */
         .section-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:8px; letter-spacing:0.3px; }
         .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--border), transparent); }
-        .trophy-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
-        .trophy-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px; position:relative; overflow:hidden; transition:all 0.3s; }
+        .trophy-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+        .trophy-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:0; position:relative; overflow:hidden; transition:all 0.3s; display:flex; flex-direction:column; }
         .trophy-card:hover { border-color:rgba(0,212,255,0.3); transform:translateY(-2px); }
-        .trophy-card .icon { font-size:28px; margin-bottom:8px; }
-        .trophy-card .label { font-size:12px; color:var(--text2); margin-bottom:6px; }
-        .trophy-card .winner { font-size:15px; font-weight:700; color:#fff; display:flex; align-items:center; gap:8px; }
-        .trophy-card .badge { font-size:10px; padding:2px 8px; border-radius:4px; font-weight:700; letter-spacing:0.5px; }
-        .badge-gold { background:linear-gradient(135deg, rgba(245,158,11,0.25), rgba(217,119,6,0.15)); color:var(--gold); border:1px solid rgba(245,158,11,0.3); }
-        .badge-silver { background:rgba(148,163,184,0.12); color:#94a3b8; border:1px solid rgba(148,163,184,0.25); }
-        .badge-bronze { background:rgba(180,130,80,0.12); color:#d4a574; border:1px solid rgba(180,130,80,0.2); }
+        .trophy-winner-bar { padding:12px 16px; display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; border-radius:14px 14px 0 0; }
+        .trophy-winner-bar .winner-code { font-size:15px; font-weight:800; }
+        .trophy-winner-bar .winner-name { font-size:11px; opacity:0.9; margin-left:4px; }
+        .trophy-winner-bar .winner-value { margin-left:auto; font-size:14px; font-weight:800; }
+        .trophy-body { padding:16px; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .trophy-insight { font-size:11px; color:var(--text2); text-align:center; margin-top:8px; padding-top:8px; border-top:1px solid var(--border); width:100%; }
+        .trophy-card .icon { font-size:20px; margin-bottom:0; }
+        .trophy-card .label { font-size:12px; font-weight:700; color:#fff; }
         .trophy-card .glow { position:absolute; top:-50%; right:-50%; width:100%; height:100%; background:radial-gradient(circle, rgba(0,212,255,0.04), transparent); pointer-events:none; }
         .trophy-card.gold { border-color:rgba(245,158,11,0.25); }
-        .trophy-card.gold .glow { background:radial-gradient(circle, rgba(245,158,11,0.06), transparent); }
 
         /* Ring */
         .ring-container { position:relative; margin:0 auto 8px; }
-        .ring-fill { fill:none; stroke-width:5; stroke-linecap:round; transition:stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .ring-fill { fill:none; stroke-linecap:round; transition:stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Trend Chart */
+        .trend-section { margin-bottom:28px; }
+        .trend-chart-container { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px; position:relative; }
+        .trend-chart-container canvas { width:100% !important; height:360px !important; }
+
+        /* Expand button */
+        .expand-btn { display:flex; align-items:center; justify-content:center; gap:8px; margin:16px auto 0; padding:10px 24px;
+            background:var(--surface2); border:1px solid var(--border); border-radius:10px; color:var(--accent); font-size:13px;
+            font-weight:600; cursor:pointer; transition:all 0.2s; }
+        .expand-btn:hover { background:rgba(0,212,255,0.08); border-color:var(--accent); }
+        .expand-btn .arrow { transition:transform 0.3s; display:inline-block; }
+        .expand-btn.expanded .arrow { transform:rotate(180deg); }
 
         /* Heatmap */
         .heatmap-section { margin-bottom:22px; }
@@ -102,11 +115,9 @@
         .heatmap-table tbody tr:last-child td:first-child { border-radius:0 0 0 10px; }
         .heatmap-table tbody tr:last-child td:last-child { border-radius:0 0 10px 0; }
         .heat-cell { font-weight:700; }
-        .heat-cell.intensity-5 { background:rgba(16,185,129,0.18); color:#34d399; }
-        .heat-cell.intensity-4 { background:rgba(16,185,129,0.10); color:#6ee7b7; }
-        .heat-cell.intensity-3 { background:rgba(245,158,11,0.10); color:#fbbf24; }
-        .heat-cell.intensity-2 { background:rgba(239,68,68,0.06); color:#f87171; }
-        .heat-cell.intensity-1 { background:rgba(239,68,68,0.12); color:#fca5a5; }
+        .heat-cell.intensity-high { color:#34d399; }
+        .heat-cell.intensity-mid { color:#fbbf24; }
+        .heat-cell.intensity-low { color:#f87171; }
         .heat-cell.best-cell { font-weight:800; text-decoration:underline; text-decoration-color:var(--accent); text-underline-offset:2px; }
 
         /* Footer */
@@ -158,6 +169,18 @@
         <div class="animate-in" style="animation-delay:0.1s;display:none" id="trophySection">
             <div class="section-title">🏆 ETF 多维对比 · 流动性 → 风险 → 收益</div>
             <div class="trophy-grid" id="trophyGrid"></div>
+            <button class="expand-btn" id="expandBtn" onclick="toggleExpand()">
+                <span>展开全部指标</span>
+                <span class="arrow">▼</span>
+            </button>
+        </div>
+
+        <!-- 走势对比 Section -->
+        <div class="animate-in trend-section" style="animation-delay:0.2s;display:none" id="trendSection">
+            <div class="section-title">📈 收益率走势对比</div>
+            <div class="trend-chart-container">
+                <canvas id="trendChart"></canvas>
+            </div>
         </div>
 
         <!-- Heatmap -->
@@ -184,8 +207,9 @@
     // ==================== GLOBAL STATE ====================
     let etfs = [];
     const colors = ['#00d4ff', '#f59e0b', '#f97316', '#7c3aed', '#ec4899', '#06b6d4'];
-    // codes 来自 URL 参数，由 Jinja2 模板渲染
     const CODES = "{{ codes if codes is defined else '' }}".split(',').map(c => c.trim()).filter(c => c);
+    let __expanded = false;
+    let trendChart = null;
 
     // ==================== UTILS ====================
     Chart.register(ChartDataLabels);
@@ -204,6 +228,18 @@
         return [...etfs].map((e, i) => ({ idx: i, val: e[key] }))
             .filter(x => typeof x.val === 'number')
             .sort((a, b) => reverse ? a.val - b.val : b.val - a.val);
+    }
+    function timeAgo(ts) {
+        if (!ts) return '未知时间';
+        try {
+            var d = new Date(ts.replace('T', ' '));
+            var now = new Date();
+            var diff = (now - d) / 1000;
+            if (diff < 60) return '刚刚更新';
+            if (diff < 3600) return Math.floor(diff / 60) + '分钟前更新';
+            if (diff < 86400) return Math.floor(diff / 3600) + '小时前更新';
+            return Math.floor(diff / 86400) + '天前更新';
+        } catch(e) { return ts.slice(0, 16).replace('T', ' '); }
     }
 
     // ==================== EXPORT MODULE ====================
@@ -261,93 +297,137 @@
     // ==================== UI RENDER MODULES ====================
     function renderHero() {
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
-            return '<div class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span><span>' + e.code + ' ' + (e.name ? e.name.slice(0,12) : '') + (e.issuer_short ? ' · ' + e.issuer_short : '') + '</span></div>';
+            var nameStr = e.code + ' ' + (e.name || '');
+            if (e.issuer_short) nameStr += '(' + e.issuer_short + ')';
+            return '<div class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span><span>' + nameStr + '</span></div>';
         }).join('');
-        var cats = [];
-        etfs.forEach(function(e) { if (e.category && cats.indexOf(e.category) < 0) cats.push(e.category); });
-        var catDisplay = cats.length ? cats.join(' · ') : '—';
+        var dataTime = window.__dataUpdated || '';
+        var timeStr = timeAgo(dataTime);
         document.getElementById('heroSummary').innerHTML =
-            '<div class="hero-stat"><div class="val" style="font-size:20px;background:none;-webkit-text-fill-color:var(--accent)">' + etfs.map(function(e){return e.price?e.price.toFixed(3):'--';}).join(' / ') + '</div><div class="lbl">今日价格</div></div>' +
-            '<div class="hero-stat"><div class="val" style="font-size:20px;background:none;-webkit-text-fill-color:var(--gold)">' + etfs.map(function(e){return e.year_1_return!=null?'+'+e.year_1_return.toFixed(2)+'%':'--';}).join(' / ') + '</div><div class="lbl">近1年收益</div></div>' +
+            '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--accent)">' + timeStr + '</div><div class="lbl">数据更新</div></div>' +
             '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--text)">' + etfs.length + '只</div><div class="lbl">对比数量</div></div>';
+    }
+
+    function toggleExpand() {
+        __expanded = !__expanded;
+        renderCombinedCards();
     }
 
     function renderCombinedCards() {
         var metrics = [
             { icon:'🫧', label:'流动性(规模&成交)', key:'scale', unit:'亿', fmtFn:function(v){return fmt(v,1,'亿');}, reverse:false, max:300, signed:false, dual:true, key2:'volume', max2:20, fmtFn2:function(v){return fmt(v,2,'亿');} },
-            { icon:'🛡️', label:'回撤控制', key:'max_drawdown', unit:'%', fmtFn:function(v){return fmt(Math.abs(v||0),1,'%');}, reverse:true, max:60, signed:false, invert:true },
+            { icon:'🛡️', label:'最大回撤', key:'max_drawdown', unit:'%', fmtFn:function(v){return fmt(v,1,'%');}, reverse:true, max:60, signed:true, invert:true },
             { icon:'📉', label:'年化波动率', key:'annual_vol', unit:'%', fmtFn:function(v){return fmt(v,2,'%');}, reverse:true, max:50, signed:false, invert:true },
-            { icon:'⭐', label:'夏普比率', key:'sharpe_ratio', unit:'', fmtFn:function(v){return fmt(v,2);}, reverse:false, max:3.5, signed:false },
+            { icon:'⚔️', label:'夏普比率', key:'sharpe_ratio', unit:'', fmtFn:function(v){return fmt(v,2);}, reverse:false, max:3.5, signed:false },
             { icon:'📈', label:'近1年收益率', key:'year_1_return', unit:'%', fmtFn:fmtSigned, reverse:false, max:80, signed:true },
-            { icon:'📊', label:'近3年均收益', key:'annual_3y', unit:'%', fmtFn:fmtSigned, reverse:false, max:50, signed:true }
+            { icon:'📊', label:'近3年均收益', key:'annual_3y', unit:'%', fmtFn:fmtSigned, reverse:false, max:50, signed:true },
+            { icon:'💰', label:'溢折价率', key:'premium_discount', unit:'%', fmtFn:function(v){return fmt(v,2,'%');}, reverse:true, max:5, signed:true, invert:false },
+            { icon:'💸', label:'费率(管理+托管)', key:'fee_rate', unit:'%', fmtFn:function(v){return fmt(v,2,'%');}, reverse:true, max:2, signed:false, invert:false },
+            { icon:'🏆', label:'卡玛比率', key:'calmar_ratio', unit:'', fmtFn:function(v){return fmt(v,2);}, reverse:false, max:5, signed:false, invert:false },
+            { icon:'📊', label:'估值分位', key:'valuation_percentile', unit:'%', fmtFn:function(v){return fmt(v,1,'%');}, reverse:true, max:100, signed:false, invert:false },
+            { icon:'💵', label:'近5日净流入', key:'net_inflow_5d', unit:'亿', fmtFn:function(v){return fmt(v,1,'亿');}, reverse:false, max:50, signed:false, invert:false }
         ];
+        if (!__expanded) metrics = metrics.slice(0, 6);
         var html = '';
         metrics.forEach(function(m) {
             var ranks = rank(etfs, m.key, m.reverse);
             var champ = ranks.length ? etfs[ranks[0].idx] : etfs[0];
             var chVal = ranks.length ? ranks[0].val : 0;
+            var champIdx = ranks.length ? ranks[0].idx : 0;
 
+            // 方案A：三层结构 - 顶部赢家bar
             html += '<div class="trophy-card gold"><div class="glow"></div>';
-            var bm = champ.benchmark || '—';
-            if (bm.length > 18) bm = bm.slice(0,16) + '…';
-            html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">';
-            html += '<div><span style="font-size:20px">' + m.icon + '</span> <span style="font-weight:700;color:#fff;font-size:13px">' + m.label + '</span></div>';
-            html += '<span style="font-size:9px;color:var(--text2);background:var(--bg);padding:2px 8px;border-radius:4px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + (champ.benchmark||'') + '">📊 ' + bm + '</span>';
+            html += '<div class="trophy-winner-bar" style="background:' + colors[champIdx] + '22;color:' + colors[champIdx] + '">';
+            html += '<span>🏆 赢家：' + champ.code + '</span>';
+            html += '<span class="winner-name">' + (champ.name || '') + ' 胜出</span>';
+            html += '<span class="winner-value">' + m.fmtFn(chVal) + '</span>';
+            html += '</div>';
+
+            // 中间：图标+标签 + 圈图
+            html += '<div class="trophy-body">';
+            html += '<div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">';
+            html += '<span style="font-size:18px">' + m.icon + '</span>';
+            html += '<span style="font-weight:700;color:#fff;font-size:12px">' + m.label + '</span>';
             html += '</div>';
 
             html += '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:8px">';
             etfs.forEach(function(e, i) {
                 if (m.dual) {
+                    // 双环图：外环=规模，内环=成交额
                     var scaleRaw = e[m.key] || 0;
                     var scaleVal = typeof scaleRaw === 'number' ? scaleRaw : 0;
                     var scalePct = Math.min(Math.abs(scaleVal) / m.max, 1);
                     var volRaw = e[m.key2] || 0;
                     var volVal = typeof volRaw === 'number' ? volRaw : 0;
                     var volPct = Math.min(Math.abs(volVal) / (m.max2 || 20), 1);
-                    var cOuter = 2 * Math.PI * 34;
+                    // 圈图60px：半径23/17，周长2*PI*23≈145，2*PI*17≈107
+                    var cOuter = 2 * Math.PI * 23;
                     var oOuter = cOuter * (1 - scalePct);
-                    var cInner = 2 * Math.PI * 25;
+                    var cInner = 2 * Math.PI * 17;
                     var oInner = cInner * (1 - volPct);
-                    html += '<div style="text-align:center;min-width:70px">' +
-                        '<div class="ring-container" style="width:90px;height:90px;margin:0 auto 4px">' +
-                        '<svg width="90" height="90" viewBox="0 0 90 90">' +
-                        '<circle fill="none" stroke="#1e2d45" stroke-width="6" cx="45" cy="45" r="34"/>' +
-                        '<circle fill="none" stroke="#1e2d45" stroke-width="5" cx="45" cy="45" r="25"/>' +
-                        '<circle class="ring-fill" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" cx="45" cy="45" r="34" ' +
-                        'stroke-dasharray="' + cOuter.toFixed(1) + '" stroke-dashoffset="' + cOuter.toFixed(1) + '" data-offset="' + oOuter.toFixed(1) + '"/>' +
-                        '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="5" stroke-linecap="round" cx="45" cy="45" r="25" ' +
-                        'stroke-dasharray="' + cInner.toFixed(1) + '" stroke-dashoffset="' + cInner.toFixed(1) + '" data-offset="' + oInner.toFixed(1) + '" style="opacity:0.8"/>' +
-                        '</svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">' +
-                        '<span style="font-size:13px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>' +
-                        '<span style="font-size:10px;color:var(--accent);margin-top:-1px">' + m.fmtFn2(volVal) + '</span></div></div>' +
-                        '<span style="font-size:9px;color:#6b7d99;display:block;margin-top:1px">' + e.code.replace(/^(\d{3})/, '$1 ') + '</span></div>';
+                    html += '<div style="text-align:center;min-width:55px">';
+                    html += '<div class="ring-container" style="width:60px;height:60px;margin:0 auto 4px">';
+                    html += '<svg width="60" height="60" viewBox="0 0 60 60">';
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="10" cx="30" cy="30" r="23"/>';
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="8" cx="30" cy="30" r="17"/>';
+                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="10" stroke-linecap="round" cx="30" cy="30" r="23" ';
+                    html += 'stroke-dasharray="' + cOuter.toFixed(1) + '" stroke-dashoffset="' + cOuter.toFixed(1) + '" data-offset="' + oOuter.toFixed(1) + '"/>';
+                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="8" stroke-linecap="round" cx="30" cy="30" r="17" ';
+                    html += 'stroke-dasharray="' + cInner.toFixed(1) + '" stroke-dashoffset="' + cInner.toFixed(1) + '" data-offset="' + oInner.toFixed(1) + '" style="opacity:0.7"/>';
+                    html += '</svg>';
+                    html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
+                    html += '<span style="font-size:11px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>';
+                    html += '<span style="font-size:9px;color:' + colors[i] + ';margin-top:-1px">' + m.fmtFn2(volVal) + '</span>';
+                    html += '</div></div>';
+                    html += '<span style="font-size:8px;color:' + colors[i] + ';display:block;margin-top:2px">' + e.code + '</span>';
+                    html += '</div>';
                 } else {
+                    // 单环图
                     var raw = e[m.key] || 0;
                     var val = typeof raw === 'number' ? raw : 0;
                     var pct = Math.min(Math.abs(val) / m.max, 1);
-                    var circ = 2 * Math.PI * 30;
+                    var circ = 2 * Math.PI * 23;
                     var offset = circ * (1 - pct);
-                    var displayVal = m.signed ? (val >= 0 ? '+' : '') + val.toFixed(1) : m.invert ? Math.abs(val).toFixed(1) : val.toFixed(2);
-                    var ringColor = m.invert ? (pct > 0.7 ? '#ef4444' : pct > 0.4 ? '#f59e0b' : '#f97316') : colors[i];
-                    html += '<div style="text-align:center;min-width:55px">' +
-                        '<div class="ring-container" style="width:80px;height:80px;margin:0 auto 4px">' +
-                        '<svg width="80" height="80" viewBox="0 0 80 80"><circle fill="none" stroke="#1e2d45" stroke-width="6" cx="40" cy="40" r="30"/>' +
-                        '<circle class="ring-fill" fill="none" stroke="' + ringColor + '" stroke-width="6" stroke-linecap="round" cx="40" cy="40" r="30" ' +
-                        'stroke-dasharray="' + (2*Math.PI*30).toFixed(1) + '" stroke-dashoffset="' + (2*Math.PI*30).toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>' +
-                        '</svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">' +
-                        '<span style="font-size:14px;font-weight:800;color:' + (m.invert ? (pct > 0.6 ? 'var(--red)' : pct > 0.3 ? 'var(--gold)' : '#f97316') : '#fff') + '">' + displayVal + '</span></div></div>' +
-                        '<span style="font-size:9px;color:#6b7d99;display:block;margin-top:1px">' + e.code.replace(/^(\d{3})/, '$1 ') + '</span></div>';
+                    html += '<div style="text-align:center;min-width:50px">';
+                    html += '<div class="ring-container" style="width:60px;height:60px;margin:0 auto 4px">';
+                    html += '<svg width="60" height="60" viewBox="0 0 60 60">';
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="10" cx="30" cy="30" r="23"/>';
+                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="10" stroke-linecap="round" cx="30" cy="30" r="23" ';
+                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>';
+                    html += '</svg>';
+                    html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
+                    html += '<span style="font-size:12px;font-weight:800;color:#fff">' + (m.signed ? ((val >= 0 ? '+' : '') + val.toFixed(1)) : m.invert ? Math.abs(val).toFixed(1) : val.toFixed(2)) + '</span>';
+                    html += '</div></div>';
+                    html += '<span style="font-size:8px;color:' + colors[i] + ';display:block;margin-top:2px">' + e.code + '</span>';
+                    html += '</div>';
                 }
             });
             html += '</div>';
 
-            html += '<div style="display:flex;align-items:center;gap:6px;margin-top:4px;padding-top:6px;border-top:1px solid var(--border)">';
-            html += '<span style="font-size:14px">🥇</span>';
-            html += '<span style="font-size:12px;font-weight:600;color:#fff">' + champ.code + ' ' + (champ.name ? champ.name.slice(0,14) : '') + (champ.issuer_short ? ' · ' + champ.issuer_short : '') + '</span>';
-            html += '<span style="margin-left:auto;font-weight:800;font-size:15px;color:#f97316">' + m.fmtFn(chVal) + '</span>';
-            html += '</div></div>';
+            // 底部：一句话洞察
+            html += '<div class="trophy-insight">';
+            if (ranks.length >= 2) {
+                var loser = etfs[ranks[ranks.length - 1].idx];
+                var loserVal = ranks[ranks.length - 1].val;
+                if (typeof chVal === 'number' && typeof loserVal === 'number') {
+                    var diff = m.reverse ? loserVal - chVal : chVal - loserVal;
+                    var diffPct = m.max ? (Math.abs(diff) / m.max * 100).toFixed(0) : '0';
+                    html += (champ.name || champ.code) + ' ' + (m.reverse ? '更低' : '更高') + ' ' + Math.abs(diff).toFixed(1) + (m.unit || '') + ' (+' + diffPct + '%)';
+                } else {
+                    html += '数据不完整，无法比较';
+                }
+            } else {
+                html += '仅一只ETF有数据';
+            }
+            html += '</div></div></div>';
         });
         document.getElementById('trophyGrid').innerHTML = html;
+        // Update expand button
+        var btn = document.getElementById('expandBtn');
+        if (btn) {
+            btn.querySelector('span').textContent = __expanded ? '收起' : '展开全部指标';
+            btn.classList.toggle('expanded', __expanded);
+        }
         // Animate rings
         setTimeout(function() {
             var fills = document.querySelectorAll('.ring-fill');
@@ -356,6 +436,49 @@
                 fills[i].style.strokeDashoffset = fills[i].dataset.offset;
             }
         }, 200);
+    }
+
+    function renderTrendChart() {
+        var ctx = document.getElementById('trendChart');
+        if (!ctx) return;
+        // Destroy previous chart
+        if (trendChart) { trendChart.destroy(); trendChart = null; }
+        // Prepare data: use year_1_return as proxy for trend (since we don't have historical price data)
+        // For now, show a placeholder chart with year_1_return as bar chart
+        var labels = etfs.map(function(e) { return e.code + '\n' + (e.name || '').slice(0, 6); });
+        var data = etfs.map(function(e) { return e.year_1_return || 0; });
+        trendChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '近1年收益率(%)',
+                    data: data,
+                    backgroundColor: etfs.map(function(e, i) { return colors[i] + '99'; }),
+                    borderColor: etfs.map(function(e, i) { return colors[i]; }),
+                    borderWidth: 2,
+                    borderRadius: 6,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#101829',
+                        titleColor: '#fff',
+                        bodyColor: '#a8b8cc',
+                        borderColor: '#1e2d45',
+                        borderWidth: 1,
+                    }
+                },
+                scales: {
+                    x: { ticks: { color: '#6b7d99', font: { size: 11 } }, grid: { color: '#1e2d45' } },
+                    y: { ticks: { color: '#6b7d99', font: { size: 11 }, callback: function(v) { return v + '%'; } }, grid: { color: '#1e2d45' } }
+                }
+            }
+        });
     }
 
     function renderHeatmap() {
@@ -373,28 +496,26 @@
             { key:'year_1_return', label:'近1年收益率', fmtFn:fmtSigned, higherBetter:true },
             { key:'annual_3y', label:'近3年均收益', fmtFn:fmtSigned, higherBetter:true },
             { key:'top_holdings', label:'前5持仓', fmtFn:function(v){return fmtHolds(v);}, higherBetter:null, isString:true },
-            // ══════════════════════════════════
-            // 预留指标（数据源接入后取消注释即可显示）
-            // ══════════════════════════════════
-            // { key:'tracking_error', label:'跟踪误差', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-            // { key:'premium_discount', label:'溢折价率', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-            // { key:'fee_rate', label:'费率(管理+托管)', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-            // { key:'valuation_percentile', label:'估值分位', fmtFn:function(v){return fmt(v,1,'%');}, higherBetter:false },
-            // { key:'net_inflow_5d', label:'近5日资金净流入', fmtFn:function(v){return fmt(v,1,'亿');}, higherBetter:true },
+            { key:'benchmark', label:'跟踪指数', fmtFn:function(v){return typeof v==='string'&&v?v:'-';}, higherBetter:null, isString:true },
+            { key:'premium_discount', label:'溢折价率', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
+            { key:'fee_rate', label:'费率(管理+托管)', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
+            { key:'valuation_percentile', label:'估值分位', fmtFn:function(v){return fmt(v,1,'%');}, higherBetter:false },
+            { key:'net_inflow_5d', label:'近5日资金净流入', fmtFn:function(v){return fmt(v,1,'亿');}, higherBetter:true },
+            { key:'tracking_error', label:'跟踪误差', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
             { key:'category', label:'分类', fmtFn:function(v){return typeof v==='string'&&v?v:'-';}, higherBetter:null, isString:true },
             { key:'issuer_short', label:'发行方', fmtFn:function(v){return typeof v==='string'&&v?v:'-';}, higherBetter:null, isString:true }
         ];
         var html = '<thead><tr><th><div class="heatmap-diag"><span>指标</span><span>名称</span></div></th>';
         etfs.forEach(function(e, i) {
-            var etfName = e.code + ' ' + (e.name ? e.name.slice(0,10) : '') + ' ' + (e.issuer_short || '');
-            html += '<th style="color:' + colors[i] + ';font-size:11px;white-space:normal;line-height:1.3;min-width:100px">' + etfName + '</th>';
+            var etfName = e.code + '-' + (e.name || '') + '-' + (e.issuer_short || '');
+            html += '<th style="color:' + colors[i] + ';font-size:12px;white-space:normal;line-height:1.3;min-width:140px">' + etfName + '</th>';
         });
         html += '</tr></thead><tbody>';
         tableMetrics.forEach(function(m) {
             if (m.isString) {
-                html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4;letter-spacing:0.5px">' + m.label + '</td>';
+                html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4">' + m.label + '</td>';
                 etfs.forEach(function(e) {
-                    html += '<td style="font-size:11px;color:var(--text);font-family:\'PingFang SC\',\'Microsoft YaHei\',sans-serif">' + m.fmtFn(e[m.key]) + '</td>';
+                    html += '<td style="font-size:13px;color:var(--text)">' + m.fmtFn(e[m.key]) + '</td>';
                 });
                 html += '</tr>';
                 return;
@@ -408,12 +529,13 @@
             var maxVal = numericVals.length ? Math.max.apply(null, numericVals) : 0;
             var range = maxVal - minVal || 1;
             var bestIdx = m.higherBetter !== null ? (m.higherBetter ? vals.indexOf(Math.max.apply(null, numericVals)) : vals.indexOf(Math.min.apply(null, numericVals))) : -1;
-            html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4;letter-spacing:0.5px">' + m.label + '</td>';
+            html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4">' + m.label + '</td>';
             vals.forEach(function(v, i) {
                 var cls = 'heat-cell';
                 if (m.higherBetter !== null && v !== null) {
                     var score = m.higherBetter ? (v - minVal) / range : (maxVal - v) / range;
-                    cls += ' intensity-' + Math.ceil(score * 5);
+                    var level = score > 0.66 ? 'high' : score > 0.33 ? 'mid' : 'low';
+                    cls += ' intensity-' + level;
                 }
                 if (i === bestIdx && numericVals.length > 1) cls += ' best-cell';
                 html += '<td class="' + cls + '" style="font-size:13px">' + m.fmtFn(v) + '</td>';
@@ -426,10 +548,10 @@
 
     // ==================== CORE INIT ====================
     async function loadData() {
-        // Show loading
         document.getElementById('loadingIndicator').style.display = 'block';
         document.getElementById('heroSection').style.display = 'none';
         document.getElementById('trophySection').style.display = 'none';
+        document.getElementById('trendSection').style.display = 'none';
         document.getElementById('heatmapSection').style.display = 'none';
         document.getElementById('footerSection').style.display = 'none';
 
@@ -448,13 +570,10 @@
             }
 
             etfs = data.etfs;
+            window.__dataUpdated = data.updated || '';
 
-            // 映射 close -> price，修复前端读不到价格的问题
+            // 映射 close -> price
             etfs.forEach(function(e) { if (e.price === null || e.price === undefined) e.price = e.close; });
-
-            // 填充 Header 数据时间
-            var ut = data.updated || '';
-            document.getElementById('headerTime').textContent = ut ? '数据 ' + ut.slice(0,16).replace('T',' ') + ' CST' : '';
 
             // 计算派生字段
             etfs.forEach(function(e) {
@@ -470,13 +589,19 @@
             document.getElementById('loadingIndicator').style.display = 'none';
             document.getElementById('heroSection').style.display = 'flex';
             document.getElementById('trophySection').style.display = 'block';
+            document.getElementById('trendSection').style.display = 'block';
             document.getElementById('heatmapSection').style.display = 'block';
             document.getElementById('footerSection').style.display = 'flex';
 
             // 渲染页面
             renderHero();
             renderCombinedCards();
+            renderTrendChart();
             renderHeatmap();
+
+            // 更新 header 时间
+            var ut = data.updated || '';
+            document.getElementById('headerTime').textContent = timeAgo(ut);
 
         } catch (error) {
             console.error('加载数据失败:', error);
