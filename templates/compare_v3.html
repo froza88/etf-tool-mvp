@@ -65,17 +65,17 @@
         /* Trophy */
         .section-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:8px; letter-spacing:0.3px; }
         .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--border), transparent); }
-        .trophy-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
-        .trophy-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:0; position:relative; overflow:hidden; transition:all 0.3s; display:flex; flex-direction:column; }
+        .trophy-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; }
+        .trophy-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:0; position:relative; overflow:hidden; transition:all 0.3s; display:flex; flex-direction:column; }
         .trophy-card:hover { border-color:rgba(0,212,255,0.3); transform:translateY(-2px); }
-        .trophy-winner-bar { padding:12px 16px; display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; border-radius:14px 14px 0 0; }
-        .trophy-winner-bar .winner-code { font-size:15px; font-weight:800; }
-        .trophy-winner-bar .winner-name { font-size:11px; opacity:0.9; margin-left:4px; }
-        .trophy-winner-bar .winner-value { margin-left:auto; font-size:14px; font-weight:800; }
-        .trophy-body { padding:16px; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        .trophy-insight { font-size:11px; color:var(--text2); text-align:center; margin-top:8px; padding-top:8px; border-top:1px solid var(--border); width:100%; }
-        .trophy-card .icon { font-size:20px; margin-bottom:0; }
-        .trophy-card .label { font-size:12px; font-weight:700; color:#fff; }
+        .trophy-winner-bar { padding:10px 14px; display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; border-radius:12px 12px 0 0; }
+        .trophy-winner-bar .winner-code { font-size:14px; font-weight:800; }
+        .trophy-winner-bar .winner-name { font-size:10px; opacity:0.9; margin-left:4px; }
+        .trophy-winner-bar .winner-value { margin-left:auto; font-size:13px; font-weight:800; }
+        .trophy-body { padding:12px; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .trophy-insight { font-size:10px; color:var(--text2); text-align:center; margin-top:6px; padding-top:6px; border-top:1px solid var(--border); width:100%; }
+        .trophy-card .icon { font-size:18px; margin-bottom:0; }
+        .trophy-card .label { font-size:11px; font-weight:700; color:#fff; }
         .trophy-card .glow { position:absolute; top:-50%; right:-50%; width:100%; height:100%; background:radial-gradient(circle, rgba(0,212,255,0.04), transparent); pointer-events:none; }
         .trophy-card.gold { border-color:rgba(245,158,11,0.25); }
 
@@ -353,50 +353,43 @@
             html += '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:8px">';
             etfs.forEach(function(e, i) {
                 if (m.dual) {
-                    // 双环图：外环=规模，内环=成交额
+                    // 方案C：单环（规模）+ 成交额文字标注
                     var scaleRaw = e[m.key] || 0;
                     var scaleVal = typeof scaleRaw === 'number' ? scaleRaw : 0;
                     var scalePct = Math.min(Math.abs(scaleVal) / m.max, 1);
                     var volRaw = e[m.key2] || 0;
                     var volVal = typeof volRaw === 'number' ? volRaw : 0;
-                    var volPct = Math.min(Math.abs(volVal) / (m.max2 || 20), 1);
-                    // 圈图60px：半径23/17，周长2*PI*23≈145，2*PI*17≈107
-                    var cOuter = 2 * Math.PI * 23;
-                    var oOuter = cOuter * (1 - scalePct);
-                    var cInner = 2 * Math.PI * 17;
-                    var oInner = cInner * (1 - volPct);
-                    html += '<div style="text-align:center;min-width:55px">';
-                    html += '<div class="ring-container" style="width:60px;height:60px;margin:0 auto 4px">';
-                    html += '<svg width="60" height="60" viewBox="0 0 60 60">';
-                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="10" cx="30" cy="30" r="23"/>';
-                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="8" cx="30" cy="30" r="17"/>';
-                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="10" stroke-linecap="round" cx="30" cy="30" r="23" ';
-                    html += 'stroke-dasharray="' + cOuter.toFixed(1) + '" stroke-dashoffset="' + cOuter.toFixed(1) + '" data-offset="' + oOuter.toFixed(1) + '"/>';
-                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="8" stroke-linecap="round" cx="30" cy="30" r="17" ';
-                    html += 'stroke-dasharray="' + cInner.toFixed(1) + '" stroke-dashoffset="' + cInner.toFixed(1) + '" data-offset="' + oInner.toFixed(1) + '" style="opacity:0.7"/>';
-                    html += '</svg>';
-                    html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
-                    html += '<span style="font-size:11px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>';
-                    html += '<span style="font-size:9px;color:' + colors[i] + ';margin-top:-1px">' + m.fmtFn2(volVal) + '</span>';
-                    html += '</div></div>';
-                    html += '<span style="font-size:8px;color:' + colors[i] + ';display:block;margin-top:2px">' + e.code + '</span>';
-                    html += '</div>';
-                } else {
-                    // 单环图
-                    var raw = e[m.key] || 0;
-                    var val = typeof raw === 'number' ? raw : 0;
-                    var pct = Math.min(Math.abs(val) / m.max, 1);
-                    var circ = 2 * Math.PI * 23;
-                    var offset = circ * (1 - pct);
-                    html += '<div style="text-align:center;min-width:50px">';
-                    html += '<div class="ring-container" style="width:60px;height:60px;margin:0 auto 4px">';
-                    html += '<svg width="60" height="60" viewBox="0 0 60 60">';
-                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="10" cx="30" cy="30" r="23"/>';
-                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="10" stroke-linecap="round" cx="30" cy="30" r="23" ';
+                    // 圈图80px：半径28，周长2*PI*28≈176
+                    var circ = 2 * Math.PI * 28;
+                    var offset = circ * (1 - scalePct);
+                    html += '<div style="text-align:center;min-width:70px">';
+                    html += '<div class="ring-container" style="width:80px;height:80px;margin:0 auto 4px">';
+                    html += '<svg width="80" height="80" viewBox="0 0 80 80">';
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="12" cx="40" cy="40" r="28"/>';
+                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="12" stroke-linecap="round" cx="40" cy="40" r="28" ';
                     html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>';
                     html += '</svg>';
                     html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
-                    html += '<span style="font-size:12px;font-weight:800;color:#fff">' + (m.signed ? ((val >= 0 ? '+' : '') + val.toFixed(1)) : m.invert ? Math.abs(val).toFixed(1) : val.toFixed(2)) + '</span>';
+                    html += '<span style="font-size:13px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>';
+                    html += '</div></div>';
+                    html += '<div style="font-size:9px;color:' + colors[i] + ';margin-top:2px;line-height:1.3">' + e.code + '<br/>成交额:' + m.fmtFn2(volVal) + '</div>';
+                    html += '</div>';
+                } else {
+                    // 单环图 80px
+                    var raw = e[m.key] || 0;
+                    var val = typeof raw === 'number' ? raw : 0;
+                    var pct = Math.min(Math.abs(val) / m.max, 1);
+                    var circ = 2 * Math.PI * 28;
+                    var offset = circ * (1 - pct);
+                    html += '<div style="text-align:center;min-width:60px">';
+                    html += '<div class="ring-container" style="width:80px;height:80px;margin:0 auto 4px">';
+                    html += '<svg width="80" height="80" viewBox="0 0 80 80">';
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="12" cx="40" cy="40" r="28"/>';
+                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="12" stroke-linecap="round" cx="40" cy="40" r="28" ';
+                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>';
+                    html += '</svg>';
+                    html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
+                    html += '<span style="font-size:13px;font-weight:800;color:#fff">' + (m.signed ? ((val >= 0 ? '+' : '') + val.toFixed(1)) : m.invert ? Math.abs(val).toFixed(1) : val.toFixed(2)) + '</span>';
                     html += '</div></div>';
                     html += '<span style="font-size:8px;color:' + colors[i] + ';display:block;margin-top:2px">' + e.code + '</span>';
                     html += '</div>';
@@ -412,7 +405,8 @@
                 if (typeof chVal === 'number' && typeof loserVal === 'number') {
                     var diff = m.reverse ? loserVal - chVal : chVal - loserVal;
                     var diffPct = m.max ? (Math.abs(diff) / m.max * 100).toFixed(0) : '0';
-                    html += (champ.name || champ.code) + ' ' + (m.reverse ? '更低' : '更高') + ' ' + Math.abs(diff).toFixed(1) + (m.unit || '') + ' (+' + diffPct + '%)';
+                    var unit = m.unit || '%';
+                    html += (champ.name || champ.code) + (m.reverse ? ' 更低 ' : ' 更高 ') + Math.abs(diff).toFixed(1) + unit + ' (+' + diffPct + '%)';
                 } else {
                     html += '数据不完整，无法比较';
                 }
