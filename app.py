@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime, timedelta
 import etf_data
+import etf_data_service
 import json
 import os
 import sys
@@ -141,15 +142,34 @@ def compare_wind():
 
 @app.route('/compare/v3')
 def compare_v3():
-    """ETF对比页 - Pro Terminal v3 炫酷版"""
+    """ETF对比页 - Pro Terminal v3 炫酷版（数据通过API加载）"""
+    codes = request.args.get('codes', '')
+    return render_template('compare_v3.html', codes=codes)
+
+
+@app.route('/api/compare')
+def api_compare():
+    """API：获取对比ETF数据（查询即存储）"""
     codes = request.args.get('codes', '').split(',')
-    codes = [c for c in codes if c]
-    etfs = []
-    for code in codes:
-        etf = etf_data.get_etf_by_code(code)
-        if etf:
-            etfs.append(etf)
-    return render_template('compare_v3.html', etfs=etfs)
+    codes = [c.strip() for c in codes if c.strip()]
+    
+    if not codes:
+        return jsonify({"error": "请提供ETF代码", "codes": []}), 400
+    
+    # 使用数据服务层（查询即存储）
+    service = etf_data_service.create_default_service()
+    etfs = service.get_etfs_by_codes(codes)
+    
+    if not etfs:
+        return jsonify({"error": "未找到ETF数据", "codes": codes}), 404
+    
+    return jsonify({
+        "codes": codes,
+        "count": len(etfs),
+        "etfs": etfs,
+        "source": "local_db",  # 后续可能变成 "wind", "yfdztc" 等
+        "updated": datetime.now().isoformat()
+    })
 
 @app.route('/compare/v3/print')
 def compare_v3_print():
