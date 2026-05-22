@@ -412,22 +412,18 @@
         // 雷达图
         var radarCanvas = document.getElementById('radarChart');
         if (radarCanvas && !charts['radar']) {
-            var radarMaxVals = []; // track max values for each axis across all ETFs
             charts['radar'] = new Chart(radarCanvas, {
-                type: 'radar', data: { labels: ['1年收益','规模','回撤','日均成交额','波动率','流动性'],
+                type: 'radar', data: { labels: ['1年收益','规模','日均成交额','回撤','波动率','流动性'],
                     datasets: etfs.map(function(e, i) {
                         // 归一化：全部映射到 0-100，高分=好
-                        var ret1 = Math.max(0, Math.min(100, (e.year_1_return || 0) / 0.8 + 50));  // -40=0, 0=50, 40=100
+                        var ret1 = Math.max(0, Math.min(100, (e.year_1_return || 0) / 0.8 + 50));
                         var scale = Math.min((e.scale || 0) / 200, 1) * 100;
-                        var dd = 100 - Math.max(0, Math.min(100, Math.abs(e.max_drawdown || 0) * 2)); // 回撤越低越好
+                        var dd = 100 - Math.max(0, Math.min(100, Math.abs(e.max_drawdown || 0) * 2));
                         var vol = Math.min((e.volume || 0) * 12, 100);
                         var avol = 100 - Math.min((e.annual_vol || 0) * 2.2, 100);
                         var liq = Math.min((e.volume || 0) / Math.max(e.scale || 1, 0.01) * 300, 100);
-                        var vals = [ret1, scale, dd, vol, avol, liq];
-                        // track max
-                        for (var j = 0; j < vals.length; j++) {
-                            if (!radarMaxVals[j] || vals[j] > radarMaxVals[j]) radarMaxVals[j] = vals[j];
-                        }
+                        // labels: ['1年收益','规模','日均成交额','回撤','波动率','流动性']
+                        var vals = [ret1, scale, vol, dd, avol, liq];
                         return {
                             label: e.code + ' ' + (e.name ? e.name.slice(0,7) : ''),
                             data: vals,
@@ -439,8 +435,8 @@
                 options: { responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { position: 'bottom', labels: { color: '#a8b8cc', font: { size: 11 }, usePointStyle: true, padding: 20, boxWidth: 10 } } },
                     scales: { r: { angleLines: { color: 'rgba(30,45,69,0.4)' }, grid: { color: 'rgba(30,45,69,0.25)' },
-                        pointLabels: { color: '#c0c8d4', font: { size: 11, weight: '700' }, padding: 8 },
-                        ticks: { display: true, backdropColor: 'transparent', color: '#3a4a5c', font: { size: 8 }, stepSize: 20, showLabelBackdrop: false, z: 1 },
+                        pointLabels: { color: '#c0c8d4', font: { size: 11, weight: '700' }, padding: 12 },
+                        ticks: { display: false, stepSize: 20 },
                         suggestedMin: 0, suggestedMax: 100 } }
                 }
             });
