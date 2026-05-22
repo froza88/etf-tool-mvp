@@ -648,6 +648,29 @@ def step_build():
         mgmt_fee = wd.get("management_fee_rate", 0) or gen.get("management_fee_rate", 0)
         custody_fee = wd.get("custody_fee_rate", 0) or gen.get("custody_fee_rate", 0)
 
+        # === 派生指标 ===
+        # 近3年年化收益率（数据库存的是累计）
+        annual_3y = None
+        if year_3_return:
+            try:
+                annual_3y = round((pow(1 + year_3_return / 100, 1/3) - 1) * 100, 2)
+            except Exception:
+                pass
+        # 卡玛比率 = 年化收益 / |最大回撤|
+        calmar_ratio = None
+        if year_1_return and max_drawdown and max_drawdown != 0:
+            calmar_ratio = round(year_1_return / abs(max_drawdown), 2)
+        # 综合费率（管理费 + 托管费）
+        fee_rate = None
+        if mgmt_fee:
+            fee_rate = round(mgmt_fee + (custody_fee or 0), 4)
+
+        # === 预留字段（数据源就绪后取消注释即可填充）===
+        tracking_error = None       # TODO: Wind/非凸 跟踪误差
+        premium_discount = None     # TODO: 溢折价率
+        valuation_percentile = None # TODO: PE/PB 估值分位
+        net_inflow_5d = None        # TODO: 近5日资金净流入
+
         standard_etf = {
             "code": code,
             "name": name,
@@ -673,6 +696,15 @@ def step_build():
             "benchmark": benchmark,
             "management_fee_rate": mgmt_fee,
             "custody_fee_rate": custody_fee,
+            # 派生指标
+            "annual_3y": annual_3y,
+            "calmar_ratio": calmar_ratio,
+            "fee_rate": fee_rate,
+            # 预留字段（数据源就绪后填充）
+            "tracking_error": tracking_error,
+            "premium_discount": premium_discount,
+            "valuation_percentile": valuation_percentile,
+            "net_inflow_5d": net_inflow_5d,
         }
         standard_etfs.append(standard_etf)
 
