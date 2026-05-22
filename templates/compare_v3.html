@@ -27,11 +27,15 @@
             backdrop-filter: blur(20px); border-bottom:1px solid var(--border);
             padding:0 28px; height:60px; display:flex; align-items:center;
             justify-content:space-between; position:sticky; top:0; z-index:100;
+            gap:16px;
         }
-        .logo { font-size:19px; font-weight:800; letter-spacing:-0.5px; }
+        .logo { font-size:19px; font-weight:800; letter-spacing:-0.5px; white-space:nowrap; }
         .logo .c1 { color:#fff; } .logo .c2 { color:var(--accent); }
         .logo .pro { background:linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .header-actions { display:flex; gap:10px; }
+        .header-center { display:flex; align-items:center; gap:18px; font-size:13px; }
+        .header-price { color:var(--accent); font-weight:700; font-size:14px; }
+        .header-return { color:var(--gold); font-weight:700; font-size:14px; }
+        .header-time { color:var(--text2); font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
         .btn { padding:9px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
                transition:all 0.25s; display:flex; align-items:center; gap:6px; border:none; text-decoration:none; }
         .btn-back { background:var(--surface2); color:var(--text); border:1px solid var(--border); }
@@ -63,7 +67,7 @@
         /* Trophy */
         .section-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:8px; letter-spacing:0.3px; }
         .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--border), transparent); }
-        .trophy-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+        .trophy-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
         .trophy-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px; position:relative; overflow:hidden; transition:all 0.3s; }
         .trophy-card:hover { border-color:rgba(0,212,255,0.3); transform:translateY(-2px); }
         .trophy-card .icon { font-size:28px; margin-bottom:8px; }
@@ -124,6 +128,11 @@
     <!-- Header -->
     <div class="header">
         <div class="logo"><span class="c1">ETF</span><span class="c2">·</span><span class="pro">Pro Terminal</span></div>
+        <div class="header-center" id="headerCenter">
+            <span class="header-price" id="headerPrice">--</span>
+            <span class="header-return" id="headerReturn">--</span>
+            <span class="header-time" id="headerTime">数据加载中…</span>
+        </div>
         <div class="header-actions">
             <a href="/" class="btn btn-back">← 返回列表</a>
             <div class="export-dropdown" id="exportDropdown">
@@ -262,9 +271,9 @@
         etfs.forEach(function(e) { if (e.category && cats.indexOf(e.category) < 0) cats.push(e.category); });
         var catDisplay = cats.length ? cats.join(' · ') : '—';
         document.getElementById('heroSummary').innerHTML =
-            '<div class="hero-stat"><div class="val">' + etfs.length + '</div><div class="lbl">对比 ETF</div></div>' +
-            '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--accent);max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + catDisplay + '</div><div class="lbl">涵盖分类</div></div>' +
-            '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--gold)">' + cats.length + '</div><div class="lbl">分类数</div></div>';
+            '<div class="hero-stat"><div class="val" style="font-size:20px;background:none;-webkit-text-fill-color:var(--accent)">' + etfs.map(function(e){return e.price?e.price.toFixed(3):'--';}).join(' / ') + '</div><div class="lbl">今日价格</div></div>' +
+            '<div class="hero-stat"><div class="val" style="font-size:20px;background:none;-webkit-text-fill-color:var(--gold)">' + etfs.map(function(e){return e.year_1_return!=null?'+'+e.year_1_return.toFixed(2)+'%':'--';}).join(' / ') + '</div><div class="lbl">近1年收益</div></div>' +
+            '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--text)">' + etfs.length + '只</div><div class="lbl">对比数量</div></div>';
     }
 
     function renderCombinedCards() {
@@ -299,18 +308,18 @@
                     var volRaw = e[m.key2] || 0;
                     var volVal = typeof volRaw === 'number' ? volRaw : 0;
                     var volPct = Math.min(Math.abs(volVal) / (m.max2 || 20), 1);
-                    var cOuter = 2 * Math.PI * 26;
+                    var cOuter = 2 * Math.PI * 34;
                     var oOuter = cOuter * (1 - scalePct);
-                    var cInner = 2 * Math.PI * 19;
+                    var cInner = 2 * Math.PI * 25;
                     var oInner = cInner * (1 - volPct);
-                    html += '<div style="text-align:center;min-width:65px">' +
-                        '<div class="ring-container" style="width:68px;height:68px;margin:0 auto 2px">' +
-                        '<svg width="68" height="68" viewBox="0 0 68 68">' +
-                        '<circle fill="none" stroke="#1e2d45" stroke-width="5" cx="34" cy="34" r="26"/>' +
-                        '<circle fill="none" stroke="#1e2d45" stroke-width="4" cx="34" cy="34" r="19"/>' +
-                        '<circle class="ring-fill" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" cx="34" cy="34" r="26" ' +
+                    html += '<div style="text-align:center;min-width:70px">' +
+                        '<div class="ring-container" style="width:90px;height:90px;margin:0 auto 4px">' +
+                        '<svg width="90" height="90" viewBox="0 0 90 90">' +
+                        '<circle fill="none" stroke="#1e2d45" stroke-width="6" cx="45" cy="45" r="34"/>' +
+                        '<circle fill="none" stroke="#1e2d45" stroke-width="5" cx="45" cy="45" r="25"/>' +
+                        '<circle class="ring-fill" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" cx="45" cy="45" r="34" ' +
                         'stroke-dasharray="' + cOuter.toFixed(1) + '" stroke-dashoffset="' + cOuter.toFixed(1) + '" data-offset="' + oOuter.toFixed(1) + '"/>' +
-                        '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="4" stroke-linecap="round" cx="34" cy="34" r="19" ' +
+                        '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="5" stroke-linecap="round" cx="45" cy="45" r="25" ' +
                         'stroke-dasharray="' + cInner.toFixed(1) + '" stroke-dashoffset="' + cInner.toFixed(1) + '" data-offset="' + oInner.toFixed(1) + '" style="opacity:0.8"/>' +
                         '</svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">' +
                         '<span style="font-size:12px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>' +
@@ -320,15 +329,15 @@
                     var raw = e[m.key] || 0;
                     var val = typeof raw === 'number' ? raw : 0;
                     var pct = Math.min(Math.abs(val) / m.max, 1);
-                    var circ = 2 * Math.PI * 28;
+                    var circ = 2 * Math.PI * 30;
                     var offset = circ * (1 - pct);
                     var displayVal = m.signed ? (val >= 0 ? '+' : '') + val.toFixed(1) : m.invert ? Math.abs(val).toFixed(1) : val.toFixed(2);
                     var ringColor = m.invert ? (pct > 0.7 ? '#ef4444' : pct > 0.4 ? '#f59e0b' : '#f97316') : colors[i];
                     html += '<div style="text-align:center;min-width:55px">' +
-                        '<div class="ring-container" style="width:62px;height:62px;margin:0 auto 2px">' +
-                        '<svg width="62" height="62" viewBox="0 0 62 62"><circle fill="none" stroke="#1e2d45" stroke-width="5" cx="31" cy="31" r="26"/>' +
-                        '<circle class="ring-fill" fill="none" stroke="' + ringColor + '" stroke-width="5" stroke-linecap="round" cx="31" cy="31" r="26" ' +
-                        'stroke-dasharray="' + (2*Math.PI*26).toFixed(1) + '" stroke-dashoffset="' + (2*Math.PI*26).toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>' +
+                        '<div class="ring-container" style="width:80px;height:80px;margin:0 auto 4px">' +
+                        '<svg width="80" height="80" viewBox="0 0 80 80"><circle fill="none" stroke="#1e2d45" stroke-width="6" cx="40" cy="40" r="30"/>' +
+                        '<circle class="ring-fill" fill="none" stroke="' + ringColor + '" stroke-width="6" stroke-linecap="round" cx="40" cy="40" r="30" ' +
+                        'stroke-dasharray="' + (2*Math.PI*30).toFixed(1) + '" stroke-dashoffset="' + (2*Math.PI*30).toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>' +
                         '</svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">' +
                         '<span style="font-size:12px;font-weight:800;color:' + (m.invert ? (pct > 0.6 ? 'var(--red)' : pct > 0.3 ? 'var(--gold)' : '#f97316') : '#fff') + '">' + displayVal + '</span></div></div>' +
                         '<span style="font-size:9px;color:#6b7d99;display:block;margin-top:1px">' + e.code.replace(/^(\d{3})/, '$1 ') + '</span></div>';
@@ -338,7 +347,7 @@
 
             html += '<div style="display:flex;align-items:center;gap:6px;margin-top:4px;padding-top:6px;border-top:1px solid var(--border)">';
             html += '<span style="font-size:14px">🥇</span>';
-            html += '<span style="font-size:12px;font-weight:600;color:#fff">' + champ.code + ' ' + (champ.name ? champ.name.slice(0,10) : '') + (champ.issuer_short ? ' · ' + champ.issuer_short : '') + '</span>';
+            html += '<span style="font-size:12px;font-weight:600;color:#fff">' + champ.code + ' ' + (champ.name ? champ.name.slice(0,14) : '') + (champ.issuer_short ? ' · ' + champ.issuer_short : '') + '</span>';
             html += '<span style="margin-left:auto;font-weight:800;font-size:15px;color:#f97316">' + m.fmtFn(chVal) + '</span>';
             html += '</div></div>';
         });
@@ -445,6 +454,12 @@
             }
 
             etfs = data.etfs;
+
+            // 填充 Header 价格/收益率/时间
+            document.getElementById('headerPrice').textContent = '今价 ' + etfs.map(function(e){return e.price!=null?e.price.toFixed(3):'--';}).join(' / ');
+            document.getElementById('headerReturn').textContent = '年收益 ' + etfs.map(function(e){return e.year_1_return!=null?'+'+e.year_1_return.toFixed(2)+'%':'--';}).join(' / ');
+            var ut = data.updated || '';
+            document.getElementById('headerTime').textContent = ut ? '数据 '+ut.slice(0,16).replace('T',' ')+' CST' : '';
 
             // 计算派生字段
             etfs.forEach(function(e) {
