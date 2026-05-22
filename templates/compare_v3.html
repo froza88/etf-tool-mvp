@@ -174,7 +174,7 @@
 
         <!-- 圈图对比 Section -->
         <div class="animate-in" style="animation-delay:0.1s">
-            <div class="section-title">🏆 综合对比圈图</div>
+            <div class="section-title">🏆 ETF 多维对比 · 流动性 → 风险 → 收益</div>
             <div class="trophy-grid" id="trophyGrid"></div>
         </div>
 
@@ -323,12 +323,14 @@
     }
 
     function renderCombinedCards() {
+        // 排序遵循文章框架: 流动性→风险→收益 (收益率是结果不是筛选工具)
         var metrics = [
-            { icon: '\u{1F680}', label: '\u8FD11\u5E74\u6536\u76CA', key: 'year_1_return', unit: '%', fmtFn: fmtSigned, reverse: false, max: 80, signed: true },
+            { icon: '\u{1F4A7}', label: '\u6D41\u52A8\u6027\uFF08\u89C4\u6A21&\u6210\u4EA4\uFF09', key: 'scale', unit: '\u4EBF', fmtFn: function(v){return fmt(v,1,'\u4EBF');}, reverse: false, max: 300, signed: false, showVol: true },
             { icon: '\u{1F6E1}\uFE0F', label: '\u56DE\u64A4\u63A7\u5236', key: 'max_drawdown', unit: '%', fmtFn: function(v){return fmt(Math.abs(v||0),1,'%');}, reverse: true, max: 60, signed: false, invert: true },
+            { icon: '\u{1F4C9}', label: '\u5E74\u5316\u6CE2\u52A8\u7387', key: 'annual_vol', unit: '%', fmtFn: function(v){return fmt(v,2,'%');}, reverse: true, max: 50, signed: false, invert: true },
             { icon: '\u2B50', label: '\u590F\u666E\u6BD4\u7387', key: 'sharpe_ratio', unit: '', fmtFn: function(v){return fmt(v,2);}, reverse: false, max: 3.5, signed: false },
-            { icon: '\u{1F3E6}', label: '\u89C4\u6A21 & \u6210\u4EA4\u989D', key: 'scale', unit: '\u4EBF', fmtFn: function(v){return fmt(v,1,'\u4EBF');}, reverse: false, max: 300, signed: false, showVol: true },
-            { icon: '\u{1F4C9}', label: '\u6CE2\u52A8\u7387', key: 'annual_vol', unit: '%', fmtFn: function(v){return fmt(v,2,'%');}, reverse: true, max: 50, signed: false, invert: true }
+            { icon: '\u{1F4C8}', label: '\u8FD11\u5E74\u6536\u76CA\u7387', key: 'year_1_return', unit: '%', fmtFn: fmtSigned, reverse: false, max: 80, signed: true },
+            { icon: '\u{1F4CA}', label: '\u8FD13\u5E74\u5E74\u5747\u6536\u76CA', key: 'year_3_return', unit: '%', fmtFn: fmtSigned, reverse: false, max: 60, signed: true }
         ];
         var html = '';
         metrics.forEach(function(m) {
@@ -393,13 +395,13 @@
             return h.slice(0, 5).map(function(x) { return x.name || x.code || ''; }).join(', ');
         }
         var tableMetrics = [
-            { key: 'year_1_return', label: '\u8FD11\u5E74\u6536\u76CA', fmtFn: fmtSigned, higherBetter: true },
-            { key: 'year_3_return', label: '\u8FD13\u5E74\u7D2F\u8BA1\u6536\u76CA', fmtFn: fmtSigned, higherBetter: true },
-            { key: 'sharpe_ratio', label: '\u590F\u666E\u6BD4\u7387', fmtFn: function(v){return fmt(v,2);}, higherBetter: true },
-            { key: 'max_drawdown', label: '\u6700\u5927\u56DE\u64A4', fmtFn: function(v){return fmt(v,2,'%');}, higherBetter: false },
-            { key: 'annual_vol', label: '\u5E74\u5316\u6CE2\u52A8\u7387', fmtFn: function(v){return fmt(v,2,'%');}, higherBetter: false },
-            { key: 'scale', label: '\u89C4\u6A21', fmtFn: function(v){return fmt(v,1,'\u4EBF');}, higherBetter: true },
-            { key: 'volume', label: '\u65E5\u5747\u6210\u4EA4\u989D', fmtFn: function(v){return fmt(v,2,'\u4EBF');}, higherBetter: true },
+            { key: 'scale', label: '规模(亿)', fmtFn: function(v){return fmt(v,1,'亿');}, higherBetter: true },
+            { key: 'volume', label: '日均成交额(亿)', fmtFn: function(v){return fmt(v,2,'亿');}, higherBetter: true },
+            { key: 'max_drawdown', label: '最大回撤', fmtFn: function(v){return fmt(v,2,'%');}, higherBetter: false },
+            { key: 'annual_vol', label: '年化波动率', fmtFn: function(v){return fmt(v,2,'%');}, higherBetter: false },
+            { key: 'sharpe_ratio', label: '夏普比率', fmtFn: function(v){return fmt(v,2);}, higherBetter: true },
+            { key: 'year_1_return', label: '近1年收益率', fmtFn: fmtSigned, higherBetter: true },
+            { key: 'year_3_return', label: '近3年年均收益', fmtFn: fmtSigned, higherBetter: true },
             { key: 'top_holdings', label: '\u524D5\u6301\u4ED3', fmtFn: function(v){return fmtHolds(v);}, higherBetter: null, isString: true },
             { key: 'category', label: '\u5206\u7C7B', fmtFn: function(v){return typeof v==='string' && v ? v : '-';}, higherBetter: null, isString: true },
             { key: 'issuer_short', label: '\u53D1\u884C\u65B9', fmtFn: function(v){return typeof v==='string' && v ? v : '-';}, higherBetter: null, isString: true }
