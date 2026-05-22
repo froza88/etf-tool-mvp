@@ -790,6 +790,7 @@ def main():
                         choices=list(STEPS.keys()) + ["all"],
                         help="要执行的步骤（默认 all）")
     parser.add_argument("--push", action="store_true", help="执行完后自动 git push")
+    parser.add_argument("--no-wind", action="store_true", help="跳过 Wind 数据补充步骤")
     args = parser.parse_args()
 
     log("=" * 50)
@@ -798,7 +799,10 @@ def main():
 
     if args.step is None or args.step == "all":
         # 执行全部步骤
-        for step_name in STEP_ORDER:
+        steps_to_run = [s for s in STEP_ORDER if not (args.no_wind and s == "enrich_wind")]
+        if args.no_wind:
+            log("(已跳过 Wind 数据补充)")
+        for step_name in steps_to_run:
             desc, func = STEPS[step_name]
             log(f"\n{'='*30}")
             log(f"执行: {desc}")
