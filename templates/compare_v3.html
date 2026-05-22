@@ -6,6 +6,7 @@
     <title>ETF 专业对比 · Pro Terminal</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
         :root {
             --bg: #080d18; --surface: #101829; --surface2: #162032; --border: #1e2d45;
@@ -145,7 +146,9 @@
             <div class="export-dropdown" id="exportDropdown">
                 <button class="btn btn-export" onclick="toggleExportMenu()">📸 导出 ▾</button>
                 <div class="export-menu" id="exportMenu">
-                    <div class="export-menu-item" onclick="screenCapture()">🖥️ 屏幕截图</div>
+                    <div class="export-menu-item" onclick="screenCaptureVisible()">🖥️ 可见区域截图</div>
+                    <div class="export-menu-item" onclick="screenCaptureFullPage()">📄 全页面截图</div>
+                    <div class="export-menu-item" onclick="screenCaptureRegion()">✂️ 框选截图</div>
                     <div class="export-menu-item" onclick="openPrintPage()">🖨️ 打印版页面（新标签页）</div>
                     <div class="export-menu-item" onclick="window.print()">🖨️ 直接打印当前页</div>
                 </div>
@@ -194,7 +197,9 @@
             <div class="export-dropdown">
                 <button class="btn btn-export" onclick="toggleExportMenuFooter()">📸 导出 ▾</button>
                 <div class="export-menu" id="exportMenuFooter">
-                    <div class="export-menu-item" onclick="screenCapture()">🖥️ 屏幕截图</div>
+                    <div class="export-menu-item" onclick="screenCaptureVisible()">🖥️ 可见区域截图</div>
+                    <div class="export-menu-item" onclick="screenCaptureFullPage()">📄 全页面截图</div>
+                    <div class="export-menu-item" onclick="screenCaptureRegion()">✂️ 框选截图</div>
                     <div class="export-menu-item" onclick="openPrintPage()">🖨️ 打印版页面（新标签页）</div>
                     <div class="export-menu-item" onclick="window.print()">🖨️ 直接打印当前页</div>
                 </div>
@@ -258,7 +263,7 @@
         var f = document.getElementById('exportMenuFooter'); if (f) f.classList.remove('show');
     }
 
-    async function screenCapture() {
+    async function screenCaptureVisible() {
         var m = document.getElementById('exportMenu'); if (m) m.classList.remove('show');
         var f = document.getElementById('exportMenuFooter'); if (f) f.classList.remove('show');
         if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
@@ -283,6 +288,81 @@
                 document.body.removeChild(a); setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
             }, 'image/png');
         } catch(e) { if (e.name !== 'NotAllowedError') alert('截图失败: ' + e.message); }
+    }
+
+    // ========== 全页面截图 ==========
+    async function screenCaptureFullPage() {
+        var m = document.getElementById('exportMenu'); if (m) m.classList.remove('show');
+        var f = document.getElementById('exportMenuFooter'); if (f) f.classList.remove('show');
+        try {
+            var canvas = await html2canvas(document.body, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#080d18',
+                windowWidth: document.documentElement.scrollWidth,
+                windowHeight: document.documentElement.scrollHeight
+            });
+            canvas.toBlob(function(blob) {
+                if (!blob) return alert('截图失败');
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.download = 'ETF_对比_全页面_' + new Date().toISOString().slice(0,10) + '.png';
+                a.href = url; document.body.appendChild(a); a.click();
+                document.body.removeChild(a); setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
+            }, 'image/png');
+        } catch(e) { alert('全页面截图失败: ' + e.message); }
+    }
+
+    // ========== 框选截图 ==========
+    function screenCaptureRegion() {
+        var m = document.getElementById('exportMenu'); if (m) m.classList.remove('show');
+        var f = document.getElementById('exportMenuFooter'); if (f) f.classList.remove('show');
+        var overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;cursor:crosshair;background:rgba(0,0,0,0.3)';
+        document.body.appendChild(overlay);
+        var startX, startY, selection;
+        overlay.addEventListener('mousedown', function(e) {
+            startX = e.clientX; startY = e.clientY;
+            selection = document.createElement('div');
+            selection.style.cssText = 'position:fixed;border:2px solid #00d4ff;background:rgba(0,212,255,0.1);z-index:100000;pointer-events:none;';
+            overlay.appendChild(selection);
+            function onMouseMove(e2) {
+                var x = Math.min(startX, e2.clientX);
+                var y = Math.min(startY, e2.clientY);
+                var w = Math.abs(e2.clientX - startX);
+                var h = Math.abs(e2.clientY - startY);
+                selection.style.left = x + 'px';
+                selection.style.top = y + 'px';
+                selection.style.width = w + 'px';
+                selection.style.height = h + 'px';
+            }
+            function onMouseUp(e2) {
+                overlay.removeEventListener('mousemove', onMouseMove);
+                overlay.removeEventListener('mouseup', onMouseUp);
+                var x = parseInt(selection.style.left);
+                var y = parseInt(selection.style.top);
+                var w = parseInt(selection.style.width);
+                var h = parseInt(selection.style.height);
+                if (w < 10 || h < 10) { document.body.removeChild(overlay); return; }
+                html2canvas(document.body, {
+                    scale: 2, useCORS: true, logging: false, backgroundColor: '#080d18',
+                    x: x + window.scrollX, y: y + window.scrollY, width: w, height: h
+                }).then(function(canvas) {
+                    document.body.removeChild(overlay);
+                    canvas.toBlob(function(blob) {
+                        if (!blob) return alert('截图失败');
+                        var url = URL.createObjectURL(blob);
+                        var a = document.createElement('a');
+                        a.download = 'ETF_对比_框选_' + new Date().toISOString().slice(0,10) + '.png';
+                        a.href = url; document.body.appendChild(a); a.click();
+                        document.body.removeChild(a); setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
+                    }, 'image/png');
+                }).catch(function(e) { document.body.removeChild(overlay); alert('框选截图失败: ' + e.message); });
+            }
+            overlay.addEventListener('mousemove', onMouseMove);
+            overlay.addEventListener('mouseup', onMouseUp);
+        });
     }
 
     // Close export menu on outside click
