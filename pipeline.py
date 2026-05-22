@@ -369,8 +369,8 @@ def step_calc_metrics():
         log("  无 ETF 数据，跳过")
         return
 
-    # 找出需要计算的 ETF（没有指标或指标为 0）
-    need_calc = [e for e in etfs if e.get("code") and not calc_data.get(e["code"], {}).get("year_1_return")]
+    # 找出需要计算的 ETF（没有 annual_vol 指标或 annual_vol 为 0）
+    need_calc = [e for e in etfs if e.get("code") and not calc_data.get(e["code"], {}).get("annual_vol")]
     log(f"  需计算: {len(need_calc)} 只")
 
     if not need_calc:
@@ -394,7 +394,7 @@ def step_calc_metrics():
 
         # 优先从本地历史文件读取（永久存储）
         local_history = load_etf_history(code)
-        if local_history and len(local_history.get("prices", [])) >= 252:
+        if local_history and len(local_history.get("prices", [])) >= 20:
             prices = local_history["prices"]
             metrics = calc_metrics_from_prices(prices)
             if metrics:
