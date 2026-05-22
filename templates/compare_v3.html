@@ -109,16 +109,16 @@
         .heatmap-diag span:first-child { color:var(--text2); font-size:10px; align-self:flex-start; padding:2px 4px 0 0; }
         .heatmap-diag span:last-child { color:#fff; font-size:11px; align-self:flex-end; padding:0 0 2px 4px; }
         .heatmap-table thead th:last-child { border-radius:0 10px 0 0; }
-        .heatmap-table tbody td { padding:10px 8px; text-align:center; border-bottom:1px solid rgba(30,45,69,0.6); transition:all 0.2s; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; }
-        .heatmap-table tbody td:first-child { text-align:left; font-weight:700; color:#c0c8d4; font-size:13px; letter-spacing:0.5px; width:120px; min-width:120px; max-width:120px; padding-left:14px; }
+        .heatmap-table tbody td { padding:10px 8px; text-align:center; border-bottom:1px solid rgba(30,45,69,0.6); transition:all 0.2s; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-family:inherit; }
+        .heatmap-table tbody td:first-child { text-align:left; font-weight:700; color:#c0c8d4; font-size:13px; font-family:inherit; width:200px; min-width:200px; max-width:200px; padding-left:14px; }
         .heatmap-table tbody tr:hover td { background:rgba(0,212,255,0.03); }
         .heatmap-table tbody tr:last-child td:first-child { border-radius:0 0 0 10px; }
         .heatmap-table tbody tr:last-child td:last-child { border-radius:0 0 10px 0; }
-        .heat-cell { font-weight:700; }
-        .heat-cell.intensity-high { color:#34d399; }
-        .heat-cell.intensity-mid { color:#fbbf24; }
-        .heat-cell.intensity-low { color:#f87171; }
-        .heat-cell.best-cell { font-weight:800; text-decoration:underline; text-decoration-color:var(--accent); text-underline-offset:2px; }
+        .heat-cell { font-weight:700; color:#3742fa; }  /* 未胜出的用蓝色 */
+        .heat-cell.intensity-high { color:#3742fa; }  /* 深蓝 */
+        .heat-cell.intensity-mid { color:#5352ed; }  /* 中蓝 */
+        .heat-cell.intensity-low { color:#7a7cff; }   /* 浅蓝 */
+        .heat-cell.best-cell { font-weight:900; color:#ff4757; }  /* 胜出的用绯红色 */
 
         /* Footer */
         .footer-actions { display:flex; justify-content:center; gap:14px; margin-top:8px; }
@@ -507,9 +507,9 @@
         html += '</tr></thead><tbody>';
         tableMetrics.forEach(function(m) {
             if (m.isString) {
-                html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4">' + m.label + '</td>';
+                html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4;font-family:inherit">' + m.label + '</td>';
                 etfs.forEach(function(e) {
-                    html += '<td style="font-size:13px;color:var(--text)">' + m.fmtFn(e[m.key]) + '</td>';
+                    html += '<td style="font-size:13px;color:var(--text);font-family:inherit">' + m.fmtFn(e[m.key]) + '</td>';
                 });
                 html += '</tr>';
                 return;
@@ -523,7 +523,7 @@
             var maxVal = numericVals.length ? Math.max.apply(null, numericVals) : 0;
             var range = maxVal - minVal || 1;
             var bestIdx = m.higherBetter !== null ? (m.higherBetter ? vals.indexOf(Math.max.apply(null, numericVals)) : vals.indexOf(Math.min.apply(null, numericVals))) : -1;
-            html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4">' + m.label + '</td>';
+            html += '<tr><td style="font-size:13px;font-weight:700;color:#c0c8d4;font-family:inherit">' + m.label + '</td>';
             vals.forEach(function(v, i) {
                 var cls = 'heat-cell';
                 if (m.higherBetter !== null && v !== null) {
@@ -532,7 +532,7 @@
                     cls += ' intensity-' + level;
                 }
                 if (i === bestIdx && numericVals.length > 1) cls += ' best-cell';
-                html += '<td class="' + cls + '" style="font-size:13px">' + m.fmtFn(v) + '</td>';
+                html += '<td class="' + cls + '" style="font-size:13px;font-family:inherit">' + m.fmtFn(v) + '</td>';
             });
             html += '</tr>';
         });
