@@ -450,8 +450,8 @@
       "issuer": "国泰基金管理有限公司",
       "issuer_full": "国泰基金管理有限公司",
       "issuer_short": "国泰",
-      "scale": 198.8,
-      "shares": 199.1,
+      "scale": 18937900866.36,
+      "shares": 9466110600,
       "issue_date": "2013-04-25",
       "custodian": "",
       "top_holdings": [
@@ -492,11 +492,16 @@
       "custody_fee_rate": 0,
       "annual_3y": 31.94,
       "calmar_ratio": 2.66,
-      "fee_rate": null,
+      "fee_rate": 0,
       "tracking_error": null,
-      "premium_discount": null,
+      "premium_discount": 7.11,
       "valuation_percentile": null,
-      "net_inflow_5d": null
+      "net_inflow_5d": 0,
+      "fee_rate_management": 0,
+      "fee_rate_custody": 0,
+      "fee_rate_service": 0,
+      "net_inflow_shares": 0,
+      "net_inflow_ratio": 0
     },
     {
       "code": "159866",
@@ -4788,8 +4793,8 @@
       "issuer": "华安基金管理有限公司",
       "issuer_full": "华安基金管理有限公司",
       "issuer_short": "华安",
-      "scale": 1112.1,
-      "shares": 1087.5,
+      "scale": 107817682667.76,
+      "shares": 11409640800,
       "issue_date": "2013-07-18",
       "custodian": "",
       "top_holdings": [
@@ -4814,11 +4819,16 @@
       "custody_fee_rate": 0,
       "annual_3y": 30.8,
       "calmar_ratio": 1.09,
-      "fee_rate": null,
+      "fee_rate": 0,
       "tracking_error": null,
-      "premium_discount": null,
+      "premium_discount": 0.05,
       "valuation_percentile": null,
-      "net_inflow_5d": null
+      "net_inflow_5d": -98200000,
+      "fee_rate_management": 0,
+      "fee_rate_custody": 0,
+      "fee_rate_service": 0,
+      "net_inflow_shares": -98200000,
+      "net_inflow_ratio": -0.86
     },
     {
       "code": "159992",
@@ -26110,8 +26120,8 @@
       "issuer": "华夏基金管理有限公司",
       "issuer_full": "华夏基金管理有限公司",
       "issuer_short": "华夏",
-      "scale": 355.6,
-      "shares": 301.0,
+      "scale": 29336880185.96,
+      "shares": 9796266800,
       "issue_date": "2004-12-30",
       "custodian": "",
       "top_holdings": [
@@ -26152,11 +26162,16 @@
       "custody_fee_rate": 0,
       "annual_3y": 6.32,
       "calmar_ratio": 1.31,
-      "fee_rate": null,
+      "fee_rate": 0,
       "tracking_error": null,
-      "premium_discount": null,
+      "premium_discount": -0.07,
       "valuation_percentile": null,
-      "net_inflow_5d": null
+      "net_inflow_5d": -255600000,
+      "fee_rate_management": 0,
+      "fee_rate_custody": 0,
+      "fee_rate_service": 0,
+      "net_inflow_shares": -255600000,
+      "net_inflow_ratio": -2.61
     },
     {
       "code": "561960",
@@ -30846,8 +30861,8 @@
       "issuer": "华泰柏瑞基金管理有限公司",
       "issuer_full": "华泰柏瑞基金管理有限公司",
       "issuer_short": "华泰柏瑞",
-      "scale": 195.3,
-      "shares": 196.2,
+      "scale": 20037535536.48,
+      "shares": 6328175700,
       "issue_date": "2006-11-17",
       "custodian": "",
       "top_holdings": [
@@ -30888,11 +30903,16 @@
       "custody_fee_rate": 0,
       "annual_3y": 9.1,
       "calmar_ratio": 1.53,
-      "fee_rate": null,
+      "fee_rate": 0,
       "tracking_error": null,
-      "premium_discount": null,
+      "premium_discount": 0.05,
       "valuation_percentile": null,
-      "net_inflow_5d": null
+      "net_inflow_5d": 144000000,
+      "fee_rate_management": 0,
+      "fee_rate_custody": 0,
+      "fee_rate_service": 0,
+      "net_inflow_shares": 144000000,
+      "net_inflow_ratio": 2.28
     },
     {
       "code": "515390",
@@ -59892,7 +59912,7 @@
       "issuer": "南方基金管理股份有限公司",
       "issuer_full": "南方基金管理股份有限公司",
       "issuer_short": "南方",
-      "scale": 433.3,
+      "scale": 41432230000.0,
       "shares": 373.7,
       "issue_date": "2013-02-06",
       "custodian": "",
@@ -63120,8 +63140,8 @@
       "issuer": "易方达基金管理有限公司",
       "issuer_full": "易方达基金管理有限公司",
       "issuer_short": "易方达",
-      "scale": 401.8,
-      "shares": 388.6,
+      "scale": 40612622211.1,
+      "shares": 34042432700,
       "issue_date": "2017-01-04",
       "custodian": "",
       "top_holdings": [
@@ -63162,11 +63182,16 @@
       "custody_fee_rate": 0,
       "annual_3y": 2.53,
       "calmar_ratio": -0.37,
-      "fee_rate": null,
+      "fee_rate": 0,
       "tracking_error": null,
-      "premium_discount": null,
+      "premium_discount": 0.1,
       "valuation_percentile": null,
-      "net_inflow_5d": null
+      "net_inflow_5d": 277000000,
+      "fee_rate_management": 0,
+      "fee_rate_custody": 0,
+      "fee_rate_service": 0,
+      "net_inflow_shares": 277000000,
+      "net_inflow_ratio": 0.81
     },
     {
       "code": "159857",
@@ -78090,5 +78115,5 @@
       "net_inflow_5d": null
     }
   ],
-  "updated": "2026-05-23T17:38:06.465685"
+  "updated": "2026-05-23T19:25:33.929375"
 }
