@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "version": "1.0",
+    "created_at": "2026-05-23",
+    "description": "ETF数据三级分级配置（按专业度分级）",
+    "rules": {
+      "primary": "ETF基础信息，无需计算",
+      "secondary": "风险指标（简单计算）或用户明确要求",
+      "advanced": "风险指标（复杂计算/模型）或用户明确要求"
+    }
+  },
+  "levels": {
+    "primary": {
+      "name": "初级",
+      "description": "ETF基础信息，无需计算",
+      "fields": [
+        {"field": "code", "cn": "代码", "completeness": 100.0},
+        {"field": "name", "cn": "名称", "completeness": 100.0},
+        {"field": "category", "cn": "分类", "completeness": 100.0},
+        {"field": "close", "cn": "收盘价", "completeness": 100.0},
+        {"field": "prev_close", "cn": "前收盘价", "completeness": 100.0},
+        {"field": "change_pct", "cn": "涨跌幅%", "completeness": 100.0},
+        {"field": "change_rate", "cn": "涨跌率", "completeness": 100.0},
+        {"field": "volume", "cn": "成交量", "completeness": 100.0},
+        {"field": "scale", "cn": "规模亿元", "completeness": 100.0},
+        {"field": "shares", "cn": "份额亿份", "completeness": 100.0},
+        {"field": "year_1_return", "cn": "1年回报率%", "completeness": 100.0},
+        {"field": "issuer", "cn": "发行人", "completeness": 99.9},
+        {"field": "issuer_full", "cn": "发行人全称", "completeness": 99.9},
+        {"field": "issuer_short", "cn": "发行人简称", "completeness": 99.9},
+        {"field": "issue_date", "cn": "发行日期", "completeness": 99.5},
+        {"field": "top_holdings", "cn": "前十大持仓", "completeness": 95.5}
+      ]
+    },
+    "secondary": {
+      "name": "中级",
+      "description": "风险指标（简单计算）或用户明确要求",
+      "fields": [
+        {"field": "annual_vol", "cn": "年化波动率%", "completeness": 100.0},
+        {"field": "max_drawdown", "cn": "最大回撤%", "completeness": 100.0},
+        {"field": "management_fee_rate", "cn": "管理费率%", "completeness": 100.0, "note": "用户要求→中级"},
+        {"field": "custody_fee_rate", "cn": "托管费率%", "completeness": 100.0, "note": "用户要求→中级"},
+        {"field": "fee_rate", "cn": "总费率%", "completeness": 0.1, "note": "用户要求→中级"},
+        {"field": "benchmark", "cn": "业绩基准", "completeness": 6.7, "note": "用户要求→中级"},
+        {"field": "tracking_error", "cn": "跟踪误差%", "completeness": 0.0, "note": "用户要求→中级"},
+        {"field": "annual_3y", "cn": "3年年化回报%", "completeness": 49.8},
+        {"field": "year_3_return", "cn": "3年回报率%", "completeness": 49.8},
+        {"field": "net_inflow_5d", "cn": "5日净流入亿元", "completeness": 0.1, "note": "用户要求→中级"},
+        {"field": "net_inflow_ratio", "cn": "净流入比例%", "completeness": 0.1},
+        {"field": "net_inflow_shares", "cn": "净份额流入亿份", "completeness": 0.1},
+        {"field": "premium_discount", "cn": "溢价折价%", "completeness": 0.1, "note": "用户确认→中级"}
+      ]
+    },
+    "advanced": {
+      "name": "高级",
+      "description": "风险指标（复杂计算/模型）或用户明确要求",
+      "fields": [
+        {"field": "sharpe_ratio", "cn": "夏普比率", "completeness": 100.0, "note": "用户要求→高级"},
+        {"field": "calmar_ratio", "cn": "卡玛比率", "completeness": 96.8, "note": "用户要求→高级"},
+        {"field": "valuation_percentile", "cn": "估值分位数%", "completeness": 0.0},
+        {"field": "custodian", "cn": "托管人", "completeness": 0.0, "note": "暂放高级，取得完整数据后调整至初级"},
+        {"field": "fee_rate_custody", "cn": "托管费率%", "completeness": 0.1, "note": "用户要求→高级"},
+        {"field": "fee_rate_management", "cn": "管理费率%", "completeness": 0.1, "note": "用户要求→高级"},
+        {"field": "fee_rate_service", "cn": "服务费率%", "completeness": 0.1, "note": "用户要求→高级"}
+      ]
+    }
+  },
+  "statistics": {
+    "total_fields": 36,
+    "primary_count": 16,
+    "secondary_count": 13,
+    "advanced_count": 7,
+    "primary_pct": 44.4,
+    "secondary_pct": 36.1,
+    "advanced_pct": 19.4
+  },
+  "notes": [
+    "分级逻辑：按专业度分级（基础信息→简单计算→复杂计算）",
+    "具体字段可随时调级（见各字段的note字段）",
+    "custodian（托管人）暂放高级，后续取得完整数据后调整到初级",
+    "溢价折价（premium_discount）确认放中级",
+    "分级命名暂用'初级/中级/高级'，后续可调整"
+  ]
+}
