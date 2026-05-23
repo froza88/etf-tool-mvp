@@ -13,6 +13,14 @@ from datetime import datetime, timedelta
 ROOT = Path(__file__).parent
 DATA_FILE = ROOT / "etf_standard_data.json"
 
+# 导入 WeStock Fetcher
+try:
+    from fetchers.westock_fetcher import WeStockFetcher
+    WESTOCK_AVAILABLE = True
+except ImportError:
+    WESTOCK_AVAILABLE = False
+    print("[ETFDataService] WeStock Fetcher 未安装，WeStockSource 将不可用", file=sys.stderr)
+
 
 class ETFDataSource:
     """
@@ -73,6 +81,54 @@ class LocalJSONSource(ETFDataSource):
         for code in codes:
             if code in etfs_dict:
                 result.append(etfs_dict[code])
+        return result
+
+
+class WeStockSource(ETFDataSource):
+    """
+    数据源 B：WeStock API
+    提供 L2 数据：费率/溢折价率/净申购等
+    """
+    
+    def __init__(self, cache_dir=None, cache_days=1):
+        """
+        :param cache_dir: 缓存目录
+        :param cache_days: 缓存有效期（天）
+        """
+        if not WESTOCK_AVAILABLE:
+            raise ImportError("WeStockFetcher 未安装，无法使用 WeStockSource")
+        self.fetcher = WeStockFetcher(cache_dir=cache_dir, cache_days=cache_days)
+    
+    def get_etfs_by_codes(self, codes: list) -> list:
+        """
+        根据 ETF 代码列表获取 WeStock 数据
+        
+        Args:
+            codes: ETF 代码列表
+        
+        Returns:
+            list: ETF 数据列表（只包含 WeStock 有的字段）
+        """
+        result = []
+        
+        for code in codes:
+            try:
+                # 调用 WeStock Fetcher 获取数据
+                westock_data = self.fetcher.fetch_etf_info(code, force_refresh=False)
+                
+                if not westock_data:
+                    print(f"[WeStockSource] 获取 {code} 数据失败，跳过", file=sys.stderr)
+                    continue
+                
+                # 构造返回数据（包含 code 和 WeStock 数据）
+                etf_data = {"code": code}
+                etf_data.update(westock_data)
+                result.append(etf_data)
+                
+            except Exception as e:
+                print(f"[WeStockSource] 处理 {code} 时出错: {e}", file=sys.stderr)
+                continue
+        
         return result
 
 
@@ -192,11 +248,19 @@ class ETFDataService:
 
 def create_default_service(max_age_hours=24):
     """
-    创建默认数据服务（本地 JSON + 无外部源）
-    后续可以改成：create_service_with_wind() 或 create_service_with_yfdztc()
+    创建默认数据服务（本地 JSON + WeStock L2 数据源）
     """
+    # 创建 WeStock 外部数据源（L2）
+    external_source = None
+    if WESTOCK_AVAILABLE:
+        try:
+            external_source = WeStockSource()
+            print("[ETFDataService] WeStockSource 已启用（L2 数据源）", file=sys.stderr)
+        except Exception as e:
+            print(f"[ETFDataService] WeStockSource 初始化失败: {e}", file=sys.stderr)
+    
     return ETFDataService(
         local_source=LocalJSONSource(),
-        external_source=None,  # 暂时不配置外部源
+        external_source=external_source,  # L2: WeStock
         max_age_hours=max_age_hours
     )

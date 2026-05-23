@@ -149,16 +149,40 @@ def compare_v3():
 
 @app.route('/api/compare')
 def api_compare():
-    """API：获取对比ETF数据（查询即存储）"""
+    """API：获取对比ETF数据（查询即存储）
+    
+    参数：
+    - codes: ETF代码列表（逗号分隔）
+    - source: 数据源（可选，默认='local'）
+      - 'local': 本地数据库（L1）
+      - 'westock': WeStock API（L2）
+    """
     codes = request.args.get('codes', '').split(',')
     codes = [c.strip() for c in codes if c.strip()]
+    source = request.args.get('source', 'local')  # 默认使用本地数据
     
     if not codes:
         return jsonify({"error": "请提供ETF代码", "codes": []}), 400
     
-    # 使用数据服务层（查询即存储）
-    service = etf_data_service.create_default_service()
-    etfs = service.get_etfs_by_codes(codes)
+    # 根据 source 参数选择数据源
+    if source == 'westock':
+        # L2: 使用 WeStockSource 直接获取数据
+        try:
+            from etf_data_service import WeStockSource
+            westock_source = WeStockSource()
+            etfs = westock_source.get_etfs_by_codes(codes)
+            data_source = "westock"
+        except Exception as e:
+            print(f"[API] WeStockSource 调用失败: {e}", file=sys.stderr)
+            # 降级：使用本地数据
+            service = etf_data_service.create_default_service()
+            etfs = service.get_etfs_by_codes(codes)
+            data_source = "local_db_fallback"
+    else:
+        # L1: 使用本地数据库（默认）
+        service = etf_data_service.create_default_service()
+        etfs = service.get_etfs_by_codes(codes)
+        data_source = "local_db"
     
     if not etfs:
         return jsonify({"error": "未找到ETF数据", "codes": codes}), 404
@@ -167,7 +191,7 @@ def api_compare():
         "codes": codes,
         "count": len(etfs),
         "etfs": etfs,
-        "source": "local_db",  # 后续可能变成 "wind", "yfdztc" 等
+        "source": data_source,
         "updated": datetime.now().isoformat()
     })
 
