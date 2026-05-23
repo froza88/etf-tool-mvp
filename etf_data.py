@@ -66,6 +66,9 @@ def _load_etfs():
         try:
             with open(STANDARD_DATA_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
+            # 兼容两种格式：list 或 {"etfs": [...]}
+            if isinstance(data, dict):
+                data = data.get("etfs", data)
             print(f"✅ 标准化数据：{len(data)} 只ETF", file=sys.stderr)
             return data
         except Exception as e:
@@ -76,6 +79,8 @@ def _load_etfs():
         try:
             with open(STANDARD_DATA_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
+            if isinstance(data, dict):
+                data = data.get("etfs", data)
             print(f"⚠️  过期数据：{len(data)} 只ETF", file=sys.stderr)
             return data
         except Exception:
@@ -88,6 +93,8 @@ def _load_etfs():
             try:
                 with open(backup_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
+                if isinstance(data, dict):
+                    data = data.get("etfs", data)
                 print(f"⚠️  回退数据：{backup_name} ({len(data)} 只)", file=sys.stderr)
                 return data
             except Exception:
