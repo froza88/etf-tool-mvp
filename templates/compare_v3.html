@@ -172,19 +172,19 @@
         <div class="animate-in" style="animation-delay:0.1s;display:none" id="trophySection">
             <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">
                 <span>🏆 ETF 多维对比 · 流动性 → 风险 → 收益</span>
-                <button id="metricSelectorOpenBtn" class="btn btn-export" style="font-size:12px;padding:6px 12px" onclick="window.openMetricSelector()">☰ 选择指标</button>
+                <button id="metricSelectorOpenBtn" class="btn btn-export" style="font-size:12px;padding:6px 12px">☰ 选择指标</button>
             </div>
             <div class="trophy-grid" id="trophyGrid"></div>
             <div id="metricSelectorModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);z-index:99999;justify-content:center;align-items:center">
                 <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
                         <span style="font-size:16px;font-weight:700;color:#fff">选择对比指标</span>
-                        <button id="metricSelectorCloseBtn" style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer" onclick="window.closeMetricSelector()">×</button>
+                        <button id="metricSelectorCloseBtn" style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer">×</button>
                     </div>
                     <div id="metricCheckboxes" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px"></div>
                     <div style="display:flex;gap:10px;justify-content:flex-end">
-                        <button id="metricSelectorCancelBtn" class="btn btn-back" onclick="window.closeMetricSelector()">取消</button>
-                        <button id="metricSelectorConfirmBtn" class="btn btn-export" onclick="window.applyMetricSelection()">确认</button>
+                        <button id="metricSelectorCancelBtn" class="btn btn-back">取消</button>
+                        <button id="metricSelectorConfirmBtn" class="btn btn-export">确认</button>
                     </div>
                 </div>
             </div>
@@ -361,14 +361,27 @@
                 var y = parseInt(selection.style.top);
                 var w = parseInt(selection.style.width);
                 var h = parseInt(selection.style.height);
-                if (w < 10 || h < 10) { document.body.removeChild(overlay); return; }
-                // 修复黑屏：先把 overlay 从 DOM 移除，再截图
+                if (w < 10 || h < 10) { overlay.parentNode.removeChild(overlay); return; }
+                // 移除 overlay 后再截图
                 overlay.parentNode.removeChild(overlay);
+                // 先截全页，再裁剪
                 html2canvas(document.body, {
-                    scale: 2, useCORS: true, logging: false, backgroundColor: '#080d18',
-                    x: x + window.scrollX, y: y + window.scrollY, width: w, height: h
-                }).then(function(canvas) {
-                    canvas.toBlob(function(blob) {
+                    scale: 2, useCORS: true, logging: false, backgroundColor: '#080d18'
+                }).then(function(fullCanvas) {
+                    var sx = (x + window.scrollX) * 2;
+                    var sy = (y + window.scrollY) * 2;
+                    var sw = w * 2;
+                    var sh = h * 2;
+                    // 防止越界
+                    sx = Math.max(0, Math.min(sx, fullCanvas.width - 1));
+                    sy = Math.max(0, Math.min(sy, fullCanvas.height - 1));
+                    sw = Math.min(sw, fullCanvas.width - sx);
+                    sh = Math.min(sh, fullCanvas.height - sy);
+                    var cropCanvas = document.createElement('canvas');
+                    cropCanvas.width = sw; cropCanvas.height = sh;
+                    var ctx = cropCanvas.getContext('2d');
+                    ctx.drawImage(fullCanvas, sx, sy, sw, sh, 0, 0, sw, sh);
+                    cropCanvas.toBlob(function(blob) {
                         if (!blob) return alert('截图失败');
                         var url = URL.createObjectURL(blob);
                         var a = document.createElement('a');
@@ -376,7 +389,7 @@
                         a.href = url; document.body.appendChild(a); a.click();
                         document.body.removeChild(a); setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
                     }, 'image/png');
-                }).catch(function(e) { if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay); alert('框选截图失败: ' + e.message); });
+                }).catch(function(e) { alert('框选截图失败: ' + e.message); });
             }
             overlay.addEventListener('mousemove', onMouseMove);
             overlay.addEventListener('mouseup', onMouseUp);
@@ -454,11 +467,6 @@
             renderCombinedCards();
         } catch(e) { console.error('applyMetricSelection error:', e); alert('应用选择失败: ' + e.message); }
     }
-
-    // 把弹窗函数挂到 window，确保 onclick 属性能找到它们
-    window.openMetricSelector = openMetricSelector;
-    window.closeMetricSelector = closeMetricSelector;
-    window.applyMetricSelection = applyMetricSelection;
 
     function toggleExpand() {
         __expanded = !__expanded;
@@ -738,5 +746,15 @@
         }
     }
 
-    window.onload = loadData;
+    window.onload = function() {
+        // 事件委托： metric selector 所有按钮
+        document.addEventListener('click', function(e) {
+            var t = e.target;
+            var id = t.id || (t.parentElement ? t.parentElement.id : '');
+            if (id === 'metricSelectorOpenBtn') openMetricSelector();
+            else if (id === 'metricSelectorCloseBtn' || id === 'metricSelectorCancelBtn') closeMetricSelector();
+            else if (id === 'metricSelectorConfirmBtn') applyMetricSelection();
+        });
+        loadData();
+    };
     </script>
