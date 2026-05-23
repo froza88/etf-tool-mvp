@@ -179,12 +179,12 @@
                 <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
                         <span style="font-size:16px;font-weight:700;color:#fff">选择对比指标</span>
-                        <button style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer" onclick="toggleMetricSelector()">×</button>
+                        <button id="metricSelectorCloseBtn" style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer">×</button>
                     </div>
                     <div id="metricCheckboxes" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px"></div>
                     <div style="display:flex;gap:10px;justify-content:flex-end">
-                        <button class="btn btn-back" onclick="toggleMetricSelector()">取消</button>
-                        <button class="btn btn-export" onclick="applyMetricSelection()">确认</button>
+                        <button id="metricSelectorCancelBtn" class="btn btn-back">取消</button>
+                        <button id="metricSelectorConfirmBtn" class="btn btn-export">确认</button>
                     </div>
                 </div>
             </div>
@@ -362,6 +362,8 @@
                 var w = parseInt(selection.style.width);
                 var h = parseInt(selection.style.height);
                 if (w < 10 || h < 10) { document.body.removeChild(overlay); return; }
+                // 修复：截图前先隐藏overlay，避免截到黑屏
+                overlay.style.display = 'none';
                 html2canvas(document.body, {
                     scale: 2, useCORS: true, logging: false, backgroundColor: '#080d18',
                     x: x + window.scrollX, y: y + window.scrollY, width: w, height: h
@@ -420,25 +422,28 @@
         { icon:'💵', label:'近5日净流入', key:'net_inflow_5d', unit:'亿', fmtFn:function(v){return fmt(v,1,'亿');}, reverse:false, max:50, signed:false, invert:false }
     ];
 
-    function toggleMetricSelector() {
+    function openMetricSelector() {
         try {
             var modal = document.getElementById('metricSelectorModal');
             if (!modal) { console.error('metricSelectorModal not found'); return; }
-            if (modal.style.display === 'none' || !modal.style.display) {
-                var container = document.getElementById('metricCheckboxes');
-                if (!container) { console.error('metricCheckboxes not found'); return; }
-                container.innerHTML = ALL_METRICS.map(function(m) {
-                    var checked = __selectedMetrics.indexOf(m.key) >= 0 ? 'checked' : '';
-                    return '<label style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;background:transparent">' +
-                        '<input type="checkbox" value="' + m.key + '" ' + checked + ' style="accent-color:#00d4ff;width:16px;height:16px">' +
-                        '<span style="font-size:14px">' + m.icon + ' ' + m.label + '</span>' +
-                        '</label>';
-                }).join('');
-                modal.style.display = 'flex';
-            } else {
-                modal.style.display = 'none';
-            }
-        } catch(e) { console.error('toggleMetricSelector error:', e); alert('打开指标选择失败: ' + e.message); }
+            var container = document.getElementById('metricCheckboxes');
+            if (!container) { console.error('metricCheckboxes not found'); return; }
+            container.innerHTML = ALL_METRICS.map(function(m) {
+                var checked = __selectedMetrics.indexOf(m.key) >= 0 ? 'checked' : '';
+                return '<label style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;background:transparent">' +
+                    '<input type="checkbox" value="' + m.key + '" ' + checked + ' style="accent-color:#00d4ff;width:16px;height:16px">' +
+                    '<span style="font-size:14px">' + m.icon + ' ' + m.label + '</span>' +
+                    '</label>';
+            }).join('');
+            modal.style.display = 'flex';
+        } catch(e) { console.error('openMetricSelector error:', e); alert('打开指标选择失败: ' + e.message); }
+    }
+
+    function closeMetricSelector() {
+        try {
+            var modal = document.getElementById('metricSelectorModal');
+            if (modal) modal.style.display = 'none';
+        } catch(e) { console.error('closeMetricSelector error:', e); }
     }
 
     function applyMetricSelection() {
@@ -446,7 +451,7 @@
             var checkboxes = document.querySelectorAll('#metricCheckboxes input[type="checkbox"]:checked');
             if (!checkboxes || checkboxes.length === 0) { alert('请至少选择一个指标'); return; }
             __selectedMetrics = Array.from(checkboxes).map(function(cb) { return cb.value; });
-            document.getElementById('metricSelectorModal').style.display = 'none';
+            closeMetricSelector();
             renderCombinedCards();
         } catch(e) { console.error('applyMetricSelection error:', e); alert('应用选择失败: ' + e.message); }
     }
@@ -727,9 +732,21 @@
             console.error('加载数据失败:', error);
             document.getElementById('loadingIndicator').innerHTML = '<div style="color:var(--red);padding:40px;text-align:center">加载数据失败，请检查网络连接</div>';
         }
+        // 绑定弹窗按钮事件
+        if (typeof bindMetricSelectorEvents === 'function') bindMetricSelectorEvents();
+    }
+
+    // 绑定弹窗按钮事件（避免onclick全局作用域问题）
+    function bindMetricSelectorEvents() {
+        var closeBtn = document.getElementById('metricSelectorCloseBtn');
+        var cancelBtn = document.getElementById('metricSelectorCancelBtn');
+        var confirmBtn = document.getElementById('metricSelectorConfirmBtn');
+        var openBtn = document.querySelector('[onclick*="toggleMetricSelector"]');
+        if (closeBtn) closeBtn.addEventListener('click', closeMetricSelector);
+        if (cancelBtn) cancelBtn.addEventListener('click', closeMetricSelector);
+        if (confirmBtn) confirmBtn.addEventListener('click', applyMetricSelection);
+        if (openBtn) { openBtn.removeAttribute('onclick'); openBtn.addEventListener('click', openMetricSelector); }
     }
 
     window.onload = loadData;
     </script>
-</body>
-</html>
