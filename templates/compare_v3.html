@@ -362,13 +362,12 @@
                 var w = parseInt(selection.style.width);
                 var h = parseInt(selection.style.height);
                 if (w < 10 || h < 10) { document.body.removeChild(overlay); return; }
-                // 修复：截图前先隐藏overlay，避免截到黑屏
-                overlay.style.display = 'none';
+                // 修复黑屏：先把 overlay 从 DOM 移除，再截图
+                overlay.parentNode.removeChild(overlay);
                 html2canvas(document.body, {
                     scale: 2, useCORS: true, logging: false, backgroundColor: '#080d18',
                     x: x + window.scrollX, y: y + window.scrollY, width: w, height: h
                 }).then(function(canvas) {
-                    document.body.removeChild(overlay);
                     canvas.toBlob(function(blob) {
                         if (!blob) return alert('截图失败');
                         var url = URL.createObjectURL(blob);
@@ -377,7 +376,7 @@
                         a.href = url; document.body.appendChild(a); a.click();
                         document.body.removeChild(a); setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
                     }, 'image/png');
-                }).catch(function(e) { document.body.removeChild(overlay); alert('框选截图失败: ' + e.message); });
+                }).catch(function(e) { if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay); alert('框选截图失败: ' + e.message); });
             }
             overlay.addEventListener('mousemove', onMouseMove);
             overlay.addEventListener('mouseup', onMouseUp);
