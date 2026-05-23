@@ -30043,7 +30043,8 @@
       "fee_rate_custody": 0,
       "fee_rate_service": 0,
       "net_inflow_shares": -532800000,
-      "net_inflow_ratio": -1.75
+      "net_inflow_ratio": -1.75,
+      "amount": 6421618436
     },
     {
       "code": "513560",
@@ -59958,7 +59959,8 @@
       "tracking_error": null,
       "premium_discount": null,
       "valuation_percentile": null,
-      "net_inflow_5d": 0
+      "net_inflow_5d": 0,
+      "amount": 6819708732
     },
     {
       "code": "588400",

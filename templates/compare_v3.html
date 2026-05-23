@@ -340,7 +340,7 @@
 
     // ========== 指标选择器 ==========
     var ALL_METRICS = [
-        { icon:'🫧', label:'流动性(规模&成交)', key:'scale', unit:'亿', fmtFn:function(v){return fmt(v/100000000,2,'亿');}, reverse:false, max:300, signed:false, dual:true, key2:'volume', max2:20, fmtFn2:function(v){return fmt(v,2,'亿手');} },
+        { icon:'🫧', label:'流动性(规模&成交)', key:'scale', unit:'亿', fmtFn:function(v){return fmt(v/100000000,2,'亿');}, reverse:false, max:300, signed:false, dual:true, key2:'amount', max2:200000, fmtFn2:function(v){return fmt(v/10000,2,'万');} },
         { icon:'🗡️', label:'最大回撤', key:'max_drawdown', unit:'%', fmtFn:function(v){return fmt(v,2,'%');}, reverse:true, max:60, signed:true, invert:true },
         { icon:'📉', label:'年化波动率', key:'annual_vol', unit:'%', fmtFn:function(v){return fmt(v,2,'%');}, reverse:true, max:50, signed:false, invert:true },
         { icon:'⚔️', label:'夏普比率', key:'sharpe_ratio', unit:'', fmtFn:function(v){return fmt(v,2);}, reverse:false, max:3.5, signed:false },
