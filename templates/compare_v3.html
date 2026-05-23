@@ -421,28 +421,34 @@
     ];
 
     function toggleMetricSelector() {
-        var modal = document.getElementById('metricSelectorModal');
-        if (modal.style.display === 'none') {
-            // 显示弹窗并填充复选框
-            var container = document.getElementById('metricCheckboxes');
-            container.innerHTML = ALL_METRICS.map(function(m, i) {
-                var checked = __selectedMetrics.indexOf(m.key) >= 0 ? 'checked' : '';
-                return '<label style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background=\'rgba(0,212,255,0.08)\'" onmouseout="this.style.background=\'transparent\'">' +
-                    '<input type="checkbox" value="' + m.key + '" ' + checked + ' style="accent-color:#00d4ff;width:16px;height:16px">' +
-                    '<span style="font-size:14px">' + m.icon + ' ' + m.label + '</span>' +
-                    '</label>';
-            }).join('');
-            modal.style.display = 'flex';
-        } else {
-            modal.style.display = 'none';
-        }
+        try {
+            var modal = document.getElementById('metricSelectorModal');
+            if (!modal) { console.error('metricSelectorModal not found'); return; }
+            if (modal.style.display === 'none' || !modal.style.display) {
+                var container = document.getElementById('metricCheckboxes');
+                if (!container) { console.error('metricCheckboxes not found'); return; }
+                container.innerHTML = ALL_METRICS.map(function(m) {
+                    var checked = __selectedMetrics.indexOf(m.key) >= 0 ? 'checked' : '';
+                    return '<label style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;background:transparent">' +
+                        '<input type="checkbox" value="' + m.key + '" ' + checked + ' style="accent-color:#00d4ff;width:16px;height:16px">' +
+                        '<span style="font-size:14px">' + m.icon + ' ' + m.label + '</span>' +
+                        '</label>';
+                }).join('');
+                modal.style.display = 'flex';
+            } else {
+                modal.style.display = 'none';
+            }
+        } catch(e) { console.error('toggleMetricSelector error:', e); alert('打开指标选择失败: ' + e.message); }
     }
 
     function applyMetricSelection() {
-        var checkboxes = document.querySelectorAll('#metricCheckboxes input[type="checkbox"]:checked');
-        __selectedMetrics = Array.from(checkboxes).map(function(cb) { return cb.value; });
-        document.getElementById('metricSelectorModal').style.display = 'none';
-        renderCombinedCards();
+        try {
+            var checkboxes = document.querySelectorAll('#metricCheckboxes input[type="checkbox"]:checked');
+            if (!checkboxes || checkboxes.length === 0) { alert('请至少选择一个指标'); return; }
+            __selectedMetrics = Array.from(checkboxes).map(function(cb) { return cb.value; });
+            document.getElementById('metricSelectorModal').style.display = 'none';
+            renderCombinedCards();
+        } catch(e) { console.error('applyMetricSelection error:', e); alert('应用选择失败: ' + e.message); }
     }
 
     function toggleExpand() {
