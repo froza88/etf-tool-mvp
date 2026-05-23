@@ -483,7 +483,7 @@
                     var diff = m.reverse ? loserVal - chVal : chVal - loserVal;
                     var diffPct = m.max ? (Math.abs(diff) / m.max * 100).toFixed(0) : '0';
                     var unit = m.unit || '%';
-                    html += (champ.name || champ.code) + (m.reverse ? ' 更低 ' : ' 更高 ') + Math.abs(diff).toFixed(2) + unit + ' (+' + diffPct + '%)';
+                    html += (champ.name || champ.code) + (m.reverse ? ' 更低 ' : ' 更高 ') + m.fmtFn(Math.abs(diff)) + ' (+' + diffPct + '%)';
                 } else {
                     html += '数据不完整，无法比较';
                 }
