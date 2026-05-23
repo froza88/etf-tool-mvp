@@ -11,6 +11,26 @@ app = Flask(__name__)
 
 ROOT = Path(__file__).parent
 
+# 性能优化：缓存默认数据服务（避免每个请求都创建）
+_default_service = None
+_default_service_mtime = 0
+
+def get_default_service():
+    """获取缓存的默认数据服务（仅在数据文件变化时重建）"""
+    global _default_service, _default_service_mtime
+    
+    data_file = ROOT / "etf_standard_data.json"
+    if not data_file.exists():
+        return etf_data_service.create_default_service()
+    
+    mtime = os.path.getmtime(data_file)
+    if _default_service is None or mtime != _default_service_mtime:
+        print(f"[app] 重建数据服务（数据文件已更新：{datetime.fromtimestamp(mtime)}）", file=sys.stderr)
+        _default_service = etf_data_service.create_default_service()
+        _default_service_mtime = mtime
+    
+    return _default_service
+
 
 @app.route('/')
 def index():
@@ -175,13 +195,16 @@ def api_compare():
         except Exception as e:
             print(f"[API] WeStockSource 调用失败: {e}", file=sys.stderr)
             # 降级：使用本地数据
-            service = etf_data_service.create_default_service()
+            service = get_default_service()
             etfs = service.get_etfs_by_codes(codes)
             data_source = "local_db_fallback"
     else:
         # L1: 使用本地数据库（默认）
-        service = etf_data_service.create_default_service()
-        etfs = service.get_etfs_by_codes(codes)
+        service = get_default_service()
+        
+        # 直接使用 local_source，避免过期检查导致调用 WeStock
+        local_source = service.local_source
+        etfs = local_source.get_etfs_by_codes(codes)
         data_source = "local_db"
     
     if not etfs:
