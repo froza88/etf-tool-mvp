@@ -337,8 +337,8 @@ def calc_metrics_from_prices(prices):
             sharpe = (annual_ret - 2) / annual_vol if annual_vol > 0 else 0
 
     return {
-        "year_1_return": round(y1, 2) if y1 is not None else 0,
-        "year_3_return": round(y3, 2) if y3 is not None else 0,
+        "year_1_return": round(y1, 2) if y1 is not None else None,
+        "year_3_return": round(y3, 2) if y3 is not None else None,
         "max_drawdown": round(max_dd, 2),
         "sharpe_ratio": round(sharpe, 2),
         "annual_vol": round(annual_vol, 2),
@@ -631,8 +631,8 @@ def step_build():
         ym = yingmi_data.get(code, {})
 
         # 收益率：自算 > 盈米 > 非凸
-        year_1_return = calc.get("year_1_return", 0) or ym.get("year_1_return", 0) or gen.get("year_1_return", 0)
-        year_3_return = calc.get("year_3_return", 0) or ym.get("year_3_return", 0) or 0
+        year_1_return = calc.get("year_1_return") or ym.get("year_1_return") or gen.get("year_1_return")
+        year_3_return = calc.get("year_3_return") or ym.get("year_3_return") or None
         max_drawdown = calc.get("max_drawdown", 0) or ym.get("max_drawdown", 0) or gen.get("max_drawdown", 0)
         sharpe_ratio = calc.get("sharpe_ratio", 0) or ym.get("sharpe_ratio", 0) or gen.get("sharpe_ratio", 0.0)
         annual_vol = calc.get("annual_vol", 0) or ym.get("annual_vol_1y", 0) or 0
