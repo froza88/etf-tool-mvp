@@ -39,6 +39,7 @@ class WeStockFetcher:
     
     def __init__(self, cache_dir=None, cache_days=CACHE_VALID_DAYS):
         self.cache_dir = Path(cache_dir) if cache_dir else CACHE_DIR
+        self.cache_dir.mkdir(parents=True, exist_ok=True)  # 确保缓存目录存在
         self.cache_days = cache_days
     
     def fetch_etf_info(self, code: str, force_refresh=False) -> dict:
@@ -243,6 +244,10 @@ class WeStockFetcher:
         fee_rate_custody = result.get('fee_rate_custody', 0) or 0
         fee_rate_service = result.get('fee_rate_service', 0) or 0
         result['fee_rate'] = fee_rate_management + fee_rate_custody + fee_rate_service
+        
+        # 数据质量检查：如果费率为 0，记录警告（可能是数据源问题）
+        if result['fee_rate'] == 0:
+            print(f"  ⚠️  警告：费率数据为 0，可能是数据源问题（managementFee={fee_rate_management}, custodyFee={fee_rate_custody}, serviceFee={fee_rate_service}）")
         
         # 计算净申购金额（份额 × 净值，需要估算净值，这里先用份额代替）
         # 注意：实际应该用 ETF 的净值来计算，这里暂时用份额
