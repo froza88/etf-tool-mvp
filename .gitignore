@@ -68,6 +68,8 @@ rebuild*.log
 
 # 数据目录
 data/history/ 历史K线 - 保留（每只ETF约5KB，版本控制）
+# data/cache/ 缓存 - 排除（可重新生成）
+data/cache/
 # data/backup/ 备份 - 排除（可重新生成）
 data/backup/
 # data/snapshots/ 快照 - 排除（可重新生成）
@@ -75,3 +77,10 @@ data/snapshots/
 # data/realtime/ 实时缓存 - 排除（可重新获取）
 data/realtime/
 # meta.json 保留（版本元数据，很小）
+
+# 临时分析脚本
+analyze_*.py
+completeness_*.json
+fill_*.py
+test_*.py
+*_broken_backup
