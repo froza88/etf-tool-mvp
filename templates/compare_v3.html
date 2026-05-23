@@ -66,7 +66,9 @@
         /* Trophy */
         .section-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:8px; letter-spacing:0.3px; }
         .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--border), transparent); }
-        .trophy-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; }
+        .trophy-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+        .metric-item:hover { background:var(--surface2) !important; transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+        .metric-item:has(input:checked) { background:rgba(0,212,255,0.08) !important; border:1px solid rgba(0,212,255,0.3); }
         .trophy-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:0; position:relative; overflow:hidden; transition:all 0.3s; display:flex; flex-direction:column; }
         .trophy-card:hover { border-color:rgba(0,212,255,0.3); transform:translateY(-2px); }
         .trophy-winner-bar { padding:10px 14px; display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; border-radius:12px 12px 0 0; }
@@ -369,7 +371,7 @@
             if (!container) { console.error('metricCheckboxes not found'); return; }
             container.innerHTML = ALL_METRICS.map(function(m) {
                 var checked = __selectedMetrics.indexOf(m.key) >= 0 ? 'checked' : '';
-                return '<label style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;background:transparent">' +
+                return '<label class="metric-item" style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;background:transparent;transition:all 0.2s">' +
                     '<input type="checkbox" value="' + m.key + '" ' + checked + ' style="accent-color:#00d4ff;width:16px;height:16px">' +
                     '<span style="font-size:14px">' + m.icon + ' ' + m.label + '</span>' +
                     '</label>';
@@ -429,39 +431,48 @@
             html += '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:8px">';
             etfs.forEach(function(e, i) {
                 if (m.dual) {
-                    // 方案C：单环（规模）+ 成交额文字标注
+                    // 双环图：外环=规模，内环=成交额
                     var scaleRaw = e[m.key] || 0;
                     var scaleVal = typeof scaleRaw === 'number' ? scaleRaw : 0;
                     var scalePct = Math.min(Math.abs(scaleVal) / m.max, 1);
                     var volRaw = e[m.key2] || 0;
                     var volVal = typeof volRaw === 'number' ? volRaw : 0;
-                    // 圈图80px：半径28，周长2*PI*28≈176
-                    var circ = 2 * Math.PI * 28;
-                    var offset = circ * (1 - scalePct);
-                    html += '<div style="text-align:center;min-width:70px">';
-                    html += '<div class="ring-container" style="width:80px;height:80px;margin:0 auto 4px">';
-                    html += '<svg width="80" height="80" viewBox="0 0 80 80">';
-                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="12" cx="40" cy="40" r="28"/>';
-                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="12" stroke-linecap="round" cx="40" cy="40" r="28" ';
-                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>';
+                    var volPct = Math.min(Math.abs(volVal) / m.max2, 1);
+                    var circ = 2 * Math.PI * 36;
+                    var offsetScale = circ * (1 - scalePct);
+                    var offsetVol = circ * (1 - volPct);
+                    html += '<div style="text-align:center;min-width:90px">';
+                    html += '<div class="ring-container" style="width:100px;height:100px;margin:0 auto 4px">';
+                    html += '<svg width="100" height="100" viewBox="0 0 100 100">';
+                    // 外环背景（规模）
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="10" cx="50" cy="50" r="36"/>';
+                    // 外环填充（规模）
+                    html += '<circle fill="none" stroke="' + colors[i] + '" stroke-width="10" stroke-linecap="round" cx="50" cy="50" r="36" ';
+                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetScale.toFixed(1) + '" class="ring-fill" data-offset="' + offsetScale.toFixed(1) + '"/>';
+                    // 内环背景（成交额）
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="10" cx="50" cy="50" r="27"/>';
+                    // 内环填充（成交额）
+                    html += '<circle fill="none" stroke="' + colors[i] + '99" stroke-width="10" stroke-linecap="round" cx="50" cy="50" r="27" ';
+                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetVol.toFixed(1) + '" class="ring-fill" data-offset="' + offsetVol.toFixed(1) + '"/>';
                     html += '</svg>';
                     html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
-                    html += '<span style="font-size:13px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>';
+                    html += '<span style="font-size:11px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>';
+                    html += '<span style="font-size:9px;color:var(--text2)">' + m.fmtFn2(volVal) + '</span>';
                     html += '</div></div>';
-                    html += '<div style="font-size:9px;color:' + colors[i] + ';margin-top:2px;line-height:1.3">' + e.code + '<br/>成交额:' + m.fmtFn2(volVal) + '</div>';
+                    html += '<div style="font-size:9px;color:' + colors[i] + ';margin-top:2px;line-height:1.3">' + e.code + '</div>';
                     html += '</div>';
                 } else {
-                    // 单环图 80px
+                    // 单环图 100px
                     var raw = e[m.key] || 0;
                     var val = typeof raw === 'number' ? raw : 0;
                     var pct = Math.min(Math.abs(val) / m.max, 1);
-                    var circ = 2 * Math.PI * 28;
+                    var circ = 2 * Math.PI * 36;
                     var offset = circ * (1 - pct);
-                    html += '<div style="text-align:center;min-width:60px">';
-                    html += '<div class="ring-container" style="width:80px;height:80px;margin:0 auto 4px">';
-                    html += '<svg width="80" height="80" viewBox="0 0 80 80">';
-                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="12" cx="40" cy="40" r="28"/>';
-                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="12" stroke-linecap="round" cx="40" cy="40" r="28" ';
+                    html += '<div style="text-align:center;min-width:80px">';
+                    html += '<div class="ring-container" style="width:100px;height:100px;margin:0 auto 4px">';
+                    html += '<svg width="100" height="100" viewBox="0 0 100 100">';
+                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="14" cx="50" cy="50" r="36"/>';
+                    html += '<circle class="ring-fill" fill="none" stroke="' + colors[i] + '" stroke-width="14" stroke-linecap="round" cx="50" cy="50" r="36" ';
                     html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" data-offset="' + offset.toFixed(1) + '"/>';
                     html += '</svg>';
                     html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
@@ -507,35 +518,33 @@
         if (!ctx) return;
         // Destroy previous chart
         if (trendChart) { trendChart.destroy(); trendChart = null; }
-        // Prepare data: use year_1_return as proxy for trend (since we don't have historical price data)
-        // For now, show a placeholder chart with year_1_return as bar chart
-        var labels = etfs.map(function(e) { return e.code + '\n' + (e.name || '').slice(0, 6); });
-        var data = etfs.map(function(e) { return e.year_1_return || 0; });
+        // 折线图：每个ETF一条线，X轴是时间维度（用近N个时间点模拟）
+        // 由于没有真实历史价格数据，用 year_1_return 作为近1年收益，用 annual_3y 作为近3年收益，构造2-3个时间点
+        var labels = ['近3年均收益', '近1年收益'];
+        var datasets = etfs.map(function(e, i) {
+            return {
+                label: e.code + ' ' + (e.name || '').slice(0, 6),
+                data: [e.annual_3y || 0, e.year_1_return || 0],
+                borderColor: colors[i],
+                backgroundColor: colors[i] + '22',
+                fill: false,
+                tension: 0.4,
+                pointRadius: 5,
+                pointBackgroundColor: colors[i],
+                pointBorderColor: '#080d18',
+                pointBorderWidth: 2,
+                borderWidth: 2,
+            };
+        });
         trendChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: '近1年收益率(%)',
-                    data: data,
-                    backgroundColor: etfs.map(function(e, i) { return colors[i] + '99'; }),
-                    borderColor: etfs.map(function(e, i) { return colors[i]; }),
-                    borderWidth: 2,
-                    borderRadius: 6,
-                }]
-            },
+            type: 'line',
+            data: { labels: labels, datasets: datasets },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        backgroundColor: '#101829',
-                        titleColor: '#fff',
-                        bodyColor: '#a8b8cc',
-                        borderColor: '#1e2d45',
-                        borderWidth: 1,
-                    }
+                    legend: { display: true, position: 'top', labels: { color: '#a8b8cc', font: { size: 11 }, boxWidth: 12, padding: 12 } },
+                    tooltip: { backgroundColor: '#101829', titleColor: '#fff', bodyColor: '#a8b8cc', borderColor: '#1e2d45', borderWidth: 1 }
                 },
                 scales: {
                     x: { ticks: { color: '#6b7d99', font: { size: 11 } }, grid: { color: '#1e2d45' } },
