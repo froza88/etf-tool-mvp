@@ -172,7 +172,7 @@
         <div class="animate-in" style="animation-delay:0.1s;display:none" id="trophySection">
             <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">
                 <span>🏆 ETF 多维对比 · 流动性 → 风险 → 收益</span>
-                <button class="btn btn-export" style="font-size:12px;padding:6px 12px" onclick="toggleMetricSelector()">☰ 选择指标</button>
+                <button id="metricSelectorOpenBtn" class="btn btn-export" style="font-size:12px;padding:6px 12px">☰ 选择指标</button>
             </div>
             <div class="trophy-grid" id="trophyGrid"></div>
             <div id="metricSelectorModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);z-index:99999;justify-content:center;align-items:center">
@@ -732,21 +732,22 @@
             console.error('加载数据失败:', error);
             document.getElementById('loadingIndicator').innerHTML = '<div style="color:var(--red);padding:40px;text-align:center">加载数据失败，请检查网络连接</div>';
         }
-        // 绑定弹窗按钮事件
-        if (typeof bindMetricSelectorEvents === 'function') bindMetricSelectorEvents();
     }
 
     // 绑定弹窗按钮事件（避免onclick全局作用域问题）
     function bindMetricSelectorEvents() {
+        var openBtn = document.getElementById('metricSelectorOpenBtn');
         var closeBtn = document.getElementById('metricSelectorCloseBtn');
         var cancelBtn = document.getElementById('metricSelectorCancelBtn');
         var confirmBtn = document.getElementById('metricSelectorConfirmBtn');
-        var openBtn = document.querySelector('[onclick*="toggleMetricSelector"]');
-        if (closeBtn) closeBtn.addEventListener('click', closeMetricSelector);
-        if (cancelBtn) cancelBtn.addEventListener('click', closeMetricSelector);
-        if (confirmBtn) confirmBtn.addEventListener('click', applyMetricSelection);
-        if (openBtn) { openBtn.removeAttribute('onclick'); openBtn.addEventListener('click', openMetricSelector); }
+        if (openBtn && !openBtn._msBound) { openBtn.addEventListener('click', openMetricSelector); openBtn._msBound = true; }
+        if (closeBtn && !closeBtn._msBound) { closeBtn.addEventListener('click', closeMetricSelector); closeBtn._msBound = true; }
+        if (cancelBtn && !cancelBtn._msBound) { cancelBtn.addEventListener('click', closeMetricSelector); cancelBtn._msBound = true; }
+        if (confirmBtn && !confirmBtn._msBound) { confirmBtn.addEventListener('click', applyMetricSelection); confirmBtn._msBound = true; }
     }
 
-    window.onload = loadData;
+    window.onload = function() {
+        bindMetricSelectorEvents();
+        loadData();
+    };
     </script>
