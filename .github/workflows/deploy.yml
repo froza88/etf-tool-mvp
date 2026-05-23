@@ -1,0 +1,20 @@
+name: Deploy to PythonAnywhere
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for GitHub to finish processing
+        run: sleep 15
+
+      - name: Trigger PA sync endpoint
+        run: |
+          curl -s -X POST \
+            "https://froza.pythonanywhere.com/api/sync?token=${{ secrets.DEPLOY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -w "\nHTTP Status: %{http_code}\n" \
+            || echo "curl failed"

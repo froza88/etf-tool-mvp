@@ -592,6 +592,12 @@ def get_version():
 @ app.route('/api/sync', methods=['POST'])
 def sync_data():
     """同步数据：从 GitHub 拉取最新数据并更新版本（供 GitHub webhook 触发）"""
+    # 认证检查
+    token = request.args.get('token') or request.headers.get('X-Deploy-Token', '')
+    expected = os.environ.get('DEPLOY_TOKEN', '')
+    if not expected or token != expected:
+        return jsonify({"error": "unauthorized"}), 401
+
     import subprocess
     repo_dir = str(ROOT)
     try:
