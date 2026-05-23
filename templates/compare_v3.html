@@ -622,10 +622,71 @@
             var ut = data.updated || '';
             document.getElementById('headerTime').textContent = timeAgo(ut);
 
+            // L2 异步更新：1秒后请求 WeStock 数据
+            setTimeout(async () => {
+                try {
+                    const l2Response = await fetch(`/api/compare?codes=${CODES.join(',')}&source=westock`);
+                    const l2Data = await l2Response.json();
+
+                    if (l2Response.ok && l2Data.etfs && l2Data.etfs.length) {
+                        console.log('[L2] WeStock 数据已获取，正在更新...');
+                        updateWithL2Data(l2Data.etfs);
+                    }
+                } catch (l2Error) {
+                    console.error('[L2] WeStock 数据获取失败:', l2Error);
+                }
+            }, 1000);
+
         } catch (error) {
             console.error('加载数据失败:', error);
             document.getElementById('loadingIndicator').innerHTML = '<div style="color:var(--red);padding:40px;text-align:center">加载数据失败，请检查网络连接</div>';
         }
+    }
+
+    function updateWithL2Data(l2Etfs) {
+        """
+        用 L2 (WeStock) 数据更新页面
+        
+        Args:
+            l2Etfs: WeStock 返回的 ETF 数据列表
+        """
+        console.log('[L2] 开始更新页面数据...');
+
+        // 更新 etfs 数组中的字段
+        l2Etfs.forEach(function(l2Etf) {
+            const code = l2Etf.code;
+            const index = etfs.findIndex(e => e.code === code);
+            
+            if (index >= 0) {
+                // 更新现有 ETF 的 L2 字段
+                const fieldsToUpdate = [
+                    'fee_rate_management', 'fee_rate_custody', 'fee_rate_service',
+                    'fee_rate', 'premium_discount', 'scale', 'shares',
+                    'net_inflow_shares', 'net_inflow_ratio', 'net_inflow_5d'
+                ];
+                
+                fieldsToUpdate.forEach(function(field) {
+                    if (l2Etf[field] !== undefined && l2Etf[field] !== null) {
+                        etfs[index][field] = l2Etf[field];
+                    }
+                });
+                
+                console.log(`[L2] 已更新 ${code} 的 L2 字段`);
+            }
+        });
+
+        // 重新渲染页面
+        renderHero();
+        renderCombinedCards();
+        renderHeatmap();
+
+        // 更新 header 显示 L2 数据已加载
+        const headerTime = document.getElementById('headerTime');
+        if (headerTime) {
+            headerTime.textContent = headerTime.textContent + ' (L2已加载)';
+        }
+
+        console.log('[L2] 页面数据已更新');
     }
 
     window.onload = function() {
