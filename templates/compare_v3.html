@@ -172,19 +172,19 @@
         <div class="animate-in" style="animation-delay:0.1s;display:none" id="trophySection">
             <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">
                 <span>🏆 ETF 多维对比 · 流动性 → 风险 → 收益</span>
-                <button id="metricSelectorOpenBtn" class="btn btn-export" style="font-size:12px;padding:6px 12px">☰ 选择指标</button>
+                <button id="metricSelectorOpenBtn" class="btn btn-export" style="font-size:12px;padding:6px 12px" onclick="window.openMetricSelector()">☰ 选择指标</button>
             </div>
             <div class="trophy-grid" id="trophyGrid"></div>
             <div id="metricSelectorModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);z-index:99999;justify-content:center;align-items:center">
                 <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
                         <span style="font-size:16px;font-weight:700;color:#fff">选择对比指标</span>
-                        <button id="metricSelectorCloseBtn" style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer">×</button>
+                        <button id="metricSelectorCloseBtn" style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer" onclick="window.closeMetricSelector()">×</button>
                     </div>
                     <div id="metricCheckboxes" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px"></div>
                     <div style="display:flex;gap:10px;justify-content:flex-end">
-                        <button id="metricSelectorCancelBtn" class="btn btn-back">取消</button>
-                        <button id="metricSelectorConfirmBtn" class="btn btn-export">确认</button>
+                        <button id="metricSelectorCancelBtn" class="btn btn-back" onclick="window.closeMetricSelector()">取消</button>
+                        <button id="metricSelectorConfirmBtn" class="btn btn-export" onclick="window.applyMetricSelection()">确认</button>
                     </div>
                 </div>
             </div>
@@ -455,6 +455,11 @@
             renderCombinedCards();
         } catch(e) { console.error('applyMetricSelection error:', e); alert('应用选择失败: ' + e.message); }
     }
+
+    // 把弹窗函数挂到 window，确保 onclick 属性能找到它们
+    window.openMetricSelector = openMetricSelector;
+    window.closeMetricSelector = closeMetricSelector;
+    window.applyMetricSelection = applyMetricSelection;
 
     function toggleExpand() {
         __expanded = !__expanded;
@@ -734,20 +739,5 @@
         }
     }
 
-    // 绑定弹窗按钮事件（避免onclick全局作用域问题）
-    function bindMetricSelectorEvents() {
-        var openBtn = document.getElementById('metricSelectorOpenBtn');
-        var closeBtn = document.getElementById('metricSelectorCloseBtn');
-        var cancelBtn = document.getElementById('metricSelectorCancelBtn');
-        var confirmBtn = document.getElementById('metricSelectorConfirmBtn');
-        if (openBtn && !openBtn._msBound) { openBtn.addEventListener('click', openMetricSelector); openBtn._msBound = true; }
-        if (closeBtn && !closeBtn._msBound) { closeBtn.addEventListener('click', closeMetricSelector); closeBtn._msBound = true; }
-        if (cancelBtn && !cancelBtn._msBound) { cancelBtn.addEventListener('click', closeMetricSelector); cancelBtn._msBound = true; }
-        if (confirmBtn && !confirmBtn._msBound) { confirmBtn.addEventListener('click', applyMetricSelection); confirmBtn._msBound = true; }
-    }
-
-    window.onload = function() {
-        bindMetricSelectorEvents();
-        loadData();
-    };
+    window.onload = loadData;
     </script>
