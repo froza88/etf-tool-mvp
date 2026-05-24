@@ -326,6 +326,22 @@
 
     // Close export menu on outside click
     function renderHero() {
+        // 计算核心结论：哪些ETF在哪些指标胜出
+        var conclusionParts = [];
+        var summaryMetrics = ['scale', 'year_1_return', 'sharpe_ratio'];
+        summaryMetrics.forEach(function(key) {
+            var mDef = ALL_METRICS.filter(function(m) { return m.key === key; })[0];
+            if (!mDef) return;
+            var ranks = rank(etfs, mDef.key, mDef.reverse);
+            if (ranks.length >= 2) {
+                var champ = etfs[ranks[0].idx];
+                var diff = mDef.reverse ? (etfs[ranks[ranks.length - 1].idx][mDef.key] - ranks[0].val) : (ranks[0].val - etfs[ranks[ranks.length - 1].idx][mDef.key]);
+                var diffPct = mDef.max ? (Math.abs(diff) / mDef.max * 100).toFixed(0) : '0';
+                conclusionParts.push(champ.code + ' ' + mDef.label + '胜出(+' + diffPct + '%)');
+            }
+        });
+        var conclusion = conclusionParts.length ? conclusionParts.join('，') : '数据加载完成';
+
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
             var nameStr = e.code + ' ' + (e.name || '');
             if (e.issuer_short) nameStr += '(' + e.issuer_short + ')';
@@ -334,6 +350,7 @@
         var dataTime = window.__dataUpdated || '';
         var timeStr = timeAgo(dataTime);
         document.getElementById('heroSummary').innerHTML =
+            '<div class="hero-stat" style="min-width:280px;text-align:left"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:#fff;line-height:1.4">' + conclusion + '</div><div class="lbl">核心结论</div></div>' +
             '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--accent)">' + timeStr + '</div><div class="lbl">数据更新</div></div>' +
             '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--text)">' + etfs.length + '只</div><div class="lbl">对比数量</div></div>';
     }
@@ -425,7 +442,7 @@
                     var scaleRaw = e[m.key] || 0;
                     var scaleVal = typeof scaleRaw === 'number' ? scaleRaw : 0;
                     var scalePct = Math.min(Math.abs(scaleVal) / m.max, 1);
-                    var volRaw = e[m.key2] || 0;
+                    var volRaw = e[m.key2] || e.volume || e.volume_avg || 0;
                     var volVal = typeof volRaw === 'number' ? volRaw : 0;
                     var volPct = Math.min(Math.abs(volVal) / m.max2, 1);
                     var circ = 2 * Math.PI * 72;
