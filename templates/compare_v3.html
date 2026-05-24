@@ -305,8 +305,9 @@
         var conclusion = conclusionParts.length ? conclusionParts.join('，') : '数据加载完成';
 
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
-            var nameStr = e.code + ' ' + (e.name || '');
-            if (e.issuer_short) nameStr += '(' + e.issuer_short + ')';
+            var nameStr = e.code;
+            if (e.name) nameStr += ' - ' + e.name;
+            if (e.issuer_short) nameStr += ' - ' + e.issuer_short;
             return '<div class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span><span>' + nameStr + '</span></div>';
         }).join('');
         var dataTime = window.__dataUpdated || '';
@@ -376,8 +377,10 @@
         var html = '<thead><tr><th style="width:15%; font-size:13px; color:var(--text)">指标</th>';
         // Header: ETF codes
         etfs.forEach(function(e, i) {
-            var nameCompany = (e.name || '') + (e.issuer_short ? ' - ' + e.issuer_short : '');
-            html += '<th style="width:calc((100% - 15%) / ' + etfs.length + ')"><span class="etf-code" style="color:' + colors[i] + '">' + e.code + '</span><span class="etf-name">' + nameCompany + '</span></th>';
+            var fullName = e.code;
+            if (e.name) fullName += ' - ' + e.name;
+            if (e.issuer_short) fullName += ' - ' + e.issuer_short;
+            html += '<th style="width:calc((100% - 15%) / ' + etfs.length + ')"><span class="etf-code" style="color:' + colors[i] + '">' + fullName + '</span></th>';
         });
         html += '</tr></thead><tbody>';
 
