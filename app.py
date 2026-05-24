@@ -130,17 +130,9 @@ def etf_detail(code):
 
 @app.route('/compare')
 def compare():
-    """ETF对比页"""
-    codes = request.args.get('codes', '').split(',')
-    codes = [c for c in codes if c]
-
-    etfs = []
-    for code in codes:
-        etf = etf_data.get_etf_by_code(code)
-        if etf:
-            etfs.append(etf)
-
-    return render_template('compare.html', etfs=etfs)
+    """ETF对比页 - Pro Terminal v3"""
+    codes = request.args.get('codes', '')
+    return render_template('compare_v3.html', codes=codes)
 
 
 @app.route('/compare/wind')
