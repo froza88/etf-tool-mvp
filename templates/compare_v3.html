@@ -102,6 +102,8 @@
             border-right:1px solid rgba(30,41,59,0.5); font-size:14px; letter-spacing:0.3px;
             font-variant-numeric:normal;
         }
+        .row-holdings td { min-width:180px; white-space:normal; word-break:break-all; vertical-align:top; }
+        .row-holdings td:first-child { min-width:130px; }
 
         .compare-table tbody td.neutral { color:rgba(255,255,255,0.85); }
 
@@ -280,7 +282,7 @@
         { group:'基本信息', label:'发行方', key:'issuer_full', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
         { group:'基本信息', label:'成立日期', key:'issue_date', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
         { group:'基本信息', label:'分类', key:'category', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
-        { group:'基本信息', label:'前五大持仓', key:'top_holdings', fmtFn:function(v){if(!v||!v.length)return '-'; return v.slice(0,3).map(function(h){return h.name||h.Name||'-';}).join('、');}, higherBetter:null, isString:true },
+        { group:'基本信息', label:'前五大持仓', key:'top_holdings', fmtFn:function(v){if(!v||!v.length)return '-'; return v.map(function(h){return (h.name||h.Name||'-')+'('+(h.weight||h.Weight||'-')+')';}).join('<br>');}, higherBetter:null, isString:true },
         // 规模流动性
         { group:'规模流动性', label:'规模', key:'scale', fmtFn:function(v){return fmt(v,2,'亿');}, higherBetter:true },
         { group:'规模流动性', label:'日均成交', key:'amount', fmtFn:function(v){return v!=null?fmt(v,2,'亿'):'-';}, higherBetter:true },
@@ -318,11 +320,13 @@
         document.getElementById('heroTime').textContent = timeAgo(dataTime);
         document.getElementById('heroCount').textContent = etfs.length + ' 只对比';
 
-        // Metrics: 3 rows (scale, return, sharpe)
+        // Metrics: 规模、费率(管理费率)、跟踪误差/偏离度、流动性(日均成交额)、近一年收益
         var metrics = [
             { key:'scale', label:'规模', fmt:function(v){return fmt(v,0,'亿');} },
+            { key:'fee_rate_management', label:'管理费率', fmt:function(v){return v!=null?fmt(v,2,'%'):'-';} },
+            { key:'tracking_error', label:'跟踪误差', fmt:function(v){return v!=null?fmt(v,2,'%'):'-';} },
+            { key:'amount', label:'日均成交', fmt:function(v){return v!=null?fmt(v,2,'亿'):'-';} },
             { key:'year_1_return', label:'近1年收益', fmt:fmtSigned },
-            { key:'sharpe_ratio', label:'夏普比率', fmt:function(v){return fmt(v,2);} },
         ];
         var metricsHtml = metrics.map(function(m) {
             var vals = etfs.map(function(e) { return e[m.key]; }).filter(function(v) { return typeof v === 'number'; });
@@ -415,7 +419,7 @@
                 currentGroup = col.group;
                 html += '<tr class="group-header"><td colspan="' + (etfs.length + 1) + '">' + col.group + '</td></tr>';
             }
-            html += '<tr>';
+            html += '<tr' + (col.label==='前五大持仓'?' class="row-holdings"':'') + '>';
             html += '<td>' + col.label + '</td>';
             if (col.isString) {
                 etfs.forEach(function(e) { html += '<td class="neutral">' + col.fmtFn(e[col.key]) + '</td>'; });
