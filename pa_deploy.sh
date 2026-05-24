@@ -12,7 +12,7 @@ echo "=== PA部署开始 ==="
 # Step 1: 检查并修复git remote URL (防止死循环的关键)
 echo "[1/5] 检查git remote URL..."
 REMOTE_URL=$(git remote get-url origin 2>/dev/null || echo "")
-EXPECTED_URL="https://github.com/apangduo/etf-tool-mvp.git"
+EXPECTED_URL="https://github.com/froza88/etf-tool-mvp.git"
 
 if [ "$REMOTE_URL" != "$EXPECTED_URL" ]; then
     echo "  ⚠️  Remote URL不正确: $REMOTE_URL"
