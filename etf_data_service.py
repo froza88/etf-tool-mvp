@@ -57,18 +57,25 @@ class LocalJSONSource(ETFDataSource):
         """加载本地数据（带缓存），统一返回 {'etfs': [...]} 格式"""
         if not self.data_file.exists():
             return {"etfs": []}
-        
+
         mtime = os.path.getmtime(self.data_file)
         if self._cache is not None and self._cache_mtime == mtime:
             return self._cache
-        
+
         with open(self.data_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-        
+
         # 统一格式：如果是数组，包装成 {'etfs': data}
         if isinstance(data, list):
             data = {"etfs": data}
-        
+
+        # 统一数据单位（scale/amount/volume 从"亿"转为"元"）
+        try:
+            import etf_data
+            etf_data._normalize_units(data.get("etfs", []))
+        except Exception:
+            pass
+
         self._cache = data
         self._cache_mtime = mtime
         return data

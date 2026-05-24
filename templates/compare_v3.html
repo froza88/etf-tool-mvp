@@ -10,7 +10,7 @@
     <style>
         :root {
             --bg: #080d18; --surface: #101829; --surface2: #162032; --border: #1e2d45;
-            --text: #a8b8cc; --text2: #6b7d99; --accent: #00d4ff; --accent2: #7c3aed;
+            --text: #a8b8cc; --text2: #8b9bb5; --accent: #00d4ff; --accent2: #7c3aed;
             --green: #10b981; --red: #ef4444; --gold: #f59e0b; --gold2: #d97706;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -130,6 +130,17 @@
             .hero { padding:20px; }
             .hero-summary { width:100%; justify-content:space-around; }
             .trophy-grid { grid-template-columns:repeat(2, 1fr); }
+        }
+
+        @media (max-width:480px) {
+            .container { padding:16px 12px; }
+            .hero { padding:16px; flex-direction:column; }
+            .hero-summary { width:100%; justify-content:space-around; gap:16px; }
+            .hero-stat .val { font-size:20px; }
+            .trophy-grid { grid-template-columns:1fr; }
+            .ring-container { width:160px; height:160px; }
+            .ring-container svg { width:160px; height:160px; }
+            .trophy-insight { font-size:12px; }
         }
 
         @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
@@ -350,7 +361,7 @@
         var dataTime = window.__dataUpdated || '';
         var timeStr = timeAgo(dataTime);
         document.getElementById('heroSummary').innerHTML =
-            '<div class="hero-stat" style="min-width:280px;text-align:left"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:#fff;line-height:1.4">' + conclusion + '</div><div class="lbl">核心结论</div></div>' +
+            '<div class="hero-stat" style="min-width:280px;text-align:left"><div class="val" style="font-size:20px;background:none;-webkit-text-fill-color:#fff;line-height:1.4">' + conclusion + '</div><div class="lbl">核心结论</div></div>' +
             '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--accent)">' + timeStr + '</div><div class="lbl">数据更新</div></div>' +
             '<div class="hero-stat"><div class="val" style="font-size:15px;background:none;-webkit-text-fill-color:var(--text)">' + etfs.length + '只</div><div class="lbl">对比数量</div></div>';
     }
@@ -437,8 +448,11 @@
 
             html += '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:8px">';
             etfs.forEach(function(e, i) {
+                // 计算当前 ETF 在该指标的排名
+                var rankIdx = ranks.findIndex(r => r.idx === i);
+                var rankText = rankIdx >= 0 ? (rankIdx === 0 ? '🥇第1名' : rankIdx === 1 ? '🥈第2名' : rankIdx === 2 ? '🥉第3名' : '第' + (rankIdx+1) + '名') : '';
                 if (m.dual) {
-                    // 双环图：外环=规模，内环=成交额
+                    // 单环双色：同一环，主色=规模，浅色=成交额
                     var scaleRaw = e[m.key] || 0;
                     var scaleVal = typeof scaleRaw === 'number' ? scaleRaw : 0;
                     var scalePct = Math.min(Math.abs(scaleVal) / m.max, 1);
@@ -451,21 +465,23 @@
                     html += '<div style="text-align:center;min-width:160px">';
                     html += '<div class="ring-container" style="width:200px;height:200px;margin:0 auto 6px">';
                     html += '<svg width="200" height="200" viewBox="0 0 200 200">';
-                    // 外环背景（规模）
+                    // 背景环
                     html += '<circle fill="none" stroke="#1e2d45" stroke-width="20" cx="100" cy="100" r="72"/>';
-                    // 外环填充（规模）
+                    // 规模弧（主色，底层）
                     html += '<circle fill="none" stroke="' + colors[i] + '" stroke-width="20" stroke-linecap="round" cx="100" cy="100" r="72" ';
-                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetScale.toFixed(1) + '" class="ring-fill" data-offset="' + offsetScale.toFixed(1) + '"/>';
-                    // 内环背景（成交额）
-                    html += '<circle fill="none" stroke="#1e2d45" stroke-width="20" cx="100" cy="100" r="54"/>';
-                    // 内环填充（成交额）
-                    html += '<circle fill="none" stroke="' + colors[i] + '99" stroke-width="20" stroke-linecap="round" cx="100" cy="100" r="54" ';
-                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + offsetVol.toFixed(1) + '" class="ring-fill" data-offset="' + offsetVol.toFixed(1) + '"/>';
+                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" class="ring-fill" data-offset="' + offsetScale.toFixed(1) + '"/>';
+                    // 成交额弧（主色浅色，上层，同半径）
+                    html += '<circle fill="none" stroke="' + colors[i] + '" stroke-width="20" stroke-linecap="round" cx="100" cy="100" r="72" ';
+                    html += 'stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + circ.toFixed(1) + '" class="ring-fill" data-offset="' + offsetVol.toFixed(1) + '" opacity="0.35"/>';
                     html += '</svg>';
                     html += '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">';
                     html += '<span style="font-size:22px;font-weight:800;color:#fff">' + m.fmtFn(scaleVal) + '</span>';
                     html += '<span style="font-size:16px;color:var(--text2)">' + m.fmtFn2(volVal) + '</span>';
                     html += '</div></div>';
+                    html += '<div style="font-size:11px;color:var(--text2);margin-top:2px;display:flex;justify-content:center;gap:12px">';
+                    html += '<span style="display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:12px;height:4px;background:' + colors[i] + ';border-radius:2px"></span>规模</span>';
+                    html += '<span style="display:flex;align-items:center;gap:3px"><span style="display:inline-block;width:12px;height:4px;background:' + colors[i] + ';border-radius:2px;opacity:0.35"></span>成交</span>';
+                    html += '</div>';
                     html += '<div style="font-size:14px;color:' + colors[i] + ';margin-top:4px;line-height:1.3;font-weight:600">' + e.code + '</div>';
                     html += '</div>';
                 } else {
@@ -660,10 +676,18 @@
         }
     }
 
+    function _normalizeL2Value(val) {
+        /* L2 数据单位统一：若数值 < 10000 则视为"亿"单位，转为"元" */
+        if (typeof val === 'number' && val > 0 && val < 10000) {
+            return val * 100000000;
+        }
+        return val;
+    }
+
     function updateWithL2Data(l2Etfs) {
         /*
         用 L2 (WeStock) 数据更新页面
-        
+
         Args:
             l2Etfs: WeStock 返回的 ETF 数据列表
         */
@@ -673,7 +697,7 @@
         l2Etfs.forEach(function(l2Etf) {
             const code = l2Etf.code;
             const index = etfs.findIndex(e => e.code === code);
-            
+
             if (index >= 0) {
                 // 更新现有 ETF 的 L2 字段
                 const fieldsToUpdate = [
@@ -681,13 +705,18 @@
                     'fee_rate', 'premium_discount', 'scale', 'shares',
                     'net_inflow_shares', 'net_inflow_ratio', 'net_inflow_5d'
                 ];
-                
+
                 fieldsToUpdate.forEach(function(field) {
                     if (l2Etf[field] !== undefined && l2Etf[field] !== null) {
-                        etfs[index][field] = l2Etf[field];
+                        var val = l2Etf[field];
+                        // 对 scale/volume/amount 做单位统一转换
+                        if (field === 'scale' || field === 'volume' || field === 'amount') {
+                            val = _normalizeL2Value(val);
+                        }
+                        etfs[index][field] = val;
                     }
                 });
-                
+
                 console.log(`[L2] 已更新 ${code} 的 L2 字段`);
             }
         });
