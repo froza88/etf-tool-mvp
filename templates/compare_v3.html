@@ -329,14 +329,12 @@
             { key:'year_1_return', label:'近1年收益', fmt:fmtSigned },
         ];
         var metricsHtml = metrics.map(function(m) {
-            var vals = etfs.map(function(e) { return e[m.key]; }).filter(function(v) { return typeof v === 'number'; });
-            if (vals.length === 0) return '';
             var items = etfs.map(function(e, i) {
                 if (typeof e[m.key] !== 'number') return '<span style="color:var(--text2)">-</span>';
                 return '<span style="color:' + colors[i] + '">' + e.code + ' ' + m.fmt(e[m.key]) + '</span>';
             });
             return '<div class="hero-metric-row"><span class="hero-metric-label">' + m.label + '</span><span class="hero-metric-vals">' + items.join(' ') + '</span></div>';
-        }).filter(function(h) { return h; }).join('');
+        }).join('');
         document.getElementById('heroMetrics').innerHTML = metricsHtml;
     }
 
