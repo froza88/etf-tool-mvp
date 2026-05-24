@@ -6,9 +6,9 @@
     <title>ETF 专业对比 · Pro Terminal</title>
     <style>
         :root {
-            --bg: #060b17; --surface: #0d1526; --surface2: #131e35; --border: #1a2744;
-            --text: #8899b8; --text2: #5a6a8a; --accent: #00c2ff; --accent2: #6e4ae6;
-            --best: #00c2ff; --worst: #4a5a7a; --row-hover: rgba(0,194,255,0.04);
+            --bg: #0a0e1a; --surface: #111827; --surface2: #1a2332; --border: #1e293b;
+            --text: #e2e8f0; --text2: #6b7280; --accent: #00c2ff; --accent2: #6e4ae6;
+            --row-hover: rgba(0,194,255,0.06); --row-odd: rgba(255,255,255,0.02);
         }
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
@@ -17,11 +17,11 @@
             background-image: radial-gradient(ellipse 70% 45% at 50% -15%, rgba(0,194,255,0.05), transparent),
                             radial-gradient(ellipse 50% 35% at 85% 75%, rgba(110,74,230,0.035), transparent);
         }
-        .container { max-width:1440px; margin:0 auto; padding:28px 32px; }
+        .container { max-width:1440px; margin:0 auto; padding:20px 32px 40px; }
 
         /* Header */
         .header {
-            background: rgba(13,21,38,0.92);
+            background: rgba(17,24,39,0.92);
             backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
             border-bottom:1px solid var(--border);
             padding:0 32px; height:56px; display:flex; align-items:center;
@@ -36,103 +36,108 @@
         .header-time { color:var(--text2); font-size:11px; font-family:'SF Mono','Fira Code',Consolas,'Courier New',monospace; letter-spacing:0.3px; font-variant-numeric:tabular-nums; }
         .btn { padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer;
                transition:all 0.2s cubic-bezier(0.4,0,0.2,1); display:flex; align-items:center; gap:5px; border:none; text-decoration:none; }
-        .btn-back { background:var(--surface2); color:var(--text); border:1px solid rgba(26,39,68,0.6); }
+        .btn-back { background:var(--surface2); color:var(--text); border:1px solid rgba(30,41,59,0.6); }
         .btn-back:hover { background:rgba(0,194,255,0.08); color:#fff; border-color:rgba(0,194,255,0.3); }
         .btn-export { background:linear-gradient(135deg, rgba(0,194,255,0.15), rgba(110,74,230,0.15)); color:var(--accent); border:1px solid rgba(0,194,255,0.4); }
         .btn-export:hover { background:linear-gradient(135deg, rgba(0,194,255,0.25), rgba(110,74,230,0.25)); border-color:rgba(0,194,255,0.6); }
         .btn-export:disabled { opacity:0.5; cursor:not-allowed; }
 
-        /* Hero */
-        .hero { background:linear-gradient(135deg, rgba(0,194,255,0.05) 0%, rgba(110,74,230,0.04) 50%, rgba(0,194,255,0.03) 100%);
-            border:1px solid rgba(0,194,255,0.1); border-radius:14px; padding:24px 28px;
-            margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-        .hero-tags { display:flex; gap:10px; flex-wrap:wrap; }
-        .hero-tag { display:flex; align-items:center; gap:8px; background:var(--surface2); border:1px solid rgba(26,39,68,0.5);
-            border-radius:10px; padding:10px 16px; font-size:13px; font-weight:700; transition:all 0.2s cubic-bezier(0.4,0,0.2,1); }
-        .hero-tag:hover { border-color:rgba(0,194,255,0.25); transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
-        .hero-tag .dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; box-shadow:0 0 6px currentColor; }
-        .hero-summary { display:flex; gap:24px; }
-        .hero-stat { text-align:center; }
-        .hero-stat .val { font-size:18px; font-weight:800; color:#fff; font-family:'SF Mono','Fira Code',Consolas,'Courier New',monospace; letter-spacing:-0.3px; font-variant-numeric:tabular-nums; }
-        .hero-stat .lbl { font-size:10px; color:var(--text2); margin-top:3px; text-transform:uppercase; letter-spacing:1.2px; font-weight:600; }
+        /* Hero - compact redesign */
+        .hero { background:linear-gradient(135deg, rgba(0,194,255,0.06) 0%, rgba(110,74,230,0.05) 50%, rgba(0,194,255,0.04) 100%);
+            border:1px solid rgba(0,194,255,0.12); border-radius:14px; padding:20px 24px;
+            margin-bottom:20px; }
+        .hero-main { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+        .hero-tags { display:flex; gap:8px; flex-wrap:wrap; flex:1; }
+        .hero-tag { display:inline-flex; align-items:center; gap:6px; background:var(--surface2); border:1px solid rgba(30,41,59,0.5);
+            border-radius:8px; padding:8px 12px; font-size:12px; font-weight:700; white-space:nowrap; }
+        .hero-tag .dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+        .hero-meta { display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex-shrink:0; }
+        .hero-meta-time { font-size:11px; color:var(--accent); font-family:'SF Mono','Fira Code',Consolas,monospace; }
+        .hero-meta-count { font-size:10px; color:var(--text2); }
+        .hero-metrics { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+        .hero-metric-row { display:flex; align-items:center; gap:12px; font-size:13px; }
+        .hero-metric-label { color:var(--text2); font-weight:600; min-width:80px; font-size:11px; text-transform:uppercase; letter-spacing:0.8px; }
+        .hero-metric-vals { display:flex; gap:16px; flex-wrap:wrap; }
+        .hero-metric-val { font-family:'SF Mono','Fira Code',Consolas,monospace; font-weight:700; font-variant-numeric:tabular-nums; }
 
         /* Comparison Table */
-        .compare-section { margin-bottom:24px; }
-        .section-title { font-size:13px; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:14px; display:flex; align-items:center; gap:8px; letter-spacing:0.5px; }
+        .compare-section { margin-bottom:20px; }
+        .section-title { font-size:13px; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:12px; display:flex; align-items:center; gap:8px; letter-spacing:0.5px; }
         .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, rgba(0,194,255,0.2), transparent); }
 
-        .compare-table-wrap { overflow-x:auto; border:1px solid rgba(26,39,68,0.6); border-radius:12px; background:var(--surface);
+        .compare-table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:12px; background:var(--surface);
             scrollbar-width:thin; scrollbar-color:rgba(0,194,255,0.15) transparent; }
         .compare-table-wrap::-webkit-scrollbar { height:5px; }
         .compare-table-wrap::-webkit-scrollbar-track { background:transparent; }
         .compare-table-wrap::-webkit-scrollbar-thumb { background:rgba(0,194,255,0.15); border-radius:3px; }
 
-        .compare-table { width:100%; border-collapse:collapse; font-size:12.5px; table-layout:fixed; }
+        .compare-table { width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed; }
         .compare-table thead th {
-            background:var(--surface2); padding:12px 10px; text-align:center; font-weight:700;
+            background:var(--surface2); padding:10px 10px; text-align:center; font-weight:700;
             font-size:11px; color:rgba(255,255,255,0.75); border-bottom:2px solid rgba(0,194,255,0.4);
             white-space:nowrap; vertical-align:middle; letter-spacing:0.3px;
-            max-width:0; overflow:hidden; text-overflow:ellipsis;
+            max-width:0; overflow:hidden; text-overflow:ellipsis; position:relative;
         }
         .compare-table thead th:first-child {
             text-align:left; position:sticky; left:0; z-index:11; min-width:130px; background:var(--surface2);
-            border-right:1px solid rgba(26,39,68,0.5); font-weight:600; color:rgba(255,255,255,0.5);
+            border-right:1px solid rgba(30,41,59,0.5); font-weight:600; color:rgba(255,255,255,0.5);
         }
-        .compare-table thead th .etf-code { font-size:13px; font-weight:800; letter-spacing:-0.2px; }
-        .compare-table thead th .etf-name { font-size:10px; opacity:0.55; font-weight:500; letter-spacing:0.2px; }
+        .compare-table thead th .etf-code { font-size:12px; font-weight:800; letter-spacing:-0.2px; }
+        .compare-table thead th .etf-name { font-size:10px; opacity:0.5; font-weight:500; letter-spacing:0.2px; }
 
         .compare-table tbody td {
-            padding:11px 10px; text-align:center; border-bottom:1px solid rgba(26,39,68,0.35);
+            padding:10px 10px; text-align:center; border-bottom:1px solid rgba(30,41,59,0.3);
             font-size:15px; transition:background 0.15s;
             vertical-align:middle; letter-spacing:0;
-            font-family:'Times New Roman',Georgia,serif; font-variant-numeric:tabular-nums;
+            font-family:'SF Mono','Fira Code',Consolas,'Courier New',monospace; font-variant-numeric:tabular-nums;
             max-width:0; overflow:hidden; text-overflow:ellipsis;
         }
-        .compare-table tbody tr:first-child td {
-            border-top:2px solid rgba(0,194,255,0.4);
-        }
+        .compare-table tbody tr:nth-child(odd) td { background:var(--row-odd); }
+        .compare-table tbody tr:hover td { background:var(--row-hover); }
+        .compare-table tbody tr:hover td:first-child { background:rgba(0,194,255,0.08); }
+        .compare-table tbody tr:first-child td { border-top:2px solid rgba(0,194,255,0.4); }
         .compare-table tbody td:first-child {
-            text-align:left; font-weight:700; color:rgba(192,200,212,0.9); font-family:inherit;
+            text-align:left; font-weight:700; color:rgba(226,232,240,0.9); font-family:inherit;
             position:sticky; left:0; background:var(--surface); z-index:5; min-width:130px;
-            border-right:1px solid rgba(26,39,68,0.5); font-size:14px; letter-spacing:0.3px;
+            border-right:1px solid rgba(30,41,59,0.5); font-size:14px; letter-spacing:0.3px;
             font-variant-numeric:normal;
         }
-        .compare-table tbody tr:hover td { background:var(--row-hover); }
-        .compare-table tbody tr:hover td:first-child { background:rgba(0,194,255,0.06); }
 
         .compare-table tbody td.neutral { color:rgba(255,255,255,0.85); }
 
         .group-header td { background:rgba(0,194,255,0.04) !important; color:rgba(0,194,255,0.7) !important; font-weight:700 !important; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; padding:7px 12px !important; text-align:left; }
         .group-header td:first-child { background:rgba(0,194,255,0.04) !important; }
 
-        /* Ring Chart (replaces Bullet Chart) */
-        .ring-section { margin-bottom:24px; }
-        .ring-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; }
-        .ring-card { background:var(--surface); border:1px solid rgba(26,39,68,0.5); border-radius:12px; padding:20px; }
-        .ring-card-title { font-size:12px; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:16px; letter-spacing:0.5px; }
-        .ring-card-body { display:flex; align-items:center; gap:20px; }
+        /* Ring Chart */
+        .ring-section { margin-bottom:20px; }
+        .ring-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
+        .ring-card { background:var(--surface); border:1px solid rgba(30,41,59,0.5); border-radius:12px; padding:16px; }
+        .ring-card-title { font-size:12px; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:12px; letter-spacing:0.5px; }
+        .ring-card-body { display:flex; align-items:center; gap:16px; }
         .ring-svg-wrap { flex-shrink:0; position:relative; }
         .ring-svg { display:block; }
-        .ring-center-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
-        .ring-center-val { font-size:14px; font-weight:800; color:#fff; font-family:'SF Mono','Fira Code',Consolas,monospace; }
-        .ring-center-lbl { font-size:9px; color:var(--text2); margin-top:2px; }
-        .ring-legend { flex:1; display:flex; flex-direction:column; gap:8px; }
-        .ring-legend-item { display:flex; align-items:center; gap:8px; font-size:12px; }
-        .ring-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-        .ring-legend-code { font-weight:700; color:rgba(255,255,255,0.8); min-width:50px; }
-        .ring-legend-val { color:var(--text); font-family:'Times New Roman',Georgia,serif; margin-left:auto; }
+        .ring-center-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; pointer-events:none; }
+        .ring-center-code { font-size:11px; font-weight:800; color:#fff; font-family:'SF Mono','Fira Code',Consolas,monospace; }
+        .ring-center-val { font-size:9px; color:var(--text2); margin-top:1px; }
+        .ring-legend { flex:1; display:flex; flex-direction:column; gap:6px; }
+        .ring-legend-item { display:flex; align-items:center; gap:6px; font-size:11px; }
+        .ring-legend-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+        .ring-legend-code { font-weight:700; color:rgba(255,255,255,0.8); min-width:45px; font-size:11px; }
+        .ring-legend-val { color:var(--text); font-family:'SF Mono','Fira Code',Consolas,monospace; margin-left:auto; font-size:12px; }
 
         /* Footer */
         .footer-actions { display:flex; justify-content:center; gap:14px; margin-top:8px; }
 
         @media (max-width: 768px) {
             .container { padding: 12px 12px 80px 12px; }
-            .hero { padding: 16px 14px; flex-direction: column; gap: 12px; }
-            .hero-tags { display: flex; gap: 6px; flex-wrap: wrap; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
-            .hero-tag { padding: 6px 10px; font-size: 12px; flex-shrink: 0; }
-            .hero-summary { width: 100%; justify-content: space-around; gap: 12px; flex-wrap: wrap; }
-            .hero-stat .val { font-size: 14px; }
-            .hero-stat .lbl { font-size: 9px; }
+            .hero { padding: 16px 14px; }
+            .hero-main { flex-direction:column; gap:12px; }
+            .hero-tags { gap:6px; }
+            .hero-tag { padding: 6px 10px; font-size: 11px; }
+            .hero-meta { flex-direction:row; align-items:center; gap:12px; }
+            .hero-metrics { margin-top:12px; gap:8px; }
+            .hero-metric-row { font-size:12px; gap:8px; }
+            .hero-metric-label { min-width:65px; font-size:10px; }
             .ring-grid { grid-template-columns: 1fr; gap: 12px; }
             .ring-card { padding: 12px; }
             .ring-card-title { font-size: 11px; margin-bottom: 8px; }
@@ -153,8 +158,8 @@
             .btn { padding: 5px 8px; font-size: 10px; }
             .hero { padding: 12px 10px; }
             .hero-tag { padding: 5px 8px; font-size: 11px; }
-            .hero-stat .val { font-size: 13px; }
-            .hero-stat .lbl { font-size: 8px; }
+            .hero-metric-row { font-size: 11px; }
+            .hero-metric-label { min-width: 55px; font-size: 9px; }
             .ring-card { padding: 10px; }
             .ring-card-title { font-size: 10px; }
             .ring-card-body { gap: 8px; }
@@ -198,8 +203,14 @@
 
         <!-- Hero -->
         <div class="hero animate-in" style="animation-delay:0s;display:none" id="heroSection">
-            <div class="hero-tags" id="heroTags"></div>
-            <div class="hero-summary" id="heroSummary"></div>
+            <div class="hero-main">
+                <div class="hero-tags" id="heroTags"></div>
+                <div class="hero-meta">
+                    <div class="hero-meta-time" id="heroTime"></div>
+                    <div class="hero-meta-count" id="heroCount"></div>
+                </div>
+            </div>
+            <div class="hero-metrics" id="heroMetrics"></div>
         </div>
 
         <!-- Ring Chart: Scale & Liquidity -->
@@ -243,7 +254,6 @@
     function fmtSigned(v, d, unit) {
         d = d || 2; unit = unit || '%';
         if (v === undefined || v === null) return '-';
-        // Fix double-plus bug: if v is already a string with +, don't add another +
         if (typeof v === 'string') {
             if (v.startsWith('+') || v.startsWith('-')) return v + unit;
             return v + unit;
@@ -289,54 +299,56 @@
 
     // ==================== RENDER HERO ====================
     function renderHero() {
-        // Summary: show 3 key data points (scale, year_1_return, sharpe_ratio)
-        var summaryMetrics = ['scale', 'year_1_return', 'sharpe_ratio'];
-        var summaryHtml = summaryMetrics.map(function(key) {
-            var col = TABLE_COLUMNS.filter(function(c) { return c.key === key; })[0];
-            if (!col) return '';
-            var vals = etfs.map(function(e) { return e[key]; }).filter(function(v) { return typeof v === 'number'; });
-            if (vals.length === 0) return '';
-            // Show all ETF values, not just best/worst
-            var items = etfs.filter(function(e) { return typeof e[key] === 'number'; }).map(function(e) {
-                return e.code + ' ' + col.fmtFn(e[key]);
-            });
-            return '<div class="hero-stat"><div class="val">' + items.join(' / ') + '</div><div class="lbl">' + col.label + '</div></div>';
-        }).filter(function(h) { return h; }).join('');
-
+        // Tags
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
             var nameStr = e.code;
             if (e.name) nameStr += ' - ' + e.name;
             if (e.issuer_short) nameStr += ' - ' + e.issuer_short;
-            return '<div class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span><span>' + nameStr + '</span></div>';
+            return '<span class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span>' + nameStr + '</span>';
         }).join('');
 
+        // Meta (right side)
         var dataTime = window.__dataUpdated || '';
-        var timeStr = timeAgo(dataTime);
-        document.getElementById('heroSummary').innerHTML = summaryHtml +
-            '<div class="hero-stat"><div class="val" style="font-size:15px;color:var(--accent)">' + timeStr + '</div><div class="lbl">数据更新</div></div>' +
-            '<div class="hero-stat"><div class="val" style="font-size:15px">' + etfs.length + '只</div><div class="lbl">对比数量</div></div>';
+        document.getElementById('heroTime').textContent = timeAgo(dataTime);
+        document.getElementById('heroCount').textContent = etfs.length + ' 只对比';
+
+        // Metrics: 3 rows (scale, return, sharpe)
+        var metrics = [
+            { key:'scale', label:'规模', fmt:function(v){return fmt(v,0,'亿');} },
+            { key:'year_1_return', label:'近1年收益', fmt:fmtSigned },
+            { key:'sharpe_ratio', label:'夏普比率', fmt:function(v){return fmt(v,2);} },
+        ];
+        var metricsHtml = metrics.map(function(m) {
+            var vals = etfs.map(function(e) { return e[m.key]; }).filter(function(v) { return typeof v === 'number'; });
+            if (vals.length === 0) return '';
+            var items = etfs.map(function(e, i) {
+                if (typeof e[m.key] !== 'number') return '<span style="color:var(--text2)">-</span>';
+                return '<span style="color:' + colors[i] + '">' + e.code + ' ' + m.fmt(e[m.key]) + '</span>';
+            });
+            return '<div class="hero-metric-row"><span class="hero-metric-label">' + m.label + '</span><span class="hero-metric-vals">' + items.join(' ') + '</span></div>';
+        }).filter(function(h) { return h; }).join('');
+        document.getElementById('heroMetrics').innerHTML = metricsHtml;
     }
 
     // ==================== RENDER RING CHART ====================
     function renderRingChart() {
-        var metrics = [
+        var ringMetrics = [
             { key:'scale', label:'规模', fmt:function(v){return fmt(v,0,'亿');} },
             { key:'amount', label:'日均成交', fmt:function(v){return fmt(v,1,'亿');} },
         ];
 
         var html = '';
-        metrics.forEach(function(m) {
+        ringMetrics.forEach(function(m) {
             var vals = etfs.map(function(e){return e[m.key];}).filter(function(v){return typeof v==='number';});
             if (vals.length === 0) return;
-
             var total = vals.reduce(function(s,v){return s+v;}, 0);
             if (total <= 0) return;
 
-            // Build SVG rings
-            var size = 120;
+            // SVG ring
+            var size = 110;
             var cx = size/2, cy = size/2;
-            var radius = 45;
-            var strokeWidth = 12;
+            var radius = 42;
+            var strokeWidth = 11;
             var circumference = 2 * Math.PI * radius;
 
             var rings = '';
@@ -352,21 +364,18 @@
                 cumPct += pct;
             });
 
-            // Center text: largest ETF code + value
             var maxEtf = etfs.slice().sort(function(a,b){return (b[m.key]||0)-(a[m.key]||0);})[0];
-            var centerHtml = maxEtf ? (maxEtf.code + '<br><span style="font-size:10px;color:var(--text2)">' + m.fmt(maxEtf[m.key]) + '</span>') : '-';
 
             html += '<div class="ring-card">';
             html += '<div class="ring-card-title">' + m.label + '</div>';
             html += '<div class="ring-card-body">';
             html += '<div class="ring-svg-wrap">';
             html += '<svg class="ring-svg" width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '">';
-            // Background ring
-            html += '<circle cx="' + cx + '" cy="' + cy + '" r="' + radius + '" fill="none" stroke="rgba(26,39,68,0.4)" stroke-width="' + strokeWidth + '"/>';
+            html += '<circle cx="' + cx + '" cy="' + cy + '" r="' + radius + '" fill="none" stroke="rgba(30,41,59,0.4)" stroke-width="' + strokeWidth + '"/>';
             html += rings;
             html += '</svg>';
-            html += '<div class="ring-center-text"><span class="ring-center-val">' + maxEtf.code + '</span><br><span style="font-size:10px;color:var(--text2)">' + m.fmt(maxEtf[m.key]) + '</span></div>';
-            html += '</div>'; // ring-svg-wrap
+            html += '<div class="ring-center-text"><span class="ring-center-code">' + (maxEtf ? maxEtf.code : '-') + '</span><div class="ring-center-val">' + (maxEtf ? m.fmt(maxEtf[m.key]) : '-') + '</div></div>';
+            html += '</div>';
 
             // Legend
             html += '<div class="ring-legend">';
@@ -375,9 +384,9 @@
                 if (typeof v !== 'number') { html += '<div class="ring-legend-item"><span class="ring-legend-dot" style="background:' + colors[i] + '"></span><span class="ring-legend-code">' + e.code + '</span><span class="ring-legend-val">-</span></div>'; return; }
                 html += '<div class="ring-legend-item"><span class="ring-legend-dot" style="background:' + colors[i] + '"></span><span class="ring-legend-code">' + e.code + '</span><span class="ring-legend-val">' + m.fmt(v) + '</span></div>';
             });
-            html += '</div>'; // ring-legend
-            html += '</div>'; // ring-card-body
-            html += '</div>'; // ring-card
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
         });
 
         document.getElementById('ringGrid').innerHTML = html;
@@ -385,8 +394,7 @@
 
     // ==================== RENDER TABLE ====================
     function renderTable() {
-        var html = '<thead><tr><th style="width:15%; font-size:13px; color:var(--text)">指标</th>';
-        // Header: ETF codes
+        var html = '<thead><tr><th style="width:15%">指标</th>';
         etfs.forEach(function(e, i) {
             var fullName = e.code;
             if (e.name) fullName += ' - ' + e.name;
@@ -397,20 +405,14 @@
 
         var currentGroup = '';
         TABLE_COLUMNS.forEach(function(col) {
-            // Group header row
             if (col.group !== currentGroup) {
                 currentGroup = col.group;
                 html += '<tr class="group-header"><td colspan="' + (etfs.length + 1) + '">' + col.group + '</td></tr>';
             }
-
-            // Data row
             html += '<tr>';
             html += '<td>' + col.label + '</td>';
-
             if (col.isString) {
-                etfs.forEach(function(e) {
-                    html += '<td class="neutral">' + col.fmtFn(e[col.key]) + '</td>';
-                });
+                etfs.forEach(function(e) { html += '<td class="neutral">' + col.fmtFn(e[col.key]) + '</td>'; });
             } else {
                 var vals = etfs.map(function(e) { return e[col.key]; }).filter(function(v) { return typeof v === 'number'; });
                 if (vals.length === 0) {
@@ -423,10 +425,8 @@
                     });
                 }
             }
-
             html += '</tr>';
         });
-
         html += '</tbody>';
         document.getElementById('compareTable').innerHTML = html;
     }
@@ -440,7 +440,7 @@
         document.getElementById('footerSection').style.display = 'none';
 
         if (!CODES.length) {
-            document.getElementById('loadingIndicator').innerHTML = '<div style="color:var(--red);padding:40px">请提供ETF代码参数，如 ?codes=510300,510500</div>';
+            document.getElementById('loadingIndicator').innerHTML = '<div style="color:#ef4444;padding:40px">请提供ETF代码参数，如 ?codes=510300,510500</div>';
             return;
         }
 
@@ -449,17 +449,15 @@
             const data = await response.json();
 
             if (!response.ok || !data.etfs || !data.etfs.length) {
-                document.getElementById('loadingIndicator').innerHTML = `<div style="color:var(--red);padding:40px">未找到ETF数据: ${data.error || '未知错误'}</div>`;
+                document.getElementById('loadingIndicator').innerHTML = `<div style="color:#ef4444;padding:40px">未找到ETF数据: ${data.error || '未知错误'}</div>`;
                 return;
             }
 
             etfs = data.etfs;
             window.__dataUpdated = data.updated || '';
 
-            // Map close -> price
             etfs.forEach(function(e) { if (e.price === null || e.price === undefined) e.price = e.close; });
 
-            // Calculate derived fields
             etfs.forEach(function(e) {
                 if (e.year_3_return) {
                     e.annual_3y = (Math.pow(1 + e.year_3_return / 100, 1/3) - 1) * 100;
@@ -469,23 +467,19 @@
                 }
             });
 
-            // Hide loading, show content
             document.getElementById('loadingIndicator').style.display = 'none';
-            document.getElementById('heroSection').style.display = 'flex';
+            document.getElementById('heroSection').style.display = 'block';
             document.getElementById('ringSection').style.display = 'block';
             document.getElementById('tableSection').style.display = 'block';
             document.getElementById('footerSection').style.display = 'flex';
 
-            // Render
             renderHero();
             renderRingChart();
             renderTable();
 
-            // Update header time
             var ut = data.updated || '';
             document.getElementById('headerTime').textContent = timeAgo(ut);
 
-            // L2 async update
             setTimeout(async () => {
                 try {
                     const l2Response = await fetch(`/api/compare?codes=${CODES.join(',')}&source=westock`);
@@ -498,12 +492,11 @@
 
         } catch (error) {
             console.error('Load failed:', error);
-            document.getElementById('loadingIndicator').innerHTML = '<div style="color:var(--red);padding:40px">加载数据失败</div>';
+            document.getElementById('loadingIndicator').innerHTML = '<div style="color:#ef4444;padding:40px">加载数据失败</div>';
         }
     }
 
     function updateWithL2Data(l2Etfs) {
-        console.log('[L2] Updating with WeStock data...');
         l2Etfs.forEach(function(l2) {
             var idx = etfs.findIndex(function(e) { return e.code === l2.code; });
             if (idx < 0) return;
@@ -526,18 +519,14 @@
         if (ht) ht.textContent = ht.textContent + ' (L2已加载)';
     }
 
-    window.onload = function() {
-        loadData();
-    };
+    window.onload = function() { loadData(); };
 
-    // ========== 全页面截图（旧版本方案）==========
+    // ========== 全页面截图 ==========
     async function screenCaptureFullPage() {
         try {
             var canvas = await html2canvas(document.body, {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                backgroundColor: '#060b17',
+                scale: 2, useCORS: true, logging: false,
+                backgroundColor: '#0a0e1a',
                 windowWidth: document.documentElement.scrollWidth,
                 windowHeight: document.documentElement.scrollHeight
             });
@@ -545,7 +534,7 @@
                 if (!blob) return alert('截图失败');
                 var url = URL.createObjectURL(blob);
                 var a = document.createElement('a');
-                a.download = 'ETF对比_全页面_' + etfs.map(function(e){return e.code;}).join('_') + '_' + new Date().toISOString().slice(0,10) + '.png';
+                a.download = 'ETF对比_' + etfs.map(function(e){return e.code;}).join('_') + '_' + new Date().toISOString().slice(0,10) + '.png';
                 a.href = url; document.body.appendChild(a); a.click();
                 document.body.removeChild(a); setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
             }, 'image/png');
