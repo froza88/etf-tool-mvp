@@ -100,8 +100,6 @@
         .compare-table tbody tr:hover td { background:var(--row-hover); }
         .compare-table tbody tr:hover td:first-child { background:rgba(0,194,255,0.06); }
 
-        .compare-table tbody td.best { color:var(--best); font-weight:800; }
-        .compare-table tbody td.worst { color:rgba(255,255,255,0.55); }
         .compare-table tbody td.neutral { color:rgba(255,255,255,0.85); }
 
         .group-header td { background:rgba(0,194,255,0.04) !important; color:rgba(0,194,255,0.7) !important; font-weight:700 !important; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; padding:7px 12px !important; text-align:left; }
@@ -418,17 +416,10 @@
                 if (vals.length === 0) {
                     etfs.forEach(function(e) { html += '<td class="neutral">-</td>'; });
                 } else {
-                    var bestVal = col.higherBetter ? Math.max.apply(null, vals) : Math.min.apply(null, vals);
-                    var worstVal = col.higherBetter ? Math.min.apply(null, vals) : Math.max.apply(null, vals);
                     etfs.forEach(function(e) {
                         var v = e[col.key];
                         if (typeof v !== 'number') { html += '<td class="neutral">-</td>'; return; }
-                        var cls = 'neutral';
-                        if (vals.length > 1) {
-                            if (v === bestVal) cls = 'best';
-                            else if (v === worstVal) cls = 'worst';
-                        }
-                        html += '<td class="' + cls + '">' + col.fmtFn(v) + (cls === 'best' ? ' ✓' : '') + '</td>';
+                        html += '<td class="neutral">' + col.fmtFn(v) + '</td>';
                     });
                 }
             }
