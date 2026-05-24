@@ -275,26 +275,32 @@
 
     // ==================== TABLE COLUMNS ====================
     var TABLE_COLUMNS = [
+        // 基本信息
+        { group:'基本信息', label:'跟踪指数', key:'benchmark', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
+        { group:'基本信息', label:'发行方', key:'issuer_full', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
+        { group:'基本信息', label:'成立日期', key:'issue_date', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
+        { group:'基本信息', label:'分类', key:'category', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
+        { group:'基本信息', label:'前五大持仓', key:'top_holdings', fmtFn:function(v){if(!v||!v.length)return '-'; return v.slice(0,3).map(function(h){return h.name||h.Name||'-';}).join('、');}, higherBetter:null, isString:true },
         // 规模流动性
         { group:'规模流动性', label:'规模', key:'scale', fmtFn:function(v){return fmt(v,2,'亿');}, higherBetter:true },
-        { group:'规模流动性', label:'日均成交', key:'amount', fmtFn:function(v){return fmt(v,2,'亿');}, higherBetter:true },
-        { group:'规模流动性', label:'近5日净流入', key:'net_inflow_5d', fmtFn:function(v){return fmt(v,2,'亿');}, higherBetter:true },
-        // 风险
-        { group:'风险', label:'最大回撤', key:'max_drawdown', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-        { group:'风险', label:'年化波动率', key:'annual_vol', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
+        { group:'规模流动性', label:'日均成交', key:'amount', fmtFn:function(v){return v!=null?fmt(v,2,'亿'):'-';}, higherBetter:true },
+        { group:'规模流动性', label:'近5日净流入', key:'net_inflow_5d', fmtFn:function(v){return v!=null?fmt(v,2,'亿'):'-';}, higherBetter:true },
+        // 费用估值
+        { group:'费用估值', label:'费率(管理+托管)', key:'fee_rate', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
+        { group:'费用估值', label:'管理费率', key:'fee_rate_management', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
+        { group:'费用估值', label:'托管费率', key:'fee_rate_custody', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
+        { group:'费用估值', label:'溢折价率', key:'premium_discount', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
+        { group:'费用估值', label:'估值分位', key:'valuation_percentile', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
+        // 跟踪质量
+        { group:'跟踪质量', label:'跟踪误差', key:'tracking_error', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
         // 收益
         { group:'收益', label:'近1年收益', key:'year_1_return', fmtFn:fmtSigned, higherBetter:true },
         { group:'收益', label:'近3年均收益', key:'annual_3y', fmtFn:fmtSigned, higherBetter:true },
-        { group:'收益', label:'夏普比率', key:'sharpe_ratio', fmtFn:function(v){return fmt(v,2);}, higherBetter:true },
-        { group:'收益', label:'卡玛比率', key:'calmar_ratio', fmtFn:function(v){return fmt(v,2);}, higherBetter:true },
-        // 费用估值
-        { group:'费用估值', label:'费率(管理+托管)', key:'fee_rate', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-        { group:'费用估值', label:'溢折价率', key:'premium_discount', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-        { group:'费用估值', label:'估值分位', key:'valuation_percentile', fmtFn:function(v){return fmt(v,2,'%');}, higherBetter:false },
-        // 基本信息
-        { group:'基本信息', label:'跟踪指数', key:'benchmark', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
-        { group:'基本信息', label:'发行方', key:'issuer_short', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
-        { group:'基本信息', label:'分类', key:'category', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
+        { group:'收益', label:'夏普比率', key:'sharpe_ratio', fmtFn:function(v){return v!=null?fmt(v,2):'-';}, higherBetter:true },
+        { group:'收益', label:'卡玛比率', key:'calmar_ratio', fmtFn:function(v){return v!=null?fmt(v,2):'-';}, higherBetter:true },
+        // 风险
+        { group:'风险', label:'最大回撤', key:'max_drawdown', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
+        { group:'风险', label:'年化波动率', key:'annual_vol', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
     ];
 
     // ==================== RENDER HERO ====================
