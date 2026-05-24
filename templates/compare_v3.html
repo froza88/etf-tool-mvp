@@ -107,17 +107,22 @@
         .group-header td { background:rgba(0,194,255,0.04) !important; color:rgba(0,194,255,0.7) !important; font-weight:700 !important; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; padding:7px 12px !important; text-align:left; }
         .group-header td:first-child { background:rgba(0,194,255,0.04) !important; }
 
-        /* Bullet Chart */
-        .bullet-section { margin-bottom:24px; }
-        .bullet-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
-        .bullet-card { background:var(--surface); border:1px solid rgba(26,39,68,0.5); border-radius:12px; padding:16px; }
-        .bullet-card-title { font-size:12px; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:12px; letter-spacing:0.5px; }
-        .bullet-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-        .bullet-row:last-child { margin-bottom:0; }
-        .bullet-code { font-size:11px; font-weight:700; width:50px; text-align:right; white-space:nowrap; font-family:'Courier New',Courier,monospace; }
-        .bullet-track { flex:1; height:18px; background:var(--surface2); border-radius:4px; overflow:hidden; position:relative; }
-        .bullet-fill { height:100%; border-radius:4px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; transition:width 0.6s cubic-bezier(0.4,0,0.2,1); min-width:2px; }
-        .bullet-value { font-size:10px; font-weight:700; color:#fff; font-family:'Courier New',Courier,monospace; text-shadow:0 1px 2px rgba(0,0,0,0.5); white-space:nowrap; }
+        /* Ring Chart (replaces Bullet Chart) */
+        .ring-section { margin-bottom:24px; }
+        .ring-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; }
+        .ring-card { background:var(--surface); border:1px solid rgba(26,39,68,0.5); border-radius:12px; padding:20px; }
+        .ring-card-title { font-size:12px; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:16px; letter-spacing:0.5px; }
+        .ring-card-body { display:flex; align-items:center; gap:20px; }
+        .ring-svg-wrap { flex-shrink:0; position:relative; }
+        .ring-svg { display:block; }
+        .ring-center-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+        .ring-center-val { font-size:14px; font-weight:800; color:#fff; font-family:'SF Mono','Fira Code',Consolas,monospace; }
+        .ring-center-lbl { font-size:9px; color:var(--text2); margin-top:2px; }
+        .ring-legend { flex:1; display:flex; flex-direction:column; gap:8px; }
+        .ring-legend-item { display:flex; align-items:center; gap:8px; font-size:12px; }
+        .ring-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+        .ring-legend-code { font-weight:700; color:rgba(255,255,255,0.8); min-width:50px; }
+        .ring-legend-val { color:var(--text); font-family:'Times New Roman',Georgia,serif; margin-left:auto; }
 
         /* Footer */
         .footer-actions { display:flex; justify-content:center; gap:14px; margin-top:8px; }
@@ -130,13 +135,10 @@
             .hero-summary { width: 100%; justify-content: space-around; gap: 12px; flex-wrap: wrap; }
             .hero-stat .val { font-size: 14px; }
             .hero-stat .lbl { font-size: 9px; }
-            .bullet-grid { grid-template-columns: 1fr; gap: 12px; }
-            .bullet-card { padding: 12px; }
-            .bullet-card-title { font-size: 11px; margin-bottom: 8px; }
-            .bullet-row { gap: 6px; margin-bottom: 6px; }
-            .bullet-code { font-size: 10px; width: 45px; }
-            .bullet-track { height: 16px; }
-            .bullet-value { font-size: 9px; }
+            .ring-grid { grid-template-columns: 1fr; gap: 12px; }
+            .ring-card { padding: 12px; }
+            .ring-card-title { font-size: 11px; margin-bottom: 8px; }
+            .ring-card-body { gap: 12px; }
             .compare-table-wrap { margin: 0 -12px; border-radius: 0; border-left: none; border-right: none; }
             .compare-table thead th, .compare-table tbody td { padding: 10px 6px; font-size: 13px; }
             .compare-table thead th:first-child, .compare-table tbody td:first-child { min-width: 80px; max-width: 100px; font-size: 13px; }
@@ -155,12 +157,9 @@
             .hero-tag { padding: 5px 8px; font-size: 11px; }
             .hero-stat .val { font-size: 13px; }
             .hero-stat .lbl { font-size: 8px; }
-            .bullet-card { padding: 10px; }
-            .bullet-card-title { font-size: 10px; }
-            .bullet-row { gap: 4px; margin-bottom: 4px; }
-            .bullet-code { font-size: 9px; width: 40px; }
-            .bullet-track { height: 14px; }
-            .bullet-value { font-size: 8px; }
+            .ring-card { padding: 10px; }
+            .ring-card-title { font-size: 10px; }
+            .ring-card-body { gap: 8px; }
             .compare-table-wrap { margin: 0 -8px; }
             .compare-table thead th, 
             .compare-table tbody td { 
@@ -205,10 +204,10 @@
             <div class="hero-summary" id="heroSummary"></div>
         </div>
 
-        <!-- Bullet Chart -->
-        <div class="bullet-section animate-in" style="animation-delay:0.05s;display:none" id="bulletSection">
-            <div class="section-title">📊 关键指标子弹图</div>
-            <div class="bullet-grid" id="bulletGrid"></div>
+        <!-- Ring Chart: Scale & Liquidity -->
+        <div class="ring-section animate-in" style="animation-delay:0.05s;display:none" id="ringSection">
+            <div class="section-title">📊 规模 & 流动性</div>
+            <div class="ring-grid" id="ringGrid"></div>
         </div>
 
         <!-- Comparison Table -->
@@ -246,7 +245,12 @@
     function fmtSigned(v, d, unit) {
         d = d || 2; unit = unit || '%';
         if (v === undefined || v === null) return '-';
-        return (typeof v === 'number' ? (v >= 0 ? '+' : '') + v.toFixed(d) : v) + unit;
+        // Fix double-plus bug: if v is already a string with +, don't add another +
+        if (typeof v === 'string') {
+            if (v.startsWith('+') || v.startsWith('-')) return v + unit;
+            return v + unit;
+        }
+        return (v >= 0 ? '+' : '') + v.toFixed(d) + unit;
     }
     function timeAgo(ts) {
         if (!ts) return '未知时间';
@@ -287,22 +291,19 @@
 
     // ==================== RENDER HERO ====================
     function renderHero() {
-        var conclusionParts = [];
+        // Summary: show 3 key data points (scale, year_1_return, sharpe_ratio)
         var summaryMetrics = ['scale', 'year_1_return', 'sharpe_ratio'];
-        summaryMetrics.forEach(function(key) {
+        var summaryHtml = summaryMetrics.map(function(key) {
             var col = TABLE_COLUMNS.filter(function(c) { return c.key === key; })[0];
-            if (!col) return;
+            if (!col) return '';
             var vals = etfs.map(function(e) { return e[key]; }).filter(function(v) { return typeof v === 'number'; });
-            if (vals.length < 2) return;
-            var bestIdx = col.higherBetter ? vals.indexOf(Math.max.apply(null, vals)) : vals.indexOf(Math.min.apply(null, vals));
-            var worstIdx = col.higherBetter ? vals.indexOf(Math.min.apply(null, vals)) : vals.indexOf(Math.max.apply(null, vals));
-            if (bestIdx < 0 || worstIdx < 0) return;
-            var bestEtf = etfs[etfs.map(function(e) { return e[key]; }).indexOf(vals[bestIdx])];
-            var diff = col.higherBetter ? vals[bestIdx] - vals[worstIdx] : vals[worstIdx] - vals[bestIdx];
-            var diffPct = Math.abs(diff) / (Math.max.apply(null, vals.map(function(v){return Math.abs(v)||0;})) || 1) * 100;
-            var diffStr = col.fmtFn(Math.abs(diff)); conclusionParts.push(bestEtf.code + ' ' + col.label + '胜出(+' + diffStr + ', +' + diffPct.toFixed(0) + '%)');
-        });
-        var conclusion = conclusionParts.length ? conclusionParts.join('，') : '数据加载完成';
+            if (vals.length === 0) return '';
+            // Show all ETF values, not just best/worst
+            var items = etfs.filter(function(e) { return typeof e[key] === 'number'; }).map(function(e) {
+                return e.code + ' ' + col.fmtFn(e[key]);
+            });
+            return '<div class="hero-stat"><div class="val">' + items.join(' / ') + '</div><div class="lbl">' + col.label + '</div></div>';
+        }).filter(function(h) { return h; }).join('');
 
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
             var nameStr = e.code;
@@ -310,23 +311,19 @@
             if (e.issuer_short) nameStr += ' - ' + e.issuer_short;
             return '<div class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span><span>' + nameStr + '</span></div>';
         }).join('');
+
         var dataTime = window.__dataUpdated || '';
         var timeStr = timeAgo(dataTime);
-        document.getElementById('heroSummary').innerHTML =
-            '<div class="hero-stat"><div class="val">' + conclusion + '</div><div class="lbl">核心结论</div></div>' +
+        document.getElementById('heroSummary').innerHTML = summaryHtml +
             '<div class="hero-stat"><div class="val" style="font-size:15px;color:var(--accent)">' + timeStr + '</div><div class="lbl">数据更新</div></div>' +
             '<div class="hero-stat"><div class="val" style="font-size:15px">' + etfs.length + '只</div><div class="lbl">对比数量</div></div>';
-
     }
 
-    // ==================== RENDER BULLET CHART ====================
-    function renderBulletChart() {
+    // ==================== RENDER RING CHART ====================
+    function renderRingChart() {
         var metrics = [
-            { key:'scale', label:'规模', fmt:function(v){return fmt(v,0,'亿');}, higherBetter:true },
-            { key:'amount', label:'日均成交', fmt:function(v){return fmt(v,1,'亿');}, higherBetter:true },
-            { key:'year_1_return', label:'近1年收益', fmt:fmtSigned, higherBetter:true },
-            { key:'max_drawdown', label:'最大回撤', fmt:function(v){return fmt(v,2,'%');}, higherBetter:false },
-            { key:'sharpe_ratio', label:'夏普比率', fmt:function(v){return fmt(v,2);}, higherBetter:true },
+            { key:'scale', label:'规模', fmt:function(v){return fmt(v,0,'亿');} },
+            { key:'amount', label:'日均成交', fmt:function(v){return fmt(v,1,'亿');} },
         ];
 
         var html = '';
@@ -334,42 +331,58 @@
             var vals = etfs.map(function(e){return e[m.key];}).filter(function(v){return typeof v==='number';});
             if (vals.length === 0) return;
 
-            var absVals = vals.map(Math.abs);
-            var maxAbs = Math.max.apply(null, absVals);
-            var minAbs = Math.min.apply(null, absVals);
-            var absRange = maxAbs - minAbs;
+            var total = vals.reduce(function(s,v){return s+v;}, 0);
+            if (total <= 0) return;
 
-            html += '<div class="bullet-card">';
-            html += '<div class="bullet-card-title">' + m.label + '</div>';
+            // Build SVG rings
+            var size = 120;
+            var cx = size/2, cy = size/2;
+            var radius = 45;
+            var strokeWidth = 12;
+            var circumference = 2 * Math.PI * radius;
 
+            var rings = '';
+            var cumPct = 0;
             etfs.forEach(function(e, i) {
                 var v = e[m.key];
-                if (typeof v !== 'number') return;
-
-                var absV = Math.abs(v);
-                var pct;
-                if (m.higherBetter) {
-                    pct = (absV / maxAbs) * 100;
-                } else {
-                    pct = absRange > 0 ? ((maxAbs - absV) / absRange) * 100 : 50;
-                }
-                if (pct < 3) pct = 3;
-
-                var barColor = colors[i];
-                if (v < 0 && m.higherBetter) barColor = colors[i] + '90';
-
-                html += '<div class="bullet-row">';
-                html += '<div class="bullet-code" style="color:' + colors[i] + '">' + e.code + '</div>';
-                html += '<div class="bullet-track">';
-                html += '<div class="bullet-fill" style="width:' + pct.toFixed(1) + '%;background:' + barColor + '">';
-                html += '<span class="bullet-value">' + m.fmt(v) + '</span>';
-                html += '</div></div></div>';
+                if (typeof v !== 'number' || v <= 0) return;
+                var pct = v / total;
+                var dashLen = pct * circumference;
+                var dashOffset = -cumPct * circumference;
+                rings += '<circle cx="' + cx + '" cy="' + cy + '" r="' + radius + '" fill="none" stroke="' + colors[i] + '" stroke-width="' + strokeWidth + '" ' +
+                         'stroke-dasharray="' + dashLen + ' ' + (circumference - dashLen) + '" stroke-dashoffset="' + dashOffset + '" opacity="0.85"/>';
+                cumPct += pct;
             });
 
-            html += '</div>';
+            // Center text: largest ETF code + value
+            var maxEtf = etfs.slice().sort(function(a,b){return (b[m.key]||0)-(a[m.key]||0);})[0];
+            var centerHtml = maxEtf ? (maxEtf.code + '<br><span style="font-size:10px;color:var(--text2)">' + m.fmt(maxEtf[m.key]) + '</span>') : '-';
+
+            html += '<div class="ring-card">';
+            html += '<div class="ring-card-title">' + m.label + '</div>';
+            html += '<div class="ring-card-body">';
+            html += '<div class="ring-svg-wrap">';
+            html += '<svg class="ring-svg" width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '">';
+            // Background ring
+            html += '<circle cx="' + cx + '" cy="' + cy + '" r="' + radius + '" fill="none" stroke="rgba(26,39,68,0.4)" stroke-width="' + strokeWidth + '"/>';
+            html += rings;
+            html += '</svg>';
+            html += '<div class="ring-center-text"><span class="ring-center-val">' + maxEtf.code + '</span><br><span style="font-size:10px;color:var(--text2)">' + m.fmt(maxEtf[m.key]) + '</span></div>';
+            html += '</div>'; // ring-svg-wrap
+
+            // Legend
+            html += '<div class="ring-legend">';
+            etfs.forEach(function(e, i) {
+                var v = e[m.key];
+                if (typeof v !== 'number') { html += '<div class="ring-legend-item"><span class="ring-legend-dot" style="background:' + colors[i] + '"></span><span class="ring-legend-code">' + e.code + '</span><span class="ring-legend-val">-</span></div>'; return; }
+                html += '<div class="ring-legend-item"><span class="ring-legend-dot" style="background:' + colors[i] + '"></span><span class="ring-legend-code">' + e.code + '</span><span class="ring-legend-val">' + m.fmt(v) + '</span></div>';
+            });
+            html += '</div>'; // ring-legend
+            html += '</div>'; // ring-card-body
+            html += '</div>'; // ring-card
         });
 
-        document.getElementById('bulletGrid').innerHTML = html;
+        document.getElementById('ringGrid').innerHTML = html;
     }
 
     // ==================== RENDER TABLE ====================
@@ -431,6 +444,7 @@
     async function loadData() {
         document.getElementById('loadingIndicator').style.display = 'block';
         document.getElementById('heroSection').style.display = 'none';
+        document.getElementById('ringSection').style.display = 'none';
         document.getElementById('tableSection').style.display = 'none';
         document.getElementById('footerSection').style.display = 'none';
 
@@ -467,13 +481,13 @@
             // Hide loading, show content
             document.getElementById('loadingIndicator').style.display = 'none';
             document.getElementById('heroSection').style.display = 'flex';
-            document.getElementById('bulletSection').style.display = 'block';
+            document.getElementById('ringSection').style.display = 'block';
             document.getElementById('tableSection').style.display = 'block';
             document.getElementById('footerSection').style.display = 'flex';
 
             // Render
             renderHero();
-            renderBulletChart();
+            renderRingChart();
             renderTable();
 
             // Update header time
@@ -507,8 +521,6 @@
              'amount','volume'].forEach(function(f) {
                 if (l2[f] !== undefined && l2[f] !== null) {
                     var val = l2[f];
-                    // WeStock 返回的 scale/amount 已经是元为单位，无需转换
-                    // 仅当值很小（<10000）且是本地 JSON 原始值时才需要转换
                     if ((f === 'scale') && typeof val === 'number' && val > 0 && val < 10000) {
                         val = val * 100000000;
                     }
@@ -517,7 +529,7 @@
             });
         });
         renderHero();
-        renderBulletChart();
+        renderRingChart();
         renderTable();
         var ht = document.getElementById('headerTime');
         if (ht) ht.textContent = ht.textContent + ' (L2已加载)';
