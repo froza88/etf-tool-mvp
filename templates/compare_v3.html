@@ -373,10 +373,11 @@
 
     // ==================== RENDER TABLE ====================
     function renderTable() {
-        var html = '<thead><tr><th style="width:15%">指标</th>';
+        var html = '<thead><tr><th style="width:15%; font-size:13px; color:var(--text)">指标</th>';
         // Header: ETF codes
         etfs.forEach(function(e, i) {
-            html += '<th style="width:calc((100% - 15%) / ' + etfs.length + ')"><span class="etf-code" style="color:' + colors[i] + '">' + e.code + '</span><span class="etf-name">' + (e.name || '') + '</span></th>';
+            var fullName = e.code + '-' + (e.name || '');
+            html += '<th style="width:calc((100% - 15%) / ' + etfs.length + ')"><span class="etf-code" style="color:' + colors[i] + '">' + fullName + '</span><span class="etf-name">' + (e.issuer_short || '') + '</span></th>';
         });
         html += '</tr></thead><tbody>';
 
