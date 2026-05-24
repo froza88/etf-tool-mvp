@@ -108,11 +108,26 @@ _ETFLIST = None
 _ETFMAP = None
 
 
+def _normalize_units(data):
+    """统一数据单位：部分数据源返回 scale/amount 为'亿'单位，需转为'元'"""
+    for etf in data:
+        # scale: ETF规模不可能小于1万元，若 < 10000 则视为亿单位
+        scale = etf.get("scale")
+        if scale is not None and isinstance(scale, (int, float)) and 0 < scale < 10000:
+            etf["scale"] = scale * 100000000
+        # amount: 成交额同理
+        amount = etf.get("amount")
+        if amount is not None and isinstance(amount, (int, float)) and 0 < amount < 10000:
+            etf["amount"] = amount * 100000000
+    return data
+
+
 def _ensure_loaded():
     """确保数据已加载，同时构建 code→ETF 索引"""
     global _ETFLIST, _ETFMAP
     if _ETFLIST is None:
         _ETFLIST = _load_etfs()
+        _normalize_units(_ETFLIST)
         _ETFMAP = {etf["code"]: etf for etf in _ETFLIST if "code" in etf}
 
 
