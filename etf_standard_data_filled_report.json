@@ -1,0 +1,63 @@
+{
+  "task": "ETF 缺失数据填补",
+  "total_etfs": 1473,
+  "queried_etfs": 1473,
+  "failed_batches": 0,
+  "completeness": {
+    "custodian": {
+      "non_empty": 1473,
+      "total": 1473,
+      "completeness_pct": 100.0
+    },
+    "fee_rate": {
+      "non_empty": 0,
+      "total": 1473,
+      "completeness_pct": 0.0
+    },
+    "benchmark": {
+      "non_empty": 1445,
+      "total": 1473,
+      "completeness_pct": 98.09911744738629
+    },
+    "annual_3y": {
+      "non_empty": 1470,
+      "total": 1473,
+      "completeness_pct": 99.79633401221996
+    },
+    "year_3_return": {
+      "non_empty": 1470,
+      "total": 1473,
+      "completeness_pct": 99.79633401221996
+    },
+    "premium_discount": {
+      "non_empty": 1413,
+      "total": 1473,
+      "completeness_pct": 95.9266802443992
+    },
+    "net_inflow_shares": {
+      "non_empty": 859,
+      "total": 1473,
+      "completeness_pct": 58.316361167684995
+    },
+    "net_inflow_ratio": {
+      "non_empty": 857,
+      "total": 1473,
+      "completeness_pct": 58.1805838424983
+    },
+    "fee_rate_custody": {
+      "non_empty": 0,
+      "total": 1473,
+      "completeness_pct": 0.0
+    },
+    "fee_rate_management": {
+      "non_empty": 0,
+      "total": 1473,
+      "completeness_pct": 0.0
+    },
+    "fee_rate_service": {
+      "non_empty": 0,
+      "total": 1473,
+      "completeness_pct": 0.0
+    }
+  }
+}

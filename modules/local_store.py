@@ -117,7 +117,12 @@ def create_snapshot(step_name="all"):
         snapshot = load_json(snapshot_file) or {}
 
     # 收集当前所有核心数据
-    standard = load_json(LEGACY_FILES["standard"]) or []
+    standard_raw = load_json(LEGACY_FILES["standard"]) or []
+    # 兼容 dict 格式 {"etfs": [...], "updated": "..."}
+    if isinstance(standard_raw, dict) and "etfs" in standard_raw:
+        standard = standard_raw["etfs"]
+    else:
+        standard = standard_raw
     metrics = load_json(LEGACY_FILES["metrics"]) or {}
     yingmi = load_json(LEGACY_FILES["yingmi"]) or {}
     history_cache = load_json(LEGACY_FILES["history_cache"]) or {}
@@ -128,11 +133,11 @@ def create_snapshot(step_name="all"):
         "step": step_name,
         "stats": {
             "total_etfs": len(standard),
-            "has_price": sum(1 for e in standard if e.get("close", 0) > 0),
-            "has_return": sum(1 for e in standard if e.get("year_1_return", 0) != 0),
-            "has_sharpe": sum(1 for e in standard if e.get("sharpe_ratio", 0) != 0),
-            "has_holdings": sum(1 for e in standard if e.get("top_holdings")),
-            "has_issuer": sum(1 for e in standard if e.get("issuer")),
+            "has_price": sum(1 for e in standard if isinstance(e, dict) and e.get("close", 0) > 0),
+            "has_return": sum(1 for e in standard if isinstance(e, dict) and e.get("year_1_return", 0) != 0),
+            "has_sharpe": sum(1 for e in standard if isinstance(e, dict) and e.get("sharpe_ratio", 0) != 0),
+            "has_holdings": sum(1 for e in standard if isinstance(e, dict) and e.get("top_holdings")),
+            "has_issuer": sum(1 for e in standard if isinstance(e, dict) and e.get("issuer")),
             "metrics_count": len(metrics),
             "yingmi_count": len(yingmi),
             "history_count": len(history_cache),

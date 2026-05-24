@@ -54,28 +54,6 @@
         .hero-meta { display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex-shrink:0; }
         .hero-meta-time { font-size:11px; color:var(--accent); font-family:'SF Mono','Fira Code',Consolas,monospace; }
         .hero-meta-count { font-size:10px; color:var(--text2); }
-        .hero-metrics { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:16px; }
-        .hero-card {
-            position:relative; overflow:hidden;
-            background:rgba(17,24,39,0.6); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-            border:1px solid rgba(0,194,255,0.08); border-radius:16px;
-            padding:20px 22px; transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
-            animation:heroCardIn 0.6s cubic-bezier(0.4,0,0.2,1) both;
-        }
-        .hero-card:nth-child(1) { animation-delay:0.05s; }
-        .hero-card:nth-child(2) { animation-delay:0.12s; }
-        .hero-card:nth-child(3) { animation-delay:0.19s; }
-        .hero-card:hover { transform:translateY(-3px); border-color:rgba(0,194,255,0.25); box-shadow:0 12px 40px rgba(0,194,255,0.08), 0 0 0 1px rgba(0,194,255,0.1); }
-        .hero-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--accent), var(--accent2)); opacity:0.6; transition:opacity 0.3s; }
-        .hero-card:hover::before { opacity:1; }
-        .hero-card-title { font-size:12px; font-weight:800; color:rgba(255,255,255,0.85); letter-spacing:1px; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
-        .hero-card-title::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--accent); display:inline-block; }
-        .hero-card-item { display:flex; justify-content:space-between; align-items:center; font-size:13px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.04); transition:background 0.15s; border-radius:4px; margin:0 -4px; padding-left:4px; padding-right:4px; }
-        .hero-card-item:last-child { border-bottom:none; }
-        .hero-card-item:hover { background:rgba(255,255,255,0.04); }
-        .hero-card-code { font-weight:700; font-size:12px; font-family:'SF Mono','Fira Code',Consolas,monospace; letter-spacing:-0.3px; }
-        .hero-card-val { font-weight:800; font-size:16px; font-family:'SF Mono','Fira Code',Consolas,monospace; letter-spacing:-0.5px; }
-        @keyframes heroCardIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
         /* Comparison Table */
         .compare-section { margin-bottom:20px; }
@@ -127,33 +105,6 @@
         .group-header td { background:rgba(0,194,255,0.04) !important; color:rgba(0,194,255,0.7) !important; font-weight:700 !important; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; padding:7px 12px !important; text-align:left; }
         .group-header td:first-child { background:rgba(0,194,255,0.04) !important; }
 
-        /* Fusion Ring Chart */
-        .ring-fusion-wrap { margin-bottom:24px; }
-        .ring-fusion-card {
-            background:rgba(17,24,39,0.6); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-            border:1px solid rgba(0,194,255,0.08); border-radius:16px; padding:24px 28px;
-            position:relative; overflow:hidden;
-        }
-        .ring-fusion-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, #00c2ff, #a855f7); opacity:0.7; }
-        .ring-fusion-title { font-size:13px; font-weight:800; color:rgba(255,255,255,0.85); letter-spacing:1px; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
-        .ring-fusion-title::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); display:inline-block; }
-        .ring-fusion-body { display:flex; align-items:center; gap:32px; }
-        .ring-svg-fusion { flex-shrink:0; position:relative; }
-        .ring-svg-fusion svg { display:block; filter:drop-shadow(0 0 20px rgba(0,194,255,0.1)); }
-        .ring-center-info { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; pointer-events:none; }
-        .ring-center-label { font-size:11px; color:var(--text2); letter-spacing:0.5px; }
-        .ring-center-val { font-size:22px; font-weight:900; color:#fff; font-family:'SF Mono','Fira Code',Consolas,monospace; letter-spacing:-1px; margin-top:2px; }
-        .ring-center-sub { font-size:10px; color:var(--text2); margin-top:4px; }
-        .ring-legend-fusion { flex:1; display:flex; flex-direction:column; gap:10px; }
-        .ring-legend-group { }
-        .ring-legend-group-title { font-size:11px; font-weight:700; color:var(--text2); margin-bottom:6px; letter-spacing:0.5px; display:flex; align-items:center; gap:6px; }
-        .ring-legend-group-title::before { content:''; width:8px; height:3px; border-radius:2px; display:inline-block; }
-        .ring-legend-items { display:flex; flex-direction:column; gap:5px; padding-left:14px; }
-        .ring-legend-item-f { display:flex; align-items:center; gap:7px; font-size:12px; }
-        .ring-legend-dot-f { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-        .ring-legend-code-f { font-weight:700; color:rgba(255,255,255,0.85); min-width:50px; font-size:11px; }
-        .ring-legend-val-f { color:var(--text); font-family:'SF Mono','Fira Code',Consolas,monospace; margin-left:auto; font-size:12px; }
-
         /* Footer */
         .footer-actions { display:flex; justify-content:center; gap:14px; margin-top:8px; }
 
@@ -164,16 +115,12 @@
             .hero-tags { gap:6px; }
             .hero-tag { padding: 6px 10px; font-size: 11px; }
             .hero-meta { flex-direction:row; align-items:center; gap:12px; }
-            .hero-metrics { margin-top:12px; gap:10px; grid-template-columns:repeat(3, 1fr); }
-            .hero-card { padding: 12px 14px; border-radius: 12px; }
-            .hero-card-title { font-size: 11px; margin-bottom: 8px; }
-            .hero-card-item { font-size: 12px; padding: 3px 0; }
-            .hero-card-code { font-size: 11px; }
-            .hero-card-val { font-size: 14px; }
-            .ring-fusion-wrap { grid-template-columns: 1fr; gap: 12px; }
-            .ring-card { padding: 12px; }
-            .ring-card-title { font-size: 11px; margin-bottom: 8px; }
-            .ring-card-body { gap: 12px; }
+            .hero-rings { grid-template-columns: 1fr; gap: 12px; }
+            .hero-ring-card { padding: 14px 12px; }
+            .hero-ring-svg { width: 150px; height: 150px; }
+            .hero-ring-svg svg { width: 150px; height: 150px; }
+            .hero-ring-label { font-size: 12px; }
+            .hero-legend { gap: 12px; flex-wrap: wrap; justify-content: center; }
             .compare-table-wrap { margin: 0 -12px; border-radius: 0; border-left: none; border-right: none; }
             .compare-table thead th, .compare-table tbody td { padding: 10px 6px; font-size: 13px; }
             .compare-table thead th:first-child, .compare-table tbody td:first-child { min-width: 80px; max-width: 100px; font-size: 13px; }
@@ -190,26 +137,21 @@
             .btn { padding: 5px 8px; font-size: 10px; }
             .hero { padding: 12px 10px; }
             .hero-tag { padding: 5px 8px; font-size: 11px; }
-            .hero-metrics { grid-template-columns: 1fr; }
-            .hero-card { padding: 14px 16px; }
-            .hero-card-title { font-size: 11px; }
-            .hero-card-item { font-size: 13px; padding: 4px 0; }
-            .hero-card-code { font-size: 12px; }
-            .hero-card-val { font-size: 15px; }
-            .ring-fusion-card { padding: 14px 16px; }
-            .ring-fusion-body { gap: 16px; }
-            .ring-svg-fusion svg { width: 160px; height: 160px; }
-            .ring-center-val { font-size: 18px; }
-            .ring-legend-fusion { gap: 8px; }
+            .hero-rings { grid-template-columns: 1fr; gap: 12px; }
+            .hero-ring-card { padding: 12px 10px; }
+            .hero-ring-svg { width: 130px; height: 130px; }
+            .hero-ring-svg svg { width: 130px; height: 130px; }
+            .hero-ring-label { font-size: 11px; }
+            .hero-legend { gap: 8px; flex-wrap: wrap; justify-content: center; }
             .compare-table-wrap { margin: 0 -8px; }
-            .compare-table thead th, 
-            .compare-table tbody td { 
-                padding: 8px 4px; 
-                font-size: 12px; 
+            .compare-table thead th,
+            .compare-table tbody td {
+                padding: 8px 4px;
+                font-size: 12px;
             }
-            .compare-table thead th:first-child, 
-            .compare-table tbody td:first-child { 
-                min-width: 70px; 
+            .compare-table thead th:first-child,
+            .compare-table tbody td:first-child {
+                min-width: 70px;
                 max-width: 85px;
                 font-size: 12px;
             }
@@ -219,6 +161,30 @@
 
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         .animate-in { animation:fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+        /* Hero rings */
+        .hero-rings { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
+        .hero-ring-card {
+            position:relative; overflow:visible;
+            background:rgba(17,24,39,0.65); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+            border:1px solid rgba(0,194,255,0.1); border-radius:16px;
+            padding:24px 12px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+            transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
+            animation:fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) both;
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.35);
+        }
+        .hero-ring-card:nth-child(1) { animation-delay:0.05s; }
+        .hero-ring-card:nth-child(2) { animation-delay:0.12s; }
+        .hero-ring-card:nth-child(3) { animation-delay:0.19s; }
+        .hero-ring-card:hover { transform:translateY(-4px) perspective(600px) rotateX(2deg); border-color:rgba(0,194,255,0.3); box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 60px rgba(0,150,255,0.15), 0 0 0 1px rgba(0,194,255,0.12); }
+        .hero-ring-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--accent), var(--accent2)); opacity:0.7; transition:opacity 0.3s; border-radius:16px 16px 0 0; }
+        .hero-ring-card:hover::before { opacity:1; }
+        .hero-ring-svg { display:flex; align-items:center; justify-content:center; width:180px; height:180px; margin:0 auto; position:relative; }
+        .hero-ring-svg svg { display:block; width:180px; height:180px; filter:drop-shadow(0 2px 12px rgba(0,120,255,0.22)); }
+        .hero-ring-label { margin-top:10px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.82); text-align:center; line-height:1.4; letter-spacing:0.3px; }
+        .hero-legend { display:flex; justify-content:center; gap:20px; margin-top:14px; flex-wrap:wrap; }
+        .hero-legend-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text); }
+        .hero-legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
     </style>
 </head>
 <body>
@@ -239,8 +205,8 @@
             ⏳ 正在加载 ETF 数据...
         </div>
 
-        <!-- Hero -->
-        <div class="hero animate-in" style="animation-delay:0s;display:none" id="heroSection">
+        <!-- Hero + 三只ETF环形图 -->
+        <div class="hero animate-in" id="heroSection" style="display:none">
             <div class="hero-main">
                 <div class="hero-tags" id="heroTags"></div>
                 <div class="hero-meta">
@@ -248,13 +214,8 @@
                     <div class="hero-meta-count" id="heroCount"></div>
                 </div>
             </div>
-            <div class="hero-metrics" id="heroMetrics"></div>
-        </div>
-
-        <!-- Fusion Ring Chart: Scale + Volume + Inflow -->
-        <div class="ring-fusion-wrap animate-in" style="animation-delay:0.05s;display:none" id="ringSection">
-            <div class="section-title">📊 规模 · 成交 · 净流入</div>
-            <div class="ring-fusion-card" id="ringFusion"></div>
+            <div class="hero-rings" id="heroRings"></div>
+            <div class="hero-legend" id="heroLegend"></div>
         </div>
 
         <!-- Comparison Table -->
@@ -342,6 +303,13 @@
     ];
 
     // ==================== RENDER HERO ====================
+    // ==================== RENDER HERO (3 ETF ring cards) ====================
+    var RING_TOTAL = 200000000000; // 2000亿 元，环带总容量
+    var RING_METRICS = [
+        { key:'scale',          color:'#1e40af', label:'规模' },
+        { key:'amount',         color:'#a78bfa', label:'成交' },
+        { key:'net_inflow_5d',  color:'#38bdf8', label:'净流入' },
+    ];
     function renderHero() {
         // Tags
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
@@ -351,93 +319,111 @@
             return '<span class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span>' + nameStr + '</span>';
         }).join('');
 
-        // Meta (right side)
+        // Meta
         var dataTime = window.__dataUpdated || '';
         document.getElementById('heroTime').textContent = timeAgo(dataTime);
         document.getElementById('heroCount').textContent = etfs.length + ' 只对比';
 
-        // Metrics: 规模、收益、成交 — 3 个核心卡片
-        var metrics = [
-            { key:'scale', label:'规模', fmt:function(v){return fmt(v,0,'亿');} },
-            { key:'year_1_return', label:'近1年收益', fmt:fmtSigned },
-            { key:'amount', label:'日均成交', fmt:function(v){return v!=null?fmt(v,2,'亿'):'-';} },
-        ];
-        var metricsHtml = metrics.map(function(m) {
-            var items = etfs.map(function(e, i) {
-                var val = typeof e[m.key] === 'number' ? m.fmt(e[m.key]) : '-';
-                return '<div class="hero-card-item"><span class="hero-card-code" style="color:' + colors[i] + '">' + e.code + '</span><span class="hero-card-val" style="color:' + colors[i] + '">' + val + '</span></div>';
+        // 3 ETF ring cards
+        var ringsHtml = etfs.map(function(e, i) {
+            var r = 68, sw = 30;
+            var circ = 2 * Math.PI * r;
+            var vc = 90; // viewBox center (180/2)
+
+            // 渐变定义（给环带加 3D 立体感：上亮下暗）
+            var gradColors = [
+                { id:'rg0', s:'#3b82f6', e:'#1e3a5f' },  // 规模蓝
+                { id:'rg1', s:'#c4b5fd', e:'#6d28d9' },  // 成交紫
+                { id:'rg2', s:'#7dd3fc', e:'#0c8ad9' },  // 净流入浅蓝
+            ];
+            var defs = '<defs>' + gradColors.map(function(g) {
+                return '<linearGradient id="' + g.id + '" x1="0" y1="0" x2="0" y2="1">' +
+                    '<stop offset="0%" stop-color="' + g.s + '"/>' +
+                    '<stop offset="100%" stop-color="' + g.e + '"/>' +
+                    '</linearGradient>';
+            }).join('') + '</defs>';
+
+            // 背景环（粗轨道）
+            var bg = '<circle r="' + r + '" fill="none" stroke="rgba(30,41,59,0.55)" stroke-width="' + sw + '" stroke-linecap="round" transform="rotate(-90,' + vc + ',' + vc + ')"/>';
+
+            // 三个指标弧线（同起点0点，隔1秒动画，粗细递减）
+            var arcSW = [30, 20, 12];
+            var arcs = RING_METRICS.map(function(m, mi) {
+                var v = e[m.key];
+                var len = (typeof v === 'number' && v > 0) ? Math.min(v / RING_TOTAL * circ, circ) : 0;
+                var begin = mi + 's';
+                return '<circle r="' + r + '" fill="none" stroke="url(#rg' + mi + ')" stroke-width="' + arcSW[mi] + '"' +
+                       ' stroke-dasharray="0 ' + circ + '"' +
+                       ' stroke-linecap="round"' +
+                       ' transform="rotate(-90,' + vc + ',' + vc + ')"' +
+                       ' opacity="0.96" stroke-dashoffset="0">' +
+                       '<animate attributeName="stroke-dasharray"' +
+                       ' from="0 ' + circ + '"' +
+                       ' to="' + len + ' ' + (circ - len) + '"' +
+                       ' dur="0.8s" begin="' + begin + '" fill="freeze"/>' +
+                       '</circle>';
             }).join('');
-            return '<div class="hero-card"><div class="hero-card-title">' + m.label + '</div>' + items + '</div>';
+
+            // 计算净流入弧线末端坐标，放置箭头
+            var inflow = e.net_inflow_5d;
+            var inflowLen = (typeof inflow === 'number' && inflow > 0) ? Math.min(inflow / RING_TOTAL * circ, circ) : 0;
+            var inflowAngle = -Math.PI/2 + (inflowLen / circ) * 2 * Math.PI; // 从-90°开始
+            var ax = vc + r * Math.cos(inflowAngle);
+            var ay = vc + r * Math.sin(inflowAngle);
+            var arrowSvg = '';
+            if (typeof inflow === 'number' && inflow !== 0) {
+                var isUp = inflow > 0;
+                var arrowColor = isUp ? '#ef4444' : '#22c55e';
+                var arrowPath = isUp
+                    ? 'M-5,3 Q-5,0 -3,-2 L0,-5 L3,-2 Q5,0 5,3 L3,1 L0,4 L-3,1 Z'
+                    : 'M-5,-3 Q-5,0 -3,2 L0,5 L3,2 Q5,0 5,-3 L3,-1 L0,-4 L-3,-1 Z';
+                // 箭头放在弧线末端外侧
+                var labelR = r + 18;
+                var lx = vc + labelR * Math.cos(inflowAngle);
+                var ly = vc + labelR * Math.sin(inflowAngle);
+                arrowSvg = '<g transform="translate(' + (lx - vc) + ',' + (ly - vc) + ')" style="pointer-events:none">' +
+                    '<path d="' + arrowPath + '" fill="' + arrowColor + '" opacity="0.9"/>' +
+                    '<text y="12" text-anchor="middle" fill="' + arrowColor + '" font-size="9" font-weight="700" font-family="SF Mono,monospace">' + fmtSigned(inflow, 0, '亿') + '</text>' +
+                    '</g>';
+            }
+
+            // 日均成交标注（放在成交弧线末端）
+            var vol = e.amount;
+            var volLen = (typeof vol === 'number' && vol > 0) ? Math.min(vol / RING_TOTAL * circ, circ) : 0;
+            var volAngle = -Math.PI/2 + (volLen / circ) * 2 * Math.PI;
+            var volLabelR = r + 14;
+            var vlx = vc + volLabelR * Math.cos(volAngle);
+            var vly = vc + volLabelR * Math.sin(volAngle);
+            var volSvg = (typeof vol === 'number' && vol > 0)
+                ? '<g transform="translate(' + (vlx - vc) + ',' + (vly - vc) + ')" style="pointer-events:none">' +
+                  '<text text-anchor="middle" fill="#c4b5fd" font-size="8" font-weight="600" font-family="SF Mono,monospace">' + fmt(vol, 0, '亿') + '</text>' +
+                  '</g>'
+                : '';
+
+            // 中心文字（严格居中）
+            var scaleStr = (typeof e.scale === 'number') ? fmt(e.scale, 0, '亿') : '-';
+            var nameStr = (e.name || '').length > 7 ? (e.name || '').slice(0, 7) + '…' : (e.name || '');
+            var center = '<g transform="translate(' + vc + ',' + vc + ')" style="pointer-events:none">' +
+                '<text y="-16" text-anchor="middle" fill="rgba(255,255,255,0.38)" font-size="9.5" letter-spacing="0.6">' + e.code + '</text>' +
+                '<text y="4" text-anchor="middle" fill="#fff" font-size="20" font-weight="900" font-family="SF Mono,Fira Code,monospace" letter-spacing="-0.5">' + scaleStr + '</text>' +
+                '<text y="20" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-size="8">' + nameStr + '</text>' +
+                '</g>';
+
+            var svg = '<svg viewBox="0 0 180 180" style="overflow:visible">' + defs + bg + arcs + volSvg + arrowSvg + center + '</svg>';
+
+            return '<div class="hero-ring-card">' +
+                '<div class="hero-ring-svg">' + svg + '</div>' +
+                '<div class="hero-ring-label" style="color:' + colors[i] + '">' + e.code + ' - ' + (e.name || '') + '</div>' +
+                '</div>';
         }).join('');
-        document.getElementById('heroMetrics').innerHTML = metricsHtml;
-    }
 
-    // ==================== RENDER FUSION RING CHART ====================
-    function renderRingChart() {
-        var scaleKey = 'scale';
-        var volumeKey = 'amount';
-        var inflowKey = 'net_inflow_5d';
-
-        var scaleVals = etfs.map(function(e){return e[scaleKey];}).filter(function(v){return typeof v==='number' && v>0;});
-        if (scaleVals.length === 0) { document.getElementById('ringFusion').innerHTML = '<div style="color:var(--text2);padding:32px;text-align:center">暂无规模数据</div>'; return; }
-        var totalScale = scaleVals.reduce(function(s,v){return s+v;}, 0);
-
-        var svgSize = 260, cx = svgSize/2, cy = svgSize/2;
-        var mainR = 85, mainSW = 24;
-        var volR = 108, inR = 62;
-        var circ = 2 * Math.PI * mainR;
-
-        // 规模段
-        var cum = 0, segs = [];
-        etfs.forEach(function(e, i) {
-            var v = e[scaleKey]; if (typeof v!=='number'||v<=0) return;
-            var p = v/totalScale;
-            segs.push({p:p, dl:p*circ, doff:-cum*circ, c:colors[i], code:e.code, v:v, fv:fmt(v,0,'亿')});
-            cum += p;
-        });
-
-        // SVG
-        var svg = '<svg width="'+svgSize+'" height="'+svgSize+'" viewBox="0 0 '+svgSize+' '+svgSize+'" style="filter:drop-shadow(0 0 30px rgba(0,194,255,0.08))">';
-        // 主环背景
-        svg += '<g transform="translate('+cx+','+cy+')"><circle r="'+mainR+'" fill="none" stroke="rgba(30,41,59,0.5)" stroke-width="'+mainSW+'"/></g>';
-        // 规模段
-        svg += '<g transform="translate('+cx+','+cy+')">';
-        segs.forEach(function(s){ svg += '<circle r="'+mainR+'" fill="none" stroke="'+s.c+'" stroke-width="'+mainSW+'" stroke-dasharray="'+s.dl+' '+(circ-s.dl)+'" stroke-dashoffset="'+s.doff+'" opacity="0.9"/>'; });
-        svg += '</g>';
-        // 流动环：成交蓝
-        svg += '<g transform="translate('+cx+','+cy+')">';
-        svg += '<circle r="'+volR+'" fill="none" stroke="#00c2ff" stroke-width="2.5" stroke-dasharray="6 16" opacity="0.6"><animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.8s" repeatCount="indefinite"/></circle>';
-        svg += '<circle r="'+volR+'" fill="none" stroke="#00c2ff" stroke-width="1.2" stroke-dasharray="6 16" opacity="0.3"><animate attributeName="stroke-dashoffset" from="0" to="22" dur="1.8s" repeatCount="indefinite"/></circle>';
-        svg += '</g>';
-        // 流动环：净流入绿
-        svg += '<g transform="translate('+cx+','+cy+')">';
-        svg += '<circle r="'+inR+'" fill="none" stroke="#10b981" stroke-width="2.5" stroke-dasharray="5 14" opacity="0.55"><animate attributeName="stroke-dashoffset" from="19" to="0" dur="2.2s" repeatCount="indefinite"/></circle>';
-        svg += '<circle r="'+inR+'" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="5 14" opacity="0.25"><animate attributeName="stroke-dashoffset" from="0" to="19" dur="2.2s" repeatCount="indefinite"/></circle>';
-        svg += '</g>';
-        // 中心文字
-        svg += '<g transform="translate('+cx+','+cy+')" style="pointer-events:none">';
-        svg += '<text y="-14" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11" font-family="inherit" letter-spacing="0.5">总规模</text>';
-        svg += '<text y="8" text-anchor="middle" fill="#fff" font-size="20" font-weight="900" font-family="SF Mono,Fira Code,Consolas,monospace" letter-spacing="-0.5">'+fmt(totalScale,0,'亿')+'</text>';
-        var tVol = etfs.map(function(e){return e[volumeKey];}).filter(function(v){return typeof v==='number';}).reduce(function(s,v){return s+v;},0);
-        svg += '<text y="26" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9">日均成交 '+fmt(tVol,1,'亿')+'</text>';
-        svg += '</g></svg>';
+        document.getElementById('heroRings').innerHTML = ringsHtml;
 
         // 图例
-        var lh = '';
-        // 规模
-        lh += '<div class="ring-legend-group"><div class="ring-legend-group-title" style="color:#fff">规模</div><div class="ring-legend-items">';
-        segs.forEach(function(s){ lh += '<div class="ring-legend-item-f"><span class="ring-legend-dot-f" style="background:'+s.c+'"></span><span class="ring-legend-code-f">'+s.code+'</span><span class="ring-legend-val-f">'+s.fv+'</span></div>'; });
-        lh += '</div></div>';
-        // 成交
-        lh += '<div class="ring-legend-group"><div class="ring-legend-group-title" style="color:#00c2ff">日均成交</div><div class="ring-legend-items">';
-        etfs.forEach(function(e,i){ var v=e[volumeKey],d=typeof v==='number'?fmt(v,1,'亿'):'-'; lh += '<div class="ring-legend-item-f"><span class="ring-legend-dot-f" style="background:'+colors[i]+'"></span><span class="ring-legend-code-f">'+e.code+'</span><span class="ring-legend-val-f">'+d+'</span></div>'; });
-        lh += '</div></div>';
-        // 净流入
-        lh += '<div class="ring-legend-group"><div class="ring-legend-group-title" style="color:#10b981">净流入</div><div class="ring-legend-items">';
-        etfs.forEach(function(e,i){ var v=e[inflowKey],d=typeof v==='number'?fmt(v,1,'亿'):'-'; lh += '<div class="ring-legend-item-f"><span class="ring-legend-dot-f" style="background:'+colors[i]+'"></span><span class="ring-legend-code-f">'+e.code+'</span><span class="ring-legend-val-f">'+d+'</span></div>'; });
-        lh += '</div></div>';
-
-        document.getElementById('ringFusion').innerHTML = '<div class="ring-fusion-body"><div class="ring-svg-fusion">'+svg+'</div><div class="ring-legend-fusion">'+lh+'</div></div>';
+        var legendHtml = RING_METRICS.map(function(m) {
+            return '<div class="hero-legend-item"><span class="hero-legend-dot" style="background:' + m.color + '"></span>' + m.label + '</div>';
+        }).join('');
+        document.getElementById('heroLegend').innerHTML = legendHtml;
     }
 
     // ==================== RENDER TABLE ====================
@@ -483,7 +469,6 @@
     async function loadData() {
         document.getElementById('loadingIndicator').style.display = 'block';
         document.getElementById('heroSection').style.display = 'none';
-        document.getElementById('ringSection').style.display = 'none';
         document.getElementById('tableSection').style.display = 'none';
         document.getElementById('footerSection').style.display = 'none';
 
@@ -517,12 +502,10 @@
 
             document.getElementById('loadingIndicator').style.display = 'none';
             document.getElementById('heroSection').style.display = 'block';
-            document.getElementById('ringSection').style.display = 'block';
             document.getElementById('tableSection').style.display = 'block';
             document.getElementById('footerSection').style.display = 'flex';
 
             renderHero();
-            renderRingChart();
             renderTable();
 
             var ut = data.updated || '';
@@ -553,7 +536,8 @@
              'amount','volume'].forEach(function(f) {
                 if (l2[f] !== undefined && l2[f] !== null) {
                     var val = l2[f];
-                    if ((f === 'scale') && typeof val === 'number' && val > 0 && val < 10000) {
+                    // 规模、成交额如果是"亿"为单位的小数值，转换为"元"
+                    if ((f === 'scale' || f === 'amount') && typeof val === 'number' && val > 0 && val < 10000) {
                         val = val * 100000000;
                     }
                     etfs[idx][f] = val;
@@ -561,7 +545,6 @@
             });
         });
         renderHero();
-        renderRingChart();
         renderTable();
         var ht = document.getElementById('headerTime');
         if (ht) ht.textContent = ht.textContent + ' (L2已加载)';
