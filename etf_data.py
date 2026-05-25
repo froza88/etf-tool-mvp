@@ -46,7 +46,10 @@ def _load_from_snapshot():
         standard_data = data.get("standard_data")
         if standard_data and len(standard_data) > 0:
             snapshot_date = data.get("date", "unknown")
-            print(f"✅ 快照数据（{snapshot_date}）：{len(standard_data)} 只ETF", file=sys.stderr)
+            try:
+                print(f"✅ 快照数据（{snapshot_date}）：{len(standard_data)} 只ETF", file=sys.stderr)
+            except OSError:
+                pass  # stderr可能已关闭（Flask reloader）
             return standard_data
     except Exception as e:
         print(f"⚠️ 快照加载失败：{e}", file=sys.stderr)

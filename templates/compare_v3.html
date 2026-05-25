@@ -186,6 +186,7 @@
         .hero-legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -244,7 +245,7 @@
         d = d || 2; unit = unit || '';
         if (v === undefined || v === null || v === '') return '-';
         if (typeof v === 'number') {
-            if (unit === '亿') return (v / 100000000).toFixed(d) + '亿';
+            if (unit === '亿' || unit === '亿元') return (v / 100000000).toFixed(d) + unit;
             if (unit === '万') return (v / 10000).toFixed(d) + '万';
             return v.toFixed(d) + unit;
         }
@@ -253,6 +254,10 @@
     function fmtSigned(v, d, unit) {
         d = d || 2; unit = unit || '%';
         if (v === undefined || v === null) return '-';
+        // 处理亿/亿元单位的除法
+        if (unit === '亿' || unit === '亿元') {
+            v = v / 100000000;
+        }
         if (typeof v === 'string') {
             if (v.startsWith('+') || v.startsWith('-')) return v + unit;
             return v + unit;
@@ -281,9 +286,9 @@
         { group:'基本信息', label:'分类', key:'category', fmtFn:function(v){return v||'-';}, higherBetter:null, isString:true },
         { group:'基本信息', label:'前五大持仓', key:'top_holdings', fmtFn:function(v){if(!v||!v.length)return '-'; return v.map(function(h){return (h.name||h.Name||'-')+'('+(h.weight||h.Weight||'-')+')';}).join('<br>');}, higherBetter:null, isString:true },
         // 规模流动性
-        { group:'规模流动性', label:'规模', key:'scale', fmtFn:function(v){return fmt(v,2,'亿');}, higherBetter:true },
-        { group:'规模流动性', label:'日均成交', key:'amount', fmtFn:function(v){return v!=null?fmt(v,2,'亿'):'-';}, higherBetter:true },
-        { group:'规模流动性', label:'近5日净流入', key:'net_inflow_5d', fmtFn:function(v){return v!=null?fmt(v,2,'亿'):'-';}, higherBetter:true },
+        { group:'规模流动性', label:'规模', key:'scale', fmtFn:function(v){return fmt(v,2,'亿元');}, higherBetter:true },
+        { group:'规模流动性', label:'日均成交', key:'amount', fmtFn:function(v){return v!=null?fmt(v,2,'亿元'):'-';}, higherBetter:true },
+        { group:'规模流动性', label:'近5日净流入', key:'net_inflow_5d', fmtFn:function(v){return v!=null?fmt(v,2,'亿元'):'-';}, higherBetter:true },
         // 费用估值
         { group:'费用估值', label:'费率(管理+托管)', key:'fee_rate', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
         { group:'费用估值', label:'管理费率', key:'fee_rate_management', fmtFn:function(v){return v!=null?fmt(v,2,'%'):'-';}, higherBetter:false },
@@ -310,13 +315,26 @@
         { key:'amount',         color:'#a78bfa', label:'成交' },
         { key:'net_inflow_5d',  color:'#38bdf8', label:'净流入' },
     ];
-    function renderHero() {
+    function renderHero(animated) {
+        animated = (animated !== false);
         // Tags
         document.getElementById('heroTags').innerHTML = etfs.map(function(e, i) {
             var nameStr = e.code;
             if (e.name) nameStr += ' - ' + e.name;
             if (e.issuer_short) nameStr += ' - ' + e.issuer_short;
-            return '<span class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span>' + nameStr + '</span>';
+            // 实时报价
+            var priceStr = '';
+            if (typeof e.close === 'number') {
+                priceStr += '<span style="margin-left:8px;font-weight:800;font-family:\'SF Mono\',monospace">' + e.close.toFixed(3) + '</span>';
+            }
+            // 涨跌幅
+            if (typeof e.change_rate === 'number') {
+                var pct = (e.change_rate * 100).toFixed(2);
+                var isUp = pct >= 0;
+                var color = isUp ? '#ef4444' : '#22c55e';
+                priceStr += '<span style="margin-left:4px;color:' + color + ';font-weight:700;font-family:\'SF Mono\',monospace;font-size:11px">' + (isUp ? '+' : '') + pct + '%' + '</span>';
+            }
+            return '<span class="hero-tag"><span class="dot" style="background:' + colors[i] + '"></span>' + nameStr + priceStr + '</span>';
         }).join('');
 
         // Meta
@@ -330,90 +348,73 @@
             var circ = 2 * Math.PI * r;
             var vc = 90; // viewBox center (180/2)
 
-            // 渐变定义（给环带加 3D 立体感：上亮下暗）
-            var gradColors = [
-                { id:'rg0', s:'#3b82f6', e:'#1e3a5f' },  // 规模蓝
-                { id:'rg1', s:'#c4b5fd', e:'#6d28d9' },  // 成交紫
-                { id:'rg2', s:'#7dd3fc', e:'#0c8ad9' },  // 净流入浅蓝
-            ];
-            var defs = '<defs>' + gradColors.map(function(g) {
-                return '<linearGradient id="' + g.id + '" x1="0" y1="0" x2="0" y2="1">' +
-                    '<stop offset="0%" stop-color="' + g.s + '"/>' +
-                    '<stop offset="100%" stop-color="' + g.e + '"/>' +
-                    '</linearGradient>';
-            }).join('') + '</defs>';
+            // 渐变定义
+            var defs = '<defs>' +
+                '<linearGradient id="rg0" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4b8bff"/><stop offset="100%" stop-color="#1e40af"/></linearGradient>' +
+                '<linearGradient id="rg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient>' +
+                '<linearGradient id="rg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient>' +
+                '</defs>';
 
             // 背景环（粗轨道）
-            var bg = '<circle r="' + r + '" fill="none" stroke="rgba(30,41,59,0.55)" stroke-width="' + sw + '" stroke-linecap="round" transform="rotate(-90,' + vc + ',' + vc + ')"/>';
+            var bg = '<circle cx="' + vc + '" cy="' + vc + '" r="' + r + '" fill="none" stroke="rgba(30,41,59,0.45)"' +
+                ' stroke-width="' + sw + '" stroke-linecap="round" transform="rotate(-90,' + vc + ',' + vc + ')" opacity="0.6"/>';
 
-            // 三个指标弧线（同起点0点，隔1秒动画，粗细递减）
+            // 三个指标弧线（同轨道，不同粗细叠层）
             var arcSW = [30, 20, 12];
             var arcs = RING_METRICS.map(function(m, mi) {
                 var v = e[m.key];
                 var len = (typeof v === 'number' && v > 0) ? Math.min(v / RING_TOTAL * circ, circ) : 0;
-                var begin = mi + 's';
-                return '<circle r="' + r + '" fill="none" stroke="url(#rg' + mi + ')" stroke-width="' + arcSW[mi] + '"' +
-                       ' stroke-dasharray="0 ' + circ + '"' +
-                       ' stroke-linecap="round"' +
-                       ' transform="rotate(-90,' + vc + ',' + vc + ')"' +
-                       ' opacity="0.96" stroke-dashoffset="0">' +
-                       '<animate attributeName="stroke-dasharray"' +
-                       ' from="0 ' + circ + '"' +
-                       ' to="' + len + ' ' + (circ - len) + '"' +
-                       ' dur="0.8s" begin="' + begin + '" fill="freeze"/>' +
-                       '</circle>';
+                var dArr = len + ' ' + (circ - len);
+                if (!animated) {
+                    return '<circle cx="' + vc + '" cy="' + vc + '" r="' + r + '" fill="none" stroke="url(#rg' + mi + ')"' +
+                        ' stroke-width="' + arcSW[mi] + '" stroke-linecap="round" transform="rotate(-90,' + vc + ',' + vc + ')"' +
+                        ' stroke-dasharray="' + dArr + '" opacity="0.92"/>';
+                }
+                return '<circle cx="' + vc + '" cy="' + vc + '" r="' + r + '" fill="none" stroke="url(#rg' + mi + ')"' +
+                    ' stroke-width="' + arcSW[mi] + '" stroke-linecap="round" transform="rotate(-90,' + vc + ',' + vc + ')"' +
+                    ' stroke-dasharray="0 ' + circ + '" opacity="0.92"' +
+                    ' data-arc-len="' + len + '" data-arc-circ="' + circ + '" data-arc-index="' + mi + '"/>';
             }).join('');
 
-            // 计算净流入弧线末端坐标，放置箭头
+            // 净流入箭头：放在规模数字右侧（不在环上）
             var inflow = e.net_inflow_5d;
-            var inflowLen = (typeof inflow === 'number' && inflow > 0) ? Math.min(inflow / RING_TOTAL * circ, circ) : 0;
-            var inflowAngle = -Math.PI/2 + (inflowLen / circ) * 2 * Math.PI; // 从-90°开始
-            var ax = vc + r * Math.cos(inflowAngle);
-            var ay = vc + r * Math.sin(inflowAngle);
-            var arrowSvg = '';
+            var scaleStr = (typeof e.scale === 'number') ? fmt(e.scale, 0, '亿元') : '-';
+            var center = '<g transform="translate(' + vc + ',' + vc + ')" style="pointer-events:none" data-center="1">' +
+                '<text y="4" text-anchor="middle" fill="#fff" font-size="22" font-weight="900" font-family="SF Mono,Fira Code,monospace" letter-spacing="-0.5">' + scaleStr + '</text>';
             if (typeof inflow === 'number' && inflow !== 0) {
                 var isUp = inflow > 0;
                 var arrowColor = isUp ? '#ef4444' : '#22c55e';
+                // 绿箭头向上↑（负净流入），红箭头向下↓（正净流入）
                 var arrowPath = isUp
-                    ? 'M-5,3 Q-5,0 -3,-2 L0,-5 L3,-2 Q5,0 5,3 L3,1 L0,4 L-3,1 Z'
-                    : 'M-5,-3 Q-5,0 -3,2 L0,5 L3,2 Q5,0 5,-3 L3,-1 L0,-4 L-3,-1 Z';
-                // 箭头放在弧线末端外侧
-                var labelR = r + 18;
-                var lx = vc + labelR * Math.cos(inflowAngle);
-                var ly = vc + labelR * Math.sin(inflowAngle);
-                arrowSvg = '<g transform="translate(' + (lx - vc) + ',' + (ly - vc) + ')" style="pointer-events:none">' +
-                    '<path d="' + arrowPath + '" fill="' + arrowColor + '" opacity="0.9"/>' +
-                    '<text y="12" text-anchor="middle" fill="' + arrowColor + '" font-size="9" font-weight="700" font-family="SF Mono,monospace">' + fmtSigned(inflow, 0, '亿') + '</text>' +
+                    ? 'M-6,-4 C-6,2 -3,5 0,7 C3,5 6,2 6,-4 C4,-1 2,0 0,0 C-2,0 -4,-1 -6,-4 Z'
+                    : 'M-6,4 C-6,-2 -3,-5 0,-7 C3,-5 6,-2 6,4 C4,1 2,0 0,0 C-2,0 -4,1 -6,4 Z';
+                var xOffset = isUp ? 68 : 74; // 负值（绿色）箭头右移不压字
+                center += '<g transform="translate(' + xOffset + ', 0)">' +
+                    '<path d="' + arrowPath + '" fill="' + arrowColor + '" opacity="0.85"/>' +
+                    '<text x="12" y="4" text-anchor="start" fill="' + arrowColor + '" font-size="10" font-weight="700" font-family="SF Mono,monospace">' + fmtSigned(inflow, 0, '亿元') + '</text>' +
+                    '</g>';
+            }
+            center += '</g>';
+
+            // 日均成交标注（放在成交弧线头部，单位改为亿元）
+            var vol = e.amount;
+            var volSvg = '';
+            if (typeof vol === 'number' && vol > 0) {
+                var volLen = Math.min(vol / RING_TOTAL * circ, circ);
+                var volAngle = -Math.PI/2 + (volLen / circ) * 2 * Math.PI;
+                var volLabelR = r + 6;
+                var vlx = vc + volLabelR * Math.cos(volAngle);
+                var vly = vc + volLabelR * Math.sin(volAngle);
+                volSvg = '<g transform="translate(' + (vlx - vc) + ',' + (vly - vc) + ')" style="pointer-events:none" data-vol-label="1">' +
+                    '<text text-anchor="middle" fill="#c4b5fd" font-size="8" font-weight="600" font-family="SF Mono,monospace">' + fmt(vol, 0, '亿元') + '</text>' +
                     '</g>';
             }
 
-            // 日均成交标注（放在成交弧线末端）
-            var vol = e.amount;
-            var volLen = (typeof vol === 'number' && vol > 0) ? Math.min(vol / RING_TOTAL * circ, circ) : 0;
-            var volAngle = -Math.PI/2 + (volLen / circ) * 2 * Math.PI;
-            var volLabelR = r + 14;
-            var vlx = vc + volLabelR * Math.cos(volAngle);
-            var vly = vc + volLabelR * Math.sin(volAngle);
-            var volSvg = (typeof vol === 'number' && vol > 0)
-                ? '<g transform="translate(' + (vlx - vc) + ',' + (vly - vc) + ')" style="pointer-events:none">' +
-                  '<text text-anchor="middle" fill="#c4b5fd" font-size="8" font-weight="600" font-family="SF Mono,monospace">' + fmt(vol, 0, '亿') + '</text>' +
-                  '</g>'
-                : '';
-
-            // 中心文字（严格居中）
-            var scaleStr = (typeof e.scale === 'number') ? fmt(e.scale, 0, '亿') : '-';
-            var nameStr = (e.name || '').length > 7 ? (e.name || '').slice(0, 7) + '…' : (e.name || '');
-            var center = '<g transform="translate(' + vc + ',' + vc + ')" style="pointer-events:none">' +
-                '<text y="-16" text-anchor="middle" fill="rgba(255,255,255,0.38)" font-size="9.5" letter-spacing="0.6">' + e.code + '</text>' +
-                '<text y="4" text-anchor="middle" fill="#fff" font-size="20" font-weight="900" font-family="SF Mono,Fira Code,monospace" letter-spacing="-0.5">' + scaleStr + '</text>' +
-                '<text y="20" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-size="8">' + nameStr + '</text>' +
-                '</g>';
-
-            var svg = '<svg viewBox="0 0 180 180" style="overflow:visible">' + defs + bg + arcs + volSvg + arrowSvg + center + '</svg>';
+            var svg = '<svg viewBox="0 0 180 180" style="overflow:visible" data-code="' + e.code + '">' + defs + bg + arcs + volSvg + center + '</svg>';
 
             return '<div class="hero-ring-card">' +
                 '<div class="hero-ring-svg">' + svg + '</div>' +
-                '<div class="hero-ring-label" style="color:' + colors[i] + '">' + e.code + ' - ' + (e.name || '') + '</div>' +
+                '<div class="hero-ring-label" style="color:' + colors[i] + '">' + (e.name || e.code) + '</div>' +
                 '</div>';
         }).join('');
 
@@ -424,6 +425,46 @@
             return '<div class="hero-legend-item"><span class="hero-legend-dot" style="background:' + m.color + '"></span>' + m.label + '</div>';
         }).join('');
         document.getElementById('heroLegend').innerHTML = legendHtml;
+
+        // 首次渲染：GSAP 驱动弧线动画，间隔0.5秒
+        if (animated && typeof gsap !== 'undefined') {
+            setTimeout(function() {
+                var circles = document.querySelectorAll('#heroRings circle[data-arc-index]');
+                // 按 data-arc-index 分组，每组 3 个（每个SVG 3条弧线）
+                var groups = {};
+                circles.forEach(function(c) {
+                    var idx = c.getAttribute('data-arc-index');
+                    if (!groups[idx]) groups[idx] = [];
+                    groups[idx].push(c);
+                });
+                // 每0.5秒启动一组（先第0组：规模，再第1组：成交，再第2组：净流入）
+                for (var gi = 0; gi < 3; gi++) {
+                    (function(idx) {
+                        var list = groups[idx] || [];
+                        list.forEach(function(c) {
+                            var target = parseFloat(c.getAttribute('data-arc-len'));
+                            var circ = parseFloat(c.getAttribute('data-arc-circ'));
+                            // 即使 target=0 也执行 GSAP（从 0→0，不影响后续 L2 更新动画）
+                            gsap.to(c, {
+                                strokeDasharray: target + ' ' + (circ - target),
+                                duration: 0.6,
+                                ease: 'power2.out',
+                                delay: idx * 0.8
+                            });
+                        });
+                    })(gi);
+                }
+            }, 60);
+        } else if (animated) {
+            // GSAP 未加载时降级：直接显示最终值
+            document.querySelectorAll('#heroRings circle[data-arc-index]').forEach(function(c) {
+                var target = parseFloat(c.getAttribute('data-arc-len'));
+                var circ = parseFloat(c.getAttribute('data-arc-circ'));
+                if (!isNaN(target) && target > 0) {
+                    c.setAttribute('stroke-dasharray', target + ' ' + (circ - target));
+                }
+            });
+        }
     }
 
     // ==================== RENDER TABLE ====================
@@ -528,6 +569,11 @@
     }
 
     function updateWithL2Data(l2Etfs) {
+        var RING_METRICS_LOCAL = [
+            { key:'scale' },
+            { key:'amount' },
+            { key:'net_inflow_5d' },
+        ];
         l2Etfs.forEach(function(l2) {
             var idx = etfs.findIndex(function(e) { return e.code === l2.code; });
             if (idx < 0) return;
@@ -536,15 +582,90 @@
              'amount','volume'].forEach(function(f) {
                 if (l2[f] !== undefined && l2[f] !== null) {
                     var val = l2[f];
-                    // 规模、成交额如果是"亿"为单位的小数值，转换为"元"
                     if ((f === 'scale' || f === 'amount') && typeof val === 'number' && val > 0 && val < 10000) {
                         val = val * 100000000;
                     }
                     etfs[idx][f] = val;
                 }
             });
+
+            // 直接更新SVG DOM属性，不重新渲染整个卡片（避免闪烁）
+            var svg = document.querySelector('.hero-ring-svg svg[data-code="' + l2.code + '"]');
+            if (!svg) return;
+            var vc = 90, r = 68;
+            var circ = 2 * Math.PI * r;
+
+            // 更新弧线（用GSAP动画平滑过渡）
+            var arcs = svg.querySelectorAll('circle[data-arc-index]');
+            arcs.forEach(function(c) {
+                var ai = parseInt(c.getAttribute('data-arc-index'));
+                var key = RING_METRICS_LOCAL[ai].key;
+                var v = (key === 'amount') ? l2.amount : (key === 'net_inflow_5d') ? l2.net_inflow_5d : l2.scale;
+                if (typeof v === 'number' && v > 0) {
+                    var len = Math.min(v / 200000000000 * circ, circ);
+                    if (typeof gsap !== 'undefined') {
+                        gsap.to(c, {
+                            strokeDasharray: len + ' ' + (circ - len),
+                            duration: 0.6,
+                            ease: 'power2.out'
+                        });
+                    } else {
+                        c.setAttribute('stroke-dasharray', len + ' ' + (circ - len));
+                    }
+                }
+            });
+
+            // 更新日均成交标注（volSvg）
+            var volLabelG = svg.querySelector('g[data-vol-label]');
+            if (typeof l2.amount === 'number' && l2.amount > 0) {
+                var newVolStr = fmt(l2.amount, 0, '亿元');
+                if (volLabelG) {
+                    // 已有标注，更新文字
+                    volLabelG.querySelector('text').textContent = newVolStr;
+                    // 更新位置（弧线头部）
+                    var volLen = Math.min(l2.amount / 200000000000 * circ, circ);
+                    var volAngle = -Math.PI/2 + (volLen / circ) * 2 * Math.PI;
+                    var vlx = vc + (r + 6) * Math.cos(volAngle);
+                    var vly = vc + (r + 6) * Math.sin(volAngle);
+                    volLabelG.setAttribute('transform', 'translate(' + (vlx - vc) + ',' + (vly - vc) + ')');
+                }
+                // 如无标注，暂不创建（保持简洁）
+            }
+
+            // 更新中心规模数字
+            var centerG = svg.querySelector('g[data-center="1"]');
+            if (centerG) {
+                var scaleText = centerG.querySelector('text');
+                if (scaleText) {
+                    var oldVal = scaleText.textContent;
+                    var newScale = (typeof l2.scale === 'number') ? fmt(l2.scale, 0, '亿元') : '-';
+                    if (oldVal !== newScale) {
+                        scaleText.textContent = newScale;
+                    }
+                }
+                // 更新箭头
+                var arrowG = centerG.querySelector('g');
+                if (arrowG) {
+                    var inflow = l2.net_inflow_5d;
+                    if (typeof inflow === 'number' && inflow !== 0) {
+                        var isUp = inflow > 0;
+                        var aColor = isUp ? '#ef4444' : '#22c55e';
+                        var aPath = isUp
+                            ? 'M-6,-4 C-6,2 -3,5 0,7 C3,5 6,2 6,-4 C4,-1 2,0 0,0 C-2,0 -4,-1 -6,-4 Z'
+                            : 'M-6,4 C-6,-2 -3,-5 0,-7 C3,-5 6,-2 6,4 C4,1 2,0 0,0 C-2,0 -4,1 -6,4 Z';
+                        var xOff = isUp ? 68 : 74;
+                        arrowG.setAttribute('transform', 'translate(' + xOff + ', 0)');
+                        arrowG.querySelector('path').setAttribute('d', aPath);
+                        arrowG.querySelector('path').setAttribute('fill', aColor);
+                        arrowG.querySelector('text').textContent = fmtSigned(inflow, 0, '亿元');
+                        arrowG.querySelector('text').setAttribute('fill', aColor);
+                        arrowG.style.display = '';
+                    } else {
+                        arrowG.style.display = 'none';
+                    }
+                }
+            }
         });
-        renderHero();
         renderTable();
         var ht = document.getElementById('headerTime');
         if (ht) ht.textContent = ht.textContent + ' (L2已加载)';
