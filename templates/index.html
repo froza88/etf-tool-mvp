@@ -591,7 +591,7 @@
                 html += `<td><a href="/etf/${etf.code}" class="etf-name">${etf.code} - ${etf.name}${etf.issuer_short ? ' - ' + etf.issuer_short : ''}</a></td>`;
                 html += `<td>${etf.code}</td>`;
                 html += `<td><span class="badge ${badgeClass}">${etf.category || ''}</span></td>`;
-                html += `<td>${etf.scale != null ? etf.scale.toFixed(2) : '-'}</td>`;
+                html += `<td>${etf.scale != null ? (etf.scale / 100000000).toFixed(2) : '-'}</td>`;
                 html += `<td>${etf.change_pct != null ? etf.change_pct.toFixed(2) : '-'}</td>`;
                 html += `<td>${etf.close != null ? etf.close.toFixed(3) : '-'}</td>`;
                 html += `<td class="${y1Cls}">${y1 == null ? '-' : y1Sign + y1.toFixed(2) + '%'}</td>`;

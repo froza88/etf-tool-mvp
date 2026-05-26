@@ -11,6 +11,11 @@ app = Flask(__name__)
 
 ROOT = Path(__file__).parent
 
+# 方案C1：L2 数据内存缓存（避免 L1/L2 跳变）
+# key = codes字符串（如 "510300,510500,159915"），value = {"etfs": [...], "updated": isoformat, "cached_at": timestamp}
+_l2_memory_cache = {}
+_L2_CACHE_TTL = 600  # 缓存有效期 10 分钟
+
 # 性能优化：缓存默认数据服务（避免每个请求都创建）
 _default_service = None
 _default_service_mtime = 0
@@ -154,9 +159,74 @@ def compare_wind():
 
 @app.route('/compare/v3')
 def compare_v3():
-    """ETF对比页 - Pro Terminal v3 炫酷版（数据通过API加载）"""
+    """ETF对比页 - Pro Terminal v3 炫酷版（服务端预加载L2数据，无跳变）"""
     codes = request.args.get('codes', '')
-    return render_template('compare_v3.html', codes=codes)
+    code_list = [c.strip() for c in codes.split(',') if c.strip()]
+    
+    # 服务端预加载 L2 数据（WeStock API）
+    etfs_l2 = []
+    data_source = "westock"
+    try:
+        from etf_data_service import WeStockSource
+        westock_source = WeStockSource()
+        etfs_l2 = westock_source.get_etfs_by_codes(code_list)
+        print(f"[compare/v3] L2 数据加载成功: {len(etfs_l2)} 只 ETF", file=sys.stderr)
+    except Exception as e:
+        print(f"[compare/v3] WeStock API 调用失败，降级到 L1: {e}", file=sys.stderr)
+        # 降级：使用 L1 数据（本地文件）
+        try:
+            from etf_data_service import LocalSource
+            local_source = LocalSource()
+            etfs_l2 = local_source.get_etfs_by_codes(code_list)
+            data_source = "local_db"
+        except Exception as e2:
+            print(f"[compare/v3] L1 数据也失败: {e2}", file=sys.stderr)
+            etfs_l2 = []
+            data_source = "error"
+    
+    return render_template('compare_v3.html', codes=codes, etfs_l2=etfs_l2, data_source=data_source)
+
+
+def update_l1_cache_from_l2(etfs_l2):
+    """
+    L2 数据更新后，同步更新 L1 缓存文件（etf_standard_data.json）
+    这样下次打开页面时，L1 缓存就是最新的，避免数字跳变
+    """
+    try:
+        from pathlib import Path
+        import json
+        
+        STANDARD_FILE = Path(__file__).parent / "etf_standard_data.json"
+        
+        # 1. 加载 L1 缓存
+        with open(STANDARD_FILE, encoding="utf-8") as f:
+            l1_data = json.load(f)
+        
+        # 处理两种格式：list 或 {"etfs": []}
+        l1_etfs = l1_data if isinstance(l1_data, list) else l1_data.get("etfs", [])
+        l1_by_code = {etf.get("code", ""): etf for etf in l1_etfs}
+        
+        # 2. 更新 L1 缓存（只更新 L2 返回的 ETF）
+        updated_count = 0
+        for etf_l2 in etfs_l2:
+            code = etf_l2.get("code", "")
+            if code in l1_by_code:
+                l1_etf = l1_by_code[code]
+                # 更新关键字段（scale, close, change_pct 等）
+                fields_to_update = ["scale", "close", "change_pct", "prev_close", "volume"]
+                for field in fields_to_update:
+                    if field in etf_l2:
+                        l1_etf[field] = etf_l2[field]
+                updated_count += 1
+        
+        # 3. 保存 L1 缓存
+        with open(STANDARD_FILE, "w", encoding="utf-8") as f:
+            json.dump(l1_data, f, ensure_ascii=False, indent=2)
+        
+        print(f"[L1 Cache] 已同步更新 {updated_count} 只 ETF 的 L1 缓存", file=sys.stderr)
+        
+    except Exception as e:
+        print(f"[L1 Cache] 更新 L1 缓存失败: {e}", file=sys.stderr)
 
 
 @app.route('/api/compare')
@@ -178,26 +248,49 @@ def api_compare():
     
     # 根据 source 参数选择数据源
     if source == 'westock':
-        # L2: 使用 WeStockSource 直接获取数据
-        try:
-            from etf_data_service import WeStockSource
-            westock_source = WeStockSource()
-            etfs = westock_source.get_etfs_by_codes(codes)
-            data_source = "westock"
-        except Exception as e:
-            print(f"[API] WeStockSource 调用失败: {e}", file=sys.stderr)
-            # 降级：使用本地数据
-            service = get_default_service()
-            etfs = service.get_etfs_by_codes(codes)
-            data_source = "local_db_fallback"
+        # L2: 先查内存缓存（避免重复调用 API 导致数据不一致）
+        cache_key = ','.join(sorted(codes))
+        cache_entry = _l2_memory_cache.get(cache_key)
+        if cache_entry and (datetime.now().timestamp() - cache_entry["cached_at"]) < _L2_CACHE_TTL:
+            print(f"[API] L2 内存缓存命中: {cache_key}", file=sys.stderr)
+            etfs = cache_entry["etfs"]
+            data_source = "memory_cache_l2"
+        else:
+            # L2: 缓存未命中，调用 WeStockSource 获取数据
+            try:
+                from etf_data_service import WeStockSource
+                westock_source = WeStockSource()
+                etfs = westock_source.get_etfs_by_codes(codes)
+                update_l1_cache_from_l2(etfs)
+                data_source = "westock"
+                # C1: 写入内存缓存（供后续 L1/L2 请求使用，避免跳变）
+                _l2_memory_cache[cache_key] = {
+                    "etfs": etfs,
+                    "updated": datetime.now().isoformat(),
+                    "cached_at": datetime.now().timestamp()
+                }
+            except Exception as e:
+                print(f"[API] WeStockSource 调用失败: {e}", file=sys.stderr)
+                # 降级：使用本地数据
+                service = get_default_service()
+                etfs = service.get_etfs_by_codes(codes)
+                data_source = "local_db_fallback"
     else:
-        # L1: 使用本地数据库（默认）
-        service = get_default_service()
-        
-        # 直接使用 local_source，避免过期检查导致调用 WeStock
-        local_source = service.local_source
-        etfs = local_source.get_etfs_by_codes(codes)
-        data_source = "local_db"
+        # L1: 检查内存缓存（C1方案：避免 L1/L2 跳变）
+        cache_key = ','.join(sorted(codes))
+        cache_entry = _l2_memory_cache.get(cache_key)
+        if cache_entry and (datetime.now().timestamp() - cache_entry["cached_at"]) < _L2_CACHE_TTL:
+            print(f"[API] L1 内存缓存命中: {cache_key}", file=sys.stderr)
+            etfs = cache_entry["etfs"]
+            data_source = "memory_cache"
+        else:
+            # L1: 使用本地数据库（默认）
+            service = get_default_service()
+            
+            # 直接使用 local_source，避免过期检查导致调用 WeStock
+            local_source = service.local_source
+            etfs = local_source.get_etfs_by_codes(codes)
+            data_source = "local_db"
     
     if not etfs:
         return jsonify({"error": "未找到ETF数据", "codes": codes}), 404
