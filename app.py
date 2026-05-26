@@ -726,6 +726,122 @@ def sync_data():
         return jsonify({"error": str(e)}), 500
 
 
+
+
+# ========== AI 聊天分析接口 ==========
+def _load_etf_by_codes(codes):
+    """按代码列表加载 ETF 数据（从 etf_standard_data.json）"""
+    data_file = ROOT / "etf_standard_data.json"
+    if not data_file.exists():
+        return []
+    try:
+        with open(data_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        etfs = data if isinstance(data, list) else data.get('etfs', [])
+        code_set = set(codes)
+        return [e for e in etfs if isinstance(e, dict) and e.get('code') in code_set]
+    except Exception:
+        return []
+
+def _fmt_val(v, unit=''):
+    if v is None or v == '': return '-'
+    if isinstance(v, (int, float)):
+        if unit == '亿': return f'{v/1e8:.1f}亿'
+        if unit == '%': return f'{v*100:.2f}%'
+        return f'{v:.2f}'
+    return str(v)
+
+def _generate_analysis(question, etfs):
+    """基于规则和 ETF 数据生成分析文本（MVP 版本）"""
+    if not etfs:
+        return '未找到相关 ETF 数据。'
+    
+    lines = []
+    lines.append(f'## ETF 对比分析（{len(etfs)} 只）')
+    lines.append('')
+    
+    # 1. 基础信息表
+    lines.append('| ETF | 规模 | 近1年 | 近3年 | 费率 | 夏普 |')
+    lines.append('|-----|------|--------|--------|------|------|')
+    for e in etfs:
+        code = e.get('code', '-')
+        name = e.get('name', '-')[:8]  # 截断
+        scale = _fmt_val(e.get('scale'), '亿')
+        y1 = _fmt_val(e.get('year_1_return'), '%')
+        y3 = _fmt_val(e.get('year_3_return'), '%')
+        fee = _fmt_val(e.get('fee_rate'), '%')
+        sharpe = _fmt_val(e.get('sharpe_ratio'))
+        lines.append(f'| {code} {name} | {scale} | {y1} | {y3} | {fee} | {sharpe} |')
+    
+    lines.append('')
+    
+    # 2. 优劣势分析
+    lines.append('### 优劣势分析')
+    for e in etfs:
+        name = e.get('name', e.get('code', '-'))
+        lines.append(f'**{name}**')
+        # 优势
+        pros = []
+        if e.get('year_1_return') and e.get('year_1_return') > 0:
+            pros.append(f'近1年收益 {e["year_1_return"]:.2f}%')
+        if e.get('scale') and e.get('scale') > 1e9:
+            pros.append(f'规模 {e["scale"]/1e8:.0f}亿，流动性好')
+        if e.get('fee_rate') and e.get('fee_rate') < 0.003:
+            pros.append(f'费率低（{e["fee_rate"]*100:.2f}%）')
+        if pros:
+            lines.append(f'- ✅ 优势：{", ".join(pros)}')
+        # 劣势
+        cons = []
+        if e.get('max_drawdown') and e.get('max_drawdown') < -15:
+            cons.append(f'最大回撤 {e["max_drawdown"]:.1f}%，风险较高')
+        if e.get('annual_vol') and e.get('annual_vol') > 25:
+            cons.append(f'波动率高（{e["annual_vol"]:.1f}%）')
+        if e.get('fee_rate') and e.get('fee_rate') > 0.005:
+            cons.append(f'费率偏高（{e["fee_rate"]*100:.2f}%）')
+        if cons:
+            lines.append(f'- ⚠️ 劣势：{", ".join(cons)}')
+        lines.append('')
+    
+    # 3. 投资建议
+    lines.append('### 投资建议')
+    # 找出最优（夏普比率最高 or 收益最高）
+    best = max(etfs, key=lambda e: e.get('sharpe_ratio') or e.get('year_1_return') or 0)
+    lines.append(f'**推荐：{best.get("name", best.get("code"))}** —— 综合表现最优（夏普 {best.get("sharpe_ratio","N/A")}，近1年 {best.get("year_1_return","N/A")}%）')
+    lines.append('')
+    lines.append('⚠️ 本分析仅基于历史数据，不构成投资建议。投资有风险，决策需谨慎。')
+    
+    return '\n'.join(lines)
+
+
+@app.route('/api/ai-chat', methods=['POST'])
+def api_ai_chat():
+    """AI 聊天分析接口 —— 接收用户问题 + ETF 代码，返回分析报告"""
+    try:
+        data = request.get_json(force=True)
+        question = data.get('question', '').strip()
+        codes = data.get('codes', [])
+        
+        if not question:
+            return jsonify({'error': '问题不能为空'}), 400
+        if not codes:
+            return jsonify({'error': '未提供 ETF 代码'}), 400
+        
+        # 加载 ETF 数据
+        etfs = _load_etf_by_codes(codes)
+        if not etfs:
+            return jsonify({'error': f'未找到代码 {codes} 的 ETF 数据'}), 404
+        
+        # 生成分析（规则引擎 MVP）
+        answer = _generate_analysis(question, etfs)
+        return jsonify({'answer': answer})
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, use_reloader=False, host='0.0.0.0', port=port)
+

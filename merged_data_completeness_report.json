@@ -1,0 +1,326 @@
+{
+  "total_etfs": 1488,
+  "total_fields": 52,
+  "completeness": {
+    "annual_3y": {
+      "valid": 802,
+      "total": 1488,
+      "rate": 0.5389784946236559
+    },
+    "annual_vol": {
+      "valid": 1422,
+      "total": 1488,
+      "rate": 0.9556451612903226
+    },
+    "annual_vol_1y": {
+      "valid": 1100,
+      "total": 1488,
+      "rate": 0.739247311827957
+    },
+    "annual_vol_2y": {
+      "valid": 885,
+      "total": 1488,
+      "rate": 0.594758064516129
+    },
+    "annual_vol_3y": {
+      "valid": 734,
+      "total": 1488,
+      "rate": 0.4932795698924731
+    },
+    "annual_vol_5y": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "benchmark": {
+      "valid": 238,
+      "total": 1488,
+      "rate": 0.15994623655913978
+    },
+    "calmar_ratio": {
+      "valid": 1424,
+      "total": 1488,
+      "rate": 0.956989247311828
+    },
+    "category": {
+      "valid": 1477,
+      "total": 1488,
+      "rate": 0.9926075268817204
+    },
+    "change_pct": {
+      "valid": 1441,
+      "total": 1488,
+      "rate": 0.9684139784946236
+    },
+    "change_rate": {
+      "valid": 1455,
+      "total": 1488,
+      "rate": 0.9778225806451613
+    },
+    "close": {
+      "valid": 1466,
+      "total": 1488,
+      "rate": 0.9852150537634409
+    },
+    "count": {
+      "valid": 1468,
+      "total": 1488,
+      "rate": 0.9865591397849462
+    },
+    "custodian": {
+      "valid": 148,
+      "total": 1488,
+      "rate": 0.09946236559139784
+    },
+    "custody_fee_rate": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "dates": {
+      "valid": 1468,
+      "total": 1488,
+      "rate": 0.9865591397849462
+    },
+    "dd_3y": {
+      "valid": 709,
+      "total": 1488,
+      "rate": 0.47647849462365593
+    },
+    "fee_rate": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "fee_rate_custody": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "fee_rate_management": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "fee_rate_service": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "issue_date": {
+      "valid": 1474,
+      "total": 1488,
+      "rate": 0.9905913978494624
+    },
+    "issuer": {
+      "valid": 1486,
+      "total": 1488,
+      "rate": 0.9986559139784946
+    },
+    "issuer_full": {
+      "valid": 1475,
+      "total": 1488,
+      "rate": 0.991263440860215
+    },
+    "issuer_short": {
+      "valid": 1475,
+      "total": 1488,
+      "rate": 0.991263440860215
+    },
+    "management_fee_rate": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "market_cap": {
+      "valid": 1482,
+      "total": 1488,
+      "rate": 0.9959677419354839
+    },
+    "max_drawdown": {
+      "valid": 1441,
+      "total": 1488,
+      "rate": 0.9684139784946236
+    },
+    "max_drawdown_2y": {
+      "valid": 885,
+      "total": 1488,
+      "rate": 0.594758064516129
+    },
+    "max_drawdown_3y": {
+      "valid": 717,
+      "total": 1488,
+      "rate": 0.48185483870967744
+    },
+    "max_drawdown_5y": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "name": {
+      "valid": 1488,
+      "total": 1488,
+      "rate": 1.0
+    },
+    "net_inflow_5d": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "premium_discount": {
+      "valid": 142,
+      "total": 1488,
+      "rate": 0.09543010752688172
+    },
+    "prev_close": {
+      "valid": 1466,
+      "total": 1488,
+      "rate": 0.9852150537634409
+    },
+    "prices": {
+      "valid": 1468,
+      "total": 1488,
+      "rate": 0.9865591397849462
+    },
+    "scale": {
+      "valid": 1477,
+      "total": 1488,
+      "rate": 0.9926075268817204
+    },
+    "shares": {
+      "valid": 1477,
+      "total": 1488,
+      "rate": 0.9926075268817204
+    },
+    "sharpe_2y": {
+      "valid": 878,
+      "total": 1488,
+      "rate": 0.5900537634408602
+    },
+    "sharpe_3y": {
+      "valid": 24,
+      "total": 1488,
+      "rate": 0.016129032258064516
+    },
+    "sharpe_5y": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "sharpe_ratio": {
+      "valid": 1433,
+      "total": 1488,
+      "rate": 0.9630376344086021
+    },
+    "top_holdings": {
+      "valid": 1488,
+      "total": 1488,
+      "rate": 1.0
+    },
+    "tracking_error": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "tracking_index": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "updated": {
+      "valid": 1468,
+      "total": 1488,
+      "rate": 0.9865591397849462
+    },
+    "valuation_percentile": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    },
+    "volume": {
+      "valid": 1476,
+      "total": 1488,
+      "rate": 0.9919354838709677
+    },
+    "year_1_return": {
+      "valid": 1470,
+      "total": 1488,
+      "rate": 0.9879032258064516
+    },
+    "year_2_return": {
+      "valid": 869,
+      "total": 1488,
+      "rate": 0.584005376344086
+    },
+    "year_3_return": {
+      "valid": 822,
+      "total": 1488,
+      "rate": 0.5524193548387096
+    },
+    "year_5_return": {
+      "valid": 0,
+      "total": 1488,
+      "rate": 0.0
+    }
+  },
+  "classified": {
+    "初级": [
+      "annual_vol",
+      "calmar_ratio",
+      "category",
+      "change_pct",
+      "change_rate",
+      "close",
+      "count",
+      "dates",
+      "issue_date",
+      "issuer",
+      "issuer_full",
+      "issuer_short",
+      "market_cap",
+      "max_drawdown",
+      "name",
+      "prev_close",
+      "prices",
+      "scale",
+      "shares",
+      "sharpe_ratio",
+      "top_holdings",
+      "updated",
+      "volume",
+      "year_1_return"
+    ],
+    "中级": [
+      "annual_3y",
+      "annual_vol_1y",
+      "annual_vol_2y",
+      "annual_vol_3y",
+      "benchmark",
+      "dd_3y",
+      "max_drawdown_2y",
+      "max_drawdown_3y",
+      "sharpe_2y",
+      "year_2_return",
+      "year_3_return"
+    ],
+    "高级": [
+      "annual_vol_5y",
+      "custodian",
+      "custody_fee_rate",
+      "fee_rate",
+      "fee_rate_custody",
+      "fee_rate_management",
+      "fee_rate_service",
+      "management_fee_rate",
+      "max_drawdown_5y",
+      "net_inflow_5d",
+      "premium_discount",
+      "sharpe_3y",
+      "sharpe_5y",
+      "tracking_error",
+      "tracking_index",
+      "valuation_percentile",
+      "year_5_return"
+    ]
+  }
+}

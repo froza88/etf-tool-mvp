@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transition & 数字计数动画示例</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        /* 示例1：CSS Transition - 环形图弧长变化 */
+        .ring-demo {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+        }
+        
+        .ring-svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .ring-bg {
+            fill: none;
+            stroke: #e5e7eb;
+            stroke-width: 12;
+        }
+        
+        .ring-progress {
+            fill: none;
+            stroke: #3b82f6;
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke-dasharray: 0 1000;  /* 初始值：无弧长 */
+            transition: stroke-dasharray 0.8s ease;  /* ⭐ CSS Transition：0.8秒平滑过渡 */
+        }
+        
+        .ring-label {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #1f2937;
+        }
+        
+        /* 示例2：数字计数动画 */
+        .number-demo {
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #3b82f6;
+            margin: 30px 0;
+            font-family: "Times New Roman", serif;
+        }
+        
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        .explanation {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Transition + 数字计数动画 示例</h1>
+    
+    <!-- 示例1：CSS Transition（环形图弧长平滑变化） -->
+    <div class="demo-section">
+        <h2>示例1：CSS Transition（环形图弧长变化）</h2>
+        <p>点击按钮，观察环形图弧长如何<strong>平滑过渡</strong>（不是瞬间跳变）</p>
+        
+        <div class="ring-demo">
+            <svg class="ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                <circle id="ringProgress" class="ring-progress" cx="60" cy="60" r="50"></circle>
+            </svg>
+        </div>
+        <div id="ringLabel" class="ring-label">0 亿</div>
+        
+        <button class="btn" onclick="animateRing()">更新规模数据（1000亿 → 1200亿）</button>
+        
+        <div class="explanation">
+            <strong>原理：</strong><br>
+            - <code>stroke-dasharray</code> 控制环形图的弧长<br>
+            - <code>transition: stroke-dasharray 0.8s ease</code> 让弧长变化时有0.8秒的平滑过渡<br>
+            - 点击按钮后，弧长从旧值<strong>慢慢生长</strong>到新值，而不是瞬间跳变
+        </div>
+    </div>
+    
+    <!-- 示例2：数字计数动画 -->
+    <div class="demo-section">
+        <h2>示例2：数字计数动画（规模数字滚动）</h2>
+        <p>点击按钮，观察数字如何<strong>快速滚动</strong>到新值（像计时器一样）</p>
+        
+        <div id="numberDisplay" class="number-demo">1000.00</div>
+        
+        <button class="btn" onclick="animateNumber()">更新规模（1000亿 → 1200亿）</button>
+        
+        <div class="explanation">
+            <strong>原理：</strong><br>
+            - 用 <code>setInterval</code> 每16ms（60帧/秒）更新一次数字<br>
+            - 数字从旧值<strong>逐步累加</strong>到新值，持续0.8秒<br>
+            - 用户看到的是数字"滚动"效果，而不是瞬间跳变<br>
+            - 类似：1000 → 1005 → 1010 → ... → 1200
+        </div>
+    </div>
+    
+    <!-- 示例3：完整效果（环形图 + 数字同时动画） -->
+    <div class="demo-section">
+        <h2>示例3：完整效果（环形图 + 数字同时动画）</h2>
+        <p>这是ETF对比页的实际效果：弧长和平滑数字<strong>同时动画</strong></p>
+        
+        <div class="ring-demo">
+            <svg class="ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                <circle id="ringProgress2" class="ring-progress" cx="60" cy="60" r="50"></circle>
+            </svg>
+        </div>
+        <div id="ringLabel2" class="ring-label">1000.00 亿</div>
+        
+        <button class="btn" onclick="animateBoth()">L2数据加载完成（更新到1200亿）</button>
+        
+        <div class="explanation">
+            <strong>这是ETF对比页要做的效果：</strong><br>
+            - L1数据先显示（1000亿）<br>
+            - 1秒后L2数据返回（1200亿）<br>
+            - 环形图弧长和中心数字<strong>同时平滑过渡</strong><br>
+            - 用户看到的是"流动"变化，完全无跳变感 ✅
+        </div>
+    </div>
+
+    <script>
+        // 示例1：CSS Transition
+        let ringValue = 1000;  // 当前规模（亿）
+        const ringMax = 2000;   // 最大规模（亿）
+        
+        function animateRing() {
+            const newVal = 1200;
+            updateRing(ringValue, newVal);
+            ringValue = newVal;
+        }
+        
+        function updateRing(oldVal, newVal) {
+            const circumference = 2 * Math.PI * 50;  // 圆周长
+            const oldPerimeter = (oldVal / ringMax) * circumference;
+            const newPerimeter = (newVal / ringMax) * circumference;
+            
+            const ring = document.getElementById('ringProgress');
+            const label = document.getElementById('ringLabel');
+            
+            // 设置新的stroke-dasharray（CSS transition会自动平滑过渡）
+            ring.style.strokeDasharray = `${newPerimeter} ${circumference}`;
+            label.textContent = newVal.toFixed(2) + ' 亿';
+        }
+        
+        // 初始化
+        updateRing(0, ringValue);
+        
+        // 示例2：数字计数动画
+        let displayValue = 1000;
+        
+        function animateNumber() {
+            const oldVal = 1000;
+            const newVal = 1200;
+            animateNumberCount(oldVal, newVal);
+        }
+        
+        function animateNumberCount(oldVal, newVal) {
+            const duration = 800;  // 0.8秒
+            const startTime = Date.now();
+            const label = document.getElementById('numberDisplay');
+            
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // 使用easeOutCubic缓动函数（开始快，结束慢）
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const currentVal = oldVal + (newVal - oldVal) * eased;
+                
+                label.textContent = currentVal.toFixed(2);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        // 示例3：完整效果（环形图 + 数字同时动画）
+        let ringValue2 = 1000;
+        
+        function animateBoth() {
+            const oldVal = 1000;
+            const newVal = 1200;
+            
+            // 1. 环形图CSS transition（自动平滑）
+            const circumference = 2 * Math.PI * 50;
+            const newPerimeter = (newVal / ringMax) * circumference;
+            const ring2 = document.getElementById('ringProgress2');
+            ring2.style.strokeDasharray = `${newPerimeter} ${circumference}`;
+            
+            // 2. 数字计数动画
+            animateNumberCount2(oldVal, newVal);
+            
+            ringValue2 = newVal;
+        }
+        
+        function animateNumberCount2(oldVal, newVal) {
+            const duration = 800;
+            const startTime = Date.now();
+            const label = document.getElementById('ringLabel2');
+            
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const currentVal = oldVal + (newVal - oldVal) * eased;
+                
+                label.textContent = currentVal.toFixed(2) + ' 亿';
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        // 初始化示例3
+        const circumference2 = 2 * Math.PI * 50;
+        const initPerimeter2 = (ringValue2 / ringMax) * circumference2;
+        document.getElementById('ringProgress2').style.strokeDasharray = `${initPerimeter2} ${circumference2}`;
+    </script>
+</body>
+</html>
