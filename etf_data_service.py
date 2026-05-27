@@ -97,14 +97,16 @@ class WeStockSource(ETFDataSource):
     提供 L2 数据：费率/溢折价率/净申购等
     """
     
-    def __init__(self, cache_dir=None, cache_days=1):
+    def __init__(self, cache_dir=None, cache_days=1, force_refresh=False):
         """
         :param cache_dir: 缓存目录
         :param cache_days: 缓存有效期（天）
+        :param force_refresh: 强制刷新，跳过所有缓存
         """
         if not WESTOCK_AVAILABLE:
             raise ImportError("WeStockFetcher 未安装，无法使用 WeStockSource")
         self.fetcher = WeStockFetcher(cache_dir=cache_dir, cache_days=cache_days)
+        self.force_refresh = force_refresh
     
     def get_etfs_by_codes(self, codes: list) -> list:
         """
@@ -121,7 +123,7 @@ class WeStockSource(ETFDataSource):
         for code in codes:
             try:
                 # 调用 WeStock Fetcher 获取数据
-                westock_data = self.fetcher.fetch_etf_info(code, force_refresh=False)
+                westock_data = self.fetcher.fetch_etf_info(code, force_refresh=self.force_refresh)
                 
                 if not westock_data:
                     print(f"[WeStockSource] 获取 {code} 数据失败，跳过", file=sys.stderr)

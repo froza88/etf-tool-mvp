@@ -9,6 +9,14 @@ from pathlib import Path
 
 app = Flask(__name__)
 
+# 防浏览器缓存（开发阶段必须）
+@app.after_request
+def add_no_cache_header(response):
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
 ROOT = Path(__file__).parent
 
 # 方案C1：L2 数据内存缓存（避免 L1/L2 跳变）
@@ -159,32 +167,43 @@ def compare_wind():
 
 @app.route('/compare/v3')
 def compare_v3():
-    """ETF对比页 - Pro Terminal v3 炫酷版（服务端预加载L2数据，无跳变）"""
+    """ETF对比页 - Pro Terminal v3 炫酷版（L1基础+L2实时字段合并，无跳变）"""
     codes = request.args.get('codes', '')
     code_list = [c.strip() for c in codes.split(',') if c.strip()]
     
-    # 服务端预加载 L2 数据（WeStock API）
+    # 第一步：加载 L1 本地数据（完整字段）
     etfs_l2 = []
-    data_source = "westock"
+    data_source = "local_db"
     try:
-        from etf_data_service import WeStockSource
-        westock_source = WeStockSource()
-        etfs_l2 = westock_source.get_etfs_by_codes(code_list)
-        print(f"[compare/v3] L2 数据加载成功: {len(etfs_l2)} 只 ETF", file=sys.stderr)
+        from etf_data_service import LocalJSONSource
+        local_source = LocalJSONSource()
+        etfs_l2 = local_source.get_etfs_by_codes(code_list)
+        print(f"[compare/v3] L1 数据加载成功: {len(etfs_l2)} 只 ETF", file=sys.stderr)
     except Exception as e:
-        print(f"[compare/v3] WeStock API 调用失败，降级到 L1: {e}", file=sys.stderr)
-        # 降级：使用 L1 数据（本地文件）
-        try:
-            from etf_data_service import LocalSource
-            local_source = LocalSource()
-            etfs_l2 = local_source.get_etfs_by_codes(code_list)
-            data_source = "local_db"
-        except Exception as e2:
-            print(f"[compare/v3] L1 数据也失败: {e2}", file=sys.stderr)
-            etfs_l2 = []
-            data_source = "error"
+        print(f"[compare/v3] L1 数据加载失败: {e}", file=sys.stderr)
+        etfs_l2 = []
     
-    return render_template('compare_v3.html', codes=codes, etfs_l2=etfs_l2, data_source=data_source)
+    # 第二步：加载 L2 实时字段（WeStock），合并到 L1 数据上
+    if etfs_l2:
+        try:
+            from etf_data_service import WeStockSource
+            westock_source = WeStockSource()  # 预加载用缓存保证稳定，客户端实时fetch才force_refresh
+            etfs_l2_only = westock_source.get_etfs_by_codes(code_list)
+            if etfs_l2_only:
+                data_source = "local_db+westock"
+                # L2 字段覆盖到 L1 数据上
+                l2_map = {e['code']: e for e in etfs_l2_only if 'code' in e}
+                for etf in etfs_l2:
+                    l2_data = l2_map.get(etf.get('code'))
+                    if l2_data:
+                        for key, val in l2_data.items():
+                            if key != 'code' and val is not None:
+                                etf[key] = val
+                print(f"[compare/v3] L2 字段合并完成: {len(etfs_l2_only)} 只", file=sys.stderr)
+        except Exception as e:
+            print(f"[compare/v3] L2 合并失败，使用纯 L1: {e}", file=sys.stderr)
+    
+    return render_template('compare_v3.html', codes=codes, etfs_l2=etfs_l2, data_source=data_source, updated=datetime.now().isoformat())
 
 
 def update_l1_cache_from_l2(etfs_l2):
@@ -242,6 +261,7 @@ def api_compare():
     codes = request.args.get('codes', '').split(',')
     codes = [c.strip() for c in codes if c.strip()]
     source = request.args.get('source', 'local')  # 默认使用本地数据
+    fresh = request.args.get('fresh', '0') == '1'  # fresh=1 强制刷新，跳过所有缓存
     
     if not codes:
         return jsonify({"error": "请提供ETF代码", "codes": []}), 400
@@ -251,7 +271,7 @@ def api_compare():
         # L2: 先查内存缓存（避免重复调用 API 导致数据不一致）
         cache_key = ','.join(sorted(codes))
         cache_entry = _l2_memory_cache.get(cache_key)
-        if cache_entry and (datetime.now().timestamp() - cache_entry["cached_at"]) < _L2_CACHE_TTL:
+        if not fresh and cache_entry and (datetime.now().timestamp() - cache_entry["cached_at"]) < _L2_CACHE_TTL:
             print(f"[API] L2 内存缓存命中: {cache_key}", file=sys.stderr)
             etfs = cache_entry["etfs"]
             data_source = "memory_cache_l2"
@@ -259,7 +279,7 @@ def api_compare():
             # L2: 缓存未命中，调用 WeStockSource 获取数据
             try:
                 from etf_data_service import WeStockSource
-                westock_source = WeStockSource()
+                westock_source = WeStockSource(force_refresh=fresh)
                 etfs = westock_source.get_etfs_by_codes(codes)
                 update_l1_cache_from_l2(etfs)
                 data_source = "westock"
@@ -276,21 +296,11 @@ def api_compare():
                 etfs = service.get_etfs_by_codes(codes)
                 data_source = "local_db_fallback"
     else:
-        # L1: 检查内存缓存（C1方案：避免 L1/L2 跳变）
-        cache_key = ','.join(sorted(codes))
-        cache_entry = _l2_memory_cache.get(cache_key)
-        if cache_entry and (datetime.now().timestamp() - cache_entry["cached_at"]) < _L2_CACHE_TTL:
-            print(f"[API] L1 内存缓存命中: {cache_key}", file=sys.stderr)
-            etfs = cache_entry["etfs"]
-            data_source = "memory_cache"
-        else:
-            # L1: 使用本地数据库（默认）
-            service = get_default_service()
-            
-            # 直接使用 local_source，避免过期检查导致调用 WeStock
-            local_source = service.local_source
-            etfs = local_source.get_etfs_by_codes(codes)
-            data_source = "local_db"
+        # L1: 直接使用本地数据库（不走 L2 缓存，避免字段不全）
+        service = get_default_service()
+        local_source = service.local_source
+        etfs = local_source.get_etfs_by_codes(codes)
+        data_source = "local_db"
     
     if not etfs:
         return jsonify({"error": "未找到ETF数据", "codes": codes}), 404
@@ -314,7 +324,8 @@ def compare_v3_print():
         if etf:
             etfs.append(etf)
     from datetime import datetime
-    return render_template('compare_print.html', etfs=etfs, now=datetime.now().strftime('%Y-%m-%d %H:%M'))
+    colors = ['#00d4ff', '#f59e0b', '#f97316', '#7c3aed', '#ec4899', '#06b6d4']
+    return render_template('compare_print.html', etfs=etfs, now=datetime.now().strftime('%Y-%m-%d %H:%M'), colors=colors)
 
 
 @app.route('/screening-demo')

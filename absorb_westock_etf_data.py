@@ -211,23 +211,27 @@ def map_westock_to_our(westock_etf):
     return our
 
 def absorb_data(target, source):
-    """填表式吸收：只填充缺失或空的字段"""
+    """填表式吸收：只填充缺失或空的字段，并更新时间戳"""
     updated_fields = []
-    
+
     for key, value in source.items():
         # 跳过code字段和内部字段
         if key in ['code', 'raw_block', 'holdings']:
             continue
-        
+
         # 检查值是否有效
         if value is None or value == '' or value == '0' or value == 0:
             continue
-        
+
         # 如果目标缺少这个字段，或者字段值为空/0，则吸收
         if key not in target or target[key] is None or target[key] == '' or target[key] == 0:
             target[key] = value
             updated_fields.append(key)
-    
+
+    # 只要有字段被更新，就刷新时间戳
+    if updated_fields:
+        target['updated'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
     return updated_fields
 
 # ============================================================
