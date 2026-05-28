@@ -119,6 +119,12 @@
             color: #22c55e;
         }
         
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 100%;
+            margin-bottom: 24px;
+        }
         .chart-placeholder {
             background: #0a0e27;
             padding: 40px;
@@ -305,6 +311,7 @@
             <div class="subtitle">
                 <span>代码：{{ etf.code }}</span>
                 {% if etf.issuer %}<span>发行方：{{ etf.issuer }}</span>{% endif %}
+                {% if etf._data_updated %}<span style="color:#6b7280;">数据更新：{{ etf._data_updated }}</span>{% endif %}
             </div>
         </div>
         
@@ -313,7 +320,7 @@
             <div class="info-grid">
                 <div class="info-card" style="border-left-color: #3b82f6;">
                     <h3>💰 规模（亿元）</h3>
-                    <div class="value">{{ "%.2f"|format(etf.scale) }}</div>
+                    <div class="value">{{ "%.2f"|format(etf.scale/1e8) if etf.scale else '-' }}</div>
                 </div>
                 
                 <div class="info-card" style="border-left-color: #6366f1;">
@@ -355,8 +362,8 @@
                 </div>
                 
                 <div class="info-card" style="border-left-color: #06b6d4;">
-                    <h3>💧 日均成交（亿元）</h3>
-                    <div class="value" style="color: #22d3ee;">{{ "%.2f"|format(etf.volume) }}</div>
+                    <h3>🔄 换手率（%）</h3>
+                    <div class="value" style="color: #22d3ee;">{{ "%.2f"|format(etf.turnover_rate) if etf.turnover_rate else '-' }}%</div>
                 </div>
 
                 <div class="info-card" style="border-left-color: #64748b;">
@@ -383,8 +390,29 @@
                 const etfCode = "{{ etf.code }}";
                 let chart;
                 
-                // 从API获取真实历史数据
-                async function fetchHistory(period) {
+                // 从COS CDN获取历史K线数据
+                async function fetchHistoryFromCOS(code) {
+                    const cosUrl = `https://etf-history-1437728630.cos.ap-beijing.myqcloud.com/history/${code}.json`;
+                    try {
+                        const resp = await fetch(cosUrl, { cache: 'no-store' });
+                        if (!resp.ok) return null;
+                        const data = await resp.json();
+                        if (!data.prices || data.prices.length === 0) return null;
+                        return {
+                            prices: data.prices,
+                            dates: data.dates || null,
+                            source: data.source || 'cos_cdn',
+                            updated: data.updated || '',
+                            note: `腾讯云COS缓存 (${data.updated || '未知时间'})`
+                        };
+                    } catch (e) {
+                        console.warn('COS CDN读取失败，将尝试本地API:', e.message);
+                        return null;
+                    }
+                }
+
+                // 从本地API获取历史数据（备用）
+                async function fetchHistoryFromAPI(period) {
                     try {
                         const resp = await fetch(`/api/etf/${etfCode}/history?period=${period}`);
                         const data = await resp.json();
@@ -393,9 +421,26 @@
                         }
                         return data;
                     } catch (e) {
-                        console.error('获取历史数据失败', e);
+                        console.error('本地API获取历史数据失败', e);
                         return null;
                     }
+                }
+
+                // 根据period截取数据
+                function sliceByPeriod(prices, dates, period) {
+                    const periods = {
+                        '1M': 22,
+                        '3M': 66,
+                        '1Y': 252,
+                        '3Y': 756
+                    };
+                    const days = periods[period] || prices.length;
+                    const end = prices.length;
+                    const start = Math.max(0, end - days);
+                    return {
+                        prices: prices.slice(start, end),
+                        dates: dates ? dates.slice(start, end) : null
+                    };
                 }
 
                 // 生成模拟数据（最终兜底）
@@ -424,34 +469,43 @@
                     };
                     const days = periods[period];
 
-                    // 尝试获取真实数据
-                    const raw = await fetchHistory(period);
                     let data, labels, labelPrefix, sourceInfo = '';
 
-                    if (raw && raw.prices) {
-                        data = raw.prices;
-                        // 有日期就用日期，没有就用序号
-                        if (raw.dates && raw.dates.length === data.length) {
-                            labels = raw.dates;
-                        } else {
+                    // 1️⃣ 优先从COS CDN读取
+                    const cosData = await fetchHistoryFromCOS(etfCode);
+                    if (cosData && cosData.prices) {
+                        const sliced = sliceByPeriod(cosData.prices, cosData.dates, period);
+                        data = sliced.prices;
+                        labels = sliced.dates || data.map((_, i) => i + 1);
+                        labelPrefix = '';
+                        sourceInfo = `数据源：腾讯云COS (${cosData.updated || '缓存'})`;
+                    }
+                    // 2️⃣ COS失败，尝试本地API
+                    else {
+                        const apiData = await fetchHistoryFromAPI(period);
+                        if (apiData && apiData.prices) {
+                            data = apiData.prices;
+                            labels = (apiData.dates && apiData.dates.length === data.length)
+                                ? apiData.dates
+                                : data.map((_, i) => i + 1);
+                            if (apiData.source === 'akshare_realtime') {
+                                labelPrefix = '[实时] ';
+                                sourceInfo = '数据源：东方财富（AKShare）';
+                            } else if (apiData.source === 'ft_cached') {
+                                labelPrefix = '[缓存] ';
+                                sourceInfo = '数据源：非凸科技（本地缓存）';
+                            } else {
+                                labelPrefix = '[模拟] ';
+                                sourceInfo = apiData.note || '数据源：本地缓存';
+                            }
+                        }
+                        // 3️⃣ 全部失败，使用模拟数据兜底
+                        else {
+                            data = generateData(days, {{ etf.year_1_return | default(0) }} / 100);
                             labels = data.map((_, i) => i + 1);
-                        }
-                        if (raw.source === 'akshare_realtime') {
-                            labelPrefix = '[实时] ';
-                            sourceInfo = '数据源：东方财富（AKShare）';
-                        } else if (raw.source === 'ft_cached') {
-                            labelPrefix = '[缓存] ';
-                            sourceInfo = '数据源：非凸科技（本地缓存）';
-                        } else {
                             labelPrefix = '[模拟] ';
-                            sourceInfo = raw.note || '数据源：模拟生成';
+                            sourceInfo = '数据源：模拟生成（COS CDN暂不可用）';
                         }
-                    } else {
-                        // API 完全失败，使用模拟数据
-                        data = generateData(days, {{ etf.year_1_return | default(0) }} / 100);
-                        labels = data.map((_, i) => i + 1);
-                        labelPrefix = '[模拟] ';
-                        sourceInfo = '数据源：模拟生成（API暂不可用）';
                     }
 
                     if (chart) {

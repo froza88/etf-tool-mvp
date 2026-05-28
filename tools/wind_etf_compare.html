@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind ETF 对比工具 - Demo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f7fa; color: #333; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #2c3e50; margin-bottom: 5px; font-size: 24px; }
+        .demo-badge { display: inline-block; background: #e74c3c; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px; margin-left: 10px; vertical-align: middle; }
+        .subtitle { color: #7f8c8d; margin-bottom: 20px; font-size: 13px; }
+        .demo-notice { background: #fff3cd; border: 1px solid #ffeaa7; padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; color: #856404; }
+        .demo-notice strong { color: #d35400; }
+        .input-section { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 10px; }
+        input[type="text"] { flex: 1; padding: 10px 12px; border: 2px solid #e0e6ed; border-radius: 6px; font-size: 14px; }
+        input[type="text"]:focus { outline: none; border-color: #3498db; }
+        button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+        button:hover { background: #2980b9; }
+        .hint { color: #95a5a6; font-size: 12px; }
+        .results-section { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: none; }
+        .results-section.show { display: block; }
+        .table-container { overflow-x: auto; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { background: #2c3e50; color: white; padding: 10px 8px; text-align: left; font-weight: 600; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+        td { padding: 8px; border-bottom: 1px solid #ecf0f1; }
+        tr:hover { background: #f8f9fa; }
+        .number { font-family: "Times New Roman", Times, serif; text-align: right; }
+        .positive { color: #e74c3c; }
+        .negative { color: #27ae60; }
+        .metric-group { margin-bottom: 15px; }
+        .metric-group-title { font-weight: 600; color: #2c3e50; margin-bottom: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌬️ Wind ETF 对比工具 <span class="demo-badge">DEMO</span></h1>
+        <p class="subtitle">基于 Wind 金融终端 API - ETF 风险指标与资金流对比（当前为演示模式，使用模拟数据）</p>
+        
+        <div class="demo-notice">
+            <strong>⚠️ 演示模式：</strong>当前展示的是模拟数据。要连接真实 Wind API，请配置 Wind MCP Skill 后端服务。
+        </div>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <input type="text" id="etfInput" placeholder="输入 ETF 代码（如：510300, 510500, 159915）" value="510300, 510500, 159915">
+                <button onclick="compareEtfs()">对比</button>
+            </div>
+            <div class="hint">提示：输入逗号分隔的 ETF 代码，然后点击"对比"按钮。演示模式包含 510300、510500、159915 三只 ETF 的 Wind 数据。</div>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <div style="margin-bottom: 15px;">
+                <strong>对比结果：</strong><span id="resultsCount"></span>
+            </div>
+            
+            <div class="metric-group">
+                <div class="metric-group-title">📊 风险指标</div>
+                <div class="table-container" id="tableRisk"></div>
+            </div>
+            
+            <div class="metric-group">
+                <div class="metric-group-title">💰 资金流（5日）</div>
+                <div class="table-container" id="tableFlow"></div>
+            </div>
+            
+            <div class="metric-group">
+                <div class="metric-group-title">👥 持有人结构</div>
+                <div class="table-container" id="tableHolder"></div>
+            </div>
+            
+            <div class="metric-group">
+                <div class="metric-group-title">📈 估值指标</div>
+                <div class="table-container" id="tableValuation"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 模拟数据（Wind ETF 指标）
+        const mockWindData = {
+            "510300": {
+                "代码": "510300",
+                "名称": "沪深300ETF",
+                "夏普比率": 0.85,
+                "年化波动率": 18.5,
+                "最大回撤": -25.3,
+                "卡玛比率": 0.42,
+                "5日净流入额": 2500000000,
+                "净流入比例": 1.2,
+                "个人持有人占比": 45.5,
+                "机构持有人占比": 54.5,
+                "持有人户数": 280000,
+                "跟踪误差": 0.05,
+                "估值分位数": 35.2,
+                "溢价折价率": 0.1
+            },
+            "510500": {
+                "代码": "510500",
+                "名称": "中证500ETF",
+                "夏普比率": 0.72,
+                "年化波动率": 22.1,
+                "最大回撤": -32.8,
+                "卡玛比率": 0.35,
+                "5日净流入额": -800000000,
+                "净流入比例": -0.8,
+                "个人持有人占比": 52.3,
+                "机构持有人占比": 47.7,
+                "持有人户数": 195000,
+                "跟踪误差": 0.08,
+                "估值分位数": 42.5,
+                "溢价折价率": -0.2
+            },
+            "159915": {
+                "代码": "159915",
+                "名称": "创业板ETF",
+                "夏普比率": 0.65,
+                "年化波动率": 28.3,
+                "最大回撤": -41.5,
+                "卡玛比率": 0.28,
+                "5日净流入额": 500000000,
+                "净流入比例": 0.5,
+                "个人持有人占比": 68.2,
+                "机构持有人占比": 31.8,
+                "持有人户数": 420000,
+                "跟踪误差": 0.12,
+                "估值分位数": 28.7,
+                "溢价折价率": 0.3
+            }
+        };
+        
+        function compareEtfs() {
+            const input = document.getElementById('etfInput');
+            const codes = input.value.split(/[,\s]+/).filter(c => c.trim());
+            
+            if (codes.length === 0) {
+                alert('请输入 ETF 代码');
+                return;
+            }
+            
+            const compareData = [];
+            const notFound = [];
+            
+            codes.forEach(code => {
+                code = code.trim();
+                if (mockWindData[code]) {
+                    compareData.push(mockWindData[code]);
+                } else {
+                    notFound.push(code);
+                }
+            });
+            
+            if (notFound.length > 0) {
+                alert(`未找到以下 ETF 代码（演示模式仅包含 510300, 510500, 159915）：${notFound.join(', ')}`);
+            }
+            
+            if (compareData.length === 0) {
+                alert('没有可对比的 ETF 数据');
+                return;
+            }
+            
+            document.getElementById('resultsCount').textContent = `共 ${compareData.length} 只 ETF`;
+            renderTables(compareData);
+            document.getElementById('resultsSection').classList.add('show');
+        }
+        
+        function renderTables(data) {
+            // 风险指标字段
+            const riskFields = ['代码', '名称', '夏普比率', '年化波动率', '最大回撤', '卡玛比率'];
+            renderTable(data, riskFields, 'tableRisk');
+            
+            // 资金流字段
+            const flowFields = ['代码', '名称', '5日净流入额', '净流入比例'];
+            renderTable(data, flowFields, 'tableFlow');
+            
+            // 持有人结构字段
+            const holderFields = ['代码', '名称', '个人持有人占比', '机构持有人占比', '持有人户数'];
+            renderTable(data, holderFields, 'tableHolder');
+            
+            // 估值指标字段
+            const valuationFields = ['代码', '名称', '跟踪误差', '估值分位数', '溢价折价率'];
+            renderTable(data, valuationFields, 'tableValuation');
+        }
+        
+        function renderTable(data, fields, containerId) {
+            const container = document.getElementById(containerId);
+            
+            let html = '<table><thead><tr>';
+            fields.forEach(field => {
+                html += `<th>${field}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            
+            data.forEach(etf => {
+                html += '<tr>';
+                fields.forEach(field => {
+                    let value = etf[field];
+                    
+                    if (typeof value === 'number') {
+                        if (field === '最大回撤' || field === '溢价折价率') {
+                            const cls = value > 0 ? 'positive' : (value < 0 ? 'negative' : '');
+                            html += `<td class="number ${cls}">${value.toFixed(2)}%</td>`;
+                        } else if (field === '5日净流入额') {
+                            html += `<td class="number">${formatNumber(value)}</td>`;
+                        } else if (field === '夏普比率' || field === '卡玛比率' || field === '年化波动率' || field === '跟踪误差') {
+                            html += `<td class="number">${value.toFixed(2)}</td>`;
+                        } else if (field === '个人持有人占比' || field === '机构持有人占比' || field === '净流入比例' || field === '估值分位数') {
+                            html += `<td class="number">${value.toFixed(1)}%</td>`;
+                        } else {
+                            html += `<td class="number">${value}</td>`;
+                        }
+                    } else {
+                        html += `<td>${value || '-'}</td>`;
+                    }
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+        
+        function formatNumber(num) {
+            if (Math.abs(num) >= 1e8) {
+                return (num / 1e8).toFixed(2) + '亿';
+            } else if (Math.abs(num) >= 1e4) {
+                return (num / 1e4).toFixed(2) + '万';
+            } else {
+                return num.toFixed(0);
+            }
+        }
+        
+        document.getElementById('etfInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                compareEtfs();
+            }
+        });
+    </script>
+</body>
+</html>

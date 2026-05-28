@@ -1,0 +1,2518 @@
+[
+  {
+    "code": "159193",
+    "name": "新能源电池ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.9
+  },
+  {
+    "code": "560830",
+    "name": "电力ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 9.9
+  },
+  {
+    "code": "560930",
+    "name": "电力ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "560480",
+    "name": "电力ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.7
+  },
+  {
+    "code": "512140",
+    "name": "电力ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.5
+  },
+  {
+    "code": "560450",
+    "name": "电力ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.2
+  },
+  {
+    "code": "560460",
+    "name": "电力ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 5.6
+  },
+  {
+    "code": "560910",
+    "name": "电池ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "159009",
+    "name": "创业板新能源ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "560410",
+    "name": "电池ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.9
+  },
+  {
+    "code": "589270",
+    "name": "科创100ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.5
+  },
+  {
+    "code": "159016",
+    "name": "证券ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.7
+  },
+  {
+    "code": "526050",
+    "name": "港股通信息技术ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.5
+  },
+  {
+    "code": "513240",
+    "name": "港股通信息技术ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.3
+  },
+  {
+    "code": "526000",
+    "name": "港股通信息技术ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.5
+  },
+  {
+    "code": "159021",
+    "name": "大盘价值ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.0
+  },
+  {
+    "code": "560420",
+    "name": "食品ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.8
+  },
+  {
+    "code": "159178",
+    "name": "消费电子ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "159012",
+    "name": "科创创业50ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.5
+  },
+  {
+    "code": "159188",
+    "name": "红利100ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "560320",
+    "name": "食品ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.3
+  },
+  {
+    "code": "560250",
+    "name": "红利质量ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.4
+  },
+  {
+    "code": "159008",
+    "name": "证券ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.1
+  },
+  {
+    "code": "159013",
+    "name": "工业互联网ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.1
+  },
+  {
+    "code": "526010",
+    "name": "港股通医疗ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "159030",
+    "name": "粮食ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.8
+  },
+  {
+    "code": "159185",
+    "name": "港股通信息技术ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "513620",
+    "name": "港股医疗ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "159017",
+    "name": "石油ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "159038",
+    "name": "粮食ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.1
+  },
+  {
+    "code": "159022",
+    "name": "科创创业人工智能ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.6
+  },
+  {
+    "code": "159010",
+    "name": "港股通科技ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 4.5
+  },
+  {
+    "code": "159015",
+    "name": "恒生港股通科技ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.1
+  },
+  {
+    "code": "159019",
+    "name": "石油ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "159026",
+    "name": "石油ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "512430",
+    "name": "家居家电ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.6
+  },
+  {
+    "code": "159018",
+    "name": "石油ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.6
+  },
+  {
+    "code": "159199",
+    "name": "石油ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.1
+  },
+  {
+    "code": "159007",
+    "name": "养殖ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.1
+  },
+  {
+    "code": "159028",
+    "name": "港股汽车ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.1
+  },
+  {
+    "code": "520730",
+    "name": "港股通汽车ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.5
+  },
+  {
+    "code": "516840",
+    "name": "汽车ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.5
+  },
+  {
+    "code": "560790",
+    "name": "软件ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.9
+  },
+  {
+    "code": "588480",
+    "name": "科创创业人工智能ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.1
+  },
+  {
+    "code": "159192",
+    "name": "家电ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "515640",
+    "name": "家电ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.3
+  },
+  {
+    "code": "159182",
+    "name": "家电ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 0.4
+  },
+  {
+    "code": "159186",
+    "name": "港股通汽车ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.2
+  },
+  {
+    "code": "589280",
+    "name": "科创增强ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "159020",
+    "name": "养殖ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "159027",
+    "name": "畜牧养殖ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.2
+  },
+  {
+    "code": "159035",
+    "name": "软件ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.2
+  },
+  {
+    "code": "561050",
+    "name": "稀有金属ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.2
+  },
+  {
+    "code": "560870",
+    "name": "工业有色ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "560490",
+    "name": "工业有色ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.5
+  },
+  {
+    "code": "159032",
+    "name": "工业有色ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 2.2
+  },
+  {
+    "code": "560470",
+    "name": "有色ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 1.1
+  },
+  {
+    "code": "159029",
+    "name": "有色ETF",
+    "missing_count": 6,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y",
+      "sharpe_ratio",
+      "annual_vol"
+    ],
+    "scale": 3.0
+  },
+  {
+    "code": "513310",
+    "name": "中韩半导体ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 132.6
+  },
+  {
+    "code": "159687",
+    "name": "亚太精选ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 20.6
+  },
+  {
+    "code": "159513",
+    "name": "纳斯达克100ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 71.1
+  },
+  {
+    "code": "159660",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 47.4
+  },
+  {
+    "code": "159941",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 351.0
+  },
+  {
+    "code": "513870",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 24.2
+  },
+  {
+    "code": "511660",
+    "name": "货币ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 84.9
+  },
+  {
+    "code": "159632",
+    "name": "纳斯达克ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 111.8
+  },
+  {
+    "code": "513390",
+    "name": "纳指100ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 42.6
+  },
+  {
+    "code": "512690",
+    "name": "酒ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 159.8
+  },
+  {
+    "code": "515220",
+    "name": "煤炭ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 103.6
+  },
+  {
+    "code": "513110",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 50.1
+  },
+  {
+    "code": "159509",
+    "name": "纳指科技ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 169.1
+  },
+  {
+    "code": "159659",
+    "name": "纳斯达克100ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 95.2
+  },
+  {
+    "code": "159501",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 122.8
+  },
+  {
+    "code": "513300",
+    "name": "纳斯达克ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 131.7
+  },
+  {
+    "code": "513100",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 198.8
+  },
+  {
+    "code": "159305",
+    "name": "储能电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 9.9
+  },
+  {
+    "code": "159696",
+    "name": "纳指ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 48.1
+  },
+  {
+    "code": "513730",
+    "name": "东南亚科技ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 10.6
+  },
+  {
+    "code": "562350",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "562300",
+    "name": "碳中和ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.5
+  },
+  {
+    "code": "562960",
+    "name": "绿色电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 12.6
+  },
+  {
+    "code": "561700",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 3.7
+  },
+  {
+    "code": "516370",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.2
+  },
+  {
+    "code": "560270",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.6
+  },
+  {
+    "code": "159566",
+    "name": "储能电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 75.3
+  },
+  {
+    "code": "562550",
+    "name": "绿电ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 15.9
+  },
+  {
+    "code": "159885",
+    "name": "碳中和ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.2
+  },
+  {
+    "code": "561170",
+    "name": "绿色电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 4.1
+  },
+  {
+    "code": "560620",
+    "name": "公用事业ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.3
+  },
+  {
+    "code": "159301",
+    "name": "公用事业ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "561560",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 31.2
+  },
+  {
+    "code": "159611",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 74.7
+  },
+  {
+    "code": "510630",
+    "name": "消费ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 4.2
+  },
+  {
+    "code": "159790",
+    "name": "碳中和ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 14.7
+  },
+  {
+    "code": "159777",
+    "name": "创科技ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.4
+  },
+  {
+    "code": "515170",
+    "name": "食品饮料ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 44.3
+  },
+  {
+    "code": "159261",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.2
+  },
+  {
+    "code": "516070",
+    "name": "低碳ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.1
+  },
+  {
+    "code": "159752",
+    "name": "新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 4.2
+  },
+  {
+    "code": "560560",
+    "name": "碳中和ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.6
+  },
+  {
+    "code": "515710",
+    "name": "食品饮料ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 13.2
+  },
+  {
+    "code": "159930",
+    "name": "能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 11.7
+  },
+  {
+    "code": "159855",
+    "name": "影视ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.4
+  },
+  {
+    "code": "159387",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 17.9
+  },
+  {
+    "code": "159609",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.0
+  },
+  {
+    "code": "560980",
+    "name": "光伏龙头ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 4.5
+  },
+  {
+    "code": "159843",
+    "name": "食品饮料ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 3.8
+  },
+  {
+    "code": "159159",
+    "name": "公用事业ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.6
+  },
+  {
+    "code": "159862",
+    "name": "食品饮料ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.0
+  },
+  {
+    "code": "560310",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.0
+  },
+  {
+    "code": "159146",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 8.1
+  },
+  {
+    "code": "562010",
+    "name": "绿色能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.3
+  },
+  {
+    "code": "159123",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 5.7
+  },
+  {
+    "code": "159736",
+    "name": "食品饮料ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 48.5
+  },
+  {
+    "code": "159864",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 5.7
+  },
+  {
+    "code": "159625",
+    "name": "绿色电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 31.4
+  },
+  {
+    "code": "560580",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 3.5
+  },
+  {
+    "code": "159158",
+    "name": "电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 12.9
+  },
+  {
+    "code": "159861",
+    "name": "碳中和50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.3
+  },
+  {
+    "code": "159618",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "516230",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 7.4
+  },
+  {
+    "code": "560230",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "516900",
+    "name": "食品饮料ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.8
+  },
+  {
+    "code": "512580",
+    "name": "环保ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 8.9
+  },
+  {
+    "code": "515370",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 13.1
+  },
+  {
+    "code": "159368",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 9.3
+  },
+  {
+    "code": "159857",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 24.2
+  },
+  {
+    "code": "561160",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 29.1
+  },
+  {
+    "code": "159957",
+    "name": "创业板ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 17.8
+  },
+  {
+    "code": "159190",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "560650",
+    "name": "核心50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.1
+  },
+  {
+    "code": "159863",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.4
+  },
+  {
+    "code": "159369",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 4.0
+  },
+  {
+    "code": "516270",
+    "name": "新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.6
+  },
+  {
+    "code": "516180",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.2
+  },
+  {
+    "code": "159773",
+    "name": "创业板科技ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "516880",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 11.4
+  },
+  {
+    "code": "159669",
+    "name": "绿色电力ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.6
+  },
+  {
+    "code": "159147",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 28.3
+  },
+  {
+    "code": "159796",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 85.1
+  },
+  {
+    "code": "159155",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 5.6
+  },
+  {
+    "code": "159149",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "516620",
+    "name": "影视ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.6
+  },
+  {
+    "code": "562970",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 6.2
+  },
+  {
+    "code": "562880",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 11.2
+  },
+  {
+    "code": "159945",
+    "name": "能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.3
+  },
+  {
+    "code": "512010",
+    "name": "医药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 165.8
+  },
+  {
+    "code": "515790",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 98.4
+  },
+  {
+    "code": "159373",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.8
+  },
+  {
+    "code": "516090",
+    "name": "新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 12.8
+  },
+  {
+    "code": "159814",
+    "name": "创业大盘ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 4.0
+  },
+  {
+    "code": "513500",
+    "name": "标普500ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 246.3
+  },
+  {
+    "code": "159187",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "512460",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "159160",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.7
+  },
+  {
+    "code": "516290",
+    "name": "光伏ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 5.9
+  },
+  {
+    "code": "159122",
+    "name": "创业板新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.9
+  },
+  {
+    "code": "159977",
+    "name": "创业板ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 69.1
+  },
+  {
+    "code": "561910",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 49.1
+  },
+  {
+    "code": "159298",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "513650",
+    "name": "标普500ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 70.8
+  },
+  {
+    "code": "159991",
+    "name": "创业板大盘ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.9
+  },
+  {
+    "code": "159372",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.4
+  },
+  {
+    "code": "159949",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 241.8
+  },
+  {
+    "code": "159612",
+    "name": "标普500ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 8.6
+  },
+  {
+    "code": "560680",
+    "name": "消费ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.4
+  },
+  {
+    "code": "159985",
+    "name": "豆粕ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 30.7
+  },
+  {
+    "code": "159370",
+    "name": "创50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.9
+  },
+  {
+    "code": "159916",
+    "name": "基本面ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.6
+  },
+  {
+    "code": "159798",
+    "name": "消费ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.1
+  },
+  {
+    "code": "561500",
+    "name": "漂亮50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.5
+  },
+  {
+    "code": "159383",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.7
+  },
+  {
+    "code": "512600",
+    "name": "消费ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 9.1
+  },
+  {
+    "code": "159647",
+    "name": "中药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 14.3
+  },
+  {
+    "code": "561510",
+    "name": "中药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.6
+  },
+  {
+    "code": "159689",
+    "name": "消费ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.6
+  },
+  {
+    "code": "516820",
+    "name": "医疗创新ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 17.7
+  },
+  {
+    "code": "159681",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 14.5
+  },
+  {
+    "code": "159371",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.9
+  },
+  {
+    "code": "530880",
+    "name": "红利国企ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.5
+  },
+  {
+    "code": "159367",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.6
+  },
+  {
+    "code": "588130",
+    "name": "科创医药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "159928",
+    "name": "消费ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 174.4
+  },
+  {
+    "code": "516960",
+    "name": "机械ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.2
+  },
+  {
+    "code": "159875",
+    "name": "新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 16.1
+  },
+  {
+    "code": "560190",
+    "name": "公用事业ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.2
+  },
+  {
+    "code": "159682",
+    "name": "创业板50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 40.4
+  },
+  {
+    "code": "510660",
+    "name": "医药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "516850",
+    "name": "新能源ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.6
+  },
+  {
+    "code": "561750",
+    "name": "A50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.9
+  },
+  {
+    "code": "159948",
+    "name": "创业板ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 46.3
+  },
+  {
+    "code": "159326",
+    "name": "电网设备ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 316.5
+  },
+  {
+    "code": "159175",
+    "name": "电池ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.9
+  },
+  {
+    "code": "562390",
+    "name": "中药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 0.8
+  },
+  {
+    "code": "562050",
+    "name": "药ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 1.0
+  },
+  {
+    "code": "563960",
+    "name": "300质量ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 2.6
+  },
+  {
+    "code": "510720",
+    "name": "红利国企ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 22.0
+  },
+  {
+    "code": "159952",
+    "name": "创业板ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 104.9
+  },
+  {
+    "code": "560390",
+    "name": "电网设备ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 14.5
+  },
+  {
+    "code": "515650",
+    "name": "消费50ETF",
+    "missing_count": 4,
+    "missing_fields": [
+      "latest_price",
+      "return_1y",
+      "return_3y",
+      "max_drawdown_1y"
+    ],
+    "scale": 34.9
+  }
+]

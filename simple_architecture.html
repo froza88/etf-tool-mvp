@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF 工具 MVP - 极简数据架构设计 (2026-05-28)</title>
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .header p { font-size: 16px; opacity: 0.9; }
+
+        .container { max-width: 1400px; margin:0 auto; padding: 20px; }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 比喻说明 */
+        .analogy {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #1976d2;
+        }
+        .analogy h4 { color: #1976d2; margin-bottom: 10px; }
+        .analogy p { line-height: 1.8; }
+
+        /* 对比表格 */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .compare-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        .compare-table tr:hover { background: #f5f7fa; }
+        .compare-table .bad { background: #ffebee; }
+        .compare-table .good { background: #e8f5e9; }
+
+        /* 架构图 */
+        .arch-simple {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            color: white;
+        }
+        .arch-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .arch-desc { font-size: 14px; line-height: 1.8; }
+
+        /* 文件结构 */
+        .file-structure {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        .file-structure .comment { color: #7f8c8d; }
+        .file-structure .folder { color: #3498db; font-weight: 700; }
+        .file-structure .file { color: #2ecc71; }
+        .file-structure .size { color: #e74c3c; }
+
+        /* 标签 */
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        .tag-red { background: #ffebee; color: #c62828; }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+        .tag-yellow { background: #fff3e0; color: #e65100; }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 头部 -->
+<div class="header">
+    <h1>🚌 ETF 工具 MVP - 极简数据架构设计</h1>
+    <p>2026-05-28 22:11 | 用"公交车票价"比喻理解数据架构</p>
+</div>
+
+<div class="container">
+
+    <!-- 第1章：比喻解释 -->
+    <div class="section">
+        <div class="section-title">
+            <span>🚌</span>
+            <span>第1章：用"公交车票价"比喻理解数据架构</span>
+        </div>
+
+        <div class="analogy">
+            <h4>🚌 分段计价公交车（当前复杂架构）</h4>
+            <p><strong>现状</strong>：坐公交车，票价规则复杂：</p>
+            <ul style="margin-left:20px;margin-top:10px;line-height:2;">
+                <li>起步价：2 元（etf_standard_data.json）</li>
+                <li>每公里加价：0.5 元/公里（etf_merged_all_data.json）</li>
+                <li>夜间加价：+50%（etf_prices.json）</li>
+                <li>空调加价：+1 元（etf_prev_close.json）</li>
+                <li>刷卡折扣：-10%（etf_yingmi_metrics.json）</li>
+                <li>...</li>
+            </ul>
+            <p style="margin-top:15px;"><strong>问题</strong>：乘客（开发者）不知道该付多少钱，司机（程序）也不知道怎么算，容易出错！</p>
+        </div>
+
+        <div class="analogy" style="border-color: #2e7d32;background: #e8f5e9;">
+            <h4 style="color:#2e7d32;">🚄 高铁票价（目标简单架构）</h4>
+            <p><strong>目标</strong>：坐高铁，票价简单：</p>
+            <ul style="margin-left:20px;margin-top:10px;line-height:2;">
+                <li>北京→上海：<strong>固定 553 元</strong>（etf_standard_data.json，唯一权威源）</li>
+                <li>所有费用都包含在票价里（所有字段都在一个文件里）</li>
+                <li>没有隐藏费用（没有分散的 JSON 文件）</li>
+            </ul>
+            <p style="margin-top:15px;"><strong>优势</strong>：乘客（开发者）一看就懂，司机（程序）不会算错！</p>
+        </div>
+    </div>
+
+    <!-- 第2章：当前架构的问题 -->
+    <div class="section">
+        <div class="section-title">
+            <span>❌</span>
+            <span>第2章：当前架构的问题（像分段计价公交车）</span>
+        </div>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>问题</th>
+                    <th>当前架构（复杂）</th>
+                    <th>后果</th>
+                    <th>应该怎么做</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bad">
+                    <td><strong>文件太多</strong></td>
+                    <td>15+ 个 JSON 文件并存</td>
+                    <td>不知道以哪个为准</td>
+                    <td class="good">只保留 1 个权威文件</td>
+                </tr>
+                <tr class="bad">
+                    <td><strong>数据分散</strong></td>
+                    <td>价格在 etf_prices.json，风险指标在 etf_yingmi_metrics.json</td>
+                    <td>修改一个文件，另一个不同步</td>
+                    <td class="good">所有数据都在 etf_standard_data.json</td>
+                </tr>
+                <tr class="bad">
+                    <td><strong>备份混乱</strong></td>
+                    <td>根目录 5+ 个备份文件，命名不规范</td>
+                    <td>不知道哪个备份是最新的</td>
+                    <td class="good">统一放 data/backup/，规范命名</td>
+                </tr>
+                <tr class="bad">
+                    <td><strong>更新策略错误</strong></td>
+                    <td>step_build() 全量重建（填表格）</td>
+                    <td>数据丢失（year_3_return 从 79.9% → 49.6%）</td>
+                    <td class="good">增量合并（搭积木）</td>
+                </tr>
+                <tr class="bad">
+                    <td><strong>无版本追踪</strong></td>
+                    <td>data_version.json 过期（5月21日）</td>
+                    <td>不知道数据是什么时候的</td>
+                    <td class="good">每次更新都更新版本号</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 第3章：极简架构设计 -->
+    <div class="section">
+        <div class="section-title">
+            <span>✅</span>
+            <span>第3章：极简架构设计（像高铁票价）</span>
+        </div>
+
+        <div class="arch-simple">
+            <div class="arch-title">🚄 极简架构：1 个权威文件 + 规范目录结构</div>
+            <div class="arch-desc">
+                <p><strong>核心原则</strong>：</p>
+                <ul style="margin-left:20px;margin-top:10px;line-height:2;">
+                    <li>✅ <strong>1 个权威文件</strong>：etf_standard_data.json（所有数据都在这里）</li>
+                    <li>✅ <strong>0 个冗余文件</strong>：删除所有其他 JSON 文件（etf_merged_all_data.json 等）</li>
+                    <li>✅ <strong>规范目录</strong>：data/ 目录存放所有数据相关文件</li>
+                    <li>✅ <strong>增量合并</strong>：step_build() 改为"搭积木"模式</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="file-structure">
+<span class="comment"># 极简架构的目录结构</span>
+<span class="folder">etf-tool-mvp/</span>
+├── <span class="file">etf_standard_data.json</span>          <span class="size"># [权威源] 1.7MB，包含所有ETF的所有数据</span>
+├── <span class="folder">data/</span>
+│   ├── <span class="folder">backup/</span>                   <span class="comment"># 备份文件（7天日备 + 4周周备）</span>
+│   │   ├── <span class="file">etf_standard_data_20260528.json</span>
+│   │   ├── <span class="file">etf_standard_data_20260527.json</span>
+│   │   └── <span class="file">...</span>
+│   ├── <span class="folder">history/</span>                 <span class="comment"># 历史K线数据（每ETF一个文件）</span>
+│   │   ├── <span class="file">510300.json</span>
+│   │   ├── <span class="file">510500.json</span>
+│   │   └── <span class="file">...</span>
+│   ├── <span class="folder">cache/</span>                   <span class="comment"># 临时缓存（可删除）</span>
+│   │   └── <span class="file">...</span>
+│   └── <span class="file">data_version.json</span>          <span class="size"># 数据版本信息</span>
+└── <span class="comment"># 其他文件...</span>
+
+<span class="comment"># 删除的文件（冗余）：</span>
+<span class="comment"># - etf_merged_all_data.json (20MB) ❌ 冗余</span>
+<span class="comment"># - etf_data_generated.json (1.1MB) ❌ 冗余</span>
+<span class="comment"># - etf_calculated_metrics.json (499KB) ❌ 冗余</span>
+<span class="comment"># - etf_yingmi_metrics.json ❌ 冗余</span>
+<span class="comment"># - etf_risk_metrics.json (空) ❌ 废弃</span>
+<span class="comment"># - etf_prices.json (过期) ❌ 冗余</span>
+<span class="comment"># - etf_prev_close.json (过期) ❌ 冗余</span>
+        </div>
+
+        <div style="background: #fff3e0;border-radius: 8px;padding: 20px;margin-top: 20px;">
+            <h4 style="color: #e65100;margin-bottom: 15px;">📋 etf_standard_data.json 的结构（极简版）</h4>
+            <div class="file-structure" style="background: #2c3e50;">
+<span style="color: #3498db;">[</span>  <span style="color: #7f8c8d;">// 数组，每只ETF一个对象</span>
+  <span style="color: #2ecc71;">{</span>
+    <span style="color: #e74c3c;">"code"</span>: <span style="color: #f1c40f;">"510300"</span>,           <span style="color: #7f8c8d;">// [长期不变] ETF代码</span>
+    <span style="color: #e74c3c;">"name"</span>: <span style="color: #f1c40f;">"沪深300ETF"</span>,     <span style="color: #7f8c8d;">// [长期不变] ETF名称</span>
+    <span style="color: #e74c3c;">"issuer"</span>: <span style="color: #f1c40f;">"华泰柏瑞"</span>,       <span style="color: #7f8c8d;">// [长期不变] 基金管理人</span>
+
+    <span style="color: #e74c3c;">"close"</span>: <span style="color: #3498db;">4.852</span>,             <span style="color: #7f8c8d;">// [日度变化] 收盘价</span>
+    <span style="color: #e74c3c;">"change_pct"</span>: <span style="color: #3498db;">0.064</span>,     <span style="color: #7f8c8d;">// [日度变化] 涨跌幅%</span>
+    <span style="color: #e74c3c;">"scale"</span>: <span style="color: #3498db;">2456.7</span>,           <span style="color: #7f8c8d;">// [日度变化] 规模（亿元）</span>
+
+    <span style="color: #e74c3c;">"year_1_return"</span>: <span style="color: #3498db;">12.34</span>,  <span style="color: #7f8c8d;">// [年度变化] 1年收益率%</span>
+    <span style="color: #e74c3c;">"year_3_return"</span>: <span style="color: #3498db;">45.67</span>, <span style="color: #7f8c8d;">// [年度变化] 3年收益率%</span>
+
+    <span style="color: #e74c3c;">"sharpe_ratio"</span>: <span style="color: #3498db;">1.23</span>,    <span style="color: #7f8c8d;">// [计算指标] 夏普比率</span>
+    <span style="color: #e74c3c;">"max_drawdown"</span>: <span style="color: #3498db;">-21.8</span>,  <span style="color: #7f8c8d;">// [计算指标] 最大回撤%</span>
+
+    <span style="color: #e74c3c;">"top_holdings"</span>: <span style="color: #2ecc71;">[</span>...<span style="color: #2ecc71;">]</span>,     <span style="color: #7f8c8d;">// [季度变化] 前十大持仓</span>
+
+    <span style="color: #e74c3c;">"prices"</span>: <span style="color: #2ecc71;">[</span>0.832, 0.829, ...<span style="color: #2ecc71;">]</span>  <span style="color: #7f8c8d;">// [历史数据] 历史价格（可选，为了性能可以单独文件）</span>
+  <span style="color: #2ecc71;">}</span>
+<span style="color: #3498db;">]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第4章：实施计划（P0，立即开始） -->
+    <div class="section">
+        <div class="section-title">
+            <span>🔧</span>
+            <span>第4章：实施计划（P0，立即开始）</span>
+        </div>
+
+        <div style="background: #ffebee;border-radius: 8px;padding: 20px;margin-bottom: 20px;">
+            <h4 style="color: #c62828;margin-bottom: 15px;">⚠️ 风险提示</h4>
+            <p>此操作会<strong>删除多个文件</strong>，修改核心逻辑。必须：</p>
+            <ol style="margin-left:20px;margin-top:10px;line-height:2;">
+                <li>✅ 先完整备份当前所有数据</li>
+                <li>✅ 在测试环境验证后再部署到生产环境</li>
+                <li>✅ 保留回滚方案（可以随时恢复到备份）</li>
+            </ol>
+        </div>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>步骤</th>
+                    <th>操作</th>
+                    <th>文件/命令</th>
+                    <th>预计时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #ffebee;">
+                    <td><strong>1. 备份</strong></td>
+                    <td>备份当前所有数据到 data/backup/20260528_full/</td>
+                    <td><code>cp -r *.json data/backup/20260528_full/</code></td>
+                    <td>5 分钟</td>
+                </tr>
+                <tr style="background: #ffebee;">
+                    <td><strong>2. 恢复</strong></td>
+                    <td>从最新备份恢复 etf_standard_data.json</td>
+                    <td><code>cp data/backup/etf_standard_data_20260521_131816.json etf_standard_data.json</code></td>
+                    <td>2 分钟</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>3. 修复</strong></td>
+                    <td>修改 pipeline.py 的 step_build() 为增量合并</td>
+                    <td>编辑 pipeline.py</td>
+                    <td>30 分钟</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>4. 测试</strong></td>
+                    <td>运行 pipeline build，检查数据是否丢失</td>
+                    <td><code>python3 pipeline.py build</code></td>
+                    <td>10 分钟</td>
+                </tr>
+                <tr style="background: #e8f5e9;">
+                    <td><strong>5. 删除冗余</strong></td>
+                    <td>删除 etf_merged_all_data.json 等文件</td>
+                    <td><code>rm etf_merged_all_data.json etf_data_generated.json ...</code></td>
+                    <td>5 分钟</td>
+                </tr>
+                <tr style="background: #e8f5e9;">
+                    <td><strong>6. 部署</strong></td>
+                    <td>推送到 GitHub + PythonAnywhere 部署</td>
+                    <td><code>git push</code> + PA 部署</td>
+                    <td>15 分钟</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="background: #e8f5e9;border-radius: 8px;padding: 20px;margin-top: 20px;">
+            <h4 style="color: #2e7d32;margin-bottom: 15px;">✅ 完成标准</h4>
+            <ul style="line-height: 2;">
+                <li>✅ etf_standard_data.json 是唯一权威源（其他 JSON 文件已删除或归档）</li>
+                <li>✅ pipeline.py 的 step_build() 改为增量合并（搭积木）</li>
+                <li>✅ 数据完整性检查：所有字段覆盖率 ≥99%</li>
+                <li>✅ 线上部署成功，前端展示正常</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+    <p>ETF 工具 MVP - 极简数据架构设计</p>
+    <p>生成时间：2026-05-28 22:11 | 版本：v1.0</p>
+    <p style="margin-top:10px;font-size:12px;">此文档为技术方案，实际实施时请根据最新情况调整。</p>
+</div>
+
+</body>
+</html>

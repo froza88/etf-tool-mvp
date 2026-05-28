@@ -218,20 +218,37 @@ def main():
     # 按规模降序排列
     etfs_sorted = sorted(etfs, key=lambda x: x.get("scale", 0) or 0, reverse=True)
     
-    # 过滤已有历史
+    # 过滤已有历史（检查条数是否足够）
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-    existing = set(f.stem for f in HISTORY_DIR.glob("*.json"))
+    existing = set()
+    insufficient = set()  # 条数不足的需要重新拉取
+    MIN_COUNT = 756  # 至少756条才能算3年收益率
+    
+    for f in HISTORY_DIR.glob("*.json"):
+        try:
+            with open(f) as fh:
+                h = json.load(fh)
+            count = h.get("count", 0)
+            if count >= MIN_COUNT:
+                existing.add(f.stem)
+            else:
+                insufficient.add(f.stem)
+                print(f"  ⚠️  {f.stem}.json 只有 {count} 条（需{MIN_COUNT}条），将重新拉取")
+        except:
+            insufficient.add(f.stem)
+    
+    if insufficient:
+        print(f"  📊 条数不足需重拉: {len(insufficient)} 只")
     
     # 如果恢复模式，加载进度
     completed = load_progress() if resume else set()
     if resume:
         print(f"📂 恢复模式：已加载 {len(completed)} 只已完成ETF")
-        # 从 existing 和 completed 中移除已完成的
         existing = existing.union(completed)
     
     pending = []
     for etf in etfs_sorted:
-        if etf["code"] not in existing:
+        if etf["code"] not in existing or etf["code"] in insufficient:
             pending.append(etf)
     
     # 限制数量

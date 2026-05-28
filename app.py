@@ -138,6 +138,17 @@ def etf_detail(code):
     # 标记数据来源
     etf['_price_source'] = 'local_cache'
 
+    # 数据更新时间：优先用 etf.updated，否则用数据文件修改时间
+    data_updated = etf.get('updated', '')
+    if not data_updated:
+        try:
+            import time
+            mtime = os.path.getmtime(etf_data.STANDARD_DATA_FILE)
+            data_updated = time.strftime("%Y-%m-%d %H:%M", time.localtime(mtime))
+        except Exception:
+            data_updated = ''
+    etf['_data_updated'] = data_updated
+
     return render_template('detail.html', etf=etf)
 
 
@@ -231,11 +242,34 @@ def update_l1_cache_from_l2(etfs_l2):
             code = etf_l2.get("code", "")
             if code in l1_by_code:
                 l1_etf = l1_by_code[code]
-                # 更新关键字段（scale, close, change_pct 等）
+                # 更新关键字段（scale, close, change_pct 等），带范围验证
                 fields_to_update = ["scale", "close", "change_pct", "prev_close", "volume"]
                 for field in fields_to_update:
                     if field in etf_l2:
-                        l1_etf[field] = etf_l2[field]
+                        val = etf_l2[field]
+                        # 范围验证：防止错误数据污染 L1 缓存
+                        if field == "scale" and isinstance(val, (int, float)):
+                            if 1e6 <= val <= 1e12:  # 100万 ~ 1万亿
+                                l1_etf[field] = val
+                            else:
+                                print(f"[L1 Cache] {code} scale={val} 超出范围，跳过", file=sys.stderr)
+                        elif field == "close" and isinstance(val, (int, float)):
+                            if 0.1 <= val <= 100:  # ETF 价格合理范围
+                                l1_etf[field] = val
+                            else:
+                                print(f"[L1 Cache] {code} close={val} 超出范围，跳过", file=sys.stderr)
+                        elif field == "change_pct" and isinstance(val, (int, float)):
+                            if -20 <= val <= 20:  # 涨跌幅 -20% ~ +20%
+                                l1_etf[field] = val
+                            else:
+                                print(f"[L1 Cache] {code} change_pct={val} 超出范围，跳过", file=sys.stderr)
+                        elif field == "volume" and isinstance(val, (int, float)):
+                            if val >= 0:  # 成交量必须非负
+                                l1_etf[field] = val
+                            else:
+                                print(f"[L1 Cache] {code} volume={val} 超出范围，跳过", file=sys.stderr)
+                        else:
+                            l1_etf[field] = val  # 其他字段直接更新
                 updated_count += 1
         
         # 3. 保存 L1 缓存

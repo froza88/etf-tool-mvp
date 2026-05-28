@@ -163,10 +163,11 @@ def map_westock_to_our(westock_etf):
     except:
         our['change_pct'] = 0
     
+    # turnoverVolume 是换手率（%），不是成交额
     try:
-        our['volume'] = float(westock_etf.get('turnoverVolume', 0))
+        our['turnover_rate'] = float(westock_etf.get('turnoverVolume', 0))
     except:
-        our['volume'] = 0
+        our['turnover_rate'] = 0
     
     # 规模数据（元 → 亿元）
     try:

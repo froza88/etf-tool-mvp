@@ -1,5 +1,31 @@
 # ETF 每日数据更新 - 执行历史
 
+## 2026-05-28
+
+### 执行摘要
+- **状态**: 成功
+- **时间**: 03:05 - 03:20
+
+### 各步骤状态
+
+| 步骤 | 状态 | 说明 |
+|------|------|------|
+| 1. pipeline.py --push --no-wind | 成功 | AKShare sync → enrich → calc → build → deploy 完成 |
+| 2. wequote_daily.py | 成功 | WeStock 补充行情完成，但 etf_standard_data.json 无实际变化 |
+| 3. git commit + push | 跳过 | 无数据变化，无需提交 |
+| 4. PA 同步 curl | 失败(401) | 未授权，连续 4 天 |
+
+### 数据更新
+- Pipeline: 1480 只 ETF，git push 成功（两次 deploy commit）
+- WeStock: quote 查询 1480 个字段，etf 查询约 1184 个字段，但值与 pipeline 一致未产生 diff
+- Git: pipeline 提交 2 次（data/meta.json 等仍有未提交修改）
+
+### 问题
+- PA 同步返回 401 Unauthorized（连续 4 天），需检查 PythonAnywhere API 认证
+- 工作区剩余 data/meta.json 未提交（pipeline deploy 后又被更新）
+
+---
+
 ## 2026-05-27
 
 ### 执行摘要

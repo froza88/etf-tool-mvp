@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baostock ETF对比工具</title>
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin:0 auto; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .input-section { margin-bottom: 20px; }
+        .input-section label { display: block; margin-bottom: 5px; font-weight: 500; }
+        .input-section input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        .input-section button { margin-top: 10px; padding: 10px 20px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .input-section button:hover { background: #40a9ff; }
+        .input-section .hint { font-size: 12px; color: #999; margin-top: 5px; }
+        .result-section { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; font-weight: 600; position: sticky; top: 0; cursor: pointer; }
+        th:hover { background: #f0f0f0; }
+        tr:hover { background: #f5f5f5; }
+        .number { font-family: "Times New Roman", serif; text-align: right; }
+        .positive { color: #f5222d; }
+        .negative { color: #52c41a; }
+        .loading { text-align: center; padding: 20px; color: #999; }
+        .error { background: #fff2f0; border: 1px solid #ffccc7; border-radius: 4px; padding: 10px; color: #ff4d4f; margin-top: 10px; }
+        .info { background: #e6f7ff; border: 1px solid #91d5ff; border-radius: 4px; padding: 10px; color: #1890ff; margin-top: 10px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Baostock ETF 对比工具</h1>
+        <div class="subtitle">数据源：Baostock - 日线数据、财务指标、本地Parquet存储、增量更新</div>
+        
+        <div class="input-section">
+            <label>ETF代码（逗号分隔）：</label>
+            <input type="text" id="etfCodes" placeholder="例如：sh.510300, sh.510500" value="sh.510300, sh.510500" />
+            <div class="hint">请输入ETF代码（带交易所前缀sh/sz），多个代码用逗号分隔</div>
+            <button onclick="compareEtfs()">对比</button>
+        </div>
+        
+        <div id="infoBox" class="info" style="display:none;"></div>
+        <div id="errorBox" class="error" style="display:none;"></div>
+        
+        <div class="result-section" id="resultSection" style="display:none;">
+            <table id="comparisonTable">
+                <thead id="tableHeader"></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="loading" id="loading" style="display:none;">加载中...</div>
+    </div>
+
+    <script>
+        // ========== 配置区 ==========
+        const DATA_SOURCE = "Baostock";
+        const API_ENDPOINT = "/api/baostock/etf/compare";  // 真实API地址（可选）
+        const USE_MOCK = true;  // true=使用模拟数据，false=调用真实API
+        
+        // 模拟数据（Baostock提供的ETF对比字段）
+        const MOCK_DATA = {
+            "success": true,
+            "count": 2,
+            "data": [
+                {
+                    "代码": "sh.510300",
+                    "名称": "沪深300ETF",
+                    "日期": "2026-05-29",
+                    "开盘价": 3.98,
+                    "最高价": 4.07,
+                    "最低价": 3.97,
+                    "收盘价": 4.05,
+                    "涨跌幅": 2.02,
+                    "成交量": 1250111500,
+                    "成交额": 5.05e+09,
+                    "换手率": 5.1,
+                    "总市值": 1.82e+11,
+                    "流通市值": 1.82e+11,
+                    "市盈率PE": 12.5,
+                    "市净率PB": 1.45,
+                    "市销率PS": 1.2,
+                    "净资产收益率ROE": 8.5,
+                    "总资产报酬率ROA": 5.2,
+                    "资产负债率": 45.2
+                },
+                {
+                    "代码": "sh.510500",
+                    "名称": "中证500ETF",
+                    "日期": "2026-05-29",
+                    "开盘价": 6.72,
+                    "最高价": 6.85,
+                    "最低价": 6.70,
+                    "收盘价": 6.82,
+                    "涨跌幅": 1.79,
+                    "成交量": 890056000,
+                    "成交额": 6.1e+09,
+                    "换手率": 4.8,
+                    "总市值": 8.18e+10,
+                    "流通市值": 8.18e+10,
+                    "市盈率PE": 22.3,
+                    "市净率PB": 1.85,
+                    "市销率PS": 1.8,
+                    "净资产收益率ROE": 6.2,
+                    "总资产报酬率ROA": 3.8,
+                    "资产负债率": 52.5
+                }
+            ],
+            "fields": ["代码", "名称", "日期", "开盘价", "最高价", "最低价", "收盘价", "涨跌幅", "成交量", "成交额", "换手率", "总市值", "流通市值", "市盈率PE", "市净率PB", "市销率PS", "净资产收益率ROE", "总资产报酬率ROA", "资产负债率"],
+            "update_time": new Date().toISOString()
+        };
+        
+        // ========== 主逻辑 ==========
+        async function compareEtfs() {
+            const codesInput = document.getElementById('etfCodes').value;
+            const codes = codesInput.split(',').map(c => c.trim()).filter(c => c);
+            
+            if (codes.length === 0) {
+                showError('请输入至少一个ETF代码');
+                return;
+            }
+            
+            showLoading(true);
+            hideError();
+            
+            try {
+                let data;
+                if (USE_MOCK) {
+                    data = generateMockData(codes);
+                } else {
+                    data = await fetchRealData(codes);
+                }
+                
+                renderTable(data);
+                showInfo(`成功对比 ${data.count} 只ETF，数据更新时间：${new Date(data.update_time).toLocaleString()}`);
+            } catch (error) {
+                showError('对比失败：' + error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // 生成模拟数据
+        function generateMockData(codes) {
+            const mockEtfs = MOCK_DATA.data || [];
+            const selectedData = codes.map(code => {
+                const found = mockEtfs.find(etf => etf['代码'] === code);
+                if (found) return found;
+                // 生成随机数据
+                return generateRandomEtfData(code);
+            });
+            
+            return {
+                success: true,
+                count: selectedData.length,
+                data: selectedData,
+                fields: MOCK_DATA.fields || Object.keys(selectedData[0]),
+                update_time: new Date().toISOString()
+            };
+        }
+        
+        // 生成随机ETF数据（Baostock字段）
+        function generateRandomEtfData(code) {
+            return {
+                "代码": code,
+                "名称": "ETF_" + code.split('.')[1],
+                "日期": "2026-05-29",
+                "开盘价": Math.random() * 10 + 1,
+                "最高价": Math.random() * 10 + 1.5,
+                "最低价": Math.random() * 10 + 0.5,
+                "收盘价": Math.random() * 10 + 1,
+                "涨跌幅": (Math.random() - 0.5) * 5,
+                "成交量": Math.random() * 1e9,
+                "成交额": Math.random() * 1e10,
+                "换手率": Math.random() * 10,
+                "总市值": Math.random() * 1e11,
+                "流通市值": Math.random() * 1e11,
+                "市盈率PE": Math.random() * 30 + 5,
+                "市净率PB": Math.random() * 3 + 1,
+                "市销率PS": Math.random() * 5 + 0.5,
+                "净资产收益率ROE": Math.random() * 15,
+                "总资产报酬率ROA": Math.random() * 10,
+                "资产负债率": Math.random() * 60 + 20
+            };
+        }
+        
+        // 调用真实API
+        async function fetchRealData(codes) {
+            const response = await fetch(`${API_ENDPOINT}?codes=${codes.join(',')}`);
+            if (!response.ok) throw new Error('API请求失败');
+            return await response.json();
+        }
+        
+        // 渲染表格
+        function renderTable(data) {
+            const fields = data.fields;
+            const etfs = data.data;
+            
+            // 渲染表头
+            const headerHtml = '<tr>' + fields.map(f => `<th onclick="sortTable('${f}')">${f} ↕</th>`).join('') + '</tr>';
+            document.getElementById('tableHeader').innerHTML = headerHtml;
+            
+            // 渲染数据行
+            const bodyHtml = etfs.map(etf => {
+                return '<tr>' + fields.map(f => {
+                    const value = etf[f];
+                    const cssClass = getCellClass(f, value);
+                    const display = formatCellValue(f, value);
+                    return `<td class="${cssClass}">${display}</td>`;
+                }).join('') + '</tr>';
+            }).join('');
+            document.getElementById('tableBody').innerHTML = bodyHtml;
+            
+            document.getElementById('resultSection').style.display = 'block';
+        }
+        
+        // 获取单元格CSS类
+        function getCellClass(field, value) {
+            if (typeof value === 'number') return 'number';
+            if (field.includes('涨') || field.includes('跌') || field.includes('回撤')) {
+                return value > 0 ? 'positive' : 'negative';
+            }
+            return '';
+        }
+        
+        // 格式化单元格值
+        function formatCellValue(field, value) {
+            if (value === null || value === undefined) return '-';
+            if (typeof value === 'number') {
+                if (field.includes('市值') || field.includes('额') || field.includes('资产')) {
+                    return value.toLocaleString('zh-CN', { maximumFractionDigits: 2 });
+                }
+                if (field.includes('率') || field.includes('幅') || field.includes('比')) {
+                    return (value * 100).toFixed(2) + '%';
+                }
+                return value.toFixed(2);
+            }
+            return value;
+        }
+        
+        // 排序
+        let sortField = null;
+        let sortAsc = true;
+        function sortTable(field) {
+            alert(`按 ${field} 排序（演示版，未实现）`);
+        }
+        
+        // UI辅助函数
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+        function showError(msg) {
+            const box = document.getElementById('errorBox');
+            box.textContent = msg;
+            box.style.display = 'block';
+        }
+        function hideError() {
+            document.getElementById('errorBox').style.display = 'none';
+        }
+        function showInfo(msg) {
+            const box = document.getElementById('infoBox');
+            box.textContent = msg;
+            box.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

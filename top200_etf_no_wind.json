@@ -1,0 +1,292 @@
+[
+  {
+    "code": "560830",
+    "name": "电力ETF",
+    "scale": 9.9
+  },
+  {
+    "code": "560460",
+    "name": "电力ETF",
+    "scale": 5.6
+  },
+  {
+    "code": "159010",
+    "name": "港股通科技ETF",
+    "scale": 4.5
+  },
+  {
+    "code": "159030",
+    "name": "粮食ETF",
+    "scale": 3.8
+  },
+  {
+    "code": "159016",
+    "name": "证券ETF",
+    "scale": 3.7
+  },
+  {
+    "code": "560250",
+    "name": "红利质量ETF",
+    "scale": 3.4
+  },
+  {
+    "code": "560450",
+    "name": "电力ETF",
+    "scale": 3.2
+  },
+  {
+    "code": "159035",
+    "name": "软件ETF",
+    "scale": 3.2
+  },
+  {
+    "code": "561050",
+    "name": "稀有金属ETF",
+    "scale": 3.2
+  },
+  {
+    "code": "588480",
+    "name": "科创创业人工智能ETF",
+    "scale": 3.1
+  },
+  {
+    "code": "159021",
+    "name": "大盘价值ETF",
+    "scale": 3.0
+  },
+  {
+    "code": "159029",
+    "name": "有色ETF",
+    "scale": 3.0
+  },
+  {
+    "code": "159193",
+    "name": "新能源电池ETF",
+    "scale": 2.9
+  },
+  {
+    "code": "560790",
+    "name": "软件ETF",
+    "scale": 2.9
+  },
+  {
+    "code": "520730",
+    "name": "港股通汽车ETF",
+    "scale": 2.5
+  },
+  {
+    "code": "560490",
+    "name": "工业有色ETF",
+    "scale": 2.5
+  },
+  {
+    "code": "560320",
+    "name": "食品ETF",
+    "scale": 2.3
+  },
+  {
+    "code": "159027",
+    "name": "畜牧养殖ETF",
+    "scale": 2.2
+  },
+  {
+    "code": "159032",
+    "name": "工业有色ETF",
+    "scale": 2.2
+  },
+  {
+    "code": "159008",
+    "name": "证券ETF",
+    "scale": 2.1
+  },
+  {
+    "code": "159038",
+    "name": "粮食ETF",
+    "scale": 2.1
+  },
+  {
+    "code": "159015",
+    "name": "恒生港股通科技ETF",
+    "scale": 2.1
+  },
+  {
+    "code": "159007",
+    "name": "养殖ETF",
+    "scale": 2.1
+  },
+  {
+    "code": "159028",
+    "name": "港股汽车ETF",
+    "scale": 2.1
+  },
+  {
+    "code": "560930",
+    "name": "电力ETF",
+    "scale": 1.9
+  },
+  {
+    "code": "560910",
+    "name": "电池ETF",
+    "scale": 1.9
+  },
+  {
+    "code": "513620",
+    "name": "港股医疗ETF",
+    "scale": 1.9
+  },
+  {
+    "code": "159017",
+    "name": "石油ETF",
+    "scale": 1.9
+  },
+  {
+    "code": "560870",
+    "name": "工业有色ETF",
+    "scale": 1.9
+  },
+  {
+    "code": "560420",
+    "name": "食品ETF",
+    "scale": 1.8
+  },
+  {
+    "code": "560480",
+    "name": "电力ETF",
+    "scale": 1.7
+  },
+  {
+    "code": "159022",
+    "name": "科创创业人工智能ETF",
+    "scale": 1.6
+  },
+  {
+    "code": "512140",
+    "name": "电力ETF",
+    "scale": 1.5
+  },
+  {
+    "code": "159012",
+    "name": "科创创业50ETF",
+    "scale": 1.5
+  },
+  {
+    "code": "516840",
+    "name": "汽车ETF",
+    "scale": 1.5
+  },
+  {
+    "code": "513240",
+    "name": "港股通信息技术ETF",
+    "scale": 1.3
+  },
+  {
+    "code": "159186",
+    "name": "港股通汽车ETF",
+    "scale": 1.2
+  },
+  {
+    "code": "159013",
+    "name": "工业互联网ETF",
+    "scale": 1.1
+  },
+  {
+    "code": "159199",
+    "name": "石油ETF",
+    "scale": 1.1
+  },
+  {
+    "code": "560470",
+    "name": "有色ETF",
+    "scale": 1.1
+  },
+  {
+    "code": "526010",
+    "name": "港股通医疗ETF",
+    "scale": 1.0
+  },
+  {
+    "code": "589280",
+    "name": "科创增强ETF",
+    "scale": 1.0
+  },
+  {
+    "code": "159020",
+    "name": "养殖ETF",
+    "scale": 1.0
+  },
+  {
+    "code": "560410",
+    "name": "电池ETF",
+    "scale": 0.9
+  },
+  {
+    "code": "159192",
+    "name": "家电ETF",
+    "scale": 0.8
+  },
+  {
+    "code": "159009",
+    "name": "创业板新能源ETF",
+    "scale": 0.7
+  },
+  {
+    "code": "159178",
+    "name": "消费电子ETF",
+    "scale": 0.7
+  },
+  {
+    "code": "159188",
+    "name": "红利100ETF",
+    "scale": 0.7
+  },
+  {
+    "code": "159185",
+    "name": "港股通信息技术ETF",
+    "scale": 0.7
+  },
+  {
+    "code": "159019",
+    "name": "石油ETF",
+    "scale": 0.7
+  },
+  {
+    "code": "159026",
+    "name": "石油ETF",
+    "scale": 0.7
+  },
+  {
+    "code": "512430",
+    "name": "家居家电ETF",
+    "scale": 0.6
+  },
+  {
+    "code": "159018",
+    "name": "石油ETF",
+    "scale": 0.6
+  },
+  {
+    "code": "589270",
+    "name": "科创100ETF",
+    "scale": 0.5
+  },
+  {
+    "code": "526050",
+    "name": "港股通信息技术ETF",
+    "scale": 0.5
+  },
+  {
+    "code": "526000",
+    "name": "港股通信息技术ETF",
+    "scale": 0.5
+  },
+  {
+    "code": "159182",
+    "name": "家电ETF",
+    "scale": 0.4
+  },
+  {
+    "code": "515640",
+    "name": "家电ETF",
+    "scale": 0.3
+  }
+]

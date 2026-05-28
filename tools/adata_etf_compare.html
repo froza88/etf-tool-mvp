@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adata ETF对比工具</title>
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin:0 auto; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .input-section { margin-bottom: 20px; }
+        .input-section label { display: block; margin-bottom: 5px; font-weight: 500; }
+        .input-section input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        .input-section button { margin-top: 10px; padding: 10px 20px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .input-section button:hover { background: #40a9ff; }
+        .input-section .hint { font-size: 12px; color: #999; margin-top: 5px; }
+        .result-section { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; font-weight: 600; position: sticky; top: 0; cursor: pointer; }
+        th:hover { background: #f0f0f0; }
+        tr:hover { background: #f5f5f5; }
+        .number { font-family: "Times New Roman", serif; text-align: right; }
+        .positive { color: #f5222d; }
+        .negative { color: #52c41a; }
+        .loading { text-align: center; padding: 20px; color: #999; }
+        .error { background: #fff2f0; border: 1px solid #ffccc7; border-radius: 4px; padding: 10px; color: #ff4d4f; margin-top: 10px; }
+        .info { background: #e6f7ff; border: 1px solid #91d5ff; border-radius: 4px; padding: 10px; color: #1890ff; margin-top: 10px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>adata ETF 对比工具</h1>
+        <div class="subtitle">数据源：adata - 多源融合、代理支持、免费开源</div>
+        
+        <div class="input-section">
+            <label>ETF代码（逗号分隔）：</label>
+            <input type="text" id="etfCodes" placeholder="例如：510300, 510500" value="510300, 510500" />
+            <div class="hint">请输入ETF代码（不带前缀），多个代码用逗号分隔。adata自动选择最优数据源。</div>
+            <button onclick="compareEtfs()">对比</button>
+        </div>
+        
+        <div id="infoBox" class="info" style="display:none;"></div>
+        <div id="errorBox" class="error" style="display:none;"></div>
+        
+        <div class="result-section" id="resultSection" style="display:none;">
+            <table id="comparisonTable">
+                <thead id="tableHeader"></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="loading" id="loading" style="display:none;">加载中...</div>
+    </div>
+
+    <script>
+        // ========== 配置区 ==========
+        const DATA_SOURCE = "adata";
+        const API_ENDPOINT = "/api/adata/etf/compare";  // 真实API地址（可选）
+        const USE_MOCK = true;  // true=使用模拟数据，false=调用真实API
+        
+        // 模拟数据（adata提供的ETF对比字段 - 多源融合）
+        const MOCK_DATA = {
+            "success": true,
+            "count": 2,
+            "data": [
+                {
+                    "代码": "510300",
+                    "名称": "沪深300ETF",
+                    "最新价": 4.05,
+                    "涨跌幅": 2.02,
+                    "成交额": 5.05e+09,
+                    "换手率": 5.1,
+                    "市盈率PE": 12.5,
+                    "市净率PB": 1.45,
+                    "股息率": 2.1,
+                    "总市值": 1.82e+11,
+                    "份额": 4.5e+10,
+                    "近1月涨幅": 3.5,
+                    "近3月涨幅": 8.2,
+                    "近6月涨幅": 12.5,
+                    "近1年涨幅": 15.8,
+                    "波动率": 18.5,
+                    "夏普比率": 0.85,
+                    "最大回撤": -25.2,
+                    "数据来源": "akshare+eastmoney"
+                },
+                {
+                    "代码": "510500",
+                    "名称": "中证500ETF",
+                    "最新价": 6.82,
+                    "涨跌幅": 1.79,
+                    "成交额": 6.1e+09,
+                    "换手率": 4.8,
+                    "市盈率PE": 22.3,
+                    "市净率PB": 1.85,
+                    "股息率": 1.5,
+                    "总市值": 8.18e+10,
+                    "份额": 1.2e+10,
+                    "近1月涨幅": 2.8,
+                    "近3月涨幅": 6.5,
+                    "近6月涨幅": 10.2,
+                    "近1年涨幅": 12.3,
+                    "波动率": 22.8,
+                    "夏普比率": 0.72,
+                    "最大回撤": -30.5,
+                    "数据来源": "tushare+akshare"
+                }
+            ],
+            "fields": ["代码", "名称", "最新价", "涨跌幅", "成交额", "换手率", "市盈率PE", "市净率PB", "股息率", "总市值", "份额", "近1月涨幅", "近3月涨幅", "近6月涨幅", "近1年涨幅", "波动率", "夏普比率", "最大回撤", "数据来源"],
+            "update_time": new Date().toISOString()
+        };
+        
+        // ========== 主逻辑 ==========
+        async function compareEtfs() {
+            const codesInput = document.getElementById('etfCodes').value;
+            const codes = codesInput.split(',').map(c => c.trim()).filter(c => c);
+            
+            if (codes.length === 0) {
+                showError('请输入至少一个ETF代码');
+                return;
+            }
+            
+            showLoading(true);
+            hideError();
+            
+            try {
+                let data;
+                if (USE_MOCK) {
+                    data = generateMockData(codes);
+                } else {
+                    data = await fetchRealData(codes);
+                }
+                
+                renderTable(data);
+                showInfo(`成功对比 ${data.count} 只ETF，数据更新时间：${new Date(data.update_time).toLocaleString()}`);
+            } catch (error) {
+                showError('对比失败：' + error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // 生成模拟数据
+        function generateMockData(codes) {
+            const mockEtfs = MOCK_DATA.data || [];
+            const selectedData = codes.map(code => {
+                const found = mockEtfs.find(etf => etf['代码'] === code);
+                if (found) return found;
+                // 生成随机数据
+                return generateRandomEtfData(code);
+            });
+            
+            return {
+                success: true,
+                count: selectedData.length,
+                data: selectedData,
+                fields: MOCK_DATA.fields || Object.keys(selectedData[0]),
+                update_time: new Date().toISOString()
+            };
+        }
+        
+        // 生成随机ETF数据（adata字段 - 多源融合）
+        function generateRandomEtfData(code) {
+            const sources = ['akshare', 'eastmoney', 'tushare', 'akshare+eastmoney', 'tushare+akshare'];
+            return {
+                "代码": code,
+                "名称": "ETF_" + code,
+                "最新价": Math.random() * 10 + 1,
+                "涨跌幅": (Math.random() - 0.5) * 5,
+                "成交额": Math.random() * 1e10,
+                "换手率": Math.random() * 10,
+                "市盈率PE": Math.random() * 30 + 5,
+                "市净率PB": Math.random() * 3 + 1,
+                "股息率": Math.random() * 3,
+                "总市值": Math.random() * 1e11,
+                "份额": Math.random() * 1e10,
+                "近1月涨幅": (Math.random() - 0.5) * 10,
+                "近3月涨幅": (Math.random() - 0.5) * 20,
+                "近6月涨幅": (Math.random() - 0.5) * 30,
+                "近1年涨幅": (Math.random() - 0.5) * 50,
+                "波动率": Math.random() * 30 + 10,
+                "夏普比率": Math.random() * 1.5,
+                "最大回撤": -Math.random() * 40,
+                "数据来源": sources[Math.floor(Math.random() * sources.length)]
+            };
+        }
+        
+        // 调用真实API
+        async function fetchRealData(codes) {
+            const response = await fetch(`${API_ENDPOINT}?codes=${codes.join(',')}`);
+            if (!response.ok) throw new Error('API请求失败');
+            return await response.json();
+        }
+        
+        // 渲染表格
+        function renderTable(data) {
+            const fields = data.fields;
+            const etfs = data.data;
+            
+            // 渲染表头
+            const headerHtml = '<tr>' + fields.map(f => `<th onclick="sortTable('${f}')">${f} ↕</th>`).join('') + '</tr>';
+            document.getElementById('tableHeader').innerHTML = headerHtml;
+            
+            // 渲染数据行
+            const bodyHtml = etfs.map(etf => {
+                return '<tr>' + fields.map(f => {
+                    const value = etf[f];
+                    const cssClass = getCellClass(f, value);
+                    const display = formatCellValue(f, value);
+                    return `<td class="${cssClass}">${display}</td>`;
+                }).join('') + '</tr>';
+            }).join('');
+            document.getElementById('tableBody').innerHTML = bodyHtml;
+            
+            document.getElementById('resultSection').style.display = 'block';
+        }
+        
+        // 获取单元格CSS类
+        function getCellClass(field, value) {
+            if (typeof value === 'number') return 'number';
+            if (field.includes('涨') || field.includes('跌') || field.includes('回撤')) {
+                return value > 0 ? 'positive' : 'negative';
+            }
+            return '';
+        }
+        
+        // 格式化单元格值
+        function formatCellValue(field, value) {
+            if (value === null || value === undefined) return '-';
+            if (typeof value === 'number') {
+                if (field.includes('市值') || field.includes('额') || field.includes('份额')) {
+                    return value.toLocaleString('zh-CN', { maximumFractionDigits: 2 });
+                }
+                if (field.includes('率') || field.includes('幅') || field.includes('比')) {
+                    return (value * 100).toFixed(2) + '%';
+                }
+                return value.toFixed(2);
+            }
+            return value;
+        }
+        
+        // 排序
+        let sortField = null;
+        let sortAsc = true;
+        function sortTable(field) {
+            alert(`按 ${field} 排序（演示版，未实现）`);
+        }
+        
+        // UI辅助函数
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+        function showError(msg) {
+            const box = document.getElementById('errorBox');
+            box.textContent = msg;
+            box.style.display = 'block';
+        }
+        function hideError() {
+            document.getElementById('errorBox').style.display = 'none';
+        }
+        function showInfo(msg) {
+            const box = document.getElementById('infoBox');
+            box.textContent = msg;
+            box.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
