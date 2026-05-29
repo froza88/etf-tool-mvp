@@ -886,6 +886,81 @@ def api_ai_chat():
         return jsonify({'error': str(e)}), 500
 
 
+
+
+# ========== 工具类 API（对比工具后端代理）==========
+@app.route('/api/tools/akshare/etf-compare')
+def api_tools_akshare_etf_compare():
+    """
+    AKShare ETF 对比 API - 代理 AKShare 实时数据
+    前端对比工具调用此接口，后端调 AKShare 并返回数据（解决 CORS 问题）
+    """
+    codes = request.args.get('codes', '').split(',')
+    codes = [c.strip() for c in codes if c.strip()]
+    
+    if not codes:
+        return jsonify({'error': '请提供 ETF 代码', 'etfs': []}), 400
+    
+    try:
+        import akshare as ak
+        import pandas as pd
+        
+        # 调用 AKShare 获取 ETF 现货行情（东方财富数据源）
+        df = ak.fund_etf_spot_em()
+        
+        if df is None or len(df) == 0:
+            return jsonify({'error': 'AKShare 数据为空', 'etfs': []}), 500
+        
+        # 筛选指定代码
+        df['代码'] = df['代码'].astype(str).str.zfill(6)
+        mask = df['代码'].isin([c.zfill(6) for c in codes])
+        filtered = df[mask]
+        
+        if len(filtered) == 0:
+            return jsonify({
+                'error': f'未找到代码 {codes} 的 ETF 数据',
+                'etfs': [],
+                'available_count': len(df)
+            }), 404
+        
+        # 转换为前端需要的格式
+        etfs = []
+        for _, row in filtered.iterrows():
+            etf = {}
+            for col in row.index:
+                val = row[col]
+                if pd.isna(val):
+                    etf[col] = None
+                elif isinstance(val, (pd.Timestamp,)):
+                    etf[col] = str(val)
+                else:
+                    etf[col] = val
+            etfs.append(etf)
+        
+        return jsonify({
+            'etfs': etfs,
+            'count': len(etfs),
+            'source': 'akshare_api',
+            'updated': datetime.now().isoformat()
+        })
+        
+    except ImportError:
+        return jsonify({'error': 'AKShare 未安装，请运行 pip install akshare', 'etfs': []}), 500
+    except Exception as e:
+        import traceback
+        error_detail = traceback.format_exc()
+        print(f"[API] AKShare 调用失败: {e}\n{error_detail}", file=__import__('sys').stderr)
+        return jsonify({'error': str(e), 'etfs': []}), 500
+
+
+
+
+@app.route('/tools/akshare-compare')
+def tools_akshare_compare():
+    """AKShare ETF 对比工具页面"""
+    from flask import send_from_directory
+    return send_from_directory('tools', 'akshare_etf_compare.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, use_reloader=False, host='0.0.0.0', port=port)
