@@ -7,14 +7,14 @@
     <style>
         * { margin:0; padding:0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f7fa; color: #333; padding: 20px; }
-        .container { max-width: 1400px; margin: 0 auto; }
+        .container { max-width: 1600px; margin: 0 auto; }
         h1 { color: #2c3e50; margin-bottom: 5px; font-size: 24px; }
         .subtitle { color: #7f8c8d; margin-bottom: 20px; font-size: 13px; }
         .input-section { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .input-group { display: flex; gap: 10px; margin-bottom: 10px; }
         input[type="text"] { flex: 1; padding: 10px 12px; border: 2px solid #e0e6ed; border-radius: 6px; font-size: 14px; }
         input[type="text"]:focus { outline: none; border-color: #3498db; }
-        button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+        button { padding: 10px 24px; background: #3498db; color: white; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
         button:hover { background: #2980b9; }
         button:disabled { background: #bdc3c7; cursor: not-allowed; }
         .hint { color: #95a5a6; font-size: 12px; }
@@ -26,20 +26,30 @@
         .error-msg { background: #ffeaea; border: 1px solid #f5c6cb; padding: 12px; border-radius: 6px; color: #721c24; margin-bottom: 15px; font-size: 13px; }
         .table-container { overflow-x: auto; margin-top: 15px; }
         table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th { background: #34495e; color: white; padding: 10px 8px; text-align: left; font-weight: 600; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
-        td { padding: 8px; border-bottom: 1px solid #ecf0f1; }
+        th { background: #34495e; color: white; padding: 10px 8px; text-align: left; font-weight: 600; white-space: nowrap; position: sticky; top: 0; z-index: 10; font-size: 12px; }
+        td { padding: 8px; border-bottom: 1px solid #ecf0f1; vertical-align: middle; }
         tr:hover { background: #f8f9fa; }
-        .number { font-family: "Times New Roman", Times, serif; text-align: right; }
+        .number { font-family: "Times New Roman", Times, serif; text-align: right; font-size: 14px; }
         .positive { color: #e74c3c; }
         .negative { color: #27ae60; }
+        .neutral { color: #7f8c8d; }
         .meta-info { color: #7f8c8d; font-size: 12px; margin-bottom: 10px; }
+        .cache-badge { display: inline-block; padding: 2px 8px; background: #e8f5e9; color: #2e7d32; border-radius: 4px; font-size: 11px; margin-left: 8px; }
+        .cache-badge.fresh { background: #e3f2fd; color: #1565c0; }
+        /* 列宽控制 */
+        .col-code { min-width: 70px; }
+        .col-name { min-width: 140px; max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .col-price { min-width: 80px; }
+        .col-pct { min-width: 80px; }
+        .col-vol { min-width: 90px; }
+        .col-flow { min-width: 100px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>📊 AKShare ETF 对比工具</h1>
-        <p class="subtitle">基于 AKShare 开源金融数据 API - 实时 ETF 行情对比</p>
-        
+        <p class="subtitle">基于 AKShare 开源金融数据 API - 实时 ETF 行情对比（首次加载约10秒，后续秒开）</p>
+
         <div class="input-section">
             <div class="input-group">
                 <input type="text" id="etfInput" placeholder="输入 ETF 代码（如：510300, 510500, 159915）" value="510300, 510500">
@@ -47,137 +57,199 @@
             </div>
             <div class="hint">提示：输入逗号分隔的 ETF 代码，然后点击"对比"按钮</div>
         </div>
-        
+
         <div class="results-section" id="resultsSection">
             <div style="margin-bottom: 15px;">
                 <strong>对比结果：</strong><span id="resultsCount"></span>
                 <span class="meta-info" id="metaInfo"></span>
+                <span id="cacheBadge"></span>
             </div>
             <div id="errorContainer"></div>
             <div id="loadingContainer"></div>
             <div class="table-container" id="tableContainer"></div>
         </div>
     </div>
-    
+
     <script>
         async function compareEtfs() {
             const input = document.getElementById('etfInput');
-            const codes = input.value.split(/[,\s]+/).filter(c => c.trim());
-            
+            const codes = input.value.split(/[,，\s]+/).filter(c => c.trim());
+
             if (codes.length === 0) {
                 alert('请输入 ETF 代码');
                 return;
             }
-            
+
             // 显示结果区域 + 加载状态
             const resultsSection = document.getElementById('resultsSection');
             resultsSection.classList.add('show');
             document.getElementById('resultsCount').textContent = '';
             document.getElementById('metaInfo').textContent = '';
+            document.getElementById('cacheBadge').innerHTML = '';
             document.getElementById('errorContainer').innerHTML = '';
             document.getElementById('loadingContainer').innerHTML = '<div class="loading"><div class="loading-spinner"></div>正在从 AKShare 获取数据...</div>';
             document.getElementById('tableContainer').innerHTML = '';
-            
+
             // 禁用按钮
             const btn = document.getElementById('compareBtn');
             btn.disabled = true;
             btn.textContent = '加载中...';
-            
+
+            const startTime = performance.now();
+
             try {
                 // 调用后端 API（解决 CORS 问题）
                 const apiUrl = `/api/tools/akshare/etf-compare?codes=${codes.join(',')}`;
                 const response = await fetch(apiUrl);
                 const result = await response.json();
-                
+                const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
+
                 // 隐藏加载状态
                 document.getElementById('loadingContainer').innerHTML = '';
-                
+
                 if (!response.ok || result.error) {
-                    // 显示错误
                     document.getElementById('errorContainer').innerHTML = `<div class="error-msg">❌ ${result.error || '未知错误'}</div>`;
                     return;
                 }
-                
+
                 // 显示结果
                 const etfs = result.etfs || [];
                 document.getElementById('resultsCount').textContent = `共 ${etfs.length} 只 ETF`;
-                document.getElementById('metaInfo').textContent = `(来源: ${result.source}, 更新时间: ${new Date(result.updated).toLocaleString('zh-CN')})`;
-                
+                document.getElementById('metaInfo').textContent = `(来源: ${result.source}, 更新时间: ${new Date(result.updated).toLocaleString('zh-CN')}, 耗时: ${elapsed}秒)`;
+
+                // 缓存标记
+                if (result.cached) {
+                    const age = result.cache_age_sec || 0;
+                    const cls = age < 60 ? 'fresh' : '';
+                    document.getElementById('cacheBadge').innerHTML = `<span class="cache-badge ${cls}">缓存 ${age}秒前</span>`;
+                }
+
                 if (etfs.length === 0) {
                     document.getElementById('errorContainer').innerHTML = '<div class="error-msg">⚠️ 未找到数据</div>';
                     return;
                 }
-                
+
                 renderTable(etfs);
-                
+
             } catch (error) {
                 document.getElementById('loadingContainer').innerHTML = '';
                 document.getElementById('errorContainer').innerHTML = `<div class="error-msg">❌ 网络错误: ${error.message}</div>`;
             } finally {
-                // 恢复按钮
                 btn.disabled = false;
                 btn.textContent = '对比';
             }
         }
-        
+
         function renderTable(data) {
             const container = document.getElementById('tableContainer');
             if (data.length === 0) return;
-            
-            // 获取所有字段（取第一个 ETF 的 keys）
+
+            // 使用后端已经排序好的字段顺序
             const fields = Object.keys(data[0]);
-            
+
+            // 定义字段分类和样式
+            const nameFields = ['代码', '名称'];
+            const priceFields = ['最新价', '开盘价', '最高价', '最低价', '昨收'];
+            const pctFields = ['涨跌幅', '涨跌额', '振幅', '换手率', '量比', '委比',
+                '主力净流入-净占比', '超大单净流入-净占比', '大单净流入-净占比',
+                '中单净流入-净占比', '小单净流入-净占比', '基金折价率'];
+            const flowFields = ['主力净流入-净额', '超大单净流入-净额', '大单净流入-净额',
+                '中单净流入-净额', '小单净流入-净额'];
+            const bigNumFields = ['成交量', '成交额', '外盘', '内盘', '总市值', '流通市值'];
+
             let html = '<table><thead><tr>';
             fields.forEach(field => {
-                html += `<th>${field}</th>`;
+                let cls = '';
+                if (field === '代码') cls = 'col-code';
+                else if (field === '名称') cls = 'col-name';
+                else if (priceFields.includes(field)) cls = 'col-price';
+                else if (pctFields.includes(field)) cls = 'col-pct';
+                else if (flowFields.includes(field) || bigNumFields.includes(field)) cls = 'col-flow';
+                html += `<th class="${cls}">${field}</th>`;
             });
             html += '</tr></thead><tbody>';
-            
+
             data.forEach(etf => {
                 html += '<tr>';
                 fields.forEach(field => {
                     let value = etf[field];
-                    
-                    if (typeof value === 'number') {
-                        // 数字格式化
-                        if (field.includes('涨跌幅') || field.includes('折价率') || field.includes('换手率') || field.includes('振幅')) {
-                            const cls = value > 0 ? 'positive' : (value < 0 ? 'negative' : '');
-                            html += `<td class="number ${cls}">${value.toFixed(2)}%</td>`;
-                        } else if (field.includes('成交额') || field.includes('市值') || field.includes('份额')) {
-                            html += `<td class="number">${formatNumber(value)}</td>`;
+                    const isName = field === '名称';
+                    const isCode = field === '代码';
+
+                    if (isName) {
+                        html += `<td class="col-name" title="${value || ''}">${value || '-'}</td>`;
+                    } else if (isCode) {
+                        html += `<td class="col-code"><strong>${value || '-'}</strong></td>`;
+                    } else if (typeof value === 'number') {
+                        if (pctFields.includes(field)) {
+                            // 百分比/比率字段
+                            const cls = value > 0 ? 'positive' : (value < 0 ? 'negative' : 'neutral');
+                            let suffix = '';
+                            if (field.includes('净占比') || field.includes('率') || field.includes('振幅') || field.includes('换手')) {
+                                suffix = '%';
+                            }
+                            html += `<td class="number ${cls}">${value.toFixed(2)}${suffix}</td>`;
+                        } else if (flowFields.includes(field)) {
+                            // 资金流向净额
+                            const cls = value > 0 ? 'positive' : (value < 0 ? 'negative' : 'neutral');
+                            html += `<td class="number ${cls}">${formatFlow(value)}</td>`;
+                        } else if (bigNumFields.includes(field)) {
+                            // 大数字（成交量/成交额等）
+                            html += `<td class="number">${formatBigNumber(value)}</td>`;
+                        } else if (priceFields.includes(field)) {
+                            // 价格
+                            html += `<td class="number col-price">${value.toFixed(3)}</td>`;
                         } else {
                             html += `<td class="number">${value.toFixed(2)}</td>`;
                         }
-                    } else if (value === null || value === undefined) {
-                        html += `<td>-</td>`;
+                    } else if (value === null || value === undefined || value === '') {
+                        html += `<td class="neutral">-</td>`;
                     } else {
                         html += `<td>${value}</td>`;
                     }
                 });
                 html += '</tr>';
             });
-            
+
             html += '</tbody></table>';
             container.innerHTML = html;
         }
-        
-        function formatNumber(num) {
-            if (num >= 1e8) {
+
+        // 格式化资金流向（正负色 + 万/亿）
+        function formatFlow(num) {
+            if (num === null || num === undefined) return '-';
+            const abs = Math.abs(num);
+            let val;
+            if (abs >= 1e8) {
+                val = (num / 1e8).toFixed(2) + '亿';
+            } else if (abs >= 1e4) {
+                val = (num / 1e4).toFixed(2) + '万';
+            } else {
+                val = num.toFixed(2);
+            }
+            return val;
+        }
+
+        // 格式化大数字（成交量/成交额）
+        function formatBigNumber(num) {
+            if (num === null || num === undefined) return '-';
+            const abs = Math.abs(num);
+            if (abs >= 1e8) {
                 return (num / 1e8).toFixed(2) + '亿';
-            } else if (num >= 1e4) {
+            } else if (abs >= 1e4) {
                 return (num / 1e4).toFixed(2) + '万';
             } else {
                 return num.toFixed(2);
             }
         }
-        
+
         // 允许按回车触发对比
         document.getElementById('etfInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 compareEtfs();
             }
         });
-        
+
         // 页面加载时自动对比（默认 510300, 510500）
         window.addEventListener('load', function() {
             compareEtfs();

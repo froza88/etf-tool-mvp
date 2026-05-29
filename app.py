@@ -28,6 +28,33 @@ _L2_CACHE_TTL = 600  # 缓存有效期 10 分钟
 _default_service = None
 _default_service_mtime = 0
 
+# AKShare 全市场 ETF 数据缓存（5分钟TTL，避免每次拉取全市场~20秒）
+_akshare_cache = {"data": None, "timestamp": 0, "ttl": 300}
+
+# AKShare ETF 现货字段显示顺序（按对比逻辑排列）
+_AKSHARE_FIELD_ORDER = [
+    # === 基本信息 ===
+    "代码", "名称",
+    # === 价格 ===
+    "最新价", "开盘价", "最高价", "最低价", "昨收",
+    # === 涨跌 ===
+    "涨跌幅", "涨跌额", "振幅",
+    # === 成交量 ===
+    "成交量", "成交额", "换手率", "量比",
+    # === 资金流向 ===
+    "主力净流入-净额", "主力净流入-净占比",
+    "超大单净流入-净额", "超大单净流入-净占比",
+    "大单净流入-净额", "大单净流入-净占比",
+    "中单净流入-净额", "中单净流入-净占比",
+    "小单净流入-净额", "小单净流入-净占比",
+    # === 盘口 ===
+    "委比", "外盘", "内盘",
+    # === 估值 ===
+    "市盈率", "市净率", "基金折价率",
+    # === 其他 ===
+    "IOPV实时估值", "实时估值"
+]
+
 def get_default_service():
     """获取缓存的默认数据服务（仅在数据文件变化时重建）"""
     global _default_service, _default_service_mtime
@@ -893,41 +920,70 @@ def api_ai_chat():
 def api_tools_akshare_etf_compare():
     """
     AKShare ETF 对比 API - 代理 AKShare 实时数据
+    带5分钟内存缓存，避免每次拉取全市场（~20秒）
     前端对比工具调用此接口，后端调 AKShare 并返回数据（解决 CORS 问题）
     """
+    import time
     codes = request.args.get('codes', '').split(',')
     codes = [c.strip() for c in codes if c.strip()]
-    
+
     if not codes:
         return jsonify({'error': '请提供 ETF 代码', 'etfs': []}), 400
-    
+
     try:
         import akshare as ak
         import pandas as pd
-        
-        # 调用 AKShare 获取 ETF 现货行情（东方财富数据源）
-        df = ak.fund_etf_spot_em()
-        
-        if df is None or len(df) == 0:
-            return jsonify({'error': 'AKShare 数据为空', 'etfs': []}), 500
-        
+
+        now = time.time()
+        cache = _akshare_cache
+
+        # ===== 缓存命中检查 =====
+        if cache["data"] is not None and (now - cache["timestamp"]) < cache["ttl"]:
+            df = cache["data"]
+            cached = True
+        else:
+            # 拉取全市场 ETF 现货数据（慢，约10-20秒）
+            df = ak.fund_etf_spot_em()
+            if df is None or len(df) == 0:
+                return jsonify({'error': 'AKShare 数据为空', 'etfs': []}), 500
+            cache["data"] = df
+            cache["timestamp"] = now
+            cached = False
+
         # 筛选指定代码
         df['代码'] = df['代码'].astype(str).str.zfill(6)
         mask = df['代码'].isin([c.zfill(6) for c in codes])
-        filtered = df[mask]
-        
+        filtered = df[mask].copy()
+
         if len(filtered) == 0:
             return jsonify({
                 'error': f'未找到代码 {codes} 的 ETF 数据',
                 'etfs': [],
                 'available_count': len(df)
             }), 404
-        
-        # 转换为前端需要的格式
+
+        # 按用户输入的 codes 顺序排序
+        code_order = {c.zfill(6): i for i, c in enumerate(codes)}
+        filtered['__sort'] = filtered['代码'].map(code_order)
+        filtered = filtered.sort_values('__sort').drop(columns=['__sort'])
+
+        # 收集所有实际存在的字段
+        actual_fields = list(filtered.columns)
+
+        # 按 _AKSHARE_FIELD_ORDER 排序，未定义的放最后
+        ordered_fields = []
+        for f in _AKSHARE_FIELD_ORDER:
+            if f in actual_fields:
+                ordered_fields.append(f)
+        for f in actual_fields:
+            if f not in ordered_fields and not f.startswith('__'):
+                ordered_fields.append(f)
+
+        # 转换为前端需要的格式（按固定字段顺序）
         etfs = []
         for _, row in filtered.iterrows():
             etf = {}
-            for col in row.index:
+            for col in ordered_fields:
                 val = row[col]
                 if pd.isna(val):
                     etf[col] = None
@@ -936,14 +992,16 @@ def api_tools_akshare_etf_compare():
                 else:
                     etf[col] = val
             etfs.append(etf)
-        
+
         return jsonify({
             'etfs': etfs,
             'count': len(etfs),
             'source': 'akshare_api',
-            'updated': datetime.now().isoformat()
+            'updated': datetime.now().isoformat(),
+            'cached': cached,
+            'cache_age_sec': int(now - cache["timestamp"]) if cached else 0
         })
-        
+
     except ImportError:
         return jsonify({'error': 'AKShare 未安装，请运行 pip install akshare', 'etfs': []}), 500
     except Exception as e:
