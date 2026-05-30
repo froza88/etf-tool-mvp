@@ -7,270 +7,192 @@
     <style>
         * { margin:0; padding:0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
-        .container { max-width: 1200px; margin:0 auto; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .container { max-width: 1400px; margin:0 auto; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         h1 { color: #333; margin-bottom: 10px; }
         .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
-        .input-section { margin-bottom: 20px; }
-        .input-section label { display: block; margin-bottom: 5px; font-weight: 500; }
-        .input-section input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
-        .input-section button { margin-top: 10px; padding: 10px 20px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
-        .input-section button:hover { background: #40a9ff; }
-        .input-section .hint { font-size: 12px; color: #999; margin-top: 5px; }
-        .result-section { margin-top: 20px; }
+        .input-section { margin-bottom: 20px; display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+        .input-group { display: flex; flex-direction: column; gap: 5px; }
+        .input-group label { font-weight: 500; font-size: 13px; color: #333; }
+        .input-group input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; width: 300px; }
+        .input-group button { padding: 8px 20px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; white-space: nowrap; }
+        .input-group button:hover { background: #40a9ff; }
+        .input-group button:disabled { background: #d9d9d9; cursor: not-allowed; }
+        .hint { font-size: 12px; color: #999; }
+        .info-box { background: #e6f7ff; border: 1px solid #91d5ff; border-radius: 4px; padding: 8px 12px; color: #1890ff; font-size: 12px; margin-bottom: 10px; display: none; }
+        .error-box { background: #fff2f0; border: 1px solid #ffccc7; border-radius: 4px; padding: 8px 12px; color: #ff4d4f; font-size: 13px; margin-bottom: 10px; display: none; }
+        .loading-box { text-align: center; padding: 30px; color: #999; font-size: 14px; }
+        .loading-spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid #e8e8e8; border-top: 2px solid #1890ff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .table-wrapper { overflow-x: auto; margin-top: 15px; }
         table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background: #fafafa; font-weight: 600; position: sticky; top: 0; cursor: pointer; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #f0f0f0; white-space: nowrap; }
+        th { background: #fafafa; font-weight: 600; position: sticky; top: 0; cursor: pointer; font-size: 12px; color: #666; user-select: none; }
         th:hover { background: #f0f0f0; }
-        tr:hover { background: #f5f5f5; }
-        .number { font-family: "Times New Roman", serif; text-align: right; }
-        .positive { color: #f5222d; }
-        .negative { color: #52c41a; }
-        .loading { text-align: center; padding: 20px; color: #999; }
-        .error { background: #fff2f0; border: 1px solid #ffccc7; border-radius: 4px; padding: 10px; color: #ff4d4f; margin-top: 10px; }
-        .info { background: #e6f7ff; border: 1px solid #91d5ff; border-radius: 4px; padding: 10px; color: #1890ff; margin-top: 10px; font-size: 12px; }
+        tr:hover { background: #fafafa; }
+        .num { font-family: "Times New Roman", "Georgia", serif; text-align: right; }
+        .pos { color: #f5222d; }
+        .neg { color: #52c41a; }
+        .tag { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 11px; margin: 2px; }
+        .tag-blue { background: #e6f7ff; color: #1890ff; }
+        .tag-green { background: #f6ffed; color: #52c41a; }
+        .tag-red { background: #fff2f0; color: #ff4d4f; }
+        .field-category { font-size: 11px; color: #999; padding: 4px 8px; background: #f5f5f5; border-radius: 3px; margin-bottom: 8px; display: inline-block; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>WeStock ETF 对比工具</h1>
-        <div class="subtitle">数据源：WeStock Data (腾讯自选股) - 实时行情、K线、财务报表、资金流向、技术指标</div>
-        
+        <h1>📊 WeStock ETF 对比工具</h1>
+        <div class="subtitle">数据源：WeStock Data (腾讯自选股) · 实时行情 + 持仓 + 风险指标</div>
+
         <div class="input-section">
-            <label>ETF代码（逗号分隔）：</label>
-            <input type="text" id="etfCodes" placeholder="例如：510300, 510500, 159915" value="510300, 510500" />
-            <div class="hint">请输入ETF代码（不带前缀sh/sz，WeStock会自动识别），多个代码用逗号分隔</div>
-            <button onclick="compareEtfs()">对比</button>
+            <div class="input-group">
+                <label>ETF 代码（逗号分隔）：</label>
+                <input type="text" id="etfCodes" placeholder="例如：510300, 510500, 159915" value="510300, 510500" />
+                <div class="hint">输入6位ETF代码，无需前缀 sh/sz</div>
+            </div>
+            <div class="input-group">
+                <label>&nbsp;</label>
+                <button id="btnCompare" onclick="compareEtfs()">🔍 对比</button>
+            </div>
         </div>
-        
-        <div id="infoBox" class="info" style="display:none;"></div>
-        <div id="errorBox" class="error" style="display:none;"></div>
-        
-        <div class="result-section" id="resultSection" style="display:none;">
-            <table id="comparisonTable">
-                <thead id="tableHeader"></thead>
-                <tbody id="tableBody"></tbody>
-            </table>
+
+        <div id="infoBox" class="info-box"></div>
+        <div id="errorBox" class="error-box"></div>
+
+        <div id="loadingBox" class="loading-box" style="display:none;">
+            <span class="loading-spinner"></span> 正在调用 WeStock 数据，请稍候...
         </div>
-        
-        <div class="loading" id="loading" style="display:none;">加载中...</div>
+
+        <div id="resultSection" style="display:none;">
+            <div id="fieldCategory" class="field-category"></div>
+            <div class="table-wrapper">
+                <table id="comparisonTable">
+                    <thead id="tableHeader"></thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script>
-        // ========== 配置区 ==========
-        const DATA_SOURCE = "WeStock";
-        const API_ENDPOINT = "/api/westock/etf/compare";  // 真实API地址（可选）
-        const USE_MOCK = true;  // true=使用模拟数据，false=调用真实API
-        
-        // 模拟数据（WeStock提供的ETF对比字段）
-        const MOCK_DATA = {
-            "success": true,
-            "count": 2,
-            "data": [
-                {
-                    "代码": "510300",
-                    "名称": "沪深300ETF",
-                    "最新价": 4.05,
-                    "涨跌幅": 2.02,
-                    "成交额": 5.05e+09,
-                    "换手率": 5.1,
-                    "市盈率PE": 12.5,
-                    "市净率PB": 1.45,
-                    "股息率": 2.1,
-                    "净资产": 1.82e+11,
-                    "总份额": 4.5e+10,
-                    "近1月涨幅": 3.5,
-                    "近3月涨幅": 8.2,
-                    "近6月涨幅": 12.5,
-                    "近1年涨幅": 15.8,
-                    "波动率": 18.5,
-                    "夏普比率": 0.85,
-                    "最大回撤": -25.2,
-                    "跟踪误差": 0.05,
-                    "管理费率": 0.5,
-                    "托管费率": 0.1
-                },
-                {
-                    "代码": "510500",
-                    "名称": "中证500ETF",
-                    "最新价": 6.82,
-                    "涨跌幅": 1.79,
-                    "成交额": 6.1e+09,
-                    "换手率": 4.8,
-                    "市盈率PE": 22.3,
-                    "市净率PB": 1.85,
-                    "股息率": 1.5,
-                    "净资产": 8.18e+10,
-                    "总份额": 1.2e+10,
-                    "近1月涨幅": 2.8,
-                    "近3月涨幅": 6.5,
-                    "近6月涨幅": 10.2,
-                    "近1年涨幅": 12.3,
-                    "波动率": 22.8,
-                    "夏普比率": 0.72,
-                    "最大回撤": -30.5,
-                    "跟踪误差": 0.08,
-                    "管理费率": 0.5,
-                    "托管费率": 0.1
-                }
-            ],
-            "fields": ["代码", "名称", "最新价", "涨跌幅", "成交额", "换手率", "市盈率PE", "市净率PB", "股息率", "净资产", "总份额", "近1月涨幅", "近3月涨幅", "近6月涨幅", "近1年涨幅", "波动率", "夏普比率", "最大回撤", "跟踪误差", "管理费率", "托管费率"],
-            "update_time": new Date().toISOString()
-        };
-        
-        // ========== 主逻辑 ==========
+        const API_ENDPOINT = '/api/tools/westock/etf-compare';
+
+        let currentData = null;
+        let sortField = null;
+        let sortAsc = true;
+
         async function compareEtfs() {
             const codesInput = document.getElementById('etfCodes').value;
             const codes = codesInput.split(',').map(c => c.trim()).filter(c => c);
-            
-            if (codes.length === 0) {
-                showError('请输入至少一个ETF代码');
-                return;
-            }
-            
+            if (codes.length === 0) { showError('请输入至少一个ETF代码'); return; }
+
             showLoading(true);
             hideError();
-            
+            hideInfo();
+
             try {
-                let data;
-                if (USE_MOCK) {
-                    data = generateMockData(codes);
-                } else {
-                    data = await fetchRealData(codes);
-                }
-                
+                const resp = await fetch(`${API_ENDPOINT}?codes=${codes.join(',')}`);
+                const data = await resp.json();
+                if (!resp.ok || data.error) throw new Error(data.error || `HTTP ${resp.status}`);
+                currentData = data;
                 renderTable(data);
-                showInfo(`成功对比 ${data.count} 只ETF，数据更新时间：${new Date(data.update_time).toLocaleString()}`);
-            } catch (error) {
-                showError('对比失败：' + error.message);
+                showInfo(`✅ 成功对比 ${data.count} 只ETF · 数据源：${data.source} · 更新时间：${new Date(data.updated).toLocaleString('zh-CN')}`);
+            } catch (err) {
+                showError('对比失败：' + err.message);
             } finally {
                 showLoading(false);
             }
         }
-        
-        // 生成模拟数据
-        function generateMockData(codes) {
-            const mockEtfs = MOCK_DATA.data || [];
-            const selectedData = codes.map(code => {
-                const found = mockEtfs.find(etf => etf['代码'] === code);
-                if (found) return found;
-                // 生成随机数据
-                return generateRandomEtfData(code);
-            });
-            
-            return {
-                success: true,
-                count: selectedData.length,
-                data: selectedData,
-                fields: MOCK_DATA.fields || Object.keys(selectedData[0]),
-                update_time: new Date().toISOString()
-            };
-        }
-        
-        // 生成随机ETF数据（WeStock字段）
-        function generateRandomEtfData(code) {
-            return {
-                "代码": code,
-                "名称": "ETF_" + code,
-                "最新价": Math.random() * 10 + 1,
-                "涨跌幅": (Math.random() - 0.5) * 5,
-                "成交额": Math.random() * 1e10,
-                "换手率": Math.random() * 10,
-                "市盈率PE": Math.random() * 30 + 5,
-                "市净率PB": Math.random() * 3 + 1,
-                "股息率": Math.random() * 3,
-                "净资产": Math.random() * 1e11,
-                "总份额": Math.random() * 1e10,
-                "近1月涨幅": (Math.random() - 0.5) * 10,
-                "近3月涨幅": (Math.random() - 0.5) * 20,
-                "近6月涨幅": (Math.random() - 0.5) * 30,
-                "近1年涨幅": (Math.random() - 0.5) * 50,
-                "波动率": Math.random() * 30 + 10,
-                "夏普比率": Math.random() * 1.5,
-                "最大回撤": -Math.random() * 40,
-                "跟踪误差": Math.random() * 0.2,
-                "管理费率": 0.5,
-                "托管费率": 0.1
-            };
-        }
-        
-        // 调用真实API
-        async function fetchRealData(codes) {
-            const response = await fetch(`${API_ENDPOINT}?codes=${codes.join(',')}`);
-            if (!response.ok) throw new Error('API请求失败');
-            return await response.json();
-        }
-        
-        // 渲染表格
+
         function renderTable(data) {
-            const fields = data.fields;
-            const etfs = data.data;
-            
-            // 渲染表头
-            const headerHtml = '<tr>' + fields.map(f => `<th onclick="sortTable('${f}')">${f} ↕</th>`).join('') + '</tr>';
-            document.getElementById('tableHeader').innerHTML = headerHtml;
-            
-            // 渲染数据行
-            const bodyHtml = etfs.map(etf => {
-                return '<tr>' + fields.map(f => {
-                    const value = etf[f];
-                    const cssClass = getCellClass(f, value);
-                    const display = formatCellValue(f, value);
-                    return `<td class="${cssClass}">${display}</td>`;
+            const etfs = data.etfs;
+            if (!etfs || etfs.length === 0) { showError('未获取到ETF数据'); return; }
+
+            // 收集所有字段（去重，按第一个ETF的字段顺序）
+            const allFields = [];
+            const fieldSet = new Set();
+            etfs.forEach(etf => {
+                Object.keys(etf).forEach(k => {
+                    if (!fieldSet.has(k)) { fieldSet.add(k); allFields.push(k); }
+                });
+            });
+
+            // 表头
+            const thHtml = '<tr>' +
+                allFields.map(f => `<th onclick="sortTable('${f}')" title="${f}">${f} ${sortField===f ? (sortAsc?'↑':'↓') : '↕'}</th>`).join('') +
+                '</tr>';
+            document.getElementById('tableHeader').innerHTML = thHtml;
+
+            // 数据行
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = etfs.map(etf => {
+                return '<tr>' + allFields.map(f => {
+                    const v = etf[f];
+                    const cls = getCellClass(f, v);
+                    const display = formatValue(f, v);
+                    return `<td class="${cls}">${display}</td>`;
                 }).join('') + '</tr>';
             }).join('');
-            document.getElementById('tableBody').innerHTML = bodyHtml;
-            
+
             document.getElementById('resultSection').style.display = 'block';
+            document.getElementById('fieldCategory').textContent = `字段数：${allFields.length} · ETF数：${etfs.length}`;
         }
-        
-        // 获取单元格CSS类
+
         function getCellClass(field, value) {
-            if (typeof value === 'number') return 'number';
-            if (field.includes('涨') || field.includes('跌') || field.includes('回撤')) {
-                return value > 0 ? 'positive' : 'negative';
+            if (typeof value === 'number') return 'num';
+            if (field.includes('涨') || field.includes('跌') || field.includes('回撤') || field.includes('return')) {
+                return value > 0 ? 'pos' : (value < 0 ? 'neg' : '');
             }
             return '';
         }
-        
-        // 格式化单元格值
-        function formatCellValue(field, value) {
-            if (value === null || value === undefined) return '-';
+
+        function formatValue(field, value) {
+            if (value === null || value === undefined || value === '') return '-';
             if (typeof value === 'number') {
-                if (field.includes('市值') || field.includes('额') || field.includes('资产') || field.includes('份额')) {
-                    return value.toLocaleString('zh-CN', { maximumFractionDigits: 2 });
-                }
-                if (field.includes('率') || field.includes('幅') || field.includes('比')) {
+                // 大数字：万/亿
+                if (Math.abs(value) > 1e8) return (value/1e8).toFixed(2) + '亿';
+                if (Math.abs(value) > 1e4) return (value/1e4).toFixed(2) + '万';
+                // 比率类：转百分比
+                if (field.includes('率') || field.includes('Ratio') || field.includes('pct') || field.includes('Pct')) {
                     return (value * 100).toFixed(2) + '%';
                 }
-                return value.toFixed(2);
+                return value.toFixed(4);
             }
+            if (typeof value === 'string' && value.length > 50) return value.slice(0, 50) + '...';
             return value;
         }
-        
-        // 排序
-        let sortField = null;
-        let sortAsc = true;
+
         function sortTable(field) {
-            alert(`按 ${field} 排序（演示版，未实现）`);
+            if (!currentData || !currentData.etfs) return;
+            if (sortField === field) { sortAsc = !sortAsc; } else { sortField = field; sortAsc = true; }
+            currentData.etfs.sort((a, b) => {
+                const va = a[field], vb = b[field];
+                if (va == null) return 1;
+                if (vb == null) return -1;
+                return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+            });
+            renderTable(currentData);
         }
-        
-        // UI辅助函数
+
         function showLoading(show) {
-            document.getElementById('loading').style.display = show ? 'block' : 'none';
+            document.getElementById('loadingBox').style.display = show ? 'block' : 'none';
+            document.getElementById('btnCompare').disabled = show;
         }
         function showError(msg) {
             const box = document.getElementById('errorBox');
             box.textContent = msg;
             box.style.display = 'block';
         }
-        function hideError() {
-            document.getElementById('errorBox').style.display = 'none';
-        }
+        function hideError() { document.getElementById('errorBox').style.display = 'none'; }
         function showInfo(msg) {
             const box = document.getElementById('infoBox');
             box.textContent = msg;
             box.style.display = 'block';
         }
+        function hideInfo() { document.getElementById('infoBox').style.display = 'none'; }
+
+        // 页面加载后自动对比
+        window.addEventListener('load', () => { compareEtfs(); });
     </script>
 </body>
 </html>

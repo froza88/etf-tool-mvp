@@ -1013,12 +1013,96 @@ def api_tools_akshare_etf_compare():
 
 
 
+# ========= WeStock ETF 对比 API =========
+WESTOCK_SCRIPT = '/Users/apangduo/.workbuddy/plugins/marketplaces/cb_teams_marketplace/plugins/finance-data/skills/westock-data/scripts/index.js'
+
+@app.route('/api/tools/westock/etf-compare')
+def api_tools_westock_etf_compare():
+    """
+    WeStock ETF 对比 API - 调用 WeStock Data 技能获取实时数据
+    """
+    codes = request.args.get('codes', '').split(',')
+    codes = [c.strip() for c in codes if c.strip()]
+    if not codes:
+        return jsonify({'error': '请提供 ETF 代码', 'etfs': []}), 400
+    try:
+        import subprocess
+        def fmt_code(c):
+            c = c.strip()
+            if c.startswith('sh') or c.startswith('sz') or c.startswith('bj'):
+                return c
+            if c[0] in '50':
+                return 'sh' + c.zfill(6)
+            elif c[0] in '031':
+                return 'sz' + c.zfill(6)
+            else:
+                return 'sh' + c.zfill(6)
+        formatted_codes = [fmt_code(c) for c in codes]
+        codes_str = ','.join(formatted_codes)
+        cmd = ['node', WESTOCK_SCRIPT, 'etf', codes_str]
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            return jsonify({'error': f'WeStock 脚本失败: {result.stderr[:300]}', 'etfs': []}), 500
+        etfs = _parse_westock_etf_markdown(result.stdout, formatted_codes)
+        if not etfs:
+            return jsonify({'error': '未解析到数据', 'etfs': [], 'raw': result.stdout[:500]}), 404
+        return jsonify({'etfs': etfs, 'count': len(etfs), 'source': 'westock_api', 'updated': datetime.now().isoformat()})
+    except subprocess.TimeoutExpired:
+        return jsonify({'error': 'WeStock 脚本超时', 'etfs': []}), 504
+    except Exception as e:
+        import traceback
+        print(f"[API] WeStock 失败: {e}\n{traceback.format_exc()}", file=__import__('sys').stderr)
+        return jsonify({'error': str(e), 'etfs': []}), 500
+
+
+def _parse_westock_etf_markdown(md_text, codes):
+    import re
+    etfs = []
+    sections = re.split(r'####\s+', md_text)
+    for section in sections[1:]:
+        lines = section.strip().split('\n')
+        if not lines: continue
+        code_line = lines[0].strip()
+        code_match = re.match(r'(sh|sz|bj)\d+', code_line)
+        if not code_match: continue
+        code = code_match.group(0)
+        table_start = -1
+        for i, line in enumerate(lines):
+            if line.strip().startswith('|') and '---' not in line:
+                table_start = i
+                break
+        if table_start == -1: continue
+        header_line = lines[table_start].strip()
+        headers = [h.strip() for h in header_line.split('|')[1:-1]]
+        data_start = table_start + 2
+        etf_data = {}
+        for i in range(data_start, min(data_start + 1, len(lines))):
+            data_line = lines[i].strip()
+            if not data_line.startswith('|'): break
+            values = [v.strip() for v in data_line.split('|')[1:-1]]
+            for j, h in enumerate(headers):
+                if j < len(values):
+                    val = values[j]
+                    try:
+                        if '.' in val: etf_data[h] = float(val)
+                        else: etf_data[h] = int(val)
+                    except (ValueError, IndexError):
+                        etf_data[h] = val
+        etfs.append(etf_data)
+    return etfs
+
 
 @app.route('/tools/akshare-compare')
 def tools_akshare_compare():
     """AKShare ETF 对比工具页面"""
     from flask import send_from_directory
     return send_from_directory('tools', 'akshare_etf_compare.html')
+
+@app.route('/tools/westock-compare')
+def tools_westock_compare():
+    """WeStock ETF 对比工具页面"""
+    from flask import send_from_directory
+    return send_from_directory('tools', 'westock_etf_compare.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
