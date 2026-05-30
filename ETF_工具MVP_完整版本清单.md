@@ -1,8 +1,8 @@
 # ETF工具MVP - 完整版本清单
 
 **统计时间**: 2026-05-31 03:05
-**总版本数**: 258 个
-**时间范围**: 2026-05-12 至 2026-05-30
+**总版本数**: 259 个
+**时间范围**: 2026-05-12 至 2026-05-31
 
 ---
 
@@ -10,264 +10,265 @@
 
 | 编号 | 日期 | 提交哈希 | 版本描述 | 备注 |
 |------|------|----------|----------|------|
-|   1 | 2026-05-30 | 027a3d3 | feat: 添加 WeStock 对比工具 + 本地启动脚本 | 新功能 |
-|   2 | 2026-05-30 | e702457 | feat: WeStock ETF 实时对比工具 - 后端API + 前端页面 | 新功能 |
-|   3 | 2026-05-29 | fe1dc3b | fix: 修正 AKShare 字段顺序，使用 fund_etf_spot_em() 实际返回字段名 | 修复Bug |
-|   4 | 2026-05-29 | 20b5641 | optimize: AKShare 实时对比工具 - 缓存+字段排序+显示优化 |  |
-|   5 | 2026-05-29 | ccb546e | feat: 添加 AKShare 实时对比 API + 前端调用真实数据 | 新功能 |
-|   6 | 2026-05-29 | 8524930 | fix: 修复核心指标扫描脚本，接受当前完整度 | 修复Bug |
-|   7 | 2026-05-29 | 2e14563 | feat: 核心指标完整度扫描 + ETF全量抓取Skill | 新功能 |
-|   8 | 2026-05-29 | 707e5db | pipeline: 2026-05-29 数据更新 |  |
-|   9 | 2026-05-29 | 067b013 | pipeline: 2026-05-29 数据更新 |  |
-|  10 | 2026-05-29 | 178c397 | 添加pipeline_v2.py框架（频率文件增量更新）和wind_fetch_v3.py（Wind批量抓取） |  |
-|  11 | 2026-05-28 | 129f8d5 | 恢复数据：从备份按频率拆分，生成etf_standard_data.json (2026-05-28) | 数据相关 |
-|  12 | 2026-05-28 | 8076ced | chore: update meta.json after absorb rerun | 杂项 |
-|  13 | 2026-05-28 | 0ddbd18 | pipeline: 2026-05-28 数据更新 |  |
-|  14 | 2026-05-28 | 79d167e | pipeline: 2026-05-28 数据更新 |  |
-|  15 | 2026-05-27 | 6d91289 | daily: wequote supplement [auto] |  |
-|  16 | 2026-05-27 | cbfd01b | pipeline: 2026-05-27 数据更新 |  |
-|  17 | 2026-05-27 | e9921c9 | pipeline: 2026-05-27 数据更新 |  |
-|  18 | 2026-05-27 | 0784ad2 | 合并填充版数据，benchmark完整度提升至97.8%，修复首页规模显示除以亿 |  |
-|  19 | 2026-05-26 | caa19e2 | daily: wequote supplement [auto] |  |
-|  20 | 2026-05-26 | 4c4ee31 | pipeline: 2026-05-26 数据更新 |  |
-|  21 | 2026-05-26 | c207a72 | pipeline: 2026-05-26 数据更新 |  |
-|  22 | 2026-05-25 | 47f3cd0 | feat: 环形图动画GSAP + 代码审查标准 + 前端修复 | 新功能 |
-|  23 | 2026-05-25 | 6229abb | daily: wequote supplement [auto] |  |
-|  24 | 2026-05-25 | 4874a70 | pipeline: 2026-05-25 数据更新 |  |
-|  25 | 2026-05-25 | 7070a06 | pipeline: 2026-05-25 数据更新 |  |
-|  26 | 2026-05-25 | e33d504 | 对比页环形图改融合设计：规模+成交+净流入一体展示 |  |
-|  27 | 2026-05-25 | e1598a8 | 对比页Hero卡片改玻璃拟态+动画风格 |  |
-|  28 | 2026-05-25 | e804800 | 对比页Hero区改卡片布局：3个核心指标卡片横向排列 |  |
-|  29 | 2026-05-25 | fa29ece | 对比页Hero区：跟踪误差数据为None时也显示'-'而非跳过整行 |  |
-|  30 | 2026-05-24 | 2e3d627 | 对比页：前五大持仓加宽允许多行，Hero指标按新顺序重排 |  |
-|  31 | 2026-05-24 | aa042c4 | 对比页指标重排：按重要性排序，发行方改全名 |  |
-|  32 | 2026-05-24 | 7ea51e9 | 对比页全面改版：配色/字体/英雄区/Hero重设计 |  |
-|  33 | 2026-05-24 | 0a72fe9 | 对比页表格去掉best/worst评判标记，纯展示数据 |  |
-|  34 | 2026-05-24 | 45db6c3 | 对比页大改：Hero去掉胜出说法，子弹图改为圈图 |  |
-|  35 | 2026-05-24 | baff3c5 | 对比页最差数字颜色调亮：从暗灰 #4a5a7a 改为半透明白色 0.55 |  |
-|  36 | 2026-05-24 | 8653205 | 对比页数字颜色调亮：中性数字从灰暗色改为近白色 |  |
-|  37 | 2026-05-24 | 6f69415 | 对比页数字字号增大两号并改为 Times New Roman 字体 |  |
-|  38 | 2026-05-24 | d43fde0 | style(compare_v3): 移除etf-code的display:block，单行显示不强制换行 |  |
-|  39 | 2026-05-24 | 6b2da15 | style(compare_v3): hero标签和表头统一为 代码 - 名称 - 公司 格式 |  |
-|  40 | 2026-05-24 | 64ab89a | style(compare_v3): ETF表头统一为代码/名称-公司格式 |  |
-|  41 | 2026-05-24 | 74a89f5 | style(compare_v3): ETF表头显示代码-名称-公司格式，指标列字号13px大两号 |  |
-|  42 | 2026-05-24 | 29fd7d9 | style(compare_v3): 第一列指标名称字号14px（大两号），响应式同步调整 |  |
-|  43 | 2026-05-24 | cff8b55 | style(compare_v3): 表格数据列居中对齐，分组标题行保持左对齐 |  |
-|  44 | 2026-05-24 | 0dc73ee | fix(app.py): /compare路由改回指向compare_v3.html（误指回compare.html旧版） | 修复Bug |
-|  45 | 2026-05-24 | 1226b99 | fix(compare_v3): 修复数字对齐问题（等宽字体+calc列宽）+ 替换导出截图函数（用screenCaptureFullPage替换exportScreenshot） | 修复Bug |
-|  46 | 2026-05-24 | 3dc41dd | Deploy: update etf_standard_data.json with filled data (exchange field added, primary 100% complete) | 部署相关, 数据相关 |
-|  47 | 2026-05-24 | 65abe10 | fix(compare_v3): Hero区加核心结论，修复内环0.00亿（尝试volume字段） | 修复Bug |
-|  48 | 2026-05-24 | c8d967d | fix(pa_deploy): 修正 GitHub 用户名为 froza88（原 apangduo 错误） | 修复Bug, 部署相关 |
-|  49 | 2026-05-24 | fa77803 | fix(etf_data): 统一 scale/amount 单位，修复 159915 等ETF显示为0的问题 | 修复Bug, 数据相关 |
-|  50 | 2026-05-24 | add86b8 | feat: 添加 GitHub Actions 自动部署到 PA（webhook 方式） | 新功能 |
-|  51 | 2026-05-24 | 5df53bb | fix(compare_v3): 流动性圆环 max 从300元修正为2000亿，使规模可视化有区分度 | 修复Bug |
-|  52 | 2026-05-24 | 8ce5860 | fix: etf_data.py 兼容 etf_standard_data.json 的 {etfs:[]} 格式，修复 /api/etfs 500错误 | 修复Bug, 数据相关 |
-|  53 | 2026-05-24 | 3b7568d | fix: 流动性副指标成交额单位改为亿（保留两位小数） | 修复Bug |
-|  54 | 2026-05-24 | 299293b | feat: 流动性副指标改为成交额，单位万（用Wind数据） | 新功能 |
-|  55 | 2026-05-24 | 77c2f15 | fix: 用Wind修正510500规模数据（414亿） | 修复Bug |
-|  56 | 2026-05-23 | 2a33f07 | fix: 修复流动性对比洞察文字使用原始值而非fmtFn格式化 | 修复Bug |
-|  57 | 2026-05-23 | 3cffca8 | fix: 修复流动性对比的数字和单位错误（scale未转换亿元、volume单位错误） | 修复Bug |
-|  58 | 2026-05-23 | 79326d4 | fix: 修复对比页JavaScript语法错误（Python风格注释导致页面加载失败） | 修复Bug |
-|  59 | 2026-05-23 | 8c7d4c6 | fix: 修复对比页加载慢问题（API响应时间 5.8s → 0.08s） | 修复Bug |
-|  60 | 2026-05-23 | eac92fd | chore: 清理临时文件 + 添加设计文档和Wind补充脚本 | 杂项 |
-|  61 | 2026-05-23 | ab0cc19 | feat: 数据分级配置 + WeStock每日更新脚本 + 缺失数据填充任务文档 | 新功能 |
-|  62 | 2026-05-23 | b11640a | feat: L2 WeStock 数据源接入完成，部署到 PythonAnywhere | 新功能 |
-|  63 | 2026-05-23 | 75b66d9 | fix: WeStockFetcher 缓存目录创建 + fee_rate=0 警告 | 修复Bug |
-|  64 | 2026-05-23 | 1d65584 | feat: L2 WeStock 数据源接入完成，3/4 测试通过 | 新功能 |
-|  65 | 2026-05-23 | 7743857 | fix: year_3_return=0 误存为缺失值，改为 None；同步修复 etf_calculated_metrics.json 和 etf_standard_data.json | 修复Bug, 数据相关 |
-|  66 | 2026-05-23 | 6f238b2 | compare_v3: 圈图放大至200px，数字统一2位小数，删除收益率趋势图 |  |
-|  67 | 2026-05-23 | 3fb7907 | feat: compare page improvements | 新功能 |
-|  68 | 2026-05-23 | a0498d2 | remove: delete box-capture (region screenshot) feature | 新功能 |
-|  69 | 2026-05-23 | eb2b63f | debug: screenCaptureRegion - download full page first (no crop) to isolate black screen issue |  |
-|  70 | 2026-05-23 | eee5e44 | fix: modal scroll + screenshot debug improvements | 修复Bug |
-|  71 | 2026-05-23 | abc0a36 | fix: metric selector modal - checkbox list overflow pushed buttons off-screen | 修复Bug |
-|  72 | 2026-05-23 | f7604c8 | fix: metric selector buttons + screenshot black screen | 修复Bug |
-|  73 | 2026-05-23 | a73f568 | fix: screenCaptureRegion black screen - remove overlay from DOM before html2canvas | 修复Bug |
-|  74 | 2026-05-23 | 98e3f14 | fix: use window.xxx=func + onclick=window.xxx() for metric selector | 修复Bug |
-|  75 | 2026-05-23 | d6cc589 | fix: metric selector modal buttons not responding | 修复Bug |
-|  76 | 2026-05-23 | 9db8ace | 修复弹窗无响应+框选截图黑屏 |  |
-|  77 | 2026-05-23 | 469eb16 | 修复指标选择器：去掉内联handler转义问题，加try/catch |  |
-|  78 | 2026-05-23 | cdb8f2d | 添加指标选择器功能：可勾选对比科目 |  |
-|  79 | 2026-05-23 | b542733 | 导出功能增强：添加全页面截图+框选截图 |  |
-|  80 | 2026-05-23 | ff048a9 | docs: ETF 对比工具 v1.0 完整交付文档（含附录1-6，关键技术决策/对话记忆/Skill打包） | 文档 |
-|  81 | 2026-05-23 | 510d97e | 详细数据表格样式优化：胜出绯红+未胜出蓝色+指标列加宽 |  |
-|  82 | 2026-05-23 | 0106767 | 修复对比页反馈：圈图80px+流动性单环+洞察文字单位修复 |  |
-|  83 | 2026-05-23 | 9af8f5d | 优化对比页：方案A(重构层级)+B(删标签)+D(统一颜色) |  |
-|  84 | 2026-05-22 | b7dc982 | fix: pipeline.py calc bug修复 - 本地历史数据门槛从252降至20，重算判断从year_1_return改为annual_vol | 修复Bug |
-|  85 | 2026-05-22 | 3f756e3 | style(compare_v3): 提交未完成的UI微调 - Header简化/环形图字体/Heatmap表头优化 |  |
-|  86 | 2026-05-22 | b3249a1 | feat(compare_v3): 美化对比页 - Header加价格/收益率，圈图放大，3列布局 | 新功能 |
-|  87 | 2026-05-22 | aab49f2 | refactor: compare/v3 改为 API 架构，新增 etf_data_service.py 数据服务层 | 数据相关, 重构 |
-|  88 | 2026-05-22 | 635082c | pipeline: build步骤新增派生指标和预留字段 |  |
-|  89 | 2026-05-22 | ccd1fd4 | compare_v3: 去雷达图、双环规模/成交额、斜线表头、完整ETF名、预留新指标 |  |
-|  90 | 2026-05-22 | f1ff21b | pipeline: 新增 --no-wind 参数，跳过 Wind 数据补充步骤 |  |
-|  91 | 2026-05-22 | c06b361 | compare_v3: 按百度文章框架重排对比科目 — 流动性→风险→收益 |  |
-|  92 | 2026-05-22 | b4c27a3 | compare_v3: 去掉柱状图，改成纯圈图对比 + 多项UI优化 |  |
-|  93 | 2026-05-22 | 7d2367c | 雷达图: 回撤移到正下方(6h)，隐藏内部刻度数字 |  |
-|  94 | 2026-05-22 | 9377c42 | compare_v3: 7项UI大修 - 冠军榜+环形图融合、基金公司简写、跟踪指数、雷达重塑、热力图修复 |  |
-|  95 | 2026-05-22 | dec12c2 | style: 7项UI精调——标签放大/冠军3列/环形3列/柱瘦身/雷达显数值/热力图瘦身/去合计规模 |  |
-|  96 | 2026-05-22 | 8f74faf | chore: update meta.json after daily pipeline | 杂项 |
-|  97 | 2026-05-22 | 0b35829 | pipeline: 2026-05-22 数据更新 |  |
-|  98 | 2026-05-22 | 74c542c | feat: 整合完美版全部视觉组件，重构JS为模块化架构 | 新功能 |
-|  99 | 2026-05-22 | 1ab48eb | feat: complete overhaul of compare_v3 - decoupled logic and restored visual peak | 新功能 |
-| 100 | 2026-05-22 | dd69398 | fix: via CLI - 补全波动率DOM, 修复init闭合及导出函数头 | 修复Bug |
-| 101 | 2026-05-21 | 115df9d | fix: 修复对比页JS语法错误，恢复图表渲染和导出菜单功能 | 修复Bug |
-| 102 | 2026-05-21 | 7081d5d | fix: 补全缺失的 compare_print.html 模板以修复打印页 404 问题 | 修复Bug |
-| 103 | 2026-05-21 | 8aeddc0 | style: 优化对比页图表布局，改为单列大行模式 |  |
-| 104 | 2026-05-21 | 6b95c99 | feat: 增强对比页可视化与交互 | 新功能 |
-| 105 | 2026-05-21 | 3801baf | fix: 彻底修复热力图表格布局乱序 | 修复Bug |
-| 106 | 2026-05-21 | 5c85bf4 | fix: 再次强化对比页表格固定布局 | 修复Bug |
-| 107 | 2026-05-21 | 0b9a9e1 | fix: 修复对比页热力图表格乱序/撑开问题 | 修复Bug |
-| 108 | 2026-05-21 | 454ad0d | fix: 用 getDisplayMedia 替换 html2canvas 截图方案 | 修复Bug |
-| 109 | 2026-05-21 | bad4dc5 | fix: 补充 issuer 和 issue_date 字段至100%覆盖率 (Wind API) | 修复Bug |
-| 110 | 2026-05-21 | 46f3f8a | fix: 缺失数据显示'-'而非'0'，修复||0误导问题 | 修复Bug |
-| 111 | 2026-05-21 | b35b204 | docs: 添加经验教训文档和.gitignore备份文件规则 | 文档 |
-| 112 | 2026-05-21 | e0b3a97 | feat: 补充14只ETF持仓数据，持仓覆盖率98.9% | 新功能 |
-| 113 | 2026-05-21 | bf316f8 | test: 测试deploy.sh脚本 | 部署相关, 测试 |
-| 114 | 2026-05-21 | 772c8eb | docs: update PA_MANUAL_UPDATE_GUIDE.md to recommend pa_deploy.sh | 部署相关, 文档 |
-| 115 | 2026-05-21 | cdf48c6 | feat: add pa_deploy.sh one-step deployment script | 新功能, 部署相关 |
-| 116 | 2026-05-20 | 106d197 | fix: PA 标记自己为已同步 | 修复Bug |
-| 117 | 2026-05-21 | f9334c0 | fix: update_data_version.py 合并 sync_status 而不是覆盖 | 修复Bug, 数据相关 |
-| 118 | 2026-05-21 | b2dab96 | fix: 更新 data_version.json 到正确版本 (2026-05-21T00:30:02) | 修复Bug, 数据相关 |
-| 119 | 2026-05-21 | b3046b4 | chore: 更新中文文件名文件中的 ETF-tool-MVP → etf-tool-mvp | 杂项 |
-| 120 | 2026-05-21 | 9fc4e15 | chore: 批量替换 ETF-tool-MVP → etf-tool-mvp (仓库重命名) | 杂项 |
-| 121 | 2026-05-21 | eee2975 | fix: 加固 batch_fill_history.py - 加限流/重试/超时保护 | 修复Bug |
-| 122 | 2026-05-20 | 9913c02 | feat: 优化batch_fill_history.py支持并行执行 (75x性能提升) | 新功能 |
-| 123 | 2026-05-20 | 96abd82 | backup: 备份 batch_fill_history.py 原版本 before 并行优化 |  |
-| 124 | 2026-05-20 | 6572b44 | daily: 2026-05-20数据更新 |  |
-| 125 | 2026-05-20 | 7c33132 | fix: /api/sync 添加 git reset --hard 解决本地修改冲突 | 修复Bug |
-| 126 | 2026-05-20 | 3a39afd | chore: 更新 data_version.json 时间戳 | 数据相关, 杂项 |
-| 127 | 2026-05-20 | 69e26fd | test: 触发 webhook 自动同步 | 测试 |
-| 128 | 2026-05-20 | 91fe3f3 | fix: /api/sync 添加 update_data_version.py 调用 | 修复Bug, 数据相关 |
-| 129 | 2026-05-20 | 53739e7 | test: webhook sync | 测试 |
-| 130 | 2026-05-20 | ccbb5d8 | test: 验证 webhook 自动同步 | 测试 |
-| 131 | 2026-05-20 | 6ac3043 | docs: 添加 PythonAnywhere 免费版限制与解决方案文档（供未来AI模型调用） | 文档 |
-| 132 | 2026-05-20 | 1e31547 | docs: 添加 GitHub Webhook 配置指南 | 文档 |
-| 133 | 2026-05-20 | 09db885 | feat: 添加 PythonAnywhere 自动拉取配置助手脚本 | 新功能 |
-| 134 | 2026-05-20 | 46248b7 | feat: 添加 /api/version 端点，修复 /api/sync 语法错误 | 新功能 |
-| 135 | 2026-05-20 | 28c713d | feat: 添加防回滚安全拉取脚本 safe_pull.sh | 新功能 |
-| 136 | 2026-05-20 | 675f5cd | feat: 三地数据同步方案 - 添加时间戳、同步脚本、验证脚本 | 新功能 |
-| 137 | 2026-05-20 | f994f1a | pipeline: 2026-05-20 数据更新 |  |
-| 138 | 2026-05-20 | f71af54 | docs: 添加8小时工作计划任务包（数据质量分析+calc_metrics优化） | 文档 |
-| 139 | 2026-05-20 | 1bdffe4 | feat: 添加分批吸收脚本（支持--batch和--incremental模式） | 新功能 |
-| 140 | 2026-05-20 | 8b7a321 | feat: 添加增量模式支持（只处理缺失year_3_return的ETF） | 新功能 |
-| 141 | 2026-05-20 | 574966c | fix: 修复calc_metrics.py多数据源支持（westock-data + 本地缓存 + AKShare） | 修复Bug, 数据相关 |
-| 142 | 2026-05-19 | ce3fa28 | feat: 创建financial_data_fetcher/通用数据获取框架（四层架构第1层）\n\n- base_fetcher.py: 基础获取器抽象类（重试/缓存/验证）\n- multi_source_fetcher.py: 多源获取器（ETF实现）\n- cache_manager.py: 缓存管理器（本地/GitHub/PA同步）\n- rate_limiter.py: 限流管理器（指数退避）\n- data_validator.py: 数据验证器（交叉验证/异常检测） | 新功能, 数据相关 |
-| 143 | 2026-05-19 | 8d4a4a4 | fix: 三地存储方案 - 修复.gitignore(含data/history) + app.py添加/api/sync端点 + pipeline.py部署后触发PA同步 + 删除data_absorber.py/enrich_missing_fields.py | 修复Bug, 数据相关 |
-| 144 | 2026-05-19 | 3262d7f | daily: 2026-05-19数据更新 |  |
-| 145 | 2026-05-19 | 2c8d07c | pipeline: 2026-05-19 数据更新 |  |
-| 146 | 2026-05-18 | 76332b8 | fix: 修复涨跌幅数据（AKShare列名错误）+ 价格数据重算 | 修复Bug |
-| 147 | 2026-05-18 | 22ce028 | fix: 修复prev_close和change_pct数据问题，创建历史缓存文件 | 修复Bug |
-| 148 | 2026-05-18 | 126ec9a | feat: daily_update + 历史净值优先本地缓存 | 新功能 |
-| 149 | 2026-05-18 | cef564f | feat: 历史净值首选AKShare实时，详情页实时价格覆盖 | 新功能 |
-| 150 | 2026-05-18 | 44f379c | feat: add Wind-style professional compare page with report export | 新功能 |
-| 151 | 2026-05-18 | 04ced78 | fix: deploy.sh directory path (ETF-tool-MVP -> etf-tool-mvp) | 修复Bug, 部署相关 |
-| 152 | 2026-05-18 | d329a0f | chore: add one-click deploy script for PythonAnywhere | 部署相关, 杂项 |
-| 153 | 2026-05-18 | b40d2cf | fix: P0/P1修复，补充风险指标，改进UX | 修复Bug |
-| 154 | 2026-05-18 | 7a06082 | fix: compatible fetch timeout + cleaner bar chart | 修复Bug |
-| 155 | 2026-05-18 | c3c5a8f | fix: add fetch timeout to prevent hanging on yingmi API | 修复Bug |
-| 156 | 2026-05-18 | 4deb67d | feat: modern single-axis bar chart with normalization | 新功能 |
-| 157 | 2026-05-18 | 8478307 | feat: dynamic bar chart with clickable metric chips | 新功能 |
-| 158 | 2026-05-18 | 562c59f | fix: button functions missing, typo, volume display, chart sizing | 修复Bug |
-| 159 | 2026-05-18 | 3c3fb25 | feat: toggle between self-calc and yingmi on compare page | 新功能 |
-| 160 | 2026-05-18 | bbef951 | feat: compare page can fetch yingmi data for all ETFs | 新功能, 数据相关 |
-| 161 | 2026-05-18 | 98234b0 | feat: yingmi data 1440/1466 + tie green highlight | 新功能, 数据相关 |
-| 162 | 2026-05-18 | 2971238 | feat: 盈米风险指标数据 (1440/1466) | 新功能 |
-| 163 | 2026-05-18 | 0b85a09 | fix: highlight wraps text only via span; bar chart uses gold for best bars | 修复Bug |
-| 164 | 2026-05-18 | 8f3b3ef | fix: remove holdings row, tighter highlights, gradient bars with best-value gold | 修复Bug |
-| 165 | 2026-05-18 | f1f606e | fix: subtle highlights, regroup rows, remove 3yr highlight, core compare only | 修复Bug |
-| 166 | 2026-05-17 | 1994f19 | feat: enhanced chart styling - rounded bars, smooth radar, better colors | 新功能 |
-| 167 | 2026-05-17 | 45093d5 | fix: bar chart shows scale + volume (same unit) instead of scale + return | 修复Bug |
-| 168 | 2026-05-17 | 1a7588b | fix: compare template jinja2 syntax errors | 修复Bug |
-| 169 | 2026-05-17 | 807ffb2 | feat: add issue_date to detail and compare pages | 新功能 |
-| 170 | 2026-05-17 | c1be025 | feat(D): enhanced compare page with radar chart, bar chart, best-value highlighting | 新功能 |
-| 171 | 2026-05-17 | 724315c | feat: risk API reads yingmi JSON first, falls back to CLI | 新功能 |
-| 172 | 2026-05-17 | 1bbefa7 | feat: risk page shows self-calc data on load, click button to fetch yingmi | 新功能, 数据相关 |
-| 173 | 2026-05-17 | d3cb13c | fix: use dynamic yingmi-skill-cli path for Mac + PythonAnywhere | 修复Bug |
-| 174 | 2026-05-17 | 5293e39 | feat: default sort by scale descending on homepage | 新功能 |
-| 175 | 2026-05-17 | be2dd1f | feat: risk page click-to-fetch yingmi; AKShare holdings fallback | 新功能 |
-| 176 | 2026-05-17 | 754174a | feat: remove max_drawdown/sharpe from detail first layer, keep only in risk page | 新功能 |
-| 177 | 2026-05-17 | 93cef23 | feat: separate calc_metrics.py for self-calculated indicators, saved to independent file | 新功能 |
-| 178 | 2026-05-17 | 9ad3adb | fix: mobile responsive - table scroll, hide non-essential columns | 修复Bug |
-| 179 | 2026-05-17 | 878bdd3 | feat: risk page with on-demand yingmi data, non-convex market_cap for scale | 新功能, 数据相关 |
-| 180 | 2026-05-17 | 72d4c26 | feat: add data source footer with cutoff dates and disclaimer | 新功能, 数据相关 |
-| 181 | 2026-05-17 | 4f3c505 | fix: year_3_return shows 不足3年 when same as year_1 | 修复Bug |
-| 182 | 2026-05-17 | 37d6a01 | fix: scale/percentages to 2 decimal places across all templates | 修复Bug |
-| 183 | 2026-05-17 | 1902463 | fix: detail page header shows issuer short name, full name in subtitle | 修复Bug |
-| 184 | 2026-05-17 | 89b33bc | fix: add prefix-based issuer matching for non-standard ETF names | 修复Bug |
-| 185 | 2026-05-17 | e93267c | feat: list page shows issuer short name, detail page shows full name | 新功能 |
-| 186 | 2026-05-17 | ea792a5 | feat: add prev_close and change_rate for all 1466 ETFs | 新功能 |
-| 187 | 2026-05-17 | ba15fb4 | feat: issuer now shows full fund company name | 新功能 |
-| 188 | 2026-05-17 | cae697e | feat: add shares (基金份额) field, display on detail page | 新功能 |
-| 189 | 2026-05-17 | d1514d2 | fix: scale calculation - AKShare returns fund shares, multiply by close for AUM | 修复Bug |
-| 190 | 2026-05-17 | f73af3f | fix: change_pct display to 2 decimal places | 修复Bug |
-| 191 | 2026-05-17 | 535cb2e | fix: default sort by code asc instead of scale desc | 修复Bug |
-| 192 | 2026-05-17 | 24c95fc | fix: always convert market_cap/volume to 亿 (remove incorrect threshold) | 修复Bug |
-| 193 | 2026-05-17 | c33155c | fix: wrap loadETFs in try-catch, use DOMContentLoaded, handle null elements | 修复Bug |
-| 194 | 2026-05-17 | ce4d17a | cleanup: delete 88 abandoned files (old scripts, temp data, docs, backups) | 数据相关, 文档 |
-| 195 | 2026-05-17 | 805a7e5 | fix: JS crash from undefined etf.type in badge class logic | 修复Bug |
-| 196 | 2026-05-17 | 0faac36 | fix: prominent price display on detail page, fix null type in list | 修复Bug |
-| 197 | 2026-05-17 | 0829775 | fix: add price column to ETF list table | 修复Bug |
-| 198 | 2026-05-17 | 77e4c7e | fix: use AKShare 2026 Q1 portfolio data for accurate holdings (replace non-convex component list) | 修复Bug, 数据相关 |
-| 199 | 2026-05-17 | f2f6e81 | fix: remove fee/tracking_error/launch_date references from API and screening | 修复Bug |
-| 200 | 2026-05-17 | 3193a90 | fix: update templates for removed fee/launch/underlying fields, replace with change_pct | 修复Bug |
-| 201 | 2026-05-17 | 57d7d94 | refactor: remove fee/launch_date/underlying fields (no reliable data source) | 数据相关, 重构 |
-| 202 | 2026-05-17 | b74f63b | fix: remove unreliable old enrich data, scale/launch_date/fee now from AKShare raw | 修复Bug, 数据相关 |
-| 203 | 2026-05-17 | 591ada4 | feat: add close price and change_pct fields to all 1466 ETFs | 新功能 |
-| 204 | 2026-05-17 | 1e1f1b6 | feat: add change_pct field from AKShare snapshot, add enrich_prices.py for close prices | 新功能 |
-| 205 | 2026-05-17 | a7abfc0 | chore: remove GitHub Actions deploy (free PA account API limitations) | 部署相关, 杂项 |
-| 206 | 2026-05-17 | 422af52 | refactor: deploy.py only does Reload (git pull handled by PA scheduled task) | 部署相关, 重构 |
-| 207 | 2026-05-17 | aed23f1 | fix: use Schedule API for git pull instead of Console (console needs browser) | 修复Bug |
-| 208 | 2026-05-17 | b26f438 | fix: correct PA API version - consoles use /api/v0/, reload uses v0 webapps | 修复Bug |
-| 209 | 2026-05-17 | 2ed570c | debug: print HTTP status and response body for console API |  |
-| 210 | 2026-05-17 | 88246f8 | fix: add fallback to reload-only if console creation fails + debug output | 修复Bug |
-| 211 | 2026-05-17 | 9f551e5 | fix: use Python script for PA API calls with proper error handling | 修复Bug |
-| 212 | 2026-05-17 | 92ec4a2 | fix: use JSON body for PA API console/create and send_input | 修复Bug |
-| 213 | 2026-05-17 | 9a685ad | fix: remove actions/checkout (not needed for PA API deploy), clean Node 20 warning | 修复Bug, 部署相关 |
-| 214 | 2026-05-17 | 03223c0 | chore: add FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 to fix Node 20 deprecation warning | 修复Bug, 杂项 |
-| 215 | 2026-05-17 | 2aa5611 | test: trigger deploy to verify GitHub Actions | 部署相关, 测试 |
-| 216 | 2026-05-17 | 5eb1d53 | fix: rewrite GitHub Actions deploy with proper auth and reload API | 修复Bug, 部署相关 |
-| 217 | 2026-05-17 | 2ec8d22 | feat: full data enrichment - 1433 real returns, 1402 drawdown/sharpe, 1274 holdings | 新功能, 数据相关 |
-| 218 | 2026-05-17 | 81d0b30 | chore: remove SSH keys from repo, update .gitignore, fix etf_data.py sys import | 修复Bug, 数据相关, 杂项 |
-| 219 | 2026-05-17 | df19b21 | perf: 列表页分页渲染(P50行) + 表头排序 + 按需字段(P10个) |  |
-| 220 | 2026-05-17 | 111cd43 | update data | 数据相关 |
-| 221 | 2026-05-17 | adb97d6 | feat: 方案B全量数据补充脚本 | 新功能 |
-| 222 | 2026-05-17 | e4928ba | refactor: 拆分为独立可复用模块 | 重构 |
-| 223 | 2026-05-17 | 3d80483 | feat: 新增 enrich_all_etfs.py 覆盖全部1466只ETF的持仓权重和净值计算 | 新功能 |
-| 224 | 2026-05-17 | 91a593b | fix: 修复AKShare规模数据获取（列索引定位）及重新标准化 | 修复Bug |
-| 225 | 2026-05-17 | facacf9 | feat: 补齐免费数据源的持仓权重和历史净值计算 | 新功能 |
-| 226 | 2026-05-16 | 302b254 | feat: 从东方财富(AKShare)源头重建ETF数据库，彻底解决数据质量问题 | 新功能 |
-| 227 | 2026-05-16 | 55bc154 | refactor: 重建 ETF 数据加载架构 | 重构 |
-| 228 | 2026-05-16 | eebf71e | chore: 清理 _extract_name_issuer 中残留的死代码 | 杂项 |
-| 229 | 2026-05-16 | 3530dce | feat: 从全量数据 name 自动提取发行人，覆盖 1169/1461 只 ETF | 新功能 |
-| 230 | 2026-05-16 | 54dd4db | fix: issuer为空时不显示尾部 '-'，避免显示冗余后缀 | 修复Bug |
-| 231 | 2026-05-16 | 9720d87 | fix: 持仓列表名称加 flex:1 对齐优化 | 修复Bug |
-| 232 | 2026-05-16 | 4171ff8 | fix: 修复 top_holdings 前端渲染，统一为字典格式 | 修复Bug |
-| 233 | 2026-05-16 | bae8e66 | fix: 修复 top_holdings 数据串用问题，重新获取真实持仓 | 修复Bug |
-| 234 | 2026-05-16 | 5a35d28 | fix: 改为全量1461只底座 + 优质数据补充，解决只显示130只的问题 | 修复Bug |
-| 235 | 2026-05-16 | 174d15d | fix: 名称显示格式改为 代码-名称-基金公司 | 修复Bug |
-| 236 | 2026-05-16 | 1f155dd | fix: 修复收益率/夏普/最大回撤数值错误（去掉多余的/100转换） | 修复Bug |
-| 237 | 2026-05-16 | b9b483f | fix: etf_data.py 支持 etf_data_generated.json，修复 top_holdings 不显示 | 修复Bug, 数据相关 |
-| 238 | 2026-05-16 | f536df6 | fix: 升级 actions/checkout@v4 + setup-python@v5，修复 Node.js 20 废弃警告；修复 YAML 缩进及 Python 语法错误 | 修复Bug |
-| 239 | 2026-05-16 | 9e66f0d | fix: etf_data.py 修复 UnboundLocalError + 延长数据有效期至7天 | 修复Bug, 数据相关 |
-| 240 | 2026-05-16 | dc65b47 | chore: 更新 etf_complete_130.json 数据 | 杂项 |
-| 241 | 2026-05-15 | a6dcf63 | fix: etf_data.py 修复字段映射（symbol_id→code）及关键词搜索 | 修复Bug, 数据相关 |
-| 242 | 2026-05-14 | d7989d0 | refactor: 改用 PythonAnywhere API 部署（免 SSH，免费账户可用） | 重构 |
-| 243 | 2026-05-14 | 06550bc | fix: 修复 deploy.yml bash 语法错误 [[]] | 修复Bug, 部署相关 |
-| 244 | 2026-05-14 | 214eeb8 | 修复 GitHub Actions：测试失败不影响部署 |  |
-| 245 | 2026-05-14 | de18903 | 配置 GitHub Actions 自动部署到 PythonAnywhere |  |
-| 246 | 2026-05-14 | a63b055 | 更新 ETF 数据：使用重建的 1461 只 ETF 全量数据 |  |
-| 247 | 2026-05-14 | 40c7bbe | Fix duplicate manager name in ETF display | 修复Bug |
-| 248 | 2026-05-14 | 15f2fd8 | Add deployment script and API test | 部署相关, 测试 |
-| 249 | 2026-05-14 | 06c13ed | Initial deployment | 部署相关 |
-| 250 | 2026-05-13 | 855dd75 | 修改ETF名称格式为：代码-名称-基金公司，避免同名混淆 |  |
-| 251 | 2026-05-13 | c5b89e4 | 修复ETF持仓数据：更新159915/512650/159901/515800的top_holdings为东方财富网真实数据 |  |
-| 252 | 2026-05-13 | 38698f7 | 修复8只ETF的持仓数据 (510300,510500,510050,159915,512100,159967,510880,512800) |  |
-| 253 | 2026-05-12 | 5699679 | 添加真实的前五大持仓股票数据 |  |
-| 254 | 2026-05-12 | 8ebb483 | 添加专业README.md - 完善项目文档 |  |
-| 255 | 2026-05-12 | c1de87a | 添加ETF筛选器创业方案V2.md |  |
-| 256 | 2026-05-12 | 266b795 | Add Render deployment guide | 部署相关 |
-| 257 | 2026-05-12 | a84112d | Make app cloud-ready: use dynamic PORT for Render deployment | 部署相关 |
-| 258 | 2026-05-12 | bd08855 | Initial commit: ETF筛选器MVP - 包含130只ETF数据和筛选功能 |  |
+|   1 | 2026-05-31 | b725aef | pipeline: 2026-05-31 数据更新 |  |
+|   2 | 2026-05-30 | 027a3d3 | feat: 添加 WeStock 对比工具 + 本地启动脚本 | 新功能 |
+|   3 | 2026-05-30 | e702457 | feat: WeStock ETF 实时对比工具 - 后端API + 前端页面 | 新功能 |
+|   4 | 2026-05-29 | fe1dc3b | fix: 修正 AKShare 字段顺序，使用 fund_etf_spot_em() 实际返回字段名 | 修复Bug |
+|   5 | 2026-05-29 | 20b5641 | optimize: AKShare 实时对比工具 - 缓存+字段排序+显示优化 |  |
+|   6 | 2026-05-29 | ccb546e | feat: 添加 AKShare 实时对比 API + 前端调用真实数据 | 新功能 |
+|   7 | 2026-05-29 | 8524930 | fix: 修复核心指标扫描脚本，接受当前完整度 | 修复Bug |
+|   8 | 2026-05-29 | 2e14563 | feat: 核心指标完整度扫描 + ETF全量抓取Skill | 新功能 |
+|   9 | 2026-05-29 | 707e5db | pipeline: 2026-05-29 数据更新 |  |
+|  10 | 2026-05-29 | 067b013 | pipeline: 2026-05-29 数据更新 |  |
+|  11 | 2026-05-29 | 178c397 | 添加pipeline_v2.py框架（频率文件增量更新）和wind_fetch_v3.py（Wind批量抓取） |  |
+|  12 | 2026-05-28 | 129f8d5 | 恢复数据：从备份按频率拆分，生成etf_standard_data.json (2026-05-28) | 数据相关 |
+|  13 | 2026-05-28 | 8076ced | chore: update meta.json after absorb rerun | 杂项 |
+|  14 | 2026-05-28 | 0ddbd18 | pipeline: 2026-05-28 数据更新 |  |
+|  15 | 2026-05-28 | 79d167e | pipeline: 2026-05-28 数据更新 |  |
+|  16 | 2026-05-27 | 6d91289 | daily: wequote supplement [auto] |  |
+|  17 | 2026-05-27 | cbfd01b | pipeline: 2026-05-27 数据更新 |  |
+|  18 | 2026-05-27 | e9921c9 | pipeline: 2026-05-27 数据更新 |  |
+|  19 | 2026-05-27 | 0784ad2 | 合并填充版数据，benchmark完整度提升至97.8%，修复首页规模显示除以亿 |  |
+|  20 | 2026-05-26 | caa19e2 | daily: wequote supplement [auto] |  |
+|  21 | 2026-05-26 | 4c4ee31 | pipeline: 2026-05-26 数据更新 |  |
+|  22 | 2026-05-26 | c207a72 | pipeline: 2026-05-26 数据更新 |  |
+|  23 | 2026-05-25 | 47f3cd0 | feat: 环形图动画GSAP + 代码审查标准 + 前端修复 | 新功能 |
+|  24 | 2026-05-25 | 6229abb | daily: wequote supplement [auto] |  |
+|  25 | 2026-05-25 | 4874a70 | pipeline: 2026-05-25 数据更新 |  |
+|  26 | 2026-05-25 | 7070a06 | pipeline: 2026-05-25 数据更新 |  |
+|  27 | 2026-05-25 | e33d504 | 对比页环形图改融合设计：规模+成交+净流入一体展示 |  |
+|  28 | 2026-05-25 | e1598a8 | 对比页Hero卡片改玻璃拟态+动画风格 |  |
+|  29 | 2026-05-25 | e804800 | 对比页Hero区改卡片布局：3个核心指标卡片横向排列 |  |
+|  30 | 2026-05-25 | fa29ece | 对比页Hero区：跟踪误差数据为None时也显示'-'而非跳过整行 |  |
+|  31 | 2026-05-24 | 2e3d627 | 对比页：前五大持仓加宽允许多行，Hero指标按新顺序重排 |  |
+|  32 | 2026-05-24 | aa042c4 | 对比页指标重排：按重要性排序，发行方改全名 |  |
+|  33 | 2026-05-24 | 7ea51e9 | 对比页全面改版：配色/字体/英雄区/Hero重设计 |  |
+|  34 | 2026-05-24 | 0a72fe9 | 对比页表格去掉best/worst评判标记，纯展示数据 |  |
+|  35 | 2026-05-24 | 45db6c3 | 对比页大改：Hero去掉胜出说法，子弹图改为圈图 |  |
+|  36 | 2026-05-24 | baff3c5 | 对比页最差数字颜色调亮：从暗灰 #4a5a7a 改为半透明白色 0.55 |  |
+|  37 | 2026-05-24 | 8653205 | 对比页数字颜色调亮：中性数字从灰暗色改为近白色 |  |
+|  38 | 2026-05-24 | 6f69415 | 对比页数字字号增大两号并改为 Times New Roman 字体 |  |
+|  39 | 2026-05-24 | d43fde0 | style(compare_v3): 移除etf-code的display:block，单行显示不强制换行 |  |
+|  40 | 2026-05-24 | 6b2da15 | style(compare_v3): hero标签和表头统一为 代码 - 名称 - 公司 格式 |  |
+|  41 | 2026-05-24 | 64ab89a | style(compare_v3): ETF表头统一为代码/名称-公司格式 |  |
+|  42 | 2026-05-24 | 74a89f5 | style(compare_v3): ETF表头显示代码-名称-公司格式，指标列字号13px大两号 |  |
+|  43 | 2026-05-24 | 29fd7d9 | style(compare_v3): 第一列指标名称字号14px（大两号），响应式同步调整 |  |
+|  44 | 2026-05-24 | cff8b55 | style(compare_v3): 表格数据列居中对齐，分组标题行保持左对齐 |  |
+|  45 | 2026-05-24 | 0dc73ee | fix(app.py): /compare路由改回指向compare_v3.html（误指回compare.html旧版） | 修复Bug |
+|  46 | 2026-05-24 | 1226b99 | fix(compare_v3): 修复数字对齐问题（等宽字体+calc列宽）+ 替换导出截图函数（用screenCaptureFullPage替换exportScreenshot） | 修复Bug |
+|  47 | 2026-05-24 | 3dc41dd | Deploy: update etf_standard_data.json with filled data (exchange field added, primary 100% complete) | 部署相关, 数据相关 |
+|  48 | 2026-05-24 | 65abe10 | fix(compare_v3): Hero区加核心结论，修复内环0.00亿（尝试volume字段） | 修复Bug |
+|  49 | 2026-05-24 | c8d967d | fix(pa_deploy): 修正 GitHub 用户名为 froza88（原 apangduo 错误） | 修复Bug, 部署相关 |
+|  50 | 2026-05-24 | fa77803 | fix(etf_data): 统一 scale/amount 单位，修复 159915 等ETF显示为0的问题 | 修复Bug, 数据相关 |
+|  51 | 2026-05-24 | add86b8 | feat: 添加 GitHub Actions 自动部署到 PA（webhook 方式） | 新功能 |
+|  52 | 2026-05-24 | 5df53bb | fix(compare_v3): 流动性圆环 max 从300元修正为2000亿，使规模可视化有区分度 | 修复Bug |
+|  53 | 2026-05-24 | 8ce5860 | fix: etf_data.py 兼容 etf_standard_data.json 的 {etfs:[]} 格式，修复 /api/etfs 500错误 | 修复Bug, 数据相关 |
+|  54 | 2026-05-24 | 3b7568d | fix: 流动性副指标成交额单位改为亿（保留两位小数） | 修复Bug |
+|  55 | 2026-05-24 | 299293b | feat: 流动性副指标改为成交额，单位万（用Wind数据） | 新功能 |
+|  56 | 2026-05-24 | 77c2f15 | fix: 用Wind修正510500规模数据（414亿） | 修复Bug |
+|  57 | 2026-05-23 | 2a33f07 | fix: 修复流动性对比洞察文字使用原始值而非fmtFn格式化 | 修复Bug |
+|  58 | 2026-05-23 | 3cffca8 | fix: 修复流动性对比的数字和单位错误（scale未转换亿元、volume单位错误） | 修复Bug |
+|  59 | 2026-05-23 | 79326d4 | fix: 修复对比页JavaScript语法错误（Python风格注释导致页面加载失败） | 修复Bug |
+|  60 | 2026-05-23 | 8c7d4c6 | fix: 修复对比页加载慢问题（API响应时间 5.8s → 0.08s） | 修复Bug |
+|  61 | 2026-05-23 | eac92fd | chore: 清理临时文件 + 添加设计文档和Wind补充脚本 | 杂项 |
+|  62 | 2026-05-23 | ab0cc19 | feat: 数据分级配置 + WeStock每日更新脚本 + 缺失数据填充任务文档 | 新功能 |
+|  63 | 2026-05-23 | b11640a | feat: L2 WeStock 数据源接入完成，部署到 PythonAnywhere | 新功能 |
+|  64 | 2026-05-23 | 75b66d9 | fix: WeStockFetcher 缓存目录创建 + fee_rate=0 警告 | 修复Bug |
+|  65 | 2026-05-23 | 1d65584 | feat: L2 WeStock 数据源接入完成，3/4 测试通过 | 新功能 |
+|  66 | 2026-05-23 | 7743857 | fix: year_3_return=0 误存为缺失值，改为 None；同步修复 etf_calculated_metrics.json 和 etf_standard_data.json | 修复Bug, 数据相关 |
+|  67 | 2026-05-23 | 6f238b2 | compare_v3: 圈图放大至200px，数字统一2位小数，删除收益率趋势图 |  |
+|  68 | 2026-05-23 | 3fb7907 | feat: compare page improvements | 新功能 |
+|  69 | 2026-05-23 | a0498d2 | remove: delete box-capture (region screenshot) feature | 新功能 |
+|  70 | 2026-05-23 | eb2b63f | debug: screenCaptureRegion - download full page first (no crop) to isolate black screen issue |  |
+|  71 | 2026-05-23 | eee5e44 | fix: modal scroll + screenshot debug improvements | 修复Bug |
+|  72 | 2026-05-23 | abc0a36 | fix: metric selector modal - checkbox list overflow pushed buttons off-screen | 修复Bug |
+|  73 | 2026-05-23 | f7604c8 | fix: metric selector buttons + screenshot black screen | 修复Bug |
+|  74 | 2026-05-23 | a73f568 | fix: screenCaptureRegion black screen - remove overlay from DOM before html2canvas | 修复Bug |
+|  75 | 2026-05-23 | 98e3f14 | fix: use window.xxx=func + onclick=window.xxx() for metric selector | 修复Bug |
+|  76 | 2026-05-23 | d6cc589 | fix: metric selector modal buttons not responding | 修复Bug |
+|  77 | 2026-05-23 | 9db8ace | 修复弹窗无响应+框选截图黑屏 |  |
+|  78 | 2026-05-23 | 469eb16 | 修复指标选择器：去掉内联handler转义问题，加try/catch |  |
+|  79 | 2026-05-23 | cdb8f2d | 添加指标选择器功能：可勾选对比科目 |  |
+|  80 | 2026-05-23 | b542733 | 导出功能增强：添加全页面截图+框选截图 |  |
+|  81 | 2026-05-23 | ff048a9 | docs: ETF 对比工具 v1.0 完整交付文档（含附录1-6，关键技术决策/对话记忆/Skill打包） | 文档 |
+|  82 | 2026-05-23 | 510d97e | 详细数据表格样式优化：胜出绯红+未胜出蓝色+指标列加宽 |  |
+|  83 | 2026-05-23 | 0106767 | 修复对比页反馈：圈图80px+流动性单环+洞察文字单位修复 |  |
+|  84 | 2026-05-23 | 9af8f5d | 优化对比页：方案A(重构层级)+B(删标签)+D(统一颜色) |  |
+|  85 | 2026-05-22 | b7dc982 | fix: pipeline.py calc bug修复 - 本地历史数据门槛从252降至20，重算判断从year_1_return改为annual_vol | 修复Bug |
+|  86 | 2026-05-22 | 3f756e3 | style(compare_v3): 提交未完成的UI微调 - Header简化/环形图字体/Heatmap表头优化 |  |
+|  87 | 2026-05-22 | b3249a1 | feat(compare_v3): 美化对比页 - Header加价格/收益率，圈图放大，3列布局 | 新功能 |
+|  88 | 2026-05-22 | aab49f2 | refactor: compare/v3 改为 API 架构，新增 etf_data_service.py 数据服务层 | 数据相关, 重构 |
+|  89 | 2026-05-22 | 635082c | pipeline: build步骤新增派生指标和预留字段 |  |
+|  90 | 2026-05-22 | ccd1fd4 | compare_v3: 去雷达图、双环规模/成交额、斜线表头、完整ETF名、预留新指标 |  |
+|  91 | 2026-05-22 | f1ff21b | pipeline: 新增 --no-wind 参数，跳过 Wind 数据补充步骤 |  |
+|  92 | 2026-05-22 | c06b361 | compare_v3: 按百度文章框架重排对比科目 — 流动性→风险→收益 |  |
+|  93 | 2026-05-22 | b4c27a3 | compare_v3: 去掉柱状图，改成纯圈图对比 + 多项UI优化 |  |
+|  94 | 2026-05-22 | 7d2367c | 雷达图: 回撤移到正下方(6h)，隐藏内部刻度数字 |  |
+|  95 | 2026-05-22 | 9377c42 | compare_v3: 7项UI大修 - 冠军榜+环形图融合、基金公司简写、跟踪指数、雷达重塑、热力图修复 |  |
+|  96 | 2026-05-22 | dec12c2 | style: 7项UI精调——标签放大/冠军3列/环形3列/柱瘦身/雷达显数值/热力图瘦身/去合计规模 |  |
+|  97 | 2026-05-22 | 8f74faf | chore: update meta.json after daily pipeline | 杂项 |
+|  98 | 2026-05-22 | 0b35829 | pipeline: 2026-05-22 数据更新 |  |
+|  99 | 2026-05-22 | 74c542c | feat: 整合完美版全部视觉组件，重构JS为模块化架构 | 新功能 |
+| 100 | 2026-05-22 | 1ab48eb | feat: complete overhaul of compare_v3 - decoupled logic and restored visual peak | 新功能 |
+| 101 | 2026-05-22 | dd69398 | fix: via CLI - 补全波动率DOM, 修复init闭合及导出函数头 | 修复Bug |
+| 102 | 2026-05-21 | 115df9d | fix: 修复对比页JS语法错误，恢复图表渲染和导出菜单功能 | 修复Bug |
+| 103 | 2026-05-21 | 7081d5d | fix: 补全缺失的 compare_print.html 模板以修复打印页 404 问题 | 修复Bug |
+| 104 | 2026-05-21 | 8aeddc0 | style: 优化对比页图表布局，改为单列大行模式 |  |
+| 105 | 2026-05-21 | 6b95c99 | feat: 增强对比页可视化与交互 | 新功能 |
+| 106 | 2026-05-21 | 3801baf | fix: 彻底修复热力图表格布局乱序 | 修复Bug |
+| 107 | 2026-05-21 | 5c85bf4 | fix: 再次强化对比页表格固定布局 | 修复Bug |
+| 108 | 2026-05-21 | 0b9a9e1 | fix: 修复对比页热力图表格乱序/撑开问题 | 修复Bug |
+| 109 | 2026-05-21 | 454ad0d | fix: 用 getDisplayMedia 替换 html2canvas 截图方案 | 修复Bug |
+| 110 | 2026-05-21 | bad4dc5 | fix: 补充 issuer 和 issue_date 字段至100%覆盖率 (Wind API) | 修复Bug |
+| 111 | 2026-05-21 | 46f3f8a | fix: 缺失数据显示'-'而非'0'，修复||0误导问题 | 修复Bug |
+| 112 | 2026-05-21 | b35b204 | docs: 添加经验教训文档和.gitignore备份文件规则 | 文档 |
+| 113 | 2026-05-21 | e0b3a97 | feat: 补充14只ETF持仓数据，持仓覆盖率98.9% | 新功能 |
+| 114 | 2026-05-21 | bf316f8 | test: 测试deploy.sh脚本 | 部署相关, 测试 |
+| 115 | 2026-05-21 | 772c8eb | docs: update PA_MANUAL_UPDATE_GUIDE.md to recommend pa_deploy.sh | 部署相关, 文档 |
+| 116 | 2026-05-21 | cdf48c6 | feat: add pa_deploy.sh one-step deployment script | 新功能, 部署相关 |
+| 117 | 2026-05-20 | 106d197 | fix: PA 标记自己为已同步 | 修复Bug |
+| 118 | 2026-05-21 | f9334c0 | fix: update_data_version.py 合并 sync_status 而不是覆盖 | 修复Bug, 数据相关 |
+| 119 | 2026-05-21 | b2dab96 | fix: 更新 data_version.json 到正确版本 (2026-05-21T00:30:02) | 修复Bug, 数据相关 |
+| 120 | 2026-05-21 | b3046b4 | chore: 更新中文文件名文件中的 ETF-tool-MVP → etf-tool-mvp | 杂项 |
+| 121 | 2026-05-21 | 9fc4e15 | chore: 批量替换 ETF-tool-MVP → etf-tool-mvp (仓库重命名) | 杂项 |
+| 122 | 2026-05-21 | eee2975 | fix: 加固 batch_fill_history.py - 加限流/重试/超时保护 | 修复Bug |
+| 123 | 2026-05-20 | 9913c02 | feat: 优化batch_fill_history.py支持并行执行 (75x性能提升) | 新功能 |
+| 124 | 2026-05-20 | 96abd82 | backup: 备份 batch_fill_history.py 原版本 before 并行优化 |  |
+| 125 | 2026-05-20 | 6572b44 | daily: 2026-05-20数据更新 |  |
+| 126 | 2026-05-20 | 7c33132 | fix: /api/sync 添加 git reset --hard 解决本地修改冲突 | 修复Bug |
+| 127 | 2026-05-20 | 3a39afd | chore: 更新 data_version.json 时间戳 | 数据相关, 杂项 |
+| 128 | 2026-05-20 | 69e26fd | test: 触发 webhook 自动同步 | 测试 |
+| 129 | 2026-05-20 | 91fe3f3 | fix: /api/sync 添加 update_data_version.py 调用 | 修复Bug, 数据相关 |
+| 130 | 2026-05-20 | 53739e7 | test: webhook sync | 测试 |
+| 131 | 2026-05-20 | ccbb5d8 | test: 验证 webhook 自动同步 | 测试 |
+| 132 | 2026-05-20 | 6ac3043 | docs: 添加 PythonAnywhere 免费版限制与解决方案文档（供未来AI模型调用） | 文档 |
+| 133 | 2026-05-20 | 1e31547 | docs: 添加 GitHub Webhook 配置指南 | 文档 |
+| 134 | 2026-05-20 | 09db885 | feat: 添加 PythonAnywhere 自动拉取配置助手脚本 | 新功能 |
+| 135 | 2026-05-20 | 46248b7 | feat: 添加 /api/version 端点，修复 /api/sync 语法错误 | 新功能 |
+| 136 | 2026-05-20 | 28c713d | feat: 添加防回滚安全拉取脚本 safe_pull.sh | 新功能 |
+| 137 | 2026-05-20 | 675f5cd | feat: 三地数据同步方案 - 添加时间戳、同步脚本、验证脚本 | 新功能 |
+| 138 | 2026-05-20 | f994f1a | pipeline: 2026-05-20 数据更新 |  |
+| 139 | 2026-05-20 | f71af54 | docs: 添加8小时工作计划任务包（数据质量分析+calc_metrics优化） | 文档 |
+| 140 | 2026-05-20 | 1bdffe4 | feat: 添加分批吸收脚本（支持--batch和--incremental模式） | 新功能 |
+| 141 | 2026-05-20 | 8b7a321 | feat: 添加增量模式支持（只处理缺失year_3_return的ETF） | 新功能 |
+| 142 | 2026-05-20 | 574966c | fix: 修复calc_metrics.py多数据源支持（westock-data + 本地缓存 + AKShare） | 修复Bug, 数据相关 |
+| 143 | 2026-05-19 | ce3fa28 | feat: 创建financial_data_fetcher/通用数据获取框架（四层架构第1层）\n\n- base_fetcher.py: 基础获取器抽象类（重试/缓存/验证）\n- multi_source_fetcher.py: 多源获取器（ETF实现）\n- cache_manager.py: 缓存管理器（本地/GitHub/PA同步）\n- rate_limiter.py: 限流管理器（指数退避）\n- data_validator.py: 数据验证器（交叉验证/异常检测） | 新功能, 数据相关 |
+| 144 | 2026-05-19 | 8d4a4a4 | fix: 三地存储方案 - 修复.gitignore(含data/history) + app.py添加/api/sync端点 + pipeline.py部署后触发PA同步 + 删除data_absorber.py/enrich_missing_fields.py | 修复Bug, 数据相关 |
+| 145 | 2026-05-19 | 3262d7f | daily: 2026-05-19数据更新 |  |
+| 146 | 2026-05-19 | 2c8d07c | pipeline: 2026-05-19 数据更新 |  |
+| 147 | 2026-05-18 | 76332b8 | fix: 修复涨跌幅数据（AKShare列名错误）+ 价格数据重算 | 修复Bug |
+| 148 | 2026-05-18 | 22ce028 | fix: 修复prev_close和change_pct数据问题，创建历史缓存文件 | 修复Bug |
+| 149 | 2026-05-18 | 126ec9a | feat: daily_update + 历史净值优先本地缓存 | 新功能 |
+| 150 | 2026-05-18 | cef564f | feat: 历史净值首选AKShare实时，详情页实时价格覆盖 | 新功能 |
+| 151 | 2026-05-18 | 44f379c | feat: add Wind-style professional compare page with report export | 新功能 |
+| 152 | 2026-05-18 | 04ced78 | fix: deploy.sh directory path (ETF-tool-MVP -> etf-tool-mvp) | 修复Bug, 部署相关 |
+| 153 | 2026-05-18 | d329a0f | chore: add one-click deploy script for PythonAnywhere | 部署相关, 杂项 |
+| 154 | 2026-05-18 | b40d2cf | fix: P0/P1修复，补充风险指标，改进UX | 修复Bug |
+| 155 | 2026-05-18 | 7a06082 | fix: compatible fetch timeout + cleaner bar chart | 修复Bug |
+| 156 | 2026-05-18 | c3c5a8f | fix: add fetch timeout to prevent hanging on yingmi API | 修复Bug |
+| 157 | 2026-05-18 | 4deb67d | feat: modern single-axis bar chart with normalization | 新功能 |
+| 158 | 2026-05-18 | 8478307 | feat: dynamic bar chart with clickable metric chips | 新功能 |
+| 159 | 2026-05-18 | 562c59f | fix: button functions missing, typo, volume display, chart sizing | 修复Bug |
+| 160 | 2026-05-18 | 3c3fb25 | feat: toggle between self-calc and yingmi on compare page | 新功能 |
+| 161 | 2026-05-18 | bbef951 | feat: compare page can fetch yingmi data for all ETFs | 新功能, 数据相关 |
+| 162 | 2026-05-18 | 98234b0 | feat: yingmi data 1440/1466 + tie green highlight | 新功能, 数据相关 |
+| 163 | 2026-05-18 | 2971238 | feat: 盈米风险指标数据 (1440/1466) | 新功能 |
+| 164 | 2026-05-18 | 0b85a09 | fix: highlight wraps text only via span; bar chart uses gold for best bars | 修复Bug |
+| 165 | 2026-05-18 | 8f3b3ef | fix: remove holdings row, tighter highlights, gradient bars with best-value gold | 修复Bug |
+| 166 | 2026-05-18 | f1f606e | fix: subtle highlights, regroup rows, remove 3yr highlight, core compare only | 修复Bug |
+| 167 | 2026-05-17 | 1994f19 | feat: enhanced chart styling - rounded bars, smooth radar, better colors | 新功能 |
+| 168 | 2026-05-17 | 45093d5 | fix: bar chart shows scale + volume (same unit) instead of scale + return | 修复Bug |
+| 169 | 2026-05-17 | 1a7588b | fix: compare template jinja2 syntax errors | 修复Bug |
+| 170 | 2026-05-17 | 807ffb2 | feat: add issue_date to detail and compare pages | 新功能 |
+| 171 | 2026-05-17 | c1be025 | feat(D): enhanced compare page with radar chart, bar chart, best-value highlighting | 新功能 |
+| 172 | 2026-05-17 | 724315c | feat: risk API reads yingmi JSON first, falls back to CLI | 新功能 |
+| 173 | 2026-05-17 | 1bbefa7 | feat: risk page shows self-calc data on load, click button to fetch yingmi | 新功能, 数据相关 |
+| 174 | 2026-05-17 | d3cb13c | fix: use dynamic yingmi-skill-cli path for Mac + PythonAnywhere | 修复Bug |
+| 175 | 2026-05-17 | 5293e39 | feat: default sort by scale descending on homepage | 新功能 |
+| 176 | 2026-05-17 | be2dd1f | feat: risk page click-to-fetch yingmi; AKShare holdings fallback | 新功能 |
+| 177 | 2026-05-17 | 754174a | feat: remove max_drawdown/sharpe from detail first layer, keep only in risk page | 新功能 |
+| 178 | 2026-05-17 | 93cef23 | feat: separate calc_metrics.py for self-calculated indicators, saved to independent file | 新功能 |
+| 179 | 2026-05-17 | 9ad3adb | fix: mobile responsive - table scroll, hide non-essential columns | 修复Bug |
+| 180 | 2026-05-17 | 878bdd3 | feat: risk page with on-demand yingmi data, non-convex market_cap for scale | 新功能, 数据相关 |
+| 181 | 2026-05-17 | 72d4c26 | feat: add data source footer with cutoff dates and disclaimer | 新功能, 数据相关 |
+| 182 | 2026-05-17 | 4f3c505 | fix: year_3_return shows 不足3年 when same as year_1 | 修复Bug |
+| 183 | 2026-05-17 | 37d6a01 | fix: scale/percentages to 2 decimal places across all templates | 修复Bug |
+| 184 | 2026-05-17 | 1902463 | fix: detail page header shows issuer short name, full name in subtitle | 修复Bug |
+| 185 | 2026-05-17 | 89b33bc | fix: add prefix-based issuer matching for non-standard ETF names | 修复Bug |
+| 186 | 2026-05-17 | e93267c | feat: list page shows issuer short name, detail page shows full name | 新功能 |
+| 187 | 2026-05-17 | ea792a5 | feat: add prev_close and change_rate for all 1466 ETFs | 新功能 |
+| 188 | 2026-05-17 | ba15fb4 | feat: issuer now shows full fund company name | 新功能 |
+| 189 | 2026-05-17 | cae697e | feat: add shares (基金份额) field, display on detail page | 新功能 |
+| 190 | 2026-05-17 | d1514d2 | fix: scale calculation - AKShare returns fund shares, multiply by close for AUM | 修复Bug |
+| 191 | 2026-05-17 | f73af3f | fix: change_pct display to 2 decimal places | 修复Bug |
+| 192 | 2026-05-17 | 535cb2e | fix: default sort by code asc instead of scale desc | 修复Bug |
+| 193 | 2026-05-17 | 24c95fc | fix: always convert market_cap/volume to 亿 (remove incorrect threshold) | 修复Bug |
+| 194 | 2026-05-17 | c33155c | fix: wrap loadETFs in try-catch, use DOMContentLoaded, handle null elements | 修复Bug |
+| 195 | 2026-05-17 | ce4d17a | cleanup: delete 88 abandoned files (old scripts, temp data, docs, backups) | 数据相关, 文档 |
+| 196 | 2026-05-17 | 805a7e5 | fix: JS crash from undefined etf.type in badge class logic | 修复Bug |
+| 197 | 2026-05-17 | 0faac36 | fix: prominent price display on detail page, fix null type in list | 修复Bug |
+| 198 | 2026-05-17 | 0829775 | fix: add price column to ETF list table | 修复Bug |
+| 199 | 2026-05-17 | 77e4c7e | fix: use AKShare 2026 Q1 portfolio data for accurate holdings (replace non-convex component list) | 修复Bug, 数据相关 |
+| 200 | 2026-05-17 | f2f6e81 | fix: remove fee/tracking_error/launch_date references from API and screening | 修复Bug |
+| 201 | 2026-05-17 | 3193a90 | fix: update templates for removed fee/launch/underlying fields, replace with change_pct | 修复Bug |
+| 202 | 2026-05-17 | 57d7d94 | refactor: remove fee/launch_date/underlying fields (no reliable data source) | 数据相关, 重构 |
+| 203 | 2026-05-17 | b74f63b | fix: remove unreliable old enrich data, scale/launch_date/fee now from AKShare raw | 修复Bug, 数据相关 |
+| 204 | 2026-05-17 | 591ada4 | feat: add close price and change_pct fields to all 1466 ETFs | 新功能 |
+| 205 | 2026-05-17 | 1e1f1b6 | feat: add change_pct field from AKShare snapshot, add enrich_prices.py for close prices | 新功能 |
+| 206 | 2026-05-17 | a7abfc0 | chore: remove GitHub Actions deploy (free PA account API limitations) | 部署相关, 杂项 |
+| 207 | 2026-05-17 | 422af52 | refactor: deploy.py only does Reload (git pull handled by PA scheduled task) | 部署相关, 重构 |
+| 208 | 2026-05-17 | aed23f1 | fix: use Schedule API for git pull instead of Console (console needs browser) | 修复Bug |
+| 209 | 2026-05-17 | b26f438 | fix: correct PA API version - consoles use /api/v0/, reload uses v0 webapps | 修复Bug |
+| 210 | 2026-05-17 | 2ed570c | debug: print HTTP status and response body for console API |  |
+| 211 | 2026-05-17 | 88246f8 | fix: add fallback to reload-only if console creation fails + debug output | 修复Bug |
+| 212 | 2026-05-17 | 9f551e5 | fix: use Python script for PA API calls with proper error handling | 修复Bug |
+| 213 | 2026-05-17 | 92ec4a2 | fix: use JSON body for PA API console/create and send_input | 修复Bug |
+| 214 | 2026-05-17 | 9a685ad | fix: remove actions/checkout (not needed for PA API deploy), clean Node 20 warning | 修复Bug, 部署相关 |
+| 215 | 2026-05-17 | 03223c0 | chore: add FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 to fix Node 20 deprecation warning | 修复Bug, 杂项 |
+| 216 | 2026-05-17 | 2aa5611 | test: trigger deploy to verify GitHub Actions | 部署相关, 测试 |
+| 217 | 2026-05-17 | 5eb1d53 | fix: rewrite GitHub Actions deploy with proper auth and reload API | 修复Bug, 部署相关 |
+| 218 | 2026-05-17 | 2ec8d22 | feat: full data enrichment - 1433 real returns, 1402 drawdown/sharpe, 1274 holdings | 新功能, 数据相关 |
+| 219 | 2026-05-17 | 81d0b30 | chore: remove SSH keys from repo, update .gitignore, fix etf_data.py sys import | 修复Bug, 数据相关, 杂项 |
+| 220 | 2026-05-17 | df19b21 | perf: 列表页分页渲染(P50行) + 表头排序 + 按需字段(P10个) |  |
+| 221 | 2026-05-17 | 111cd43 | update data | 数据相关 |
+| 222 | 2026-05-17 | adb97d6 | feat: 方案B全量数据补充脚本 | 新功能 |
+| 223 | 2026-05-17 | e4928ba | refactor: 拆分为独立可复用模块 | 重构 |
+| 224 | 2026-05-17 | 3d80483 | feat: 新增 enrich_all_etfs.py 覆盖全部1466只ETF的持仓权重和净值计算 | 新功能 |
+| 225 | 2026-05-17 | 91a593b | fix: 修复AKShare规模数据获取（列索引定位）及重新标准化 | 修复Bug |
+| 226 | 2026-05-17 | facacf9 | feat: 补齐免费数据源的持仓权重和历史净值计算 | 新功能 |
+| 227 | 2026-05-16 | 302b254 | feat: 从东方财富(AKShare)源头重建ETF数据库，彻底解决数据质量问题 | 新功能 |
+| 228 | 2026-05-16 | 55bc154 | refactor: 重建 ETF 数据加载架构 | 重构 |
+| 229 | 2026-05-16 | eebf71e | chore: 清理 _extract_name_issuer 中残留的死代码 | 杂项 |
+| 230 | 2026-05-16 | 3530dce | feat: 从全量数据 name 自动提取发行人，覆盖 1169/1461 只 ETF | 新功能 |
+| 231 | 2026-05-16 | 54dd4db | fix: issuer为空时不显示尾部 '-'，避免显示冗余后缀 | 修复Bug |
+| 232 | 2026-05-16 | 9720d87 | fix: 持仓列表名称加 flex:1 对齐优化 | 修复Bug |
+| 233 | 2026-05-16 | 4171ff8 | fix: 修复 top_holdings 前端渲染，统一为字典格式 | 修复Bug |
+| 234 | 2026-05-16 | bae8e66 | fix: 修复 top_holdings 数据串用问题，重新获取真实持仓 | 修复Bug |
+| 235 | 2026-05-16 | 5a35d28 | fix: 改为全量1461只底座 + 优质数据补充，解决只显示130只的问题 | 修复Bug |
+| 236 | 2026-05-16 | 174d15d | fix: 名称显示格式改为 代码-名称-基金公司 | 修复Bug |
+| 237 | 2026-05-16 | 1f155dd | fix: 修复收益率/夏普/最大回撤数值错误（去掉多余的/100转换） | 修复Bug |
+| 238 | 2026-05-16 | b9b483f | fix: etf_data.py 支持 etf_data_generated.json，修复 top_holdings 不显示 | 修复Bug, 数据相关 |
+| 239 | 2026-05-16 | f536df6 | fix: 升级 actions/checkout@v4 + setup-python@v5，修复 Node.js 20 废弃警告；修复 YAML 缩进及 Python 语法错误 | 修复Bug |
+| 240 | 2026-05-16 | 9e66f0d | fix: etf_data.py 修复 UnboundLocalError + 延长数据有效期至7天 | 修复Bug, 数据相关 |
+| 241 | 2026-05-16 | dc65b47 | chore: 更新 etf_complete_130.json 数据 | 杂项 |
+| 242 | 2026-05-15 | a6dcf63 | fix: etf_data.py 修复字段映射（symbol_id→code）及关键词搜索 | 修复Bug, 数据相关 |
+| 243 | 2026-05-14 | d7989d0 | refactor: 改用 PythonAnywhere API 部署（免 SSH，免费账户可用） | 重构 |
+| 244 | 2026-05-14 | 06550bc | fix: 修复 deploy.yml bash 语法错误 [[]] | 修复Bug, 部署相关 |
+| 245 | 2026-05-14 | 214eeb8 | 修复 GitHub Actions：测试失败不影响部署 |  |
+| 246 | 2026-05-14 | de18903 | 配置 GitHub Actions 自动部署到 PythonAnywhere |  |
+| 247 | 2026-05-14 | a63b055 | 更新 ETF 数据：使用重建的 1461 只 ETF 全量数据 |  |
+| 248 | 2026-05-14 | 40c7bbe | Fix duplicate manager name in ETF display | 修复Bug |
+| 249 | 2026-05-14 | 15f2fd8 | Add deployment script and API test | 部署相关, 测试 |
+| 250 | 2026-05-14 | 06c13ed | Initial deployment | 部署相关 |
+| 251 | 2026-05-13 | 855dd75 | 修改ETF名称格式为：代码-名称-基金公司，避免同名混淆 |  |
+| 252 | 2026-05-13 | c5b89e4 | 修复ETF持仓数据：更新159915/512650/159901/515800的top_holdings为东方财富网真实数据 |  |
+| 253 | 2026-05-13 | 38698f7 | 修复8只ETF的持仓数据 (510300,510500,510050,159915,512100,159967,510880,512800) |  |
+| 254 | 2026-05-12 | 5699679 | 添加真实的前五大持仓股票数据 |  |
+| 255 | 2026-05-12 | 8ebb483 | 添加专业README.md - 完善项目文档 |  |
+| 256 | 2026-05-12 | c1de87a | 添加ETF筛选器创业方案V2.md |  |
+| 257 | 2026-05-12 | 266b795 | Add Render deployment guide | 部署相关 |
+| 258 | 2026-05-12 | a84112d | Make app cloud-ready: use dynamic PORT for Render deployment | 部署相关 |
+| 259 | 2026-05-12 | bd08855 | Initial commit: ETF筛选器MVP - 包含130只ETF数据和筛选功能 |  |
 
 ---
 
