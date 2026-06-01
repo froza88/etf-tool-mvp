@@ -1,0 +1,100 @@
+{
+  "generated": "2026-06-02",
+  "etfs": [
+    {
+      "code": "159516.XSHE",
+      "name": "半导体设备ETF国泰",
+      "issuer": "国泰基金",
+      "inception": "2023-07-19",
+      "aum": 193.22,
+      "aum_unit": "亿",
+      "aum_date": "2026Q1",
+      "latest_price": 1.143,
+      "daily_turnover": 29.72,
+      "turnover_unit": "亿",
+      "return_1y": 115.9,
+      "return_unit": "%",
+      "tracking_index": "中证半导体材料设备主题指数",
+      "mgmt_fee": 0.50,
+      "custody_fee": 0.10,
+      "total_fee": 0.60,
+      "top10_holdings": ["康强电子","北方华创","雅克科技","中晶科技","上海新阳","南大光电","长川科技","晶瑞电材","江丰电子","广立微"]
+    },
+    {
+      "code": "159558.XSHE",
+      "name": "半导体设备ETF易方达",
+      "issuer": "易方达基金",
+      "inception": "2024-06-06",
+      "aum": 46.40,
+      "aum_date": "2026Q1",
+      "latest_price": 2.683,
+      "daily_turnover": 8.05,
+      "return_1y": 118.0,
+      "tracking_index": "中证半导体材料设备主题指数",
+      "mgmt_fee": 0.50,
+      "custody_fee": 0.10,
+      "total_fee": 0.60,
+      "top10_holdings": ["康强电子","北方华创","雅克科技","中晶科技","上海新阳","南大光电","长川科技","晶瑞电材","江丰电子","广立微"]
+    },
+    {
+      "code": "560780.XSHG",
+      "name": "半导体设备ETF广发",
+      "issuer": "广发基金",
+      "inception": "2023-12-01",
+      "aum": 33.61,
+      "aum_date": "2026Q1",
+      "latest_price": 2.522,
+      "daily_turnover": 5.47,
+      "return_1y": 117.8,
+      "tracking_index": "中证半导体材料设备主题指数",
+      "mgmt_fee": 0.50,
+      "custody_fee": 0.10,
+      "total_fee": 0.60,
+      "top10_holdings": ["康强电子","北方华创","雅克科技","中晶科技","上海新阳","南大光电","长川科技","晶瑞电材","江丰电子","广立微"]
+    },
+    {
+      "code": "561980.XSHG",
+      "name": "半导体设备ETF招商",
+      "issuer": "招商基金",
+      "inception": "2023-08-21",
+      "aum": 32.73,
+      "aum_date": "2026Q1",
+      "latest_price": 2.902,
+      "daily_turnover": 4.45,
+      "return_1y": 118.2,
+      "tracking_index": "中证半导体产业指数",
+      "mgmt_fee": 0.50,
+      "custody_fee": 0.10,
+      "total_fee": 0.60,
+      "top10_holdings": ["康强电子","北方华创","雅克科技","中晶科技","上海新阳","南大光电","长川科技","晶瑞电材","江丰电子","联动科技"]
+    },
+    {
+      "code": "588710.XSHG",
+      "name": "科创半导体设备ETF华泰柏瑞",
+      "issuer": "华泰柏瑞基金",
+      "inception": "2025-05-26",
+      "aum": 14.95,
+      "aum_date": "2026Q1",
+      "latest_price": 2.386,
+      "daily_turnover": 4.64,
+      "return_1y": 138.6,
+      "return_note": "成立至今涨幅(发行价1.000→2.386)",
+      "tracking_index": "上证科创板半导体材料设备主题指数",
+      "mgmt_fee": 0.50,
+      "custody_fee": 0.10,
+      "total_fee": 0.60,
+      "top10_holdings": ["华兴源创","中微公司","安集科技","芯源微","拓荆科技","盛美上海","金宏气体","华海清科","沪硅产业","中船特气"]
+    }
+  ],
+  "data_sources": {
+    "aum_and_fees": "天天基金 fundf10.eastmoney.com",
+    "market_data": "非凸科技 FTShare API",
+    "holdings": "非凸科技 FTShare ETF成份查询",
+    "returns": "非凸科技 OHLC K线数据(2025-05→2026-06)"
+  },
+  "notes": {
+    "fees": "五只ETF费率完全一致，管理费0.50%+托管费0.10%=0.60%/年",
+    "holdings_overlap": "159516/159558/560780持仓完全一致(同指数)，561980仅第10名不同，588710零重叠",
+    "scale_ratio": "国泰159516占五只总规模的60.2%"
+  }
+}

@@ -1,5 +1,37 @@
 # ETF 每日数据更新 - 执行历史
 
+## 2026-05-31
+
+### 执行摘要
+- **状态**: 成功
+- **时间**: 03:04 - 04:31
+
+### 各步骤状态
+
+| 步骤 | 状态 | 说明 |
+|------|------|------|
+| 1. pipeline.py --push --no-wind | 成功 | AKShare sync → calc → build → deploy 完成 |
+| 2. wequote_daily.py | 成功（第3次） | 前两次因未知原因中断，第3次成功完成并保存 |
+| 3. git commit + push | 成功 | 提交 wequote 补充数据 |
+| 4. PA 同步 curl | 失败(401) | 未授权，连续第 5 天 |
+
+### 数据更新
+- Pipeline: 1486 只 ETF（新增 4 只），git push 成功（2 次 deploy commit），259 个版本
+- 风险计算: 57 只需计算，成功 12，失败 45
+- WeStock: quote 更新 1486 个字段，etf 更新 1192 个字段，总计 2678 字段
+- Git: 2675 行新增，2228 行删除
+
+### 踩坑记录
+- wequote_daily.py 前两次运行均在 etf 阶段中途中断（首次到 58/149 批次，第二次未记录），无错误日志，疑似 westock-data CLI 超时或异常退出
+- 第 3 次运行成功，历时约 16 分钟（04:15 - 04:31）
+- 建议：为 wequote 增加异常捕获和断点续跑机制
+
+### 问题
+- PA 同步返回 401 Unauthorized（连续第 5 天），需检查 PythonAnywhere API 认证
+- data/meta.json 仍有修改未提交（pipeline 产生，非 wequote）
+
+---
+
 ## 2026-05-28
 
 ### 执行摘要

@@ -1,0 +1,92 @@
+{
+  "name": "创新100ETF申万菱信",
+  "symkey": "515200.XSHG",
+  "symbol_id": "515200",
+  "ex_id": "XSHG",
+  "tracking_index_symkey": "931159.CSI",
+  "margin_status": "NONE",
+  "invest_kind": "STOCK",
+  "invest_strategy": null,
+  "trade_mode": "NORMAL",
+  "issue_date": "2019-10-25",
+  "custodian": "中国农业银行",
+  "manager": "申万菱信基金",
+  "close": 2.61,
+  "latest": 2.61,
+  "open": 2.665,
+  "high": 2.695,
+  "low": 2.609,
+  "prev_close": 2.692,
+  "limit_up": 2.961,
+  "limit_down": 2.423,
+  "avg": 2.6715,
+  "asks": [
+    {
+      "price": 2.61,
+      "volume": 49400
+    },
+    {
+      "price": 2.611,
+      "volume": 28300
+    },
+    {
+      "price": 2.622,
+      "volume": 10000
+    },
+    {
+      "price": 2.635,
+      "volume": 38100
+    },
+    {
+      "price": 2.641,
+      "volume": 90000
+    }
+  ],
+  "bids": [
+    {
+      "price": 2.608,
+      "volume": 20000
+    },
+    {
+      "price": 2.6,
+      "volume": 2000
+    },
+    {
+      "price": 2.562,
+      "volume": 100
+    },
+    {
+      "price": 2.557,
+      "volume": 100
+    },
+    {
+      "price": 2.55,
+      "volume": 100
+    }
+  ],
+  "turnover": 3876046.7004,
+  "volume": 1450900,
+  "turnover_rate": 0.0346,
+  "amplitude": 0.0319,
+  "order_ratio": -0.8127,
+  "volume_ratio": null,
+  "sell_volume": 825800,
+  "buy_volume": 625100,
+  "market_cap_total": 109471752.0109,
+  "market_cap_circulating": 109471752.0109,
+  "shares_total": null,
+  "shares_circulating": null,
+  "change": -0.082,
+  "change_rate": -0.030461,
+  "change_rate_5d": -0.050909,
+  "change_rate_10d": 0.003075,
+  "change_rate_20d": 0.100801,
+  "change_rate_60d": 0.161032,
+  "change_rate_120d": null,
+  "change_rate_6m": 0.256015,
+  "change_rate_1y": 0.682785,
+  "change_rate_2y": 0.952132,
+  "change_rate_3y": 0.500863,
+  "change_rate_ytd": 0.201657,
+  "is_in_default_choice_group": null
+}

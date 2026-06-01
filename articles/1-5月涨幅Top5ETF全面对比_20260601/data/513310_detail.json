@@ -1,0 +1,92 @@
+{
+  "name": "中韩半导体ETF华泰柏瑞",
+  "symkey": "513310.XSHG",
+  "symbol_id": "513310",
+  "ex_id": "XSHG",
+  "tracking_index_symkey": "931790.CSI",
+  "margin_status": "BOTH",
+  "invest_kind": "STOCK",
+  "invest_strategy": null,
+  "trade_mode": "T0",
+  "issue_date": "2022-11-02",
+  "custodian": "中国建设银行",
+  "manager": "华泰柏瑞基金",
+  "close": 5.841,
+  "latest": 5.841,
+  "open": 6.099,
+  "high": 6.2,
+  "low": 5.671,
+  "prev_close": 5.979,
+  "limit_up": 6.577,
+  "limit_down": 5.381,
+  "avg": 5.9179,
+  "asks": [
+    {
+      "price": 5.836,
+      "volume": 256900
+    },
+    {
+      "price": 5.837,
+      "volume": 64400
+    },
+    {
+      "price": 5.838,
+      "volume": 315288
+    },
+    {
+      "price": 5.839,
+      "volume": 56100
+    },
+    {
+      "price": 5.84,
+      "volume": 210600
+    }
+  ],
+  "bids": [
+    {
+      "price": 5.835,
+      "volume": 3300
+    },
+    {
+      "price": 5.833,
+      "volume": 100
+    },
+    {
+      "price": 5.832,
+      "volume": 13388
+    },
+    {
+      "price": 5.831,
+      "volume": 72400
+    },
+    {
+      "price": 5.83,
+      "volume": 288100
+    }
+  ],
+  "turnover": 13228414915.7068,
+  "volume": 2235306492,
+  "turnover_rate": 0.9986,
+  "amplitude": 0.0885,
+  "order_ratio": -0.4108,
+  "volume_ratio": null,
+  "sell_volume": 1137259742,
+  "buy_volume": 1098046750,
+  "market_cap_total": 13074652108.3075,
+  "market_cap_circulating": 13074652108.3075,
+  "shares_total": null,
+  "shares_circulating": null,
+  "change": -0.138,
+  "change_rate": -0.023081,
+  "change_rate_5d": -0.033107,
+  "change_rate_10d": 0.031614,
+  "change_rate_20d": 0.394699,
+  "change_rate_60d": 0.545238,
+  "change_rate_120d": null,
+  "change_rate_6m": 1.357143,
+  "change_rate_1y": 2.863095,
+  "change_rate_2y": 3.610103,
+  "change_rate_3y": 4.013734,
+  "change_rate_ytd": 1.089803,
+  "is_in_default_choice_group": null
+}

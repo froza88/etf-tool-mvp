@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5只沪深300ETF全面对比</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.8; }
+.container { max-width: 720px; margin: 0 auto; background: #fff; padding: 40px 32px; }
+h1 { font-size: 24px; font-weight: 700; margin: 24px 0 12px; line-height: 1.4; }
+h2 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #378ADD; }
+h3 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #378ADD; }
+p { margin: 12px 0; font-size: 15px; }
+blockquote { border-left: 4px solid #378ADD; padding: 12px 16px; margin: 16px 0; background: #f8f9fa; border-radius: 0 6px 6px 0; font-size: 14px; color: #555; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+th, td { padding: 8px 10px; border: 1px solid #e0e0e0; text-align: center; }
+th { background: #f0f4f8; font-weight: 600; }
+tr:nth-child(even) { background: #fafafa; }
+.emphasis { color: #27AE60; font-weight: 600; }
+.warning { color: #E74C3C; }
+.chart-container { margin: 24px 0; padding: 16px; background: #fafafa; border-radius: 8px; border: 1px solid #eee; }
+.chart-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; text-align: center; }
+.chart-caption { font-size: 12px; color: #888; text-align: center; margin-top: 4px; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 13px; color: #888; }
+strong { color: #222; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>5只沪深300ETF全面对比：规模、跟踪误差、夏普比率一表看懂</h1>
+
+<blockquote>不推荐，只给数据。你选哪个，自己判断。<br>数据更新日期：2026-05-31</blockquote>
+
+<p>沪深300指数是A股最核心的宽基指数。目前市场上规模较大的5只沪深300ETF合计规模超过4500亿元。<strong>本文从规模、跟踪误差、年化波动率、夏普比率、最大回撤、贝塔、阿尔法、信息比率8个维度全面对比。</strong></p>
+
+<h2>一、参赛选手一览</h2>
+
+<table>
+<tr><th>代码</th><th>名称</th><th>发行人</th><th>规模</th><th>成立日期</th></tr>
+<tr><td>510300</td><td>沪深300ETF</td><td>华泰柏瑞基金</td><td><strong>1565.4亿</strong></td><td>2012-05-04</td></tr>
+<tr><td>510310</td><td>沪深300ETF</td><td>易方达基金</td><td>1218.8亿</td><td>2013-03-06</td></tr>
+<tr><td>510330</td><td>沪深300ETF</td><td>华夏基金</td><td>848.3亿</td><td>2012-12-25</td></tr>
+<tr><td>159919</td><td>沪深300ETF</td><td>嘉实基金</td><td>793.3亿</td><td>2012-05-07</td></tr>
+<tr><td>515330</td><td>沪深300ETF</td><td>天弘基金</td><td>78.0亿</td><td>2019-12-05</td></tr>
+</table>
+
+<div class="chart-container">
+<div class="chart-title">📊 规模对比：华泰柏瑞1565亿独占鳌头</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100%" height="100%">
+<rect width="500" height="300" fill="white" rx="8"/>
+<text x="250" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">5只沪深300ETF规模对比（亿元）</text>
+<rect x="60" y="60.0" width="60" height="180.0" fill="#378ADD" rx="3"/><text x="90" y="54.0" text-anchor="middle" font-size="11" fill="#333">1565.4亿</text><text x="90" y="262" text-anchor="middle" font-size="11" fill="#666">510300</text><text x="90" y="278" text-anchor="middle" font-size="10" fill="#888">华泰柏瑞</text><rect x="140" y="99.85435032579534" width="60" height="140.14564967420466" fill="#1D9E75" rx="3"/><text x="170" y="93.85435032579534" text-anchor="middle" font-size="11" fill="#333">1218.8亿</text><text x="170" y="262" text-anchor="middle" font-size="11" fill="#666">510310</text><text x="170" y="278" text-anchor="middle" font-size="10" fill="#888">易方达</text><rect x="220" y="142.45688003066311" width="60" height="97.5431199693369" fill="#D85A30" rx="3"/><text x="250" y="136.45688003066311" text-anchor="middle" font-size="11" fill="#333">848.3亿</text><text x="250" y="262" text-anchor="middle" font-size="11" fill="#666">510330</text><text x="250" y="278" text-anchor="middle" font-size="10" fill="#888">华夏</text><rect x="300" y="148.78114220007666" width="60" height="91.21885779992334" fill="#D4537E" rx="3"/><text x="330" y="142.78114220007666" text-anchor="middle" font-size="11" fill="#333">793.3亿</text><text x="330" y="262" text-anchor="middle" font-size="11" fill="#666">159919</text><text x="330" y="278" text-anchor="middle" font-size="10" fill="#888">嘉实</text><rect x="380" y="231.03104637792256" width="60" height="8.968953622077423" fill="#639922" rx="3"/><text x="410" y="225.03104637792256" text-anchor="middle" font-size="11" fill="#333">78.0亿</text><text x="410" y="262" text-anchor="middle" font-size="11" fill="#666">515330</text><text x="410" y="278" text-anchor="middle" font-size="10" fill="#888">天弘</text></svg>
+<div class="chart-caption">5只沪深300ETF规模差距约20倍</div>
+</div>
+
+<h2>二、核心指标对比（8维度）</h2>
+
+<h3>2.1 跟踪误差（近1年）——放大版</h3>
+
+<table>
+<tr><th>ETF</th><th>跟踪误差</th><th>排名</th></tr>
+<tr><td><strong>510310 易方达</strong></td><td><strong>0.7345% 🏆</strong></td><td>第1名</td></tr>
+<tr><td>159919 嘉实</td><td>0.7357%</td><td>第2名</td></tr>
+<tr><td>510330 华夏</td><td>0.7363%</td><td>第3名</td></tr>
+<tr><td>510300 华泰柏瑞</td><td>0.7371%</td><td>第4名</td></tr>
+<tr><td>515330 天弘</td><td>0.7376%</td><td>第5名</td></tr>
+</table>
+
+<div class="chart-container">
+<div class="chart-title">🔍 跟踪误差放大版：易方达0.7345%微胜</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100%" height="100%">
+<rect width="500" height="300" fill="white" rx="8"/>
+<text x="250" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">跟踪误差(近1年) — 放大版（%）</text>
+<text x="250" y="44" text-anchor="middle" font-size="11" fill="#888">Y轴从0.73%开始，放大微小差异</text>
+<rect x="60" y="126.40000000000018" width="60" height="113.59999999999982" fill="#378ADD" rx="3" opacity="0.85"/><text x="90" y="120.40000000000018" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">0.7371%</text><text x="90" y="262" text-anchor="middle" font-size="11" fill="#666">510300</text><text x="90" y="278" text-anchor="middle" font-size="10" fill="#888">华泰柏瑞</text><rect x="140" y="167.9999999999991" width="60" height="72.0000000000009" fill="#1D9E75" rx="3" opacity="0.85"/><text x="170" y="161.9999999999991" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D9E75">0.7345%</text><text x="170" y="262" text-anchor="middle" font-size="11" fill="#666">510310</text><text x="170" y="278" text-anchor="middle" font-size="10" fill="#888">易方达</text><rect x="220" y="139.20000000000053" width="60" height="100.79999999999947" fill="#D85A30" rx="3" opacity="0.85"/><text x="250" y="133.20000000000053" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">0.7363%</text><text x="250" y="262" text-anchor="middle" font-size="11" fill="#666">510330</text><text x="250" y="278" text-anchor="middle" font-size="10" fill="#888">华夏</text><rect x="300" y="148.79999999999947" width="60" height="91.20000000000053" fill="#D4537E" rx="3" opacity="0.85"/><text x="330" y="142.79999999999947" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">0.7357%</text><text x="330" y="262" text-anchor="middle" font-size="11" fill="#666">159919</text><text x="330" y="278" text-anchor="middle" font-size="10" fill="#888">嘉实</text><rect x="380" y="118.3999999999993" width="60" height="121.6000000000007" fill="#639922" rx="3" opacity="0.85"/><text x="410" y="112.3999999999993" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">0.7376%</text><text x="410" y="262" text-anchor="middle" font-size="11" fill="#666">515330</text><text x="410" y="278" text-anchor="middle" font-size="10" fill="#888">天弘</text><text x="170" y="75" text-anchor="middle" font-size="16">🏆</text></svg>
+<div class="chart-caption">Y轴从0.73%开始，最大差距仅0.0031个百分点</div>
+</div>
+
+<h3>2.2 完整8维度对比表</h3>
+
+<table>
+<tr><th>指标</th><th>510300<br>华泰柏瑞</th><th>510310<br>易方达</th><th>510330<br>华夏</th><th>159919<br>嘉实</th><th>515330<br>天弘</th></tr>
+<tr><td><strong>规模(亿)</strong></td><td><strong>1565.4</strong></td><td>1218.8</td><td>848.3</td><td>793.3</td><td>78.0</td></tr>
+<tr><td><strong>跟踪误差</strong></td><td>0.7371%</td><td class="emphasis">0.7345%</td><td>0.7363%</td><td>0.7357%</td><td>0.7376%</td></tr>
+<tr><td><strong>年化波动率</strong></td><td>11.80%</td><td class="emphasis">11.78%</td><td>11.78%</td><td>11.78%</td><td>11.78%</td></tr>
+<tr><td><strong>夏普比率</strong></td><td>0.3187</td><td class="emphasis">0.3209</td><td>0.3195</td><td>0.3186</td><td>0.3170</td></tr>
+<tr><td><strong>最大回撤</strong></td><td>-7.66%</td><td class="emphasis">-7.60%</td><td>-7.64%</td><td>-7.64%</td><td>-7.69%</td></tr>
+<tr><td><strong>贝塔(Beta)</strong></td><td>0.9533</td><td class="emphasis">0.9524</td><td>0.9520</td><td>0.9521</td><td>0.9517</td></tr>
+<tr><td><strong>阿尔法(Alpha)</strong></td><td>0.1600</td><td class="emphasis">0.1632</td><td>0.1613</td><td>0.1597</td><td>0.1574</td></tr>
+<tr><td><strong>信息比率</strong></td><td>0.1964</td><td class="emphasis">0.2010</td><td>0.1976</td><td>0.1956</td><td>0.1917</td></tr>
+<tr><td><strong>年化收益3年</strong></td><td>28.62</td><td class="emphasis">30.60</td><td>28.65</td><td>28.41</td><td>28.33</td></tr>
+</table>
+
+<div class="chart-container">
+<div class="chart-title">🔄 风险指标排名对比：易方达510310全面领先</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+<rect width="600" height="350" fill="white" rx="8"/>
+<text x="300" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">5只ETF风险指标排名对比</text>
+<text x="300" y="44" text-anchor="middle" font-size="11" fill="#888">每项指标排名越靠前越好（1=最佳）</text>
+<text x="20" y="69" font-size="12" fill="#444">跟踪误差</text><rect x="115" y="53" width="82" height="24" rx="4" fill="#85C1E9" opacity="0.8"/><text x="156" y="69" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第2</text><text x="156" y="97" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="207" y="53" width="82" height="24" rx="4" fill="#E74C3C" opacity="0.8"/><text x="248" y="69" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第5</text><text x="248" y="97" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="299" y="53" width="82" height="24" rx="4" fill="#BDC3C7" opacity="0.8"/><text x="340" y="69" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第3</text><text x="340" y="97" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="391" y="53" width="82" height="24" rx="4" fill="#F1948A" opacity="0.8"/><text x="432" y="69" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第4</text><text x="432" y="97" text-anchor="middle" font-size="9" fill="#888">1599</text><rect x="483" y="53" width="82" height="24" rx="4" fill="#27AE60" opacity="0.8"/><text x="524" y="69" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第1</text><text x="524" y="97" text-anchor="middle" font-size="9" fill="#888">5153</text><text x="20" y="124" font-size="12" fill="#444">年化波动率</text><rect x="115" y="108" width="82" height="24" rx="4" fill="#27AE60" opacity="0.8"/><text x="156" y="124" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第1</text><text x="156" y="152" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="207" y="108" width="82" height="24" rx="4" fill="#85C1E9" opacity="0.8"/><text x="248" y="124" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第2</text><text x="248" y="152" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="299" y="108" width="82" height="24" rx="4" fill="#BDC3C7" opacity="0.8"/><text x="340" y="124" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第3</text><text x="340" y="152" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="391" y="108" width="82" height="24" rx="4" fill="#F1948A" opacity="0.8"/><text x="432" y="124" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第4</text><text x="432" y="152" text-anchor="middle" font-size="9" fill="#888">1599</text><rect x="483" y="108" width="82" height="24" rx="4" fill="#E74C3C" opacity="0.8"/><text x="524" y="124" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第5</text><text x="524" y="152" text-anchor="middle" font-size="9" fill="#888">5153</text><text x="20" y="179" font-size="12" fill="#444">夏普比率</text><rect x="115" y="163" width="82" height="24" rx="4" fill="#BDC3C7" opacity="0.8"/><text x="156" y="179" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第3</text><text x="156" y="207" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="207" y="163" width="82" height="24" rx="4" fill="#E74C3C" opacity="0.8"/><text x="248" y="179" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第5</text><text x="248" y="207" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="299" y="163" width="82" height="24" rx="4" fill="#F1948A" opacity="0.8"/><text x="340" y="179" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第4</text><text x="340" y="207" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="391" y="163" width="82" height="24" rx="4" fill="#85C1E9" opacity="0.8"/><text x="432" y="179" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第2</text><text x="432" y="207" text-anchor="middle" font-size="9" fill="#888">1599</text><rect x="483" y="163" width="82" height="24" rx="4" fill="#27AE60" opacity="0.8"/><text x="524" y="179" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第1</text><text x="524" y="207" text-anchor="middle" font-size="9" fill="#888">5153</text><text x="20" y="234" font-size="12" fill="#444">最大回撤</text><rect x="115" y="218" width="82" height="24" rx="4" fill="#85C1E9" opacity="0.8"/><text x="156" y="234" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第2</text><text x="156" y="262" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="207" y="218" width="82" height="24" rx="4" fill="#E74C3C" opacity="0.8"/><text x="248" y="234" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第5</text><text x="248" y="262" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="299" y="218" width="82" height="24" rx="4" fill="#F1948A" opacity="0.8"/><text x="340" y="234" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第4</text><text x="340" y="262" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="391" y="218" width="82" height="24" rx="4" fill="#BDC3C7" opacity="0.8"/><text x="432" y="234" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第3</text><text x="432" y="262" text-anchor="middle" font-size="9" fill="#888">1599</text><rect x="483" y="218" width="82" height="24" rx="4" fill="#27AE60" opacity="0.8"/><text x="524" y="234" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第1</text><text x="524" y="262" text-anchor="middle" font-size="9" fill="#888">5153</text><text x="20" y="289" font-size="12" fill="#444">信息比率</text><rect x="115" y="273" width="82" height="24" rx="4" fill="#BDC3C7" opacity="0.8"/><text x="156" y="289" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第3</text><text x="156" y="317" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="207" y="273" width="82" height="24" rx="4" fill="#E74C3C" opacity="0.8"/><text x="248" y="289" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第5</text><text x="248" y="317" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="299" y="273" width="82" height="24" rx="4" fill="#F1948A" opacity="0.8"/><text x="340" y="289" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第4</text><text x="340" y="317" text-anchor="middle" font-size="9" fill="#888">5103</text><rect x="391" y="273" width="82" height="24" rx="4" fill="#85C1E9" opacity="0.8"/><text x="432" y="289" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第2</text><text x="432" y="317" text-anchor="middle" font-size="9" fill="#888">1599</text><rect x="483" y="273" width="82" height="24" rx="4" fill="#27AE60" opacity="0.8"/><text x="524" y="289" text-anchor="middle" font-size="11" fill="white" font-weight="bold">第1</text><text x="524" y="317" text-anchor="middle" font-size="9" fill="#888">5153</text><rect x="80" y="337" width="10" height="10" rx="2" fill="#378ADD"/><text x="94" y="347" font-size="10" fill="#666">510300</text><rect x="180" y="337" width="10" height="10" rx="2" fill="#1D9E75"/><text x="194" y="347" font-size="10" fill="#666">510310</text><rect x="280" y="337" width="10" height="10" rx="2" fill="#D85A30"/><text x="294" y="347" font-size="10" fill="#666">510330</text><rect x="380" y="337" width="10" height="10" rx="2" fill="#D4537E"/><text x="394" y="347" font-size="10" fill="#666">159919</text><rect x="480" y="337" width="10" height="10" rx="2" fill="#639922"/><text x="494" y="347" font-size="10" fill="#666">515330</text></svg>
+<div class="chart-caption">绿色=第1名，红色=第5名。易方达在6项指标中排名第一</div>
+</div>
+
+<div class="chart-container">
+<div class="chart-title">🎯 5维风险画像：5只ETF几乎完全重叠</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+<rect width="600" height="450" fill="white" rx="8"/>
+<text x="300" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">沪深300ETF 5维风险画像</text>
+<text x="300" y="44" text-anchor="middle" font-size="11" fill="#888">越靠近外圈表现越好</text>
+<polygon points="300.0,170.0 328.5,190.7 317.6,224.3 282.4,224.3 271.5,190.7" fill="none" stroke="#e0e0e0" stroke-width="0.5"/><polygon points="300.0,140.0 357.1,181.5 335.3,248.5 264.7,248.5 242.9,181.5" fill="none" stroke="#e0e0e0" stroke-width="0.5"/><polygon points="300.0,110.0 385.6,172.2 352.9,272.8 247.1,272.8 214.4,172.2" fill="none" stroke="#e0e0e0" stroke-width="0.5"/><polygon points="300.0,80.0 414.1,162.9 370.5,297.1 229.5,297.1 185.9,162.9" fill="none" stroke="#e0e0e0" stroke-width="0.5"/><line x1="300" y1="200" x2="300.0" y2="80.0" stroke="#e0e0e0" stroke-width="0.5"/><text x="300.0" y="74.0" text-anchor="middle" font-size="11" fill="#555">跟踪误差</text><line x1="300" y1="200" x2="414.1" y2="162.9" stroke="#e0e0e0" stroke-width="0.5"/><text x="419.8" y="161.1" text-anchor="middle" font-size="11" fill="#555">年化波动</text><line x1="300" y1="200" x2="370.5" y2="297.1" stroke="#e0e0e0" stroke-width="0.5"/><text x="374.1" y="301.9" text-anchor="middle" font-size="11" fill="#555">夏普比率</text><line x1="300" y1="200" x2="229.5" y2="297.1" stroke="#e0e0e0" stroke-width="0.5"/><text x="225.9" y="301.9" text-anchor="middle" font-size="11" fill="#555">最大回撤</text><line x1="300" y1="200" x2="185.9" y2="162.9" stroke="#e0e0e0" stroke-width="0.5"/><text x="180.2" y="161.1" text-anchor="middle" font-size="11" fill="#555">信息比率</text><polygon points="300.0,172.5 311.4,196.3 331.7,243.6 270.7,240.3 242.4,181.3" fill="#378ADD" fill-opacity="0.15" stroke="#378ADD" stroke-width="1.5"/><polygon points="300.0,92.0 402.7,166.6 363.5,287.4 236.5,287.4 197.3,166.6" fill="#1D9E75" fill-opacity="0.25" stroke="#1D9E75" stroke-width="2"/><polygon points="300.0,147.7 402.7,166.6 343.2,259.5 257.8,258.1 230.7,177.5" fill="#D85A30" fill-opacity="0.15" stroke="#D85A30" stroke-width="1.5"/><polygon points="300.0,129.2 402.7,166.6 330.2,241.6 262.4,251.7 250.3,183.9" fill="#D4537E" fill-opacity="0.15" stroke="#D4537E" stroke-width="1.5"/><polygon points="300.0,188.0 402.7,166.6 307.1,209.7 292.9,209.7 288.6,196.3" fill="#639922" fill-opacity="0.15" stroke="#639922" stroke-width="1.5"/><rect x="60" y="402" width="12" height="12" rx="2" fill="#378ADD"/><text x="76" y="412" font-size="10" fill="#555">510300</text><rect x="160" y="402" width="12" height="12" rx="2" fill="#1D9E75"/><text x="176" y="412" font-size="10" fill="#555">510310</text><rect x="260" y="402" width="12" height="12" rx="2" fill="#D85A30"/><text x="276" y="412" font-size="10" fill="#555">510330</text><rect x="360" y="402" width="12" height="12" rx="2" fill="#D4537E"/><text x="376" y="412" font-size="10" fill="#555">159919</text><rect x="460" y="402" width="12" height="12" rx="2" fill="#639922"/><text x="476" y="412" font-size="10" fill="#555">515330</text></svg>
+<div class="chart-caption">越靠外圈表现越好。所有ETF的风险画像高度一致</div>
+</div>
+
+<h2>三、持仓对比</h2>
+
+<table>
+<tr><th>股票</th><th>510300</th><th>510310</th><th>510330</th><th>159919</th><th>515330</th></tr>
+<tr><td>宁德时代</td><td>4.27%</td><td>4.33%</td><td>4.34%</td><td>4.33%</td><td>4.33%</td></tr>
+<tr><td>贵州茅台</td><td>3.65%</td><td>3.70%</td><td>3.71%</td><td>3.70%</td><td>3.70%</td></tr>
+<tr><td>中际旭创</td><td>2.55%</td><td>2.58%</td><td>2.59%</td><td>2.58%</td><td>2.58%</td></tr>
+<tr><td>中国平安</td><td>2.44%</td><td>2.47%</td><td>2.47%</td><td>2.47%</td><td>2.47%</td></tr>
+<tr><td>紫金矿业</td><td>2.17%</td><td>2.20%</td><td>2.20%</td><td>2.20%</td><td>2.20%</td></tr>
+</table>
+
+<p>因为跟踪的是同一个指数，持仓几乎完全相同。前5大重仓股合计权重约15%。</p>
+
+<h2>四、结论：怎么选？</h2>
+
+<table>
+<tr><th>需求</th><th>推荐</th><th>理由</th></tr>
+<tr><td><strong>流动性优先</strong></td><td><strong>510300 华泰柏瑞</strong></td><td>规模1565亿，日均成交最大，买卖价差最小</td></tr>
+<tr><td><strong>数据微优</strong></td><td><strong>510310 易方达</strong></td><td>跟踪误差0.73%、回撤-7.60%，6项指标领先</td></tr>
+<tr><td><strong>大平台信任</strong></td><td>510330华夏 / 159919嘉实</td><td>老牌基金，规模800亿以上</td></tr>
+<tr><td><strong>小规模慎选</strong></td><td class="warning">谨慎515330天弘</td><td>规模78亿，流动性可能不足</td></tr>
+</table>
+
+<blockquote>
+<strong>核心结论</strong>：8个维度的数据对比表明，<strong>5只ETF的风险收益特征几乎完全一致。</strong> 对于交易额10万以内的普通投资者，选哪只几乎没有区别。
+</blockquote>
+
+<div class="footer">
+<p>⚠️ 声明：以上数据来源于Wind金融终端，仅供学习参考，不构成任何投资建议。ETF投资有风险，入市需谨慎。</p>
+<p>数据更新日期：2026-05-31 | 数据覆盖：5只沪深300ETF</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{
+  "name": "绿电ETF华夏",
+  "symkey": "562550.XSHG",
+  "symbol_id": "562550",
+  "ex_id": "XSHG",
+  "tracking_index_symkey": "931897.CSI",
+  "margin_status": "BOTH",
+  "invest_kind": "STOCK",
+  "invest_strategy": null,
+  "trade_mode": "NORMAL",
+  "issue_date": "2023-03-07",
+  "custodian": "中信银行",
+  "manager": "华夏基金",
+  "close": 1.368,
+  "latest": 1.368,
+  "open": 1.366,
+  "high": 1.37,
+  "low": 1.308,
+  "prev_close": 1.353,
+  "limit_up": 1.488,
+  "limit_down": 1.218,
+  "avg": 1.3443,
+  "asks": [
+    {
+      "price": 1.368,
+      "volume": 15700
+    },
+    {
+      "price": 1.369,
+      "volume": 347100
+    },
+    {
+      "price": 1.37,
+      "volume": 1060900
+    },
+    {
+      "price": 1.371,
+      "volume": 549900
+    },
+    {
+      "price": 1.372,
+      "volume": 865700
+    }
+  ],
+  "bids": [
+    {
+      "price": 1.367,
+      "volume": 52300
+    },
+    {
+      "price": 1.366,
+      "volume": 249100
+    },
+    {
+      "price": 1.365,
+      "volume": 303200
+    },
+    {
+      "price": 1.364,
+      "volume": 852200
+    },
+    {
+      "price": 1.363,
+      "volume": 112300
+    }
+  ],
+  "turnover": 371943448.1372,
+  "volume": 276682000,
+  "turnover_rate": 0.1755,
+  "amplitude": 0.0458,
+  "order_ratio": -0.2881,
+  "volume_ratio": null,
+  "sell_volume": 133332650,
+  "buy_volume": 143349350,
+  "market_cap_total": 2157225602.6157,
+  "market_cap_circulating": 2157225602.6157,
+  "shares_total": null,
+  "shares_circulating": null,
+  "change": 0.015,
+  "change_rate": 0.011086,
+  "change_rate_5d": 0.073783,
+  "change_rate_10d": 0.076318,
+  "change_rate_20d": 0.123153,
+  "change_rate_60d": 0.151515,
+  "change_rate_120d": null,
+  "change_rate_6m": 0.219251,
+  "change_rate_1y": 0.291785,
+  "change_rate_2y": 0.22252,
+  "change_rate_3y": 0.294229,
+  "change_rate_ytd": 0.250457,
+  "is_in_default_choice_group": null
+}

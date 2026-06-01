@@ -1,0 +1,92 @@
+{
+  "name": "日经ETF华夏",
+  "symkey": "513520.XSHG",
+  "symbol_id": "513520",
+  "ex_id": "XSHG",
+  "tracking_index_symkey": "N225.GI",
+  "margin_status": "BOTH",
+  "invest_kind": "STOCK",
+  "invest_strategy": null,
+  "trade_mode": "T0",
+  "issue_date": "2019-06-12",
+  "custodian": "中国建设银行",
+  "manager": "华夏基金",
+  "close": 2.334,
+  "latest": 2.334,
+  "open": 2.29,
+  "high": 2.345,
+  "low": 2.279,
+  "prev_close": 2.256,
+  "limit_up": 2.482,
+  "limit_down": 2.03,
+  "avg": 2.3117,
+  "asks": [
+    {
+      "price": 2.337,
+      "volume": 157500
+    },
+    {
+      "price": 2.338,
+      "volume": 90900
+    },
+    {
+      "price": 2.339,
+      "volume": 2300
+    },
+    {
+      "price": 2.34,
+      "volume": 52600
+    },
+    {
+      "price": 2.341,
+      "volume": 24100
+    }
+  ],
+  "bids": [
+    {
+      "price": 2.335,
+      "volume": 26500
+    },
+    {
+      "price": 2.334,
+      "volume": 925500
+    },
+    {
+      "price": 2.333,
+      "volume": 149900
+    },
+    {
+      "price": 2.332,
+      "volume": 2500
+    },
+    {
+      "price": 2.331,
+      "volume": 139100
+    }
+  ],
+  "turnover": 704101482.8714,
+  "volume": 304575499,
+  "turnover_rate": 0.2914,
+  "amplitude": 0.0293,
+  "order_ratio": 0.5832,
+  "volume_ratio": null,
+  "sell_volume": 143891299,
+  "buy_volume": 160684200,
+  "market_cap_total": 2439933725.044,
+  "market_cap_circulating": 2439933725.044,
+  "shares_total": null,
+  "shares_circulating": null,
+  "change": 0.078,
+  "change_rate": 0.034574,
+  "change_rate_5d": 0.056587,
+  "change_rate_10d": 0.135214,
+  "change_rate_20d": 0.151455,
+  "change_rate_60d": 0.168168,
+  "change_rate_120d": null,
+  "change_rate_6m": 0.276805,
+  "change_rate_1y": 0.59863,
+  "change_rate_2y": 0.679137,
+  "change_rate_3y": 0.941764,
+  "change_rate_ytd": 0.274017,
+  "is_in_default_choice_group": null
+}

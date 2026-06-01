@@ -1,0 +1,92 @@
+{
+  "name": "绿色电力ETF富国",
+  "symkey": "561170.XSHG",
+  "symbol_id": "561170",
+  "ex_id": "XSHG",
+  "tracking_index_symkey": "931897.CSI",
+  "margin_status": "NONE",
+  "invest_kind": "STOCK",
+  "invest_strategy": null,
+  "trade_mode": "NORMAL",
+  "issue_date": "2023-03-02",
+  "custodian": "中国民生银行",
+  "manager": "富国基金",
+  "close": 1.376,
+  "latest": 1.376,
+  "open": 1.376,
+  "high": 1.378,
+  "low": 1.316,
+  "prev_close": 1.357,
+  "limit_up": 1.493,
+  "limit_down": 1.221,
+  "avg": 1.3577,
+  "asks": [
+    {
+      "price": 1.376,
+      "volume": 153700
+    },
+    {
+      "price": 1.377,
+      "volume": 19800
+    },
+    {
+      "price": 1.378,
+      "volume": 223800
+    },
+    {
+      "price": 1.379,
+      "volume": 407500
+    },
+    {
+      "price": 1.38,
+      "volume": 122900
+    }
+  ],
+  "bids": [
+    {
+      "price": 1.375,
+      "volume": 60800
+    },
+    {
+      "price": 1.374,
+      "volume": 109900
+    },
+    {
+      "price": 1.373,
+      "volume": 80200
+    },
+    {
+      "price": 1.372,
+      "volume": 179100
+    },
+    {
+      "price": 1.371,
+      "volume": 146000
+    }
+  ],
+  "turnover": 83106726.5083,
+  "volume": 61209700,
+  "turnover_rate": 0.1356,
+  "amplitude": 0.0457,
+  "order_ratio": -0.2339,
+  "volume_ratio": null,
+  "sell_volume": 32278150,
+  "buy_volume": 28931550,
+  "market_cap_total": 621308995.2621,
+  "market_cap_circulating": 621308995.2621,
+  "shares_total": null,
+  "shares_circulating": null,
+  "change": 0.019,
+  "change_rate": 0.014001,
+  "change_rate_5d": 0.075,
+  "change_rate_10d": 0.077525,
+  "change_rate_20d": 0.127869,
+  "change_rate_60d": 0.161181,
+  "change_rate_120d": null,
+  "change_rate_6m": 0.220941,
+  "change_rate_1y": 0.29445,
+  "change_rate_2y": 0.224199,
+  "change_rate_3y": 0.305503,
+  "change_rate_ytd": 0.253188,
+  "is_in_default_choice_group": null
+}

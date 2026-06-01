@@ -18,8 +18,9 @@ from datetime import datetime
 # 配置
 WIND_CLI_PATH = "/Users/apangduo/.agents/skills/wind-mcp-skill/scripts/cli.mjs"
 DATA_DIR = Path("/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/data/wind_full")
-MAX_WORKERS = 10  # 并发数
-ETF_LIST_FILE = "/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/data/etf_standard_data_backup_20260522_235039.json"
+MAX_WORKERS = 1  # 串行执行，避免并发打爆Wind API
+SLEEP_SECONDS = 8  # 每次请求后间隔8秒
+ETF_LIST_FILE = "/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/data/etf_db_merged_20260531_145849.json"
 
 # Wind查询：详细查询（复制自test_10_etfs_wind.py）
 WIND_QUERY_TEMPLATE = """查询{code}的全部信息，包括：
@@ -57,12 +58,14 @@ def get_completed_etfs():
 def download_etf_data(etf_code):
     """下载单只ETF的Wind数据"""
     try:
+        # 节流：每次调用前等待，避免打爆Wind API
+        time.sleep(SLEEP_SECONDS)
         # 构造查询
         query = WIND_QUERY_TEMPLATE.format(code=etf_code)
         
         # 调用Wind CLI
         cmd = [
-            'node',
+            '/Users/apangduo/.workbuddy/binaries/node/versions/22.12.0/bin/node',
             WIND_CLI_PATH,
             'call',
             'analytics_data',
@@ -78,6 +81,7 @@ def download_etf_data(etf_code):
         )
         
         if result.returncode != 0:
+            time.sleep(SLEEP_SECONDS)  # 节流：避免打爆Wind API
             return etf_code, False, f"Node进程返回码{result.returncode}: {result.stderr[:200]}"
         
         # 解析输出

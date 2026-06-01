@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5只沪深300ETF全面对比</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.8; }
+.container { max-width: 720px; margin: 0 auto; background: #fff; padding: 40px 32px; }
+h1 { font-size: 24px; font-weight: 700; margin: 24px 0 12px; line-height: 1.4; }
+h2 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #378ADD; }
+h3 { font-size: 17px; font-weight: 600; margin: 20px 0 10px; color: #378ADD; }
+h4 { font-size: 15px; font-weight: 600; margin: 16px 0 8px; color: #555; }
+p { margin: 12px 0; font-size: 15px; }
+blockquote { border-left: 4px solid #378ADD; padding: 12px 16px; margin: 16px 0; background: #f8f9fa; border-radius: 0 6px 6px 0; font-size: 14px; color: #555; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+th, td { padding: 8px 10px; border: 1px solid #e0e0e0; text-align: center; }
+th { background: #f0f4f8; font-weight: 600; }
+tr:nth-child(even) { background: #fafafa; }
+.emphasis { color: #27AE60; font-weight: 600; }
+.emphasis-red { color: #E74C3C; font-weight: 600; }
+.emphasis-blue { color: #2980B9; font-weight: 600; }
+.chart-container { margin: 24px 0; padding: 16px; background: #fafafa; border-radius: 8px; border: 1px solid #eee; }
+.chart-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; text-align: center; color: #555; }
+.chart-caption { font-size: 12px; color: #888; text-align: center; margin-top: 4px; }
+.def-box { margin: 8px 0 16px; padding: 12px 16px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #378ADD; }
+.def-box .term { font-weight: 600; font-size: 14px; }
+.def-box .en { font-size: 12px; color: #888; }
+.def-box .def { margin: 4px 0; font-size: 13px; color: #555; }
+.def-box .value { margin: 4px 0; font-size: 13px; color: #333; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 13px; color: #888; }
+.tag-blue { display:inline-block; padding:1px 8px; border-radius:3px; background:#378ADD; color:#fff; font-size:12px; font-weight:600; }
+.tag-pink { display:inline-block; padding:1px 8px; border-radius:3px; background:#E84393; color:#fff; font-size:12px; font-weight:600; }
+.tag-amber { display:inline-block; padding:1px 8px; border-radius:3px; background:#E8A838; color:#fff; font-size:12px; font-weight:600; }
+.tag-purple { display:inline-block; padding:1px 8px; border-radius:3px; background:#6C5CE7; color:#fff; font-size:12px; font-weight:600; }
+.tag-teal { display:inline-block; padding:1px 8px; border-radius:3px; background:#00B894; color:#fff; font-size:12px; font-weight:600; }
+.txt-blue { fill:#378ADD; }
+.txt-pink { fill:#E84393; }
+.txt-amber { fill:#E8A838; }
+.txt-purple { fill:#6C5CE7; }
+.txt-teal { fill:#00B894; }
+.bg-blue { fill:#378ADD; }
+.bg-pink { fill:#E84393; }
+.bg-amber { fill:#E8A838; }
+.bg-purple { fill:#6C5CE7; }
+.bg-teal { fill:#00B894; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>5只沪深300ETF全面对比</h1>
+
+<blockquote>不推荐，只给数据。你选哪个，自己判断。<br>数据更新日期：2026-05-31 | 来源：Wind金融终端、非凸科技</blockquote>
+
+<p>沪深300指数是A股最核心的宽基指数。目前规模最大的5只沪深300ETF合计超过4500亿元。<strong>本文从规模、费率、跟踪误差、波动率、夏普比率、最大回撤(近1年)、贝塔、阿尔法、信息比率、近3年回报共11个维度完整对比。</strong>每个指标会在文末逐一解释定义，帮助理解。</p>
+
+<h2>一、参赛选手</h2>
+
+<table>
+<tr><th>代码</th><th>名称</th><th>发行人</th><th>规模</th><th>成立日期</th></tr>
+<tr><td><span class="tag-blue">510300</span></td><td>沪深300ETF</td><td>华泰柏瑞基金</td><td><strong class="emphasis-red">1565.4亿</strong></td><td>2012-05-04</td></tr>
+<tr><td><span class="tag-pink">510310</span></td><td>沪深300ETF</td><td>易方达基金</td><td>1218.8亿</td><td>2013-03-06</td></tr>
+<tr><td><span class="tag-amber">510330</span></td><td>沪深300ETF</td><td>华夏基金</td><td>848.3亿</td><td>2012-12-25</td></tr>
+<tr><td><span class="tag-purple">159919</span></td><td>沪深300ETF</td><td>嘉实基金</td><td>793.3亿</td><td>2012-05-07</td></tr>
+<tr><td><span class="tag-teal">515330</span></td><td>沪深300ETF</td><td>天弘基金</td><td>78.0亿</td><td>2019-12-05</td></tr>
+</table>
+
+<h2>二、费率对比</h2>
+
+<p>费率是持有成本中唯一确定的部分，直接影响实际收益。天弘管理费0.5%，是其他4只的3倍多。</p>
+
+<table>
+<tr><th>ETF</th><th>管理费</th><th>托管费</th><th>合计</th></tr>
+<tr><td><span class="tag-blue">510300</span><br>华泰柏瑞</td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.20%</td></tr>
+<tr><td><span class="tag-pink">510310</span><br>易方达</td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.20%</td></tr>
+<tr><td><span class="tag-amber">510330</span><br>华夏</td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.20%</td></tr>
+<tr><td><span class="tag-purple">159919</span><br>嘉实</td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.20%</td></tr>
+<tr><td><span class="tag-teal">515330</span><br>天弘</td><td>0.50%</td><td>0.10%</td><td><strong>0.60%</strong></td></tr>
+</table>
+
+<p>以持有100万元计算：天弘每年扣6000元管理费+托管费，其他4只只扣2000元。相差<strong>4000元/年</strong>。</p>
+
+<h2>三、跟踪误差（近1年）</h2>
+
+<p>跟踪误差衡量ETF紧贴指数的程度。数值越小，跟踪越准。5只均控制在0.74%以内，差异极小。</p>
+
+<table>
+<tr><th>ETF</th><th>跟踪误差</th></tr>
+<tr><td><span class="tag-pink">510310</span><br>易方达</td><td><strong class="emphasis-blue">0.7345%</strong></td></tr>
+<tr><td><span class="tag-purple">159919</span><br>嘉实</td><td>0.7357%</td></tr>
+<tr><td><span class="tag-amber">510330</span><br>华夏</td><td>0.7363%</td></tr>
+<tr><td><span class="tag-blue">510300</span><br>华泰柏瑞</td><td>0.7371%</td></tr>
+<tr><td><span class="tag-teal">515330</span><br>天弘</td><td>0.7376%</td></tr>
+</table>
+
+<div class="chart-container">
+<div class="chart-title">跟踪误差放大对比（Y轴从0.730%起始）</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300">
+<rect width="520" height="300" fill="white" rx="8"/>
+<text x="260" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">近1年跟踪误差（单位：%）</text>
+<text x="260" y="44" text-anchor="middle" font-size="11" fill="#888">Y轴放大：从0.730%开始</text>
+<text x="35" y="244" text-anchor="end" font-size="10" fill="#888">0.730</text><line x1="42" y1="240" x2="490" y2="240" stroke="#eee" stroke-width="0.5"/>
+<text x="35" y="190" text-anchor="end" font-size="10" fill="#888">0.733</text><line x1="42" y1="186" x2="490" y2="186" stroke="#eee" stroke-width="0.5"/>
+<text x="35" y="136" text-anchor="end" font-size="10" fill="#888">0.736</text><line x1="42" y1="132" x2="490" y2="132" stroke="#eee" stroke-width="0.5"/>
+<text x="35" y="82" text-anchor="end" font-size="10" fill="#888">0.739</text><line x1="42" y1="78" x2="490" y2="78" stroke="#eee" stroke-width="0.5"/>
+<circle cx="90" cy="112.2" r="6" fill="#378ADD" stroke="white" stroke-width="2"/>
+<text x="90" y="100.2" text-anchor="middle" font-size="11" fill="#333">0.7371%</text>
+<text x="90" y="128.2" text-anchor="middle" font-size="10" class="txt-blue" font-weight="bold">510300</text>
+<circle cx="185" cy="159.0" r="6" fill="#E84393" stroke="white" stroke-width="2"/>
+<text x="185" y="147.0" text-anchor="middle" font-size="11" fill="#333">0.7345%</text>
+<text x="185" y="175.0" text-anchor="middle" font-size="10" class="txt-pink" font-weight="bold">510310</text>
+<circle cx="280" cy="126.6" r="6" fill="#E8A838" stroke="white" stroke-width="2"/>
+<text x="280" y="114.6" text-anchor="middle" font-size="11" fill="#333">0.7363%</text>
+<text x="280" y="142.6" text-anchor="middle" font-size="10" class="txt-amber" font-weight="bold">510330</text>
+<circle cx="375" cy="137.4" r="6" fill="#6C5CE7" stroke="white" stroke-width="2"/>
+<text x="375" y="125.4" text-anchor="middle" font-size="11" fill="#333">0.7357%</text>
+<text x="375" y="153.4" text-anchor="middle" font-size="10" class="txt-purple" font-weight="bold">159919</text>
+<circle cx="470" cy="103.2" r="6" fill="#00B894" stroke="white" stroke-width="2"/>
+<text x="470" y="91.2" text-anchor="middle" font-size="11" fill="#333">0.7376%</text>
+<text x="470" y="119.2" text-anchor="middle" font-size="10" class="txt-teal" font-weight="bold">515330</text>
+</svg>
+<div class="chart-caption">最大差距仅0.0031个百分点，5只ETF跟踪能力高度同质</div>
+</div>
+
+<h2>四、规模与近5日净流入</h2>
+
+<div class="chart-container">
+<div class="chart-title">资产规模（柱状）+ 近5日净流入（合计）：华泰柏瑞规模最大，近5日净流入2704万</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 380">
+<rect width="620" height="380" fill="white" rx="8"/>
+<text x="310" y="22" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">资产规模与近5日净流入</text>
+<text x="310" y="38" text-anchor="middle" font-size="10" fill="#888">柱状=规模(亿) | 右侧=近5日净流入合计(万) | 来源：Wind/非凸科技</text>
+
+<rect x="290" y="56" width="10" height="10" rx="2" fill="#378ADD"/><text x="304" y="65" font-size="10" fill="#666">华泰柏瑞</text>
+<rect x="370" y="56" width="10" height="10" rx="2" fill="#E84393"/><text x="384" y="65" font-size="10" fill="#666">易方达</text>
+<rect x="440" y="56" width="10" height="10" rx="2" fill="#E8A838"/><text x="454" y="65" font-size="10" fill="#666">华夏</text>
+<rect x="500" y="56" width="10" height="10" rx="2" fill="#6C5CE7"/><text x="514" y="65" font-size="10" fill="#666">嘉实</text>
+<rect x="554" y="56" width="10" height="10" rx="2" fill="#00B894"/><text x="568" y="65" font-size="10" fill="#666">天弘</text>
+
+<!-- Row 1: 510300 华泰柏瑞 1565亿 -->
+<rect x="10" y="82" width="8" height="36" rx="3" fill="#378ADD"/>
+<text x="28" y="105" font-size="13" fill="#378ADD" font-weight="bold">510300</text>
+<text x="108" y="105" font-size="11" fill="#888">华泰柏瑞</text>
+<rect x="175" y="86" width="335" height="28" rx="3" fill="#f0f0f0"/>
+<rect x="175" y="86" width="335" height="28" rx="3" fill="#378ADD" opacity="0.88"/>
+<text x="514" y="99" font-size="13" fill="#333" font-weight="bold">1565亿</text>
+<text x="514" y="129" font-size="11" fill="#E74C3C">净流入 +2704万</text>
+
+<!-- Row 2: 510310 易方达 1219亿 -->
+<rect x="10" y="137" width="8" height="36" rx="3" fill="#E84393"/>
+<text x="28" y="160" font-size="13" fill="#E84393" font-weight="bold">510310</text>
+<text x="108" y="160" font-size="11" fill="#888">易方达</text>
+<rect x="175" y="141" width="335" height="28" rx="3" fill="#f0f0f0"/>
+<rect x="175" y="141" width="261" height="28" rx="3" fill="#E84393" opacity="0.88"/>
+<text x="440" y="154" font-size="13" fill="#333" font-weight="bold">1219亿</text>
+<text x="440" y="184" font-size="11" fill="#27AE60">净流出 2702万</text>
+
+<!-- Row 3: 510330 华夏 848亿 -->
+<rect x="10" y="192" width="8" height="36" rx="3" fill="#E8A838"/>
+<text x="28" y="215" font-size="13" fill="#E8A838" font-weight="bold">510330</text>
+<text x="108" y="215" font-size="11" fill="#888">华夏</text>
+<rect x="175" y="196" width="335" height="28" rx="3" fill="#f0f0f0"/>
+<rect x="175" y="196" width="181.5" height="28" rx="3" fill="#E8A838" opacity="0.88"/>
+<text x="360.5" y="209" font-size="13" fill="#333" font-weight="bold">848亿</text>
+<text x="360.5" y="239" font-size="11" fill="#27AE60">净流出 1103万</text>
+
+<!-- Row 4: 159919 嘉实 793亿 -->
+<rect x="10" y="247" width="8" height="36" rx="3" fill="#6C5CE7"/>
+<text x="28" y="270" font-size="13" fill="#6C5CE7" font-weight="bold">159919</text>
+<text x="108" y="270" font-size="11" fill="#888">嘉实</text>
+<rect x="175" y="251" width="335" height="28" rx="3" fill="#f0f0f0"/>
+<rect x="175" y="251" width="170" height="28" rx="3" fill="#6C5CE7" opacity="0.88"/>
+<text x="349" y="264" font-size="13" fill="#333" font-weight="bold">793亿</text>
+<text x="349" y="294" font-size="11" fill="#E74C3C">净流入 +1906万</text>
+
+<!-- Row 5: 515330 天弘 78亿 -->
+<rect x="10" y="302" width="8" height="36" rx="3" fill="#00B894"/>
+<text x="28" y="325" font-size="13" fill="#00B894" font-weight="bold">515330</text>
+<text x="108" y="325" font-size="11" fill="#888">天弘</text>
+<rect x="175" y="306" width="335" height="28" rx="3" fill="#f0f0f0"/>
+<rect x="175" y="306" width="17" height="28" rx="3" fill="#00B894" opacity="0.88"/>
+<text x="196" y="319" font-size="13" fill="#333" font-weight="bold">78亿</text>
+<text x="196" y="349" font-size="11" fill="#27AE60">净流出 894万</text>
+</svg>
+<div class="chart-caption">净流入红色=资金流入，绿色=资金流出</div>
+</div>
+
+<h2>五、11维度指标说明书</h2>
+
+<p>以下逐一解释每个指标的含义，以及数值高低对ETF意味着什么。</p>
+
+<div class="def-box">
+<div class="term">1. 规模 <span class="en">(Scale / AUM)</span></div>
+<div class="def"><strong>定义：</strong>ETF资产总规模 = 基金份额 × 单位净值。反映市场对该ETF的认可度和流动性。</div>
+<div class="value"><strong>核心价值：</strong>规模越大，流动性越好，买卖价差越小。但规模本身不代表收益好坏。5只中最大1565亿、最小78亿，差距20倍。</div>
+</div>
+
+<div class="def-box">
+<div class="term">2. 管理费率 <span class="en">(Management Fee)</span></div>
+<div class="def"><strong>定义：</strong>基金公司每年从基金资产中提取的管理费，按基金资产的一定比例收取。</div>
+<div class="value"><strong>核心价值：</strong>这是你唯一能提前确定的持有成本。费率越低，长期复利损耗越小。天弘0.5% > 其他4只0.15%。</div>
+</div>
+
+<div class="def-box">
+<div class="term">3. 托管费率 <span class="en">(Custodian Fee)</span></div>
+<div class="def"><strong>定义：</strong>托管银行（如工商银行）保管基金资产收取的费用。</div>
+<div class="value"><strong>核心价值：</strong>与管理费性质相同，越低越好。天弘0.10% > 其他4只0.05%。</div>
+</div>
+
+<div class="def-box">
+<div class="term">4. 跟踪误差（近1年） <span class="en">(Tracking Error, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>衡量ETF每日涨跌幅与基准指数（沪深300）之间近1年的偏离标准差。单位：%。</div>
+<div class="value"><strong>核心价值：</strong>对ETF来说，目标是复制指数而非跑赢。跟踪误差越小，说明复制越精准。5只均在0.734%-0.738%之间，差异极小。</div>
+</div>
+
+<div class="def-box">
+<div class="term">5. 年化波动率（近1年） <span class="en">(Annualized Volatility, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>衡量ETF近1年价格的波动幅度。数值越大，价格起伏越剧烈。单位：%。</div>
+<div class="value"><strong>核心价值：</strong>反映风险水平。对同一指数的ETF来说，波动率应高度一致。5只均为11.78%-11.80%。</div>
+</div>
+
+<div class="def-box">
+<div class="term">6. 夏普比率（近1年） <span class="en">(Sharpe Ratio, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>每承担一单位风险所获得的超额回报。公式：(收益率 - 无风险利率) ÷ 波动率。</div>
+<div class="value"><strong>核心价值：</strong>越高越好，说明同等风险下赚得更多。5只在0.317-0.321之间，非常接近。易方达0.3209略高。</div>
+</div>
+
+<div class="def-box">
+<div class="term">7. 最大回撤（近1年） <span class="en">(Maximum Drawdown, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>在过去1年内，从最高点跌到最低点的最大跌幅。单位：%。</div>
+<div class="value"><strong>核心价值：</strong>回撤越小，持有体验越好。但对同一指数的ETF，回撤应基本一致。5只在-7.60%至-7.69%之间。</div>
+</div>
+
+<div class="def-box">
+<div class="term">8. 贝塔（近1年） <span class="en">(Beta / β, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>衡量ETF相对基准指数的波动敏感度。基准沪深300的Beta=1。</div>
+<div class="value"><strong>核心价值：</strong>Beta>1说明比指数更"刺激"，跌时跌更多，涨时涨更多。Beta<1说明相对稳健。对ETF来说，Beta应接近1。5只在0.952-0.953之间。</div>
+</div>
+
+<div class="def-box">
+<div class="term">9. 阿尔法（近1年） <span class="en">(Alpha / α, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>实际收益减去基准收益和贝塔收益之后的超额收益。反映基金经理的选股/择时能力。</div>
+<div class="value"><strong>核心价值：</strong>对ETF来说，目标是跟踪指数，Alpha应接近0。Alpha>0说明跑赢了指数。5只在0.157-0.163之间。</div>
+</div>
+
+<div class="def-box">
+<div class="term">10. 信息比率（近1年） <span class="en">(Information Ratio, 1Y)</span></div>
+<div class="def"><strong>定义：</strong>超额收益 ÷ 跟踪误差。衡量每单位跟踪偏离带来的超额回报。</div>
+<div class="value"><strong>核心价值：</strong>对主动基金来说是越高越好。但对ETF来说，目标是精准跟踪而非跑赢，信息比率应接近0。</div>
+</div>
+
+<div class="def-box">
+<div class="term">11. 近3年回报率 <span class="en">(3-Year Cumulative Return)</span></div>
+<div class="def"><strong>定义：</strong>近3年ETF的总收益率（非年化），反映中长期表现。单位：%。</div>
+<div class="value"><strong>核心价值：</strong>这是唯一一个中长期综合收益指标。但需注意：持有同一指数，回报率差异主要来自跟踪精度和分红处理。5只在28.33%-30.60%之间。</div>
+</div>
+
+<h3>完整数据一览</h3>
+
+<table>
+<tr><th>指标</th><th><span class="tag-blue">510300</span></th><th><span class="tag-pink">510310</span></th><th><span class="tag-amber">510330</span></th><th><span class="tag-purple">159919</span></th><th><span class="tag-teal">515330</span></th></tr>
+<tr><td><strong>规模(亿) / AUM</strong></td><td><strong class="emphasis-red">1565.4</strong></td><td>1218.8</td><td>848.3</td><td>793.3</td><td>78.0</td></tr>
+<tr><td><strong>管理费 / Mgmt Fee</strong></td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.15%</td><td class="emphasis-blue">0.15%</td><td>0.50%</td></tr>
+<tr><td><strong>托管费 / Cust Fee</strong></td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.05%</td><td class="emphasis-blue">0.05%</td><td>0.10%</td></tr>
+<tr><td><strong>合计费率 / Total Fee</strong></td><td class="emphasis-blue">0.20%</td><td class="emphasis-blue">0.20%</td><td class="emphasis-blue">0.20%</td><td class="emphasis-blue">0.20%</td><td>0.60%</td></tr>
+<tr><td><strong>跟踪误差 / Tracking Error</strong></td><td>0.7371%</td><td class="emphasis-blue">0.7345%</td><td>0.7363%</td><td>0.7357%</td><td>0.7376%</td></tr>
+<tr><td><strong>年化波动率 / Ann. Volatility</strong></td><td>11.80%</td><td class="emphasis-blue">11.78%</td><td class="emphasis-blue">11.78%</td><td class="emphasis-blue">11.78%</td><td class="emphasis-blue">11.78%</td></tr>
+<tr><td><strong>夏普比率 / Sharpe Ratio</strong></td><td>0.3187</td><td class="emphasis-red">0.3209</td><td>0.3195</td><td>0.3186</td><td>0.3170</td></tr>
+<tr><td><strong>最大回撤(近1年) / Max Drawdown</strong></td><td>-7.66%</td><td class="emphasis-red">-7.60%</td><td>-7.64%</td><td>-7.64%</td><td>-7.69%</td></tr>
+<tr><td><strong>贝塔 / Beta</strong></td><td class="emphasis-red">0.9533</td><td>0.9524</td><td>0.9520</td><td>0.9521</td><td>0.9517</td></tr>
+<tr><td><strong>阿尔法 / Alpha</strong></td><td>0.1600</td><td class="emphasis-red">0.1632</td><td>0.1613</td><td>0.1597</td><td>0.1574</td></tr>
+<tr><td><strong>信息比率 / Info Ratio</strong></td><td>0.1964</td><td>0.2010</td><td>0.1976</td><td>0.1956</td><td class="emphasis-blue">0.1917</td></tr>
+<tr><td><strong>近3年回报率 / 3Y Return</strong></td><td>28.62%</td><td class="emphasis-red">30.60%</td><td>28.65%</td><td>28.41%</td><td>28.33%</td></tr>
+</table>
+
+<h3>小结</h3>
+
+<p>11个维度数据看完，5只沪深300ETF的风险收益特征高度一致。真正有差异的只有三点：</p>
+<p>
+<strong>① 费率</strong> — 天弘0.6%是其他4只的3倍，每年多交4000元/100万。<br>
+<strong>② 规模</strong> — 从78亿到1565亿，差距20倍，直接影响交易活跃度。<br>
+<strong>③ 近3年回报</strong> — 易方达30.60%最高，但差距不到2.3个百分点，几乎可忽略。
+</p>
+
+<blockquote>
+声明：以上数据来源于Wind金融终端、非凸科技，仅供学习参考，不构成任何投资建议。ETF投资有风险，入市需谨慎。<br>
+数据更新日期：2026-05-31
+</blockquote>
+
+</div>
+</body>
+</html>
