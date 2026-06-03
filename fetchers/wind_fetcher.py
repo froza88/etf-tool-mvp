@@ -11,10 +11,23 @@ Wind 数据源 Fetcher - 封装 Wind API 调用，内置查询即存储逻辑
 
 import json
 import os
+import shutil
 import subprocess
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
+
+# 检测 node 可执行文件路径（解决 Mac 上 subprocess 找不到 node 的问题）
+# 按优先级检测：1) PATH 中的 node  2) 常见安装路径  3) WorkBuddy 管理的 node
+_CANDIDATE_NODE_PATHS = [
+    shutil.which('node'),
+    '/usr/local/bin/node',
+    '/opt/homebrew/bin/node',
+    str(Path.home() / '.nvm/versions/node'),  # nvm 默认路径（需追加版本）
+    '/Users/apangduo/.workbuddy/binaries/node/versions/22.12.0/bin/node',
+    '/Users/apangduo/.workbuddy/binaries/node/versions/22.22.2/bin/node',
+]
+NODE_PATH = next((p for p in _CANDIDATE_NODE_PATHS if p and Path(p).exists()), 'node')
 
 # 项目根目录
 ROOT = Path(__file__).parent.parent
@@ -112,7 +125,7 @@ class WindFetcher:
         question = f"{code}{name}基金，请提供完整档案信息，包括：基本信息（基金管理人、基金托管人、基金成立日、上市日期、投资类型）、费率信息（管理费率、托管费率、申购费率、赎回费率）、业绩信息（业绩比较基准、基金经理、基金规模、单位净值）、风险指标（波动率、夏普比率、最大回撤、跟踪误差）等所有可获取的字段"
         
         cmd = [
-            "node",
+            NODE_PATH,
             str(WIND_CLI),
             "call",
             "fund_data",

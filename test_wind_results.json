@@ -1,0 +1,98 @@
+[
+  {
+    "code": "520870",
+    "name": "巴西ETF",
+    "status": "success",
+    "field_count": 30,
+    "key_fields": {
+      "custodian": "招商银行股份有限公司",
+      "volume": null,
+      "year_3_return": null,
+      "wind_scale": 6.0496,
+      "nav": 1.1193,
+      "volatility": 26.9628,
+      "sharpe": 0.1098,
+      "max_drawdown": -14.7452
+    }
+  },
+  {
+    "code": "159565",
+    "name": "汽车零部件ETF",
+    "status": "success",
+    "field_count": 15,
+    "key_fields": {
+      "custodian": "招商银行股份有限公司",
+      "volume": null,
+      "year_3_return": null,
+      "wind_scale": null,
+      "nav": null,
+      "volatility": null,
+      "sharpe": null,
+      "max_drawdown": null
+    }
+  },
+  {
+    "code": "159502",
+    "name": "标普生物科技ETF",
+    "status": "success",
+    "field_count": 14,
+    "key_fields": {
+      "custodian": "中国建设银行股份有限公司",
+      "volume": null,
+      "year_3_return": null,
+      "wind_scale": null,
+      "nav": null,
+      "volatility": null,
+      "sharpe": null,
+      "max_drawdown": null
+    }
+  },
+  {
+    "code": "588860",
+    "name": "科创医药ETF",
+    "status": "success",
+    "field_count": 14,
+    "key_fields": {
+      "custodian": "华泰证券股份有限公司",
+      "volume": null,
+      "year_3_return": null,
+      "wind_scale": null,
+      "nav": null,
+      "volatility": null,
+      "sharpe": null,
+      "max_drawdown": null
+    }
+  },
+  {
+    "code": "513880",
+    "name": "日经225ETF",
+    "status": "success",
+    "field_count": 36,
+    "key_fields": {
+      "custodian": "中国银行股份有限公司",
+      "volume": null,
+      "year_3_return": null,
+      "wind_scale": 26.7772,
+      "nav": 2.1185,
+      "volatility": 22.287,
+      "sharpe": 0.2818,
+      "max_drawdown": -14.6041
+    }
+  },
+  {
+    "code": "159916",
+    "name": "基本面ETF",
+    "status": "success",
+    "field_count": 15,
+    "key_fields": {
+      "custodian": "中国民生银行股份有限公司",
+      "volume": null,
+      "year_3_return": null,
+      "wind_scale": null,
+      "nav": null,
+      "volatility": null,
+      "sharpe": null,
+      "max_drawdown": null
+    }
+  }
+]
