@@ -273,7 +273,7 @@ def update_l1_cache_from_l2(etfs_l2):
                 # 更新关键字段（scale, close, change_pct 等），带范围验证
                 fields_to_update = ["scale", "close", "change_pct", "prev_close", "volume"]
                 for field in fields_to_update:
-                    if field in etf_l2:
+                    if field in etf_l2 and etf_l2[field] is not None:
                         val = etf_l2[field]
                         # 范围验证：防止错误数据污染 L1 缓存
                         if field == "scale" and isinstance(val, (int, float)):
