@@ -10555,20 +10555,11 @@
     "annual_vol": 30.22
   },
   "560450": {
-    "year_2_return": 0,
-    "year_5_return": 0,
-    "max_drawdown": 0,
-    "max_drawdown_2y": 0,
-    "max_drawdown_3y": 0,
-    "max_drawdown_5y": 0,
+    "year_1_return": null,
+    "year_3_return": null,
+    "max_drawdown": -6.0,
     "sharpe_ratio": 0,
-    "sharpe_2y": 0,
-    "sharpe_3y": 0,
-    "sharpe_5y": 0,
-    "annual_vol": 0,
-    "annual_vol_2y": 0,
-    "annual_vol_3y": 0,
-    "annual_vol_5y": 0
+    "annual_vol": 0
   },
   "159021": {
     "year_2_return": 0,
@@ -10987,20 +10978,11 @@
     "annual_vol_5y": 0
   },
   "159193": {
-    "year_2_return": 0,
-    "year_5_return": 0,
-    "max_drawdown": 0,
-    "max_drawdown_2y": 0,
-    "max_drawdown_3y": 0,
-    "max_drawdown_5y": 0,
+    "year_1_return": null,
+    "year_3_return": null,
+    "max_drawdown": -6.33,
     "sharpe_ratio": 0,
-    "sharpe_2y": 0,
-    "sharpe_3y": 0,
-    "sharpe_5y": 0,
-    "annual_vol": 0,
-    "annual_vol_2y": 0,
-    "annual_vol_3y": 0,
-    "annual_vol_5y": 0
+    "annual_vol": 0
   },
   "562850": {
     "year_1_return": 32.98,

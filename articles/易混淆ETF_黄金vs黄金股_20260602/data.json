@@ -1,0 +1,35 @@
+{
+  "article": "黄金ETF vs 黄金股ETF",
+  "series": "易混淆ETF系列 #1",
+  "date": "2026-06-02",
+  "data_sources": ["本地数据库 v_2026-06-02 (回报/波动/回撤/夏普, 基于Wind)", "FTShare API (行情/成交额/成立日)", "天天基金 (费率)"],
+  "selection_method": "同类全量对比 → 选规模最大+流动性最好+数据最全的代表产品",
+  "etfs": {
+    "黄金ETF_7只": [
+      {"code":"518880","name":"黄金ETF","issuer":"华安","issue":"2013-07","scale_yi":1045,"turnover_yi":30.3,"ret_1y":27.2,"ret_3y":123.8,"vol":28.1,"mdd":-24.9,"sharpe":0.93,"fee":"0.60%"},
+      {"code":"159937","name":"黄金ETF","issuer":"博时","issue":"2014-08","scale_yi":460,"turnover_yi":8.5,"ret_1y":27.2,"ret_3y":123.4,"vol":28.1,"mdd":-24.9,"sharpe":0.93,"fee":"0.60%"},
+      {"code":"159934","name":"黄金ETF","issuer":"易方达","issue":"2013-11","scale_yi":394,"turnover_yi":10.2,"ret_1y":27.3,"ret_3y":124.0,"vol":28.1,"mdd":-24.9,"sharpe":0.93,"fee":"0.60%"},
+      {"code":"518800","name":"黄金ETF","issuer":"国泰","issue":"2013-07","scale_yi":380,"turnover_yi":5.1,"ret_1y":27.3,"ret_3y":123.8,"vol":28.0,"mdd":-24.9,"sharpe":0.94,"fee":"0.60%"},
+      {"code":"518850","name":"黄金ETF","issuer":"华夏","issue":"2020-04","scale_yi":171,"turnover_yi":3.2,"ret_1y":27.8,"ret_3y":124.1,"vol":27.7,"mdd":-24.8,"sharpe":0.96,"fee":"0.60%"},
+      {"code":"518660","name":"黄金ETF","issuer":"工银","issue":"2020-04","scale_yi":89,"turnover_yi":3.0,"ret_1y":27.7,"ret_3y":123.5,"vol":28.2,"mdd":-25.0,"sharpe":0.94,"fee":"0.60%"},
+      {"code":"159812","name":"黄金ETF","issuer":"前海开源","issue":"2020-04","scale_yi":18,"turnover_yi":0.2,"ret_1y":27.3,"ret_3y":122.4,"vol":28.3,"mdd":-25.1,"sharpe":0.93,"fee":"0.60%"}
+    ],
+    "黄金股ETF_6只": [
+      {"code":"517520","name":"黄金股ETF","issuer":"永赢","issue":"2023-10","scale_yi":110,"turnover_yi":2.8,"ret_1y":48.5,"vol":42.8,"mdd":-36.2,"sharpe":1.10,"fee":"0.60%"},
+      {"code":"159562","name":"黄金股ETF","issuer":"华夏","issue":"2024-01","scale_yi":52,"turnover_yi":1.4,"ret_1y":47.9,"vol":42.8,"mdd":-36.2,"sharpe":1.09,"fee":"0.60%"},
+      {"code":"517400","name":"黄金股ETF","issuer":"国泰","issue":"2024-04","scale_yi":13,"turnover_yi":0.4,"ret_1y":46.9,"vol":43.3,"mdd":-36.3,"sharpe":1.06,"fee":"0.60%"},
+      {"code":"159321","name":"黄金股ETF","issuer":"华安","issue":"2024-05","scale_yi":6,"turnover_yi":0.4,"ret_1y":46.4,"vol":42.5,"mdd":-37.1,"sharpe":1.07,"fee":"0.60%"},
+      {"code":"159315","name":"黄金股ETF","issuer":"工银","issue":"2024-05","scale_yi":3,"turnover_yi":0.2,"ret_1y":47.7,"vol":42.7,"mdd":-36.3,"sharpe":1.08,"fee":"0.60%"},
+      {"code":"159322","name":"黄金股ETF","issuer":"平安","issue":"2024-06","scale_yi":2,"turnover_yi":0.1,"ret_1y":47.7,"vol":42.6,"mdd":-35.9,"sharpe":1.09,"fee":"0.60%"}
+    ]
+  },
+  "representative_pair": {
+    "黄金ETF_518880": {"reason":"规模1045亿(行业第一,2.3x第二) + 日成交30亿(3x第二) + 13年历史"},
+    "黄金股ETF_517520": {"reason":"规模110亿(行业第一,2.1x第二) + 最早成立(2023-10) + 唯一>1年数据"}
+  },
+  "local_db_gaps": {
+    "filled_from_api": ["issue_date", "turnover"],
+    "filled_from_ttjj": ["fee_rate"],
+    "not_in_local": ["net_inflow_5d"]
+  }
+}

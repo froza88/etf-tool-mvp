@@ -185,24 +185,24 @@ def make_hbar(title, items, unit, subtitle="", outname=""):
     colors_list = [x[2] for x in items]
     max_v = max(values)
 
-    ch_l, ch_r, ch_t, ch_b = 130, WIDTH-35, 90, HEIGHT-38
+    ch_l, ch_r, ch_t, ch_b = 130, WIDTH-35, 90, HEIGHT-55
     n = len(items)
-    bar_h = min(50, (ch_b - ch_t - (n-1)*18) / n)
-    gap = 18
+    bar_h = min(56, (ch_b - ch_t - (n-1)*14) / n)
+    gap = 14
 
     tick_max = math.ceil(max_v / 5) * 5 + 5
     for tk in range(0, int(tick_max)+5, 5):
         x = ch_l + (tk/tick_max)*(ch_r-ch_l)
         draw.line([(x, ch_t), (x, ch_b)], fill=GRID_COLOR, width=1)
         lbl = f"{tk}{unit}"
-        draw.text((x, ch_b+10), lbl, font=font_code, fill=TEXT_GRAY, anchor='mt')
+        draw.text((x, ch_b+4), lbl, font=font_code, fill=TEXT_GRAY, anchor='mt')
 
     for i, (label, val, color) in enumerate(zip(labels, values, colors_list)):
         y = ch_t + i * (bar_h + gap)
         bw = (val/tick_max)*(ch_r-ch_l)
 
         # Bar
-        draw.rounded_rectangle([ch_l, y, ch_l+bw, y+bar_h], radius=5, fill=color)
+        draw.rounded_rectangle([ch_l, y, ch_l+bw, y+bar_h], radius=6, fill=color)
 
         # Value right of bar
         vt = f"{val:.2f}{unit}"
@@ -215,7 +215,7 @@ def make_hbar(title, items, unit, subtitle="", outname=""):
 
     note = "越高越好（流动性更强）"
     bb = draw.textbbox((0,0), note, font=font_footnote)
-    draw.text((WIDTH//2 - (bb[2]-bb[0])//2, HEIGHT-8), note, font=font_footnote, fill=TEXT_GRAY)
+    draw.text((WIDTH//2 - (bb[2]-bb[0])//2, ch_b+26), note, font=font_footnote, fill=TEXT_GRAY)
 
     img.save(outname, quality=95)
     print(f"✅ {outname}")

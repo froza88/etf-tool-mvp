@@ -1,0 +1,48 @@
+{
+  "article": "AI主题ETF五强对比",
+  "date": "2026-06-02",
+  "etfs": [
+    {
+      "code": "159819",
+      "name": "人工智能ETF易方达",
+      "aum": 221.41,
+      "return_1y": 103.2,
+      "fee": 0.2,
+      "route": "AI全家桶"
+    },
+    {
+      "code": "515050",
+      "name": "通信ETF华夏",
+      "aum": 78.02,
+      "return_1y": 228.7,
+      "fee": 0.6,
+      "route": "上游算力"
+    },
+    {
+      "code": "562500",
+      "name": "机器人ETF华夏",
+      "aum": 209.52,
+      "return_1y": 24.5,
+      "fee": 0.6,
+      "route": "下游应用"
+    },
+    {
+      "code": "159363",
+      "name": "创业板AI ETF华宝",
+      "aum": 55.64,
+      "return_1y": 188.2,
+      "fee": 0.6,
+      "route": "创业板AI"
+    },
+    {
+      "code": "588760",
+      "name": "科创AI ETF广发",
+      "aum": 22.32,
+      "return_1y": 50.5,
+      "fee": 0.6,
+      "route": "科创板AI"
+    }
+  ],
+  "tencent_docs": "https://docs.qq.com/page/DV2xVbEN4RGtwQ3dx",
+  "wechat_media_id": "mlSCTjUQn0RtlX7Zjux0aO930xc88aTTyfyah4KVb98owa4ZczUv3R_nIPdGp88d"
+}

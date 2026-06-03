@@ -1,0 +1,27 @@
+{
+  "article_type": "总纲",
+  "series": "易混淆ETF系列",
+  "title": "你买的那只ETF，可能不是你以为的那只",
+  "sections": [
+    "一个常见场景",
+    "为什么会搞混？",
+    "六种常见混淆类型",
+    "三秒自检法",
+    "这个系列会写什么"
+  ],
+  "confusion_types": [
+    {"type": "名字陷阱", "pairs": ["黄金ETF vs 黄金股ETF", "消费ETF vs 消费电子ETF", "医药ETF vs 医疗ETF", "电力ETF vs 电网设备ETF"]},
+    {"type": "市场错位", "pairs": ["创新药ETF vs 港股创新药ETF", "芯片ETF vs 科创芯片ETF", "科创AI vs 创业板AI vs 人工智能ETF"]},
+    {"type": "策略变体", "pairs": ["红利ETF vs 红利低波ETF", "沪深300ETF vs 沪深300增强ETF", "等权ETF vs 市值加权ETF"]},
+    {"type": "宽基迷思", "pairs": ["沪深300 vs 中证A500", "科创50 vs 科创100", "中证500 vs 中证1000"]},
+    {"type": "跨境问题", "items": ["QDII通道 vs 港股通通道", "人民币份额 vs 港币份额", "溢价率"]},
+    {"type": "完全同质", "items": ["黄金ETF(现货)", "银行ETF", "军工ETF", "证券ETF"]}
+  ],
+  "series_plan": [
+    {"id": 1, "type": "名字陷阱", "title": "黄金ETF vs 黄金股ETF", "status": "已发布"},
+    {"id": 2, "type": "名字陷阱", "title": "消费ETF vs 消费电子ETF", "status": "待写"},
+    {"id": 3, "type": "市场错位", "title": "创新药ETF vs 港股创新药ETF", "status": "待写"},
+    {"id": 4, "type": "策略变体", "title": "红利ETF vs 红利低波ETF", "status": "待写"},
+    {"id": 5, "type": "宽基迷思", "title": "沪深300 vs 中证A500", "status": "待写"}
+  ]
+}
