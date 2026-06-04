@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>ETF 数据异常清单 — 2026-06-04 16:35</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC',sans-serif;background:#f5f7fa;color:#333;padding:24px 32px}
+h1{font-size:20px;margin-bottom:8px;color:#1e3a8a}
+.meta{font-size:13px;color:#888;margin-bottom:20px}
+.filter-bar{display:flex;gap:10px;margin-bottom:14px;align-items:center}
+.filter-bar select{padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px}
+.summary{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.tag{padding:4px 12px;border-radius:12px;font-size:12px;font-weight:500}
+.tag-red{background:#fef2f2;color:#dc2626}
+.tag-orange{background:#fff7ed;color:#ea580c}
+.tag-blue{background:#eff6ff;color:#2563eb}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+th{background:#f1f5f9;padding:10px 12px;text-align:left;font-weight:600;color:#475569;border-bottom:2px solid #e2e8f0}
+td{padding:8px 12px;border-bottom:1px solid #f3f4f6}
+tr:hover td{background:#f8fafc}
+.badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px}
+.badge-fix{background:#f0fdf4;color:#16a34a}
+.badge-warn{background:#fefce8;color:#ca8a04}
+</style></head><body>
+<h1>ETF 数据异常清单 / Data Anomalies</h1>
+<div class="meta">扫描 1490 只 ETF | 对比标准数据 vs 填充版 vs 合并旧版 | 仅列非时效性差异 | 2026-06-04 16:35</div>
+
+<div class="summary">
+<span class="tag tag-red">份额单位错误: 485条</span>
+<span class="tag tag-orange">最大回撤差异大: 6条</span>
+</div>
+<div class="filter-bar">
+<label>筛选:</label>
+<select id="filter" onchange="filterTable()">
+<option value="all">全部</option>
+<option value="份额单位错误">份额单位错误</option>
+<option value="规模单位错误">规模单位错误</option>
+<option value="最大回撤差异大">最大回撤差异大</option>
+</select>
+<label>(点击表头排序)</label>
+</div>
+<table><thead><tr>
+<th onclick="sortTable(0)">代码</th><th onclick="sortTable(1)">名称</th>
+<th onclick="sortTable(2)">字段</th><th onclick="sortTable(3)">当前值</th>
+<th onclick="sortTable(4)">参考值</th><th onclick="sortTable(5)">分类</th><th>修复方向</th>
+</tr></thead><tbody id="tbody">
+<tr data-cat="份额单位错误">
+<td><strong>513310</strong></td><td>中韩半导体ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">185,142.7（原始份数）</td><td style="color:#16a34a">124.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 1482</td></tr><tr data-cat="份额单位错误">
+<td><strong>159565</strong></td><td>汽车零部件ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">14,262.7（原始份数）</td><td style="color:#16a34a">2.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5282</td></tr><tr data-cat="份额单位错误">
+<td><strong>588860</strong></td><td>科创医药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">40,488.9（原始份数）</td><td style="color:#16a34a">2.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14996</td></tr><tr data-cat="份额单位错误">
+<td><strong>513100</strong></td><td>纳指ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">946,611.1（原始份数）</td><td style="color:#16a34a">211.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4482</td></tr><tr data-cat="份额单位错误">
+<td><strong>513880</strong></td><td>日经225ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">124,397.0（原始份数）</td><td style="color:#16a34a">24.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5140</td></tr><tr data-cat="份额单位错误">
+<td><strong>512970</strong></td><td>大湾区ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,198.8（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5994</td></tr><tr data-cat="份额单位错误">
+<td><strong>520500</strong></td><td>恒生创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">136,680.5（原始份数）</td><td style="color:#16a34a">27.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4952</td></tr><tr data-cat="份额单位错误">
+<td><strong>159567</strong></td><td>港股创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,006,773.0（原始份数）</td><td style="color:#16a34a">75.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13282</td></tr><tr data-cat="份额单位错误">
+<td><strong>513520</strong></td><td>日经ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">102,688.7（原始份数）</td><td style="color:#16a34a">21.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4754</td></tr><tr data-cat="份额单位错误">
+<td><strong>513000</strong></td><td>日经225ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">95,241.1（原始份数）</td><td style="color:#16a34a">20.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4738</td></tr><tr data-cat="份额单位错误">
+<td><strong>516110</strong></td><td>汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">44,662.3（原始份数）</td><td style="color:#16a34a">3.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11753</td></tr><tr data-cat="份额单位错误">
+<td><strong>589120</strong></td><td>科创创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">62,662.0（原始份数）</td><td style="color:#16a34a">5.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12532</td></tr><tr data-cat="份额单位错误">
+<td><strong>520880</strong></td><td>港股通创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">459,361.8（原始份数）</td><td style="color:#16a34a">26.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17077</td></tr><tr data-cat="份额单位错误">
+<td><strong>159828</strong></td><td>医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">560,443.9（原始份数）</td><td style="color:#16a34a">22.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 25359</td></tr><tr data-cat="份额单位错误">
+<td><strong>513120</strong></td><td>港股创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,040,513.5（原始份数）</td><td style="color:#16a34a">247.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8248</td></tr><tr data-cat="份额单位错误">
+<td><strong>520970</strong></td><td>港股通创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">125,335.8（原始份数）</td><td style="color:#16a34a">10.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12052</td></tr><tr data-cat="份额单位错误">
+<td><strong>520930</strong></td><td>恒生生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,273.3（原始份数）</td><td style="color:#16a34a">1.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 18430</td></tr><tr data-cat="份额单位错误">
+<td><strong>513300</strong></td><td>纳斯达克ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">514,942.1（原始份数）</td><td style="color:#16a34a">132.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3901</td></tr><tr data-cat="份额单位错误">
+<td><strong>560260</strong></td><td>医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">185,866.5（原始份数）</td><td style="color:#16a34a">15.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12391</td></tr><tr data-cat="份额单位错误">
+<td><strong>159501</strong></td><td>纳指ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">624,098.7（原始份数）</td><td style="color:#16a34a">122.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5116</td></tr><tr data-cat="份额单位错误">
+<td><strong>517110</strong></td><td>创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">68,109.9（原始份数）</td><td style="color:#16a34a">5.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12851</td></tr><tr data-cat="份额单位错误">
+<td><strong>159306</strong></td><td>汽车零部件ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,224.5（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7415</td></tr><tr data-cat="份额单位错误">
+<td><strong>520700</strong></td><td>港股通创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">55,907.6（原始份数）</td><td style="color:#16a34a">7.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7261</td></tr><tr data-cat="份额单位错误">
+<td><strong>513110</strong></td><td>纳指ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">210,043.5（原始份数）</td><td style="color:#16a34a">50.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4201</td></tr><tr data-cat="份额单位错误">
+<td><strong>513780</strong></td><td>港股创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">176,115.7（原始份数）</td><td style="color:#16a34a">27.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6475</td></tr><tr data-cat="份额单位错误">
+<td><strong>510660</strong></td><td>医药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,638.0（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3638</td></tr><tr data-cat="份额单位错误">
+<td><strong>513930</strong></td><td>恒生生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">27,490.8（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 39273</td></tr><tr data-cat="份额单位错误">
+<td><strong>159508</strong></td><td>生物医药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,983.2（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11966</td></tr><tr data-cat="份额单位错误">
+<td><strong>520760</strong></td><td>恒生生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">38,546.6（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 20288</td></tr><tr data-cat="份额单位错误">
+<td><strong>589720</strong></td><td>科创创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">141,882.3（原始份数）</td><td style="color:#16a34a">15.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8980</td></tr><tr data-cat="份额单位错误">
+<td><strong>513390</strong></td><td>纳指100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">179,037.9（原始份数）</td><td style="color:#16a34a">42.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4233</td></tr><tr data-cat="份额单位错误">
+<td><strong>513700</strong></td><td>港股通医药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">116,484.6（原始份数）</td><td style="color:#16a34a">5.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19743</td></tr><tr data-cat="份额单位错误">
+<td><strong>513280</strong></td><td>恒生生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">43,711.4（原始份数）</td><td style="color:#16a34a">4.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10165</td></tr><tr data-cat="份额单位错误">
+<td><strong>515120</strong></td><td>创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,436,299.4（原始份数）</td><td style="color:#16a34a">94.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15135</td></tr><tr data-cat="份额单位错误">
+<td><strong>159659</strong></td><td>纳斯达克100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">428,174.4（原始份数）</td><td style="color:#16a34a">94.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4517</td></tr><tr data-cat="份额单位错误">
+<td><strong>159660</strong></td><td>纳指ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">200,615.1（原始份数）</td><td style="color:#16a34a">47.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4250</td></tr><tr data-cat="份额单位错误">
+<td><strong>513870</strong></td><td>纳指ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">123,267.1（原始份数）</td><td style="color:#16a34a">24.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5136</td></tr><tr data-cat="份额单位错误">
+<td><strong>159557</strong></td><td>恒生医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,189.5（原始份数）</td><td style="color:#16a34a">2.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5496</td></tr><tr data-cat="份额单位错误">
+<td><strong>517120</strong></td><td>创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">41,896.6（原始份数）</td><td style="color:#16a34a">2.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14963</td></tr><tr data-cat="份额单位错误">
+<td><strong>512170</strong></td><td>医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,497,482.0（原始份数）</td><td style="color:#16a34a">266.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 31862</td></tr><tr data-cat="份额单位错误">
+<td><strong>159760</strong></td><td>医疗健康ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">14,236.0（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17795</td></tr><tr data-cat="份额单位错误">
+<td><strong>159169</strong></td><td>恒生生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">43,487.4（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 24160</td></tr><tr data-cat="份额单位错误">
+<td><strong>513400</strong></td><td>道琼斯ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">205,906.2（原始份数）</td><td style="color:#16a34a">26.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7799</td></tr><tr data-cat="份额单位错误">
+<td><strong>516930</strong></td><td>生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,664.0（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 23328</td></tr><tr data-cat="份额单位错误">
+<td><strong>516500</strong></td><td>生物科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">25,593.7（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15055</td></tr><tr data-cat="份额单位错误">
+<td><strong>513500</strong></td><td>标普500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">981,063.9（原始份数）</td><td style="color:#16a34a">243.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4029</td></tr><tr data-cat="份额单位错误">
+<td><strong>510150</strong></td><td>消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">327,917.9（原始份数）</td><td style="color:#16a34a">15.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 21293</td></tr><tr data-cat="份额单位错误">
+<td><strong>516080</strong></td><td>创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">192,455.5（原始份数）</td><td style="color:#16a34a">16.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11524</td></tr><tr data-cat="份额单位错误">
+<td><strong>513800</strong></td><td>日本东证指数ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">104,184.4（原始份数）</td><td style="color:#16a34a">16.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6165</td></tr><tr data-cat="份额单位错误">
+<td><strong>513030</strong></td><td>德国ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">97,927.9（原始份数）</td><td style="color:#16a34a">17.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5502</td></tr><tr data-cat="最大回撤差异大">
+<td><strong>159561</strong></td><td>德国ETF</td><td><code>max_drawdown</code></td>
+<td style="color:#dc2626">-35.67%</td><td style="color:#16a34a">-19.52%（填充版5/26）</td>
+<td><span class="badge badge-warn">最大回撤差异大</span></td>
+<td>需确认哪个数据源更可信</td></tr><tr data-cat="份额单位错误">
+<td><strong>512570</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">228,180.6（原始份数）</td><td style="color:#16a34a">29.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7683</td></tr><tr data-cat="份额单位错误">
+<td><strong>513200</strong></td><td>港股通医药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">148,228.2（原始份数）</td><td style="color:#16a34a">13.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11315</td></tr><tr data-cat="份额单位错误">
+<td><strong>560900</strong></td><td>创新药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">16,396.9（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9645</td></tr><tr data-cat="份额单位错误">
+<td><strong>512120</strong></td><td>医药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">81,924.2（原始份数）</td><td style="color:#16a34a">3.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 23407</td></tr><tr data-cat="份额单位错误">
+<td><strong>159692</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">96,045.6（原始份数）</td><td style="color:#16a34a">12.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7504</td></tr><tr data-cat="份额单位错误">
+<td><strong>563060</strong></td><td>央企50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,152.7（原始份数）</td><td style="color:#16a34a">2.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9261</td></tr><tr data-cat="份额单位错误">
+<td><strong>513650</strong></td><td>标普500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">281,073.4（原始份数）</td><td style="color:#16a34a">71.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3926</td></tr><tr data-cat="份额单位错误">
+<td><strong>515010</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">141,827.2（原始份数）</td><td style="color:#16a34a">17.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7968</td></tr><tr data-cat="份额单位错误">
+<td><strong>513060</strong></td><td>恒生医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,093,289.3（原始份数）</td><td style="color:#16a34a">59.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 18406</td></tr><tr data-cat="份额单位错误">
+<td><strong>520730</strong></td><td>港股通汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">25,639.4（原始份数）</td><td style="color:#16a34a">2.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12209</td></tr><tr data-cat="份额单位错误">
+<td><strong>560400</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">29,649.3（原始份数）</td><td style="color:#16a34a">2.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12891</td></tr><tr data-cat="份额单位错误">
+<td><strong>562600</strong></td><td>医疗器械ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">58,193.7（原始份数）</td><td style="color:#16a34a">4.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14194</td></tr><tr data-cat="份额单位错误">
+<td><strong>159612</strong></td><td>标普500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">44,489.9（原始份数）</td><td style="color:#16a34a">8.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5234</td></tr><tr data-cat="份额单位错误">
+<td><strong>516730</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">10,288.1（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11431</td></tr><tr data-cat="份额单位错误">
+<td><strong>512000</strong></td><td>券商ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,122,723.5（原始份数）</td><td style="color:#16a34a">362.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19649</td></tr><tr data-cat="份额单位错误">
+<td><strong>512800</strong></td><td>银行ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,495,468.0（原始份数）</td><td style="color:#16a34a">102.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14562</td></tr><tr data-cat="份额单位错误">
+<td><strong>515850</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">26,179.1（原始份数）</td><td style="color:#16a34a">3.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6889</td></tr><tr data-cat="份额单位错误">
+<td><strong>512820</strong></td><td>银行ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">53,470.2（原始份数）</td><td style="color:#16a34a">6.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7981</td></tr><tr data-cat="份额单位错误">
+<td><strong>510200</strong></td><td>上证券商ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,888.6（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8827</td></tr><tr data-cat="份额单位错误">
+<td><strong>562870</strong></td><td>证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">44,800.5（原始份数）</td><td style="color:#16a34a">4.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10419</td></tr><tr data-cat="份额单位错误">
+<td><strong>516310</strong></td><td>银行ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">163,675.8（原始份数）</td><td style="color:#16a34a">20.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8063</td></tr><tr data-cat="份额单位错误">
+<td><strong>515020</strong></td><td>银行ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">48,734.5（原始份数）</td><td style="color:#16a34a">6.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7384</td></tr><tr data-cat="份额单位错误">
+<td><strong>513090</strong></td><td>香港证券ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,266,448.8（原始份数）</td><td style="color:#16a34a">212.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5971</td></tr><tr data-cat="份额单位错误">
+<td><strong>562580</strong></td><td>可选消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,322.3（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8306</td></tr><tr data-cat="份额单位错误">
+<td><strong>512730</strong></td><td>银行ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,258.4（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6049</td></tr><tr data-cat="份额单位错误">
+<td><strong>520720</strong></td><td>港股汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">25,494.2（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14997</td></tr><tr data-cat="份额单位错误">
+<td><strong>159121</strong></td><td>港股通汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">19,448.1（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19448</td></tr><tr data-cat="份额单位错误">
+<td><strong>520780</strong></td><td>港股通汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,246.0（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 20820</td></tr><tr data-cat="份额单位错误">
+<td><strong>510230</strong></td><td>金融ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">328,180.8（原始份数）</td><td style="color:#16a34a">35.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9193</td></tr><tr data-cat="份额单位错误">
+<td><strong>515550</strong></td><td>中证500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,534.6（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5115</td></tr><tr data-cat="份额单位错误">
+<td><strong>513140</strong></td><td>港股通金融ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,586.8（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6848</td></tr><tr data-cat="份额单位错误">
+<td><strong>562050</strong></td><td>药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">10,246.8（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10247</td></tr><tr data-cat="份额单位错误">
+<td><strong>513620</strong></td><td>港股医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,721.6（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11861</td></tr><tr data-cat="份额单位错误">
+<td><strong>520680</strong></td><td>港股通汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">21,736.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 31053</td></tr><tr data-cat="份额单位错误">
+<td><strong>520580</strong></td><td>新兴亚洲ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">26,898.4（原始份数）</td><td style="color:#16a34a">2.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10346</td></tr><tr data-cat="份额单位错误">
+<td><strong>526010</strong></td><td>港股通医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,045.8（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 23046</td></tr><tr data-cat="份额单位错误">
+<td><strong>560150</strong></td><td>红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">68,127.9（原始份数）</td><td style="color:#16a34a">7.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8848</td></tr><tr data-cat="份额单位错误">
+<td><strong>560630</strong></td><td>机器人ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,839.4（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9389</td></tr><tr data-cat="份额单位错误">
+<td><strong>515630</strong></td><td>证券保险ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">67,421.8（原始份数）</td><td style="color:#16a34a">8.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7662</td></tr><tr data-cat="份额单位错误">
+<td><strong>513850</strong></td><td>美国50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">114,389.3（原始份数）</td><td style="color:#16a34a">20.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5663</td></tr><tr data-cat="份额单位错误">
+<td><strong>510010</strong></td><td>180治理ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,952.4（原始份数）</td><td style="color:#16a34a">2.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5814</td></tr><tr data-cat="份额单位错误">
+<td><strong>511810</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,701,919.5（原始份数）</td><td style="color:#16a34a">3.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2622140</td></tr><tr data-cat="份额单位错误">
+<td><strong>511880</strong></td><td>日利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,754,479.2（原始份数）</td><td style="color:#16a34a">791.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11059</td></tr><tr data-cat="份额单位错误">
+<td><strong>516820</strong></td><td>医疗创新ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">501,041.5（原始份数）</td><td style="color:#16a34a">17.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 27991</td></tr><tr data-cat="份额单位错误">
+<td><strong>159645</strong></td><td>疫苗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,354.1（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15885</td></tr><tr data-cat="份额单位错误">
+<td><strong>511700</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,505,513.3（原始份数）</td><td style="color:#16a34a">14.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 385001</td></tr><tr data-cat="份额单位错误">
+<td><strong>511830</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,803,361.3（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6011204</td></tr><tr data-cat="份额单位错误">
+<td><strong>511850</strong></td><td>财富宝ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,967,282.4（原始份数）</td><td style="color:#16a34a">9.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 305905</td></tr><tr data-cat="份额单位错误">
+<td><strong>512070</strong></td><td>证券保险ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,950,648.0（原始份数）</td><td style="color:#16a34a">118.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16461</td></tr><tr data-cat="份额单位错误">
+<td><strong>511600</strong></td><td>日日鑫ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">16,069,495.2（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17854995</td></tr><tr data-cat="份额单位错误">
+<td><strong>511620</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,400,094.7（原始份数）</td><td style="color:#16a34a">4.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 1073194</td></tr><tr data-cat="份额单位错误">
+<td><strong>510650</strong></td><td>金融地产ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,095.2（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3651</td></tr><tr data-cat="份额单位错误">
+<td><strong>512870</strong></td><td>杭州湾区ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,641.1（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6603</td></tr><tr data-cat="份额单位错误">
+<td><strong>511820</strong></td><td>添利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,868,456.5（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2076063</td></tr><tr data-cat="份额单位错误">
+<td><strong>511930</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">604,212.6（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3021063</td></tr><tr data-cat="份额单位错误">
+<td><strong>511900</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,187,034.5（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2730018</td></tr><tr data-cat="份额单位错误">
+<td><strong>511970</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,868,433.9（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17171085</td></tr><tr data-cat="份额单位错误">
+<td><strong>520850</strong></td><td>港股通医疗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,025.0（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12161</td></tr><tr data-cat="份额单位错误">
+<td><strong>511990</strong></td><td>添益ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,806,464.4（原始份数）</td><td style="color:#16a34a">741.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11870</td></tr><tr data-cat="份额单位错误">
+<td><strong>511920</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,357,324.1（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 18393310</td></tr><tr data-cat="份额单位错误">
+<td><strong>511910</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,082,094.0（原始份数）</td><td style="color:#16a34a">0.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 70820940</td></tr><tr data-cat="份额单位错误">
+<td><strong>520600</strong></td><td>港股通汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">56,836.8（原始份数）</td><td style="color:#16a34a">6.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9318</td></tr><tr data-cat="份额单位错误">
+<td><strong>511950</strong></td><td>添利货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,054,523.8（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6848413</td></tr><tr data-cat="份额单位错误">
+<td><strong>511800</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">531,297.3（原始份数）</td><td style="color:#16a34a">1.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 332061</td></tr><tr data-cat="份额单位错误">
+<td><strong>562510</strong></td><td>旅游ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">73,009.5（原始份数）</td><td style="color:#16a34a">6.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11408</td></tr><tr data-cat="份额单位错误">
+<td><strong>511770</strong></td><td>货币ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,133,679.9（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2834200</td></tr><tr data-cat="份额单位错误">
+<td><strong>560770</strong></td><td>机器人ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">207,463.3（原始份数）</td><td style="color:#16a34a">19.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10639</td></tr><tr data-cat="份额单位错误">
+<td><strong>563960</strong></td><td>300质量ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">30,751.2（原始份数）</td><td style="color:#16a34a">2.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12300</td></tr><tr data-cat="份额单位错误">
+<td><strong>561320</strong></td><td>交运ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,336.9（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12674</td></tr><tr data-cat="份额单位错误">
+<td><strong>512640</strong></td><td>金融地产ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,274.1（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4548</td></tr><tr data-cat="份额单位错误">
+<td><strong>516130</strong></td><td>消费龙头ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">143,189.0（原始份数）</td><td style="color:#16a34a">10.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14038</td></tr><tr data-cat="份额单位错误">
+<td><strong>159770</strong></td><td>机器人ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">855,108.8（原始份数）</td><td style="color:#16a34a">74.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11417</td></tr><tr data-cat="份额单位错误">
+<td><strong>516520</strong></td><td>智能驾驶ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">87,176.5（原始份数）</td><td style="color:#16a34a">10.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8303</td></tr><tr data-cat="份额单位错误">
+<td><strong>562360</strong></td><td>机器人ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">35,447.4（原始份数）</td><td style="color:#16a34a">3.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9846</td></tr><tr data-cat="份额单位错误">
+<td><strong>513730</strong></td><td>东南亚科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">88,935.5（原始份数）</td><td style="color:#16a34a">10.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8390</td></tr><tr data-cat="份额单位错误">
+<td><strong>517900</strong></td><td>银行AH优选ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">63,899.3（原始份数）</td><td style="color:#16a34a">8.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7987</td></tr><tr data-cat="份额单位错误">
+<td><strong>512690</strong></td><td>酒ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,561,055.0（原始份数）</td><td style="color:#16a34a">158.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 22510</td></tr><tr data-cat="份额单位错误">
+<td><strong>520830</strong></td><td>沙特ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">138,811.9（原始份数）</td><td style="color:#16a34a">11.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12284</td></tr><tr data-cat="最大回撤差异大">
+<td><strong>520830</strong></td><td>沙特ETF</td><td><code>max_drawdown</code></td>
+<td style="color:#dc2626">-31.93%</td><td style="color:#16a34a">-12.56%（填充版5/26）</td>
+<td><span class="badge badge-warn">最大回撤差异大</span></td>
+<td>需确认哪个数据源更可信</td></tr><tr data-cat="份额单位错误">
+<td><strong>516610</strong></td><td>医疗设备ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">19,697.5（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19698</td></tr><tr data-cat="份额单位错误">
+<td><strong>520550</strong></td><td>港股红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">101,402.4（原始份数）</td><td style="color:#16a34a">12.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8048</td></tr><tr data-cat="份额单位错误">
+<td><strong>561590</strong></td><td>中证1000增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,150.0（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5929</td></tr><tr data-cat="份额单位错误">
+<td><strong>513590</strong></td><td>港股通消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,341.9（原始份数）</td><td style="color:#16a34a">1.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13340</td></tr><tr data-cat="份额单位错误">
+<td><strong>563930</strong></td><td>上证增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,859.2（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14648</td></tr><tr data-cat="份额单位错误">
+<td><strong>513900</strong></td><td>港股通100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,897.8（原始份数）</td><td style="color:#16a34a">1.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8998</td></tr><tr data-cat="份额单位错误">
+<td><strong>520610</strong></td><td>港股红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">38,996.3（原始份数）</td><td style="color:#16a34a">3.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12999</td></tr><tr data-cat="份额单位错误">
+<td><strong>512150</strong></td><td>富时A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,007.3（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7518</td></tr><tr data-cat="份额单位错误">
+<td><strong>513920</strong></td><td>港股通央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">364,973.1（原始份数）</td><td style="color:#16a34a">59.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6186</td></tr><tr data-cat="份额单位错误">
+<td><strong>563020</strong></td><td>红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">622,791.0（原始份数）</td><td style="color:#16a34a">100.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6185</td></tr><tr data-cat="份额单位错误">
+<td><strong>513530</strong></td><td>港股通红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">200,993.9（原始份数）</td><td style="color:#16a34a">39.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5127</td></tr><tr data-cat="份额单位错误">
+<td><strong>512750</strong></td><td>基本面50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,015.5（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7165</td></tr><tr data-cat="份额单位错误">
+<td><strong>515250</strong></td><td>智能汽车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">51,594.5（原始份数）</td><td style="color:#16a34a">5.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9922</td></tr><tr data-cat="份额单位错误">
+<td><strong>513750</strong></td><td>港股通非银ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,843,383.8（原始份数）</td><td style="color:#16a34a">212.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8671</td></tr><tr data-cat="份额单位错误">
+<td><strong>159525</strong></td><td>红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">40,924.4（原始份数）</td><td style="color:#16a34a">4.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8897</td></tr><tr data-cat="份额单位错误">
+<td><strong>159526</strong></td><td>机器人ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">75,696.3（原始份数）</td><td style="color:#16a34a">9.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7724</td></tr><tr data-cat="份额单位错误">
+<td><strong>513970</strong></td><td>恒生消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">296,504.1（原始份数）</td><td style="color:#16a34a">18.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15688</td></tr><tr data-cat="份额单位错误">
+<td><strong>515450</strong></td><td>红利低波50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,117,933.5（原始份数）</td><td style="color:#16a34a">178.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6249</td></tr><tr data-cat="份额单位错误">
+<td><strong>520890</strong></td><td>港股通红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,000.8（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7501</td></tr><tr data-cat="份额单位错误">
+<td><strong>562500</strong></td><td>机器人ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,283,568.7（原始份数）</td><td style="color:#16a34a">201.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11322</td></tr><tr data-cat="份额单位错误">
+<td><strong>563690</strong></td><td>红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,488.2（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8976</td></tr><tr data-cat="份额单位错误">
+<td><strong>560330</strong></td><td>沪深300价值ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,913.0（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9565</td></tr><tr data-cat="份额单位错误">
+<td><strong>513190</strong></td><td>港股通金融ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">129,793.6（原始份数）</td><td style="color:#16a34a">21.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5981</td></tr><tr data-cat="份额单位错误">
+<td><strong>510600</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,241.5（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2483</td></tr><tr data-cat="最大回撤差异大">
+<td><strong>159329</strong></td><td>沙特ETF</td><td><code>max_drawdown</code></td>
+<td style="color:#dc2626">-33.21%</td><td style="color:#16a34a">-17.48%（填充版5/26）</td>
+<td><span class="badge badge-warn">最大回撤差异大</span></td>
+<td>需确认哪个数据源更可信</td></tr><tr data-cat="份额单位错误">
+<td><strong>520960</strong></td><td>恒指港股通ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,960.3（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12800</td></tr><tr data-cat="份额单位错误">
+<td><strong>513820</strong></td><td>港股通红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">252,266.9（原始份数）</td><td style="color:#16a34a">27.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9042</td></tr><tr data-cat="份额单位错误">
+<td><strong>515100</strong></td><td>红利低波100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">423,994.2（原始份数）</td><td style="color:#16a34a">59.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7114</td></tr><tr data-cat="份额单位错误">
+<td><strong>513910</strong></td><td>港股通央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">294,227.6（原始份数）</td><td style="color:#16a34a">41.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7176</td></tr><tr data-cat="份额单位错误">
+<td><strong>520810</strong></td><td>港股通红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">26,536.0（原始份数）</td><td style="color:#16a34a">2.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9150</td></tr><tr data-cat="份额单位错误">
+<td><strong>513830</strong></td><td>港股通高股息ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,381.1（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9226</td></tr><tr data-cat="份额单位错误">
+<td><strong>159549</strong></td><td>红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">433,252.4（原始份数）</td><td style="color:#16a34a">55.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7835</td></tr><tr data-cat="份额单位错误">
+<td><strong>516910</strong></td><td>物流ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,314.2（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10349</td></tr><tr data-cat="份额单位错误">
+<td><strong>561920</strong></td><td>疫苗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,169.2（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17231</td></tr><tr data-cat="份额单位错误">
+<td><strong>520620</strong></td><td>恒生消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">48,340.9（原始份数）</td><td style="color:#16a34a">3.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14218</td></tr><tr data-cat="份额单位错误">
+<td><strong>515200</strong></td><td>创新100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,994.3（原始份数）</td><td style="color:#16a34a">1.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4540</td></tr><tr data-cat="份额单位错误">
+<td><strong>513070</strong></td><td>港股通消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">164,776.1（原始份数）</td><td style="color:#16a34a">17.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9257</td></tr><tr data-cat="份额单位错误">
+<td><strong>512180</strong></td><td>MSCIA股ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,204.8（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5783</td></tr><tr data-cat="份额单位错误">
+<td><strong>159127</strong></td><td>港股通红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,884.4（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12571</td></tr><tr data-cat="份额单位错误">
+<td><strong>520820</strong></td><td>恒指港股通ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,668.2（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12383</td></tr><tr data-cat="份额单位错误">
+<td><strong>560820</strong></td><td>中证A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,292.6（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8585</td></tr><tr data-cat="份额单位错误">
+<td><strong>563700</strong></td><td>红利价值ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">41,415.0（原始份数）</td><td style="color:#16a34a">4.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10354</td></tr><tr data-cat="份额单位错误">
+<td><strong>159720</strong></td><td>智能车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,981.2（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14953</td></tr><tr data-cat="份额单位错误">
+<td><strong>562810</strong></td><td>上证指数增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,295.1（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10738</td></tr><tr data-cat="份额单位错误">
+<td><strong>516100</strong></td><td>金融科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">99,376.0（原始份数）</td><td style="color:#16a34a">12.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8281</td></tr><tr data-cat="份额单位错误">
+<td><strong>520940</strong></td><td>港股通恒生ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,029.7（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10099</td></tr><tr data-cat="份额单位错误">
+<td><strong>562320</strong></td><td>沪深300价值ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,929.6（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9912</td></tr><tr data-cat="份额单位错误">
+<td><strong>513550</strong></td><td>港股通50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">253,299.2（原始份数）</td><td style="color:#16a34a">25.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10132</td></tr><tr data-cat="份额单位错误">
+<td><strong>561680</strong></td><td>A500红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,016.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11453</td></tr><tr data-cat="份额单位错误">
+<td><strong>560880</strong></td><td>家电ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">37,523.2（原始份数）</td><td style="color:#16a34a">4.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7817</td></tr><tr data-cat="份额单位错误">
+<td><strong>517550</strong></td><td>沪港深消费龙头ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,841.7（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16403</td></tr><tr data-cat="份额单位错误">
+<td><strong>159547</strong></td><td>红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">84,628.6（原始份数）</td><td style="color:#16a34a">12.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6880</td></tr><tr data-cat="份额单位错误">
+<td><strong>159569</strong></td><td>港股红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">32,414.7（原始份数）</td><td style="color:#16a34a">4.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6897</td></tr><tr data-cat="份额单位错误">
+<td><strong>515710</strong></td><td>食品饮料ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">250,460.0（原始份数）</td><td style="color:#16a34a">13.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19119</td></tr><tr data-cat="份额单位错误">
+<td><strong>515300</strong></td><td>300红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">416,167.5（原始份数）</td><td style="color:#16a34a">52.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7942</td></tr><tr data-cat="份额单位错误">
+<td><strong>510800</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,957.6（原始份数）</td><td style="color:#16a34a">2.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7762</td></tr><tr data-cat="份额单位错误">
+<td><strong>563510</strong></td><td>A500红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,953.7（原始份数）</td><td style="color:#16a34a">2.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8872</td></tr><tr data-cat="份额单位错误">
+<td><strong>159176</strong></td><td>家电ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">21,530.3（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 71768</td></tr><tr data-cat="份额单位错误">
+<td><strong>513810</strong></td><td>港股国企ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,899.2（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6499</td></tr><tr data-cat="份额单位错误">
+<td><strong>513210</strong></td><td>恒生ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,194.2（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6990</td></tr><tr data-cat="份额单位错误">
+<td><strong>561510</strong></td><td>中药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,520.6（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10868</td></tr><tr data-cat="份额单位错误">
+<td><strong>560030</strong></td><td>800价值ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,543.2（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8477</td></tr><tr data-cat="份额单位错误">
+<td><strong>512550</strong></td><td>富时A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,190.6（原始份数）</td><td style="color:#16a34a">2.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6281</td></tr><tr data-cat="份额单位错误">
+<td><strong>515350</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,169.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 1671</td></tr><tr data-cat="份额单位错误">
+<td><strong>561120</strong></td><td>家电ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,516.0（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9193</td></tr><tr data-cat="份额单位错误">
+<td><strong>515720</strong></td><td>金融科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">45,161.1（原始份数）</td><td style="color:#16a34a">3.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14113</td></tr><tr data-cat="份额单位错误">
+<td><strong>515770</strong></td><td>MSCI中国A股ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,272.7（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7121</td></tr><tr data-cat="份额单位错误">
+<td><strong>512430</strong></td><td>家居家电ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,172.0（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 46344</td></tr><tr data-cat="份额单位错误">
+<td><strong>513230</strong></td><td>港股通消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">48,842.3（原始份数）</td><td style="color:#16a34a">4.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11101</td></tr><tr data-cat="份额单位错误">
+<td><strong>561580</strong></td><td>央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">121,087.1（原始份数）</td><td style="color:#16a34a">22.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5479</td></tr><tr data-cat="份额单位错误">
+<td><strong>563670</strong></td><td>金融科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,498.7（原始份数）</td><td style="color:#16a34a">1.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13666</td></tr><tr data-cat="份额单位错误">
+<td><strong>159153</strong></td><td>消费电子ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,472.6（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14970</td></tr><tr data-cat="份额单位错误">
+<td><strong>562390</strong></td><td>中药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,342.9（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10429</td></tr><tr data-cat="份额单位错误">
+<td><strong>510950</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,495.0（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10550</td></tr><tr data-cat="份额单位错误">
+<td><strong>517880</strong></td><td>品牌消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,733.7（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11834</td></tr><tr data-cat="份额单位错误">
+<td><strong>159207</strong></td><td>高股息ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">58,698.3（原始份数）</td><td style="color:#16a34a">16.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3646</td></tr><tr data-cat="份额单位错误">
+<td><strong>563570</strong></td><td>金融科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,137.4（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12375</td></tr><tr data-cat="份额单位错误">
+<td><strong>510020</strong></td><td>超大盘ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,684.8（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2632</td></tr><tr data-cat="份额单位错误">
+<td><strong>520990</strong></td><td>港股央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">465,647.1（原始份数）</td><td style="color:#16a34a">50.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9221</td></tr><tr data-cat="份额单位错误">
+<td><strong>530050</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,081.3（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10772</td></tr><tr data-cat="份额单位错误">
+<td><strong>517030</strong></td><td>沪港深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,304.0（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9304</td></tr><tr data-cat="份额单位错误">
+<td><strong>520770</strong></td><td>恒指港股通ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">44,437.4（原始份数）</td><td style="color:#16a34a">3.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13070</td></tr><tr data-cat="份额单位错误">
+<td><strong>513630</strong></td><td>XD港股低波红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">955,735.9（原始份数）</td><td style="color:#16a34a">162.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5871</td></tr><tr data-cat="份额单位错误">
+<td><strong>517170</strong></td><td>沪港深500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,613.2（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8066</td></tr><tr data-cat="份额单位错误">
+<td><strong>516860</strong></td><td>金融科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">119,352.2（原始份数）</td><td style="color:#16a34a">14.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8288</td></tr><tr data-cat="份额单位错误">
+<td><strong>513990</strong></td><td>港股通ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,000.0（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10000</td></tr><tr data-cat="份额单位错误">
+<td><strong>560280</strong></td><td>工程机械ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">195,275.2（原始份数）</td><td style="color:#16a34a">38.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5020</td></tr><tr data-cat="份额单位错误">
+<td><strong>560370</strong></td><td>红利质量ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">21,608.4（原始份数）</td><td style="color:#16a34a">1.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19644</td></tr><tr data-cat="份额单位错误">
+<td><strong>563090</strong></td><td>上证50增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,784.8（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7975</td></tr><tr data-cat="份额单位错误">
+<td><strong>561180</strong></td><td>A100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,161.0（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7373</td></tr><tr data-cat="份额单位错误">
+<td><strong>510850</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,529.9（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3265</td></tr><tr data-cat="份额单位错误">
+<td><strong>159177</strong></td><td>工程机械ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">32,761.9（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 81905</td></tr><tr data-cat="份额单位错误">
+<td><strong>560570</strong></td><td>A500红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">145,554.1（原始份数）</td><td style="color:#16a34a">14.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10323</td></tr><tr data-cat="份额单位错误">
+<td><strong>512360</strong></td><td>MSCIA股ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,033.8（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5056</td></tr><tr data-cat="份额单位错误">
+<td><strong>516720</strong></td><td>ESGETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,233.8（原始份数）</td><td style="color:#16a34a">0.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12338</td></tr><tr data-cat="份额单位错误">
+<td><strong>513360</strong></td><td>教育ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">60,421.4（原始份数）</td><td style="color:#16a34a">3.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 20140</td></tr><tr data-cat="份额单位错误">
+<td><strong>560610</strong></td><td>A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">446,298.8（原始份数）</td><td style="color:#16a34a">52.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8583</td></tr><tr data-cat="份额单位错误">
+<td><strong>520660</strong></td><td>港股通央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">247,448.5（原始份数）</td><td style="color:#16a34a">26.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9481</td></tr><tr data-cat="份额单位错误">
+<td><strong>510680</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,682.5（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4471</td></tr><tr data-cat="份额单位错误">
+<td><strong>560680</strong></td><td>消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">31,572.6（原始份数）</td><td style="color:#16a34a">2.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13155</td></tr><tr data-cat="份额单位错误">
+<td><strong>560080</strong></td><td>中药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">248,526.5（原始份数）</td><td style="color:#16a34a">24.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10144</td></tr><tr data-cat="份额单位错误">
+<td><strong>517010</strong></td><td>沪港深500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,714.4（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8714</td></tr><tr data-cat="份额单位错误">
+<td><strong>563350</strong></td><td>A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,199.8（原始份数）</td><td style="color:#16a34a">2.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8222</td></tr><tr data-cat="份额单位错误">
+<td><strong>560590</strong></td><td>中证1000增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,971.0（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4928</td></tr><tr data-cat="份额单位错误">
+<td><strong>513660</strong></td><td>恒生ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">146,600.0（原始份数）</td><td style="color:#16a34a">41.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3567</td></tr><tr data-cat="份额单位错误">
+<td><strong>562860</strong></td><td>疫苗ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">33,489.5（原始份数）</td><td style="color:#16a34a">2.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15222</td></tr><tr data-cat="份额单位错误">
+<td><strong>563080</strong></td><td>中证A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">122,858.8（原始份数）</td><td style="color:#16a34a">15.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7825</td></tr><tr data-cat="份额单位错误">
+<td><strong>561900</strong></td><td>沪深300ESGETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,233.4（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10778</td></tr><tr data-cat="份额单位错误">
+<td><strong>515330</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">650,970.9（原始份数）</td><td style="color:#16a34a">77.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8443</td></tr><tr data-cat="份额单位错误">
+<td><strong>530580</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,114.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8736</td></tr><tr data-cat="份额单位错误">
+<td><strong>562890</strong></td><td>A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">27,805.1（原始份数）</td><td style="color:#16a34a">4.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6951</td></tr><tr data-cat="份额单位错误">
+<td><strong>513600</strong></td><td>恒生指数ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">74,682.9（原始份数）</td><td style="color:#16a34a">20.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3643</td></tr><tr data-cat="份额单位错误">
+<td><strong>561750</strong></td><td>A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,849.6（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11062</td></tr><tr data-cat="份额单位错误">
+<td><strong>510100</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">110,210.7（原始份数）</td><td style="color:#16a34a">27.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4082</td></tr><tr data-cat="份额单位错误">
+<td><strong>510710</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,421.9（原始份数）</td><td style="color:#16a34a">4.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2483</td></tr><tr data-cat="份额单位错误">
+<td><strong>530000</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">104,902.9（原始份数）</td><td style="color:#16a34a">13.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7947</td></tr><tr data-cat="份额单位错误">
+<td><strong>515460</strong></td><td>红利质量ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">51,409.1（原始份数）</td><td style="color:#16a34a">3.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16065</td></tr><tr data-cat="份额单位错误">
+<td><strong>561780</strong></td><td>1000增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,135.6（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10678</td></tr><tr data-cat="份额单位错误">
+<td><strong>560700</strong></td><td>央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">35,503.7（原始份数）</td><td style="color:#16a34a">4.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7890</td></tr><tr data-cat="份额单位错误">
+<td><strong>561230</strong></td><td>中证A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">56,647.8（原始份数）</td><td style="color:#16a34a">6.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8992</td></tr><tr data-cat="份额单位错误">
+<td><strong>560070</strong></td><td>央企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,486.2（原始份数）</td><td style="color:#16a34a">1.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8429</td></tr><tr data-cat="份额单位错误">
+<td><strong>530300</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,964.3（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9911</td></tr><tr data-cat="份额单位错误">
+<td><strong>530800</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,620.2（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8101</td></tr><tr data-cat="份额单位错误">
+<td><strong>563980</strong></td><td>800红利低波ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,596.7（原始份数）</td><td style="color:#16a34a">2.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10760</td></tr><tr data-cat="份额单位错误">
+<td><strong>561130</strong></td><td>国货ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,793.5（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9828</td></tr><tr data-cat="份额单位错误">
+<td><strong>159209</strong></td><td>红利质量ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">190,163.5（原始份数）</td><td style="color:#16a34a">23.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8058</td></tr><tr data-cat="份额单位错误">
+<td><strong>561770</strong></td><td>A100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,755.0（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7925</td></tr><tr data-cat="份额单位错误">
+<td><strong>159721</strong></td><td>深证100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,943.2（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9919</td></tr><tr data-cat="份额单位错误">
+<td><strong>561060</strong></td><td>国企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,356.5（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2678</td></tr><tr data-cat="份额单位错误">
+<td><strong>515730</strong></td><td>家居家电ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,989.2（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9973</td></tr><tr data-cat="份额单位错误">
+<td><strong>560350</strong></td><td>中证A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">123,353.2（原始份数）</td><td style="color:#16a34a">13.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9416</td></tr><tr data-cat="份额单位错误">
+<td><strong>515660</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">46,959.4（原始份数）</td><td style="color:#16a34a">27.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 1683</td></tr><tr data-cat="份额单位错误">
+<td><strong>512650</strong></td><td>长三角ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,294.2（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6588</td></tr><tr data-cat="份额单位错误">
+<td><strong>561960</strong></td><td>央企回报ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,858.5（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8369</td></tr><tr data-cat="份额单位错误">
+<td><strong>510980</strong></td><td>上证指数ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">43,179.8（原始份数）</td><td style="color:#16a34a">4.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10532</td></tr><tr data-cat="份额单位错误">
+<td><strong>159691</strong></td><td>港股红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">520,430.1（原始份数）</td><td style="color:#16a34a">60.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8546</td></tr><tr data-cat="份额单位错误">
+<td><strong>512600</strong></td><td>消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">150,235.6（原始份数）</td><td style="color:#16a34a">9.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16693</td></tr><tr data-cat="份额单位错误">
+<td><strong>561930</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,026.1（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7237</td></tr><tr data-cat="份额单位错误">
+<td><strong>159602</strong></td><td>中国A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">51,054.3（原始份数）</td><td style="color:#16a34a">4.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11099</td></tr><tr data-cat="份额单位错误">
+<td><strong>159300</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,885.8（原始份数）</td><td style="color:#16a34a">8.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2373</td></tr><tr data-cat="份额单位错误">
+<td><strong>561370</strong></td><td>中证2000ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,235.6（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5589</td></tr><tr data-cat="份额单位错误">
+<td><strong>510190</strong></td><td>上证50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,965.1（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2471</td></tr><tr data-cat="份额单位错误">
+<td><strong>561000</strong></td><td>沪深300增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,242.0（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7489</td></tr><tr data-cat="份额单位错误">
+<td><strong>512530</strong></td><td>沪深300红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,450.2（原始份数）</td><td style="color:#16a34a">1.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5906</td></tr><tr data-cat="份额单位错误">
+<td><strong>562990</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">44,675.6（原始份数）</td><td style="color:#16a34a">4.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10390</td></tr><tr data-cat="份额单位错误">
+<td><strong>563520</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">39,706.5（原始份数）</td><td style="color:#16a34a">4.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8103</td></tr><tr data-cat="份额单位错误">
+<td><strong>510270</strong></td><td>国企ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,883.2（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9416</td></tr><tr data-cat="份额单位错误">
+<td><strong>516830</strong></td><td>沪深300ESGETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">10,467.7（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11631</td></tr><tr data-cat="份额单位错误">
+<td><strong>510320</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">78,406.8（原始份数）</td><td style="color:#16a34a">7.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10454</td></tr><tr data-cat="份额单位错误">
+<td><strong>159642</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,844.0（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9480</td></tr><tr data-cat="份额单位错误">
+<td><strong>560930</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">26,552.4（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13276</td></tr><tr data-cat="份额单位错误">
+<td><strong>562310</strong></td><td>沪深300成长ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">67,857.2（原始份数）</td><td style="color:#16a34a">6.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11124</td></tr><tr data-cat="份额单位错误">
+<td><strong>512910</strong></td><td>A100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,962.9（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8402</td></tr><tr data-cat="份额单位错误">
+<td><strong>517100</strong></td><td>沪港深500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,510.2（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10300</td></tr><tr data-cat="份额单位错误">
+<td><strong>561300</strong></td><td>沪深300增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">60,796.5（原始份数）</td><td style="color:#16a34a">3.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17370</td></tr><tr data-cat="份额单位错误">
+<td><strong>512380</strong></td><td>MSCI中国ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,580.6（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6317</td></tr><tr data-cat="份额单位错误">
+<td><strong>510330</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,943,755.0（原始份数）</td><td style="color:#16a34a">820.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2368</td></tr><tr data-cat="份额单位错误">
+<td><strong>515310</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">24,811.1（原始份数）</td><td style="color:#16a34a">3.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7519</td></tr><tr data-cat="份额单位错误">
+<td><strong>515130</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,646.3（原始份数）</td><td style="color:#16a34a">1.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6951</td></tr><tr data-cat="份额单位错误">
+<td><strong>510990</strong></td><td>180ESGETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,094.9（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10237</td></tr><tr data-cat="份额单位错误">
+<td><strong>515970</strong></td><td>工程机械ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">53,508.8（原始份数）</td><td style="color:#16a34a">7.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7644</td></tr><tr data-cat="份额单位错误">
+<td><strong>562060</strong></td><td>标普A股红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">683,279.3（原始份数）</td><td style="color:#16a34a">42.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16230</td></tr><tr data-cat="份额单位错误">
+<td><strong>560020</strong></td><td>红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,556.2（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8556</td></tr><tr data-cat="份额单位错误">
+<td><strong>515080</strong></td><td>中证红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">554,614.9（原始份数）</td><td style="color:#16a34a">99.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5580</td></tr><tr data-cat="份额单位错误">
+<td><strong>159020</strong></td><td>养殖ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,156.7（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 20157</td></tr><tr data-cat="份额单位错误">
+<td><strong>513980</strong></td><td>港股科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,007,420.4（原始份数）</td><td style="color:#16a34a">174.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17284</td></tr><tr data-cat="份额单位错误">
+<td><strong>516370</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">29,240.8（原始份数）</td><td style="color:#16a34a">2.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12713</td></tr><tr data-cat="份额单位错误">
+<td><strong>510670</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">36,049.3（原始份数）</td><td style="color:#16a34a">2.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13352</td></tr><tr data-cat="份额单位错误">
+<td><strong>520900</strong></td><td>港股通红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">145,917.5（原始份数）</td><td style="color:#16a34a">18.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7762</td></tr><tr data-cat="份额单位错误">
+<td><strong>560380</strong></td><td>A100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,086.1（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7940</td></tr><tr data-cat="份额单位错误">
+<td><strong>560180</strong></td><td>沪深300ESGETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,310.3（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6551</td></tr><tr data-cat="份额单位错误">
+<td><strong>520530</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">27,377.6（原始份数）</td><td style="color:#16a34a">2.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12444</td></tr><tr data-cat="份额单位错误">
+<td><strong>560460</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">56,203.7（原始份数）</td><td style="color:#16a34a">4.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12774</td></tr><tr data-cat="份额单位错误">
+<td><strong>560550</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">16,359.7（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11686</td></tr><tr data-cat="份额单位错误">
+<td><strong>560990</strong></td><td>科技先锋ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,018.7（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10094</td></tr><tr data-cat="份额单位错误">
+<td><strong>530180</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,195.2（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7744</td></tr><tr data-cat="份额单位错误">
+<td><strong>510160</strong></td><td>产业升级ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,405.7（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11336</td></tr><tr data-cat="份额单位错误">
+<td><strong>510880</strong></td><td>红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">527,917.6（原始份数）</td><td style="color:#16a34a">204.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2582</td></tr><tr data-cat="份额单位错误">
+<td><strong>513170</strong></td><td>恒生央企ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,957.3（原始份数）</td><td style="color:#16a34a">3.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7260</td></tr><tr data-cat="份额单位错误">
+<td><strong>159647</strong></td><td>中药ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">154,196.2（原始份数）</td><td style="color:#16a34a">14.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11014</td></tr><tr data-cat="份额单位错误">
+<td><strong>526000</strong></td><td>港股通信息技术ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,014.2（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 36690</td></tr><tr data-cat="份额单位错误">
+<td><strong>517300</strong></td><td>沪港深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">192,943.4（原始份数）</td><td style="color:#16a34a">15.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12368</td></tr><tr data-cat="份额单位错误">
+<td><strong>561200</strong></td><td>中证A100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,147.0（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6294</td></tr><tr data-cat="份额单位错误">
+<td><strong>560450</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">45,556.9（原始份数）</td><td style="color:#16a34a">3.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14696</td></tr><tr data-cat="份额单位错误">
+<td><strong>159617</strong></td><td>中证500价值ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,941.8（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7354</td></tr><tr data-cat="份额单位错误">
+<td><strong>517080</strong></td><td>沪港深500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">21,716.6（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10858</td></tr><tr data-cat="份额单位错误">
+<td><strong>515700</strong></td><td>新能源车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">75,351.0（原始份数）</td><td style="color:#16a34a">17.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4306</td></tr><tr data-cat="份额单位错误">
+<td><strong>159196</strong></td><td>港股通信息技术ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,153.0（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11855</td></tr><tr data-cat="份额单位错误">
+<td><strong>561190</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,531.8（原始份数）</td><td style="color:#16a34a">2.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10231</td></tr><tr data-cat="份额单位错误">
+<td><strong>562900</strong></td><td>农业ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,570.6（原始份数）</td><td style="color:#16a34a">1.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11714</td></tr><tr data-cat="份额单位错误">
+<td><strong>516670</strong></td><td>畜牧养殖ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">200,026.6（原始份数）</td><td style="color:#16a34a">19.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10418</td></tr><tr data-cat="份额单位错误">
+<td><strong>561880</strong></td><td>A100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,838.9（原始份数）</td><td style="color:#16a34a">1.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8944</td></tr><tr data-cat="份额单位错误">
+<td><strong>513150</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,606.0（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11338</td></tr><tr data-cat="份额单位错误">
+<td><strong>510180</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">556,455.8（原始份数）</td><td style="color:#16a34a">219.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2541</td></tr><tr data-cat="份额单位错误">
+<td><strong>562330</strong></td><td>中证500价值ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,301.9（原始份数）</td><td style="color:#16a34a">0.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13019</td></tr><tr data-cat="份额单位错误">
+<td><strong>510900</strong></td><td>恒生中国企业ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">418,002.2（原始份数）</td><td style="color:#16a34a">40.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10372</td></tr><tr data-cat="份额单位错误">
+<td><strong>515180</strong></td><td>红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">872,263.7（原始份数）</td><td style="color:#16a34a">145.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5979</td></tr><tr data-cat="份额单位错误">
+<td><strong>562070</strong></td><td>沪深300指增ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">66,954.2（原始份数）</td><td style="color:#16a34a">4.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13949</td></tr><tr data-cat="份额单位错误">
+<td><strong>530680</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">19,289.2（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13778</td></tr><tr data-cat="份额单位错误">
+<td><strong>561990</strong></td><td>沪深300增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">41,864.9（原始份数）</td><td style="color:#16a34a">3.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11017</td></tr><tr data-cat="份额单位错误">
+<td><strong>513860</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">571,347.1（原始份数）</td><td style="color:#16a34a">31.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 18024</td></tr><tr data-cat="份额单位错误">
+<td><strong>515170</strong></td><td>食品饮料ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">935,725.8（原始份数）</td><td style="color:#16a34a">43.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 21315</td></tr><tr data-cat="份额单位错误">
+<td><strong>530280</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,343.4（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10858</td></tr><tr data-cat="份额单位错误">
+<td><strong>563890</strong></td><td>国企红利ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,033.6（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10112</td></tr><tr data-cat="份额单位错误">
+<td><strong>563030</strong></td><td>中证500增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,416.9（原始份数）</td><td style="color:#16a34a">1.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5886</td></tr><tr data-cat="份额单位错误">
+<td><strong>159736</strong></td><td>食品饮料ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">784,239.4（原始份数）</td><td style="color:#16a34a">47.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16545</td></tr><tr data-cat="份额单位错误">
+<td><strong>560060</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,409.0（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10511</td></tr><tr data-cat="份额单位错误">
+<td><strong>516600</strong></td><td>消费服务ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">12,533.2（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17905</td></tr><tr data-cat="份额单位错误">
+<td><strong>562350</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,841.1（原始份数）</td><td style="color:#16a34a">1.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5262</td></tr><tr data-cat="份额单位错误">
+<td><strong>520950</strong></td><td>港股通50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">48,642.1（原始份数）</td><td style="color:#16a34a">3.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14740</td></tr><tr data-cat="份额单位错误">
+<td><strong>563000</strong></td><td>中国A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">207,095.1（原始份数）</td><td style="color:#16a34a">19.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10407</td></tr><tr data-cat="份额单位错误">
+<td><strong>159576</strong></td><td>深证100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,051.0（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6752</td></tr><tr data-cat="份额单位错误">
+<td><strong>159639</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">24,529.0（原始份数）</td><td style="color:#16a34a">2.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10665</td></tr><tr data-cat="份额单位错误">
+<td><strong>560410</strong></td><td>电池ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">28,878.6（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 36098</td></tr><tr data-cat="份额单位错误">
+<td><strong>563180</strong></td><td>高股息ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,742.0（原始份数）</td><td style="color:#16a34a">1.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9032</td></tr><tr data-cat="份额单位错误">
+<td><strong>515030</strong></td><td>新能源车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">244,838.4（原始份数）</td><td style="color:#16a34a">51.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4736</td></tr><tr data-cat="份额单位错误">
+<td><strong>562550</strong></td><td>绿电ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">99,741.9（原始份数）</td><td style="color:#16a34a">17.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5732</td></tr><tr data-cat="份额单位错误">
+<td><strong>512520</strong></td><td>MSCI中国ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,805.6（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8009</td></tr><tr data-cat="份额单位错误">
+<td><strong>530080</strong></td><td>上证180ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,891.7（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7229</td></tr><tr data-cat="份额单位错误">
+<td><strong>516660</strong></td><td>新能源车ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,768.9（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11384</td></tr><tr data-cat="份额单位错误">
+<td><strong>512040</strong></td><td>价值100ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">258,971.6（原始份数）</td><td style="color:#16a34a">41.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6210</td></tr><tr data-cat="份额单位错误">
+<td><strong>560530</strong></td><td>中证A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">280,062.4（原始份数）</td><td style="color:#16a34a">29.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9526</td></tr><tr data-cat="份额单位错误">
+<td><strong>513320</strong></td><td>港股通新经济ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,001.1（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10834</td></tr><tr data-cat="份额单位错误">
+<td><strong>520560</strong></td><td>香港大盘30ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">79,741.9（原始份数）</td><td style="color:#16a34a">6.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12862</td></tr><tr data-cat="份额单位错误">
+<td><strong>563590</strong></td><td>A500红利低波动ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,194.4（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13135</td></tr><tr data-cat="份额单位错误">
+<td><strong>560210</strong></td><td>农牧渔ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">78,052.2（原始份数）</td><td style="color:#16a34a">5.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13938</td></tr><tr data-cat="份额单位错误">
+<td><strong>510630</strong></td><td>消费ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">49,436.1（原始份数）</td><td style="color:#16a34a">4.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11770</td></tr><tr data-cat="份额单位错误">
+<td><strong>159755</strong></td><td>电池ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,102,164.7（原始份数）</td><td style="color:#16a34a">141.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7800</td></tr><tr data-cat="份额单位错误">
+<td><strong>512090</strong></td><td>MSCIA股ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">32,159.2（原始份数）</td><td style="color:#16a34a">6.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5360</td></tr><tr data-cat="份额单位错误">
+<td><strong>563220</strong></td><td>A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">770,901.4（原始份数）</td><td style="color:#16a34a">76.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10130</td></tr><tr data-cat="份额单位错误">
+<td><strong>530060</strong></td><td>上证指数ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,319.3（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12766</td></tr><tr data-cat="份额单位错误">
+<td><strong>159611</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">605,836.3（原始份数）</td><td style="color:#16a34a">78.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7679</td></tr><tr data-cat="份额单位错误">
+<td><strong>512370</strong></td><td>A500增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,731.3（原始份数）</td><td style="color:#16a34a">3.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2416</td></tr><tr data-cat="份额单位错误">
+<td><strong>560580</strong></td><td>电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">26,100.3（原始份数）</td><td style="color:#16a34a">3.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6868</td></tr><tr data-cat="份额单位错误">
+<td><strong>560510</strong></td><td>中证A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">273,202.7（原始份数）</td><td style="color:#16a34a">30.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8928</td></tr><tr data-cat="份额单位错误">
+<td><strong>159226</strong></td><td>中证A500增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,909.5（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9871</td></tr><tr data-cat="份额单位错误">
+<td><strong>510370</strong></td><td>沪深300ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,725.8（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9695</td></tr><tr data-cat="份额单位错误">
+<td><strong>515910</strong></td><td>质量ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">28,750.7（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15973</td></tr><tr data-cat="份额单位错误">
+<td><strong>515810</strong></td><td>中证800ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">34,790.9（原始份数）</td><td style="color:#16a34a">5.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6213</td></tr><tr data-cat="份额单位错误">
+<td><strong>516750</strong></td><td>建材ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,566.7（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15567</td></tr><tr data-cat="份额单位错误">
+<td><strong>159338</strong></td><td>中证A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,483,008.7（原始份数）</td><td style="color:#16a34a">236.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10499</td></tr><tr data-cat="份额单位错误">
+<td><strong>563860</strong></td><td>中证A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">20,084.4（原始份数）</td><td style="color:#16a34a">2.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7725</td></tr><tr data-cat="份额单位错误">
+<td><strong>512020</strong></td><td>A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">118,701.3（原始份数）</td><td style="color:#16a34a">13.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8993</td></tr><tr data-cat="份额单位错误">
+<td><strong>560050</strong></td><td>中国A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">322,743.4（原始份数）</td><td style="color:#16a34a">26.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12366</td></tr><tr data-cat="份额单位错误">
+<td><strong>510720</strong></td><td>红利国企ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">180,176.6（原始份数）</td><td style="color:#16a34a">23.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7635</td></tr><tr data-cat="份额单位错误">
+<td><strong>510210</strong></td><td>上证指数ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">907,719.3（原始份数）</td><td style="color:#16a34a">64.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14051</td></tr><tr data-cat="份额单位错误">
+<td><strong>513020</strong></td><td>港股科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">445,614.5（原始份数）</td><td style="color:#16a34a">41.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10738</td></tr><tr data-cat="份额单位错误">
+<td><strong>560620</strong></td><td>公用事业ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,286.7（原始份数）</td><td style="color:#16a34a">0.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10956</td></tr><tr data-cat="份额单位错误">
+<td><strong>512250</strong></td><td>A50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">35,060.0（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 17530</td></tr><tr data-cat="份额单位错误">
+<td><strong>159606</strong></td><td>中证500成长ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">29,322.3（原始份数）</td><td style="color:#16a34a">3.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7925</td></tr><tr data-cat="份额单位错误">
+<td><strong>159191</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,410.5（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 28013</td></tr><tr data-cat="份额单位错误">
+<td><strong>561170</strong></td><td>绿色电力ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">35,303.3（原始份数）</td><td style="color:#16a34a">4.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7205</td></tr><tr data-cat="份额单位错误">
+<td><strong>159165</strong></td><td>养殖ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,557.1（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11557</td></tr><tr data-cat="份额单位错误">
+<td><strong>560120</strong></td><td>中证500现金流ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">81,168.9（原始份数）</td><td style="color:#16a34a">9.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8544</td></tr><tr data-cat="份额单位错误">
+<td><strong>560500</strong></td><td>500质量成长ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">31,933.9（原始份数）</td><td style="color:#16a34a">3.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8188</td></tr><tr data-cat="份额单位错误">
+<td><strong>563360</strong></td><td>A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,091,998.7（原始份数）</td><td style="color:#16a34a">301.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10272</td></tr><tr data-cat="份额单位错误">
+<td><strong>563390</strong></td><td>全指现金流ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">272,384.4（原始份数）</td><td style="color:#16a34a">34.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8011</td></tr><tr data-cat="份额单位错误">
+<td><strong>563600</strong></td><td>A500增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,148.3（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10297</td></tr><tr data-cat="份额单位错误">
+<td><strong>560310</strong></td><td>光伏ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,912.2（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12059</td></tr><tr data-cat="份额单位错误">
+<td><strong>516950</strong></td><td>基建ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">14,082.1（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10059</td></tr><tr data-cat="份额单位错误">
+<td><strong>520860</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">61,519.5（原始份数）</td><td style="color:#16a34a">3.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 16627</td></tr><tr data-cat="份额单位错误">
+<td><strong>562300</strong></td><td>碳中和ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,749.5（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13499</td></tr><tr data-cat="份额单位错误">
+<td><strong>563550</strong></td><td>A500增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,255.9（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9173</td></tr><tr data-cat="份额单位错误">
+<td><strong>563880</strong></td><td>A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">164,299.6（原始份数）</td><td style="color:#16a34a">13.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12261</td></tr><tr data-cat="份额单位错误">
+<td><strong>561870</strong></td><td>现金流全指ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">16,176.5（原始份数）</td><td style="color:#16a34a">1.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10784</td></tr><tr data-cat="份额单位错误">
+<td><strong>563850</strong></td><td>食品ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,008.2（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13347</td></tr><tr data-cat="份额单位错误">
+<td><strong>530880</strong></td><td>红利国企ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,633.6（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11584</td></tr><tr data-cat="份额单位错误">
+<td><strong>517160</strong></td><td>长江保护ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">181,477.7（原始份数）</td><td style="color:#16a34a">18.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9863</td></tr><tr data-cat="份额单位错误">
+<td><strong>563620</strong></td><td>全指现金流ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,704.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9578</td></tr><tr data-cat="份额单位错误">
+<td><strong>159173</strong></td><td>农牧ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">22,145.5（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 36909</td></tr><tr data-cat="份额单位错误">
+<td><strong>512710</strong></td><td>军工龙头ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,267,365.8（原始份数）</td><td style="color:#16a34a">87.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14534</td></tr><tr data-cat="份额单位错误">
+<td><strong>563660</strong></td><td>A500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,508.5（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8343</td></tr><tr data-cat="份额单位错误">
+<td><strong>563330</strong></td><td>A股ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,336.1（原始份数）</td><td style="color:#16a34a">1.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2383</td></tr><tr data-cat="份额单位错误">
+<td><strong>510760</strong></td><td>上证指数ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">216,550.4（原始份数）</td><td style="color:#16a34a">22.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9540</td></tr><tr data-cat="份额单位错误">
+<td><strong>515110</strong></td><td>一带一路ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,229.5（原始份数）</td><td style="color:#16a34a">3.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5956</td></tr><tr data-cat="份额单位错误">
+<td><strong>512670</strong></td><td>国防ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">318,565.3（原始份数）</td><td style="color:#16a34a">24.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13274</td></tr><tr data-cat="份额单位错误">
+<td><strong>159125</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">83,524.6（原始份数）</td><td style="color:#16a34a">7.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10990</td></tr><tr data-cat="份额单位错误">
+<td><strong>159152</strong></td><td>港股通科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">101,955.6（原始份数）</td><td style="color:#16a34a">8.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12744</td></tr><tr data-cat="份额单位错误">
+<td><strong>560160</strong></td><td>食品ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">15,370.6（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12809</td></tr><tr data-cat="份额单位错误">
+<td><strong>561660</strong></td><td>通用航空ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,671.0（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8339</td></tr><tr data-cat="份额单位错误">
+<td><strong>512130</strong></td><td>全指现金流ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,989.5（原始份数）</td><td style="color:#16a34a">0.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9948</td></tr><tr data-cat="份额单位错误">
+<td><strong>563760</strong></td><td>全指现金流ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">91,991.3（原始份数）</td><td style="color:#16a34a">11.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8141</td></tr><tr data-cat="份额单位错误">
+<td><strong>512770</strong></td><td>战略新兴ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,026.8（原始份数）</td><td style="color:#16a34a">2.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3938</td></tr><tr data-cat="份额单位错误">
+<td><strong>520590</strong></td><td>恒生科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">32,023.5（原始份数）</td><td style="color:#16a34a">2.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15249</td></tr><tr data-cat="份额单位错误">
+<td><strong>560320</strong></td><td>食品ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">27,533.2（原始份数）</td><td style="color:#16a34a">2.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13111</td></tr><tr data-cat="份额单位错误">
+<td><strong>561160</strong></td><td>电池ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">225,383.5（原始份数）</td><td style="color:#16a34a">28.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8021</td></tr><tr data-cat="份额单位错误">
+<td><strong>517520</strong></td><td>黄金股ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">569,640.4（原始份数）</td><td style="color:#16a34a">112.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5086</td></tr><tr data-cat="份额单位错误">
+<td><strong>512810</strong></td><td>军工ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">100,158.3（原始份数）</td><td style="color:#16a34a">6.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14729</td></tr><tr data-cat="份额单位错误">
+<td><strong>562930</strong></td><td>软件ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">104,543.7（原始份数）</td><td style="color:#16a34a">9.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10668</td></tr><tr data-cat="份额单位错误">
+<td><strong>516360</strong></td><td>新材料ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,655.2（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9507</td></tr><tr data-cat="份额单位错误">
+<td><strong>563870</strong></td><td>通用航空ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">11,330.4（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12589</td></tr><tr data-cat="份额单位错误">
+<td><strong>159729</strong></td><td>互联网ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,856.1（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13712</td></tr><tr data-cat="份额单位错误">
+<td><strong>512660</strong></td><td>军工ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">722,408.0（原始份数）</td><td style="color:#16a34a">84.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8549</td></tr><tr data-cat="份额单位错误">
+<td><strong>512680</strong></td><td>军工ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">396,253.0（原始份数）</td><td style="color:#16a34a">46.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8467</td></tr><tr data-cat="份额单位错误">
+<td><strong>562950</strong></td><td>消费电子ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">60,325.8（原始份数）</td><td style="color:#16a34a">13.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4340</td></tr><tr data-cat="份额单位错误">
+<td><strong>516150</strong></td><td>稀土ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">444,757.7（原始份数）</td><td style="color:#16a34a">87.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5066</td></tr><tr data-cat="份额单位错误">
+<td><strong>563750</strong></td><td>中证500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">36,223.7（原始份数）</td><td style="color:#16a34a">4.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8625</td></tr><tr data-cat="份额单位错误">
+<td><strong>560980</strong></td><td>光伏龙头ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">61,802.2（原始份数）</td><td style="color:#16a34a">4.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14715</td></tr><tr data-cat="份额单位错误">
+<td><strong>159163</strong></td><td>有色ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">25,580.7（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14212</td></tr><tr data-cat="份额单位错误">
+<td><strong>561360</strong></td><td>石油ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">301,214.8（原始份数）</td><td style="color:#16a34a">26.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11585</td></tr><tr data-cat="份额单位错误">
+<td><strong>516010</strong></td><td>游戏ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">181,769.3（原始份数）</td><td style="color:#16a34a">25.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7018</td></tr><tr data-cat="份额单位错误">
+<td><strong>516970</strong></td><td>基建ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">152,604.3（原始份数）</td><td style="color:#16a34a">15.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10040</td></tr><tr data-cat="份额单位错误">
+<td><strong>516770</strong></td><td>游戏ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,604.8（原始份数）</td><td style="color:#16a34a">3.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6380</td></tr><tr data-cat="份额单位错误">
+<td><strong>516220</strong></td><td>化工ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">46,917.0（原始份数）</td><td style="color:#16a34a">3.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13032</td></tr><tr data-cat="份额单位错误">
+<td><strong>516120</strong></td><td>化工ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">807,608.2（原始份数）</td><td style="color:#16a34a">60.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13415</td></tr><tr data-cat="份额单位错误">
+<td><strong>588360</strong></td><td>科创创业ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">28,348.2（原始份数）</td><td style="color:#16a34a">2.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10124</td></tr><tr data-cat="份额单位错误">
+<td><strong>510580</strong></td><td>中证500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">97,336.8（原始份数）</td><td style="color:#16a34a">41.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2345</td></tr><tr data-cat="份额单位错误">
+<td><strong>510500</strong></td><td>中证500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">943,656.9（原始份数）</td><td style="color:#16a34a">373.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2525</td></tr><tr data-cat="最大回撤差异大">
+<td><strong>159597</strong></td><td>创业板成长ETF</td><td><code>max_drawdown</code></td>
+<td style="color:#dc2626">-30.90%</td><td style="color:#16a34a">-14.11%（填充版5/26）</td>
+<td><span class="badge badge-warn">最大回撤差异大</span></td>
+<td>需确认哪个数据源更可信</td></tr><tr data-cat="份额单位错误">
+<td><strong>530380</strong></td><td>上证380ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">24,270.5（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12135</td></tr><tr data-cat="份额单位错误">
+<td><strong>513040</strong></td><td>港股通互联网ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">745,784.1（原始份数）</td><td style="color:#16a34a">76.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9698</td></tr><tr data-cat="份额单位错误">
+<td><strong>159563</strong></td><td>创业板综ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,936.1（原始份数）</td><td style="color:#16a34a">0.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 4840</td></tr><tr data-cat="份额单位错误">
+<td><strong>563790</strong></td><td>卫星ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">104,644.7（原始份数）</td><td style="color:#16a34a">10.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9780</td></tr><tr data-cat="份额单位错误">
+<td><strong>513720</strong></td><td>港股互联网ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,285.9（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 14405</td></tr><tr data-cat="份额单位错误">
+<td><strong>560230</strong></td><td>光伏ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">9,588.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13698</td></tr><tr data-cat="份额单位错误">
+<td><strong>159607</strong></td><td>中概互联网ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">122,082.9（原始份数）</td><td style="color:#16a34a">10.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11200</td></tr><tr data-cat="份额单位错误">
+<td><strong>159179</strong></td><td>港股通互联网ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">24,490.4（原始份数）</td><td style="color:#16a34a">0.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 27212</td></tr><tr data-cat="份额单位错误">
+<td><strong>159679</strong></td><td>中证1000增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,088.9（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8698</td></tr><tr data-cat="份额单位错误">
+<td><strong>159197</strong></td><td>石油ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">21,438.8（原始份数）</td><td style="color:#16a34a">0.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 42878</td></tr><tr data-cat="份额单位错误">
+<td><strong>516300</strong></td><td>中证1000ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,301.3（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 3288</td></tr><tr data-cat="份额单位错误">
+<td><strong>513770</strong></td><td>港股互联网ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">2,519,313.8（原始份数）</td><td style="color:#16a34a">92.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 27148</td></tr><tr data-cat="份额单位错误">
+<td><strong>561350</strong></td><td>中证500ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">7,670.0（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7670</td></tr><tr data-cat="份额单位错误">
+<td><strong>562970</strong></td><td>光伏ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">58,844.8（原始份数）</td><td style="color:#16a34a">5.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9974</td></tr><tr data-cat="份额单位错误">
+<td><strong>512630</strong></td><td>卫星ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">124,442.6（原始份数）</td><td style="color:#16a34a">23.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5387</td></tr><tr data-cat="份额单位错误">
+<td><strong>159671</strong></td><td>稀有金属ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">113,405.2（原始份数）</td><td style="color:#16a34a">15.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7178</td></tr><tr data-cat="份额单位错误">
+<td><strong>516620</strong></td><td>影视ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">25,976.8（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 15280</td></tr><tr data-cat="份额单位错误">
+<td><strong>561790</strong></td><td>央企能源ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">5,963.4（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7454</td></tr><tr data-cat="份额单位错误">
+<td><strong>560220</strong></td><td>中证2000ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,571.7（原始份数）</td><td style="color:#16a34a">0.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6531</td></tr><tr data-cat="份额单位错误">
+<td><strong>516880</strong></td><td>光伏ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">136,194.4（原始份数）</td><td style="color:#16a34a">10.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12495</td></tr><tr data-cat="份额单位错误">
+<td><strong>513350</strong></td><td>标普油气ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">77,674.6（原始份数）</td><td style="color:#16a34a">11.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6935</td></tr><tr data-cat="份额单位错误">
+<td><strong>159605</strong></td><td>中概互联ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">478,948.6（原始份数）</td><td style="color:#16a34a">37.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12671</td></tr><tr data-cat="份额单位错误">
+<td><strong>517770</strong></td><td>游戏传媒ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">16,594.8（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9762</td></tr><tr data-cat="份额单位错误">
+<td><strong>563230</strong></td><td>卫星ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">320,123.7（原始份数）</td><td style="color:#16a34a">54.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5928</td></tr><tr data-cat="份额单位错误">
+<td><strong>515220</strong></td><td>煤炭ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">829,767.7（原始份数）</td><td style="color:#16a34a">110.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7482</td></tr><tr data-cat="份额单位错误">
+<td><strong>563560</strong></td><td>科技成长ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">34,976.9（原始份数）</td><td style="color:#16a34a">0.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 43721</td></tr><tr data-cat="份额单位错误">
+<td><strong>560010</strong></td><td>中证1000ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">202,062.2（原始份数）</td><td style="color:#16a34a">29.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6850</td></tr><tr data-cat="份额单位错误">
+<td><strong>588040</strong></td><td>科创50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,188.9（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8189</td></tr><tr data-cat="份额单位错误">
+<td><strong>562380</strong></td><td>央企科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">8,162.9（原始份数）</td><td style="color:#16a34a">1.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8163</td></tr><tr data-cat="份额单位错误">
+<td><strong>560110</strong></td><td>中证1000ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">19,690.3（原始份数）</td><td style="color:#16a34a">1.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10363</td></tr><tr data-cat="份额单位错误">
+<td><strong>589230</strong></td><td>科创人工智能ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">55,855.3（原始份数）</td><td style="color:#16a34a">2.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 19948</td></tr><tr data-cat="份额单位错误">
+<td><strong>560170</strong></td><td>央企科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">35,349.5（原始份数）</td><td style="color:#16a34a">3.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10100</td></tr><tr data-cat="份额单位错误">
+<td><strong>589850</strong></td><td>科创50ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">50,805.7（原始份数）</td><td style="color:#16a34a">5.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9962</td></tr><tr data-cat="份额单位错误">
+<td><strong>563050</strong></td><td>央企科技ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,020.8（原始份数）</td><td style="color:#16a34a">1.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7659</td></tr><tr data-cat="份额单位错误">
+<td><strong>562520</strong></td><td>中证1000成长ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">4,256.8（原始份数）</td><td style="color:#16a34a">0.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7095</td></tr><tr data-cat="份额单位错误">
+<td><strong>159707</strong></td><td>地产ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">104,354.8（原始份数）</td><td style="color:#16a34a">5.6（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 18635</td></tr><tr data-cat="份额单位错误">
+<td><strong>512760</strong></td><td>芯片ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,135,144.6（原始份数）</td><td style="color:#16a34a">104.3（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 10883</td></tr><tr data-cat="份额单位错误">
+<td><strong>515060</strong></td><td>房地产ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">94,947.8（原始份数）</td><td style="color:#16a34a">6.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 13761</td></tr><tr data-cat="份额单位错误">
+<td><strong>563300</strong></td><td>中证2000ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">252,117.4（原始份数）</td><td style="color:#16a34a">42.7（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5904</td></tr><tr data-cat="份额单位错误">
+<td><strong>510130</strong></td><td>上证中盘ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">3,388.5（原始份数）</td><td style="color:#16a34a">2.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 1355</td></tr><tr data-cat="份额单位错误">
+<td><strong>589090</strong></td><td>科创AIETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,693.1（原始份数）</td><td style="color:#16a34a">2.5（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 9477</td></tr><tr data-cat="份额单位错误">
+<td><strong>589380</strong></td><td>科创AIETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">13,169.4（原始份数）</td><td style="color:#16a34a">1.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 7316</td></tr><tr data-cat="份额单位错误">
+<td><strong>516350</strong></td><td>芯片ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">120,841.5（原始份数）</td><td style="color:#16a34a">20.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6042</td></tr><tr data-cat="份额单位错误">
+<td><strong>512220</strong></td><td>TMTETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">17,846.8（原始份数）</td><td style="color:#16a34a">6.8（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 2625</td></tr><tr data-cat="份额单位错误">
+<td><strong>589010</strong></td><td>科创人工智能ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">165,579.3（原始份数）</td><td style="color:#16a34a">19.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8624</td></tr><tr data-cat="份额单位错误">
+<td><strong>159819</strong></td><td>人工智能ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">1,544,723.0（原始份数）</td><td style="color:#16a34a">239.9（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 6439</td></tr><tr data-cat="份额单位错误">
+<td><strong>588370</strong></td><td>科创50增强ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">6,577.2（原始份数）</td><td style="color:#16a34a">1.2（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 5481</td></tr><tr data-cat="份额单位错误">
+<td><strong>159107</strong></td><td>创业板软件ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">67,582.3（原始份数）</td><td style="color:#16a34a">5.4（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 12515</td></tr><tr data-cat="份额单位错误">
+<td><strong>516920</strong></td><td>芯片ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">63,696.3（原始份数）</td><td style="color:#16a34a">7.1（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 8971</td></tr><tr data-cat="份额单位错误">
+<td><strong>530530</strong></td><td>上证580ETF</td><td><code>shares</code></td>
+<td style="color:#dc2626">23,646.0（原始份数）</td><td style="color:#16a34a">2.0（亿份）</td>
+<td><span class="badge badge-fix">份额单位错误</span></td>
+<td>÷ 11823</td></tr><tr data-cat="最大回撤差异大">
+<td><strong>159363</strong></td><td>创业板人工智能ETF</td><td><code>max_drawdown</code></td>
+<td style="color:#dc2626">-31.67%</td><td style="color:#16a34a">-14.80%（填充版5/26）</td>
+<td><span class="badge badge-warn">最大回撤差异大</span></td>
+<td>需确认哪个数据源更可信</td></tr><tr data-cat="最大回撤差异大">
+<td><strong>588830</strong></td><td>科创新能源ETF</td><td><code>max_drawdown</code></td>
+<td style="color:#dc2626">-37.79%</td><td style="color:#16a34a">-18.57%（填充版5/26）</td>
+<td><span class="badge badge-warn">最大回撤差异大</span></td>
+<td>需确认哪个数据源更可信</td></tr></tbody></table>
+
+<script>
+function filterTable(){
+  var v = document.getElementById('filter').value;
+  document.querySelectorAll('#tbody tr').forEach(function(tr){
+    tr.style.display = (v==='all' || tr.dataset.cat===v) ? '' : 'none';
+  });
+}
+var sortDir = {};
+function sortTable(col){
+  sortDir[col] = sortDir[col] === 1 ? -1 : 1;
+  var rows = Array.from(document.querySelectorAll('#tbody tr'));
+  rows.sort(function(a,b){
+    var va = a.cells[col].textContent, vb = b.cells[col].textContent;
+    return sortDir[col] * va.localeCompare(vb, 'zh');
+  });
+  rows.forEach(function(r){ document.getElementById('tbody').appendChild(r); });
+}
+</script></body></html>
