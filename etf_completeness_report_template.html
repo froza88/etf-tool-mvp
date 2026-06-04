@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF Data Completeness / 数据完整度报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'SF Pro Display','PingFang SC',sans-serif;background:#f0f2f5;color:#1a1a2e}
+.header{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#fff;padding:28px 36px}
+.header h1{font-size:22px;font-weight:600;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.75}
+.nav{display:flex;gap:0;padding:0 36px;background:#fff;border-bottom:1px solid #e2e8f0}
+.nav-btn{padding:12px 22px;border:none;background:none;cursor:pointer;font-size:13px;font-weight:500;color:#64748b;border-bottom:2px solid transparent;transition:all .15s}
+.nav-btn:hover{color:#1e3a8a}
+.nav-btn.active{color:#1e3a8a;border-bottom-color:#1e3a8a}
+.section{padding:24px 36px;max-width:1400px}
+.card{background:#fff;border-radius:10px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:15px;font-weight:600;margin-bottom:14px;color:#1e3a8a}
+.card h3{font-size:13px;color:#64748b;margin-bottom:10px;font-weight:500}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.stat-box{background:#f8fafc;border-radius:8px;padding:16px;text-align:center;border:1px solid #e2e8f0}
+.stat-box .num{font-size:28px;font-weight:700}
+.stat-box .label{font-size:12px;color:#64748b;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f1f5f9;padding:9px 12px;text-align:left;font-weight:600;color:#475569;border-bottom:2px solid #e2e8f0;cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:#1e3a8a}
+td{padding:8px 12px;border-bottom:1px solid #f1f5f9}
+tr:hover td{background:#f8fafc}
+.bar-bg{background:#f1f5f9;border-radius:4px;height:8px;overflow:hidden;min-width:40px}
+.bar-fg{height:100%;border-radius:4px;transition:width .3s}
+.bar-fg.green{background:#10b981}
+.bar-fg.yellow{background:#f59e0b}
+.bar-fg.red{background:#ef4444}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+.badge-red{background:#fef2f2;color:#dc2626}
+.badge-yellow{background:#fffbeb;color:#d97706}
+.badge-green{background:#f0fdf4;color:#16a34a}
+.filter-bar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.filter-bar select,.filter-bar input{padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;outline:none}
+.filter-bar select:focus,.filter-bar input:focus{border-color:#3b82f6;box-shadow:0 0 0 2px rgba(59,130,246,.15)}
+.filter-bar label{font-size:12px;color:#64748b}
+.pagination{display:flex;gap:6px;align-items:center;margin-top:12px;font-size:12px}
+.pagination button{padding:5px 10px;border:1px solid #d1d5db;background:#fff;border-radius:4px;cursor:pointer}
+.pagination button:disabled{opacity:.4;cursor:default}
+.tab-content{display:none}
+.tab-content.active{display:block}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>ETF Data Completeness / 数据完整度报告</h1>
+  <div class="meta" id="headerMeta"></div>
+</div>
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('overview')">Overview 总览</button>
+  <button class="nav-btn" onclick="showTab('fields')">Fields 字段分析</button>
+  <button class="nav-btn" onclick="showTab('category')">Category 分类汇总</button>
+  <button class="nav-btn" onclick="showTab('etfs')">ETF List 列表</button>
+</div>
+
+<div id="tab-overview" class="tab-content active"><div class="section">
+<div class="stats-grid" id="statsGrid"></div>
+<div class="card"><h2>Completeness Distribution / 完整度分布</h2>
+<div style="display:flex;gap:30px;flex-wrap:wrap">
+<div style="flex:1;min-width:280px"><div id="distBar"></div></div>
+<div style="flex:1;min-width:280px"><div id="catBar"></div></div>
+</div></div>
+<div class="card"><h2>Top 10 Missing Fields / 缺失最多的字段</h2><div id="topMissing"></div></div>
+</div></div>
+
+<div id="tab-fields" class="tab-content"><div class="section"><div class="card">
+<h2>All Fields / 全部字段 <span style="font-size:12px;color:#94a3b8;font-weight:400">Click header to sort / 点击表头排序</span></h2>
+<table><thead><tr>
+<th onclick="sortField('name')">Field 字段</th>
+<th onclick="sortField('cn')">中文</th>
+<th onclick="sortField('ok')">有数据 Has</th>
+<th onclick="sortField('missing')">缺失 Missing</th>
+<th onclick="sortField('ratio')">缺失率</th>
+<th>覆盖条 Coverage</th>
+</tr></thead><tbody id="fieldTable"></tbody></table>
+</div></div></div>
+
+<div id="tab-category" class="tab-content"><div class="section"><div class="card" id="catContent"></div></div></div>
+
+<div id="tab-etfs" class="tab-content"><div class="section">
+<div class="filter-bar">
+<label>Filter / 筛选:</label>
+<select id="etfFilter" onchange="renderETFList()">
+<option value="all">All 全部</option><option value="100">100% 完整</option><option value="95">95-100%</option><option value="80">80-95%</option><option value="60">60-80%</option><option value="40">40-60%</option><option value="0">40%以下 缺失多</option>
+</select>
+<input type="text" id="etfSearch" placeholder="Search code/name 搜代码名称" oninput="renderETFList()" style="width:160px">
+<label>Per page / 每页:</label>
+<select id="etfPageSize" onchange="renderETFList()"><option value="20">20</option><option value="50">50</option><option value="100">100</option></select>
+</div>
+<div class="card">
+<table><thead><tr>
+<th>Code 代码</th><th>Name 名称</th><th onclick="sortETF('completeness')">Complete 完整度</th>
+<th>Missing 缺失</th><th>Missing Fields 缺失字段</th>
+</tr></thead><tbody id="etfTable"></tbody></table>
+<div class="pagination" id="etfPagination"></div>
+</div></div></div>
+
+<script>
+// ==== DATA INJECTION POINT ====
+// Python script replaces __REPORT_DATA__ with the JSON
+
+var REPORT = __REPORT_DATA__;
+
+var TOTAL = REPORT.total;
+var FIELD_STATS = REPORT.field_stats;
+var FIELD_DEFS = REPORT.field_defs;
+var ETF_DATA = REPORT.etf_data;
+var BIN_DATA = REPORT.bin_data;
+var CAT_VALUES = REPORT.cat_values;
+var AVG_COMP = REPORT.avg;
+var GEN_TIME = REPORT.now;
+
+document.getElementById('headerMeta').textContent = TOTAL + ' ETFs | Avg Completeness ' + AVG_COMP.toFixed(1) + '% | ' + FIELD_DEFS.length + ' Fields | Generated ' + GEN_TIME;
+
+var fieldSort={key:'ratio',dir:-1}, etfSort={key:'completeness',dir:-1}, etfPage=1;
+
+function showTab(t){
+  document.querySelectorAll('.nav-btn').forEach(function(b,i){
+    var idx = ['overview','fields','category','etfs'].indexOf(t);
+    b.classList.toggle('active', i===idx);
+  });
+  document.querySelectorAll('.tab-content').forEach(function(d){d.classList.remove('active')});
+  var el = document.getElementById('tab-'+t); if(el) el.classList.add('active');
+  if(t==='overview'&&!window._ov){renderOverview();window._ov=true}
+  if(t==='fields'&&!window._fi){renderFields();window._fi=true}
+  if(t==='category'&&!window._ca){renderCategory();window._ca=true}
+  if(t==='etfs'&&!window._et){renderETFList();window._et=true}
+}
+
+function renderOverview(){
+  var grid = document.getElementById('statsGrid');
+  var ok=ETF_DATA.filter(function(e){return e.completeness>=99}).length;
+  var good=ETF_DATA.filter(function(e){return e.completeness>=90&&e.completeness<99}).length;
+  var part=ETF_DATA.filter(function(e){return e.completeness>=50&&e.completeness<90}).length;
+  var poor=ETF_DATA.filter(function(e){return e.completeness<50}).length;
+  var items=[
+    ['Total ETFs / 总数', TOTAL, '#1e3a8a'],
+    ['Avg Complete / 平均完整度', AVG_COMP.toFixed(1)+'%', '#059669'],
+    ['>=99% Complete / 完整', ok, '#10b981'],
+    ['90-99% Good / 良好', good, '#6366f1'],
+    ['50-90% Partial / 部分', part, '#f59e0b'],
+    ['<50% Poor / 缺失多', poor, '#ef4444'],
+  ];
+  grid.innerHTML = items.map(function(s){return '<div class="stat-box"><div class="num" style="color:'+s[2]+'">'+s[1]+'</div><div class="label">'+s[0]+'</div></div>'}).join('');
+
+  var mx=Math.max.apply(null,BIN_DATA.map(function(b){return b.count}))||1;
+  document.getElementById('distBar').innerHTML = '<h3>ETF by Completeness Bracket</h3>'+BIN_DATA.map(function(b){
+    var w=Math.round(b.count/mx*260), cl=b.label==='100%'?'green':b.label.startsWith('95')?'green':b.label.startsWith('80')?'yellow':'red';
+    return '<div style="display:flex;align-items:center;margin-bottom:5px;font-size:12px"><div style="width:70px;text-align:right;padding-right:8px;color:#64748b">'+b.label+'</div><div class="bar-bg" style="flex:1"><div class="bar-fg '+cl+'" style="width:'+w+'px"></div></div><div style="margin-left:8px;color:#475569;width:50px">'+b.count+'</div></div>';
+  }).join('');
+
+  document.getElementById('catBar').innerHTML = '<h3>By Category / 按分类</h3>'+Object.entries(CAT_VALUES).map(function(c){
+    var v=c[1],cl=v>=90?'green':v>=70?'yellow':'red';
+    return '<div style="display:flex;align-items:center;margin-bottom:5px;font-size:12px"><div style="width:60px;text-align:right;padding-right:8px;color:#64748b">'+c[0]+'</div><div class="bar-bg" style="flex:1"><div class="bar-fg '+cl+'" style="width:'+(v*2.6)+'px"></div></div><div style="margin-left:8px;color:#475569;width:45px">'+v.toFixed(1)+'%</div></div>';
+  }).join('');
+
+  var fd=Object.entries(FIELD_STATS).sort(function(a,b){return b[1].missing-a[1].missing});
+  document.getElementById('topMissing').innerHTML='<table><thead><tr><th>#</th><th>Field 字段</th><th>Chinese</th><th>Missing</th><th>Rate</th></tr></thead><tbody>'+
+    fd.slice(0,10).map(function(f,i){return '<tr><td>'+(i+1)+'</td><td><code>'+f[0]+'</code></td><td>'+f[1].cn+'</td><td><span class="badge badge-red">'+f[1].missing+'</span></td><td>'+f[1].ratio.toFixed(1)+'%</td></tr>'}).join('')+'</tbody></table>';
+}
+
+function sortField(k){if(fieldSort.key===k)fieldSort.dir*=-1;else{fieldSort.key=k;fieldSort.dir=-1}renderFields()}
+function renderFields(){
+  var arr=Object.entries(FIELD_STATS).sort(function(a,b){var va=a[1][fieldSort.key],vb=b[1][fieldSort.key];return fieldSort.dir*(va>vb?1:va<vb?-1:0)});
+  document.getElementById('fieldTable').innerHTML=arr.map(function(f){
+    var cov=100-f[1].ratio,cl=cov>=90?'green':cov>=50?'yellow':'red';
+    return '<tr><td><code>'+f[0]+'</code></td><td>'+f[1].cn+'</td><td><span class="badge badge-green">'+f[1].ok+'</span></td><td><span class="badge badge-red">'+f[1].missing+'</span></td><td>'+f[1].ratio.toFixed(1)+'%</td><td><div class="bar-bg"><div class="bar-fg '+cl+'" style="width:'+cov+'%"></div></div></td></tr>';
+  }).join('');
+}
+
+function renderCategory(){
+  var h='<h2>Coverage by Category / 按分类汇总</h2><table><thead><tr><th>Category 分类</th><th>Fields 字段数</th><th>Coverage 覆盖率</th><th>Bar</th></tr></thead><tbody>';
+  Object.entries(CAT_VALUES).forEach(function(c){
+    var v=c[1],cl=v>=90?'green':v>=70?'yellow':'red';
+    var cnt=Object.values(FIELD_STATS).filter(function(f){return f.cat===c[0]}).length;
+    h+='<tr><td><strong>'+c[0]+'</strong></td><td>'+cnt+'</td><td>'+v.toFixed(1)+'%</td><td><div class="bar-bg"><div class="bar-fg '+cl+'" style="width:'+v+'%"></div></div></td></tr>';
+  });
+  h+='</tbody></table>';
+  document.getElementById('catContent').innerHTML=h;
+}
+
+function sortETF(k){if(etfSort.key===k)etfSort.dir*=-1;else{etfSort.key=k;etfSort.dir=-1}etfPage=1;renderETFList()}
+function renderETFList(){
+  var filter=document.getElementById('etfFilter').value;
+  var search=document.getElementById('etfSearch').value.toLowerCase();
+  var ps=parseInt(document.getElementById('etfPageSize').value);
+  var data=ETF_DATA.filter(function(e){
+    if(filter!=='all'){var lo=parseInt(filter),hi=filter==='100'?101:filter==='95'?100:filter==='80'?95:filter==='60'?80:filter==='40'?60:40;if(e.completeness<lo||e.completeness>=hi)return false}
+    if(search&&!(e.code.toLowerCase().indexOf(search)>-1||e.name.toLowerCase().indexOf(search)>-1))return false;
+    return true;
+  });
+  data.sort(function(a,b){var va=a[etfSort.key],vb=b[etfSort.key];return etfSort.dir*(va>vb?1:va<vb?-1:0)});
+  var pages=Math.ceil(data.length/ps)||1;etfPage=Math.min(etfPage,pages);
+  var st=(etfPage-1)*ps,pd=data.slice(st,st+ps);
+  document.getElementById('etfTable').innerHTML=pd.map(function(e){
+    var cl=e.completeness>=95?'green':e.completeness>=70?'yellow':'red';
+    return '<tr><td><strong>'+e.code+'</strong></td><td>'+e.name+'</td><td><span class="badge badge-'+cl+'">'+e.completeness+'%</span></td><td>'+e.missing_count+'</td><td style="font-size:11px;color:#64748b;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+e.missing_fields.join(', ')+'</td></tr>';
+  }).join('');
+  var pag=document.getElementById('etfPagination');
+  pag.innerHTML=(etfPage>1?'<button onclick="etfPage--;renderETFList()">Prev / 上一页</button>':'')+'<span style="color:#64748b">Page '+etfPage+'/'+pages+' | '+data.length+' ETFs</span>'+(etfPage<pages?'<button onclick="etfPage++;renderETFList()">Next / 下一页</button>':'');
+}
+
+renderOverview();window._ov=true;
+</script>
+</body>
+</html>
