@@ -390,6 +390,50 @@ def compare_v3_print():
     return render_template('compare_print.html', etfs=etfs, now=datetime.now().strftime('%Y-%m-%d %H:%M'), colors=colors)
 
 
+# ============ ETF 搜索 API ============
+
+@app.route('/api/etf/search')
+def api_etf_search():
+    """搜索 ETF（按代码或名称模糊匹配），返回匹配的 ETF 列表"""
+    q = request.args.get('q', '').strip()
+    limit = int(request.args.get('limit', '15'))
+    
+    if not q or len(q) < 1:
+        return jsonify({"results": [], "total": 0})
+    
+    try:
+        standard_file = ROOT / 'etf_standard_data.json'
+        if not standard_file.exists():
+            return jsonify({"results": [], "total": 0})
+        
+        with open(standard_file, 'r', encoding='utf-8') as f:
+            all_etfs = json.load(f)
+    except Exception:
+        return jsonify({"results": [], "total": 0})
+    
+    q_lower = q.lower()
+    results = []
+    for etf in all_etfs:
+        code = etf.get('code', '')
+        name = etf.get('name', '')
+        if q_lower in code.lower() or q_lower in name.lower():
+            results.append({
+                "code": code,
+                "name": name,
+                "category": etf.get("category", ""),
+                "issuer": etf.get("issuer", ""),
+                "scale": etf.get("scale", 0),
+                "close": etf.get("close", 0),
+                "year_1_return": etf.get("year_1_return"),
+                "change_rate": etf.get("change_rate", 0),
+            })
+    
+    total = len(results)
+    results = results[:limit]
+    
+    return jsonify({"results": results, "total": total})
+
+
 @app.route('/screening-demo')
 def screening_demo():
     """筛选演示页 - 新能源ETF筛选过程"""
@@ -1103,6 +1147,14 @@ def tools_westock_compare():
     """WeStock ETF 对比工具页面"""
     from flask import send_from_directory
     return send_from_directory('tools', 'westock_etf_compare.html')
+
+
+@app.route('/v2')
+def v2_index():
+    """V2: 静态前端（COS部署前本地预览）"""
+    from flask import send_from_directory
+    return send_from_directory(str(ROOT / 'v2' / 'frontend'), 'index.html')
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

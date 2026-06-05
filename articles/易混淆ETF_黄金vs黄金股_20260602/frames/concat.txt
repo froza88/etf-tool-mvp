@@ -1,0 +1,5 @@
+file '/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/articles/易混淆ETF_黄金vs黄金股_20260602/frames/scene1.mp4'
+file '/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/articles/易混淆ETF_黄金vs黄金股_20260602/frames/scene2.mp4'
+file '/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/articles/易混淆ETF_黄金vs黄金股_20260602/frames/scene3.mp4'
+file '/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/articles/易混淆ETF_黄金vs黄金股_20260602/frames/scene4.mp4'
+file '/Users/apangduo/WorkBuddy/Claw/etf-tool-mvp/articles/易混淆ETF_黄金vs黄金股_20260602/frames/scene5.mp4'

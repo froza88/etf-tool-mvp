@@ -369,8 +369,11 @@ def step_calc_metrics():
         log("  无 ETF 数据，跳过")
         return
 
-    # 找出需要计算的 ETF（没有 annual_vol 指标或 annual_vol 为 0）
-    need_calc = [e for e in etfs if e.get("code") and not calc_data.get(e["code"], {}).get("annual_vol")]
+    # 找出需要计算的 ETF（没有 annual_vol 或 year_1_return 指标）
+    need_calc = [e for e in etfs if e.get("code") and (
+        not calc_data.get(e["code"], {}).get("annual_vol") or
+        not calc_data.get(e["code"], {}).get("year_1_return")
+    )]
     log(f"  需计算: {len(need_calc)} 只")
 
     if not need_calc:
