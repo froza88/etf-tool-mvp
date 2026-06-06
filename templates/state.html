@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 项目状态仪表盘</title>
+<style>
+:root{--bg:#F8FAFC;--card:#FFF;--text:#1A202C;--muted:#64748B;--border:#E2E8F0;
+--red:#DC2626;--red-bg:#FEF2F2;--red-line:#FCA5A5;--blue:#2563EB;--blue-bg:#EFF6FF;--blue-line:#93C5FD;
+--green:#16A34A;--green-bg:#F0FDF4;--green-line:#86EFAC;--amber:#D97706;--amber-bg:#FFFBEB}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.header h1{font-size:17px;font-weight:600}
+.header-r{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)}
+.btn{padding:5px 14px;border:1px solid var(--border);border-radius:6px;background:var(--card);cursor:pointer;font-size:12px}
+.btn:hover{background:#F1F5F9}
+.cn{max-width:1440px;margin:0 auto;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:1100px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border-radius:10px;border:1px solid var(--border);overflow:hidden}
+.panel-h{padding:12px 16px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.panel-h.r{border-left:3px solid var(--red);border-bottom:1px solid var(--red-line)}.panel-h.r .dot{color:var(--red)}
+.panel-h.b{border-left:3px solid var(--blue);border-bottom:1px solid var(--blue-line)}.panel-h.b .dot{color:var(--blue)}
+.panel-h.g{border-left:3px solid var(--green);border-bottom:1px solid var(--green-line)}.panel-h.g .dot{color:var(--green)}
+.panel-b{padding:14px 16px}
+.sec{margin-bottom:14px}
+.sec:last-child{margin-bottom:0}
+.sec-t{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.sec-t::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--border);display:inline-block}
+.item{padding:5px 0;font-size:13px;line-height:1.65;color:var(--text)}
+.item code{background:#F1F5F9;padding:1px 6px;border-radius:4px;font-size:11px;color:#334155}
+.warn{background:var(--red-bg);border-left:3px solid var(--red);padding:8px 12px;margin:6px 0;border-radius:0 6px 6px 0;font-size:12px;line-height:1.55}
+.warn code{background:#FEE2E2;padding:1px 5px;border-radius:3px;font-size:11px}
+.warn strong{color:var(--red)}
+.cmd{background:#1E293B;color:#E2E8F0;padding:10px 14px;border-radius:8px;font-family:"SF Mono","Fira Code",monospace;font-size:11px;line-height:1.55;overflow-x:auto;white-space:pre-wrap;word-break:break-all;margin:6px 0}
+.foot{text-align:center;padding:20px;color:var(--muted);font-size:11px}
+.loading{text-align:center;padding:60px;color:var(--muted)}
+.error{text-align:center;padding:40px;color:var(--red)}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.panel{animation:fade .3s ease}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>ETF 内容工厂 · 项目状态</h1>
+  <div class="header-r">
+    <span id="status">读取中…</span>
+    <button class="btn" onclick="load()">刷新</button>
+  </div>
+</div>
+<div class="cn"><div class="grid" id="root"><div class="loading">加载 STATE.md …</div></div></div>
+<div class="foot">数据源：.workbuddy/memory/STATE.md · 自动刷新 60s · <span id="ft">--</span></div>
+
+<script>
+function parse(md) {
+  const L = md.split('\n');
+  const out = {web:{items:[],warns:[]}, content:{items:[],warns:[]}, video:{items:[],warns:[]}};
+  let cur = null, inWarn = false, warnLabel = '';
+  
+  for (const l of L) {
+    const t = l.trim();
+    if (t.startsWith('## 轨道一')) { cur = 'web'; inWarn=false; continue }
+    if (t.startsWith('## 轨道二')) { cur = 'content'; inWarn=false; continue }
+    if (t.startsWith('## 轨道三')) { cur = 'video'; inWarn=false; continue }
+    if (t.startsWith('## ') || t.startsWith('# ')) { cur = null; inWarn=false; continue }
+    if (t.startsWith('> ')) continue;
+    if (!cur) continue;
+    
+    // Warn section
+    if (t.startsWith('⛔')) { inWarn=true; warnLabel=t.replace('⛔ ',''); out[cur].warns.push(''); continue }
+    if (inWarn && t.match(/^\d+\./)) { out[cur].warns.push(t.replace(/^\d+\.\s*/,'')); continue }
+    if (t === '' || t === '---') { inWarn=false; continue }
+    if (inWarn) continue;
+    
+    // Subheadings
+    if (t.startsWith('### ')) { out[cur].items.push({h:t.replace('### ','')}); continue }
+    // List items
+    if (t.startsWith('- **')) { 
+      const m = t.match(/- \*\*(.+?)\*\*[：:]\s*(.*)/);
+      if (m) out[cur].items.push({kv:[m[1],m[2]]});
+      else out[cur].items.push({li:t.replace('- ','')});
+      continue;
+    }
+    if (t.startsWith('- ')) { out[cur].items.push({li:t.replace('- ','')}); continue }
+    // Code blocks
+    if (t.startsWith('```')) continue;
+    if (cur === 'video' && (t.startsWith('ffmpeg') || t.startsWith('cd '))) continue;
+    if (t.startsWith('ffmpeg')) continue;
+  }
+  return out;
+}
+
+function renderItems(items) {
+  let h = '';
+  for (const it of items) {
+    if (it.h) h += `<div class="sec"><div class="sec-t">${it.h}</div></div>`;
+    if (it.li) h += `<div class="item">${it.li}</div>`;
+    if (it.kv) h += `<div class="item"><strong>${it.kv[0]}</strong>：${it.kv[1]}</div>`;
+  }
+  return h;
+}
+
+function renderWarns(warns) {
+  if (!warns.length) return '';
+  const label = warns[0] || '关键教训';
+  const items = warns.slice(1).filter(w=>w);
+  return `<div class="sec"><div class="sec-t">⚠️ ${label}</div>` +
+    items.map(w => `<div class="warn">${w}</div>`).join('') + '</div>';
+}
+
+async function load() {
+  document.getElementById('status').textContent = '刷新中…';
+  try {
+    const r = await fetch('/api/state');
+    const md = await r.text();
+    const d = parse(md);
+    
+    document.getElementById('root').innerHTML = 
+      `<div class="panel"><div class="panel-h r"><span class="dot">🔧</span> Web 工具开发</div><div class="panel-b">${renderItems(d.web.items)}${renderWarns(d.web.warns)}</div></div>` +
+      `<div class="panel"><div class="panel-h b"><span class="dot">📝</span> 内容创作</div><div class="panel-b">${renderItems(d.content.items)}${renderWarns(d.content.warns)}</div></div>` +
+      `<div class="panel"><div class="panel-h g"><span class="dot">🎬</span> 视频创作</div><div class="panel-b">${renderItems(d.video.items)}${renderWarns(d.video.warns)}</div></div>`;
+    
+    const t = new Date().toLocaleTimeString('zh-CN');
+    document.getElementById('status').textContent = `更新 ${t}`;
+    document.getElementById('ft').textContent = t;
+  } catch(e) {
+    document.getElementById('root').innerHTML = '<div class="error">连接失败 — 确认 Flask 已启动在 5000 端口</div>';
+    document.getElementById('status').textContent = '离线';
+  }
+}
+
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>易混淆ETF · 30选题计划</title>
+<style>
+:root {
+  --red: #C0392B;
+  --red-light: #E74C3C;
+  --green: #27AE60;
+  --gray-50: #F8F9FA;
+  --gray-100: #F1F3F5;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-500: #ADB5BD;
+  --gray-700: #495057;
+  --gray-900: #212529;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: #FEFCF8;
+  color: var(--gray-900);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.header .subtitle {
+  font-size: 16px;
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+.header .divider {
+  width: 40px;
+  height: 3px;
+  background: var(--red);
+  margin: 20px auto 0;
+  border-radius: 2px;
+}
+
+/* Stats bar */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 48px;
+  padding: 20px 0;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--gray-900);
+  line-height: 1;
+}
+
+.stat-number.done { color: var(--red); }
+
+.stat-label {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: 6px;
+}
+
+/* Filter */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border: 1px solid var(--gray-300);
+  border-radius: 20px;
+  background: #fff;
+  font-size: 14px;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.filter-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.filter-btn.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+/* Section */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gray-900);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.section-count {
+  font-size: 13px;
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+.section-arrow {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--gray-500);
+  transition: transform 0.3s;
+}
+
+.section.collapsed .section-arrow { transform: rotate(-90deg); }
+.section.collapsed .section-body { display: none; }
+
+/* Topic grid */
+.section-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 10px;
+}
+
+.topic-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.topic-card:hover {
+  border-color: var(--gray-500);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.topic-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-500);
+  flex-shrink: 0;
+}
+
+.topic-card.done .topic-num {
+  background: #FFEBEE;
+  color: var(--red);
+}
+
+.topic-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.topic-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topic-code {
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 2px;
+  font-family: "SF Mono", "Menlo", monospace;
+}
+
+.topic-badge {
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.badge-done {
+  background: #FFEBEE;
+  color: var(--red);
+}
+
+.badge-todo {
+  background: var(--gray-100);
+  color: var(--gray-500);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-200);
+  color: var(--gray-500);
+  font-size: 13px;
+}
+
+/* Hidden filter */
+.topic-card.hidden { display: none; }
+
+@media (max-width: 768px) {
+  .container { padding: 32px 16px; }
+  .header h1 { font-size: 24px; }
+  .stats { gap: 20px; }
+  .section-body { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>易混淆ETF · 30选题计划</h1>
+    <p class="subtitle">逐一拆解那些"名字像，内核不一样"的ETF</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-number">30</div>
+      <div class="stat-label">总选题</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number done">1</div>
+      <div class="stat-label">已发布</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">29</div>
+      <div class="stat-label">待写</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">5</div>
+      <div class="stat-label">混淆类型</div>
+    </div>
+  </div>
+
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-type="all">全部</button>
+    <button class="filter-btn" data-type="name-trap">名字陷阱</button>
+    <button class="filter-btn" data-type="market-shift">市场错位</button>
+    <button class="filter-btn" data-type="strategy">策略变体</button>
+    <button class="filter-btn" data-type="broad">宽基迷思</button>
+    <button class="filter-btn" data-type="cross-border">跨境问题</button>
+  </div>
+
+  <div id="sections"></div>
+
+  <div class="footer">
+    选题策划：卡比兽比卡 &nbsp;|&nbsp; 最后更新：2026-06-06
+  </div>
+</div>
+
+<script>
+const data = [
+  {
+    type: "name-trap",
+    typeName: "名字陷阱",
+    desc: "名字极像，底层资产完全不同。多一个字少一个字，买的是两回事。",
+    topics: [
+      { n: 1, title: "黄金ETF vs 黄金股ETF", code: "518880 · 517520", status: "done" },
+      { n: 2, title: "消费ETF vs 消费电子ETF", code: "159928 · 159732", status: "todo" },
+      { n: 3, title: "医药ETF vs 医疗ETF", code: "512010 · 512170", status: "todo" },
+      { n: 4, title: "电力ETF vs 电网设备ETF", code: "159611 · 516420", status: "todo" },
+      { n: 5, title: "新能源ETF vs 新能源汽车ETF", code: "516160 · 515030", status: "todo" },
+      { n: 6, title: "军工ETF vs 军工龙头ETF", code: "512660 · 512710", status: "todo" },
+      { n: 7, title: "农业ETF vs 养殖ETF", code: "159825 · 516760", status: "todo" },
+      { n: 8, title: "煤炭ETF vs 钢铁ETF", code: "515220 · 515210", status: "todo" }
+    ]
+  },
+  {
+    type: "market-shift",
+    typeName: "市场错位",
+    desc: "同一主题，横跨A股、港股、科创板，持仓零重叠，风险特征不同。",
+    topics: [
+      { n: 9, title: "创新药ETF vs 港股创新药ETF", code: "159992 · 513120", status: "todo" },
+      { n: 10, title: "芯片ETF vs 科创芯片ETF", code: "159995 · 588200", status: "todo" },
+      { n: 11, title: "AI ETF三岔口：全市场 vs 科创 vs 创业板", code: "159819 · 588760 · 159363", status: "todo" },
+      { n: 12, title: "互联网ETF vs 港股互联网ETF", code: "513050 · 513040", status: "todo" },
+      { n: 13, title: "恒生科技ETF vs 港股通科技ETF", code: "513180 · 513360", status: "todo" },
+      { n: 14, title: "中概互联ETF vs 恒生互联ETF", code: "513050 · 513330", status: "todo" },
+      { n: 15, title: "纳指ETF vs 纳斯达克100ETF", code: "513100 · 159696", status: "todo" }
+    ]
+  },
+  {
+    type: "strategy",
+    typeName: "策略变体",
+    desc: "同一赛道，选股或加权策略不同，属于不同的投资逻辑。",
+    topics: [
+      { n: 16, title: "红利ETF vs 红利低波ETF", code: "510880 · 512890", status: "todo" },
+      { n: 17, title: "沪深300ETF vs 沪深300增强ETF", code: "510300 · 510310", status: "todo" },
+      { n: 18, title: "创业板ETF vs 创业板50ETF", code: "159915 · 159949", status: "todo" },
+      { n: 19, title: "科创50ETF vs 科创100ETF", code: "588000 · 588190", status: "todo" },
+      { n: 20, title: "中证红利ETF vs 上证红利ETF", code: "515080 · 510880", status: "todo" },
+      { n: 21, title: "ESG ETF vs 碳中和ETF", code: "516090 · 560550", status: "todo" }
+    ]
+  },
+  {
+    type: "broad",
+    typeName: "宽基迷思",
+    desc: "都说自己是'大盘/中盘'，但编制规则天差地别，覆盖的公司完全不同。",
+    topics: [
+      { n: 22, title: "沪深300ETF vs 中证A500ETF", code: "510300 · 563500", status: "todo" },
+      { n: 23, title: "中证500ETF vs 中证1000ETF", code: "510500 · 512100", status: "todo" },
+      { n: 24, title: "科创50ETF vs 科创创业50ETF", code: "588000 · 159781", status: "todo" },
+      { n: 25, title: "上证50ETF vs 深证100ETF", code: "510050 · 159901", status: "todo" },
+      { n: 26, title: "沪深300ETF vs 上证综指ETF", code: "510300 · 510210", status: "todo" }
+    ]
+  },
+  {
+    type: "cross-border",
+    typeName: "跨境问题",
+    desc: "同一海外指数，不同通道买，费用、溢价、汇率风险各不相同。",
+    topics: [
+      { n: 27, title: "QDII通道 vs 港股通通道：同一标的两个价", code: "通道对比", status: "todo" },
+      { n: 28, title: "ETF溢价率：同样的纳指，为什么贵了5%？", code: "溢价专题", status: "todo" },
+      { n: 29, title: "日经ETF：汇率风险谁承担", code: "513520 · 513880", status: "todo" },
+      { n: 30, title: "人民币份额 vs 港币份额：哪个更划算？", code: "份额专题", status: "todo" }
+    ]
+  },
+];
+
+function buildSections() {
+  const container = document.getElementById('sections');
+  let html = '';
+
+  data.forEach((section, idx) => {
+    html += `<div class="section" data-type="${section.type}">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">${idx + 1}</span>
+        <span class="section-title">${section.typeName}</span>
+        <span class="section-count">${section.topics.length}篇</span>
+        <span class="section-arrow">&#9660;</span>
+      </div>
+      <p style="color:#868E96;font-size:14px;margin:0 0 16px 44px;">${section.desc}</p>
+      <div class="section-body">`;
+
+    section.topics.forEach(t => {
+      const isDone = t.status === 'done';
+      html += `<div class="topic-card ${isDone ? 'done' : ''}">
+        <span class="topic-num">${t.n}</span>
+        <div class="topic-info">
+          <div class="topic-title">${t.title}</div>
+          <div class="topic-code">${t.code}</div>
+        </div>
+        <span class="topic-badge ${isDone ? 'badge-done' : 'badge-todo'}">${isDone ? '已发布' : '待写'}</span>
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function setupFilter() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const container = document.getElementById('filterBar');
+
+  container.addEventListener('click', e => {
+    if (!e.target.classList.contains('filter-btn')) return;
+    buttons.forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+
+    const type = e.target.dataset.type;
+    document.querySelectorAll('.section').forEach(s => {
+      if (type === 'all' || s.dataset.type === type) {
+        s.classList.remove('hidden');
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+  });
+}
+
+// Hidden class for sections
+const style = document.createElement('style');
+style.textContent = '.section.hidden { display: none; } .topic-card.hidden { display: none; }';
+document.head.appendChild(style);
+
+buildSections();
+setupFilter();
+</script>
+</body>
+</html>

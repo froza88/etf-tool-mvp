@@ -420,7 +420,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- html2canvas 延迟加载，不阻塞页面渲染 -->
     <script>
     let etfs = {{ etfs_l2 | tojson if etfs_l2 is defined else '[]' }};
     const serverDataLoaded = etfs.length > 0;
@@ -647,12 +647,13 @@
             // 中心数字: 规模，自动格式化
             var scaleStr;
             if (typeof e.scale === 'number') {
-                if (e.scale >= 10000) {
-                    scaleStr = (e.scale / 10000).toFixed(2) + '万亿';
-                } else if (e.scale >= 1) {
-                    scaleStr = e.scale.toFixed(0) + '亿';
+                var scaleYi = e.scale / 1e8;  // 元 → 亿（L1/L2 统一为元）
+                if (scaleYi >= 10000) {
+                    scaleStr = (scaleYi / 10000).toFixed(2) + '万亿';
+                } else if (scaleYi >= 1) {
+                    scaleStr = scaleYi.toFixed(0) + '亿';
                 } else {
-                    scaleStr = e.scale.toFixed(2) + '亿';
+                    scaleStr = scaleYi.toFixed(2) + '亿';
                 }
             } else {
                 scaleStr = '--';
@@ -815,15 +816,11 @@
         l2Etfs.forEach(function(l2) {
             var idx = etfs.findIndex(function(e) { return e.code === l2.code; });
             if (idx < 0) return;
-            // L2 字段合并到 L1
+            // L2 字段合并到 L1（注意：scale 不覆盖，保持 L1 权威数据）
             ['fee_rate_management','fee_rate_custody','fee_rate_service','fee_rate',
-             'premium_discount','scale','shares','net_inflow_shares','net_inflow_ratio','net_inflow_5d'].forEach(function(f) {
+             'premium_discount','shares','net_inflow_shares','net_inflow_ratio','net_inflow_5d'].forEach(function(f) {
                 if (l2[f] !== undefined && l2[f] !== null) {
-                    var val = l2[f];
-                    if (f === 'scale' && typeof val === 'number' && val > 0 && val < 10000) {
-                        val = val * 100000000;
-                    }
-                    etfs[idx][f] = val;
+                    etfs[idx][f] = l2[f];
                 }
             });
             // 重算 volume_amount（可能因 close 更新而变化）
@@ -887,7 +884,9 @@
         if (ht) ht.textContent = ht.textContent + ' (L2已加载)';
     }
 
-    window.onload = function() {
+    // 用 DOMContentLoaded 替代 window.onload（无需等 html2canvas CDN 加载完）
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
         if (serverDataLoaded) {
             // 服务端已预加载 L2 数据，直接渲染（无跳变）
             etfs.forEach(function(e) { if (e.price === null || e.price === undefined) e.price = e.close; });
@@ -911,7 +910,11 @@
         } else {
             loadData();
         }
-    };
+        } catch(e) {
+            document.getElementById('loadingIndicator').innerHTML = '<div style=\"color:#ef4444;padding:40px\">渲染异常: ' + e.message + '</div>';
+            console.error(e);
+        }
+    });
 
     // ========== 导出菜单 ==========
     function toggleExportMenu() {
@@ -951,6 +954,16 @@
 
     // ========== 全页面截图 ==========
     async function screenCaptureFullPage() {
+        if (typeof html2canvas === 'undefined') {
+            try {
+                await new Promise(function(resolve, reject) {
+                    var s = document.createElement('script');
+                    s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+                    s.onload = resolve; s.onerror = reject;
+                    document.head.appendChild(s);
+                });
+            } catch(e) { alert('截图组件加载失败，请检查网络'); return; }
+        }
         try {
             var canvas = await html2canvas(document.body, {
                 scale: 2, useCORS: true, logging: false,
@@ -1113,7 +1126,7 @@
 
     function updateURLAndRefresh() {
         // 更新浏览器 URL
-        var newUrl = '/compare/v3?codes=' + CODES.join(',');
+        var newUrl = '/compare/v3_v2?codes=' + CODES.join(',');
         window.history.pushState({}, '', newUrl);
         
         // 刷新页面

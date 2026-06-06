@@ -11616,9 +11616,11 @@
     "annual_vol_5y": 0
   },
   "159167": {
-    "max_drawdown": -18.38,
-    "sharpe_ratio": -2.81,
-    "annual_vol": 29.06
+    "year_1_return": null,
+    "year_3_return": null,
+    "max_drawdown": -23.28,
+    "sharpe_ratio": -3.27,
+    "annual_vol": 28.51
   },
   "159767": {
     "year_1_return": 79.02,
@@ -13901,9 +13903,11 @@
     "annual_vol_5y": 0
   },
   "159257": {
-    "max_drawdown": -26.06,
-    "sharpe_ratio": 0.32,
-    "annual_vol": 33.0
+    "year_1_return": null,
+    "year_3_return": null,
+    "max_drawdown": -31.97,
+    "sharpe_ratio": -0.08,
+    "annual_vol": 32.89
   },
   "159243": {
     "year_1_return": null,
@@ -15326,9 +15330,11 @@
     "annual_vol_5y": 0
   },
   "159270": {
+    "year_1_return": null,
+    "year_3_return": null,
     "max_drawdown": -17.09,
-    "sharpe_ratio": 1.22,
-    "annual_vol": 27.32
+    "sharpe_ratio": 0.91,
+    "annual_vol": 27.41
   },
   "159861": {
     "year_1_return": 64.84,

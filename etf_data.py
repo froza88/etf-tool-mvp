@@ -114,17 +114,18 @@ _ETFMAP = None
 def _normalize_units(data):
     """统一数据单位：部分数据源返回 scale/amount/volume 为'亿'单位，需转为'元'"""
     for etf in data:
-        # scale: ETF规模不可能小于1000亿元，若 < 1000 则视为亿单位
+        # scale: 原始数据都是"亿"单位；已转换过的在元级（>=1e7），
+        # 阈值100万（1e6）足以区分：原值最大约10000亿，已转值最小约1e7元
         scale = etf.get("scale")
-        if scale is not None and isinstance(scale, (int, float)) and 0 < scale < 1000:
+        if scale is not None and isinstance(scale, (int, float)) and 0 < scale < 1000000:
             etf["scale"] = scale * 100000000
-        # amount: 成交额同理
+        # amount: 成交额同理（原始为亿/万元都有可能，但 < 100万一定不是元）
         amount = etf.get("amount")
-        if amount is not None and isinstance(amount, (int, float)) and 0 < amount < 1000:
+        if amount is not None and isinstance(amount, (int, float)) and 0 < amount < 1000000:
             etf["amount"] = amount * 100000000
-        # volume: 成交量同理（部分数据源用 volume 表示成交额/成交量）
+        # volume: 同理
         volume = etf.get("volume")
-        if volume is not None and isinstance(volume, (int, float)) and 0 < volume < 1000:
+        if volume is not None and isinstance(volume, (int, float)) and 0 < volume < 1000000:
             etf["volume"] = volume * 100000000
     return data
 
