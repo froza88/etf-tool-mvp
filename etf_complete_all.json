@@ -2,7 +2,7 @@
   {
     "code": "159559",
     "name": "机器人ETF景顺",
-    "market_cap": 2328729754.0,
+    "market_cap": 2352169754.0,
     "volume": 2223579.0,
     "change_pct": 5.47
   },
@@ -16,7 +16,7 @@
   {
     "code": "159530",
     "name": "机器人ETF易方达",
-    "market_cap": 15576808612.0,
+    "market_cap": 15878728507.0,
     "volume": 12007904.0,
     "change_pct": 5.36
   },
@@ -51,14 +51,14 @@
   {
     "code": "560630",
     "name": "机器人ETF万家",
-    "market_cap": 170033776.0,
+    "market_cap": 177857776.0,
     "volume": 211968.0,
     "change_pct": 3.16
   },
   {
     "code": "159551",
     "name": "机器人ETF国泰",
-    "market_cap": 397728831.0,
+    "market_cap": 384165831.0,
     "volume": 315958.0,
     "change_pct": 3.15
   },
@@ -72,7 +72,7 @@
   {
     "code": "563530",
     "name": "卫星ETF易方达",
-    "market_cap": 2041786964.0,
+    "market_cap": 2054323964.0,
     "volume": 1793776.0,
     "change_pct": 3.03
   },
@@ -86,21 +86,21 @@
   {
     "code": "512630",
     "name": "卫星ETF广发",
-    "market_cap": 2223415548.0,
+    "market_cap": 2238793548.0,
     "volume": 2229947.0,
     "change_pct": 3.02
   },
   {
     "code": "562500",
     "name": "机器人ETF华夏",
-    "market_cap": 18677997937.0,
+    "market_cap": 18662297251.0,
     "volume": 16346449.0,
     "change_pct": 3.01
   },
   {
     "code": "560770",
     "name": "机器人ETF招商",
-    "market_cap": 1735928693.0,
+    "market_cap": 1794476693.0,
     "volume": 370636.0,
     "change_pct": 2.96
   },
@@ -114,14 +114,14 @@
   {
     "code": "563790",
     "name": "卫星ETF鹏华",
-    "market_cap": 1111359911.0,
+    "market_cap": 1121849911.0,
     "volume": 987402.0,
     "change_pct": 2.94
   },
   {
     "code": "563230",
     "name": "卫星ETF富国",
-    "market_cap": 4970715626.0,
+    "market_cap": 4797735626.0,
     "volume": 3700608.0,
     "change_pct": 2.88
   },
@@ -142,7 +142,7 @@
   {
     "code": "159145",
     "name": "工业软件ETF广发",
-    "market_cap": 73945516.0,
+    "market_cap": 77709516.0,
     "volume": 66133.0,
     "change_pct": 2.62
   },
@@ -156,28 +156,28 @@
   {
     "code": "563870",
     "name": "通用航空ETF鹏华",
-    "market_cap": 91267484.0,
+    "market_cap": 92032484.0,
     "volume": 47773.0,
     "change_pct": 2.55
   },
   {
     "code": "561660",
     "name": "通用航空ETF平安",
-    "market_cap": 71772600.0,
+    "market_cap": 72832600.0,
     "volume": 104454.0,
     "change_pct": 2.51
   },
   {
     "code": "563320",
     "name": "通用航空ETF华泰柏瑞",
-    "market_cap": 219771512.0,
+    "market_cap": 218785512.0,
     "volume": 325942.0,
     "change_pct": 2.28
   },
   {
     "code": "588850",
     "name": "科创机械ETF嘉实",
-    "market_cap": 140567094.0,
+    "market_cap": 124679094.0,
     "volume": 170279.0,
     "change_pct": 2.16
   },
@@ -191,14 +191,14 @@
   {
     "code": "159108",
     "name": "工业软件ETF博时",
-    "market_cap": 135546115.0,
+    "market_cap": 139858115.0,
     "volume": 157929.0,
     "change_pct": 1.89
   },
   {
     "code": "513400",
     "name": "道琼斯ETF鹏华",
-    "market_cap": 2799585546.0,
+    "market_cap": 2806000546.0,
     "volume": 2626322.0,
     "change_pct": 1.83
   },
@@ -254,7 +254,7 @@
   {
     "code": "513290",
     "name": "纳指生物科技ETF汇添富",
-    "market_cap": 1395485035.0,
+    "market_cap": 1396206535.0,
     "volume": 656003.0,
     "change_pct": 1.41
   },
@@ -310,7 +310,7 @@
   {
     "code": "512800",
     "name": "银行ETF华宝",
-    "market_cap": 10784609870.0,
+    "market_cap": 10751211520.0,
     "volume": 8765300.0,
     "change_pct": 1.29
   },
@@ -324,7 +324,7 @@
   {
     "code": "512700",
     "name": "银行ETF南方",
-    "market_cap": 1016726814.0,
+    "market_cap": 1019610814.0,
     "volume": 646550.0,
     "change_pct": 1.19
   },
@@ -345,14 +345,14 @@
   {
     "code": "563380",
     "name": "航空航天ETF华泰柏瑞",
-    "market_cap": 919150950.0,
+    "market_cap": 906658950.0,
     "volume": 736735.0,
     "change_pct": 1.17
   },
   {
     "code": "515020",
     "name": "银行ETF华夏",
-    "market_cap": 682753335.0,
+    "market_cap": 688605335.0,
     "volume": 720341.0,
     "change_pct": 1.15
   },
@@ -429,21 +429,21 @@
   {
     "code": "513080",
     "name": "法国ETF华安",
-    "market_cap": 1094313840.0,
+    "market_cap": 1095183840.0,
     "volume": 266512.0,
     "change_pct": 1.05
   },
   {
     "code": "512820",
     "name": "银行ETF汇添富",
-    "market_cap": 644293812.0,
+    "market_cap": 647586612.0,
     "volume": 705419.0,
     "change_pct": 1.03
   },
   {
     "code": "159532",
     "name": "中证2000ETF易方达",
-    "market_cap": 209853152.0,
+    "market_cap": 206283152.0,
     "volume": 272336.0,
     "change_pct": 1.02
   },
@@ -492,7 +492,7 @@
   {
     "code": "562510",
     "name": "旅游ETF华夏",
-    "market_cap": 599757005.0,
+    "market_cap": 600957005.0,
     "volume": 813954.0,
     "change_pct": 0.84
   },
@@ -541,14 +541,14 @@
   {
     "code": "159638",
     "name": "高端装备ETF嘉实",
-    "market_cap": 1415530865.0,
+    "market_cap": 1410765865.0,
     "volume": 856845.0,
     "change_pct": 0.74
   },
   {
     "code": "512710",
     "name": "军工龙头ETF富国",
-    "market_cap": 8065116021.0,
+    "market_cap": 8103120888.0,
     "volume": 5189462.0,
     "change_pct": 0.73
   },
@@ -583,7 +583,7 @@
   {
     "code": "512010",
     "name": "医药ETF易方达",
-    "market_cap": 16710254257.0,
+    "market_cap": 16641257236.0,
     "volume": 17489092.0,
     "change_pct": 0.62
   },
@@ -618,7 +618,7 @@
   {
     "code": "159635",
     "name": "基建ETF华夏",
-    "market_cap": 149337236.0,
+    "market_cap": 141089236.0,
     "volume": 342335.0,
     "change_pct": 0.59
   },
@@ -639,28 +639,28 @@
   {
     "code": "562660",
     "name": "中证2000ETF华夏",
-    "market_cap": 500133678.0,
+    "market_cap": 492345678.0,
     "volume": 306905.0,
     "change_pct": 0.57
   },
   {
     "code": "560420",
     "name": "食品ETF前海开源",
-    "market_cap": 162341521.0,
+    "market_cap": 163244521.0,
     "volume": 62721.0,
     "change_pct": 0.56
   },
   {
     "code": "560130",
     "name": "食品ETF鹏华",
-    "market_cap": 67592370.0,
+    "market_cap": 68484370.0,
     "volume": 5581.0,
     "change_pct": 0.56
   },
   {
     "code": "563850",
     "name": "食品ETF广发",
-    "market_cap": 55026527.0,
+    "market_cap": 56132927.0,
     "volume": 9897.0,
     "change_pct": 0.55
   },
@@ -709,14 +709,14 @@
   {
     "code": "560810",
     "name": "央企ESGETF融通",
-    "market_cap": 265271292.0,
+    "market_cap": 267845292.0,
     "volume": 18975.0,
     "change_pct": 0.47
   },
   {
     "code": "159133",
     "name": "化工ETF天弘",
-    "market_cap": 2118228592.0,
+    "market_cap": 2119329592.0,
     "volume": 375753.0,
     "change_pct": 0.46
   },
@@ -730,7 +730,7 @@
   {
     "code": "159647",
     "name": "中药ETF鹏华",
-    "market_cap": 1388724422.0,
+    "market_cap": 1366666922.0,
     "volume": 224565.0,
     "change_pct": 0.46
   },
@@ -744,14 +744,14 @@
   {
     "code": "159531",
     "name": "中证2000ETF南方",
-    "market_cap": 836159544.0,
+    "market_cap": 888553544.0,
     "volume": 1046189.0,
     "change_pct": 0.46
   },
   {
     "code": "159553",
     "name": "中证2000增强ETF海富通",
-    "market_cap": 50830789.0,
+    "market_cap": 46816789.0,
     "volume": 51508.0,
     "change_pct": 0.45
   },
@@ -779,14 +779,14 @@
   {
     "code": "560080",
     "name": "中药ETF汇添富",
-    "market_cap": 2515248987.0,
+    "market_cap": 2480764987.0,
     "volume": 366203.0,
     "change_pct": 0.43
   },
   {
     "code": "563590",
     "name": "A500红利低波动ETF国寿",
-    "market_cap": 69354402.0,
+    "market_cap": 68390402.0,
     "volume": 227.0,
     "change_pct": 0.42
   },
@@ -807,7 +807,7 @@
   {
     "code": "159619",
     "name": "基建ETF国泰",
-    "market_cap": 86667501.0,
+    "market_cap": 85693501.0,
     "volume": 47136.0,
     "change_pct": 0.41
   },
@@ -828,14 +828,14 @@
   {
     "code": "159572",
     "name": "创业板200ETF易方达",
-    "market_cap": 311454844.0,
+    "market_cap": 302004844.0,
     "volume": 124588.0,
     "change_pct": 0.38
   },
   {
     "code": "159129",
     "name": "化工ETF嘉实",
-    "market_cap": 1465563460.0,
+    "market_cap": 1463956960.0,
     "volume": 291617.0,
     "change_pct": 0.37
   },
@@ -849,7 +849,7 @@
   {
     "code": "562700",
     "name": "汽车零部件ETF华夏",
-    "market_cap": 167302750.0,
+    "market_cap": 155838750.0,
     "volume": 221780.0,
     "change_pct": 0.35
   },
@@ -870,7 +870,7 @@
   {
     "code": "560160",
     "name": "食品ETF易方达",
-    "market_cap": 114296870.0,
+    "market_cap": 109821870.0,
     "volume": 34856.0,
     "change_pct": 0.34
   },
@@ -884,7 +884,7 @@
   {
     "code": "560320",
     "name": "食品ETF富国",
-    "market_cap": 166820460.0,
+    "market_cap": 171345460.0,
     "volume": 16836.0,
     "change_pct": 0.33
   },
@@ -905,7 +905,7 @@
   {
     "code": "159561",
     "name": "德国ETF嘉实",
-    "market_cap": 2083833829.0,
+    "market_cap": 2089077829.0,
     "volume": 608718.0,
     "change_pct": 0.31
   },
@@ -940,7 +940,7 @@
   {
     "code": "513030",
     "name": "德国ETF华安",
-    "market_cap": 1809860819.0,
+    "market_cap": 1811655819.0,
     "volume": 382668.0,
     "change_pct": 0.28
   },
@@ -954,14 +954,14 @@
   {
     "code": "159569",
     "name": "港股红利低波ETF景顺",
-    "market_cap": 475848835.0,
+    "market_cap": 491897835.0,
     "volume": 668611.0,
     "change_pct": 0.27
   },
   {
     "code": "560220",
     "name": "中证2000ETF广发",
-    "market_cap": 70495614.0,
+    "market_cap": 75121614.0,
     "volume": 44211.0,
     "change_pct": 0.26
   },
@@ -975,21 +975,21 @@
   {
     "code": "560900",
     "name": "创新药ETF摩根",
-    "market_cap": 163413836.0,
+    "market_cap": 161849836.0,
     "volume": 165560.0,
     "change_pct": 0.26
   },
   {
     "code": "159565",
     "name": "汽车零部件ETF易方达",
-    "market_cap": 216422208.0,
+    "market_cap": 248972208.0,
     "volume": 279884.0,
     "change_pct": 0.26
   },
   {
     "code": "512120",
     "name": "医药ETF华安",
-    "market_cap": 336536004.0,
+    "market_cap": 335333004.0,
     "volume": 306829.0,
     "change_pct": 0.25
   },
@@ -1059,7 +1059,7 @@
   {
     "code": "159151",
     "name": "食品ETF华夏",
-    "market_cap": 119617697.0,
+    "market_cap": 116410097.0,
     "volume": 122220.0,
     "change_pct": 0.22
   },
@@ -1087,7 +1087,7 @@
   {
     "code": "563510",
     "name": "A500红利低波ETF易方达",
-    "market_cap": 283273583.0,
+    "market_cap": 287173583.0,
     "volume": 68896.0,
     "change_pct": 0.21
   },
@@ -1108,7 +1108,7 @@
   {
     "code": "560570",
     "name": "A500红利ETF国联安",
-    "market_cap": 1419984000.0,
+    "market_cap": 1411137000.0,
     "volume": 220934.0,
     "change_pct": 0.2
   },
@@ -1122,7 +1122,7 @@
   {
     "code": "563300",
     "name": "中证2000ETF华泰柏瑞",
-    "market_cap": 3999207462.0,
+    "market_cap": 3518584962.0,
     "volume": 4216595.0,
     "change_pct": 0.19
   },
@@ -1143,7 +1143,7 @@
   {
     "code": "530880",
     "name": "红利国企ETF银河",
-    "market_cap": 61533632.0,
+    "market_cap": 64313632.0,
     "volume": 50215.0,
     "change_pct": 0.18
   },
@@ -1157,14 +1157,14 @@
   {
     "code": "513820",
     "name": "港股通红利ETF汇添富",
-    "market_cap": 2429990253.0,
+    "market_cap": 2418143753.0,
     "volume": 462573.0,
     "change_pct": 0.16
   },
   {
     "code": "515210",
     "name": "钢铁ETF国泰",
-    "market_cap": 1528461785.0,
+    "market_cap": 1517085785.0,
     "volume": 1316211.0,
     "change_pct": 0.16
   },
@@ -1185,7 +1185,7 @@
   {
     "code": "515100",
     "name": "红利低波100ETF景顺",
-    "market_cap": 5972884702.0,
+    "market_cap": 5950100702.0,
     "volume": 1155114.0,
     "change_pct": 0.14
   },
@@ -1199,7 +1199,7 @@
   {
     "code": "515080",
     "name": "中证红利ETF招商",
-    "market_cap": 10901038285.0,
+    "market_cap": 10893038387.0,
     "volume": 2053923.0,
     "change_pct": 0.13
   },
@@ -1220,7 +1220,7 @@
   {
     "code": "512640",
     "name": "金融地产ETF嘉实",
-    "market_cap": 57376466.0,
+    "market_cap": 54032966.0,
     "volume": 42049.0,
     "change_pct": 0.13
   },
@@ -1234,7 +1234,7 @@
   {
     "code": "512290",
     "name": "生物医药ETF国泰",
-    "market_cap": 3456050730.0,
+    "market_cap": 3436132730.0,
     "volume": 1180414.0,
     "change_pct": 0.12
   },
@@ -1248,7 +1248,7 @@
   {
     "code": "513620",
     "name": "港股医疗ETF银华",
-    "market_cap": 173258728.0,
+    "market_cap": 174141728.0,
     "volume": 93371.0,
     "change_pct": 0.11
   },
@@ -1276,21 +1276,21 @@
   {
     "code": "563020",
     "name": "红利低波ETF易方达",
-    "market_cap": 10477905169.0,
+    "market_cap": 10842550094.0,
     "volume": 2009519.0,
     "change_pct": 0.09
   },
   {
     "code": "512890",
     "name": "红利低波ETF华泰柏瑞",
-    "market_cap": 32832280473.0,
+    "market_cap": 32483421547.0,
     "volume": 5178363.0,
     "change_pct": 0.09
   },
   {
     "code": "563620",
     "name": "全指现金流ETF兴业",
-    "market_cap": 69543047.0,
+    "market_cap": 68440047.0,
     "volume": 35636.0,
     "change_pct": 0.09
   },
@@ -1304,7 +1304,7 @@
   {
     "code": "589270",
     "name": "科创100ETF前海开源",
-    "market_cap": 48256341.0,
+    "market_cap": 44851341.0,
     "volume": 54325.0,
     "change_pct": 0.09
   },
@@ -1318,7 +1318,7 @@
   {
     "code": "159547",
     "name": "红利低波ETF华夏",
-    "market_cap": 1330721724.0,
+    "market_cap": 1370854724.0,
     "volume": 1261732.0,
     "change_pct": 0.08
   },
@@ -1332,7 +1332,7 @@
   {
     "code": "561580",
     "name": "央企红利ETF华泰柏瑞",
-    "market_cap": 2200787147.0,
+    "market_cap": 2224518647.0,
     "volume": 424196.0,
     "change_pct": 0.08
   },
@@ -1416,7 +1416,7 @@
   {
     "code": "511900",
     "name": "富国货币ETF",
-    "market_cap": 197671742.0,
+    "market_cap": 197651739.0,
     "volume": 1203.0,
     "change_pct": 0.01
   },
@@ -1437,91 +1437,91 @@
   {
     "code": "511990",
     "name": "华宝添益ETF",
-    "market_cap": 76637705064.0,
+    "market_cap": 75605592821.0,
     "volume": 923748.0,
     "change_pct": 0.01
   },
   {
     "code": "511700",
     "name": "货币ETF平安",
-    "market_cap": 1464403545.0,
+    "market_cap": 1464363538.0,
     "volume": 13862.0,
     "change_pct": 0.01
   },
   {
     "code": "511660",
     "name": "货币ETF建信",
-    "market_cap": 8485248440.0,
+    "market_cap": 8496589574.0,
     "volume": 58238.0,
     "change_pct": 0.01
   },
   {
     "code": "511620",
     "name": "货币ETF国泰",
-    "market_cap": 409917380.0,
+    "market_cap": 410417450.0,
     "volume": 3661.0,
     "change_pct": 0.01
   },
   {
     "code": "511960",
     "name": "货币ETF嘉实",
-    "market_cap": 28972318.0,
+    "market_cap": 25972078.0,
     "volume": 245.0,
     "change_pct": 0.01
   },
   {
     "code": "511600",
     "name": "华安日日鑫ETF",
-    "market_cap": 87104355.0,
+    "market_cap": 87634382.0,
     "volume": 343.0,
     "change_pct": 0.01
   },
   {
     "code": "511650",
     "name": "货币ETF华夏",
-    "market_cap": 111932311.0,
+    "market_cap": 109142004.0,
     "volume": 876.0,
     "change_pct": 0.01
   },
   {
     "code": "511850",
     "name": "招商财富宝ETF",
-    "market_cap": 882522359.0,
+    "market_cap": 890323529.0,
     "volume": 11215.0,
     "change_pct": 0.01
   },
   {
     "code": "511860",
     "name": "货币ETF博时",
-    "market_cap": 41993359.0,
+    "market_cap": 41433314.0,
     "volume": 1117.0,
     "change_pct": 0.01
   },
   {
     "code": "511880",
     "name": "银华日利ETF",
-    "market_cap": 85719791624.0,
+    "market_cap": 85664766138.0,
     "volume": 1720075.0,
     "change_pct": 0.01
   },
   {
     "code": "511800",
     "name": "易方达货币ETF",
-    "market_cap": 166771673.0,
+    "market_cap": 166761673.0,
     "volume": 387.0,
     "change_pct": 0.01
   },
   {
     "code": "511950",
     "name": "添利货币ETF广发",
-    "market_cap": 32963296.0,
+    "market_cap": 33503350.0,
     "volume": 1055.0,
     "change_pct": 0.01
   },
   {
     "code": "511810",
     "name": "货币ETF南方",
-    "market_cap": 371068233.0,
+    "market_cap": 372998484.0,
     "volume": 673.0,
     "change_pct": 0.01
   },
@@ -1584,14 +1584,14 @@
   {
     "code": "563780",
     "name": "现金流全指ETF方正富邦",
-    "market_cap": 440049501.0,
+    "market_cap": 438813501.0,
     "volume": 58992.0,
     "change_pct": 0.0
   },
   {
     "code": "563690",
     "name": "红利低波ETF永赢",
-    "market_cap": 41045528.0,
+    "market_cap": 39037528.0,
     "volume": 13920.0,
     "change_pct": 0.0
   },
@@ -1654,7 +1654,7 @@
   {
     "code": "515180",
     "name": "红利ETF易方达",
-    "market_cap": 16537149533.0,
+    "market_cap": 16759917533.0,
     "volume": 2903947.0,
     "change_pct": 0.0
   },
@@ -1675,7 +1675,7 @@
   {
     "code": "513920",
     "name": "港股通央企红利ETF华安",
-    "market_cap": 5137045654.0,
+    "market_cap": 5135434654.0,
     "volume": 593709.0,
     "change_pct": 0.0
   },
@@ -1689,7 +1689,7 @@
   {
     "code": "159645",
     "name": "疫苗ETF富国",
-    "market_cap": 34897733.0,
+    "market_cap": 34339733.0,
     "volume": 7729.0,
     "change_pct": 0.0
   },
@@ -1738,7 +1738,7 @@
   {
     "code": "512690",
     "name": "酒ETF鹏华",
-    "market_cap": 14933022668.0,
+    "market_cap": 14899508440.0,
     "volume": 15649089.0,
     "change_pct": 0.0
   },
@@ -1759,7 +1759,7 @@
   {
     "code": "159581",
     "name": "红利ETF万家",
-    "market_cap": 1485426092.0,
+    "market_cap": 1434807092.0,
     "volume": 210011.0,
     "change_pct": 0.0
   },
@@ -1794,7 +1794,7 @@
   {
     "code": "511920",
     "name": "货币ETF广发",
-    "market_cap": 34284114.0,
+    "market_cap": 34274112.0,
     "volume": 5.0,
     "change_pct": 0.0
   },
@@ -1808,21 +1808,21 @@
   {
     "code": "562600",
     "name": "医疗器械ETF华夏",
-    "market_cap": 369840867.0,
+    "market_cap": 367533867.0,
     "volume": 493088.0,
     "change_pct": 0.0
   },
   {
     "code": "562060",
     "name": "标普A股红利ETF华宝",
-    "market_cap": 3863607852.0,
+    "market_cap": 3872259772.0,
     "volume": 619056.0,
     "change_pct": 0.0
   },
   {
     "code": "511770",
     "name": "金鹰增益货币ETF",
-    "market_cap": 41001230.0,
+    "market_cap": 36001080.0,
     "volume": 121.0,
     "change_pct": 0.0
   },
@@ -1836,14 +1836,14 @@
   {
     "code": "511820",
     "name": "鹏华添利ETF",
-    "market_cap": 88533541.0,
+    "market_cap": 88923557.0,
     "volume": 2793.0,
     "change_pct": 0.0
   },
   {
     "code": "515120",
     "name": "创新药ETF广发",
-    "market_cap": 8979852531.0,
+    "market_cap": 8955462566.0,
     "volume": 5627410.0,
     "change_pct": 0.0
   },
@@ -1857,7 +1857,7 @@
   {
     "code": "511690",
     "name": "交易货币ETF大成",
-    "market_cap": 734196708.0,
+    "market_cap": 734176707.0,
     "volume": 15869.0,
     "change_pct": 0.0
   },
@@ -1885,7 +1885,7 @@
   {
     "code": "159005",
     "name": "快钱ETF汇添富",
-    "market_cap": 109949799.0,
+    "market_cap": 110857009.0,
     "volume": 4185.0,
     "change_pct": 0.0
   },
@@ -1906,21 +1906,21 @@
   {
     "code": "159003",
     "name": "招商快线ETF",
-    "market_cap": 185952960.0,
+    "market_cap": 184936349.0,
     "volume": 9001.0,
     "change_pct": 0.0
   },
   {
     "code": "159001",
     "name": "货币ETF易方达",
-    "market_cap": 1611011200.0,
+    "market_cap": 1604979500.0,
     "volume": 116792.0,
     "change_pct": 0.0
   },
   {
     "code": "513850",
     "name": "美国50ETF易方达",
-    "market_cap": 2106731735.0,
+    "market_cap": 2108512735.0,
     "volume": 712375.0,
     "change_pct": -0.06
   },
@@ -1955,14 +1955,14 @@
   {
     "code": "563680",
     "name": "800现金流ETF汇添富",
-    "market_cap": 152949816.0,
+    "market_cap": 155397816.0,
     "volume": 34164.0,
     "change_pct": -0.08
   },
   {
     "code": "159549",
     "name": "红利低波ETF天弘",
-    "market_cap": 5604981113.0,
+    "market_cap": 5606178036.0,
     "volume": 29858.0,
     "change_pct": -0.08
   },
@@ -1976,14 +1976,14 @@
   {
     "code": "159586",
     "name": "计算机ETF南方",
-    "market_cap": 275348371.0,
+    "market_cap": 294042871.0,
     "volume": 122671.0,
     "change_pct": -0.09
   },
   {
     "code": "560020",
     "name": "红利ETF汇添富",
-    "market_cap": 126069440.0,
+    "market_cap": 118229440.0,
     "volume": 36520.0,
     "change_pct": -0.09
   },
@@ -2039,7 +2039,7 @@
   {
     "code": "513650",
     "name": "标普500ETF南方",
-    "market_cap": 7605194600.0,
+    "market_cap": 7624194600.0,
     "volume": 2059250.0,
     "change_pct": -0.11
   },
@@ -2060,14 +2060,14 @@
   {
     "code": "159622",
     "name": "创新药ETF东财",
-    "market_cap": 941882212.0,
+    "market_cap": 999666212.0,
     "volume": 683110.0,
     "change_pct": -0.11
   },
   {
     "code": "512980",
     "name": "传媒ETF广发",
-    "market_cap": 4529438856.0,
+    "market_cap": 4501907828.0,
     "volume": 1784168.0,
     "change_pct": -0.11
   },
@@ -2109,21 +2109,21 @@
   {
     "code": "513910",
     "name": "港股通央企红利ETF华夏",
-    "market_cap": 3679748492.0,
+    "market_cap": 3676614492.0,
     "volume": 1482557.0,
     "change_pct": -0.13
   },
   {
     "code": "560680",
     "name": "消费ETF广发",
-    "market_cap": 234776609.0,
+    "market_cap": 228269609.0,
     "volume": 121477.0,
     "change_pct": -0.14
   },
   {
     "code": "520910",
     "name": "港股通互联网ETF华夏",
-    "market_cap": 557080385.0,
+    "market_cap": 545452385.0,
     "volume": 560503.0,
     "change_pct": -0.15
   },
@@ -2151,7 +2151,7 @@
   {
     "code": "563390",
     "name": "全指现金流ETF华泰柏瑞",
-    "market_cap": 3124708092.0,
+    "market_cap": 3083689092.0,
     "volume": 407495.0,
     "change_pct": -0.16
   },
@@ -2172,14 +2172,14 @@
   {
     "code": "159568",
     "name": "港股互联网ETF博时",
-    "market_cap": 428046643.0,
+    "market_cap": 410966643.0,
     "volume": 535092.0,
     "change_pct": -0.16
   },
   {
     "code": "563990",
     "name": "800现金流ETF富国",
-    "market_cap": 618179125.0,
+    "market_cap": 601864125.0,
     "volume": 93851.0,
     "change_pct": -0.16
   },
@@ -2193,14 +2193,14 @@
   {
     "code": "561870",
     "name": "现金流全指ETF华富",
-    "market_cap": 155362240.0,
+    "market_cap": 154146240.0,
     "volume": 40243.0,
     "change_pct": -0.16
   },
   {
     "code": "563830",
     "name": "全指现金流ETF博时",
-    "market_cap": 181376992.0,
+    "market_cap": 177770992.0,
     "volume": 39745.0,
     "change_pct": -0.17
   },
@@ -2242,28 +2242,28 @@
   {
     "code": "563580",
     "name": "自由现金流800ETF万家",
-    "market_cap": 374809776.0,
+    "market_cap": 373672776.0,
     "volume": 104437.0,
     "change_pct": -0.18
   },
   {
     "code": "159589",
     "name": "红利ETF广发",
-    "market_cap": 210030186.0,
+    "market_cap": 215540186.0,
     "volume": 88712.0,
     "change_pct": -0.18
   },
   {
     "code": "510880",
     "name": "红利ETF华泰柏瑞",
-    "market_cap": 19911638827.0,
+    "market_cap": 20016250433.0,
     "volume": 2234907.0,
     "change_pct": -0.18
   },
   {
     "code": "560150",
     "name": "红利低波ETF泰康",
-    "market_cap": 764941856.0,
+    "market_cap": 766054856.0,
     "volume": 168378.0,
     "change_pct": -0.18
   },
@@ -2291,7 +2291,7 @@
   {
     "code": "520990",
     "name": "港股央企红利ETF景顺",
-    "market_cap": 4454681845.0,
+    "market_cap": 4465071812.0,
     "volume": 995882.0,
     "change_pct": -0.19
   },
@@ -2319,7 +2319,7 @@
   {
     "code": "563700",
     "name": "红利价值ETF易方达",
-    "market_cap": 397283850.0,
+    "market_cap": 402578850.0,
     "volume": 64832.0,
     "change_pct": -0.19
   },
@@ -2333,14 +2333,14 @@
   {
     "code": "560880",
     "name": "家电ETF广发",
-    "market_cap": 349245652.0,
+    "market_cap": 346904152.0,
     "volume": 131618.0,
     "change_pct": -0.19
   },
   {
     "code": "159643",
     "name": "疫苗ETF国泰",
-    "market_cap": 134113750.0,
+    "market_cap": 136097750.0,
     "volume": 122722.0,
     "change_pct": -0.2
   },
@@ -2354,7 +2354,7 @@
   {
     "code": "159031",
     "name": "粮食ETF博时",
-    "market_cap": 430041536.0,
+    "market_cap": 226578536.0,
     "volume": 85579.0,
     "change_pct": -0.21
   },
@@ -2375,7 +2375,7 @@
   {
     "code": "515170",
     "name": "食品饮料ETF华夏",
-    "market_cap": 4251848387.0,
+    "market_cap": 4245597932.0,
     "volume": 1471879.0,
     "change_pct": -0.22
   },
@@ -2389,7 +2389,7 @@
   {
     "code": "512670",
     "name": "国防ETF鹏华",
-    "market_cap": 1904123327.0,
+    "market_cap": 1924619327.0,
     "volume": 1181289.0,
     "change_pct": -0.23
   },
@@ -2403,7 +2403,7 @@
   {
     "code": "159607",
     "name": "中概互联网ETF嘉实",
-    "market_cap": 1062258183.0,
+    "market_cap": 1045658183.0,
     "volume": 1166027.0,
     "change_pct": -0.24
   },
@@ -2431,7 +2431,7 @@
   {
     "code": "563760",
     "name": "全指现金流ETF中银",
-    "market_cap": 1079590100.0,
+    "market_cap": 1081984100.0,
     "volume": 996863.0,
     "change_pct": -0.25
   },
@@ -2445,7 +2445,7 @@
   {
     "code": "159130",
     "name": "恒生生物科技ETF鹏华",
-    "market_cap": 196645552.0,
+    "market_cap": 195881552.0,
     "volume": 82909.0,
     "change_pct": -0.26
   },
@@ -2466,14 +2466,14 @@
   {
     "code": "560260",
     "name": "医疗ETF广发",
-    "market_cap": 1399925187.0,
+    "market_cap": 1382583187.0,
     "volume": 116345.0,
     "change_pct": -0.26
   },
   {
     "code": "159616",
     "name": "农牧ETF建信",
-    "market_cap": 55388301.0,
+    "market_cap": 54614301.0,
     "volume": 70858.0,
     "change_pct": -0.26
   },
@@ -2494,14 +2494,14 @@
   {
     "code": "513770",
     "name": "港股互联网ETF华宝",
-    "market_cap": 8265400110.0,
+    "market_cap": 8178460158.0,
     "volume": 18602865.0,
     "change_pct": -0.26
   },
   {
     "code": "512070",
     "name": "证券保险ETF易方达",
-    "market_cap": 11663922801.0,
+    "market_cap": 11619042801.0,
     "volume": 6371399.0,
     "change_pct": -0.27
   },
@@ -2515,7 +2515,7 @@
   {
     "code": "513800",
     "name": "日本东证指数ETF南方",
-    "market_cap": 1803173119.0,
+    "market_cap": 1821353119.0,
     "volume": 183833.0,
     "change_pct": -0.27
   },
@@ -2543,14 +2543,14 @@
   {
     "code": "513720",
     "name": "港股互联网ETF国泰",
-    "market_cap": 172187031.0,
+    "market_cap": 174314031.0,
     "volume": 154170.0,
     "change_pct": -0.28
   },
   {
     "code": "513040",
     "name": "港股通互联网ETF易方达",
-    "market_cap": 6755171432.0,
+    "market_cap": 6781561302.0,
     "volume": 4679997.0,
     "change_pct": -0.29
   },
@@ -2571,7 +2571,7 @@
   {
     "code": "159545",
     "name": "恒生红利低波ETF易方达",
-    "market_cap": 7002030409.0,
+    "market_cap": 6920474297.0,
     "volume": 420461.0,
     "change_pct": -0.29
   },
@@ -2627,7 +2627,7 @@
   {
     "code": "513630",
     "name": "港股低波红利ETF摩根",
-    "market_cap": 14843167951.0,
+    "market_cap": 14822238054.0,
     "volume": 1773048.0,
     "change_pct": -0.31
   },
@@ -2648,28 +2648,28 @@
   {
     "code": "563960",
     "name": "300质量ETF兴全",
-    "market_cap": 242261400.0,
+    "market_cap": 243686400.0,
     "volume": 60549.0,
     "change_pct": -0.31
   },
   {
     "code": "512660",
     "name": "军工ETF国泰",
-    "market_cap": 7194379838.0,
+    "market_cap": 7238969920.0,
     "volume": 2849691.0,
     "change_pct": -0.31
   },
   {
     "code": "159118",
     "name": "港股通红利低波ETF华夏",
-    "market_cap": 76631417.0,
+    "market_cap": 77605417.0,
     "volume": 27426.0,
     "change_pct": -0.31
   },
   {
     "code": "159573",
     "name": "创业板200ETF华夏",
-    "market_cap": 134337299.0,
+    "market_cap": 131193299.0,
     "volume": 166917.0,
     "change_pct": -0.32
   },
@@ -2704,7 +2704,7 @@
   {
     "code": "512170",
     "name": "医疗ETF华宝",
-    "market_cap": 25690446643.0,
+    "market_cap": 25536545587.0,
     "volume": 15993236.0,
     "change_pct": -0.33
   },
@@ -2718,14 +2718,14 @@
   {
     "code": "588700",
     "name": "科创医药ETF嘉实",
-    "market_cap": 378786622.0,
+    "market_cap": 392466622.0,
     "volume": 368749.0,
     "change_pct": -0.33
   },
   {
     "code": "588860",
     "name": "科创医药ETF工银",
-    "market_cap": 234012760.0,
+    "market_cap": 241308760.0,
     "volume": 156814.0,
     "change_pct": -0.33
   },
@@ -2760,7 +2760,7 @@
   {
     "code": "560370",
     "name": "红利质量ETF易方达",
-    "market_cap": 105421176.0,
+    "market_cap": 104087676.0,
     "volume": 28644.0,
     "change_pct": -0.34
   },
@@ -2788,21 +2788,21 @@
   {
     "code": "159027",
     "name": "畜牧养殖ETF大成",
-    "market_cap": 125526747.0,
+    "market_cap": 127240747.0,
     "volume": 160804.0,
     "change_pct": -0.35
   },
   {
     "code": "159030",
     "name": "粮食ETF华夏",
-    "market_cap": 318719695.0,
+    "market_cap": 314000695.0,
     "volume": 82772.0,
     "change_pct": -0.35
   },
   {
     "code": "159166",
     "name": "现金流ETF长城",
-    "market_cap": 614855895.0,
+    "market_cap": 617450895.0,
     "volume": 62537.0,
     "change_pct": -0.35
   },
@@ -2851,28 +2851,28 @@
   {
     "code": "512560",
     "name": "军工ETF易方达",
-    "market_cap": 634492590.0,
+    "market_cap": 638452590.0,
     "volume": 707398.0,
     "change_pct": -0.38
   },
   {
     "code": "510900",
     "name": "恒生中国企业ETF易方达",
-    "market_cap": 3825746846.0,
+    "market_cap": 3828875846.0,
     "volume": 987690.0,
     "change_pct": -0.38
   },
   {
     "code": "512680",
     "name": "军工ETF广发",
-    "market_cap": 4378814855.0,
+    "market_cap": 4386100455.0,
     "volume": 601752.0,
     "change_pct": -0.38
   },
   {
     "code": "513700",
     "name": "港股通医药ETF鹏华",
-    "market_cap": 513439304.0,
+    "market_cap": 515011304.0,
     "volume": 1584236.0,
     "change_pct": -0.38
   },
@@ -2928,7 +2928,7 @@
   {
     "code": "588250",
     "name": "科创医药ETF鹏华",
-    "market_cap": 237690600.0,
+    "market_cap": 247210600.0,
     "volume": 47380.0,
     "change_pct": -0.42
   },
@@ -2949,7 +2949,7 @@
   {
     "code": "560700",
     "name": "央企红利ETF广发",
-    "market_cap": 439753705.0,
+    "market_cap": 438582705.0,
     "volume": 42397.0,
     "change_pct": -0.43
   },
@@ -2991,7 +2991,7 @@
   {
     "code": "563180",
     "name": "高股息ETF银华",
-    "market_cap": 130209960.0,
+    "market_cap": 126795960.0,
     "volume": 38672.0,
     "change_pct": -0.44
   },
@@ -3040,7 +3040,7 @@
   {
     "code": "513950",
     "name": "恒生红利ETF富国",
-    "market_cap": 2852349471.0,
+    "market_cap": 2845649471.0,
     "volume": 182671.0,
     "change_pct": -0.45
   },
@@ -3075,7 +3075,7 @@
   {
     "code": "520900",
     "name": "港股通红利ETF广发",
-    "market_cap": 1815448808.0,
+    "market_cap": 1819672808.0,
     "volume": 734254.0,
     "change_pct": -0.47
   },
@@ -3117,7 +3117,7 @@
   {
     "code": "526010",
     "name": "港股通医疗ETF汇添富",
-    "market_cap": 75170598.0,
+    "market_cap": 80156598.0,
     "volume": 37882.0,
     "change_pct": -0.48
   },
@@ -3131,14 +3131,14 @@
   {
     "code": "159173",
     "name": "农牧ETF南方",
-    "market_cap": 50601160.0,
+    "market_cap": 49764160.0,
     "volume": 113138.0,
     "change_pct": -0.48
   },
   {
     "code": "159176",
     "name": "家电ETF华宝",
-    "market_cap": 24983835.0,
+    "market_cap": 27039835.0,
     "volume": 160052.0,
     "change_pct": -0.48
   },
@@ -3159,7 +3159,7 @@
   {
     "code": "159557",
     "name": "恒生医疗ETF嘉实",
-    "market_cap": 212673530.0,
+    "market_cap": 206558530.0,
     "volume": 638207.0,
     "change_pct": -0.49
   },
@@ -3187,14 +3187,14 @@
   {
     "code": "513590",
     "name": "港股通消费ETF鹏华",
-    "market_cap": 117209407.0,
+    "market_cap": 116256607.0,
     "volume": 36878.0,
     "change_pct": -0.5
   },
   {
     "code": "530060",
     "name": "上证指数ETF易方达",
-    "market_cap": 173844614.0,
+    "market_cap": 170850614.0,
     "volume": 587072.0,
     "change_pct": -0.5
   },
@@ -3215,14 +3215,14 @@
   {
     "code": "510910",
     "name": "上证指数ETF南方",
-    "market_cap": 161005244.0,
+    "market_cap": 163972244.0,
     "volume": 74663.0,
     "change_pct": -0.5
   },
   {
     "code": "512040",
     "name": "价值100ETF富国",
-    "market_cap": 4290798517.0,
+    "market_cap": 4296808517.0,
     "volume": 751690.0,
     "change_pct": -0.5
   },
@@ -3264,7 +3264,7 @@
   {
     "code": "560210",
     "name": "农牧渔ETF景顺",
-    "market_cap": 477950418.0,
+    "market_cap": 484102418.0,
     "volume": 157939.0,
     "change_pct": -0.52
   },
@@ -3285,7 +3285,7 @@
   {
     "code": "159637",
     "name": "新能源车ETF东财",
-    "market_cap": 616223402.0,
+    "market_cap": 610619402.0,
     "volume": 189459.0,
     "change_pct": -0.53
   },
@@ -3306,7 +3306,7 @@
   {
     "code": "588130",
     "name": "科创医药ETF华夏",
-    "market_cap": 75344731.0,
+    "market_cap": 82357231.0,
     "volume": 88746.0,
     "change_pct": -0.53
   },
@@ -3348,7 +3348,7 @@
   {
     "code": "512810",
     "name": "军工ETF华宝",
-    "market_cap": 664792209.0,
+    "market_cap": 663314209.0,
     "volume": 588445.0,
     "change_pct": -0.54
   },
@@ -3397,7 +3397,7 @@
   {
     "code": "560110",
     "name": "中证1000ETF汇添富",
-    "market_cap": 189119858.0,
+    "market_cap": 192854858.0,
     "volume": 144348.0,
     "change_pct": -0.56
   },
@@ -3425,7 +3425,7 @@
   {
     "code": "159020",
     "name": "养殖ETF易方达",
-    "market_cap": 91114855.0,
+    "market_cap": 90259855.0,
     "volume": 45684.0,
     "change_pct": -0.58
   },
@@ -3460,7 +3460,7 @@
   {
     "code": "513120",
     "name": "港股创新药ETF广发",
-    "market_cap": 22624906772.0,
+    "market_cap": 22613642707.0,
     "volume": 44082942.0,
     "change_pct": -0.58
   },
@@ -3488,14 +3488,14 @@
   {
     "code": "159102",
     "name": "港股通生物科技ETF华安",
-    "market_cap": 544337228.0,
+    "market_cap": 540967228.0,
     "volume": 453319.0,
     "change_pct": -0.59
   },
   {
     "code": "512880",
     "name": "证券ETF国泰",
-    "market_cap": 54106360119.0,
+    "market_cap": 53635952054.0,
     "volume": 17579094.0,
     "change_pct": -0.59
   },
@@ -3516,7 +3516,7 @@
   {
     "code": "159628",
     "name": "国证2000ETF万家",
-    "market_cap": 327720493.0,
+    "market_cap": 345492493.0,
     "volume": 405495.0,
     "change_pct": -0.6
   },
@@ -3544,7 +3544,7 @@
   {
     "code": "512000",
     "name": "券商ETF华宝",
-    "market_cap": 35671670600.0,
+    "market_cap": 35368740065.0,
     "volume": 17882981.0,
     "change_pct": -0.61
   },
@@ -3579,7 +3579,7 @@
   {
     "code": "561010",
     "name": "软件ETF华安",
-    "market_cap": 243794640.0,
+    "market_cap": 246614640.0,
     "volume": 99904.0,
     "change_pct": -0.63
   },
@@ -3607,7 +3607,7 @@
   {
     "code": "515060",
     "name": "房地产ETF华夏",
-    "market_cap": 607099854.0,
+    "market_cap": 603984854.0,
     "volume": 829422.0,
     "change_pct": -0.64
   },
@@ -3621,7 +3621,7 @@
   {
     "code": "159026",
     "name": "石油ETF南方",
-    "market_cap": 54358991.0,
+    "market_cap": 55287991.0,
     "volume": 69127.0,
     "change_pct": -0.64
   },
@@ -3635,14 +3635,14 @@
   {
     "code": "589720",
     "name": "科创创新药ETF国泰",
-    "market_cap": 1408680778.0,
+    "market_cap": 1556896778.0,
     "volume": 1974577.0,
     "change_pct": -0.65
   },
   {
     "code": "159018",
     "name": "石油ETF广发",
-    "market_cap": 30988442.0,
+    "market_cap": 31902442.0,
     "volume": 56285.0,
     "change_pct": -0.65
   },
@@ -3712,21 +3712,21 @@
   {
     "code": "513230",
     "name": "港股通消费ETF华夏",
-    "market_cap": 348257052.0,
+    "market_cap": 343797052.0,
     "volume": 177916.0,
     "change_pct": -0.67
   },
   {
     "code": "513360",
     "name": "教育ETF博时",
-    "market_cap": 286815829.0,
+    "market_cap": 287487829.0,
     "volume": 544739.0,
     "change_pct": -0.67
   },
   {
     "code": "512570",
     "name": "证券ETF易方达",
-    "market_cap": 2912501830.0,
+    "market_cap": 2904325830.0,
     "volume": 1127251.0,
     "change_pct": -0.68
   },
@@ -3747,7 +3747,7 @@
   {
     "code": "515010",
     "name": "证券ETF华夏",
-    "market_cap": 1786773229.0,
+    "market_cap": 1803125229.0,
     "volume": 324110.0,
     "change_pct": -0.68
   },
@@ -3768,7 +3768,7 @@
   {
     "code": "512900",
     "name": "证券ETF南方",
-    "market_cap": 6747287640.0,
+    "market_cap": 6736745544.0,
     "volume": 552571.0,
     "change_pct": -0.69
   },
@@ -3789,14 +3789,14 @@
   {
     "code": "512200",
     "name": "房地产ETF南方",
-    "market_cap": 4410899731.0,
+    "market_cap": 4419654481.0,
     "volume": 1064211.0,
     "change_pct": -0.69
   },
   {
     "code": "159633",
     "name": "中证1000ETF易方达",
-    "market_cap": 2102147477.0,
+    "market_cap": 2063229477.0,
     "volume": 1834870.0,
     "change_pct": -0.7
   },
@@ -3810,7 +3810,7 @@
   {
     "code": "520940",
     "name": "港股通恒生ETF华安",
-    "market_cap": 26007733.0,
+    "market_cap": 26996733.0,
     "volume": 127858.0,
     "change_pct": -0.7
   },
@@ -3845,14 +3845,14 @@
   {
     "code": "159605",
     "name": "中概互联ETF广发",
-    "market_cap": 3749556037.0,
+    "market_cap": 3699456037.0,
     "volume": 1926095.0,
     "change_pct": -0.71
   },
   {
     "code": "589120",
     "name": "科创创新药ETF汇添富",
-    "market_cap": 448180480.0,
+    "market_cap": 484788480.0,
     "volume": 467022.0,
     "change_pct": -0.71
   },
@@ -3873,35 +3873,35 @@
   {
     "code": "563980",
     "name": "800红利低波ETF鑫元",
-    "market_cap": 212627660.0,
+    "market_cap": 204787660.0,
     "volume": 31097.0,
     "change_pct": -0.71
   },
   {
     "code": "510950",
     "name": "上证50ETF广发",
-    "market_cap": 90255610.0,
+    "market_cap": 91121410.0,
     "volume": 158300.0,
     "change_pct": -0.72
   },
   {
     "code": "589330",
     "name": "科创200ETF东财",
-    "market_cap": 210519606.0,
+    "market_cap": 200989606.0,
     "volume": 64513.0,
     "change_pct": -0.73
   },
   {
     "code": "563060",
     "name": "央企50ETF易方达",
-    "market_cap": 236014430.0,
+    "market_cap": 230564430.0,
     "volume": 34167.0,
     "change_pct": -0.73
   },
   {
     "code": "159590",
     "name": "软件ETF汇添富",
-    "market_cap": 558714933.0,
+    "market_cap": 622704933.0,
     "volume": 491260.0,
     "change_pct": -0.73
   },
@@ -3936,7 +3936,7 @@
   {
     "code": "560090",
     "name": "证券ETF汇添富",
-    "market_cap": 2684522859.0,
+    "market_cap": 2648007859.0,
     "volume": 1224513.0,
     "change_pct": -0.73
   },
@@ -3964,7 +3964,7 @@
   {
     "code": "513330",
     "name": "恒生互联网ETF华夏",
-    "market_cap": 29510610420.0,
+    "market_cap": 29494531449.0,
     "volume": 49631669.0,
     "change_pct": -0.74
   },
@@ -3978,14 +3978,14 @@
   {
     "code": "562900",
     "name": "农业ETF易方达",
-    "market_cap": 143908745.0,
+    "market_cap": 147198745.0,
     "volume": 135797.0,
     "change_pct": -0.75
   },
   {
     "code": "159629",
     "name": "中证1000ETF富国",
-    "market_cap": 1223845400.0,
+    "market_cap": 1402985400.0,
     "volume": 766946.0,
     "change_pct": -0.75
   },
@@ -4006,7 +4006,7 @@
   {
     "code": "520930",
     "name": "恒生生物科技ETF国泰",
-    "market_cap": 101570337.0,
+    "market_cap": 103148337.0,
     "volume": 138028.0,
     "change_pct": -0.75
   },
@@ -4027,7 +4027,7 @@
   {
     "code": "560360",
     "name": "软件ETF万家",
-    "market_cap": 279934570.0,
+    "market_cap": 266874570.0,
     "volume": 40772.0,
     "change_pct": -0.76
   },
@@ -4153,14 +4153,14 @@
   {
     "code": "589220",
     "name": "科创200ETF国泰",
-    "market_cap": 479572330.0,
+    "market_cap": 466204330.0,
     "volume": 386910.0,
     "change_pct": -0.8
   },
   {
     "code": "512100",
     "name": "中证1000ETF南方",
-    "market_cap": 11582472701.0,
+    "market_cap": 12515996701.0,
     "volume": 7480480.0,
     "change_pct": -0.8
   },
@@ -4174,7 +4174,7 @@
   {
     "code": "513200",
     "name": "港股通医药ETF易方达",
-    "market_cap": 1083269988.0,
+    "market_cap": 1061469988.0,
     "volume": 1681291.0,
     "change_pct": -0.8
   },
@@ -4188,7 +4188,7 @@
   {
     "code": "562870",
     "name": "证券ETF嘉实",
-    "market_cap": 406740967.0,
+    "market_cap": 408888467.0,
     "volume": 73189.0,
     "change_pct": -0.81
   },
@@ -4202,7 +4202,7 @@
   {
     "code": "562080",
     "name": "300现金流ETF华宝",
-    "market_cap": 468626435.0,
+    "market_cap": 476018435.0,
     "volume": 450488.0,
     "change_pct": -0.81
   },
@@ -4223,7 +4223,7 @@
   {
     "code": "560010",
     "name": "中证1000ETF广发",
-    "market_cap": 3017331878.0,
+    "market_cap": 2900303878.0,
     "volume": 1510584.0,
     "change_pct": -0.81
   },
@@ -4237,14 +4237,14 @@
   {
     "code": "513020",
     "name": "港股科技ETF国泰",
-    "market_cap": 3782192482.0,
+    "market_cap": 3733542482.0,
     "volume": 2595227.0,
     "change_pct": -0.82
   },
   {
     "code": "513930",
     "name": "恒生生物科技ETF华泰柏瑞",
-    "market_cap": 58719168.0,
+    "market_cap": 63795168.0,
     "volume": 893897.0,
     "change_pct": -0.82
   },
@@ -4272,14 +4272,14 @@
   {
     "code": "510810",
     "name": "上海国企ETF汇添富",
-    "market_cap": 5038675715.0,
+    "market_cap": 5037596741.0,
     "volume": 85950.0,
     "change_pct": -0.84
   },
   {
     "code": "159008",
     "name": "证券ETF景顺",
-    "market_cap": 182566951.0,
+    "market_cap": 182093451.0,
     "volume": 73989.0,
     "change_pct": -0.84
   },
@@ -4300,21 +4300,21 @@
   {
     "code": "520970",
     "name": "港股通创新药ETF嘉实",
-    "market_cap": 943932822.0,
+    "market_cap": 936133822.0,
     "volume": 841343.0,
     "change_pct": -0.84
   },
   {
     "code": "513730",
     "name": "东南亚科技ETF华泰柏瑞",
-    "market_cap": 1057454649.0,
+    "market_cap": 1055118649.0,
     "volume": 432297.0,
     "change_pct": -0.85
   },
   {
     "code": "515030",
     "name": "新能源车ETF华夏",
-    "market_cap": 4160753312.0,
+    "market_cap": 3396741312.0,
     "volume": 1509020.0,
     "change_pct": -0.85
   },
@@ -4356,7 +4356,7 @@
   {
     "code": "159623",
     "name": "成渝经济圈ETF博时",
-    "market_cap": 3199164379.0,
+    "market_cap": 3201250379.0,
     "volume": 164433.0,
     "change_pct": -0.86
   },
@@ -4370,7 +4370,7 @@
   {
     "code": "560400",
     "name": "证券ETF华泰柏瑞",
-    "market_cap": 220532081.0,
+    "market_cap": 216864081.0,
     "volume": 247087.0,
     "change_pct": -0.86
   },
@@ -4405,14 +4405,14 @@
   {
     "code": "513280",
     "name": "恒生生物科技ETF汇添富",
-    "market_cap": 381529733.0,
+    "market_cap": 383341733.0,
     "volume": 676291.0,
     "change_pct": -0.88
   },
   {
     "code": "561960",
     "name": "央企回报ETF招商",
-    "market_cap": 66713574.0,
+    "market_cap": 66962574.0,
     "volume": 14777.0,
     "change_pct": -0.88
   },
@@ -4433,7 +4433,7 @@
   {
     "code": "159156",
     "name": "电池ETF万家",
-    "market_cap": 243875866.0,
+    "market_cap": 246905866.0,
     "volume": 102961.0,
     "change_pct": -0.88
   },
@@ -4454,28 +4454,28 @@
   {
     "code": "561360",
     "name": "石油ETF国泰",
-    "market_cap": 2290898492.0,
+    "market_cap": 2295185492.0,
     "volume": 452676.0,
     "change_pct": -0.9
   },
   {
     "code": "159148",
     "name": "石油ETF富国",
-    "market_cap": 234617002.0,
+    "market_cap": 239557002.0,
     "volume": 144787.0,
     "change_pct": -0.9
   },
   {
     "code": "513550",
     "name": "港股通50ETF华泰柏瑞",
-    "market_cap": 2137871184.0,
+    "market_cap": 2134565184.0,
     "volume": 825633.0,
     "change_pct": -0.9
   },
   {
     "code": "560250",
     "name": "红利质量ETF富国",
-    "market_cap": 312822686.0,
+    "market_cap": 325863686.0,
     "volume": 41747.0,
     "change_pct": -0.92
   },
@@ -4489,7 +4489,7 @@
   {
     "code": "562930",
     "name": "软件ETF易方达",
-    "market_cap": 896946378.0,
+    "market_cap": 1026978378.0,
     "volume": 745874.0,
     "change_pct": -0.92
   },
@@ -4503,7 +4503,7 @@
   {
     "code": "526070",
     "name": "恒指港股通ETF博时",
-    "market_cap": 135613821.0,
+    "market_cap": 191074821.0,
     "volume": 126322.0,
     "change_pct": -0.92
   },
@@ -4545,7 +4545,7 @@
   {
     "code": "560280",
     "name": "工程机械ETF广发",
-    "market_cap": 3264925612.0,
+    "market_cap": 3765023112.0,
     "volume": 986289.0,
     "change_pct": -0.94
   },
@@ -4587,7 +4587,7 @@
   {
     "code": "588230",
     "name": "科创200ETF华泰柏瑞",
-    "market_cap": 1290875602.0,
+    "market_cap": 1083605602.0,
     "volume": 643115.0,
     "change_pct": -0.95
   },
@@ -4608,14 +4608,14 @@
   {
     "code": "530050",
     "name": "上证50ETF东财",
-    "market_cap": 142910885.0,
+    "market_cap": 140620885.0,
     "volume": 64163.0,
     "change_pct": -0.95
   },
   {
     "code": "159016",
     "name": "证券ETF广发",
-    "market_cap": 239522285.0,
+    "market_cap": 239992785.0,
     "volume": 75390.0,
     "change_pct": -0.95
   },
@@ -4629,7 +4629,7 @@
   {
     "code": "513860",
     "name": "港股通科技ETF海富通",
-    "market_cap": 3006553317.0,
+    "market_cap": 2987923238.0,
     "volume": 4768828.0,
     "change_pct": -0.96
   },
@@ -4643,21 +4643,21 @@
   {
     "code": "159007",
     "name": "养殖ETF华泰柏瑞",
-    "market_cap": 177906114.0,
+    "market_cap": 178735114.0,
     "volume": 152366.0,
     "change_pct": -0.96
   },
   {
     "code": "560120",
     "name": "中证500现金流ETF华夏",
-    "market_cap": 904654102.0,
+    "market_cap": 920618102.0,
     "volume": 253467.0,
     "change_pct": -0.97
   },
   {
     "code": "159615",
     "name": "恒生生物科技ETF南方",
-    "market_cap": 559721449.0,
+    "market_cap": 533989449.0,
     "volume": 1163354.0,
     "change_pct": -0.97
   },
@@ -4685,21 +4685,21 @@
   {
     "code": "588820",
     "name": "科创200ETF华夏",
-    "market_cap": 338764800.0,
+    "market_cap": 332428800.0,
     "volume": 157256.0,
     "change_pct": -0.98
   },
   {
     "code": "530380",
     "name": "上证380ETF易方达",
-    "market_cap": 185876075.0,
+    "market_cap": 190336075.0,
     "volume": 57854.0,
     "change_pct": -0.98
   },
   {
     "code": "159169",
     "name": "恒生生物科技ETF广发",
-    "market_cap": 161302211.0,
+    "market_cap": 160499211.0,
     "volume": 109492.0,
     "change_pct": -0.99
   },
@@ -4748,7 +4748,7 @@
   {
     "code": "159035",
     "name": "软件ETF天弘",
-    "market_cap": 319832701.0,
+    "market_cap": 320711701.0,
     "volume": 124646.0,
     "change_pct": -1.01
   },
@@ -4769,7 +4769,7 @@
   {
     "code": "530000",
     "name": "上证50ETF天弘",
-    "market_cap": 1288157377.0,
+    "market_cap": 1293513377.0,
     "volume": 15106.0,
     "change_pct": -1.03
   },
@@ -4790,7 +4790,7 @@
   {
     "code": "513060",
     "name": "恒生医疗ETF博时",
-    "market_cap": 5551624607.0,
+    "market_cap": 5578134515.0,
     "volume": 12443425.0,
     "change_pct": -1.03
   },
@@ -4818,14 +4818,14 @@
   {
     "code": "513780",
     "name": "港股创新药ETF景顺",
-    "market_cap": 2411998594.0,
+    "market_cap": 2415955594.0,
     "volume": 2095301.0,
     "change_pct": -1.05
   },
   {
     "code": "520950",
     "name": "港股通50ETF摩根",
-    "market_cap": 317034436.0,
+    "market_cap": 313638436.0,
     "volume": 211000.0,
     "change_pct": -1.05
   },
@@ -4860,21 +4860,21 @@
   {
     "code": "159109",
     "name": "恒生50ETF景顺",
-    "market_cap": 422096837.0,
+    "market_cap": 410490837.0,
     "volume": 387482.0,
     "change_pct": -1.07
   },
   {
     "code": "159608",
     "name": "稀有金属ETF广发",
-    "market_cap": 4369168067.0,
+    "market_cap": 4253104867.0,
     "volume": 992257.0,
     "change_pct": -1.07
   },
   {
     "code": "588040",
     "name": "科创50ETF鹏华",
-    "market_cap": 105105195.0,
+    "market_cap": 101595195.0,
     "volume": 61890.0,
     "change_pct": -1.07
   },
@@ -4888,7 +4888,7 @@
   {
     "code": "513970",
     "name": "恒生消费ETF景顺",
-    "market_cap": 1643282914.0,
+    "market_cap": 1601932914.0,
     "volume": 1122855.0,
     "change_pct": -1.08
   },
@@ -4923,7 +4923,7 @@
   {
     "code": "561570",
     "name": "油气ETF华泰柏瑞",
-    "market_cap": 116384597.0,
+    "market_cap": 121788597.0,
     "volume": 184635.0,
     "change_pct": -1.1
   },
@@ -4944,7 +4944,7 @@
   {
     "code": "510980",
     "name": "上证指数ETF汇添富",
-    "market_cap": 628644786.0,
+    "market_cap": 586434786.0,
     "volume": 799270.0,
     "change_pct": -1.12
   },
@@ -4965,7 +4965,7 @@
   {
     "code": "588140",
     "name": "科创200ETF广发",
-    "market_cap": 340195075.0,
+    "market_cap": 324295075.0,
     "volume": 65617.0,
     "change_pct": -1.12
   },
@@ -5000,14 +5000,14 @@
   {
     "code": "159567",
     "name": "港股创新药ETF银华",
-    "market_cap": 6622710404.0,
+    "market_cap": 6575817443.0,
     "volume": 15966033.0,
     "change_pct": -1.14
   },
   {
     "code": "561800",
     "name": "稀有金属ETF华富",
-    "market_cap": 246804773.0,
+    "market_cap": 248490773.0,
     "volume": 325091.0,
     "change_pct": -1.14
   },
@@ -5021,7 +5021,7 @@
   {
     "code": "588240",
     "name": "科创200ETF鹏华",
-    "market_cap": 238255730.0,
+    "market_cap": 200245730.0,
     "volume": 281704.0,
     "change_pct": -1.15
   },
@@ -5084,7 +5084,7 @@
   {
     "code": "588270",
     "name": "科创200ETF易方达",
-    "market_cap": 588353220.0,
+    "market_cap": 560723220.0,
     "volume": 132555.0,
     "change_pct": -1.18
   },
@@ -5182,7 +5182,7 @@
   {
     "code": "562800",
     "name": "稀有金属ETF嘉实",
-    "market_cap": 5879042203.0,
+    "market_cap": 5865457303.0,
     "volume": 3502212.0,
     "change_pct": -1.23
   },
@@ -5196,7 +5196,7 @@
   {
     "code": "560550",
     "name": "碳中和ETF广发",
-    "market_cap": 134003712.0,
+    "market_cap": 136071712.0,
     "volume": 7338.0,
     "change_pct": -1.24
   },
@@ -5224,14 +5224,14 @@
   {
     "code": "589200",
     "name": "科创200ETF工银",
-    "market_cap": 38388035.0,
+    "market_cap": 42903035.0,
     "volume": 75747.0,
     "change_pct": -1.25
   },
   {
     "code": "159107",
     "name": "创业板软件ETF富国",
-    "market_cap": 563995353.0,
+    "market_cap": 548215353.0,
     "volume": 668894.0,
     "change_pct": -1.25
   },
@@ -5294,14 +5294,14 @@
   {
     "code": "589320",
     "name": "科创200ETF嘉实",
-    "market_cap": 273880881.0,
+    "market_cap": 262588881.0,
     "volume": 99093.0,
     "change_pct": -1.26
   },
   {
     "code": "563010",
     "name": "电信ETF易方达",
-    "market_cap": 217566748.0,
+    "market_cap": 234086748.0,
     "volume": 176798.0,
     "change_pct": -1.26
   },
@@ -5329,7 +5329,7 @@
   {
     "code": "159542",
     "name": "工程机械ETF大成",
-    "market_cap": 30415639.0,
+    "market_cap": 28938639.0,
     "volume": 51336.0,
     "change_pct": -1.27
   },
@@ -5364,7 +5364,7 @@
   {
     "code": "512950",
     "name": "央企改革ETF华夏",
-    "market_cap": 6204750348.0,
+    "market_cap": 6206286348.0,
     "volume": 61101.0,
     "change_pct": -1.29
   },
@@ -5399,14 +5399,14 @@
   {
     "code": "530800",
     "name": "上证180ETF银华",
-    "market_cap": 19620380.0,
+    "market_cap": 17198380.0,
     "volume": 40742.0,
     "change_pct": -1.3
   },
   {
     "code": "159636",
     "name": "港股通科技30ETF工银",
-    "market_cap": 26057185661.0,
+    "market_cap": 25421185661.0,
     "volume": 14031128.0,
     "change_pct": -1.3
   },
@@ -5441,7 +5441,7 @@
   {
     "code": "530180",
     "name": "上证180ETF易方达",
-    "market_cap": 78746688.0,
+    "market_cap": 81134688.0,
     "volume": 73757.0,
     "change_pct": -1.32
   },
@@ -5462,7 +5462,7 @@
   {
     "code": "159177",
     "name": "工程机械ETF鹏华",
-    "market_cap": 46671766.0,
+    "market_cap": 45625766.0,
     "volume": 117475.0,
     "change_pct": -1.32
   },
@@ -5476,14 +5476,14 @@
   {
     "code": "561030",
     "name": "工程机械ETF华泰柏瑞",
-    "market_cap": 213795750.0,
+    "market_cap": 211865750.0,
     "volume": 110682.0,
     "change_pct": -1.33
   },
   {
     "code": "159613",
     "name": "信息安全ETF嘉实",
-    "market_cap": 69210474.0,
+    "market_cap": 72778474.0,
     "volume": 81087.0,
     "change_pct": -1.33
   },
@@ -5497,35 +5497,35 @@
   {
     "code": "159543",
     "name": "国证2000ETF工银",
-    "market_cap": 78005440.0,
+    "market_cap": 71789440.0,
     "volume": 10034.0,
     "change_pct": -1.33
   },
   {
     "code": "512960",
     "name": "央企结构调整ETF博时",
-    "market_cap": 5771361027.0,
+    "market_cap": 5773141827.0,
     "volume": 46672.0,
     "change_pct": -1.33
   },
   {
     "code": "159632",
     "name": "纳斯达克ETF华安",
-    "market_cap": 11752859953.0,
+    "market_cap": 11762615953.0,
     "volume": 1864955.0,
     "change_pct": -1.33
   },
   {
     "code": "159588",
     "name": "石油ETF景顺",
-    "market_cap": 757856080.0,
+    "market_cap": 732856080.0,
     "volume": 136070.0,
     "change_pct": -1.34
   },
   {
     "code": "512510",
     "name": "中证500ETF华泰柏瑞",
-    "market_cap": 1010740723.0,
+    "market_cap": 1014390223.0,
     "volume": 45654.0,
     "change_pct": -1.34
   },
@@ -5539,14 +5539,14 @@
   {
     "code": "513750",
     "name": "港股通非银ETF广发",
-    "market_cap": 17870258588.0,
+    "market_cap": 17816311635.0,
     "volume": 6721378.0,
     "change_pct": -1.34
   },
   {
     "code": "563600",
     "name": "A500增强ETF易方达",
-    "market_cap": 50395164.0,
+    "market_cap": 53719164.0,
     "volume": 42142.0,
     "change_pct": -1.34
   },
@@ -5560,14 +5560,14 @@
   {
     "code": "563150",
     "name": "油气ETF银华",
-    "market_cap": 66476281.0,
+    "market_cap": 62519281.0,
     "volume": 55454.0,
     "change_pct": -1.35
   },
   {
     "code": "563050",
     "name": "央企科技ETF易方达",
-    "market_cap": 169503051.0,
+    "market_cap": 170890051.0,
     "volume": 64318.0,
     "change_pct": -1.35
   },
@@ -5581,7 +5581,7 @@
   {
     "code": "513350",
     "name": "标普油气ETF富国",
-    "market_cap": 1067505516.0,
+    "market_cap": 1068751516.0,
     "volume": 13874956.0,
     "change_pct": -1.35
   },
@@ -5595,7 +5595,7 @@
   {
     "code": "512500",
     "name": "中证500ETF华夏",
-    "market_cap": 7509129430.0,
+    "market_cap": 7472193430.0,
     "volume": 1724446.0,
     "change_pct": -1.35
   },
@@ -5644,14 +5644,14 @@
   {
     "code": "513300",
     "name": "纳斯达克ETF华夏",
-    "market_cap": 13917104034.0,
+    "market_cap": 13919119498.0,
     "volume": 2178074.0,
     "change_pct": -1.36
   },
   {
     "code": "530680",
     "name": "上证180ETF兴业",
-    "market_cap": 142554604.0,
+    "market_cap": 140234604.0,
     "volume": 42470.0,
     "change_pct": -1.36
   },
@@ -5665,7 +5665,7 @@
   {
     "code": "560170",
     "name": "央企科技ETF南方",
-    "market_cap": 361765660.0,
+    "market_cap": 341631155.0,
     "volume": 496502.0,
     "change_pct": -1.37
   },
@@ -5679,7 +5679,7 @@
   {
     "code": "159138",
     "name": "工程机械ETF易方达",
-    "market_cap": 62076764.0,
+    "market_cap": 61574264.0,
     "volume": 134924.0,
     "change_pct": -1.37
   },
@@ -5700,7 +5700,7 @@
   {
     "code": "513010",
     "name": "恒生科技ETF易方达",
-    "market_cap": 29870916567.0,
+    "market_cap": 29868996526.0,
     "volume": 16877173.0,
     "change_pct": -1.39
   },
@@ -5763,7 +5763,7 @@
   {
     "code": "515090",
     "name": "可持续发展ETF博时",
-    "market_cap": 6731983.0,
+    "market_cap": 5329983.0,
     "volume": 2277.0,
     "change_pct": -1.41
   },
@@ -5791,14 +5791,14 @@
   {
     "code": "563670",
     "name": "金融科技ETF鹏华",
-    "market_cap": 133881887.0,
+    "market_cap": 132479887.0,
     "volume": 22754.0,
     "change_pct": -1.41
   },
   {
     "code": "159563",
     "name": "创业板综ETF华夏",
-    "market_cap": 47071958.0,
+    "market_cap": 43041958.0,
     "volume": 6011.0,
     "change_pct": -1.42
   },
@@ -5812,7 +5812,7 @@
   {
     "code": "513980",
     "name": "港股科技ETF景顺",
-    "market_cap": 16883877440.0,
+    "market_cap": 16758877440.0,
     "volume": 13746285.0,
     "change_pct": -1.42
   },
@@ -5826,7 +5826,7 @@
   {
     "code": "513900",
     "name": "港股通100ETF华安",
-    "market_cap": 126468594.0,
+    "market_cap": 125495594.0,
     "volume": 176400.0,
     "change_pct": -1.42
   },
@@ -5840,7 +5840,7 @@
   {
     "code": "562990",
     "name": "碳中和ETF易方达",
-    "market_cap": 413816508.0,
+    "market_cap": 409644508.0,
     "volume": 74084.0,
     "change_pct": -1.42
   },
@@ -5861,14 +5861,14 @@
   {
     "code": "159103",
     "name": "金融科技ETF汇添富",
-    "market_cap": 207280670.0,
+    "market_cap": 208660670.0,
     "volume": 96080.0,
     "change_pct": -1.43
   },
   {
     "code": "530580",
     "name": "上证180ETF南方",
-    "market_cap": 69440926.0,
+    "market_cap": 81180926.0,
     "volume": 104520.0,
     "change_pct": -1.43
   },
@@ -5882,21 +5882,21 @@
   {
     "code": "560790",
     "name": "软件ETF鹏华",
-    "market_cap": 247704490.0,
+    "market_cap": 264728490.0,
     "volume": 137694.0,
     "change_pct": -1.43
   },
   {
     "code": "563520",
     "name": "沪深300ETF永赢",
-    "market_cap": 492360610.0,
+    "market_cap": 477480610.0,
     "volume": 258455.0,
     "change_pct": -1.43
   },
   {
     "code": "159155",
     "name": "电池ETF大成",
-    "market_cap": 500726128.0,
+    "market_cap": 498676128.0,
     "volume": 124864.0,
     "change_pct": -1.44
   },
@@ -5917,7 +5917,7 @@
   {
     "code": "513110",
     "name": "纳指ETF华泰柏瑞",
-    "market_cap": 5271891425.0,
+    "market_cap": 5274354425.0,
     "volume": 1785942.0,
     "change_pct": -1.44
   },
@@ -5938,7 +5938,7 @@
   {
     "code": "513130",
     "name": "恒生科技ETF华泰柏瑞",
-    "market_cap": 43835421245.0,
+    "market_cap": 43530422026.0,
     "volume": 62540373.0,
     "change_pct": -1.45
   },
@@ -5959,35 +5959,35 @@
   {
     "code": "512020",
     "name": "A500ETF鹏华",
-    "market_cap": 1311021100.0,
+    "market_cap": 1319097100.0,
     "volume": 555087.0,
     "change_pct": -1.46
   },
   {
     "code": "560500",
     "name": "500质量成长ETF鹏扬",
-    "market_cap": 409064678.0,
+    "market_cap": 382004678.0,
     "volume": 4905.0,
     "change_pct": -1.46
   },
   {
     "code": "560300",
     "name": "电信ETF汇添富",
-    "market_cap": 71835680.0,
+    "market_cap": 61859680.0,
     "volume": 18982.0,
     "change_pct": -1.46
   },
   {
     "code": "563650",
     "name": "中证A500ETF兴业",
-    "market_cap": 149394423.0,
+    "market_cap": 153435423.0,
     "volume": 116954.0,
     "change_pct": -1.46
   },
   {
     "code": "563360",
     "name": "A500ETF华泰柏瑞",
-    "market_cap": 31270886918.0,
+    "market_cap": 31008027177.0,
     "volume": 33767420.0,
     "change_pct": -1.46
   },
@@ -6015,7 +6015,7 @@
   {
     "code": "159128",
     "name": "港股科技ETF天弘",
-    "market_cap": 1768250267.0,
+    "market_cap": 1770467267.0,
     "volume": 1657288.0,
     "change_pct": -1.47
   },
@@ -6043,7 +6043,7 @@
   {
     "code": "560390",
     "name": "电网设备ETF易方达",
-    "market_cap": 1479015706.0,
+    "market_cap": 1613254706.0,
     "volume": 1272816.0,
     "change_pct": -1.49
   },
@@ -6085,7 +6085,7 @@
   {
     "code": "520920",
     "name": "恒生科技ETF天弘",
-    "market_cap": 14851795893.0,
+    "market_cap": 15102991800.0,
     "volume": 2737007.0,
     "change_pct": -1.49
   },
@@ -6099,7 +6099,7 @@
   {
     "code": "560610",
     "name": "A500ETF招商",
-    "market_cap": 5068427512.0,
+    "market_cap": 5098403512.0,
     "volume": 1188389.0,
     "change_pct": -1.5
   },
@@ -6127,7 +6127,7 @@
   {
     "code": "159135",
     "name": "港股通科技ETF前海开源",
-    "market_cap": 662259494.0,
+    "market_cap": 665651494.0,
     "volume": 105333.0,
     "change_pct": -1.51
   },
@@ -6190,7 +6190,7 @@
   {
     "code": "159015",
     "name": "恒生港股通科技ETF国联",
-    "market_cap": 129668111.0,
+    "market_cap": 132542111.0,
     "volume": 107047.0,
     "change_pct": -1.54
   },
@@ -6218,7 +6218,7 @@
   {
     "code": "563800",
     "name": "A500ETF广发",
-    "market_cap": 9401077218.0,
+    "market_cap": 9061186137.0,
     "volume": 4028520.0,
     "change_pct": -1.55
   },
@@ -6246,7 +6246,7 @@
   {
     "code": "563750",
     "name": "中证500ETF汇添富",
-    "market_cap": 395502952.0,
+    "market_cap": 398350452.0,
     "volume": 198557.0,
     "change_pct": -1.56
   },
@@ -6267,7 +6267,7 @@
   {
     "code": "513890",
     "name": "恒生科技ETF摩根",
-    "market_cap": 926345472.0,
+    "market_cap": 928243472.0,
     "volume": 702974.0,
     "change_pct": -1.56
   },
@@ -6288,35 +6288,35 @@
   {
     "code": "159570",
     "name": "港股通创新药ETF汇添富",
-    "market_cap": 21223246400.0,
+    "market_cap": 20854496320.0,
     "volume": 19766467.0,
     "change_pct": -1.57
   },
   {
     "code": "563880",
     "name": "A500ETF汇添富",
-    "market_cap": 1360739262.0,
+    "market_cap": 1396271262.0,
     "volume": 836793.0,
     "change_pct": -1.57
   },
   {
     "code": "513180",
     "name": "恒生科技ETF华夏",
-    "market_cap": 46903981437.0,
+    "market_cap": 46902737609.0,
     "volume": 48630696.0,
     "change_pct": -1.58
   },
   {
     "code": "560510",
     "name": "中证A500ETF泰康",
-    "market_cap": 3030107593.0,
+    "market_cap": 3078818593.0,
     "volume": 699343.0,
     "change_pct": -1.58
   },
   {
     "code": "513380",
     "name": "恒生科技ETF广发",
-    "market_cap": 11210655148.0,
+    "market_cap": 11194919148.0,
     "volume": 4811045.0,
     "change_pct": -1.58
   },
@@ -6344,14 +6344,14 @@
   {
     "code": "563550",
     "name": "A500增强ETF摩根",
-    "market_cap": 99603259.0,
+    "market_cap": 103506259.0,
     "volume": 94388.0,
     "change_pct": -1.59
   },
   {
     "code": "561930",
     "name": "沪深300ETF招商",
-    "market_cap": 176237348.0,
+    "market_cap": 181076348.0,
     "volume": 95585.0,
     "change_pct": -1.59
   },
@@ -6372,7 +6372,7 @@
   {
     "code": "513580",
     "name": "恒生科技ETF华安",
-    "market_cap": 4457448698.0,
+    "market_cap": 4456832737.0,
     "volume": 4382747.0,
     "change_pct": -1.6
   },
@@ -6435,14 +6435,14 @@
   {
     "code": "159595",
     "name": "中证A50ETF大成",
-    "market_cap": 1317935754.0,
+    "market_cap": 1326293754.0,
     "volume": 1384490.0,
     "change_pct": -1.62
   },
   {
     "code": "513160",
     "name": "港股科技ETF银华",
-    "market_cap": 4153063164.0,
+    "market_cap": 4148939164.0,
     "volume": 4710719.0,
     "change_pct": -1.62
   },
@@ -6484,7 +6484,7 @@
   {
     "code": "159593",
     "name": "中证A50ETF平安",
-    "market_cap": 2778099703.0,
+    "market_cap": 2788532203.0,
     "volume": 617546.0,
     "change_pct": -1.63
   },
@@ -6498,7 +6498,7 @@
   {
     "code": "512050",
     "name": "A500ETF华夏",
-    "market_cap": 18508355173.0,
+    "market_cap": 18660635173.0,
     "volume": 16991524.0,
     "change_pct": -1.63
   },
@@ -6547,7 +6547,7 @@
   {
     "code": "512460",
     "name": "电池ETF华夏",
-    "market_cap": 167427106.0,
+    "market_cap": 163339106.0,
     "volume": 209035.0,
     "change_pct": -1.64
   },
@@ -6603,7 +6603,7 @@
   {
     "code": "561230",
     "name": "中证A50ETF工银",
-    "market_cap": 634876297.0,
+    "market_cap": 626710297.0,
     "volume": 120930.0,
     "change_pct": -1.66
   },
@@ -6652,7 +6652,7 @@
   {
     "code": "520980",
     "name": "港股通科技ETF汇添富",
-    "market_cap": 4048562239.0,
+    "market_cap": 4145906239.0,
     "volume": 4765033.0,
     "change_pct": -1.68
   },
@@ -6666,7 +6666,7 @@
   {
     "code": "562850",
     "name": "央企能源ETF嘉实",
-    "market_cap": 341930192.0,
+    "market_cap": 340589192.0,
     "volume": 138760.0,
     "change_pct": -1.69
   },
@@ -6680,7 +6680,7 @@
   {
     "code": "588160",
     "name": "科创新材料ETF南方",
-    "market_cap": 207187344.0,
+    "market_cap": 186235344.0,
     "volume": 105247.0,
     "change_pct": -1.69
   },
@@ -6736,21 +6736,21 @@
   {
     "code": "561760",
     "name": "油气ETF博时",
-    "market_cap": 259999740.0,
+    "market_cap": 265993740.0,
     "volume": 136877.0,
     "change_pct": -1.7
   },
   {
     "code": "560710",
     "name": "船舶ETF富国",
-    "market_cap": 1514511240.0,
+    "market_cap": 1459743240.0,
     "volume": 1047380.0,
     "change_pct": -1.71
   },
   {
     "code": "512250",
     "name": "A50ETF招商",
-    "market_cap": 184862726.0,
+    "market_cap": 188645726.0,
     "volume": 22637.0,
     "change_pct": -1.71
   },
@@ -6764,7 +6764,7 @@
   {
     "code": "563220",
     "name": "A500ETF富国",
-    "market_cap": 7658518317.0,
+    "market_cap": 7614793062.0,
     "volume": 3532766.0,
     "change_pct": -1.71
   },
@@ -6792,7 +6792,7 @@
   {
     "code": "589950",
     "name": "科创100ETF富国",
-    "market_cap": 384104879.0,
+    "market_cap": 392000879.0,
     "volume": 32475.0,
     "change_pct": -1.72
   },
@@ -6841,14 +6841,14 @@
   {
     "code": "560910",
     "name": "电池ETF华泰柏瑞",
-    "market_cap": 178106110.0,
+    "market_cap": 179016110.0,
     "volume": 144386.0,
     "change_pct": -1.73
   },
   {
     "code": "589180",
     "name": "科创新材料ETF汇添富",
-    "market_cap": 38014978.0,
+    "market_cap": 32401978.0,
     "volume": 30499.0,
     "change_pct": -1.73
   },
@@ -6862,7 +6862,7 @@
   {
     "code": "512240",
     "name": "A50ETF鹏华",
-    "market_cap": 50582910.0,
+    "market_cap": 36362910.0,
     "volume": 83970.0,
     "change_pct": -1.74
   },
@@ -6939,14 +6939,14 @@
   {
     "code": "563500",
     "name": "A500ETF华宝",
-    "market_cap": 410844456.0,
+    "market_cap": 422850456.0,
     "volume": 342860.0,
     "change_pct": -1.77
   },
   {
     "code": "561300",
     "name": "沪深300增强ETF国泰",
-    "market_cap": 341285363.0,
+    "market_cap": 338144363.0,
     "volume": 253428.0,
     "change_pct": -1.78
   },
@@ -7009,14 +7009,14 @@
   {
     "code": "159013",
     "name": "工业互联网ETF大成",
-    "market_cap": 67490454.0,
+    "market_cap": 70778454.0,
     "volume": 43802.0,
     "change_pct": -1.79
   },
   {
     "code": "562910",
     "name": "高端制造ETF易方达",
-    "market_cap": 171884071.0,
+    "market_cap": 170951071.0,
     "volume": 100561.0,
     "change_pct": -1.79
   },
@@ -7051,7 +7051,7 @@
   {
     "code": "512720",
     "name": "计算机ETF国泰",
-    "market_cap": 476940009.0,
+    "market_cap": 484086009.0,
     "volume": 320312.0,
     "change_pct": -1.81
   },
@@ -7065,7 +7065,7 @@
   {
     "code": "159175",
     "name": "电池ETF易方达",
-    "market_cap": 242212013.0,
+    "market_cap": 240052013.0,
     "volume": 305082.0,
     "change_pct": -1.82
   },
@@ -7079,7 +7079,7 @@
   {
     "code": "563080",
     "name": "中证A50ETF易方达",
-    "market_cap": 1560423760.0,
+    "market_cap": 1568823760.0,
     "volume": 388411.0,
     "change_pct": -1.82
   },
@@ -7107,28 +7107,28 @@
   {
     "code": "588190",
     "name": "科创100ETF银华",
-    "market_cap": 2845805161.0,
+    "market_cap": 2745029161.0,
     "volume": 798721.0,
     "change_pct": -1.83
   },
   {
     "code": "560530",
     "name": "中证A500ETF摩根",
-    "market_cap": 2971198697.0,
+    "market_cap": 2944171697.0,
     "volume": 568555.0,
     "change_pct": -1.83
   },
   {
     "code": "588210",
     "name": "科创100ETF易方达",
-    "market_cap": 319934580.0,
+    "market_cap": 293384580.0,
     "volume": 45973.0,
     "change_pct": -1.83
   },
   {
     "code": "589980",
     "name": "科创100ETF汇添富",
-    "market_cap": 245922040.0,
+    "market_cap": 240462040.0,
     "volume": 21605.0,
     "change_pct": -1.83
   },
@@ -7170,7 +7170,7 @@
   {
     "code": "562880",
     "name": "电池ETF嘉实",
-    "market_cap": 901394941.0,
+    "market_cap": 900049441.0,
     "volume": 333551.0,
     "change_pct": -1.86
   },
@@ -7247,7 +7247,7 @@
   {
     "code": "561380",
     "name": "电网设备ETF国泰",
-    "market_cap": 7311765569.0,
+    "market_cap": 7322930569.0,
     "volume": 1026362.0,
     "change_pct": -1.89
   },
@@ -7261,14 +7261,14 @@
   {
     "code": "588520",
     "name": "科创增强ETF永赢",
-    "market_cap": 18761736.0,
+    "market_cap": 24553736.0,
     "volume": 38393.0,
     "change_pct": -1.9
   },
   {
     "code": "588900",
     "name": "科创100ETF南方",
-    "market_cap": 604283329.0,
+    "market_cap": 588038329.0,
     "volume": 50867.0,
     "change_pct": -1.9
   },
@@ -7282,7 +7282,7 @@
   {
     "code": "561160",
     "name": "电池ETF富国",
-    "market_cap": 2433232137.0,
+    "market_cap": 2406892137.0,
     "volume": 1005207.0,
     "change_pct": -1.9
   },
@@ -7296,7 +7296,7 @@
   {
     "code": "588550",
     "name": "科创综指增强ETF易方达",
-    "market_cap": 91074310.0,
+    "market_cap": 79562310.0,
     "volume": 12459.0,
     "change_pct": -1.91
   },
@@ -7338,7 +7338,7 @@
   {
     "code": "159147",
     "name": "电池ETF南方",
-    "market_cap": 2341042972.0,
+    "market_cap": 2397819472.0,
     "volume": 746958.0,
     "change_pct": -1.92
   },
@@ -7380,7 +7380,7 @@
   {
     "code": "588030",
     "name": "科创100ETF博时",
-    "market_cap": 5042838297.0,
+    "market_cap": 4701654297.0,
     "volume": 1202668.0,
     "change_pct": -1.93
   },
@@ -7394,7 +7394,7 @@
   {
     "code": "560180",
     "name": "沪深300ESGETF南方",
-    "market_cap": 19035660.0,
+    "market_cap": 15985660.0,
     "volume": 32686.0,
     "change_pct": -1.93
   },
@@ -7408,7 +7408,7 @@
   {
     "code": "159583",
     "name": "通信ETF富国",
-    "market_cap": 2483368005.0,
+    "market_cap": 2613388005.0,
     "volume": 3652287.0,
     "change_pct": -1.94
   },
@@ -7499,14 +7499,14 @@
   {
     "code": "588120",
     "name": "科创100ETF国泰",
-    "market_cap": 1058749893.0,
+    "market_cap": 935308893.0,
     "volume": 425408.0,
     "change_pct": -1.97
   },
   {
     "code": "159562",
     "name": "黄金股ETF华夏",
-    "market_cap": 5021762936.0,
+    "market_cap": 4821378936.0,
     "volume": 654549.0,
     "change_pct": -1.98
   },
@@ -7520,7 +7520,7 @@
   {
     "code": "588010",
     "name": "科创新材料ETF博时",
-    "market_cap": 230929560.0,
+    "market_cap": 245154560.0,
     "volume": 431330.0,
     "change_pct": -1.98
   },
@@ -7534,7 +7534,7 @@
   {
     "code": "563350",
     "name": "A50ETF华泰柏瑞",
-    "market_cap": 265976568.0,
+    "market_cap": 274556568.0,
     "volume": 240550.0,
     "change_pct": -1.99
   },
@@ -7569,42 +7569,42 @@
   {
     "code": "159029",
     "name": "有色ETF广发",
-    "market_cap": 296118134.0,
+    "market_cap": 292418134.0,
     "volume": 189159.0,
     "change_pct": -2.01
   },
   {
     "code": "159592",
     "name": "A50ETF银华",
-    "market_cap": 947733783.0,
+    "market_cap": 950463783.0,
     "volume": 166950.0,
     "change_pct": -2.01
   },
   {
     "code": "588880",
     "name": "科创100ETF华泰柏瑞",
-    "market_cap": 178325056.0,
+    "market_cap": 173099056.0,
     "volume": 44923.0,
     "change_pct": -2.02
   },
   {
     "code": "561910",
     "name": "电池ETF招商",
-    "market_cap": 4145943991.0,
+    "market_cap": 4111896935.0,
     "volume": 2225082.0,
     "change_pct": -2.02
   },
   {
     "code": "159627",
     "name": "A100ETF华夏",
-    "market_cap": 20573932.0,
+    "market_cap": 23295932.0,
     "volume": 60587.0,
     "change_pct": -2.02
   },
   {
     "code": "588960",
     "name": "科创新能源ETF富国",
-    "market_cap": 229780629.0,
+    "market_cap": 220295629.0,
     "volume": 243374.0,
     "change_pct": -2.02
   },
@@ -7625,7 +7625,7 @@
   {
     "code": "562890",
     "name": "A50ETF嘉实",
-    "market_cap": 291835196.0,
+    "market_cap": 289741196.0,
     "volume": 139438.0,
     "change_pct": -2.04
   },
@@ -7681,7 +7681,7 @@
   {
     "code": "561790",
     "name": "央企能源ETF博时",
-    "market_cap": 81522918.0,
+    "market_cap": 80726718.0,
     "volume": 11887.0,
     "change_pct": -2.07
   },
@@ -7702,7 +7702,7 @@
   {
     "code": "588800",
     "name": "科创100ETF华夏",
-    "market_cap": 2557675256.0,
+    "market_cap": 2479105256.0,
     "volume": 1655633.0,
     "change_pct": -2.08
   },
@@ -7730,7 +7730,7 @@
   {
     "code": "159610",
     "name": "中证500增强ETF景顺",
-    "market_cap": 175565918.0,
+    "market_cap": 173031918.0,
     "volume": 105450.0,
     "change_pct": -2.09
   },
@@ -7744,14 +7744,14 @@
   {
     "code": "588830",
     "name": "科创新能源ETF鹏华",
-    "market_cap": 944018833.0,
+    "market_cap": 921713833.0,
     "volume": 544355.0,
     "change_pct": -2.11
   },
   {
     "code": "588220",
     "name": "科创100ETF鹏华",
-    "market_cap": 5902509301.0,
+    "market_cap": 5241516801.0,
     "volume": 2340189.0,
     "change_pct": -2.11
   },
@@ -7772,7 +7772,7 @@
   {
     "code": "159171",
     "name": "工业有色ETF博时",
-    "market_cap": 195256802.0,
+    "market_cap": 194427802.0,
     "volume": 63448.0,
     "change_pct": -2.13
   },
@@ -7807,7 +7807,7 @@
   {
     "code": "563210",
     "name": "专精特新ETF富国",
-    "market_cap": 205254231.0,
+    "market_cap": 184324231.0,
     "volume": 76484.0,
     "change_pct": -2.15
   },
@@ -7821,7 +7821,7 @@
   {
     "code": "589960",
     "name": "科创新能源ETF易方达",
-    "market_cap": 142808640.0,
+    "market_cap": 149048640.0,
     "volume": 459562.0,
     "change_pct": -2.16
   },
@@ -7835,7 +7835,7 @@
   {
     "code": "589900",
     "name": "科创综指ETF博时",
-    "market_cap": 282948641.0,
+    "market_cap": 291083641.0,
     "volume": 135696.0,
     "change_pct": -2.16
   },
@@ -7849,14 +7849,14 @@
   {
     "code": "563090",
     "name": "上证50增强ETF易方达",
-    "market_cap": 62967968.0,
+    "market_cap": 64283968.0,
     "volume": 34397.0,
     "change_pct": -2.16
   },
   {
     "code": "560470",
     "name": "有色ETF易方达",
-    "market_cap": 215459360.0,
+    "market_cap": 219979360.0,
     "volume": 96495.0,
     "change_pct": -2.16
   },
@@ -7891,7 +7891,7 @@
   {
     "code": "589800",
     "name": "科创综指ETF易方达",
-    "market_cap": 1610988850.0,
+    "market_cap": 1585004850.0,
     "volume": 667998.0,
     "change_pct": -2.17
   },
@@ -7919,7 +7919,7 @@
   {
     "code": "512370",
     "name": "A500增强ETF华夏",
-    "market_cap": 464575366.0,
+    "market_cap": 471847366.0,
     "volume": 26487.0,
     "change_pct": -2.18
   },
@@ -7947,7 +7947,7 @@
   {
     "code": "512400",
     "name": "有色金属ETF南方",
-    "market_cap": 25393422376.0,
+    "market_cap": 25279788253.0,
     "volume": 4577961.0,
     "change_pct": -2.23
   },
@@ -7975,7 +7975,7 @@
   {
     "code": "589000",
     "name": "科创综指ETF华夏",
-    "market_cap": 1313019633.0,
+    "market_cap": 1338907633.0,
     "volume": 690750.0,
     "change_pct": -2.24
   },
@@ -8017,7 +8017,7 @@
   {
     "code": "589080",
     "name": "科创综指ETF汇添富",
-    "market_cap": 222278210.0,
+    "market_cap": 230328210.0,
     "volume": 218154.0,
     "change_pct": -2.25
   },
@@ -8031,7 +8031,7 @@
   {
     "code": "512090",
     "name": "MSCIA股ETF易方达",
-    "market_cap": 629401154.0,
+    "market_cap": 621269154.0,
     "volume": 667620.0,
     "change_pct": -2.26
   },
@@ -8059,14 +8059,14 @@
   {
     "code": "589660",
     "name": "科创综指ETF南方",
-    "market_cap": 426555430.0,
+    "market_cap": 420031430.0,
     "volume": 259567.0,
     "change_pct": -2.28
   },
   {
     "code": "513000",
     "name": "日经225ETF易方达",
-    "market_cap": 2249187587.0,
+    "market_cap": 2250344087.0,
     "volume": 1033812.0,
     "change_pct": -2.28
   },
@@ -8094,14 +8094,14 @@
   {
     "code": "563000",
     "name": "中国A50ETF易方达",
-    "market_cap": 1984801514.0,
+    "market_cap": 1959039014.0,
     "volume": 249550.0,
     "change_pct": -2.3
   },
   {
     "code": "589880",
     "name": "科创综指ETF建信",
-    "market_cap": 612173556.0,
+    "market_cap": 692723556.0,
     "volume": 261890.0,
     "change_pct": -2.3
   },
@@ -8115,7 +8115,7 @@
   {
     "code": "560560",
     "name": "碳中和ETF泰康",
-    "market_cap": 52722856.0,
+    "market_cap": 53484856.0,
     "volume": 5391.0,
     "change_pct": -2.31
   },
@@ -8171,7 +8171,7 @@
   {
     "code": "589680",
     "name": "科创综指ETF鹏华",
-    "market_cap": 1417590814.0,
+    "market_cap": 1441350814.0,
     "volume": 929746.0,
     "change_pct": -2.34
   },
@@ -8185,7 +8185,7 @@
   {
     "code": "560050",
     "name": "中国A50ETF汇添富",
-    "market_cap": 2678701397.0,
+    "market_cap": 2687116397.0,
     "volume": 684193.0,
     "change_pct": -2.35
   },
@@ -8206,7 +8206,7 @@
   {
     "code": "560290",
     "name": "有色ETF景顺",
-    "market_cap": 208150938.0,
+    "market_cap": 208977938.0,
     "volume": 69370.0,
     "change_pct": -2.36
   },
@@ -8241,7 +8241,7 @@
   {
     "code": "159123",
     "name": "光伏ETF嘉实",
-    "market_cap": 471707820.0,
+    "market_cap": 477217820.0,
     "volume": 115012.0,
     "change_pct": -2.39
   },
@@ -8255,14 +8255,14 @@
   {
     "code": "512580",
     "name": "环保ETF广发",
-    "market_cap": 808979431.0,
+    "market_cap": 812207431.0,
     "volume": 130893.0,
     "change_pct": -2.39
   },
   {
     "code": "159168",
     "name": "有色ETF富国",
-    "market_cap": 244664640.0,
+    "market_cap": 237480644.0,
     "volume": 298012.0,
     "change_pct": -2.39
   },
@@ -8276,21 +8276,21 @@
   {
     "code": "159162",
     "name": "工业有色ETF鹏华",
-    "market_cap": 405976684.0,
+    "market_cap": 400858684.0,
     "volume": 193878.0,
     "change_pct": -2.4
   },
   {
     "code": "560310",
     "name": "光伏ETF博时",
-    "market_cap": 175146192.0,
+    "market_cap": 173274192.0,
     "volume": 82263.0,
     "change_pct": -2.4
   },
   {
     "code": "159601",
     "name": "A50ETF华夏",
-    "market_cap": 1610760223.0,
+    "market_cap": 1569300623.0,
     "volume": 706962.0,
     "change_pct": -2.4
   },
@@ -8311,7 +8311,7 @@
   {
     "code": "159609",
     "name": "光伏ETF浦银",
-    "market_cap": 181441562.0,
+    "market_cap": 187491562.0,
     "volume": 263880.0,
     "change_pct": -2.42
   },
@@ -8360,7 +8360,7 @@
   {
     "code": "515220",
     "name": "煤炭ETF国泰",
-    "market_cap": 14882804225.0,
+    "market_cap": 15844656948.0,
     "volume": 11993638.0,
     "change_pct": -2.45
   },
@@ -8388,7 +8388,7 @@
   {
     "code": "560860",
     "name": "工业有色ETF万家",
-    "market_cap": 9634140443.0,
+    "market_cap": 9202185549.0,
     "volume": 2336347.0,
     "change_pct": -2.47
   },
@@ -8409,7 +8409,7 @@
   {
     "code": "159602",
     "name": "中国A50ETF南方",
-    "market_cap": 458613781.0,
+    "market_cap": 467421781.0,
     "volume": 153001.0,
     "change_pct": -2.48
   },
@@ -8430,7 +8430,7 @@
   {
     "code": "560490",
     "name": "工业有色ETF华泰柏瑞",
-    "market_cap": 150872806.0,
+    "market_cap": 175447806.0,
     "volume": 226796.0,
     "change_pct": -2.48
   },
@@ -8444,14 +8444,14 @@
   {
     "code": "159157",
     "name": "有色金属ETF天弘",
-    "market_cap": 7635388017.0,
+    "market_cap": 7600908017.0,
     "volume": 2116772.0,
     "change_pct": -2.49
   },
   {
     "code": "560980",
     "name": "光伏龙头ETF广发",
-    "market_cap": 391430996.0,
+    "market_cap": 392657996.0,
     "volume": 324152.0,
     "change_pct": -2.5
   },
@@ -8479,7 +8479,7 @@
   {
     "code": "589380",
     "name": "科创人工智能ETF富国",
-    "market_cap": 162100714.0,
+    "market_cap": 155724714.0,
     "volume": 43444.0,
     "change_pct": -2.51
   },
@@ -8493,7 +8493,7 @@
   {
     "code": "561330",
     "name": "矿业ETF国泰",
-    "market_cap": 1854150073.0,
+    "market_cap": 1848366073.0,
     "volume": 310555.0,
     "change_pct": -2.53
   },
@@ -8521,14 +8521,14 @@
   {
     "code": "589300",
     "name": "科创综指ETF嘉实",
-    "market_cap": 87661860.0,
+    "market_cap": 80589860.0,
     "volume": 23693.0,
     "change_pct": -2.54
   },
   {
     "code": "512940",
     "name": "有色ETF华安",
-    "market_cap": 1726085732.0,
+    "market_cap": 1735380732.0,
     "volume": 707626.0,
     "change_pct": -2.54
   },
@@ -8549,7 +8549,7 @@
   {
     "code": "562030",
     "name": "信创ETF华宝",
-    "market_cap": 83290063.0,
+    "market_cap": 80620063.0,
     "volume": 121620.0,
     "change_pct": -2.55
   },
@@ -8584,14 +8584,14 @@
   {
     "code": "561220",
     "name": "数字经济ETF工银",
-    "market_cap": 67325301.0,
+    "market_cap": 64599801.0,
     "volume": 32077.0,
     "change_pct": -2.57
   },
   {
     "code": "159032",
     "name": "工业有色ETF易方达",
-    "market_cap": 248561817.0,
+    "market_cap": 243095812.0,
     "volume": 164525.0,
     "change_pct": -2.57
   },
@@ -8626,7 +8626,7 @@
   {
     "code": "560230",
     "name": "光伏ETF富国",
-    "market_cap": 67647549.0,
+    "market_cap": 69529549.0,
     "volume": 99640.0,
     "change_pct": -2.59
   },
@@ -8654,7 +8654,7 @@
   {
     "code": "589110",
     "name": "科创人工智能ETF国泰",
-    "market_cap": 638798702.0,
+    "market_cap": 617000702.0,
     "volume": 133414.0,
     "change_pct": -2.63
   },
@@ -8675,7 +8675,7 @@
   {
     "code": "588930",
     "name": "科创人工智能ETF银华",
-    "market_cap": 924935080.0,
+    "market_cap": 903887080.0,
     "volume": 266247.0,
     "change_pct": -2.66
   },
@@ -8710,14 +8710,14 @@
   {
     "code": "562970",
     "name": "光伏ETF易方达",
-    "market_cap": 518169048.0,
+    "market_cap": 504958048.0,
     "volume": 253329.0,
     "change_pct": -2.67
   },
   {
     "code": "513520",
     "name": "日经ETF华夏",
-    "market_cap": 2397371688.0,
+    "market_cap": 2398516688.0,
     "volume": 1836823.0,
     "change_pct": -2.68
   },
@@ -8738,7 +8738,7 @@
   {
     "code": "588730",
     "name": "科创人工智能ETF易方达",
-    "market_cap": 1173570468.0,
+    "market_cap": 1152003468.0,
     "volume": 819124.0,
     "change_pct": -2.7
   },
@@ -8752,7 +8752,7 @@
   {
     "code": "589520",
     "name": "科创人工智能ETF华宝",
-    "market_cap": 517975820.0,
+    "market_cap": 487510820.0,
     "volume": 448547.0,
     "change_pct": -2.73
   },
@@ -8773,14 +8773,14 @@
   {
     "code": "562570",
     "name": "信创ETF华夏",
-    "market_cap": 477589907.0,
+    "market_cap": 463429907.0,
     "volume": 215628.0,
     "change_pct": -2.75
   },
   {
     "code": "589090",
     "name": "科创AIETF鹏华",
-    "market_cap": 220948338.0,
+    "market_cap": 217953338.0,
     "volume": 44478.0,
     "change_pct": -2.76
   },
@@ -8815,7 +8815,7 @@
   {
     "code": "589560",
     "name": "科创人工智能ETF汇添富",
-    "market_cap": 282031625.0,
+    "market_cap": 278806625.0,
     "volume": 126792.0,
     "change_pct": -2.8
   },
@@ -8843,14 +8843,14 @@
   {
     "code": "588790",
     "name": "科创AIETF博时",
-    "market_cap": 2925203680.0,
+    "market_cap": 2790953680.0,
     "volume": 4064168.0,
     "change_pct": -2.82
   },
   {
     "code": "589010",
     "name": "科创人工智能ETF华夏",
-    "market_cap": 1651280539.0,
+    "market_cap": 1580090539.0,
     "volume": 709614.0,
     "change_pct": -2.83
   },
@@ -8906,7 +8906,7 @@
   {
     "code": "589230",
     "name": "科创人工智能ETF南方",
-    "market_cap": 250279304.0,
+    "market_cap": 245439304.0,
     "volume": 285964.0,
     "change_pct": -2.91
   },
@@ -8934,7 +8934,7 @@
   {
     "code": "560660",
     "name": "云计算50ETF新华",
-    "market_cap": 162078700.0,
+    "market_cap": 168978700.0,
     "volume": 117230.0,
     "change_pct": -2.95
   },
@@ -8962,7 +8962,7 @@
   {
     "code": "560850",
     "name": "信创ETF汇添富",
-    "market_cap": 114603568.0,
+    "market_cap": 113191568.0,
     "volume": 61127.0,
     "change_pct": -2.96
   },
@@ -8983,14 +8983,14 @@
   {
     "code": "588760",
     "name": "科创人工智能ETF广发",
-    "market_cap": 1952302668.0,
+    "market_cap": 1842781668.0,
     "volume": 2718685.0,
     "change_pct": -2.97
   },
   {
     "code": "513880",
     "name": "日经225ETF华安",
-    "market_cap": 2721327410.0,
+    "market_cap": 2722403910.0,
     "volume": 1680181.0,
     "change_pct": -2.97
   },
@@ -9032,7 +9032,7 @@
   {
     "code": "560780",
     "name": "半导体设备ETF广发",
-    "market_cap": 4449825864.0,
+    "market_cap": 5231571864.0,
     "volume": 1473179.0,
     "change_pct": -3.03
   },
@@ -9060,21 +9060,21 @@
   {
     "code": "159558",
     "name": "半导体设备ETF易方达",
-    "market_cap": 8463459213.0,
+    "market_cap": 7725873213.0,
     "volume": 2332552.0,
     "change_pct": -3.05
   },
   {
     "code": "560190",
     "name": "公用事业ETF鹏华",
-    "market_cap": 22095076.0,
+    "market_cap": 24880076.0,
     "volume": 17380.0,
     "change_pct": -3.05
   },
   {
     "code": "588020",
     "name": "科创成长ETF易方达",
-    "market_cap": 1197111124.0,
+    "market_cap": 1126339124.0,
     "volume": 570943.0,
     "change_pct": -3.06
   },
@@ -9088,7 +9088,7 @@
   {
     "code": "562590",
     "name": "半导体设备ETF华夏",
-    "market_cap": 3593244040.0,
+    "market_cap": 3473864040.0,
     "volume": 1263782.0,
     "change_pct": -3.09
   },
@@ -9123,14 +9123,14 @@
   {
     "code": "159178",
     "name": "消费电子ETF汇添富",
-    "market_cap": 83527892.0,
+    "market_cap": 87136892.0,
     "volume": 114780.0,
     "change_pct": -3.14
   },
   {
     "code": "515200",
     "name": "创新100ETF申万菱信",
-    "market_cap": 110646162.0,
+    "market_cap": 108008162.0,
     "volume": 21432.0,
     "change_pct": -3.19
   },
@@ -9144,7 +9144,7 @@
   {
     "code": "159150",
     "name": "深证50ETF易方达",
-    "market_cap": 157405843.0,
+    "market_cap": 155656843.0,
     "volume": 91984.0,
     "change_pct": -3.21
   },
@@ -9165,7 +9165,7 @@
   {
     "code": "159566",
     "name": "储能电池ETF易方达",
-    "market_cap": 7048751069.0,
+    "market_cap": 6502445069.0,
     "volume": 2269413.0,
     "change_pct": -3.26
   },
@@ -9207,7 +9207,7 @@
   {
     "code": "560800",
     "name": "数字经济ETF鹏扬",
-    "market_cap": 364437374.0,
+    "market_cap": 393213374.0,
     "volume": 89048.0,
     "change_pct": -3.31
   },
@@ -9221,7 +9221,7 @@
   {
     "code": "159159",
     "name": "公用事业ETF国投瑞银",
-    "market_cap": 138727670.0,
+    "market_cap": 139834670.0,
     "volume": 72647.0,
     "change_pct": -3.32
   },
@@ -9235,7 +9235,7 @@
   {
     "code": "563560",
     "name": "科技成长ETF兴业",
-    "market_cap": 82772162.0,
+    "market_cap": 77580162.0,
     "volume": 77389.0,
     "change_pct": -3.35
   },
@@ -9284,7 +9284,7 @@
   {
     "code": "560620",
     "name": "公用事业ETF万家",
-    "market_cap": 28049148.0,
+    "market_cap": 28571148.0,
     "volume": 6261.0,
     "change_pct": -3.42
   },
@@ -9319,21 +9319,21 @@
   {
     "code": "512930",
     "name": "AI人工智能ETF平安",
-    "market_cap": 2926346822.0,
+    "market_cap": 2901290822.0,
     "volume": 3045709.0,
     "change_pct": -3.47
   },
   {
     "code": "515070",
     "name": "人工智能ETF华夏",
-    "market_cap": 9538853205.0,
+    "market_cap": 9505413705.0,
     "volume": 1055604.0,
     "change_pct": -3.47
   },
   {
     "code": "588320",
     "name": "双创50增强ETF广发",
-    "market_cap": 71470077.0,
+    "market_cap": 77455077.0,
     "volume": 81823.0,
     "change_pct": -3.48
   },
@@ -9347,7 +9347,7 @@
   {
     "code": "589150",
     "name": "科创50ETF平安",
-    "market_cap": 82003635.0,
+    "market_cap": 84435635.0,
     "volume": 77409.0,
     "change_pct": -3.49
   },
@@ -9417,7 +9417,7 @@
   {
     "code": "159625",
     "name": "绿色电力ETF嘉实",
-    "market_cap": 3077846625.0,
+    "market_cap": 3041072225.0,
     "volume": 555042.0,
     "change_pct": -3.57
   },
@@ -9438,7 +9438,7 @@
   {
     "code": "588710",
     "name": "科创半导体设备ETF华泰柏瑞",
-    "market_cap": 2271175290.0,
+    "market_cap": 2025587290.0,
     "volume": 1494467.0,
     "change_pct": -3.58
   },
@@ -9459,7 +9459,7 @@
   {
     "code": "589020",
     "name": "科创半导体设备ETF鹏华",
-    "market_cap": 979929037.0,
+    "market_cap": 870225037.0,
     "volume": 1404423.0,
     "change_pct": -3.59
   },
@@ -9473,7 +9473,7 @@
   {
     "code": "159597",
     "name": "创业板成长ETF易方达",
-    "market_cap": 638808566.0,
+    "market_cap": 650400566.0,
     "volume": 90888.0,
     "change_pct": -3.6
   },
@@ -9515,7 +9515,7 @@
   {
     "code": "588170",
     "name": "科创半导体ETF华夏",
-    "market_cap": 10522945001.0,
+    "market_cap": 9218833195.0,
     "volume": 6236487.0,
     "change_pct": -3.66
   },
@@ -9529,14 +9529,14 @@
   {
     "code": "515050",
     "name": "通信ETF华夏",
-    "market_cap": 15626062386.0,
+    "market_cap": 15729634386.0,
     "volume": 14292936.0,
     "change_pct": -3.67
   },
   {
     "code": "561980",
     "name": "半导体设备ETF招商",
-    "market_cap": 3649691760.0,
+    "market_cap": 3628579760.0,
     "volume": 998385.0,
     "change_pct": -3.67
   },
@@ -9550,28 +9550,28 @@
   {
     "code": "588480",
     "name": "科创创业人工智能ETF中金",
-    "market_cap": 287972763.0,
+    "market_cap": 251432755.0,
     "volume": 332521.0,
     "change_pct": -3.7
   },
   {
     "code": "588060",
     "name": "科创50ETF广发",
-    "market_cap": 5472301062.0,
+    "market_cap": 5331853062.0,
     "volume": 3156973.0,
     "change_pct": -3.71
   },
   {
     "code": "588720",
     "name": "科创50ETF中银",
-    "market_cap": 164241400.0,
+    "market_cap": 155796400.0,
     "volume": 63988.0,
     "change_pct": -3.71
   },
   {
     "code": "588870",
     "name": "科创50ETF汇添富",
-    "market_cap": 467336192.0,
+    "market_cap": 452072192.0,
     "volume": 322830.0,
     "change_pct": -3.75
   },
@@ -9592,14 +9592,14 @@
   {
     "code": "560460",
     "name": "电力ETF平安",
-    "market_cap": 307057748.0,
+    "market_cap": 340207748.0,
     "volume": 367525.0,
     "change_pct": -3.77
   },
   {
     "code": "588000",
     "name": "科创50ETF华夏",
-    "market_cap": 59728092192.0,
+    "market_cap": 58141392192.0,
     "volume": 30367655.0,
     "change_pct": -3.77
   },
@@ -9613,7 +9613,7 @@
   {
     "code": "560580",
     "name": "电力ETF南方",
-    "market_cap": 544942751.0,
+    "market_cap": 460146751.0,
     "volume": 248749.0,
     "change_pct": -3.78
   },
@@ -9641,14 +9641,14 @@
   {
     "code": "561700",
     "name": "电力ETF博时",
-    "market_cap": 468623491.0,
+    "market_cap": 471728491.0,
     "volume": 216533.0,
     "change_pct": -3.8
   },
   {
     "code": "159582",
     "name": "半导体ETF博时",
-    "market_cap": 522673295.0,
+    "market_cap": 448063295.0,
     "volume": 227365.0,
     "change_pct": -3.8
   },
@@ -9669,7 +9669,7 @@
   {
     "code": "588180",
     "name": "科创50ETF国联安",
-    "market_cap": 1030857553.0,
+    "market_cap": 996743053.0,
     "volume": 244334.0,
     "change_pct": -3.82
   },
@@ -9697,49 +9697,49 @@
   {
     "code": "588840",
     "name": "科创50ETF万家",
-    "market_cap": 52963092.0,
+    "market_cap": 48322092.0,
     "volume": 24331.0,
     "change_pct": -3.85
   },
   {
     "code": "526000",
     "name": "港股通信息技术ETF华夏",
-    "market_cap": 118484600.0,
+    "market_cap": 88584600.0,
     "volume": 2131822.0,
     "change_pct": -3.85
   },
   {
     "code": "560830",
     "name": "电力ETF华夏",
-    "market_cap": 711281369.0,
+    "market_cap": 790253869.0,
     "volume": 1332257.0,
     "change_pct": -3.87
   },
   {
     "code": "588050",
     "name": "科创50ETF工银",
-    "market_cap": 7821395444.0,
+    "market_cap": 7567723444.0,
     "volume": 1435903.0,
     "change_pct": -3.87
   },
   {
     "code": "561560",
     "name": "电力ETF华泰柏瑞",
-    "market_cap": 3359649866.0,
+    "market_cap": 3372537866.0,
     "volume": 1441357.0,
     "change_pct": -3.89
   },
   {
     "code": "588080",
     "name": "科创50ETF易方达",
-    "market_cap": 34410778160.0,
+    "market_cap": 33540208378.0,
     "volume": 9621707.0,
     "change_pct": -3.89
   },
   {
     "code": "588280",
     "name": "科创50ETF华安",
-    "market_cap": 318529926.0,
+    "market_cap": 313705926.0,
     "volume": 161238.0,
     "change_pct": -3.9
   },
@@ -9753,7 +9753,7 @@
   {
     "code": "159158",
     "name": "电力ETF景顺",
-    "market_cap": 1211783545.0,
+    "market_cap": 1210650545.0,
     "volume": 598186.0,
     "change_pct": -3.9
   },
@@ -9767,49 +9767,49 @@
   {
     "code": "562950",
     "name": "消费电子ETF易方达",
-    "market_cap": 1954303973.0,
+    "market_cap": 1785868973.0,
     "volume": 1025052.0,
     "change_pct": -3.9
   },
   {
     "code": "560450",
     "name": "电力ETF天弘",
-    "market_cap": 258225002.0,
+    "market_cap": 275153002.0,
     "volume": 430722.0,
     "change_pct": -3.91
   },
   {
     "code": "561600",
     "name": "消费电子ETF平安",
-    "market_cap": 213908156.0,
+    "market_cap": 224072156.0,
     "volume": 202153.0,
     "change_pct": -3.91
   },
   {
     "code": "588260",
     "name": "科创信息ETF华安",
-    "market_cap": 126951792.0,
+    "market_cap": 119295792.0,
     "volume": 18405.0,
     "change_pct": -3.92
   },
   {
     "code": "588470",
     "name": "科创创业人工智能ETF华安",
-    "market_cap": 546171193.0,
+    "market_cap": 500331193.0,
     "volume": 496889.0,
     "change_pct": -3.92
   },
   {
     "code": "560270",
     "name": "电力ETF工银",
-    "market_cap": 133358364.0,
+    "market_cap": 140890364.0,
     "volume": 237079.0,
     "change_pct": -3.93
   },
   {
     "code": "588950",
     "name": "科创50ETF景顺",
-    "market_cap": 385144489.0,
+    "market_cap": 374722489.0,
     "volume": 219707.0,
     "change_pct": -3.93
   },
@@ -9823,63 +9823,63 @@
   {
     "code": "562960",
     "name": "绿色电力ETF易方达",
-    "market_cap": 1486988227.0,
+    "market_cap": 1810668727.0,
     "volume": 832277.0,
     "change_pct": -3.96
   },
   {
     "code": "561100",
     "name": "消费电子ETF富国",
-    "market_cap": 871745276.0,
+    "market_cap": 860681276.0,
     "volume": 518479.0,
     "change_pct": -3.96
   },
   {
     "code": "512140",
     "name": "电力ETF华安",
-    "market_cap": 146832009.0,
+    "market_cap": 148914009.0,
     "volume": 369515.0,
     "change_pct": -3.97
   },
   {
     "code": "588090",
     "name": "科创50ETF华泰柏瑞",
-    "market_cap": 3303214852.0,
+    "market_cap": 3200314852.0,
     "volume": 1355516.0,
     "change_pct": -3.98
   },
   {
     "code": "588770",
     "name": "科创信息ETF摩根",
-    "market_cap": 578947419.0,
+    "market_cap": 562225419.0,
     "volume": 164741.0,
     "change_pct": -3.98
   },
   {
     "code": "588420",
     "name": "科创创业人工智能ETF摩根",
-    "market_cap": 212509504.0,
+    "market_cap": 199029504.0,
     "volume": 210169.0,
     "change_pct": -3.99
   },
   {
     "code": "588460",
     "name": "科创50增强ETF鹏华",
-    "market_cap": 1298850158.0,
+    "market_cap": 1320343658.0,
     "volume": 436558.0,
     "change_pct": -3.99
   },
   {
     "code": "588150",
     "name": "科创50ETF南方",
-    "market_cap": 349494045.0,
+    "market_cap": 332988045.0,
     "volume": 291330.0,
     "change_pct": -3.99
   },
   {
     "code": "589850",
     "name": "科创50ETF东财",
-    "market_cap": 592831327.0,
+    "market_cap": 559189327.0,
     "volume": 617090.0,
     "change_pct": -4.01
   },
@@ -9893,7 +9893,7 @@
   {
     "code": "159539",
     "name": "信创ETF广发",
-    "market_cap": 129039673.0,
+    "market_cap": 113983673.0,
     "volume": 44991.0,
     "change_pct": -4.03
   },
@@ -9907,14 +9907,14 @@
   {
     "code": "588410",
     "name": "科创创业人工智能ETF鹏华",
-    "market_cap": 152434500.0,
+    "market_cap": 133590500.0,
     "volume": 116817.0,
     "change_pct": -4.06
   },
   {
     "code": "159611",
     "name": "电力ETF广发",
-    "market_cap": 9009300273.0,
+    "market_cap": 11288965873.0,
     "volume": 10875418.0,
     "change_pct": -4.07
   },
@@ -9928,7 +9928,7 @@
   {
     "code": "159540",
     "name": "信创ETF易方达",
-    "market_cap": 216192939.0,
+    "market_cap": 200104939.0,
     "volume": 153534.0,
     "change_pct": -4.1
   },
@@ -9949,7 +9949,7 @@
   {
     "code": "159142",
     "name": "科创创业人工智能ETF景顺",
-    "market_cap": 1216701194.0,
+    "market_cap": 1227501194.0,
     "volume": 607977.0,
     "change_pct": -4.12
   },
@@ -9963,35 +9963,35 @@
   {
     "code": "588100",
     "name": "科创信息ETF嘉实",
-    "market_cap": 175788102.0,
+    "market_cap": 157490102.0,
     "volume": 74657.0,
     "change_pct": -4.14
   },
   {
     "code": "561170",
     "name": "绿色电力ETF富国",
-    "market_cap": 850811221.0,
+    "market_cap": 870821721.0,
     "volume": 483283.0,
     "change_pct": -4.16
   },
   {
     "code": "159538",
     "name": "信创ETF富国",
-    "market_cap": 111419867.0,
+    "market_cap": 99953867.0,
     "volume": 49212.0,
     "change_pct": -4.16
   },
   {
     "code": "159140",
     "name": "科创创业人工智能ETF易方达",
-    "market_cap": 480421249.0,
+    "market_cap": 488851249.0,
     "volume": 547189.0,
     "change_pct": -4.16
   },
   {
     "code": "560480",
     "name": "电力ETF招商",
-    "market_cap": 138211242.0,
+    "market_cap": 141253242.0,
     "volume": 272628.0,
     "change_pct": -4.16
   },
@@ -10005,14 +10005,14 @@
   {
     "code": "562550",
     "name": "绿电ETF华夏",
-    "market_cap": 2364938795.0,
+    "market_cap": 2401561295.0,
     "volume": 2574319.0,
     "change_pct": -4.18
   },
   {
     "code": "159537",
     "name": "信创ETF国泰",
-    "market_cap": 105776586.0,
+    "market_cap": 101974586.0,
     "volume": 41882.0,
     "change_pct": -4.18
   },
@@ -10026,21 +10026,21 @@
   {
     "code": "588430",
     "name": "科创创业人工智能ETF工银",
-    "market_cap": 151548376.0,
+    "market_cap": 143316376.0,
     "volume": 152013.0,
     "change_pct": -4.19
   },
   {
     "code": "159146",
     "name": "电力ETF华宝",
-    "market_cap": 966359508.0,
+    "market_cap": 963507008.0,
     "volume": 590776.0,
     "change_pct": -4.2
   },
   {
     "code": "588510",
     "name": "科创创业人工智能ETF华夏",
-    "market_cap": 378182483.0,
+    "market_cap": 324590483.0,
     "volume": 458886.0,
     "change_pct": -4.2
   },
@@ -10054,7 +10054,7 @@
   {
     "code": "515000",
     "name": "科技ETF华宝",
-    "market_cap": 3047839428.0,
+    "market_cap": 3072679428.0,
     "volume": 1694571.0,
     "change_pct": -4.23
   },
@@ -10075,7 +10075,7 @@
   {
     "code": "588390",
     "name": "科创创业ETF博时",
-    "market_cap": 204962375.0,
+    "market_cap": 209063375.0,
     "volume": 87656.0,
     "change_pct": -4.27
   },
@@ -10089,21 +10089,21 @@
   {
     "code": "512220",
     "name": "TMTETF景顺",
-    "market_cap": 738855864.0,
+    "market_cap": 745065864.0,
     "volume": 89959.0,
     "change_pct": -4.32
   },
   {
     "code": "159139",
     "name": "科创创业人工智能ETF华泰柏瑞",
-    "market_cap": 203822348.0,
+    "market_cap": 201032348.0,
     "volume": 530547.0,
     "change_pct": -4.32
   },
   {
     "code": "512770",
     "name": "战略新兴ETF华夏",
-    "market_cap": 276623857.0,
+    "market_cap": 280846357.0,
     "volume": 23521.0,
     "change_pct": -4.32
   },
@@ -10124,49 +10124,49 @@
   {
     "code": "588380",
     "name": "科创创业ETF富国",
-    "market_cap": 2840839450.0,
+    "market_cap": 2790724450.0,
     "volume": 893187.0,
     "change_pct": -4.39
   },
   {
     "code": "562350",
     "name": "电力ETF银华",
-    "market_cap": 154020694.0,
+    "market_cap": 157734694.0,
     "volume": 289945.0,
     "change_pct": -4.4
   },
   {
     "code": "589030",
     "name": "科创芯片设计ETF易方达",
-    "market_cap": 372791488.0,
+    "market_cap": 358223488.0,
     "volume": 920744.0,
     "change_pct": -4.41
   },
   {
     "code": "588300",
     "name": "科创创业50ETF招商",
-    "market_cap": 1734401224.0,
+    "market_cap": 1672097224.0,
     "volume": 553711.0,
     "change_pct": -4.42
   },
   {
     "code": "588400",
     "name": "科创创业ETF嘉实",
-    "market_cap": 1551278574.0,
+    "market_cap": 1505450574.0,
     "volume": 328095.0,
     "change_pct": -4.43
   },
   {
     "code": "588310",
     "name": "科创创业ETF方正富邦",
-    "market_cap": 49680450.0,
+    "market_cap": 43171650.0,
     "volume": 34001.0,
     "change_pct": -4.44
   },
   {
     "code": "588360",
     "name": "科创创业ETF国泰",
-    "market_cap": 292043102.0,
+    "market_cap": 284382302.0,
     "volume": 309553.0,
     "change_pct": -4.47
   },
@@ -10180,42 +10180,42 @@
   {
     "code": "588330",
     "name": "双创50ETF华宝",
-    "market_cap": 1153169443.0,
+    "market_cap": 1112337443.0,
     "volume": 825560.0,
     "change_pct": -4.56
   },
   {
     "code": "589170",
     "name": "科创芯片设计ETF鹏华",
-    "market_cap": 121689441.0,
+    "market_cap": 118242441.0,
     "volume": 76712.0,
     "change_pct": -4.57
   },
   {
     "code": "588200",
     "name": "科创芯片ETF嘉实",
-    "market_cap": 45290516152.0,
+    "market_cap": 42905876595.0,
     "volume": 14346454.0,
     "change_pct": -4.58
   },
   {
     "code": "588350",
     "name": "科创创业50ETF鹏扬",
-    "market_cap": 1316172522.0,
+    "market_cap": 1292688522.0,
     "volume": 66837.0,
     "change_pct": -4.58
   },
   {
     "code": "589260",
     "name": "科创芯片设计ETF国泰",
-    "market_cap": 89116012.0,
+    "market_cap": 85135012.0,
     "volume": 117073.0,
     "change_pct": -4.6
   },
   {
     "code": "159153",
     "name": "消费电子ETF鹏华",
-    "market_cap": 97834248.0,
+    "market_cap": 101926248.0,
     "volume": 254187.0,
     "change_pct": -4.62
   },
@@ -10229,70 +10229,70 @@
   {
     "code": "589100",
     "name": "科创芯片ETF国泰",
-    "market_cap": 783262296.0,
+    "market_cap": 730126296.0,
     "volume": 331138.0,
     "change_pct": -4.65
   },
   {
     "code": "512480",
     "name": "半导体ETF国联安",
-    "market_cap": 17403400628.0,
+    "market_cap": 17608318360.0,
     "volume": 7219129.0,
     "change_pct": -4.65
   },
   {
     "code": "588920",
     "name": "科创芯片ETF鹏华",
-    "market_cap": 295031418.0,
+    "market_cap": 272921418.0,
     "volume": 166685.0,
     "change_pct": -4.66
   },
   {
     "code": "589160",
     "name": "科创芯片ETF广发",
-    "market_cap": 257251112.0,
+    "market_cap": 234805112.0,
     "volume": 232981.0,
     "change_pct": -4.66
   },
   {
     "code": "588750",
     "name": "科创芯片ETF汇添富",
-    "market_cap": 5787539628.0,
+    "market_cap": 5214590628.0,
     "volume": 1203490.0,
     "change_pct": -4.68
   },
   {
     "code": "589070",
     "name": "科创芯片设计ETF天弘",
-    "market_cap": 365631443.0,
+    "market_cap": 361079443.0,
     "volume": 1025663.0,
     "change_pct": -4.69
   },
   {
     "code": "588810",
     "name": "科创芯片ETF富国",
-    "market_cap": 1000802124.0,
+    "market_cap": 1037567124.0,
     "volume": 364529.0,
     "change_pct": -4.7
   },
   {
     "code": "589190",
     "name": "科创芯片ETF华宝",
-    "market_cap": 1529570165.0,
+    "market_cap": 1439210165.0,
     "volume": 594127.0,
     "change_pct": -4.71
   },
   {
     "code": "588290",
     "name": "科创芯片ETF华安",
-    "market_cap": 4386375196.0,
+    "market_cap": 4133100196.0,
     "volume": 1822950.0,
     "change_pct": -4.74
   },
   {
     "code": "588780",
     "name": "科创芯片设计ETF国联安",
-    "market_cap": 941297492.0,
+    "market_cap": 874353492.0,
     "volume": 1889046.0,
     "change_pct": -4.74
   },
@@ -10306,42 +10306,42 @@
   {
     "code": "589130",
     "name": "科创芯片ETF易方达",
-    "market_cap": 4041464700.0,
+    "market_cap": 3726149700.0,
     "volume": 1571801.0,
     "change_pct": -4.75
   },
   {
     "code": "589250",
     "name": "科创芯片设计ETF浦银",
-    "market_cap": 83293716.0,
+    "market_cap": 88573716.0,
     "volume": 90825.0,
     "change_pct": -4.76
   },
   {
     "code": "588890",
     "name": "科创芯片ETF南方",
-    "market_cap": 3176764140.0,
+    "market_cap": 3258538140.0,
     "volume": 481598.0,
     "change_pct": -4.77
   },
   {
     "code": "589210",
     "name": "科创芯片设计ETF广发",
-    "market_cap": 75502891.0,
+    "market_cap": 69746891.0,
     "volume": 601106.0,
     "change_pct": -4.83
   },
   {
     "code": "588990",
     "name": "科创芯片ETF博时",
-    "market_cap": 653192968.0,
+    "market_cap": 624440968.0,
     "volume": 226691.0,
     "change_pct": -4.85
   },
   {
     "code": "562820",
     "name": "集成电路ETF嘉实",
-    "market_cap": 296999080.0,
+    "market_cap": 290689080.0,
     "volume": 116026.0,
     "change_pct": -4.88
   },
@@ -10355,14 +10355,14 @@
   {
     "code": "159599",
     "name": "芯片ETF东财",
-    "market_cap": 1585936612.0,
+    "market_cap": 1443673612.0,
     "volume": 702473.0,
     "change_pct": -4.9
   },
   {
     "code": "159560",
     "name": "芯片ETF景顺",
-    "market_cap": 394232102.0,
+    "market_cap": 383760602.0,
     "volume": 136829.0,
     "change_pct": -4.94
   },
@@ -10383,14 +10383,14 @@
   {
     "code": "159603",
     "name": "科创创业ETF天弘",
-    "market_cap": 4165111453.0,
+    "market_cap": 4161233453.0,
     "volume": 116598.0,
     "change_pct": -4.95
   },
   {
     "code": "512760",
     "name": "芯片ETF国泰",
-    "market_cap": 9553661482.0,
+    "market_cap": 9641099338.0,
     "volume": 4992759.0,
     "change_pct": -5.0
   },
@@ -10425,7 +10425,7 @@
   {
     "code": "159546",
     "name": "集成电路ETF国泰",
-    "market_cap": 471612102.0,
+    "market_cap": 400352102.0,
     "volume": 205464.0,
     "change_pct": -5.07
   },
@@ -10439,7 +10439,7 @@
   {
     "code": "513310",
     "name": "中韩半导体ETF华泰柏瑞",
-    "market_cap": 12604702077.0,
+    "market_cap": 12621550077.0,
     "volume": 14829242.0,
     "change_pct": -5.99
   }

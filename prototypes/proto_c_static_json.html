@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 静态对比 · JSON驱动</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f5;color:#333;padding:20px}
+.container{max-width:960px;margin:0 auto}
+h1{font-size:20px;margin-bottom:4px}
+.arch{color:#888;font-size:12px;margin-bottom:16px}
+.arch span{background:#fff3e0;color:#e65100;padding:2px 8px;border-radius:10px;font-size:11px;margin-right:4px}
+select{padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:14px;margin-right:10px;margin-bottom:12px;background:#fff}
+.badge-selected{display:inline-block;padding:4px 12px;background:#d32f2f;color:#fff;border-radius:14px;font-size:12px;margin:4px 4px 4px 0;cursor:pointer}
+.badge-selected::after{content:' ×';opacity:.7}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+th,td{padding:12px 14px;text-align:left;font-size:13px;border-bottom:1px solid #f0f0f0}
+th{background:#fafafa;font-weight:600;color:#555;font-size:12px;position:sticky;top:0}
+td:first-child{font-weight:600;color:#555}
+.red{color:#d32f2f;font-weight:600}
+.green{color:#2e7d32;font-weight:600}
+.blue{color:#1565c0;font-weight:600}
+.best{background:#fff8e1}
+.summary{background:#fafafa;padding:14px;border-radius:6px;margin-bottom:16px;font-size:13px;line-height:1.8}
+.summary strong{color:#d32f2f}
+.note{font-size:11px;color:#888;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📋 ETF 静态对比 <span class="arch">JSON驱动</span></h1>
+<div class="arch">
+  <span>预计算JSON</span> <span>零API调用</span> <span>秒级渲染</span>
+  架构：预建ETF数据JSON(一次生成) → 静态HTML直接读 → 本地对比 | 代码量：~120行
+</div>
+
+<div style="margin-bottom:12px">
+  <span style="font-size:13px;color:#555">已选ETF：</span>
+  <span id="selectedBadges"></span>
+</div>
+
+<select id="etfSelect" onchange="addETF(this.value);this.value='';">
+  <option value="">+ 添加ETF到对比列表</option>
+</select>
+<button onclick="clearAll()" style="padding:8px 16px;background:#eee;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px">清空</button>
+<span style="margin-left:12px;font-size:12px;color:#888" id="dataInfo"></span>
+
+<div id="tableContainer" style="margin-top:12px"></div>
+
+<div class="note">
+  💡 适用场景：已知对比对象的产品页（如消费ETF vs 消费电子ETF）。JSON文件可定期更新，访问速度极快。
+</div>
+</div>
+
+<script>
+// 内嵌示例数据（实际项目从etf_standard_data.json加载）
+const ETFS = [
+  {code:"159928",name:"消费ETF",issuer:"汇添富",scale:110.1,fee:0.60,ret1y:-14.32,sharpe:-1.08,drawdown:-21.35,vol:15.1,holdings:"白酒+乳业+畜牧业"},
+  {code:"515650",name:"消费50ETF",issuer:"富国",scale:34.3,fee:0.60,ret1y:-8.09,sharpe:-0.75,drawdown:-14.22,vol:12.9,holdings:"白酒+家电"},
+  {code:"159732",name:"消费电子ETF",issuer:"华夏",scale:55.1,fee:0.60,ret1y:91.28,sharpe:2.19,drawdown:-18.03,vol:31.1,holdings:"连接器+PCB+芯片"},
+  {code:"562950",name:"消费电子ETF",issuer:"易方达",scale:28.8,fee:0.20,ret1y:107.94,sharpe:2.38,drawdown:-18.19,vol:32.3,holdings:"半导体+代工"},
+  {code:"561100",name:"消费电子ETF",issuer:"富国",scale:16.3,fee:0.60,ret1y:105.03,sharpe:2.29,drawdown:-18.12,vol:32.9,holdings:"半导体+代工"},
+  {code:"510300",name:"沪深300ETF",issuer:"华泰柏瑞",scale:1400,fee:0.50,ret1y:22.5,sharpe:1.45,drawdown:-8.2,vol:18.0,holdings:"金融+消费+科技"},
+  {code:"510050",name:"上证50ETF",issuer:"华夏",scale:800,fee:0.50,ret1y:18.3,sharpe:1.12,drawdown:-9.5,vol:16.0,holdings:"金融+白酒"},
+  {code:"518880",name:"黄金ETF",issuer:"华安",scale:320,fee:0.50,ret1y:45.6,sharpe:2.80,drawdown:-6.5,vol:12.0,holdings:"AU9999黄金"},
+  {code:"159915",name:"创业板ETF",issuer:"易方达",scale:450,fee:0.50,ret1y:35.2,sharpe:1.65,drawdown:-12.3,vol:24.0,holdings:"新能源+医药+科技"},
+  {code:"512880",name:"证券ETF",issuer:"国泰",scale:280,fee:0.50,ret1y:15.8,sharpe:0.85,drawdown:-18.5,vol:28.0,holdings:"券商"},
+  {code:"512480",name:"半导体ETF",issuer:"国联安",scale:180,fee:0.50,ret1y:82.5,sharpe:2.05,drawdown:-22.0,vol:35.0,holdings:"芯片设计+制造+封测"},
+];
+
+let selected = new Set();
+
+function init() {
+  const s = document.getElementById('etfSelect');
+  ETFS.forEach(e => {
+    const o = document.createElement('option');
+    o.value = e.code;
+    o.textContent = `${e.code} ${e.name} (${e.issuer})`;
+    s.appendChild(o);
+  });
+  document.getElementById('dataInfo').textContent = `共 ${ETFS.length} 只ETF（本地JSON，无网络请求）`;
+}
+
+function addETF(code) {
+  if (!code) return;
+  selected.add(code);
+  render();
+}
+
+function removeETF(code) {
+  selected.delete(code);
+  render();
+}
+
+function clearAll() {
+  selected.clear();
+  render();
+}
+
+function render() {
+  // Badges
+  document.getElementById('selectedBadges').innerHTML = [...selected].map(c => {
+    const e = ETFS.find(x => x.code === c);
+    return `<span class="badge-selected" onclick="removeETF('${c}')">${c} ${e?.name||''}</span>`;
+  }).join('');
+
+  if (!selected.size) {
+    document.getElementById('tableContainer').innerHTML = '<p style="color:#999;padding:20px">选择ETF开始对比</p>';
+    return;
+  }
+
+  const etfs = [...selected].map(c => ETFS.find(x => x.code === c)).filter(Boolean);
+  if (!etfs.length) return;
+
+  // 找最优值
+  const maxScale = Math.max(...etfs.map(e=>e.scale));
+  const minFee = Math.min(...etfs.map(e=>e.fee));
+  const maxRet = Math.max(...etfs.map(e=>e.ret1y));
+  const maxSharpe = Math.max(...etfs.map(e=>e.sharpe));
+  const minDrawdown = Math.max(...etfs.map(e=>e.drawdown)); // 回撤是负值，绝对值最小=最大
+
+  let html = '<table><thead><tr>';
+  const fields = [
+    ['code','代码'],['issuer','管理人'],['scale','规模(亿)'],['fee','费率(%)'],
+    ['ret1y','1年收益(%)'],['sharpe','夏普比率'],['drawdown','最大回撤(%)'],
+    ['vol','年化波动(%)'],['holdings','持仓风格']
+  ];
+  fields.forEach(([key,label]) => html += `<th>${label}</th>`);
+  html += '</tr></thead><tbody>';
+
+  etfs.forEach(e => {
+    html += '<tr>';
+    fields.forEach(([key]) => {
+      let val = e[key];
+      let cls = '';
+      if (key === 'scale' && val === maxScale) cls = 'red best';
+      else if (key === 'fee' && val === minFee) cls = 'blue best';
+      else if (key === 'ret1y' && val === maxRet) cls = 'red best';
+      else if (key === 'sharpe' && val === maxSharpe) cls = 'red best';
+      else if (key === 'drawdown' && val === minDrawdown) cls = 'blue best';
+
+      if (key === 'ret1y' && val !== undefined) val = (val > 0 ? '+' : '') + val;
+      if (key === 'sharpe') val = val !== undefined ? val.toFixed(2) : '-';
+      if (key === 'fee') val = val !== undefined ? val.toFixed(2) : '-';
+      if (key === 'drawdown' || key === 'vol') val = val !== undefined ? val.toFixed(1) : '-';
+
+      html += `<td class="${cls}">${val ?? '-'}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  // 图例
+  html += '<div style="font-size:11px;color:#888;margin-top:8px">';
+  html += '<span style="background:#fff8e1;padding:2px 8px;border-radius:4px;margin-right:8px">🟡 高亮=最优值</span>';
+  html += '<span style="color:#d32f2f">红=越高越好</span> · <span style="color:#1565c0">蓝=越低越好</span>';
+  html += '</div>';
+
+  document.getElementById('tableContainer').innerHTML = html;
+}
+
+init();
+</script>
+</body>
+</html>

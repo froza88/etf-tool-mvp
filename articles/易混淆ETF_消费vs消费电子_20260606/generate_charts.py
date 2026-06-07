@@ -23,22 +23,28 @@ C_GRAY = '#E8E8E8'; BG = '#F8F9FA'
 
 # ====== 1) 环形图-规模双列 ======
 def chart1():
-    names1 = ['汇添富\n110亿','富国\n34亿','易方达\n19亿','景顺\n14亿','景顺\n14亿','招商\n7亿','华宝\n7亿','其他\n20只']
+    names1 = ['汇添富 110亿','富国 34亿','易方达 19亿','景顺 14亿','景顺 14亿','招商 7亿','华宝 7亿','其他20只']
     vals1 = [110.1,34.3,18.7,13.8,13.7,7.1,7.1,38.2]
     colors1 = [C_RED,C_RED2,C_RED3,C_RED4,'#FDEDEC','#F9EBEA','#F5EEF8',C_GRAY]
-    names2 = ['华夏\n55亿','易方达\n29亿','富国\n16亿','平安\n4亿','招商\n3亿','其他\n2只']
+    names2 = ['华夏 55亿','易方达 29亿','富国 16亿','平安 4亿','招商 3亿','其他2只']
     vals2 = [55.1,28.8,16.3,3.6,3.1,2.1]
     colors2 = [C_BLUE,C_BLUE2,C_BLUE3,C_BLUE4,'#EAF2F8',C_GRAY]
 
-    fig,(ax1,ax2)=plt.subplots(1,2,figsize=(12,6),facecolor=BG)
-    ax1.pie(vals1,labels=names1,colors=colors1,textprops={'fontsize':9,'weight':'bold'})
-    ax1.set_title('消费ETF 规模结构',fontsize=14,weight='bold',color='#2D3748',pad=18)
-    ax2.pie(vals2,labels=names2,colors=colors2,textprops={'fontsize':9,'weight':'bold'})
-    ax2.set_title('消费电子ETF 规模结构',fontsize=14,weight='bold',color='#2D3748',pad=18)
-    fig.text(0.25,0.02,f'共34只 总{sum(vals1):.0f}亿',ha='center',fontsize=10,color='#718096')
-    fig.text(0.75,0.02,f'共7只 总{sum(vals2):.0f}亿',ha='center',fontsize=10,color='#718096')
-    plt.tight_layout(rect=[0,0.05,1,1])
-    plt.savefig(f'{OUT}/section_01_scale_donut.png',dpi=150,facecolor=BG)
+    fig,(ax1,ax2)=plt.subplots(1,2,figsize=(14,6),facecolor=BG)
+    # 环形图（内圈留白）
+    w1,_ = ax1.pie(vals1, labels=None, colors=colors1, wedgeprops={'width':0.55,'edgecolor':'white','linewidth':2}, startangle=90)
+    ax1.set_title('消费ETF 规模结构',fontsize=14,weight='bold',color='#2D3748',pad=20)
+    w2,_ = ax2.pie(vals2, labels=None, colors=colors2, wedgeprops={'width':0.55,'edgecolor':'white','linewidth':2}, startangle=90)
+    ax2.set_title('消费电子ETF 规模结构',fontsize=14,weight='bold',color='#2D3748',pad=20)
+    
+    # 图例放右侧
+    ax1.legend(w1, names1, loc='center left', bbox_to_anchor=(1.02,0.5), fontsize=9, frameon=False, labelspacing=0.8)
+    ax2.legend(w2, names2, loc='center left', bbox_to_anchor=(1.02,0.5), fontsize=9, frameon=False, labelspacing=0.8)
+    
+    fig.text(0.25,0.01,f'共34只 总{sum(vals1):.0f}亿',ha='center',fontsize=10,color='#718096')
+    fig.text(0.75,0.01,f'共7只 总{sum(vals2):.0f}亿',ha='center',fontsize=10,color='#718096')
+    plt.tight_layout(pad=2, w_pad=3)
+    plt.savefig(f'{OUT}/section_01_scale_donut.png',dpi=150,facecolor=BG, bbox_inches='tight', pad_inches=0.4)
     plt.close()
 
 # ====== 2) 棒棒糖-1年收益 ======
@@ -98,10 +104,10 @@ def chart3():
 # ====== 4) 持仓饼图双列 ======
 def chart4():
     fig,(ax1,ax2)=plt.subplots(1,2,figsize=(12,6),facecolor=BG)
-    cats1=['白酒\n茅台+五粮液 21%','乳业\n伊利 10%','猪肉\n牧原+温氏 15%','其他\n消费品']
+    cats1=['白酒\n茅台+五粮液 21%','乳业\n伊利 10%','畜牧业\n牧原+温氏 15%','其他\n消费品']
     vals1=[21,10,15,54]; colors1=[C_RED,C_RED2,C_RED3,C_RED4]
     ax1.pie(vals1,labels=cats1,colors=colors1,textprops={'fontsize':10,'weight':'bold'},startangle=90)
-    ax1.set_title('消费ETF (汇添富 159928)\n传统消费品：白酒+乳业+猪肉',fontsize=13,weight='bold',color='#2D3748',pad=15)
+    ax1.set_title('消费ETF (汇添富 159928)\n传统消费品：白酒+乳业+畜牧业',fontsize=13,weight='bold',color='#2D3748',pad=15)
     cats2=['连接器\n立讯+东山 14%','半导体\n兆易+寒武纪+中芯 20%','面板\n京东方+TCL 11%','其他\n电子制造']
     vals2=[14,20,11,55]; colors2=[C_BLUE,C_BLUE2,C_BLUE3,C_BLUE4]
     ax2.pie(vals2,labels=cats2,colors=colors2,textprops={'fontsize':10,'weight':'bold'},startangle=90)
