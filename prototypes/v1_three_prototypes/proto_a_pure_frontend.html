@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 快照对比 · 纯前端版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f5;color:#333;padding:20px}
+.container{max-width:900px;margin:0 auto}
+h1{font-size:20px;margin-bottom:8px;color:#1a1a1a}
+.sub{color:#888;font-size:13px;margin-bottom:20px}
+.input-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+input{flex:1;min-width:200px;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px}
+button{padding:10px 24px;background:#d32f2f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600}
+button:hover{background:#b71c1c}
+button:disabled{background:#ccc;cursor:not-allowed}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;margin-left:8px}
+.badge-frontend{background:#e3f2fd;color:#1565c0}
+.badge-stale{background:#fff3e0;color:#e65100}
+.error{background:#ffebee;color:#c62828;padding:12px;border-radius:6px;margin-bottom:16px;display:none}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:20px}
+th,td{padding:12px 14px;text-align:left;font-size:13px;border-bottom:1px solid #f0f0f0}
+th{background:#fafafa;font-weight:600;color:#555;font-size:12px}
+td:first-child{font-weight:600;color:#555}
+.red{color:#d32f2f;font-weight:600}
+.green{color:#2e7d32;font-weight:600}
+.blue{color:#1565c0;font-weight:600}
+.note{padding:14px;background:#fffde7;border-left:3px solid #f9a825;border-radius:4px;font-size:12px;color:#666;margin-top:12px}
+.arch-label{font-size:11px;color:#888;margin-top:4px}
+.loading{text-align:center;padding:40px;color:#999}
+.pick-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.pick-btn{padding:6px 14px;border:1px solid #ddd;border-radius:16px;background:#fff;cursor:pointer;font-size:12px;transition:all .2s}
+.pick-btn:hover{background:#f5f5f5;border-color:#bbb}
+.pick-btn.active{background:#d32f2f;color:#fff;border-color:#d32f2f}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📊 ETF 快照对比 <span class="badge badge-frontend">纯前端</span></h1>
+<p class="sub">数据源：天天基金公开API | 零服务器 · 零数据库 · 浏览器直接抓</p>
+<div class="arch-label">架构：东方财富/天天基金 HTTP API → 浏览器fetch → 渲染表格 | 代码量：~150行</div>
+
+<div class="pick-row" id="quickPicks">
+  <span style="font-size:12px;color:#888;line-height:28px;margin-right:4px">快速选择：</span>
+</div>
+
+<div class="input-row">
+  <input id="codeInput" placeholder="输入ETF代码，逗号分隔。例：159928,159732,562950" value="159928,159732,562950">
+  <button id="compareBtn">开始对比</button>
+</div>
+
+<div id="error" class="error"></div>
+<div id="result"></div>
+
+<div class="note">
+  ⚠️ <b>已知限制</b>：天天基金API仅返回实时估值、净值、收益率，无持仓/费率/夏普等深度指标。<br>
+  适用于快速价格对比，深度分析需配合后端API（见方案B）。
+</div>
+</div>
+
+<script>
+// ============ 天天基金 API 抓取 ============
+async function fetchFund(codes) {
+  const results = [];
+  for (const code of codes) {
+    try {
+      // 天天基金实时估值API（公开，无需认证）
+      const resp = await fetch(`https://fundgz.1234567.com.cn/js/${code}.js?rt=${Date.now()}`);
+      const text = await resp.text();
+      const match = text.match(/jsonpgz\((.+)\)/);
+      if (!match) { results.push({code, error:'解析失败'}); continue; }
+      const d = JSON.parse(match[1]);
+
+      // 补充：东方财富基金详情页爬取（规模、类型）
+      let scale = '', category = '', fee = '';
+      try {
+        const detailResp = await fetch(`https://fundmobapi.eastmoney.com/FundMNewApi/FundMNFBasicInfo?FCODE=${code}&deviceid=web&plat=web&product=EFund&version=2.0.0`);
+        const detail = await detailResp.json();
+        if (detail.Datas && detail.Datas[0]) {
+          scale = detail.Datas[0].FSRQ || '';
+          category = detail.Datas[0].FTYPE || '';
+        }
+      } catch(e) {}
+
+      results.push({
+        code,
+        name: d.name || code,
+        nav: d.dwjz || '',
+        estimate: d.gsz || '',
+        change_pct: d.gszzl || '',
+        update_time: d.gztime || '',
+        scale,
+        category,
+      });
+    } catch(e) {
+      results.push({code, error: e.message});
+    }
+  }
+  return results;
+}
+
+// ============ 渲染对比表 ============
+function renderTable(etfs) {
+  if (!etfs.length) return '<div class="loading">无数据</div>';
+
+  // 检查是否有陈旧数据
+  const allOld = etfs.every(e => e.update_time && e.update_time.includes('06-05'));
+  const staleBadge = allOld ? '<span class="badge badge-stale">盘后数据（最近交易日：6月5日）</span>' : '';
+
+  let html = `<h3 style="margin-bottom:8px">对比结果 ${staleBadge}</h3>
+  <table><thead><tr>
+    <th>代码</th><th>名称</th><th>最新净值</th><th>估算净值</th><th>估算涨跌</th><th>更新时间</th>
+  </tr></thead><tbody>`;
+
+  for (const e of etfs) {
+    if (e.error) {
+      html += `<tr><td>${e.code}</td><td colspan="5" style="color:#c62828">❌ ${e.error}</td></tr>`;
+      continue;
+    }
+    const change = parseFloat(e.change_pct);
+    const cls = change > 0 ? 'red' : change < 0 ? 'green' : '';
+    html += `<tr>
+      <td>${e.code}</td><td>${e.name}</td>
+      <td>${e.nav}</td><td>${e.estimate}</td>
+      <td class="${cls}">${change > 0 ? '+' : ''}${e.change_pct}%</td>
+      <td>${e.update_time || ''}</td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  return html;
+}
+
+// ============ 主流程 ============
+document.getElementById('compareBtn').addEventListener('click', async () => {
+  const input = document.getElementById('codeInput').value.trim();
+  if (!input) return;
+  const codes = input.split(',').map(c => c.trim()).filter(Boolean);
+
+  document.getElementById('result').innerHTML = '<div class="loading">⏳ 正在抓取数据…</div>';
+  document.getElementById('error').style.display = 'none';
+  document.getElementById('compareBtn').disabled = true;
+
+  try {
+    const etfs = await fetchFund(codes);
+    if (etfs.every(e => e.error)) {
+      document.getElementById('error').textContent = '所有ETF数据获取失败，请检查代码是否正确（仅支持A股ETF）';
+      document.getElementById('error').style.display = 'block';
+      document.getElementById('result').innerHTML = '';
+    } else {
+      document.getElementById('result').innerHTML = renderTable(etfs);
+    }
+  } catch(e) {
+    document.getElementById('error').textContent = '网络错误：' + e.message;
+    document.getElementById('error').style.display = 'block';
+  } finally {
+    document.getElementById('compareBtn').disabled = false;
+  }
+});
+
+// 常用ETF快速选择
+const quickCodes = [
+  ['159928','消费ETF'],['159732','消费电子'],['562950','消费电子(低费率)'],
+  ['510300','沪深300'],['510050','上证50'],['159915','创业板'],
+  ['518880','黄金ETF'],['159941','纳指ETF'],['513100','纳指100'],
+  ['512880','证券ETF'],['512480','半导体'],['159865','养殖ETF'],
+];
+const pickRow = document.getElementById('quickPicks');
+quickCodes.forEach(([code,name]) => {
+  const btn = document.createElement('span');
+  btn.className = 'pick-btn';
+  btn.textContent = code;
+  btn.title = name;
+  btn.onclick = () => {
+    document.getElementById('codeInput').value = code;
+    document.getElementById('compareBtn').click();
+  };
+  pickRow.appendChild(btn);
+});
+</script>
+</body>
+</html>

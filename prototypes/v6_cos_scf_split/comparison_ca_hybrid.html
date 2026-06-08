@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 实时对比 · COS静态+SCF动态</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f0f2f5;--card:#fff;--text:#1a1a2e;--sub:#888;--red:#d32f2f;--green:#2e7d32;--blue:#1565c0;--border:#e8e8e8;--best-bg:#fff8e1}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:100%;margin:0 auto;padding:24px 16px}
+header{margin-bottom:20px}
+header h1{font-size:22px;margin-bottom:4px}
+.arch-bar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.arch-tag{padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600}
+.arch-tag.json{background:#81c784;color:#1b5e20}
+.arch-tag.api{background:#64b5f6;color:#0d47a1}
+.search-section{background:var(--card);border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:20px}
+.search-row{display:flex;gap:10px;align-items:center}
+.search-box{flex:1;position:relative}
+.search-box input{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-size:14px;outline:none;transition:border-color .2s}
+.search-box input:focus{border-color:var(--blue)}
+.dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--border);border-radius:0 0 8px 8px;max-height:240px;overflow-y:auto;z-index:100;display:none;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.dropdown.active{display:block}
+.dropdown-item{padding:8px 14px;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f5f5f5}
+.dropdown-item:hover,.dropdown-item.hover{background:#f0f4ff}
+.dropdown-item .info{display:flex;flex-direction:column}
+.dropdown-item .name{font-weight:600}
+.dropdown-item .meta{font-size:11px;color:var(--sub)}
+.dropdown-item .add{color:var(--blue);font-weight:700;font-size:16px}
+.selected-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center;min-height:28px}
+.selected-chip{padding:5px 12px;background:var(--red);color:#fff;border-radius:16px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px}
+.selected-chip::after{content:'×';opacity:.7;font-size:14px}
+.selected-chip:hover{background:#b71c1c}
+.btn-row{display:flex;gap:10px;align-items:center}
+.btn-compare{padding:9px 20px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-compare:hover{opacity:.9}
+.btn-compare:disabled{background:#ccc;cursor:not-allowed}
+.btn-clear{padding:8px 14px;background:#eee;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:12px;color:#666}
+.status-bar{display:flex;gap:20px;padding:10px 16px;background:var(--card);border-radius:8px;margin-bottom:16px;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
+.status-dot.yellow{background:#f9a825}
+.status-dot.green{background:var(--green)}
+.status-dot.gray{background:#ccc}
+.status-dot.animate{animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.comp-section{display:none}
+.comp-section.active{display:block}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+table{width:100%;min-width:1400px;border-collapse:collapse;background:var(--card);font-size:13px}
+th,td{padding:10px 12px;border-bottom:1px solid #f5f5f5;white-space:nowrap;vertical-align:top}
+th{background:#fafafa;font-weight:600;color:#555;font-size:11px;text-align:right;position:sticky;top:0;z-index:1}
+td.holdings-cell{white-space:pre-line;font-size:10px;line-height:1.6;min-width:130px}
+td.trunc-cell{max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;font-size:11px}
+td.trunc-cell.expanded{white-space:normal;max-width:180px;overflow:visible}
+th:first-child,td:first-child{font-weight:600}
+.red{color:var(--red);font-weight:600}
+.green{color:var(--green);font-weight:600}
+.blue{color:var(--blue);font-weight:600}
+.best{background:var(--best-bg)}
+.cell-loading{color:#bbb;font-style:italic;font-size:11px}
+.legend{display:flex;gap:16px;margin-top:10px;font-size:11px;color:var(--sub)}
+.legend span{padding:2px 8px;border-radius:4px}
+.tips{background:#fff;padding:14px 18px;border-radius:10px;margin-top:20px;font-size:12px;color:#666;line-height:1.8;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.tips code{background:#f5f5f5;padding:2px 6px;border-radius:4px;font-size:11px}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>ETF 实时对比</h1>
+  <div class="arch-bar">
+    <span class="arch-tag json">COS静态 · 200只ETF · 19字段</span>
+    <span class="arch-tag api">SCF云函数 · 实时净值涨跌</span>
+  </div>
+</header>
+
+<div class="status-bar" id="statusBar">
+  <div><span class="status-dot green"></span> COS静态：<span style="color:#2e7d32">200只ETF内嵌 · 19字段独立运行</span></div>
+  <div><span class="status-dot gray" id="dot2"></span> SCF实时：<span id="statusPrice" style="color:#999">等待对比</span></div>
+  <div style="margin-left:auto;font-weight:600;color:#1a1a2e;font-variant-numeric:tabular-nums;font-size:14px" id="liveClock">--</div>
+</div>
+
+<div class="search-section">
+  <div class="search-row">
+    <div class="search-box">
+      <input id="searchInput" placeholder="输入代码或名称搜索（如 消费、300、芯片、黄金）" autocomplete="off" oninput="handleSearch(this.value)" onkeydown="handleKey(event)">
+      <div class="dropdown" id="dropdown"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-compare" id="compareBtn" disabled onclick="startCompare()">开始对比</button>
+      <button class="btn-clear" onclick="clearAll()">清空</button>
+    </div>
+  </div>
+  <div class="selected-row" id="selectedRow">
+    <span style="color:#888;font-size:12px">已选ETF：</span>
+  </div>
+</div>
+
+<div class="comp-section" id="compSection">
+  <div style="font-size:14px;font-weight:600;margin-bottom:10px;color:#555">对比结果 <span id="compCount"></span> <span style="font-size:11px;color:#888">← 横向滚动查看更多字段</span></div>
+  <div class="table-wrap"><div id="compTable"></div></div>
+  <div class="legend">
+    <span style="background:var(--best-bg)">🟡 最优值</span>
+    <span style="color:var(--red)">红=越高越好</span>
+    <span style="color:var(--blue)">蓝=越低越好</span>
+    <span style="margin-left:10px;color:#aaa">连字号 - 表示暂无数据</span>
+  </div>
+</div>
+
+<div class="tips">
+  <strong>数据说明</strong><br>
+  <strong>静态（19字段）</strong>：规模/费率/持仓/风险/收益等 — 内嵌JS，无需后端，离线可用<br>
+  <strong>实时（1字段）</strong>：涨跌% — SCF云函数（天天基金+腾讯行情兜底），秒级更新时间戳<br>
+  <strong>降级</strong>：SCF不可用时19个静态字段正常显示，实时价格标记"暂不可用"，互不影响
+</div>
+</div>
+
+<script src="etf_data_embed.js"></script>
+<script>
+console.log('✅ ETF核心数据已内嵌：' + ETF_CORE_DATA.length + '只');
+
+// 实时 API 配置：SCF 部署后替换此处 URL
+const REALTIME_API = '/api/ttjj'; // 本地开发用相对路径，部署后改为 SCF 触发器 URL
+// const REALTIME_API = 'https://service-xxx.gz.apigw.tencentcs.com/release/api/ttjj'; // SCF 部署后启用此行
+
+// ============================================================
+// 全局状态
+// ============================================================
+let selected = new Set();
+const PROXY = '/api';  // 同源相对路径
+let dropdownIndex = -1;
+
+// ============================================================
+// 搜索自动补全
+// ============================================================
+function handleSearch(q){
+  const dd = document.getElementById('dropdown');
+  dropdownIndex = -1;
+  if(!q||q.length<1){dd.classList.remove('active');return;}
+  const query = q.toLowerCase();
+  const matches = ETF_CORE_DATA.filter(e => e.code.includes(query)||e.name.toLowerCase().includes(query)||(e.issuer||'').includes(query)||(e.category||'').includes(query)).slice(0,8);
+  if(!matches.length){dd.classList.remove('active');return;}
+  dd.innerHTML = matches.map((e,i)=>{
+    const s = e.scale_yi>100 ? (e.scale_yi/100).toFixed(0)+'百亿' : e.scale_yi.toFixed(0)+'亿';
+    return '<div class="dropdown-item" data-code="'+e.code+'" data-idx="'+i+'" onmousedown="addETF(\''+e.code+'\')" onmouseover="highlightItem('+i+')"><div class="info"><span class="name">'+e.code+' '+e.name+'</span><span class="meta">'+e.issuer+' · '+s+' · '+e.category+' · '+(e.track_index||'')+'</span></div><span class="add">+</span></div>';
+  }).join('');
+  dd.classList.add('active');
+}
+function highlightItem(idx){dropdownIndex=idx;document.querySelectorAll('.dropdown-item').forEach((el,i)=>el.classList.toggle('hover',i===idx));}
+function handleKey(e){
+  const dd=document.getElementById('dropdown'),items=dd.querySelectorAll('.dropdown-item');
+  if(!items.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();dropdownIndex=Math.min(dropdownIndex+1,items.length-1);highlightItem(dropdownIndex)}
+  else if(e.key==='ArrowUp'){e.preventDefault();dropdownIndex=Math.max(dropdownIndex-1,0);highlightItem(dropdownIndex)}
+  else if(e.key==='Enter'){e.preventDefault();if(dropdownIndex>=0&&items[dropdownIndex])addETF(items[dropdownIndex].dataset.code)}
+  else if(e.key==='Escape'){dd.classList.remove('active')}
+}
+
+// ============================================================
+// ETF选择
+// ============================================================
+function addETF(code){selected.add(code);saveState();document.getElementById('dropdown').classList.remove('active');document.getElementById('searchInput').value='';renderSelected();updateBtn();}
+function removeETF(code){selected.delete(code);saveState();renderSelected();updateBtn();}
+function clearAll(){selected.clear();saveState();renderSelected();updateBtn();document.getElementById('compSection').classList.remove('active');}
+function updateBtn(){document.getElementById('compareBtn').disabled=selected.size<2;document.getElementById('compareBtn').textContent=selected.size>=2?'开始对比('+selected.size+')':'开始对比';}
+function renderSelected(){
+  const chips=[...selected].map(code=>{
+    const e=ETF_CORE_DATA.find(x=>x.code===code);
+    const label=e?e.name+'·'+e.issuer:code;
+    return '<span class="selected-chip" onclick="removeETF(\''+code+'\')" title="'+code+' | '+(e?e.name+' · '+e.issuer:'')+' | '+(e?e.category:'')+' | '+(e?(e.scale_yi||0).toFixed(0)+'亿':'')+'">'+label+'</span>';
+  }).join('');
+  document.getElementById('selectedRow').innerHTML='<span style="color:#888;font-size:12px">已选ETF：</span>'+(chips||'<span style="color:#ccc;font-size:12px">暂无，请搜索添加</span>');
+}
+
+// ============================================================
+// 天天基金代理获取
+// ============================================================
+async function fetchTTJJ(codes){
+  document.getElementById('dot2').className='status-dot yellow animate';document.getElementById('statusPrice').textContent='今日实时获取中…';document.getElementById('statusPrice').style.color='#f9a825';
+  const results={};
+  try{
+    const resp=await fetch(REALTIME_API+'?codes='+codes.join(','));
+    const data=await resp.json();
+    if(data.etfs)Object.assign(results,data.etfs);
+    const times = Object.values(data.etfs||{}).map(e=>e.update_time).filter(Boolean);
+    const updTime = times.find(t=>t.length>16) || times[0] || '';
+    document.getElementById('dot2').className='status-dot green';document.getElementById('statusPrice').textContent='✅ 今日 '+updTime;document.getElementById('statusPrice').style.color='#2e7d32';
+  }catch(e){
+    document.getElementById('dot2').className='status-dot gray';document.getElementById('statusPrice').textContent='⚠️ 实时数据暂不可用';document.getElementById('statusPrice').style.color='#e65100';
+  }
+  return results;
+}
+
+// ============================================================
+// 主对比：全部14字段
+// ============================================================
+async function startCompare(){
+  const codes=[...selected];if(codes.length<2)return;
+  document.getElementById('compSection').classList.add('active');document.getElementById('compCount').textContent='（'+codes.length+'只）';
+  document.getElementById('compareBtn').disabled=true;document.getElementById('compareBtn').textContent='对比中…';
+  const d={};codes.forEach(c=>{const e=ETF_CORE_DATA.find(x=>x.code===c);if(e)d[c]=e;});
+  renderTable(codes,d);
+  const ttjj=await fetchTTJJ(codes);
+  updatePriceCells(codes,ttjj);
+  document.getElementById('compareBtn').disabled=false;document.getElementById('compareBtn').textContent='重新对比';
+}
+
+function renderTable(codes,data){
+  const etfs=codes.map(c=>data[c]).filter(Boolean);if(!etfs.length)return;
+  
+  // 全部字段（固定分组顺序，同组相邻）
+  // 标注：📅=上个交易日 | ⚡=今日实时 | 无标注=静态数据
+  const ALL_FIELDS=[
+    {id:'code',label:'代码',align:'left'},
+    {id:'name',label:'简称',align:'left'},
+    {id:'issuer',label:'管理人',align:'left'},
+    {id:'category',label:'分类',align:'left'},
+    {id:'listing_date',label:'成立日期',align:'left'},
+    {id:'scale_yi',label:'规模(亿)',better:'higher'},
+    {id:'nav',label:'净值(上交易日)',type:'ttjj'},
+    {id:'change_pct',label:'涨跌%(今日实时)',type:'ttjj'},
+    {id:'fee_mgmt',label:'管理费%',better:'lower'},
+    {id:'fee_custody',label:'托管费%',better:'lower'},
+    {id:'fee_total',label:'总费率%',better:'lower'},
+    {id:'track_index',label:'跟踪指数(代码)',align:'left'},
+    {id:'tracking_error',label:'跟踪误差%',better:'lower'},
+    {id:'max_drawdown',label:'最大回撤%',better:'higher'},
+    {id:'annual_vol',label:'年化波动%',better:'lower'},
+    {id:'year_1_return',label:'近1年收益%',better:'higher'},
+    {id:'year_3_return',label:'近3年收益%',better:'higher'},
+    {id:'sharpe_ratio',label:'夏普比率',better:'higher'},
+    {id:'calmar_ratio',label:'卡玛比率',better:'higher'},
+    {id:'holdings_str',label:'前5大持仓',align:'left'},
+  ];
+  // 固定顺序，不按覆盖率动态排序
+  const sortedFields = ALL_FIELDS;
+  
+  // 计算最优值
+  const vals=etfs.reduce((acc,e)=>{
+    ALL_FIELDS.forEach(f=>{if(!acc[f.id])acc[f.id]=[];const v=e[f.id];if(v!=null)acc[f.id].push(v);});
+    return acc;
+  },{});
+  const best={};
+  ALL_FIELDS.forEach(f=>{
+    const arr=vals[f.id]||[];
+    if(!arr.length)return;
+    if(f.better==='higher')best[f.id]=Math.max(...arr);
+    else if(f.better==='lower')best[f.id]=Math.min(...arr);
+    else if(f.id==='max_drawdown')best[f.id]=Math.max(...arr);
+  });
+  
+  // 渲染表头
+  let html='<table><thead><tr>';
+  sortedFields.forEach(f=>html+='<th style="text-align:'+(f.align||'right')+'">'+f.label+'</th>');
+  html+='</tr></thead><tbody>';
+  
+  // 渲染行
+  etfs.forEach(e=>{
+    html+='<tr>';
+    sortedFields.forEach(f=>{
+      const id=f.id,v=e[id];
+      const a=f.align||'right'; // 每列对齐方式
+      if(f.type==='ttjj'){
+        html+='<td id="cell_'+e.code+'_'+id+'" style="text-align:'+a+'"><span class="cell-loading">-</span></td>';
+        return;
+      }
+      const isBest=v!=null&&v===best[id];
+      if(id==='code')html+='<td style="text-align:'+a+'">'+e.code+'</td>';
+      else if(id==='name')html+='<td class="trunc-cell" style="text-align:'+a+'" onclick="toggleExpand(this)" title="'+e.name+'">'+e.name+'</td>';
+      else if(id==='issuer')html+='<td style="text-align:'+a+'">'+(e.issuer||'-')+'</td>';
+      else if(id==='category')html+='<td style="text-align:'+a+'">'+(e.category||'-')+'</td>';
+      else if(id==='track_index')html+='<td class="trunc-cell" style="text-align:'+a+'" onclick="toggleExpand(this)" title="点击展开/收起">'+(e.track_index||'-')+'</td>';
+      else if(id==='listing_date')html+='<td style="text-align:'+a+';font-size:11px">'+(e.listing_date||'-')+'</td>';
+      else if(id==='holdings_str')html+='<td class="holdings-cell" style="text-align:'+a+'">'+(e.holdings_str||'-')+'</td>';
+      else if(id==='scale_yi'){
+        let cls=isBest?(f.better==='higher'?'red best':'blue best'):'';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?v.toFixed(1):'-')+'</td>';
+      }else if(id==='fee_mgmt'||id==='fee_custody'){
+        let cls=isBest?(f.better==='higher'?'red best':'blue best'):'';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?v.toFixed(2):'-')+'</td>';
+      }else if(id==='fee_total'){
+        let cls=isBest?(f.better==='higher'?'red best':'blue best'):'';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?v.toFixed(2):'-')+'</td>';
+      }else if(id==='year_1_return'){
+        let cls=(v>0?'red':'green');
+        if(isBest)cls+=' best';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?(v>0?'+':'')+v.toFixed(2):'-')+'</td>';
+      }else if(id==='year_3_return'){
+        let cls=(v>0?'red':'green');
+        if(isBest)cls+=' best';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?(v>0?'+':'')+v.toFixed(2):'-')+'</td>';
+      }else if(id==='sharpe_ratio'||id==='calmar_ratio'){
+        let cls=(v>0?'red':'green');
+        if(isBest)cls+=' best';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?v.toFixed(2):'-')+'</td>';
+      }else if(id==='max_drawdown'){
+        let cls='green';
+        if(isBest)cls+=' best';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?v.toFixed(1):'-')+'</td>';
+      }else if(id==='annual_vol'||id==='tracking_error'){
+        let cls=isBest?(f.better==='higher'?'red best':'blue best'):'';
+        html+='<td class="'+cls+'" style="text-align:'+a+'">'+(v!=null?v.toFixed(2):'-')+'</td>';
+      }else{
+        html+='<td style="text-align:'+a+'">'+(v!=null?v:'-')+'</td>';
+      }
+    });
+    html+='</tr>';
+  });
+  html+='</tbody></table>';
+  document.getElementById('compTable').innerHTML=html;
+}
+
+function updatePriceCells(codes,data){
+  codes.forEach(code=>{
+    const d=data[code];if(!d)return;
+    ['nav','change_pct'].forEach(key=>{
+      const cell=document.getElementById('cell_'+code+'_'+key);if(!cell)return;
+      const val=d[key];
+      if(val!==undefined&&val!==''){
+        if(key==='change_pct'){
+          const n=parseFloat(val);
+          cell.innerHTML=(n>0?'<span class="red">+':'<span class="green">')+n.toFixed(2)+'%</span>';
+          // 涨跌显示今日实时时间
+          if(d.update_time){
+            const ts=d.update_time.length>16?d.update_time.slice(11):(d.update_time.includes(' ')?d.update_time.split(' ')[1]:'');
+            cell.innerHTML+=' <span style="font-size:9px;color:#aaa;display:block">'+ts+'</span>';
+          }
+        }else{cell.textContent=val;}
+        cell.style.textAlign='right';
+      }
+    });
+  });
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.search-box'))document.getElementById('dropdown').classList.remove('active');});
+
+// 实时时钟（精确到秒）
+function tick() {
+  const now = new Date();
+  document.getElementById('liveClock').textContent = 
+    now.toLocaleString('zh-CN', {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+}
+tick(); setInterval(tick, 1000);
+
+// 本地持久化：保存/恢复已选ETF和对比数据
+function saveState() {
+  const state = {selected: [...selected], codes: [...selected]};
+  if (state.codes.length) localStorage.setItem('etf_compare_state', JSON.stringify(state));
+}
+function loadState() {
+  try {
+    const raw = localStorage.getItem('etf_compare_state');
+    if (raw) {
+      const state = JSON.parse(raw);
+      if (state.selected && state.selected.length) {
+        state.selected.forEach(c => selected.add(c));
+        renderSelected();
+        document.getElementById('compareBtn').disabled = false;
+        document.getElementById('compareBtn').textContent = '恢复对比('+selected.size+')';
+        // 自动恢复上次对比
+        startCompare();
+      }
+    }
+  } catch(e) {}
+}
+// 自动恢复
+loadState();
+
+// 长文本点击展开/收起
+function toggleExpand(td) {
+  td.classList.toggle('expanded');
+}
+</script>
+</body>
+</html>

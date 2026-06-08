@@ -1,0 +1,7992 @@
+[
+  {
+    "code": "518880",
+    "name": "黄金ETF",
+    "issuer": "华安",
+    "category": "商品",
+    "track_index": "国内黄金现货价格收益率 (AU9999)",
+    "scale_yi": 9727.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.24,
+    "year_3_return": 123.78,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.09,
+    "max_drawdown": -24.89,
+    "annual_vol": 28.07,
+    "tracking_error": 3.3156,
+    "listing_date": "2013-07-29",
+    "holdings": [
+      {
+        "name": "黄金9999",
+        "weight": ""
+      }
+    ],
+    "track_index_code": "AU9999"
+  },
+  {
+    "code": "510300",
+    "name": "沪深300ETF",
+    "issuer": "华泰柏瑞",
+    "category": "宽基",
+    "track_index": "沪深300指数 (000300)",
+    "scale_yi": 6581.7,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 32.31,
+    "year_3_return": 28.62,
+    "sharpe_ratio": 1.86,
+    "calmar_ratio": 4.23,
+    "max_drawdown": -7.63,
+    "annual_vol": 14.61,
+    "tracking_error": 0.7371,
+    "listing_date": "2012-05-28",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.27%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.65%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.55%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.44%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.17%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "510310",
+    "name": "沪深300ETF",
+    "issuer": "易方达",
+    "category": "宽基",
+    "track_index": "沪深300指数 (000300)",
+    "scale_yi": 4846.8,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 32.57,
+    "year_3_return": 30.6,
+    "sharpe_ratio": 1.89,
+    "calmar_ratio": 4.3,
+    "max_drawdown": -7.57,
+    "annual_vol": 14.49,
+    "tracking_error": 0.7345,
+    "listing_date": "2013-03-25",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.33%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.70%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.58%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.47%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.20%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "159937",
+    "name": "黄金ETF",
+    "issuer": "博时",
+    "category": "商品",
+    "track_index": "黄金现货实盘合约AU99.99收益率 (AU9999)",
+    "scale_yi": 4332.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.21,
+    "year_3_return": 123.41,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.09,
+    "max_drawdown": -24.92,
+    "annual_vol": 28.11,
+    "tracking_error": 3.3142,
+    "listing_date": "2014-09-01",
+    "holdings": [],
+    "track_index_code": "AU9999"
+  },
+  {
+    "code": "159934",
+    "name": "黄金ETF",
+    "issuer": "易方达",
+    "category": "商品",
+    "track_index": "上海黄金交易所Au99.99现货实盘合约收盘价 (AU9999)",
+    "scale_yi": 3879.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.27,
+    "year_3_return": 123.97,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.1,
+    "max_drawdown": -24.87,
+    "annual_vol": 28.07,
+    "tracking_error": 3.3153,
+    "listing_date": "2013-12-16",
+    "holdings": [],
+    "track_index_code": "AU9999"
+  },
+  {
+    "code": "518800",
+    "name": "黄金ETF",
+    "issuer": "国泰",
+    "category": "商品",
+    "track_index": "上海黄金交易所挂盘交易的Au99.99合约 (AU9999)",
+    "scale_yi": 3749.6,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.32,
+    "year_3_return": 123.77,
+    "sharpe_ratio": 0.94,
+    "calmar_ratio": 1.1,
+    "max_drawdown": -24.91,
+    "annual_vol": 28.01,
+    "tracking_error": 3.3159,
+    "listing_date": "2013-07-29",
+    "holdings": [
+      {
+        "name": "黄金9999",
+        "weight": ""
+      }
+    ],
+    "track_index_code": "AU9999"
+  },
+  {
+    "code": "510330",
+    "name": "沪深300ETF",
+    "issuer": "华夏",
+    "category": "宽基",
+    "track_index": "沪深300指数 (000300)",
+    "scale_yi": 3622.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 31.61,
+    "year_3_return": 28.65,
+    "sharpe_ratio": 1.86,
+    "calmar_ratio": 4.13,
+    "max_drawdown": -7.65,
+    "annual_vol": 14.34,
+    "tracking_error": 0.7363,
+    "listing_date": "2013-01-16",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.34%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.71%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.59%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.47%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.20%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "510500",
+    "name": "中证500ETF",
+    "issuer": "南方",
+    "category": "宽基",
+    "track_index": "中证500指数 (000905)",
+    "scale_yi": 3355.3,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 54.46,
+    "year_3_return": 41.53,
+    "sharpe_ratio": 2.07,
+    "calmar_ratio": 3.88,
+    "max_drawdown": -14.02,
+    "annual_vol": 21.19,
+    "tracking_error": null,
+    "listing_date": "2013-03-15",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.05%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.73%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.69%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.64%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.63%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "159919",
+    "name": "沪深300ETF",
+    "issuer": "嘉实",
+    "category": "宽基",
+    "track_index": "沪深300指数 (000300)",
+    "scale_yi": 3149.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 31.72,
+    "year_3_return": 28.41,
+    "sharpe_ratio": 1.83,
+    "calmar_ratio": 4.2,
+    "max_drawdown": -7.55,
+    "annual_vol": 14.57,
+    "tracking_error": 0.7357,
+    "listing_date": "2012-05-28",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.33%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.70%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.58%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.47%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.20%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "159915",
+    "name": "创业板ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "创业板指数 (399006)",
+    "scale_yi": 1631.2,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 103.49,
+    "year_3_return": 69.0,
+    "sharpe_ratio": 2.67,
+    "calmar_ratio": 8.62,
+    "max_drawdown": -12.0,
+    "annual_vol": 27.4,
+    "tracking_error": null,
+    "listing_date": "2011-09-20",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "19.69%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "9.30%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "7.53%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "4.64%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "4.27%"
+      }
+    ],
+    "track_index_code": "399006"
+  },
+  {
+    "code": "518850",
+    "name": "黄金ETF",
+    "issuer": "华夏",
+    "category": "商品",
+    "track_index": "上海黄金交易所黄金现货实盘合约Au99.99价格收益率 (AU9999)",
+    "scale_yi": 1609.5,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 27.79,
+    "year_3_return": 124.14,
+    "sharpe_ratio": 0.96,
+    "calmar_ratio": 1.12,
+    "max_drawdown": -24.81,
+    "annual_vol": 27.71,
+    "tracking_error": 3.3126,
+    "listing_date": "2020-06-05",
+    "holdings": [],
+    "track_index_code": "AU9999"
+  },
+  {
+    "code": "588200",
+    "name": "科创芯片ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "上证科创板芯片指数收益率 (000685)",
+    "scale_yi": 1468.2,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 118.79,
+    "year_3_return": 163.82,
+    "sharpe_ratio": 2.19,
+    "calmar_ratio": 6.15,
+    "max_drawdown": -19.3,
+    "annual_vol": 38.35,
+    "tracking_error": null,
+    "listing_date": "2022-09-30",
+    "holdings": [
+      {
+        "name": "中芯国际",
+        "weight": "9.80%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "9.66%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "9.56%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "7.80%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "7.30%"
+      }
+    ],
+    "track_index_code": "000685"
+  },
+  {
+    "code": "588000",
+    "name": "科创50ETF",
+    "issuer": "华夏",
+    "category": "宽基",
+    "track_index": "上证科创板50成份指数收益率 (000688)",
+    "scale_yi": 1039.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 68.83,
+    "year_3_return": 61.82,
+    "sharpe_ratio": 1.79,
+    "calmar_ratio": 3.57,
+    "max_drawdown": -19.27,
+    "annual_vol": 31.03,
+    "tracking_error": null,
+    "listing_date": "2020-09-28",
+    "holdings": [
+      {
+        "name": "寒武纪",
+        "weight": "9.36%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "8.83%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.49%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "6.48%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "6.04%"
+      }
+    ],
+    "track_index_code": "000688"
+  },
+  {
+    "code": "518660",
+    "name": "黄金ETF",
+    "issuer": "工银",
+    "category": "商品",
+    "track_index": "上海黄金交易所Au99.99现货实盘合约收盘价收益率 (AU9999)",
+    "scale_yi": 849.8,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 27.72,
+    "year_3_return": 123.48,
+    "sharpe_ratio": 0.94,
+    "calmar_ratio": 1.11,
+    "max_drawdown": -24.96,
+    "annual_vol": 28.18,
+    "tracking_error": 3.3162,
+    "listing_date": "2020-05-29",
+    "holdings": [],
+    "track_index_code": "AU9999"
+  },
+  {
+    "code": "510180",
+    "name": "上证180ETF",
+    "issuer": "华安",
+    "category": "行业",
+    "track_index": "上证180指数 (000010)",
+    "scale_yi": 795.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 24.72,
+    "year_3_return": 31.06,
+    "sharpe_ratio": 1.47,
+    "calmar_ratio": 2.41,
+    "max_drawdown": -10.27,
+    "annual_vol": 14.4,
+    "tracking_error": 0.5139,
+    "listing_date": "2006-05-18",
+    "holdings": [
+      {
+        "name": "贵州茅台",
+        "weight": "4.66%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "3.99%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.48%"
+      },
+      {
+        "name": "恒瑞医药",
+        "weight": "2.38%"
+      },
+      {
+        "name": "药明康德",
+        "weight": "2.34%"
+      }
+    ],
+    "track_index_code": "000010"
+  },
+  {
+    "code": "518680",
+    "name": "金ETF",
+    "issuer": "富国",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约(合约代码:SHAU)午盘基准价格收益率 (SHAU)",
+    "scale_yi": 781.8,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 27.85,
+    "year_3_return": 124.25,
+    "sharpe_ratio": 0.95,
+    "calmar_ratio": 1.12,
+    "max_drawdown": -24.89,
+    "annual_vol": 27.97,
+    "tracking_error": 3.3428,
+    "listing_date": "2020-07-28",
+    "holdings": [],
+    "track_index_code": "SHAU"
+  },
+  {
+    "code": "513310",
+    "name": "中韩半导体ETF",
+    "issuer": "华泰柏瑞",
+    "category": "行业",
+    "track_index": "中证韩交所中韩半导体指数收益率 (931790)",
+    "scale_yi": 757.9,
+    "fee_mgmt": 0.8,
+    "fee_custody": 0.15,
+    "fee_total": 0.95,
+    "year_1_return": 307.95,
+    "year_3_return": 444.42,
+    "sharpe_ratio": 3.19,
+    "calmar_ratio": 14.13,
+    "max_drawdown": -21.8,
+    "annual_vol": 47.2,
+    "tracking_error": 4.3781,
+    "listing_date": "2022-12-22",
+    "holdings": [
+      {
+        "name": "三星电子",
+        "weight": "18.84%"
+      },
+      {
+        "name": "SK海力士",
+        "weight": "15.53%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "5.06%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "4.77%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "4.73%"
+      }
+    ],
+    "track_index_code": "931790"
+  },
+  {
+    "code": "518600",
+    "name": "金ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约(合约代码:SHAU)午盘基准价格收益率 (SHAU)",
+    "scale_yi": 750.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.24,
+    "year_3_return": 120.58,
+    "sharpe_ratio": 0.94,
+    "calmar_ratio": 1.09,
+    "max_drawdown": -24.95,
+    "annual_vol": 27.84,
+    "tracking_error": 3.3421,
+    "listing_date": "2020-08-05",
+    "holdings": [],
+    "track_index_code": "SHAU"
+  },
+  {
+    "code": "510050",
+    "name": "上证50ETF",
+    "issuer": "华夏",
+    "category": "宽基",
+    "track_index": "上证50指数 (000016)",
+    "scale_yi": 700.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 14.89,
+    "year_3_return": 20.18,
+    "sharpe_ratio": 0.99,
+    "calmar_ratio": 1.31,
+    "max_drawdown": -11.34,
+    "annual_vol": 12.88,
+    "tracking_error": 0.7886,
+    "listing_date": "2005-02-23",
+    "holdings": [
+      {
+        "name": "贵州茅台",
+        "weight": "9.92%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "6.63%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "5.90%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "5.33%"
+      },
+      {
+        "name": "长江电力",
+        "weight": "3.62%"
+      }
+    ],
+    "track_index_code": "000016"
+  },
+  {
+    "code": "510880",
+    "name": "红利ETF",
+    "issuer": "华泰柏瑞",
+    "category": "红利",
+    "track_index": "上证红利指数 (000015)",
+    "scale_yi": 645.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 10.85,
+    "year_3_return": 29.87,
+    "sharpe_ratio": 0.75,
+    "calmar_ratio": 1.53,
+    "max_drawdown": -7.11,
+    "annual_vol": 12.19,
+    "tracking_error": 1.7884,
+    "listing_date": "2007-01-18",
+    "holdings": [
+      {
+        "name": "中远海控",
+        "weight": "4.86%"
+      },
+      {
+        "name": "广汇能源",
+        "weight": "3.84%"
+      },
+      {
+        "name": "兖矿能源",
+        "weight": "3.16%"
+      },
+      {
+        "name": "鄂尔多斯",
+        "weight": "2.84%"
+      },
+      {
+        "name": "中谷物流",
+        "weight": "2.79%"
+      }
+    ],
+    "track_index_code": "000015"
+  },
+  {
+    "code": "513500",
+    "name": "标普500ETF",
+    "issuer": "博时",
+    "category": "跨境",
+    "track_index": "标普500指数(S&P 500 Index(NTR,Net total Return))(经估值汇率调整,以人民币计价) (SPX)",
+    "scale_yi": 632.5,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.2,
+    "fee_total": 0.8,
+    "year_1_return": 29.21,
+    "year_3_return": 88.12,
+    "sharpe_ratio": 1.64,
+    "calmar_ratio": 2.14,
+    "max_drawdown": -13.63,
+    "annual_vol": 15.16,
+    "tracking_error": 1.5412,
+    "listing_date": "2014-01-15",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "7.37%"
+      },
+      {
+        "name": "苹果",
+        "weight": "6.50%"
+      },
+      {
+        "name": "微软",
+        "weight": "4.79%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "3.54%"
+      },
+      {
+        "name": "谷歌-A",
+        "weight": "2.92%"
+      }
+    ],
+    "track_index_code": "SPX"
+  },
+  {
+    "code": "159995",
+    "name": "芯片ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "国证半导体芯片指数收益率 (980017)",
+    "scale_yi": 584.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 85.43,
+    "year_3_return": 105.38,
+    "sharpe_ratio": 1.87,
+    "calmar_ratio": 3.94,
+    "max_drawdown": -21.71,
+    "annual_vol": 35.49,
+    "tracking_error": null,
+    "listing_date": "2020-01-20",
+    "holdings": [
+      {
+        "name": "海光信息",
+        "weight": "10.09%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "9.12%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.50%"
+      },
+      {
+        "name": "兆易创新",
+        "weight": "8.00%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "7.34%"
+      }
+    ],
+    "track_index_code": "980017"
+  },
+  {
+    "code": "159326",
+    "name": "电网设备ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "电网设备主题 (000895)",
+    "scale_yi": 581.9,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 99.71,
+    "year_3_return": null,
+    "sharpe_ratio": 2.48,
+    "calmar_ratio": 6.78,
+    "max_drawdown": -14.7,
+    "annual_vol": 28.88,
+    "tracking_error": null,
+    "listing_date": "2024-08-29",
+    "holdings": [
+      {
+        "name": "特变电工",
+        "weight": "10.94%"
+      },
+      {
+        "name": "思源电气",
+        "weight": "10.28%"
+      },
+      {
+        "name": "国电南瑞",
+        "weight": "8.53%"
+      },
+      {
+        "name": "亨通光电",
+        "weight": "8.49%"
+      },
+      {
+        "name": "中天科技",
+        "weight": "6.71%"
+      }
+    ],
+    "track_index_code": "000895"
+  },
+  {
+    "code": "588080",
+    "name": "科创50ETF",
+    "issuer": "易方达",
+    "category": "宽基",
+    "track_index": "上证科创板50成份指数收益率 (000688)",
+    "scale_yi": 581.3,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 70.16,
+    "year_3_return": 61.77,
+    "sharpe_ratio": 1.81,
+    "calmar_ratio": 3.69,
+    "max_drawdown": -19.03,
+    "annual_vol": 31.04,
+    "tracking_error": null,
+    "listing_date": "2020-11-16",
+    "holdings": [
+      {
+        "name": "寒武纪",
+        "weight": "9.37%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "8.84%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.50%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "6.49%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "6.07%"
+      }
+    ],
+    "track_index_code": "000688"
+  },
+  {
+    "code": "159941",
+    "name": "纳指ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "纳斯达克100指数(Nasdaq-100 Index)收益率(经汇率调整后的总收益指数收益率) (NDX)",
+    "scale_yi": 576.5,
+    "fee_mgmt": 0.8,
+    "fee_custody": 0.2,
+    "fee_total": 1.0,
+    "year_1_return": 39.4,
+    "year_3_return": 123.94,
+    "sharpe_ratio": 1.73,
+    "calmar_ratio": 2.54,
+    "max_drawdown": -15.53,
+    "annual_vol": 19.24,
+    "tracking_error": 2.0241,
+    "listing_date": "2015-07-13",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "7.88%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.04%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.17%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.14%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.41%"
+      }
+    ],
+    "track_index_code": "NDX"
+  },
+  {
+    "code": "512880",
+    "name": "证券ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "中证全指证券公司指数收益率 (399975)",
+    "scale_yi": 562.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 1.06,
+    "year_3_return": 15.23,
+    "sharpe_ratio": 0.07,
+    "calmar_ratio": 0.04,
+    "max_drawdown": -24.93,
+    "annual_vol": 22.04,
+    "tracking_error": 2.0017,
+    "listing_date": "2016-08-08",
+    "holdings": [
+      {
+        "name": "东方财富",
+        "weight": "13.57%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "13.34%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "10.65%"
+      },
+      {
+        "name": "华泰证券",
+        "weight": "5.92%"
+      },
+      {
+        "name": "招商证券",
+        "weight": "3.26%"
+      }
+    ],
+    "track_index_code": "399975"
+  },
+  {
+    "code": "515880",
+    "name": "通信ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "通信设备 (931160)",
+    "scale_yi": 540.6,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 291.21,
+    "year_3_return": 336.69,
+    "sharpe_ratio": 3.35,
+    "calmar_ratio": 15.88,
+    "max_drawdown": -18.34,
+    "annual_vol": 43.13,
+    "tracking_error": null,
+    "listing_date": "2019-08-16",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "15.00%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "13.66%"
+      },
+      {
+        "name": "工业富联",
+        "weight": "10.42%"
+      },
+      {
+        "name": "天孚通信",
+        "weight": "7.14%"
+      },
+      {
+        "name": "中兴通讯",
+        "weight": "5.35%"
+      }
+    ],
+    "track_index_code": "931160"
+  },
+  {
+    "code": "512400",
+    "name": "有色金属ETF",
+    "issuer": "南方",
+    "category": "商品",
+    "track_index": "有色金属 (000819)",
+    "scale_yi": 515.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 96.46,
+    "year_3_return": 82.97,
+    "sharpe_ratio": 1.92,
+    "calmar_ratio": 3.24,
+    "max_drawdown": -29.75,
+    "annual_vol": 38.04,
+    "tracking_error": null,
+    "listing_date": "2017-08-03",
+    "holdings": [
+      {
+        "name": "紫金矿业",
+        "weight": "9.44%"
+      },
+      {
+        "name": "洛阳钼业",
+        "weight": "6.80%"
+      },
+      {
+        "name": "北方稀土",
+        "weight": "5.48%"
+      },
+      {
+        "name": "中国铝业",
+        "weight": "4.10%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "4.05%"
+      }
+    ],
+    "track_index_code": "000819"
+  },
+  {
+    "code": "159509",
+    "name": "纳指科技ETF",
+    "issuer": "景顺",
+    "category": "行业",
+    "track_index": "纳斯达克科技市值加权指数收益率(使用估值汇率调整) (NDXT)",
+    "scale_yi": 459.0,
+    "fee_mgmt": 0.8,
+    "fee_custody": 0.2,
+    "fee_total": 1.0,
+    "year_1_return": 78.39,
+    "year_3_return": null,
+    "sharpe_ratio": 2.27,
+    "calmar_ratio": 3.97,
+    "max_drawdown": -19.75,
+    "annual_vol": 26.24,
+    "tracking_error": 2.6231,
+    "listing_date": "2023-08-08",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "12.69%"
+      },
+      {
+        "name": "苹果",
+        "weight": "12.31%"
+      },
+      {
+        "name": "微软",
+        "weight": "12.12%"
+      },
+      {
+        "name": "博通",
+        "weight": "7.25%"
+      },
+      {
+        "name": "Meta Platforms Inc-A",
+        "weight": "6.79%"
+      }
+    ],
+    "track_index_code": "NDXT"
+  },
+  {
+    "code": "159949",
+    "name": "创业板50ETF",
+    "issuer": "华安",
+    "category": "行业",
+    "track_index": "创业板50 (399673)",
+    "scale_yi": 458.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 119.91,
+    "year_3_return": 84.66,
+    "sharpe_ratio": 2.73,
+    "calmar_ratio": 9.25,
+    "max_drawdown": -12.96,
+    "annual_vol": 29.91,
+    "tracking_error": null,
+    "listing_date": "2016-06-30",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "23.77%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "11.22%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "9.09%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "5.61%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "5.16%"
+      }
+    ],
+    "track_index_code": "399673"
+  },
+  {
+    "code": "518860",
+    "name": "上海金ETF",
+    "issuer": "建信",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约(合约代码:SHAU)的午盘基准价的收益率",
+    "scale_yi": 444.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.43,
+    "year_3_return": 122.84,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.1,
+    "max_drawdown": -24.99,
+    "annual_vol": 28.38,
+    "tracking_error": 3.3417,
+    "listing_date": "2020-09-07",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "513050",
+    "name": "中概互联网ETF",
+    "issuer": "易方达",
+    "category": "跨境",
+    "track_index": "中证海外中国互联网50指数 (H30533)",
+    "scale_yi": 443.9,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.2,
+    "fee_total": 0.8,
+    "year_1_return": -12.61,
+    "year_3_return": 7.78,
+    "sharpe_ratio": -0.47,
+    "calmar_ratio": -0.37,
+    "max_drawdown": -33.68,
+    "annual_vol": 25.96,
+    "tracking_error": null,
+    "listing_date": "2017-01-18",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "30.65%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "26.06%"
+      },
+      {
+        "name": "拼多多",
+        "weight": "7.64%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "6.91%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "6.00%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159819",
+    "name": "人工智能ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "中证人工智能主题指数收益率 (930713)",
+    "scale_yi": 441.0,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 113.8,
+    "year_3_return": 114.51,
+    "sharpe_ratio": 2.36,
+    "calmar_ratio": 7.18,
+    "max_drawdown": -15.85,
+    "annual_vol": 33.99,
+    "tracking_error": null,
+    "listing_date": "2020-09-23",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "11.54%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "10.54%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "7.31%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "5.74%"
+      },
+      {
+        "name": "中科曙光",
+        "weight": "4.60%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513100",
+    "name": "纳指ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "纳斯达克100指数(Nasdaq-100 Index)收益率(经汇率调整后的总收益指数收益率) (NDX)",
+    "scale_yi": 438.3,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.2,
+    "fee_total": 0.8,
+    "year_1_return": 43.43,
+    "year_3_return": 129.68,
+    "sharpe_ratio": 1.87,
+    "calmar_ratio": 2.66,
+    "max_drawdown": -16.3,
+    "annual_vol": 19.28,
+    "tracking_error": 2.0651,
+    "listing_date": "2013-05-15",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "7.88%"
+      },
+      {
+        "name": "苹果",
+        "weight": "6.93%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.11%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.16%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.45%"
+      }
+    ],
+    "track_index_code": "NDX"
+  },
+  {
+    "code": "512100",
+    "name": "中证1000ETF",
+    "issuer": "南方",
+    "category": "宽基",
+    "track_index": "中证1000指数 (000852)",
+    "scale_yi": 436.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 49.27,
+    "year_3_return": 32.21,
+    "sharpe_ratio": 1.96,
+    "calmar_ratio": 3.64,
+    "max_drawdown": -13.52,
+    "annual_vol": 20.55,
+    "tracking_error": null,
+    "listing_date": "2016-11-04",
+    "holdings": [
+      {
+        "name": "源杰科技",
+        "weight": "0.70%"
+      },
+      {
+        "name": "德明利",
+        "weight": "0.59%"
+      },
+      {
+        "name": "香农芯创",
+        "weight": "0.48%"
+      },
+      {
+        "name": "长飞光纤",
+        "weight": "0.43%"
+      },
+      {
+        "name": "长芯博创",
+        "weight": "0.41%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "563360",
+    "name": "A500ETF",
+    "issuer": "华泰柏瑞",
+    "category": "行业",
+    "track_index": "中证A500指数收益率 (000510)",
+    "scale_yi": 423.3,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 39.47,
+    "year_3_return": null,
+    "sharpe_ratio": 2.04,
+    "calmar_ratio": 4.67,
+    "max_drawdown": -8.45,
+    "annual_vol": 16.03,
+    "tracking_error": 0.7896,
+    "listing_date": "2024-10-15",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.77%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.22%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.24%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.91%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "159352",
+    "name": "A500ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "中证A500指数 (000510)",
+    "scale_yi": 390.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 39.75,
+    "year_3_return": null,
+    "sharpe_ratio": 2.05,
+    "calmar_ratio": 4.63,
+    "max_drawdown": -8.59,
+    "annual_vol": 16.02,
+    "tracking_error": 0.7953,
+    "listing_date": "2024-10-15",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.78%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.23%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.25%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.92%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512890",
+    "name": "红利低波ETF",
+    "issuer": "华泰柏瑞",
+    "category": "红利",
+    "track_index": "中证红利低波动指数收益率 (H30269)",
+    "scale_yi": 379.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 4.42,
+    "year_3_return": 31.14,
+    "sharpe_ratio": 0.28,
+    "calmar_ratio": 0.55,
+    "max_drawdown": -8.05,
+    "annual_vol": 10.12,
+    "tracking_error": 1.8385,
+    "listing_date": "2019-01-18",
+    "holdings": [
+      {
+        "name": "上海银行",
+        "weight": "2.83%"
+      },
+      {
+        "name": "南京银行",
+        "weight": "2.74%"
+      },
+      {
+        "name": "平安银行",
+        "weight": "2.56%"
+      },
+      {
+        "name": "沪农商行",
+        "weight": "2.53%"
+      },
+      {
+        "name": "华润江中",
+        "weight": "2.48%"
+      }
+    ],
+    "track_index_code": "H30269"
+  },
+  {
+    "code": "159830",
+    "name": "金ETF",
+    "issuer": "天弘",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约午盘基准价收益率 (SHAU)",
+    "scale_yi": 372.7,
+    "fee_mgmt": 0.25,
+    "fee_custody": 0.05,
+    "fee_total": 0.3,
+    "year_1_return": 27.51,
+    "year_3_return": 121.26,
+    "sharpe_ratio": 0.94,
+    "calmar_ratio": 1.1,
+    "max_drawdown": -24.92,
+    "annual_vol": 28.13,
+    "tracking_error": 3.3425,
+    "listing_date": "2021-07-19",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "518890",
+    "name": "上海金ETF",
+    "issuer": "中银",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约(合约代码:SHAU)午盘基准价格收益率 (SHAU)",
+    "scale_yi": 365.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.22,
+    "year_3_return": 121.51,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.09,
+    "max_drawdown": -25.04,
+    "annual_vol": 28.01,
+    "tracking_error": 3.3403,
+    "listing_date": "2020-09-28",
+    "holdings": [],
+    "track_index_code": "SHAU"
+  },
+  {
+    "code": "512480",
+    "name": "半导体ETF",
+    "issuer": "国联安",
+    "category": "行业",
+    "track_index": "中证全指半导体产品与设备指数收益率 (H30184)",
+    "scale_yi": 358.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 93.11,
+    "year_3_return": 111.25,
+    "sharpe_ratio": 2.0,
+    "calmar_ratio": 4.68,
+    "max_drawdown": -19.9,
+    "annual_vol": 35.25,
+    "tracking_error": null,
+    "listing_date": "2019-05-08",
+    "holdings": [
+      {
+        "name": "寒武纪",
+        "weight": "6.64%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "6.24%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "6.19%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "6.01%"
+      },
+      {
+        "name": "兆易创新",
+        "weight": "5.08%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512500",
+    "name": "中证500ETF",
+    "issuer": "华夏",
+    "category": "宽基",
+    "track_index": "中证500 (000905)",
+    "scale_yi": 356.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 54.62,
+    "year_3_return": 42.22,
+    "sharpe_ratio": 2.11,
+    "calmar_ratio": 3.89,
+    "max_drawdown": -14.03,
+    "annual_vol": 20.82,
+    "tracking_error": null,
+    "listing_date": "2015-05-05",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.06%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.73%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.70%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.65%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.64%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "513300",
+    "name": "纳斯达克ETF",
+    "issuer": "华夏",
+    "category": "跨境",
+    "track_index": "估值汇率调整后的纳斯达克100指数收益 (NDX)",
+    "scale_yi": 354.7,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.2,
+    "fee_total": 0.8,
+    "year_1_return": 38.45,
+    "year_3_return": 122.33,
+    "sharpe_ratio": 1.72,
+    "calmar_ratio": 2.35,
+    "max_drawdown": -16.33,
+    "annual_vol": 18.86,
+    "tracking_error": 2.0186,
+    "listing_date": "2020-11-05",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.47%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.45%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.49%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.47%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.71%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513090",
+    "name": "香港证券ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "中证香港证券投资主题指数收益率(使用估值汇率折算)",
+    "scale_yi": 348.8,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 22.85,
+    "year_3_return": 64.41,
+    "sharpe_ratio": 0.77,
+    "calmar_ratio": 0.71,
+    "max_drawdown": -32.29,
+    "annual_vol": 30.23,
+    "tracking_error": 4.0061,
+    "listing_date": "2020-03-26",
+    "holdings": [
+      {
+        "name": "香港交易所",
+        "weight": "16.75%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "13.36%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "11.50%"
+      },
+      {
+        "name": "中金公司",
+        "weight": "10.02%"
+      },
+      {
+        "name": "中国银河",
+        "weight": "8.93%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159361",
+    "name": "A500ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "中证A500指数收益率 (000510)",
+    "scale_yi": 336.0,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 40.0,
+    "year_3_return": null,
+    "sharpe_ratio": 2.07,
+    "calmar_ratio": 4.68,
+    "max_drawdown": -8.54,
+    "annual_vol": 15.97,
+    "tracking_error": 0.7918,
+    "listing_date": "2024-11-19",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.77%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.22%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.24%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.91%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "159206",
+    "name": "卫星ETF",
+    "issuer": "永赢",
+    "category": "行业",
+    "track_index": "卫星通信 (931906)",
+    "scale_yi": 323.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 111.96,
+    "year_3_return": null,
+    "sharpe_ratio": 2.09,
+    "calmar_ratio": 3.87,
+    "max_drawdown": -28.9,
+    "annual_vol": 38.65,
+    "tracking_error": null,
+    "listing_date": "2025-03-06",
+    "holdings": [
+      {
+        "name": "航天电子",
+        "weight": "9.11%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "7.84%"
+      },
+      {
+        "name": "睿创微纳",
+        "weight": "5.99%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "4.53%"
+      },
+      {
+        "name": "ST臻镭",
+        "weight": "3.77%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159792",
+    "name": "港股通互联网ETF",
+    "issuer": "富国",
+    "category": "跨境",
+    "track_index": "中证港股通互联网指数收益率 (931637)",
+    "scale_yi": 314.0,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": -20.58,
+    "year_3_return": -3.37,
+    "sharpe_ratio": -0.76,
+    "calmar_ratio": -0.54,
+    "max_drawdown": -38.32,
+    "annual_vol": 27.91,
+    "tracking_error": null,
+    "listing_date": "2021-09-28",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "15.23%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "14.77%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "13.86%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "12.13%"
+      },
+      {
+        "name": "贝壳-W",
+        "weight": "4.19%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159338",
+    "name": "中证A500ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "中证A500指数收益率 (000510)",
+    "scale_yi": 311.1,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 39.93,
+    "year_3_return": null,
+    "sharpe_ratio": 2.06,
+    "calmar_ratio": 4.81,
+    "max_drawdown": -8.3,
+    "annual_vol": 16.06,
+    "tracking_error": 0.7924,
+    "listing_date": "2024-10-15",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.80%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.21%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.26%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.14%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.91%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "159570",
+    "name": "港股通创新药ETF",
+    "issuer": "汇添富",
+    "category": "跨境",
+    "track_index": "国证港股通创新药指数收益率(经估值汇率调整后)",
+    "scale_yi": 299.9,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 10.71,
+    "year_3_return": null,
+    "sharpe_ratio": 0.41,
+    "calmar_ratio": 0.33,
+    "max_drawdown": -32.9,
+    "annual_vol": 37.33,
+    "tracking_error": 4.9878,
+    "listing_date": "2024-01-22",
+    "holdings": [
+      {
+        "name": "康方生物",
+        "weight": "11.88%"
+      },
+      {
+        "name": "信达生物",
+        "weight": "9.82%"
+      },
+      {
+        "name": "石药集团",
+        "weight": "9.41%"
+      },
+      {
+        "name": "百济神州",
+        "weight": "9.07%"
+      },
+      {
+        "name": "中国生物制药",
+        "weight": "9.03%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513180",
+    "name": "恒生科技ETF",
+    "issuer": "华夏",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 295.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -11.75,
+    "year_3_return": 10.99,
+    "sharpe_ratio": -0.47,
+    "calmar_ratio": -0.37,
+    "max_drawdown": -31.51,
+    "annual_vol": 24.48,
+    "tracking_error": null,
+    "listing_date": "2021-05-18",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "9.43%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "9.27%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "9.04%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "8.44%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "8.25%"
+      }
+    ],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "513750",
+    "name": "港股通非银ETF",
+    "issuer": "广发",
+    "category": "跨境",
+    "track_index": "中证港股通非银行金融主题指数收益率 (931115)",
+    "scale_yi": 283.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 29.72,
+    "year_3_return": null,
+    "sharpe_ratio": 1.05,
+    "calmar_ratio": 1.43,
+    "max_drawdown": -20.84,
+    "annual_vol": 26.29,
+    "tracking_error": 2.6859,
+    "listing_date": "2023-11-27",
+    "holdings": [
+      {
+        "name": "友邦保险",
+        "weight": "17.39%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "15.38%"
+      },
+      {
+        "name": "香港交易所",
+        "weight": "15.34%"
+      },
+      {
+        "name": "中国人寿",
+        "weight": "8.89%"
+      },
+      {
+        "name": "中国太保",
+        "weight": "5.47%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159632",
+    "name": "纳斯达克ETF",
+    "issuer": "华安",
+    "category": "跨境",
+    "track_index": "纳斯达克100指数收益率(经汇率调整) (NDX)",
+    "scale_yi": 273.6,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.2,
+    "fee_total": 0.8,
+    "year_1_return": 41.1,
+    "year_3_return": 122.95,
+    "sharpe_ratio": 1.8,
+    "calmar_ratio": 2.55,
+    "max_drawdown": -16.14,
+    "annual_vol": 19.06,
+    "tracking_error": 2.0341,
+    "listing_date": "2022-08-03",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "7.96%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.05%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.17%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.18%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.49%"
+      }
+    ],
+    "track_index_code": "NDX"
+  },
+  {
+    "code": "513130",
+    "name": "恒生科技ETF",
+    "issuer": "华泰柏瑞",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 269.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -12.17,
+    "year_3_return": 9.98,
+    "sharpe_ratio": -0.49,
+    "calmar_ratio": -0.38,
+    "max_drawdown": -31.63,
+    "annual_vol": 24.42,
+    "tracking_error": null,
+    "listing_date": "2021-05-24",
+    "holdings": [],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "159530",
+    "name": "机器人ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "国证机器人产业指数收益率 (980012)",
+    "scale_yi": 262.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 30.61,
+    "year_3_return": null,
+    "sharpe_ratio": 1.0,
+    "calmar_ratio": 1.39,
+    "max_drawdown": -21.96,
+    "annual_vol": 29.14,
+    "tracking_error": 3.5418,
+    "listing_date": "2024-01-18",
+    "holdings": [
+      {
+        "name": "绿的谐波",
+        "weight": "6.32%"
+      },
+      {
+        "name": "双环传动",
+        "weight": "4.68%"
+      },
+      {
+        "name": "机器人",
+        "weight": "4.43%"
+      },
+      {
+        "name": "石头科技",
+        "weight": "4.15%"
+      },
+      {
+        "name": "科沃斯",
+        "weight": "3.25%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513120",
+    "name": "港股创新药ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "中证香港创新药指数收益率(人民币计价)",
+    "scale_yi": 259.8,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 20.36,
+    "year_3_return": 26.46,
+    "sharpe_ratio": 0.65,
+    "calmar_ratio": 0.67,
+    "max_drawdown": -30.37,
+    "annual_vol": 35.18,
+    "tracking_error": 4.8991,
+    "listing_date": "2022-07-12",
+    "holdings": [
+      {
+        "name": "信达生物",
+        "weight": "10.32%"
+      },
+      {
+        "name": "康方生物",
+        "weight": "9.33%"
+      },
+      {
+        "name": "百济神州",
+        "weight": "9.21%"
+      },
+      {
+        "name": "药明生物",
+        "weight": "8.32%"
+      },
+      {
+        "name": "石药集团",
+        "weight": "7.15%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515450",
+    "name": "红利低波50ETF",
+    "issuer": "南方",
+    "category": "红利",
+    "track_index": "标普中国A股大盘红利低波50指数收益率 (SPCALLV)",
+    "scale_yi": 258.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 6.61,
+    "year_3_return": 49.21,
+    "sharpe_ratio": 0.51,
+    "calmar_ratio": 1.0,
+    "max_drawdown": -6.64,
+    "annual_vol": 9.49,
+    "tracking_error": 1.6247,
+    "listing_date": "2020-02-26",
+    "holdings": [
+      {
+        "name": "格力电器",
+        "weight": "3.70%"
+      },
+      {
+        "name": "浙能电力",
+        "weight": "3.39%"
+      },
+      {
+        "name": "申能股份",
+        "weight": "3.36%"
+      },
+      {
+        "name": "雅戈尔",
+        "weight": "3.31%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "3.30%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159501",
+    "name": "纳指ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "经估值汇率调整后的纳斯达克100指数收益率 (NDX)",
+    "scale_yi": 257.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 44.35,
+    "year_3_return": null,
+    "sharpe_ratio": 2.06,
+    "calmar_ratio": 2.95,
+    "max_drawdown": -15.01,
+    "annual_vol": 17.72,
+    "tracking_error": 2.0634,
+    "listing_date": "2023-06-14",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.16%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.18%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.29%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.31%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.57%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159922",
+    "name": "中证500ETF",
+    "issuer": "嘉实",
+    "category": "宽基",
+    "track_index": "中证500指数 (000905)",
+    "scale_yi": 256.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 54.65,
+    "year_3_return": 37.86,
+    "sharpe_ratio": 2.1,
+    "calmar_ratio": 3.9,
+    "max_drawdown": -14.03,
+    "annual_vol": 20.96,
+    "tracking_error": null,
+    "listing_date": "2013-03-15",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.07%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.74%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.72%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.65%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.65%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "513630",
+    "name": "港股低波红利ETF",
+    "issuer": "摩根",
+    "category": "红利",
+    "track_index": "标普港股通低波红利指数收益率 (SPHKLVD)",
+    "scale_yi": 249.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 25.77,
+    "year_3_return": null,
+    "sharpe_ratio": 1.63,
+    "calmar_ratio": 3.51,
+    "max_drawdown": -7.35,
+    "annual_vol": 13.46,
+    "tracking_error": 1.5398,
+    "listing_date": "2023-12-08",
+    "holdings": [
+      {
+        "name": "中国海洋石油",
+        "weight": "3.19%"
+      },
+      {
+        "name": "万洲国际",
+        "weight": "3.17%"
+      },
+      {
+        "name": "中国石油股份",
+        "weight": "3.04%"
+      },
+      {
+        "name": "电讯盈科",
+        "weight": "2.89%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "2.77%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159516",
+    "name": "半导体设备ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "中证半导体材料设备主题指数收益率 (931521)",
+    "scale_yi": 246.1,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 129.81,
+    "year_3_return": null,
+    "sharpe_ratio": 2.36,
+    "calmar_ratio": 6.71,
+    "max_drawdown": -19.35,
+    "annual_vol": 37.62,
+    "tracking_error": null,
+    "listing_date": "2023-07-19",
+    "holdings": [
+      {
+        "name": "中微公司",
+        "weight": "14.84%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "12.92%"
+      },
+      {
+        "name": "拓荆科技",
+        "weight": "7.36%"
+      },
+      {
+        "name": "长川科技",
+        "weight": "6.34%"
+      },
+      {
+        "name": "华海清科",
+        "weight": "5.08%"
+      }
+    ],
+    "track_index_code": "931521"
+  },
+  {
+    "code": "512050",
+    "name": "A500ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "中证A500 (000510)",
+    "scale_yi": 240.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 39.67,
+    "year_3_return": null,
+    "sharpe_ratio": 2.03,
+    "calmar_ratio": 4.58,
+    "max_drawdown": -8.66,
+    "annual_vol": 16.19,
+    "tracking_error": null,
+    "listing_date": "2024-11-08",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.73%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.19%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.22%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.13%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.89%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "515180",
+    "name": "红利ETF",
+    "issuer": "易方达",
+    "category": "红利",
+    "track_index": "中证红利指数收益率 (000922)",
+    "scale_yi": 238.3,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 11.53,
+    "year_3_return": 29.9,
+    "sharpe_ratio": 0.87,
+    "calmar_ratio": 1.78,
+    "max_drawdown": -6.46,
+    "annual_vol": 11.01,
+    "tracking_error": 1.3673,
+    "listing_date": "2019-12-20",
+    "holdings": [
+      {
+        "name": "中远海控",
+        "weight": "2.83%"
+      },
+      {
+        "name": "广汇能源",
+        "weight": "2.24%"
+      },
+      {
+        "name": "兖矿能源",
+        "weight": "1.85%"
+      },
+      {
+        "name": "鄂尔多斯",
+        "weight": "1.66%"
+      },
+      {
+        "name": "中谷物流",
+        "weight": "1.63%"
+      }
+    ],
+    "track_index_code": "000922"
+  },
+  {
+    "code": "515070",
+    "name": "人工智能ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "CS人工智 (930713)",
+    "scale_yi": 234.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 112.54,
+    "year_3_return": 113.46,
+    "sharpe_ratio": 2.37,
+    "calmar_ratio": 7.13,
+    "max_drawdown": -15.79,
+    "annual_vol": 33.44,
+    "tracking_error": null,
+    "listing_date": "2019-12-09",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "11.54%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "10.54%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "7.31%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "5.74%"
+      },
+      {
+        "name": "中科曙光",
+        "weight": "4.59%"
+      }
+    ],
+    "track_index_code": "930713"
+  },
+  {
+    "code": "588170",
+    "name": "科创半导体ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "上证科创板半导体材料设备主题指数收益率 (000657)",
+    "scale_yi": 222.6,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 143.61,
+    "year_3_return": null,
+    "sharpe_ratio": 2.5,
+    "calmar_ratio": 7.13,
+    "max_drawdown": -20.13,
+    "annual_vol": 37.82,
+    "tracking_error": null,
+    "listing_date": "2025-03-24",
+    "holdings": [
+      {
+        "name": "拓荆科技",
+        "weight": "10.76%"
+      },
+      {
+        "name": "华海清科",
+        "weight": "10.64%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "9.97%"
+      },
+      {
+        "name": "中科飞测",
+        "weight": "7.89%"
+      },
+      {
+        "name": "安集科技",
+        "weight": "7.31%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159659",
+    "name": "纳斯达克100ETF",
+    "issuer": "招商",
+    "category": "跨境",
+    "track_index": "纳斯达克100指数收益率(经汇率调整后)",
+    "scale_yi": 221.8,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.15,
+    "fee_total": 0.65,
+    "year_1_return": 42.04,
+    "year_3_return": 111.36,
+    "sharpe_ratio": 1.85,
+    "calmar_ratio": 2.66,
+    "max_drawdown": -15.81,
+    "annual_vol": 18.92,
+    "tracking_error": 2.0597,
+    "listing_date": "2023-04-25",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.66%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.62%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.62%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.57%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.79%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "562500",
+    "name": "机器人ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "中证机器人指数收益率 (H30590)",
+    "scale_yi": 217.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 37.3,
+    "year_3_return": 42.1,
+    "sharpe_ratio": 1.28,
+    "calmar_ratio": 1.91,
+    "max_drawdown": -19.56,
+    "annual_vol": 26.06,
+    "tracking_error": 2.985,
+    "listing_date": "2021-12-29",
+    "holdings": [
+      {
+        "name": "科大讯飞",
+        "weight": "9.96%"
+      },
+      {
+        "name": "汇川技术",
+        "weight": "9.59%"
+      },
+      {
+        "name": "大族激光",
+        "weight": "6.62%"
+      },
+      {
+        "name": "拓普集团",
+        "weight": "6.47%"
+      },
+      {
+        "name": "中控技术",
+        "weight": "5.35%"
+      }
+    ],
+    "track_index_code": "H30590"
+  },
+  {
+    "code": "159201",
+    "name": "自由现金流ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "国证自由现金流指数收益率 (980092)",
+    "scale_yi": 216.7,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 31.35,
+    "year_3_return": null,
+    "sharpe_ratio": 1.68,
+    "calmar_ratio": 2.94,
+    "max_drawdown": -10.66,
+    "annual_vol": 15.88,
+    "tracking_error": null,
+    "listing_date": "2025-02-27",
+    "holdings": [
+      {
+        "name": "上汽集团",
+        "weight": "9.90%"
+      },
+      {
+        "name": "中国海油",
+        "weight": "9.76%"
+      },
+      {
+        "name": "格力电器",
+        "weight": "9.56%"
+      },
+      {
+        "name": "中远海控",
+        "weight": "4.56%"
+      },
+      {
+        "name": "长城汽车",
+        "weight": "3.63%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159558",
+    "name": "半导体设备ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "中证半导体材料设备主题指数收益率 (931521)",
+    "scale_yi": 216.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 131.66,
+    "year_3_return": null,
+    "sharpe_ratio": 2.4,
+    "calmar_ratio": 6.68,
+    "max_drawdown": -19.7,
+    "annual_vol": 37.2,
+    "tracking_error": null,
+    "listing_date": "2024-06-06",
+    "holdings": [
+      {
+        "name": "中微公司",
+        "weight": "14.89%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "12.86%"
+      },
+      {
+        "name": "拓荆科技",
+        "weight": "7.35%"
+      },
+      {
+        "name": "长川科技",
+        "weight": "6.35%"
+      },
+      {
+        "name": "华海清科",
+        "weight": "5.06%"
+      }
+    ],
+    "track_index_code": "931521"
+  },
+  {
+    "code": "517520",
+    "name": "黄金股ETF",
+    "issuer": "永赢",
+    "category": "商品",
+    "track_index": "中证沪深港黄金产业股票指数收益率 (931238)",
+    "scale_yi": 215.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 48.51,
+    "year_3_return": null,
+    "sharpe_ratio": 1.1,
+    "calmar_ratio": 1.34,
+    "max_drawdown": -36.17,
+    "annual_vol": 42.78,
+    "tracking_error": null,
+    "listing_date": "2023-11-01",
+    "holdings": [
+      {
+        "name": "紫金矿业",
+        "weight": "9.96%"
+      },
+      {
+        "name": "中金黄金",
+        "weight": "9.44%"
+      },
+      {
+        "name": "山东黄金",
+        "weight": "8.84%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "8.73%"
+      },
+      {
+        "name": "山金国际",
+        "weight": "6.04%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "516650",
+    "name": "有色金属ETF",
+    "issuer": "华夏",
+    "category": "商品",
+    "track_index": "细分有色 (000811)",
+    "scale_yi": 210.8,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 92.5,
+    "year_3_return": 86.08,
+    "sharpe_ratio": 1.9,
+    "calmar_ratio": 3.14,
+    "max_drawdown": -29.44,
+    "annual_vol": 37.22,
+    "tracking_error": null,
+    "listing_date": "2021-06-09",
+    "holdings": [
+      {
+        "name": "紫金矿业",
+        "weight": "14.17%"
+      },
+      {
+        "name": "洛阳钼业",
+        "weight": "6.62%"
+      },
+      {
+        "name": "北方稀土",
+        "weight": "5.33%"
+      },
+      {
+        "name": "中国铝业",
+        "weight": "3.99%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "3.94%"
+      }
+    ],
+    "track_index_code": "000811"
+  },
+  {
+    "code": "515380",
+    "name": "沪深300ETF",
+    "issuer": "泰康",
+    "category": "宽基",
+    "track_index": "沪深300指数收益率 (000300)",
+    "scale_yi": 202.6,
+    "fee_mgmt": 0.4,
+    "fee_custody": 0.05,
+    "fee_total": 0.45,
+    "year_1_return": 31.72,
+    "year_3_return": 30.15,
+    "sharpe_ratio": 1.96,
+    "calmar_ratio": 4.41,
+    "max_drawdown": -7.19,
+    "annual_vol": 13.6,
+    "tracking_error": 0.737,
+    "listing_date": "2020-03-23",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.32%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.69%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.58%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.46%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.19%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "159952",
+    "name": "创业板ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "创业板指 (399006)",
+    "scale_yi": 195.6,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 102.3,
+    "year_3_return": 69.48,
+    "sharpe_ratio": 2.66,
+    "calmar_ratio": 8.54,
+    "max_drawdown": -11.98,
+    "annual_vol": 27.29,
+    "tracking_error": null,
+    "listing_date": "2017-04-25",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "19.67%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "9.32%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "7.50%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "4.65%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "4.27%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515220",
+    "name": "煤炭ETF",
+    "issuer": "国泰",
+    "category": "商品",
+    "track_index": "中证煤炭指数收益率 (399998)",
+    "scale_yi": 195.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 36.27,
+    "year_3_return": 25.41,
+    "sharpe_ratio": 1.19,
+    "calmar_ratio": 2.43,
+    "max_drawdown": -14.9,
+    "annual_vol": 27.76,
+    "tracking_error": null,
+    "listing_date": "2020-03-02",
+    "holdings": [
+      {
+        "name": "中国神华",
+        "weight": "10.07%"
+      },
+      {
+        "name": "兖矿能源",
+        "weight": "10.04%"
+      },
+      {
+        "name": "陕西煤业",
+        "weight": "10.02%"
+      },
+      {
+        "name": "中煤能源",
+        "weight": "9.13%"
+      },
+      {
+        "name": "山西焦煤",
+        "weight": "5.48%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513010",
+    "name": "恒生科技ETF",
+    "issuer": "易方达",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 193.8,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -11.06,
+    "year_3_return": 12.59,
+    "sharpe_ratio": -0.44,
+    "calmar_ratio": -0.35,
+    "max_drawdown": -31.33,
+    "annual_vol": 24.43,
+    "tracking_error": null,
+    "listing_date": "2021-05-18",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "8.88%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "8.83%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "8.12%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "7.65%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "6.97%"
+      }
+    ],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "159834",
+    "name": "金ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约(合约代码:SHAU)午盘基准价格收益率 (SHAU)",
+    "scale_yi": 192.4,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 27.43,
+    "year_3_return": 122.92,
+    "sharpe_ratio": 0.94,
+    "calmar_ratio": 1.1,
+    "max_drawdown": -24.95,
+    "annual_vol": 28.02,
+    "tracking_error": 3.342,
+    "listing_date": "2022-03-16",
+    "holdings": [],
+    "track_index_code": "SHAU"
+  },
+  {
+    "code": "516160",
+    "name": "新能源ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "中证新能 (399808)",
+    "scale_yi": 192.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 82.06,
+    "year_3_return": 3.48,
+    "sharpe_ratio": 2.15,
+    "calmar_ratio": 6.41,
+    "max_drawdown": -12.81,
+    "annual_vol": 28.97,
+    "tracking_error": null,
+    "listing_date": "2021-01-22",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "9.70%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "7.66%"
+      },
+      {
+        "name": "特变电工",
+        "weight": "4.68%"
+      },
+      {
+        "name": "隆基绿能",
+        "weight": "3.72%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "3.12%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159948",
+    "name": "创业板ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "创业板指数收益率 (399006)",
+    "scale_yi": 190.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 102.67,
+    "year_3_return": 70.07,
+    "sharpe_ratio": 2.72,
+    "calmar_ratio": 8.61,
+    "max_drawdown": -11.93,
+    "annual_vol": 26.71,
+    "tracking_error": null,
+    "listing_date": "2016-05-31",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "19.71%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "9.31%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "7.54%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "4.65%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "4.27%"
+      }
+    ],
+    "track_index_code": "399006"
+  },
+  {
+    "code": "159845",
+    "name": "中证1000ETF",
+    "issuer": "华夏",
+    "category": "宽基",
+    "track_index": "中证1000指数收益率 (000852)",
+    "scale_yi": 189.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 48.21,
+    "year_3_return": 31.94,
+    "sharpe_ratio": 1.98,
+    "calmar_ratio": 3.61,
+    "max_drawdown": -13.36,
+    "annual_vol": 19.96,
+    "tracking_error": null,
+    "listing_date": "2021-03-31",
+    "holdings": [
+      {
+        "name": "源杰科技",
+        "weight": "0.68%"
+      },
+      {
+        "name": "德明利",
+        "weight": "0.58%"
+      },
+      {
+        "name": "香农芯创",
+        "weight": "0.46%"
+      },
+      {
+        "name": "长飞光纤",
+        "weight": "0.43%"
+      },
+      {
+        "name": "长芯博创",
+        "weight": "0.40%"
+      }
+    ],
+    "track_index_code": "000852"
+  },
+  {
+    "code": "159831",
+    "name": "金ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "上海黄金交易所上海金集中定价合约(合约代码:SHAU)的午盘基准价格收益率",
+    "scale_yi": 187.5,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.23,
+    "year_3_return": 121.58,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.09,
+    "max_drawdown": -25.0,
+    "annual_vol": 28.15,
+    "tracking_error": 3.3412,
+    "listing_date": "2022-04-07",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "510580",
+    "name": "中证500ETF",
+    "issuer": "易方达",
+    "category": "宽基",
+    "track_index": "中证500指数 (000905)",
+    "scale_yi": 181.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 56.59,
+    "year_3_return": 46.41,
+    "sharpe_ratio": 2.19,
+    "calmar_ratio": 4.15,
+    "max_drawdown": -13.63,
+    "annual_vol": 20.68,
+    "tracking_error": null,
+    "listing_date": "2015-09-14",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.05%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.73%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.70%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.64%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.63%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "512000",
+    "name": "券商ETF",
+    "issuer": "华宝",
+    "category": "行业",
+    "track_index": "中证全指证券公司指数 (399975)",
+    "scale_yi": 177.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 1.21,
+    "year_3_return": 15.21,
+    "sharpe_ratio": 0.07,
+    "calmar_ratio": 0.05,
+    "max_drawdown": -25.08,
+    "annual_vol": 21.76,
+    "tracking_error": 1.9988,
+    "listing_date": "2016-09-14",
+    "holdings": [
+      {
+        "name": "东方财富",
+        "weight": "13.56%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "13.31%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "10.63%"
+      },
+      {
+        "name": "华泰证券",
+        "weight": "5.91%"
+      },
+      {
+        "name": "招商证券",
+        "weight": "3.25%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "510350",
+    "name": "沪深300ETF",
+    "issuer": "工银",
+    "category": "宽基",
+    "track_index": "沪深300指数收益率 (000300)",
+    "scale_yi": 176.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 32.45,
+    "year_3_return": 29.56,
+    "sharpe_ratio": 1.93,
+    "calmar_ratio": 4.29,
+    "max_drawdown": -7.56,
+    "annual_vol": 14.14,
+    "tracking_error": 0.7373,
+    "listing_date": "2019-08-16",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.22%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.67%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.53%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.43%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.17%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "515050",
+    "name": "通信ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "5G通信 (931079)",
+    "scale_yi": 174.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 239.27,
+    "year_3_return": 247.99,
+    "sharpe_ratio": 3.21,
+    "calmar_ratio": 12.56,
+    "max_drawdown": -19.05,
+    "annual_vol": 40.2,
+    "tracking_error": null,
+    "listing_date": "2019-09-17",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "10.29%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "9.40%"
+      },
+      {
+        "name": "立讯精密",
+        "weight": "7.72%"
+      },
+      {
+        "name": "工业富联",
+        "weight": "6.67%"
+      },
+      {
+        "name": "兆易创新",
+        "weight": "5.18%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515080",
+    "name": "中证红利ETF",
+    "issuer": "招商",
+    "category": "红利",
+    "track_index": "中证红利指数收益率 (000922)",
+    "scale_yi": 173.4,
+    "fee_mgmt": 0.2,
+    "fee_custody": 0.1,
+    "fee_total": 0.3,
+    "year_1_return": 11.19,
+    "year_3_return": 28.14,
+    "sharpe_ratio": 0.84,
+    "calmar_ratio": 1.73,
+    "max_drawdown": -6.45,
+    "annual_vol": 11.02,
+    "tracking_error": 1.3684,
+    "listing_date": "2019-12-27",
+    "holdings": [
+      {
+        "name": "中远海控",
+        "weight": "2.82%"
+      },
+      {
+        "name": "广汇能源",
+        "weight": "2.23%"
+      },
+      {
+        "name": "兖矿能源",
+        "weight": "1.84%"
+      },
+      {
+        "name": "鄂尔多斯",
+        "weight": "1.67%"
+      },
+      {
+        "name": "中谷物流",
+        "weight": "1.63%"
+      }
+    ],
+    "track_index_code": "000922"
+  },
+  {
+    "code": "159781",
+    "name": "科创创业ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "中证科创创业50指数收益率 (931643)",
+    "scale_yi": 171.2,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 129.5,
+    "year_3_return": 96.07,
+    "sharpe_ratio": 2.76,
+    "calmar_ratio": 8.79,
+    "max_drawdown": -14.74,
+    "annual_vol": 31.3,
+    "tracking_error": null,
+    "listing_date": "2021-07-05",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "11.49%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "11.07%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "10.61%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "5.27%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "5.01%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515660",
+    "name": "沪深300ETF",
+    "issuer": "国联安",
+    "category": "宽基",
+    "track_index": "沪深300指数 (000300)",
+    "scale_yi": 169.5,
+    "fee_mgmt": 0.3,
+    "fee_custody": 0.05,
+    "fee_total": 0.35,
+    "year_1_return": 31.54,
+    "year_3_return": 30.39,
+    "sharpe_ratio": 1.93,
+    "calmar_ratio": 4.52,
+    "max_drawdown": -6.98,
+    "annual_vol": 13.73,
+    "tracking_error": 0.737,
+    "listing_date": "2019-12-24",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.35%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.72%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.59%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.48%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.21%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "516150",
+    "name": "稀土ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "中证稀土产业指数收益率 (930598)",
+    "scale_yi": 165.5,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 89.84,
+    "year_3_return": 73.37,
+    "sharpe_ratio": 1.9,
+    "calmar_ratio": 4.01,
+    "max_drawdown": -22.41,
+    "annual_vol": 36.27,
+    "tracking_error": null,
+    "listing_date": "2021-03-17",
+    "holdings": [
+      {
+        "name": "北方稀土",
+        "weight": "14.35%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "7.84%"
+      },
+      {
+        "name": "厦门钨业",
+        "weight": "7.09%"
+      },
+      {
+        "name": "中国稀土",
+        "weight": "4.97%"
+      },
+      {
+        "name": "格林美",
+        "weight": "4.96%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159812",
+    "name": "黄金ETF",
+    "issuer": "前海开源",
+    "category": "商品",
+    "track_index": "上海黄金交易所Au99.99现货实盘合约收益率 (AU9999)",
+    "scale_yi": 162.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 27.28,
+    "year_3_return": 122.41,
+    "sharpe_ratio": 0.93,
+    "calmar_ratio": 1.09,
+    "max_drawdown": -25.12,
+    "annual_vol": 28.33,
+    "tracking_error": 3.3169,
+    "listing_date": "2020-05-29",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "561380",
+    "name": "电网设备ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "A股电网设备 (000895)",
+    "scale_yi": 162.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 149.17,
+    "year_3_return": null,
+    "sharpe_ratio": 3.04,
+    "calmar_ratio": 10.24,
+    "max_drawdown": -14.57,
+    "annual_vol": 31.1,
+    "tracking_error": null,
+    "listing_date": "2024-12-11",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "9.78%"
+      },
+      {
+        "name": "思源电气",
+        "weight": "9.74%"
+      },
+      {
+        "name": "国电南瑞",
+        "weight": "9.48%"
+      },
+      {
+        "name": "特变电工",
+        "weight": "9.43%"
+      },
+      {
+        "name": "中天科技",
+        "weight": "8.24%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "560860",
+    "name": "工业有色ETF",
+    "issuer": "万家",
+    "category": "商品",
+    "track_index": "工业有色 (000827)",
+    "scale_yi": 156.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 109.28,
+    "year_3_return": 75.39,
+    "sharpe_ratio": 2.03,
+    "calmar_ratio": 3.66,
+    "max_drawdown": -29.89,
+    "annual_vol": 39.41,
+    "tracking_error": null,
+    "listing_date": "2023-02-22",
+    "holdings": [
+      {
+        "name": "洛阳钼业",
+        "weight": "10.92%"
+      },
+      {
+        "name": "北方稀土",
+        "weight": "8.80%"
+      },
+      {
+        "name": "中国铝业",
+        "weight": "6.59%"
+      },
+      {
+        "name": "云铝股份",
+        "weight": "4.70%"
+      },
+      {
+        "name": "厦门钨业",
+        "weight": "4.51%"
+      }
+    ],
+    "track_index_code": "000827"
+  },
+  {
+    "code": "159566",
+    "name": "储能电池ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "新能源电池 (931557)",
+    "scale_yi": 153.9,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 95.74,
+    "year_3_return": null,
+    "sharpe_ratio": 2.26,
+    "calmar_ratio": 6.58,
+    "max_drawdown": -14.55,
+    "annual_vol": 31.16,
+    "tracking_error": null,
+    "listing_date": "2024-01-31",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "9.92%"
+      },
+      {
+        "name": "亿纬锂能",
+        "weight": "8.36%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "7.92%"
+      },
+      {
+        "name": "英维克",
+        "weight": "5.90%"
+      },
+      {
+        "name": "德业股份",
+        "weight": "5.77%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159920",
+    "name": "恒生ETF",
+    "issuer": "华夏",
+    "category": "跨境",
+    "track_index": "(人民币/港币汇率*恒生指数)收益率 (HSI)",
+    "scale_yi": 149.0,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.15,
+    "fee_total": 0.75,
+    "year_1_return": 9.99,
+    "year_3_return": 33.33,
+    "sharpe_ratio": 0.52,
+    "calmar_ratio": 0.71,
+    "max_drawdown": -14.07,
+    "annual_vol": 17.45,
+    "tracking_error": 1.6104,
+    "listing_date": "2012-10-22",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "7.20%"
+      },
+      {
+        "name": "汇丰控股",
+        "weight": "7.03%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "6.70%"
+      },
+      {
+        "name": "友邦保险",
+        "weight": "5.21%"
+      },
+      {
+        "name": "建设银行",
+        "weight": "4.72%"
+      }
+    ],
+    "track_index_code": "HSI"
+  },
+  {
+    "code": "159870",
+    "name": "化工ETF",
+    "issuer": "鹏华",
+    "category": "商品",
+    "track_index": "中证细分化工产业主题指数收益率 (000813)",
+    "scale_yi": 148.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 58.41,
+    "year_3_return": 14.96,
+    "sharpe_ratio": 1.91,
+    "calmar_ratio": 3.95,
+    "max_drawdown": -14.78,
+    "annual_vol": 24.82,
+    "tracking_error": null,
+    "listing_date": "2021-03-03",
+    "holdings": [
+      {
+        "name": "万华化学",
+        "weight": "9.98%"
+      },
+      {
+        "name": "盐湖股份",
+        "weight": "7.85%"
+      },
+      {
+        "name": "天赐材料",
+        "weight": "4.38%"
+      },
+      {
+        "name": "宝丰能源",
+        "weight": "4.28%"
+      },
+      {
+        "name": "藏格矿业",
+        "weight": "4.16%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159901",
+    "name": "深证100ETF",
+    "issuer": "易方达",
+    "category": "宽基",
+    "track_index": "深证100 (399330)",
+    "scale_yi": 145.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 56.01,
+    "year_3_return": 31.94,
+    "sharpe_ratio": 2.26,
+    "calmar_ratio": 6.23,
+    "max_drawdown": -8.99,
+    "annual_vol": 19.77,
+    "tracking_error": null,
+    "listing_date": "2006-03-24",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "12.19%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "5.76%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "4.66%"
+      },
+      {
+        "name": "美的集团",
+        "weight": "4.36%"
+      },
+      {
+        "name": "比亚迪",
+        "weight": "3.16%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159636",
+    "name": "港股通科技30ETF",
+    "issuer": "工银",
+    "category": "跨境",
+    "track_index": "港股通科技 (H5008)",
+    "scale_yi": 142.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -12.41,
+    "year_3_return": 23.34,
+    "sharpe_ratio": -0.44,
+    "calmar_ratio": -0.38,
+    "max_drawdown": -32.59,
+    "annual_vol": 26.71,
+    "tracking_error": null,
+    "listing_date": "2022-06-30",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "14.76%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "14.55%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "13.21%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "10.07%"
+      },
+      {
+        "name": "比亚迪股份",
+        "weight": "8.54%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513650",
+    "name": "标普500ETF",
+    "issuer": "南方",
+    "category": "跨境",
+    "track_index": "标普500指数收益率(经汇率调整)",
+    "scale_yi": 140.7,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.15,
+    "fee_total": 0.75,
+    "year_1_return": 25.98,
+    "year_3_return": 78.26,
+    "sharpe_ratio": 1.43,
+    "calmar_ratio": 2.08,
+    "max_drawdown": -12.49,
+    "annual_vol": 15.66,
+    "tracking_error": 1.5335,
+    "listing_date": "2023-04-04",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "7.39%"
+      },
+      {
+        "name": "苹果",
+        "weight": "6.50%"
+      },
+      {
+        "name": "微软",
+        "weight": "4.79%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "3.55%"
+      },
+      {
+        "name": "谷歌-A",
+        "weight": "2.92%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "588290",
+    "name": "科创芯片ETF",
+    "issuer": "华安",
+    "category": "行业",
+    "track_index": "上证科创板芯片指数收益率 (000685)",
+    "scale_yi": 138.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 120.3,
+    "year_3_return": 163.06,
+    "sharpe_ratio": 2.2,
+    "calmar_ratio": 6.3,
+    "max_drawdown": -19.09,
+    "annual_vol": 38.52,
+    "tracking_error": null,
+    "listing_date": "2022-09-30",
+    "holdings": [
+      {
+        "name": "中芯国际",
+        "weight": "9.73%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "9.59%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "9.49%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "7.74%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "7.22%"
+      }
+    ],
+    "track_index_code": "000685"
+  },
+  {
+    "code": "560780",
+    "name": "半导体设备ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "中证半导体材料设备主题指数收益率 (931521)",
+    "scale_yi": 138.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 132.86,
+    "year_3_return": -25.98,
+    "sharpe_ratio": 2.4,
+    "calmar_ratio": 6.86,
+    "max_drawdown": -19.36,
+    "annual_vol": 37.42,
+    "tracking_error": null,
+    "listing_date": "2023-12-01",
+    "holdings": [
+      {
+        "name": "中微公司",
+        "weight": "14.90%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "12.93%"
+      },
+      {
+        "name": "拓荆科技",
+        "weight": "7.42%"
+      },
+      {
+        "name": "长川科技",
+        "weight": "6.33%"
+      },
+      {
+        "name": "华海清科",
+        "weight": "5.08%"
+      }
+    ],
+    "track_index_code": "931521"
+  },
+  {
+    "code": "159980",
+    "name": "有色ETF",
+    "issuer": "大成",
+    "category": "商品",
+    "track_index": "上海期货交易所有色金属期货价格指数收益率",
+    "scale_yi": 137.7,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.1,
+    "fee_total": 0.7,
+    "year_1_return": 28.41,
+    "year_3_return": 36.56,
+    "sharpe_ratio": 1.24,
+    "calmar_ratio": 1.83,
+    "max_drawdown": -15.56,
+    "annual_vol": 20.33,
+    "tracking_error": 2.1198,
+    "listing_date": "2019-12-24",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "159755",
+    "name": "电池ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "国证新能源车电池指数收益率",
+    "scale_yi": 134.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 78.31,
+    "year_3_return": 35.24,
+    "sharpe_ratio": 1.97,
+    "calmar_ratio": 5.7,
+    "max_drawdown": -13.75,
+    "annual_vol": 30.97,
+    "tracking_error": 3.5198,
+    "listing_date": "2021-06-24",
+    "holdings": [
+      {
+        "name": "比亚迪",
+        "weight": "15.75%"
+      },
+      {
+        "name": "宁德时代",
+        "weight": "14.83%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "5.96%"
+      },
+      {
+        "name": "三花智控",
+        "weight": "5.92%"
+      },
+      {
+        "name": "赣锋锂业",
+        "weight": "5.69%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "588050",
+    "name": "科创50ETF",
+    "issuer": "工银",
+    "category": "宽基",
+    "track_index": "上证科创板50成份指数收益率 (000688)",
+    "scale_yi": 131.5,
+    "fee_mgmt": 0.3,
+    "fee_custody": 0.05,
+    "fee_total": 0.35,
+    "year_1_return": 67.79,
+    "year_3_return": 59.8,
+    "sharpe_ratio": 1.78,
+    "calmar_ratio": 3.53,
+    "max_drawdown": -19.2,
+    "annual_vol": 30.79,
+    "tracking_error": null,
+    "listing_date": "2020-11-16",
+    "holdings": [
+      {
+        "name": "寒武纪",
+        "weight": "9.35%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "8.81%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.48%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "6.47%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "6.06%"
+      }
+    ],
+    "track_index_code": "000688"
+  },
+  {
+    "code": "159611",
+    "name": "电力ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "中证全指电力公用事业指数收益率",
+    "scale_yi": 131.3,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 21.73,
+    "year_3_return": 34.22,
+    "sharpe_ratio": 1.19,
+    "calmar_ratio": 1.84,
+    "max_drawdown": -11.78,
+    "annual_vol": 16.0,
+    "tracking_error": 2.6452,
+    "listing_date": "2022-01-07",
+    "holdings": [
+      {
+        "name": "长江电力",
+        "weight": "9.01%"
+      },
+      {
+        "name": "中国核电",
+        "weight": "7.92%"
+      },
+      {
+        "name": "三峡能源",
+        "weight": "6.47%"
+      },
+      {
+        "name": "国电电力",
+        "weight": "4.59%"
+      },
+      {
+        "name": "永泰能源",
+        "weight": "4.18%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159513",
+    "name": "纳斯达克100ETF",
+    "issuer": "大成",
+    "category": "跨境",
+    "track_index": "纳斯达克100指数收益率(经汇率调整) (NDX)",
+    "scale_yi": 131.2,
+    "fee_mgmt": 0.8,
+    "fee_custody": 0.2,
+    "fee_total": 1.0,
+    "year_1_return": 42.2,
+    "year_3_return": null,
+    "sharpe_ratio": 1.88,
+    "calmar_ratio": 2.64,
+    "max_drawdown": -15.98,
+    "annual_vol": 18.71,
+    "tracking_error": 2.0183,
+    "listing_date": "2023-07-28",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "6.97%"
+      },
+      {
+        "name": "苹果",
+        "weight": "6.17%"
+      },
+      {
+        "name": "微软",
+        "weight": "4.53%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "3.66%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.05%"
+      }
+    ],
+    "track_index_code": "NDX"
+  },
+  {
+    "code": "563020",
+    "name": "红利低波ETF",
+    "issuer": "易方达",
+    "category": "红利",
+    "track_index": "中证红利低波动指数收益率 (H30269)",
+    "scale_yi": 127.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 4.96,
+    "year_3_return": null,
+    "sharpe_ratio": 0.33,
+    "calmar_ratio": 0.61,
+    "max_drawdown": -8.07,
+    "annual_vol": 10.11,
+    "tracking_error": 1.8134,
+    "listing_date": "2023-12-14",
+    "holdings": [
+      {
+        "name": "华润江中",
+        "weight": "2.78%"
+      },
+      {
+        "name": "上海银行",
+        "weight": "2.76%"
+      },
+      {
+        "name": "南京银行",
+        "weight": "2.65%"
+      },
+      {
+        "name": "平安银行",
+        "weight": "2.51%"
+      },
+      {
+        "name": "沪农商行",
+        "weight": "2.46%"
+      }
+    ],
+    "track_index_code": "H30269"
+  },
+  {
+    "code": "588890",
+    "name": "科创芯片ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "上证科创板芯片指数收益率 (000685)",
+    "scale_yi": 125.9,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 121.7,
+    "year_3_return": null,
+    "sharpe_ratio": 2.2,
+    "calmar_ratio": 6.32,
+    "max_drawdown": -19.25,
+    "annual_vol": 38.94,
+    "tracking_error": null,
+    "listing_date": "2024-04-15",
+    "holdings": [
+      {
+        "name": "中芯国际",
+        "weight": "9.80%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "9.66%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "9.56%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "7.80%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "7.30%"
+      }
+    ],
+    "track_index_code": "000685"
+  },
+  {
+    "code": "513330",
+    "name": "恒生互联网ETF",
+    "issuer": "华夏",
+    "category": "跨境",
+    "track_index": "恒生互联网科技业指数",
+    "scale_yi": 125.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -10.49,
+    "year_3_return": -8.13,
+    "sharpe_ratio": -0.36,
+    "calmar_ratio": -0.31,
+    "max_drawdown": -33.6,
+    "annual_vol": 26.51,
+    "tracking_error": null,
+    "listing_date": "2021-01-26",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "16.27%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "14.60%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "11.31%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "10.35%"
+      },
+      {
+        "name": "网易-S",
+        "weight": "8.97%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513110",
+    "name": "纳指ETF",
+    "issuer": "华泰柏瑞",
+    "category": "行业",
+    "track_index": "纳斯达克100指数收益率(使用估值汇率折算) (NDX)",
+    "scale_yi": 124.2,
+    "fee_mgmt": 0.8,
+    "fee_custody": 0.2,
+    "fee_total": 1.0,
+    "year_1_return": 41.35,
+    "year_3_return": 124.15,
+    "sharpe_ratio": 1.81,
+    "calmar_ratio": 2.53,
+    "max_drawdown": -16.32,
+    "annual_vol": 19.1,
+    "tracking_error": 2.0572,
+    "listing_date": "2023-03-20",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.25%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.29%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.35%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.35%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.61%"
+      }
+    ],
+    "track_index_code": "NDX"
+  },
+  {
+    "code": "159925",
+    "name": "沪深300ETF",
+    "issuer": "南方",
+    "category": "宽基",
+    "track_index": "沪深300指数 (000300)",
+    "scale_yi": 123.7,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 33.03,
+    "year_3_return": 30.71,
+    "sharpe_ratio": 1.94,
+    "calmar_ratio": 4.49,
+    "max_drawdown": -7.35,
+    "annual_vol": 14.24,
+    "tracking_error": 0.7385,
+    "listing_date": "2013-04-11",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.35%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.72%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.59%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.48%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.21%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "159977",
+    "name": "创业板ETF",
+    "issuer": "天弘",
+    "category": "行业",
+    "track_index": "创业板指数收益率 (399006)",
+    "scale_yi": 121.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 102.29,
+    "year_3_return": 68.66,
+    "sharpe_ratio": 2.7,
+    "calmar_ratio": 8.57,
+    "max_drawdown": -11.94,
+    "annual_vol": 26.86,
+    "tracking_error": null,
+    "listing_date": "2019-09-27",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "19.70%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "9.31%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "7.54%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "4.65%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "4.27%"
+      }
+    ],
+    "track_index_code": "399006"
+  },
+  {
+    "code": "588750",
+    "name": "科创芯片ETF",
+    "issuer": "汇添富",
+    "category": "行业",
+    "track_index": "上证科创板芯片指数收益率 (000685)",
+    "scale_yi": 119.2,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 118.89,
+    "year_3_return": null,
+    "sharpe_ratio": 2.19,
+    "calmar_ratio": 6.14,
+    "max_drawdown": -19.36,
+    "annual_vol": 38.35,
+    "tracking_error": null,
+    "listing_date": "2024-12-18",
+    "holdings": [
+      {
+        "name": "中芯国际",
+        "weight": "9.76%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "9.62%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "9.53%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "7.77%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "7.27%"
+      }
+    ],
+    "track_index_code": "000685"
+  },
+  {
+    "code": "563800",
+    "name": "A500ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "中证A500 (000510)",
+    "scale_yi": 116.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 39.59,
+    "year_3_return": null,
+    "sharpe_ratio": 2.07,
+    "calmar_ratio": 4.62,
+    "max_drawdown": -8.56,
+    "annual_vol": 15.85,
+    "tracking_error": null,
+    "listing_date": "2024-11-11",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.77%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.22%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.24%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.91%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "159740",
+    "name": "恒生科技ETF",
+    "issuer": "大成",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 116.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -11.24,
+    "year_3_return": 9.75,
+    "sharpe_ratio": -0.47,
+    "calmar_ratio": -0.36,
+    "max_drawdown": -31.24,
+    "annual_vol": 23.89,
+    "tracking_error": null,
+    "listing_date": "2021-05-18",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "8.73%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "8.71%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "7.98%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "7.53%"
+      },
+      {
+        "name": "网易-S",
+        "weight": "7.03%"
+      }
+    ],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "510590",
+    "name": "中证500ETF",
+    "issuer": "平安",
+    "category": "宽基",
+    "track_index": "中证500 (000905)",
+    "scale_yi": 114.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 55.77,
+    "year_3_return": 43.51,
+    "sharpe_ratio": 2.14,
+    "calmar_ratio": 3.57,
+    "max_drawdown": -15.61,
+    "annual_vol": 20.89,
+    "tracking_error": null,
+    "listing_date": "2018-03-23",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.07%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.74%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.72%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.65%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.65%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "159660",
+    "name": "纳指ETF",
+    "issuer": "汇添富",
+    "category": "行业",
+    "track_index": "经人民币汇率调整的纳斯达克100指数收益率",
+    "scale_yi": 112.5,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.15,
+    "fee_total": 0.65,
+    "year_1_return": 40.47,
+    "year_3_return": 113.93,
+    "sharpe_ratio": 1.69,
+    "calmar_ratio": 1.95,
+    "max_drawdown": -20.75,
+    "annual_vol": 20.27,
+    "tracking_error": 2.06,
+    "listing_date": "2023-04-17",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.31%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.31%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.39%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.38%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.64%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159928",
+    "name": "消费ETF",
+    "issuer": "汇添富",
+    "category": "行业",
+    "track_index": "中证主要消费指数",
+    "scale_yi": 111.3,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": -14.32,
+    "year_3_return": -34.09,
+    "sharpe_ratio": -1.08,
+    "calmar_ratio": -0.67,
+    "max_drawdown": -21.35,
+    "annual_vol": 15.1,
+    "tracking_error": 1.8138,
+    "listing_date": "2013-09-16",
+    "holdings": [
+      {
+        "name": "贵州茅台",
+        "weight": "11.04%"
+      },
+      {
+        "name": "伊利股份",
+        "weight": "9.83%"
+      },
+      {
+        "name": "五粮液",
+        "weight": "9.80%"
+      },
+      {
+        "name": "牧原股份",
+        "weight": "8.42%"
+      },
+      {
+        "name": "温氏股份",
+        "weight": "6.54%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "520920",
+    "name": "恒生科技ETF",
+    "issuer": "天弘",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 111.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -27.7,
+    "year_3_return": null,
+    "sharpe_ratio": -1.94,
+    "calmar_ratio": null,
+    "max_drawdown": -31.21,
+    "annual_vol": 25.53,
+    "tracking_error": null,
+    "listing_date": "2025-09-22",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "9.20%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "9.08%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "8.42%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "7.94%"
+      },
+      {
+        "name": "网易-S",
+        "weight": "7.43%"
+      }
+    ],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "159992",
+    "name": "创新药ETF",
+    "issuer": "银华",
+    "category": "行业",
+    "track_index": "中证创新药产业指数",
+    "scale_yi": 110.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.05,
+    "fee_total": 0.55,
+    "year_1_return": 6.41,
+    "year_3_return": -15.95,
+    "sharpe_ratio": 0.29,
+    "calmar_ratio": 0.25,
+    "max_drawdown": -25.27,
+    "annual_vol": 24.81,
+    "tracking_error": 2.7475,
+    "listing_date": "2020-04-10",
+    "holdings": [
+      {
+        "name": "药明康德",
+        "weight": "11.50%"
+      },
+      {
+        "name": "恒瑞医药",
+        "weight": "9.42%"
+      },
+      {
+        "name": "科伦药业",
+        "weight": "3.87%"
+      },
+      {
+        "name": "信立泰",
+        "weight": "3.41%"
+      },
+      {
+        "name": "复星医药",
+        "weight": "3.37%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159005",
+    "name": "快钱ETF",
+    "issuer": "汇添富",
+    "category": "行业",
+    "track_index": "活期存款利率(税后) (CASH)",
+    "scale_yi": 110.9,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": null,
+    "year_3_return": null,
+    "sharpe_ratio": -4.56,
+    "calmar_ratio": null,
+    "max_drawdown": -0.31,
+    "annual_vol": 0.44,
+    "tracking_error": 1.534,
+    "listing_date": "2015-01-13",
+    "holdings": [],
+    "track_index_code": "CASH"
+  },
+  {
+    "code": "510100",
+    "name": "上证50ETF",
+    "issuer": "易方达",
+    "category": "宽基",
+    "track_index": "上证50指数收益率",
+    "scale_yi": 109.1,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 16.21,
+    "year_3_return": 22.8,
+    "sharpe_ratio": 1.08,
+    "calmar_ratio": 1.44,
+    "max_drawdown": -11.29,
+    "annual_vol": 12.88,
+    "tracking_error": 0.7963,
+    "listing_date": "2019-10-09",
+    "holdings": [
+      {
+        "name": "贵州茅台",
+        "weight": "10.32%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "6.89%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "6.14%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "5.54%"
+      },
+      {
+        "name": "长江电力",
+        "weight": "3.77%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "561980",
+    "name": "半导体设备ETF",
+    "issuer": "招商",
+    "category": "行业",
+    "track_index": "中证半导体产业指数收益率",
+    "scale_yi": 108.6,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 128.51,
+    "year_3_return": null,
+    "sharpe_ratio": 2.31,
+    "calmar_ratio": 6.23,
+    "max_drawdown": -20.63,
+    "annual_vol": 38.17,
+    "tracking_error": null,
+    "listing_date": "2023-08-21",
+    "holdings": [
+      {
+        "name": "中微公司",
+        "weight": "15.80%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "13.79%"
+      },
+      {
+        "name": "拓荆科技",
+        "weight": "7.35%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "6.61%"
+      },
+      {
+        "name": "长川科技",
+        "weight": "6.33%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159562",
+    "name": "黄金股ETF",
+    "issuer": "华夏",
+    "category": "商品",
+    "track_index": "SSH黄金股票",
+    "scale_yi": 107.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 47.93,
+    "year_3_return": null,
+    "sharpe_ratio": 1.09,
+    "calmar_ratio": 1.32,
+    "max_drawdown": -36.19,
+    "annual_vol": 42.76,
+    "tracking_error": null,
+    "listing_date": "2024-01-11",
+    "holdings": [
+      {
+        "name": "紫金矿业",
+        "weight": "9.93%"
+      },
+      {
+        "name": "中金黄金",
+        "weight": "9.39%"
+      },
+      {
+        "name": "山东黄金",
+        "weight": "8.80%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "8.68%"
+      },
+      {
+        "name": "山金国际",
+        "weight": "5.98%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513980",
+    "name": "港股科技ETF",
+    "issuer": "景顺",
+    "category": "行业",
+    "track_index": "中证港股通科技指数收益率(使用估值汇率折算)",
+    "scale_yi": 106.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": -9.04,
+    "year_3_return": 21.4,
+    "sharpe_ratio": -0.32,
+    "calmar_ratio": -0.3,
+    "max_drawdown": -30.62,
+    "annual_vol": 25.57,
+    "tracking_error": 2.69,
+    "listing_date": "2021-07-02",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "9.83%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "9.66%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "9.27%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "8.99%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "8.64%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515330",
+    "name": "沪深300ETF",
+    "issuer": "天弘",
+    "category": "宽基",
+    "track_index": "沪深300指数收益率 (000300)",
+    "scale_yi": 106.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 31.13,
+    "year_3_return": 28.33,
+    "sharpe_ratio": 1.89,
+    "calmar_ratio": 4.24,
+    "max_drawdown": -7.35,
+    "annual_vol": 13.87,
+    "tracking_error": 0.7376,
+    "listing_date": "2019-12-26",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "4.33%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.70%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.58%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.47%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "2.20%"
+      }
+    ],
+    "track_index_code": "000300"
+  },
+  {
+    "code": "512760",
+    "name": "芯片ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "中华交易服务半导体芯片行业指数收益率",
+    "scale_yi": 105.3,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 87.23,
+    "year_3_return": 100.73,
+    "sharpe_ratio": 1.91,
+    "calmar_ratio": 4.2,
+    "max_drawdown": -20.76,
+    "annual_vol": 35.09,
+    "tracking_error": null,
+    "listing_date": "2019-06-12",
+    "holdings": [
+      {
+        "name": "海光信息",
+        "weight": "7.61%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "7.52%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "7.30%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "7.17%"
+      },
+      {
+        "name": "兆易创新",
+        "weight": "6.19%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "560010",
+    "name": "中证1000ETF",
+    "issuer": "广发",
+    "category": "宽基",
+    "track_index": "中证1000指数收益率 (000852)",
+    "scale_yi": 103.8,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 47.85,
+    "year_3_return": 31.9,
+    "sharpe_ratio": 1.96,
+    "calmar_ratio": 3.64,
+    "max_drawdown": -13.16,
+    "annual_vol": 20.09,
+    "tracking_error": null,
+    "listing_date": "2022-08-04",
+    "holdings": [
+      {
+        "name": "源杰科技",
+        "weight": "0.68%"
+      },
+      {
+        "name": "德明利",
+        "weight": "0.59%"
+      },
+      {
+        "name": "香农芯创",
+        "weight": "0.46%"
+      },
+      {
+        "name": "长飞光纤",
+        "weight": "0.43%"
+      },
+      {
+        "name": "长芯博创",
+        "weight": "0.41%"
+      }
+    ],
+    "track_index_code": "000852"
+  },
+  {
+    "code": "513390",
+    "name": "纳指100ETF",
+    "issuer": "博时",
+    "category": "行业",
+    "track_index": "纳斯达克100指数收益率(经估值汇率调整)",
+    "scale_yi": 103.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.15,
+    "fee_total": 0.65,
+    "year_1_return": 43.32,
+    "year_3_return": 118.31,
+    "sharpe_ratio": 1.83,
+    "calmar_ratio": 2.44,
+    "max_drawdown": -17.74,
+    "annual_vol": 19.71,
+    "tracking_error": 2.0656,
+    "listing_date": "2023-05-08",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.21%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.22%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.33%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.34%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.60%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159363",
+    "name": "创业板人工智能ETF",
+    "issuer": "华宝",
+    "category": "行业",
+    "track_index": "创业板人工智能 (399006)",
+    "scale_yi": 102.8,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 204.42,
+    "year_3_return": null,
+    "sharpe_ratio": 2.78,
+    "calmar_ratio": 13.81,
+    "max_drawdown": -14.8,
+    "annual_vol": 42.9,
+    "tracking_error": null,
+    "listing_date": "2024-12-06",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "15.29%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "13.96%"
+      },
+      {
+        "name": "天孚通信",
+        "weight": "9.74%"
+      },
+      {
+        "name": "润泽科技",
+        "weight": "4.05%"
+      },
+      {
+        "name": "蓝色光标",
+        "weight": "3.87%"
+      }
+    ],
+    "track_index_code": "399006"
+  },
+  {
+    "code": "563220",
+    "name": "A500ETF",
+    "issuer": "富国",
+    "category": "行业",
+    "track_index": "中证A500指数收益率 (000510)",
+    "scale_yi": 102.4,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 39.9,
+    "year_3_return": null,
+    "sharpe_ratio": 2.07,
+    "calmar_ratio": 4.69,
+    "max_drawdown": -8.51,
+    "annual_vol": 15.94,
+    "tracking_error": 0.7957,
+    "listing_date": "2024-10-15",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.77%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.20%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.23%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.91%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "159869",
+    "name": "游戏ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "动漫游戏",
+    "scale_yi": 102.2,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 14.0,
+    "year_3_return": 10.36,
+    "sharpe_ratio": 0.51,
+    "calmar_ratio": 0.51,
+    "max_drawdown": -27.24,
+    "annual_vol": 31.93,
+    "tracking_error": null,
+    "listing_date": "2021-02-25",
+    "holdings": [
+      {
+        "name": "巨人网络",
+        "weight": "12.82%"
+      },
+      {
+        "name": "三七互娱",
+        "weight": "11.51%"
+      },
+      {
+        "name": "恺英网络",
+        "weight": "10.50%"
+      },
+      {
+        "name": "完美世界",
+        "weight": "8.28%"
+      },
+      {
+        "name": "光线传媒",
+        "weight": "7.83%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512660",
+    "name": "军工ETF",
+    "issuer": "国泰",
+    "category": "行业",
+    "track_index": "中证军工指数收益率 (399967)",
+    "scale_yi": 100.3,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 37.37,
+    "year_3_return": 26.01,
+    "sharpe_ratio": 1.14,
+    "calmar_ratio": 1.49,
+    "max_drawdown": -25.15,
+    "annual_vol": 30.27,
+    "tracking_error": null,
+    "listing_date": "2016-08-08",
+    "holdings": [
+      {
+        "name": "中国船舶",
+        "weight": "8.48%"
+      },
+      {
+        "name": "航发动力",
+        "weight": "4.04%"
+      },
+      {
+        "name": "航天电子",
+        "weight": "3.70%"
+      },
+      {
+        "name": "光启技术",
+        "weight": "3.65%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "3.05%"
+      }
+    ],
+    "track_index_code": "399967"
+  },
+  {
+    "code": "159841",
+    "name": "证券ETF",
+    "issuer": "天弘",
+    "category": "行业",
+    "track_index": "中证全指证券公司指数收益率 (399975)",
+    "scale_yi": 99.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 0.96,
+    "year_3_return": 14.53,
+    "sharpe_ratio": 0.06,
+    "calmar_ratio": 0.04,
+    "max_drawdown": -25.04,
+    "annual_vol": 21.74,
+    "tracking_error": 2.0017,
+    "listing_date": "2021-02-09",
+    "holdings": [
+      {
+        "name": "东方财富",
+        "weight": "13.56%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "13.34%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "10.66%"
+      },
+      {
+        "name": "华泰证券",
+        "weight": "5.93%"
+      },
+      {
+        "name": "招商证券",
+        "weight": "3.26%"
+      }
+    ],
+    "track_index_code": "399975"
+  },
+  {
+    "code": "159696",
+    "name": "纳指ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "纳斯达克100指数收益率(使用估值汇率折算) (NDX)",
+    "scale_yi": 99.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 44.06,
+    "year_3_return": null,
+    "sharpe_ratio": 1.99,
+    "calmar_ratio": 2.91,
+    "max_drawdown": -15.12,
+    "annual_vol": 18.22,
+    "tracking_error": 2.0316,
+    "listing_date": "2023-08-25",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "8.04%"
+      },
+      {
+        "name": "苹果",
+        "weight": "7.07%"
+      },
+      {
+        "name": "微软",
+        "weight": "5.21%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "4.24%"
+      },
+      {
+        "name": "特斯拉",
+        "weight": "3.52%"
+      }
+    ],
+    "track_index_code": "NDX"
+  },
+  {
+    "code": "512950",
+    "name": "央企改革ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "结构调整 (000860)",
+    "scale_yi": 98.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 24.17,
+    "year_3_return": 21.68,
+    "sharpe_ratio": 1.54,
+    "calmar_ratio": 2.52,
+    "max_drawdown": -9.6,
+    "annual_vol": 13.44,
+    "tracking_error": null,
+    "listing_date": "2018-10-19",
+    "holdings": [
+      {
+        "name": "国电南瑞",
+        "weight": "5.17%"
+      },
+      {
+        "name": "海康威视",
+        "weight": "4.86%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "4.43%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "4.33%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "3.96%"
+      }
+    ],
+    "track_index_code": "000860"
+  },
+  {
+    "code": "159545",
+    "name": "恒生红利低波ETF",
+    "issuer": "易方达",
+    "category": "红利",
+    "track_index": "恒生港股通高股息低波动指数收益率(使用估值汇率折算)",
+    "scale_yi": 98.3,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 19.44,
+    "year_3_return": null,
+    "sharpe_ratio": 1.29,
+    "calmar_ratio": 2.39,
+    "max_drawdown": -8.13,
+    "annual_vol": 12.89,
+    "tracking_error": 1.6342,
+    "listing_date": "2024-04-15",
+    "holdings": [
+      {
+        "name": "东方海外国际",
+        "weight": "3.46%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "2.87%"
+      },
+      {
+        "name": "VTECH HOLDINGS",
+        "weight": "2.71%"
+      },
+      {
+        "name": "首钢资源",
+        "weight": "2.60%"
+      },
+      {
+        "name": "远东宏信",
+        "weight": "2.51%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159842",
+    "name": "券商ETF",
+    "issuer": "银华",
+    "category": "行业",
+    "track_index": "中证全指证券公司指数收益率 (399975)",
+    "scale_yi": 96.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 1.33,
+    "year_3_return": 14.4,
+    "sharpe_ratio": 0.08,
+    "calmar_ratio": 0.05,
+    "max_drawdown": -24.47,
+    "annual_vol": 21.61,
+    "tracking_error": 1.9745,
+    "listing_date": "2021-03-19",
+    "holdings": [
+      {
+        "name": "东方财富",
+        "weight": "13.48%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "13.24%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "10.59%"
+      },
+      {
+        "name": "华泰证券",
+        "weight": "5.87%"
+      },
+      {
+        "name": "招商证券",
+        "weight": "3.24%"
+      }
+    ],
+    "track_index_code": "399975"
+  },
+  {
+    "code": "159351",
+    "name": "A500ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "中证A500指数收益率 (000510)",
+    "scale_yi": 96.6,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 40.26,
+    "year_3_return": null,
+    "sharpe_ratio": 2.08,
+    "calmar_ratio": 4.64,
+    "max_drawdown": -8.67,
+    "annual_vol": 15.95,
+    "tracking_error": 0.7914,
+    "listing_date": "2024-10-15",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.77%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.24%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.24%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.92%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "588220",
+    "name": "科创100ETF",
+    "issuer": "鹏华",
+    "category": "行业",
+    "track_index": "上证科创板100指数收益率 (000698)",
+    "scale_yi": 93.1,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 81.9,
+    "year_3_return": null,
+    "sharpe_ratio": 2.19,
+    "calmar_ratio": 5.52,
+    "max_drawdown": -14.84,
+    "annual_vol": 28.46,
+    "tracking_error": null,
+    "listing_date": "2023-09-06",
+    "holdings": [
+      {
+        "name": "源杰科技",
+        "weight": "4.73%"
+      },
+      {
+        "name": "华虹公司",
+        "weight": "3.37%"
+      },
+      {
+        "name": "睿创微纳",
+        "weight": "2.91%"
+      },
+      {
+        "name": "东芯股份",
+        "weight": "2.63%"
+      },
+      {
+        "name": "安集科技",
+        "weight": "2.31%"
+      }
+    ],
+    "track_index_code": "000698"
+  },
+  {
+    "code": "512070",
+    "name": "证券保险ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "沪深300非银行金融指数",
+    "scale_yi": 89.8,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 4.36,
+    "year_3_return": 23.95,
+    "sharpe_ratio": 0.21,
+    "calmar_ratio": 0.19,
+    "max_drawdown": -22.94,
+    "annual_vol": 21.34,
+    "tracking_error": 1.9703,
+    "listing_date": "2014-07-18",
+    "holdings": [
+      {
+        "name": "中国平安",
+        "weight": "27.49%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "10.86%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "10.67%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "8.51%"
+      },
+      {
+        "name": "中国太保",
+        "weight": "5.77%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "511820",
+    "name": "添利ETF",
+    "issuer": "鹏华",
+    "category": "行业",
+    "track_index": "活期存款利率(税后) (CASH)",
+    "scale_yi": 88.9,
+    "fee_mgmt": 0.3,
+    "fee_custody": 0.05,
+    "fee_total": 0.35,
+    "year_1_return": -0.02,
+    "year_3_return": 0.01,
+    "sharpe_ratio": -9.52,
+    "calmar_ratio": -0.22,
+    "max_drawdown": -0.09,
+    "annual_vol": 0.21,
+    "tracking_error": 1.5344,
+    "listing_date": "2016-02-22",
+    "holdings": [],
+    "track_index_code": "CASH"
+  },
+  {
+    "code": "512960",
+    "name": "央企结构调整ETF",
+    "issuer": "博时",
+    "category": "行业",
+    "track_index": "结构调整 (000860)",
+    "scale_yi": 88.1,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 23.78,
+    "year_3_return": 21.61,
+    "sharpe_ratio": 1.49,
+    "calmar_ratio": 2.47,
+    "max_drawdown": -9.62,
+    "annual_vol": 13.67,
+    "tracking_error": null,
+    "listing_date": "2018-10-19",
+    "holdings": [
+      {
+        "name": "国电南瑞",
+        "weight": "5.19%"
+      },
+      {
+        "name": "海康威视",
+        "weight": "4.88%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "4.44%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "4.35%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "3.67%"
+      }
+    ],
+    "track_index_code": "000860"
+  },
+  {
+    "code": "511600",
+    "name": "日日鑫ETF",
+    "issuer": "华安",
+    "category": "行业",
+    "track_index": "同期七天通知存款利率(税后)",
+    "scale_yi": 87.6,
+    "fee_mgmt": 0.25,
+    "fee_custody": 0.1,
+    "fee_total": 0.35,
+    "year_1_return": -0.06,
+    "year_3_return": 0.08,
+    "sharpe_ratio": -0.35,
+    "calmar_ratio": -0.02,
+    "max_drawdown": -3.89,
+    "annual_vol": 5.43,
+    "tracking_error": 1.534,
+    "listing_date": "2016-09-27",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "562590",
+    "name": "半导体设备ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "中证半导体材料设备主题指数收益率 (931521)",
+    "scale_yi": 87.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 132.14,
+    "year_3_return": null,
+    "sharpe_ratio": 2.42,
+    "calmar_ratio": 6.79,
+    "max_drawdown": -19.45,
+    "annual_vol": 37.01,
+    "tracking_error": null,
+    "listing_date": "2023-10-09",
+    "holdings": [
+      {
+        "name": "中微公司",
+        "weight": "14.88%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "12.95%"
+      },
+      {
+        "name": "拓荆科技",
+        "weight": "7.38%"
+      },
+      {
+        "name": "长川科技",
+        "weight": "6.35%"
+      },
+      {
+        "name": "华海清科",
+        "weight": "5.09%"
+      }
+    ],
+    "track_index_code": "931521"
+  },
+  {
+    "code": "513920",
+    "name": "港股通央企红利ETF",
+    "issuer": "华安",
+    "category": "红利",
+    "track_index": "恒生港股通中国央企红利指数收益率(经汇率调整)",
+    "scale_yi": 86.3,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 29.56,
+    "year_3_return": null,
+    "sharpe_ratio": 1.57,
+    "calmar_ratio": 3.78,
+    "max_drawdown": -7.83,
+    "annual_vol": 16.16,
+    "tracking_error": 1.7314,
+    "listing_date": "2024-01-05",
+    "holdings": [
+      {
+        "name": "中远海能",
+        "weight": "7.05%"
+      },
+      {
+        "name": "中远海控",
+        "weight": "4.27%"
+      },
+      {
+        "name": "东方海外国际",
+        "weight": "3.98%"
+      },
+      {
+        "name": "中国有色矿业",
+        "weight": "3.93%"
+      },
+      {
+        "name": "中国石油股份",
+        "weight": "3.83%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515100",
+    "name": "红利低波100ETF",
+    "issuer": "景顺",
+    "category": "红利",
+    "track_index": "中证红利低波动100指数收益率 (930955)",
+    "scale_yi": 85.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 6.54,
+    "year_3_return": 28.03,
+    "sharpe_ratio": 0.48,
+    "calmar_ratio": 0.92,
+    "max_drawdown": -7.1,
+    "annual_vol": 10.22,
+    "tracking_error": 1.3837,
+    "listing_date": "2020-07-03",
+    "holdings": [
+      {
+        "name": "冀中能源",
+        "weight": "2.90%"
+      },
+      {
+        "name": "雅戈尔",
+        "weight": "2.38%"
+      },
+      {
+        "name": "广汇能源",
+        "weight": "2.38%"
+      },
+      {
+        "name": "大秦铁路",
+        "weight": "2.36%"
+      },
+      {
+        "name": "中远海控",
+        "weight": "1.92%"
+      }
+    ],
+    "track_index_code": "930955"
+  },
+  {
+    "code": "515790",
+    "name": "光伏ETF",
+    "issuer": "华泰柏瑞",
+    "category": "行业",
+    "track_index": "光伏产业",
+    "scale_yi": 84.9,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 70.87,
+    "year_3_return": -18.2,
+    "sharpe_ratio": 1.78,
+    "calmar_ratio": 4.17,
+    "max_drawdown": -16.99,
+    "annual_vol": 31.94,
+    "tracking_error": null,
+    "listing_date": "2020-12-07",
+    "holdings": [
+      {
+        "name": "特变电工",
+        "weight": "10.80%"
+      },
+      {
+        "name": "隆基绿能",
+        "weight": "8.55%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "7.51%"
+      },
+      {
+        "name": "TCL科技",
+        "weight": "7.19%"
+      },
+      {
+        "name": "德业股份",
+        "weight": "3.86%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "588030",
+    "name": "科创100ETF",
+    "issuer": "博时",
+    "category": "行业",
+    "track_index": "上证科创板100指数收益率 (000698)",
+    "scale_yi": 84.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 83.32,
+    "year_3_return": null,
+    "sharpe_ratio": 2.24,
+    "calmar_ratio": 5.64,
+    "max_drawdown": -14.78,
+    "annual_vol": 28.09,
+    "tracking_error": null,
+    "listing_date": "2023-09-06",
+    "holdings": [
+      {
+        "name": "源杰科技",
+        "weight": "4.73%"
+      },
+      {
+        "name": "华虹公司",
+        "weight": "3.39%"
+      },
+      {
+        "name": "睿创微纳",
+        "weight": "2.92%"
+      },
+      {
+        "name": "东芯股份",
+        "weight": "2.64%"
+      },
+      {
+        "name": "安集科技",
+        "weight": "2.31%"
+      }
+    ],
+    "track_index_code": "000698"
+  },
+  {
+    "code": "512800",
+    "name": "银行ETF",
+    "issuer": "华宝",
+    "category": "行业",
+    "track_index": "中证银行指数",
+    "scale_yi": 83.8,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 1.32,
+    "year_3_return": 46.11,
+    "sharpe_ratio": 0.02,
+    "calmar_ratio": 0.08,
+    "max_drawdown": -15.56,
+    "annual_vol": 13.71,
+    "tracking_error": 2.4831,
+    "listing_date": "2017-08-03",
+    "holdings": [
+      {
+        "name": "招商银行",
+        "weight": "14.26%"
+      },
+      {
+        "name": "兴业银行",
+        "weight": "10.17%"
+      },
+      {
+        "name": "工商银行",
+        "weight": "7.89%"
+      },
+      {
+        "name": "农业银行",
+        "weight": "6.14%"
+      },
+      {
+        "name": "交通银行",
+        "weight": "5.96%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512170",
+    "name": "医疗ETF",
+    "issuer": "华宝",
+    "category": "行业",
+    "track_index": "中证医疗指数收益率",
+    "scale_yi": 83.5,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 0.95,
+    "year_3_return": -36.13,
+    "sharpe_ratio": 0.05,
+    "calmar_ratio": 0.04,
+    "max_drawdown": -22.39,
+    "annual_vol": 20.25,
+    "tracking_error": 1.9955,
+    "listing_date": "2019-06-17",
+    "holdings": [
+      {
+        "name": "药明康德",
+        "weight": "11.15%"
+      },
+      {
+        "name": "迈瑞医疗",
+        "weight": "8.53%"
+      },
+      {
+        "name": "联影医疗",
+        "weight": "6.98%"
+      },
+      {
+        "name": "爱尔眼科",
+        "weight": "5.54%"
+      },
+      {
+        "name": "康龙化成",
+        "weight": "3.59%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159770",
+    "name": "机器人ETF",
+    "issuer": "天弘",
+    "category": "行业",
+    "track_index": "中证机器人指数收益率 (H30590)",
+    "scale_yi": 82.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 37.47,
+    "year_3_return": 43.97,
+    "sharpe_ratio": 1.27,
+    "calmar_ratio": 1.9,
+    "max_drawdown": -19.69,
+    "annual_vol": 26.38,
+    "tracking_error": 2.9851,
+    "listing_date": "2021-11-08",
+    "holdings": [
+      {
+        "name": "科大讯飞",
+        "weight": "9.97%"
+      },
+      {
+        "name": "汇川技术",
+        "weight": "9.60%"
+      },
+      {
+        "name": "大族激光",
+        "weight": "6.62%"
+      },
+      {
+        "name": "拓普集团",
+        "weight": "6.47%"
+      },
+      {
+        "name": "中控技术",
+        "weight": "5.35%"
+      }
+    ],
+    "track_index_code": "H30590"
+  },
+  {
+    "code": "513260",
+    "name": "恒生科技ETF",
+    "issuer": "汇添富",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 81.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -11.45,
+    "year_3_return": 13.1,
+    "sharpe_ratio": -0.47,
+    "calmar_ratio": -0.37,
+    "max_drawdown": -31.14,
+    "annual_vol": 24.01,
+    "tracking_error": null,
+    "listing_date": "2022-08-31",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "8.94%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "8.92%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "8.18%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "7.71%"
+      },
+      {
+        "name": "网易-S",
+        "weight": "7.20%"
+      }
+    ],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "512930",
+    "name": "AI人工智能ETF",
+    "issuer": "平安",
+    "category": "行业",
+    "track_index": "CS人工智 (930713)",
+    "scale_yi": 80.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 113.56,
+    "year_3_return": 110.66,
+    "sharpe_ratio": 2.37,
+    "calmar_ratio": 7.05,
+    "max_drawdown": -16.1,
+    "annual_vol": 33.75,
+    "tracking_error": null,
+    "listing_date": "2019-07-12",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "11.57%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "10.55%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "7.32%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "5.75%"
+      },
+      {
+        "name": "中科曙光",
+        "weight": "4.61%"
+      }
+    ],
+    "track_index_code": "930713"
+  },
+  {
+    "code": "159262",
+    "name": "港股通科技ETF",
+    "issuer": "广发",
+    "category": "跨境",
+    "track_index": "港股通科技主题",
+    "scale_yi": 78.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -7.7,
+    "year_3_return": null,
+    "sharpe_ratio": -0.11,
+    "calmar_ratio": null,
+    "max_drawdown": -34.95,
+    "annual_vol": 28.62,
+    "tracking_error": null,
+    "listing_date": "2025-06-26",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "15.16%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "14.75%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "14.11%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "11.63%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "5.43%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159603",
+    "name": "科创创业ETF",
+    "issuer": "天弘",
+    "category": "行业",
+    "track_index": "科创创业50 (931643)",
+    "scale_yi": 77.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 129.3,
+    "year_3_return": 96.5,
+    "sharpe_ratio": 2.79,
+    "calmar_ratio": 8.98,
+    "max_drawdown": -14.4,
+    "annual_vol": 30.94,
+    "tracking_error": null,
+    "listing_date": "2022-05-26",
+    "holdings": [
+      {
+        "name": "中际旭创",
+        "weight": "11.45%"
+      },
+      {
+        "name": "宁德时代",
+        "weight": "11.38%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "11.00%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "5.22%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "4.94%"
+      }
+    ],
+    "track_index_code": "931643"
+  },
+  {
+    "code": "159796",
+    "name": "电池ETF",
+    "issuer": "汇添富",
+    "category": "行业",
+    "track_index": "中证电池主题指数收益率",
+    "scale_yi": 76.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 106.31,
+    "year_3_return": 36.61,
+    "sharpe_ratio": 2.3,
+    "calmar_ratio": 6.95,
+    "max_drawdown": -15.3,
+    "annual_vol": 33.13,
+    "tracking_error": null,
+    "listing_date": "2022-03-03",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "10.18%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "8.13%"
+      },
+      {
+        "name": "三花智控",
+        "weight": "6.49%"
+      },
+      {
+        "name": "亿纬锂能",
+        "weight": "5.28%"
+      },
+      {
+        "name": "天赐材料",
+        "weight": "4.47%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159682",
+    "name": "创业板50ETF",
+    "issuer": "景顺",
+    "category": "行业",
+    "track_index": "创业板50 (399673)",
+    "scale_yi": 76.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 120.27,
+    "year_3_return": 85.38,
+    "sharpe_ratio": 2.79,
+    "calmar_ratio": 9.27,
+    "max_drawdown": -12.97,
+    "annual_vol": 29.31,
+    "tracking_error": null,
+    "listing_date": "2022-12-23",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "23.68%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "11.19%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "9.05%"
+      },
+      {
+        "name": "东方财富",
+        "weight": "5.57%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "5.13%"
+      }
+    ],
+    "track_index_code": "399673"
+  },
+  {
+    "code": "159633",
+    "name": "中证1000ETF",
+    "issuer": "易方达",
+    "category": "宽基",
+    "track_index": "中证1000",
+    "scale_yi": 75.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 50.7,
+    "year_3_return": 35.76,
+    "sharpe_ratio": 2.09,
+    "calmar_ratio": 3.87,
+    "max_drawdown": -13.1,
+    "annual_vol": 19.67,
+    "tracking_error": null,
+    "listing_date": "2022-07-28",
+    "holdings": [
+      {
+        "name": "源杰科技",
+        "weight": "0.63%"
+      },
+      {
+        "name": "德明利",
+        "weight": "0.60%"
+      },
+      {
+        "name": "长飞光纤",
+        "weight": "0.45%"
+      },
+      {
+        "name": "香农芯创",
+        "weight": "0.45%"
+      },
+      {
+        "name": "长芯博创",
+        "weight": "0.40%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159655",
+    "name": "标普500ETF",
+    "issuer": "华夏",
+    "category": "跨境",
+    "track_index": "经估值汇率调整后的标普500指数收益率",
+    "scale_yi": 75.1,
+    "fee_mgmt": 0.6,
+    "fee_custody": 0.15,
+    "fee_total": 0.75,
+    "year_1_return": 25.63,
+    "year_3_return": 83.07,
+    "sharpe_ratio": 1.45,
+    "calmar_ratio": 1.95,
+    "max_drawdown": -13.11,
+    "annual_vol": 15.25,
+    "tracking_error": 1.4927,
+    "listing_date": "2022-10-25",
+    "holdings": [
+      {
+        "name": "英伟达",
+        "weight": "7.47%"
+      },
+      {
+        "name": "苹果",
+        "weight": "6.57%"
+      },
+      {
+        "name": "微软",
+        "weight": "4.84%"
+      },
+      {
+        "name": "亚马逊",
+        "weight": "3.59%"
+      },
+      {
+        "name": "谷歌-A",
+        "weight": "2.95%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "510210",
+    "name": "上证指数ETF",
+    "issuer": "富国",
+    "category": "宽基",
+    "track_index": "上证综合指数",
+    "scale_yi": 74.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 29.09,
+    "year_3_return": 32.73,
+    "sharpe_ratio": 1.99,
+    "calmar_ratio": 3.27,
+    "max_drawdown": -8.9,
+    "annual_vol": 12.24,
+    "tracking_error": 0.2466,
+    "listing_date": "2011-03-25",
+    "holdings": [
+      {
+        "name": "农业银行",
+        "weight": "3.18%"
+      },
+      {
+        "name": "中国石油",
+        "weight": "2.82%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "2.80%"
+      },
+      {
+        "name": "中国银行",
+        "weight": "1.94%"
+      },
+      {
+        "name": "工业富联",
+        "weight": "1.90%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513040",
+    "name": "港股通互联网ETF",
+    "issuer": "易方达",
+    "category": "跨境",
+    "track_index": "中证港股通互联网指数收益率(使用估值汇率折算)",
+    "scale_yi": 74.3,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": -19.45,
+    "year_3_return": null,
+    "sharpe_ratio": -0.73,
+    "calmar_ratio": -0.51,
+    "max_drawdown": -38.28,
+    "annual_vol": 27.33,
+    "tracking_error": null,
+    "listing_date": "2023-06-12",
+    "holdings": [
+      {
+        "name": "腾讯控股",
+        "weight": "15.24%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "14.78%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "13.87%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "12.14%"
+      },
+      {
+        "name": "商汤-W",
+        "weight": "4.19%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159813",
+    "name": "半导体ETF",
+    "issuer": "鹏华",
+    "category": "行业",
+    "track_index": "国证半导体芯片指数收益率 (980017)",
+    "scale_yi": 73.9,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 84.99,
+    "year_3_return": 104.25,
+    "sharpe_ratio": 1.86,
+    "calmar_ratio": 3.9,
+    "max_drawdown": -21.79,
+    "annual_vol": 35.55,
+    "tracking_error": null,
+    "listing_date": "2020-04-17",
+    "holdings": [
+      {
+        "name": "海光信息",
+        "weight": "9.99%"
+      },
+      {
+        "name": "北方华创",
+        "weight": "9.03%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.41%"
+      },
+      {
+        "name": "兆易创新",
+        "weight": "7.90%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "7.31%"
+      }
+    ],
+    "track_index_code": "980017"
+  },
+  {
+    "code": "159218",
+    "name": "卫星ETF",
+    "issuer": "招商",
+    "category": "行业",
+    "track_index": "中证卫星产业指数收益率 (932070)",
+    "scale_yi": 73.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 65.77,
+    "year_3_return": null,
+    "sharpe_ratio": 1.66,
+    "calmar_ratio": 2.07,
+    "max_drawdown": -31.76,
+    "annual_vol": 40.71,
+    "tracking_error": null,
+    "listing_date": "2025-05-22",
+    "holdings": [
+      {
+        "name": "航天电子",
+        "weight": "12.65%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "11.83%"
+      },
+      {
+        "name": "中国卫通",
+        "weight": "6.82%"
+      },
+      {
+        "name": "ST臻镭",
+        "weight": "6.22%"
+      },
+      {
+        "name": "中科星图",
+        "weight": "6.03%"
+      }
+    ],
+    "track_index_code": "932070"
+  },
+  {
+    "code": "515980",
+    "name": "人工智能ETF",
+    "issuer": "华富",
+    "category": "行业",
+    "track_index": "中证人工智能产业指数收益率",
+    "scale_yi": 73.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 130.31,
+    "year_3_return": 120.32,
+    "sharpe_ratio": 2.41,
+    "calmar_ratio": 7.48,
+    "max_drawdown": -17.41,
+    "annual_vol": 36.68,
+    "tracking_error": null,
+    "listing_date": "2020-02-10",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "12.55%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "11.76%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "9.52%"
+      },
+      {
+        "name": "科大讯飞",
+        "weight": "9.48%"
+      },
+      {
+        "name": "润泽科技",
+        "weight": "6.19%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "563230",
+    "name": "卫星ETF",
+    "issuer": "富国",
+    "category": "行业",
+    "track_index": "中证卫星产业指数收益率 (932070)",
+    "scale_yi": 71.6,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 48.6,
+    "year_3_return": null,
+    "sharpe_ratio": 1.15,
+    "calmar_ratio": null,
+    "max_drawdown": -31.79,
+    "annual_vol": 46.81,
+    "tracking_error": null,
+    "listing_date": "2025-09-17",
+    "holdings": [
+      {
+        "name": "航天电子",
+        "weight": "12.69%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "11.88%"
+      },
+      {
+        "name": "中国卫通",
+        "weight": "6.85%"
+      },
+      {
+        "name": "ST臻镭",
+        "weight": "6.22%"
+      },
+      {
+        "name": "中科星图",
+        "weight": "6.06%"
+      }
+    ],
+    "track_index_code": "932070"
+  },
+  {
+    "code": "159968",
+    "name": "中证500ETF",
+    "issuer": "博时",
+    "category": "宽基",
+    "track_index": "中证500 (000905)",
+    "scale_yi": 70.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 58.02,
+    "year_3_return": 50.47,
+    "sharpe_ratio": 2.2,
+    "calmar_ratio": 4.13,
+    "max_drawdown": -14.05,
+    "annual_vol": 20.94,
+    "tracking_error": null,
+    "listing_date": "2019-08-01",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.01%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.70%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.68%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.61%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.61%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "512900",
+    "name": "证券ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "中证全指证券公司指数收益率 (399975)",
+    "scale_yi": 69.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 0.98,
+    "year_3_return": 14.67,
+    "sharpe_ratio": 0.06,
+    "calmar_ratio": 0.04,
+    "max_drawdown": -24.85,
+    "annual_vol": 21.82,
+    "tracking_error": 2.0078,
+    "listing_date": "2017-03-31",
+    "holdings": [
+      {
+        "name": "东方财富",
+        "weight": "13.59%"
+      },
+      {
+        "name": "中信证券",
+        "weight": "13.35%"
+      },
+      {
+        "name": "国泰海通",
+        "weight": "10.66%"
+      },
+      {
+        "name": "华泰证券",
+        "weight": "5.92%"
+      },
+      {
+        "name": "招商证券",
+        "weight": "3.26%"
+      }
+    ],
+    "track_index_code": "399975"
+  },
+  {
+    "code": "515030",
+    "name": "新能源车ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "中证新能源汽车指数收益率",
+    "scale_yi": 69.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 69.03,
+    "year_3_return": 24.31,
+    "sharpe_ratio": 1.9,
+    "calmar_ratio": 5.53,
+    "max_drawdown": -12.49,
+    "annual_vol": 28.99,
+    "tracking_error": 3.2892,
+    "listing_date": "2020-03-04",
+    "holdings": [
+      {
+        "name": "比亚迪",
+        "weight": "10.58%"
+      },
+      {
+        "name": "宁德时代",
+        "weight": "9.97%"
+      },
+      {
+        "name": "汇川技术",
+        "weight": "6.37%"
+      },
+      {
+        "name": "三花智控",
+        "weight": "4.80%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "4.48%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159852",
+    "name": "软件ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "中证软件服务指数收益率",
+    "scale_yi": 68.7,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 2.14,
+    "year_3_return": -24.91,
+    "sharpe_ratio": 0.16,
+    "calmar_ratio": 0.07,
+    "max_drawdown": -29.15,
+    "annual_vol": 32.15,
+    "tracking_error": null,
+    "listing_date": "2021-02-09",
+    "holdings": [
+      {
+        "name": "科大讯飞",
+        "weight": "13.76%"
+      },
+      {
+        "name": "同花顺",
+        "weight": "8.27%"
+      },
+      {
+        "name": "金山办公",
+        "weight": "6.98%"
+      },
+      {
+        "name": "拓维信息",
+        "weight": "5.55%"
+      },
+      {
+        "name": "恒生电子",
+        "weight": "4.98%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159382",
+    "name": "创业板人工智能ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "创业板人工智能 (399006)",
+    "scale_yi": 68.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 217.31,
+    "year_3_return": -14.51,
+    "sharpe_ratio": 2.52,
+    "calmar_ratio": 14.98,
+    "max_drawdown": -14.51,
+    "annual_vol": 43.54,
+    "tracking_error": null,
+    "listing_date": "2025-04-23",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "15.29%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "13.93%"
+      },
+      {
+        "name": "天孚通信",
+        "weight": "9.73%"
+      },
+      {
+        "name": "润泽科技",
+        "weight": "4.04%"
+      },
+      {
+        "name": "蓝色光标",
+        "weight": "3.89%"
+      }
+    ],
+    "track_index_code": "399006"
+  },
+  {
+    "code": "159691",
+    "name": "港股红利ETF",
+    "issuer": "工银",
+    "category": "红利",
+    "track_index": "经汇率调整后的中证港股通高股息精选指数收益率",
+    "scale_yi": 68.0,
+    "fee_mgmt": 0.45,
+    "fee_custody": 0.07,
+    "fee_total": 0.52,
+    "year_1_return": 16.03,
+    "year_3_return": 31.02,
+    "sharpe_ratio": 0.96,
+    "calmar_ratio": 1.61,
+    "max_drawdown": -9.96,
+    "annual_vol": 14.66,
+    "tracking_error": 1.4769,
+    "listing_date": "2023-04-21",
+    "holdings": [
+      {
+        "name": "中国海洋石油",
+        "weight": "18.26%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "10.95%"
+      },
+      {
+        "name": "万洲国际",
+        "weight": "8.31%"
+      },
+      {
+        "name": "中国宏桥",
+        "weight": "7.82%"
+      },
+      {
+        "name": "中电控股",
+        "weight": "7.59%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "560280",
+    "name": "工程机械ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "中证工程机械主题指数收益率",
+    "scale_yi": 67.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 35.84,
+    "year_3_return": null,
+    "sharpe_ratio": 1.24,
+    "calmar_ratio": 1.83,
+    "max_drawdown": -19.57,
+    "annual_vol": 25.82,
+    "tracking_error": 2.2266,
+    "listing_date": "2023-10-30",
+    "holdings": [
+      {
+        "name": "潍柴动力",
+        "weight": "19.92%"
+      },
+      {
+        "name": "徐工机械",
+        "weight": "13.54%"
+      },
+      {
+        "name": "三一重工",
+        "weight": "13.40%"
+      },
+      {
+        "name": "恒立液压",
+        "weight": "7.81%"
+      },
+      {
+        "name": "中联重科",
+        "weight": "6.45%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512690",
+    "name": "酒ETF",
+    "issuer": "鹏华",
+    "category": "行业",
+    "track_index": "中证酒指数收益率",
+    "scale_yi": 67.8,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": -24.03,
+    "year_3_return": -51.08,
+    "sharpe_ratio": -1.37,
+    "calmar_ratio": -0.84,
+    "max_drawdown": -28.48,
+    "annual_vol": 20.17,
+    "tracking_error": 2.3437,
+    "listing_date": "2019-05-06",
+    "holdings": [
+      {
+        "name": "贵州茅台",
+        "weight": "17.26%"
+      },
+      {
+        "name": "五粮液",
+        "weight": "15.42%"
+      },
+      {
+        "name": "泸州老窖",
+        "weight": "11.94%"
+      },
+      {
+        "name": "山西汾酒",
+        "weight": "10.82%"
+      },
+      {
+        "name": "洋河股份",
+        "weight": "4.75%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159549",
+    "name": "红利低波ETF",
+    "issuer": "天弘",
+    "category": "红利",
+    "track_index": "中证红利低波动100指数收益率 (930955)",
+    "scale_yi": 67.6,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 6.87,
+    "year_3_return": -13.86,
+    "sharpe_ratio": 0.53,
+    "calmar_ratio": 1.02,
+    "max_drawdown": -6.72,
+    "annual_vol": 9.59,
+    "tracking_error": 1.3927,
+    "listing_date": "2023-12-11",
+    "holdings": [
+      {
+        "name": "冀中能源",
+        "weight": "2.92%"
+      },
+      {
+        "name": "雅戈尔",
+        "weight": "2.40%"
+      },
+      {
+        "name": "广汇能源",
+        "weight": "2.40%"
+      },
+      {
+        "name": "大秦铁路",
+        "weight": "2.37%"
+      },
+      {
+        "name": "中远海控",
+        "weight": "1.93%"
+      }
+    ],
+    "track_index_code": "930955"
+  },
+  {
+    "code": "515900",
+    "name": "央企创新ETF",
+    "issuer": "博时",
+    "category": "行业",
+    "track_index": "央企创新",
+    "scale_yi": 67.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 27.08,
+    "year_3_return": 30.46,
+    "sharpe_ratio": 1.55,
+    "calmar_ratio": 2.7,
+    "max_drawdown": -10.04,
+    "annual_vol": 15.01,
+    "tracking_error": null,
+    "listing_date": "2019-09-20",
+    "holdings": [
+      {
+        "name": "国电南瑞",
+        "weight": "5.43%"
+      },
+      {
+        "name": "海康威视",
+        "weight": "4.74%"
+      },
+      {
+        "name": "东方电气",
+        "weight": "2.93%"
+      },
+      {
+        "name": "中国铝业",
+        "weight": "2.88%"
+      },
+      {
+        "name": "中国石油",
+        "weight": "2.74%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159157",
+    "name": "有色金属ETF",
+    "issuer": "天弘",
+    "category": "商品",
+    "track_index": "工业有色 (000827)",
+    "scale_yi": 67.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -5.8,
+    "year_3_return": null,
+    "sharpe_ratio": -0.36,
+    "calmar_ratio": null,
+    "max_drawdown": -28.29,
+    "annual_vol": 41.81,
+    "tracking_error": null,
+    "listing_date": "2026-01-28",
+    "holdings": [
+      {
+        "name": "洛阳钼业",
+        "weight": "11.00%"
+      },
+      {
+        "name": "北方稀土",
+        "weight": "8.86%"
+      },
+      {
+        "name": "中国铝业",
+        "weight": "6.64%"
+      },
+      {
+        "name": "云铝股份",
+        "weight": "4.74%"
+      },
+      {
+        "name": "厦门钨业",
+        "weight": "4.54%"
+      }
+    ],
+    "track_index_code": "000827"
+  },
+  {
+    "code": "515300",
+    "name": "300红利低波ETF",
+    "issuer": "嘉实",
+    "category": "红利",
+    "track_index": "沪深300红利低波动指数收益率",
+    "scale_yi": 67.4,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 1.08,
+    "year_3_return": 40.38,
+    "sharpe_ratio": -0.05,
+    "calmar_ratio": 0.13,
+    "max_drawdown": -8.4,
+    "annual_vol": 9.77,
+    "tracking_error": 1.8346,
+    "listing_date": "2019-09-19",
+    "holdings": [
+      {
+        "name": "中国神华",
+        "weight": "5.13%"
+      },
+      {
+        "name": "中国海油",
+        "weight": "4.67%"
+      },
+      {
+        "name": "中国石油",
+        "weight": "4.27%"
+      },
+      {
+        "name": "双汇发展",
+        "weight": "3.79%"
+      },
+      {
+        "name": "格力电器",
+        "weight": "3.48%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159307",
+    "name": "红利低波100ETF",
+    "issuer": "博时",
+    "category": "红利",
+    "track_index": "中证红利低波动100指数收益率 (930955)",
+    "scale_yi": 66.5,
+    "fee_mgmt": 0.15,
+    "fee_custody": 0.05,
+    "fee_total": 0.2,
+    "year_1_return": 8.2,
+    "year_3_return": null,
+    "sharpe_ratio": 0.67,
+    "calmar_ratio": 1.33,
+    "max_drawdown": -6.18,
+    "annual_vol": 9.55,
+    "tracking_error": 1.387,
+    "listing_date": "2024-04-25",
+    "holdings": [
+      {
+        "name": "冀中能源",
+        "weight": "2.91%"
+      },
+      {
+        "name": "雅戈尔",
+        "weight": "2.39%"
+      },
+      {
+        "name": "广汇能源",
+        "weight": "2.38%"
+      },
+      {
+        "name": "大秦铁路",
+        "weight": "2.36%"
+      },
+      {
+        "name": "中远海控",
+        "weight": "1.92%"
+      }
+    ],
+    "track_index_code": "930955"
+  },
+  {
+    "code": "159783",
+    "name": "科创创业50ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "科创创业50 (931643)",
+    "scale_yi": 66.1,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 127.7,
+    "year_3_return": 94.17,
+    "sharpe_ratio": 2.8,
+    "calmar_ratio": 8.83,
+    "max_drawdown": -14.46,
+    "annual_vol": 30.45,
+    "tracking_error": null,
+    "listing_date": "2021-06-24",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "11.48%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "11.05%"
+      },
+      {
+        "name": "新易盛",
+        "weight": "10.59%"
+      },
+      {
+        "name": "阳光电源",
+        "weight": "5.27%"
+      },
+      {
+        "name": "寒武纪",
+        "weight": "5.03%"
+      }
+    ],
+    "track_index_code": "931643"
+  },
+  {
+    "code": "562800",
+    "name": "稀有金属ETF",
+    "issuer": "嘉实",
+    "category": "行业",
+    "track_index": "CS稀金属",
+    "scale_yi": 64.8,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 125.57,
+    "year_3_return": 64.26,
+    "sharpe_ratio": 2.27,
+    "calmar_ratio": 5.18,
+    "max_drawdown": -24.24,
+    "annual_vol": 38.34,
+    "tracking_error": null,
+    "listing_date": "2021-09-15",
+    "holdings": [
+      {
+        "name": "洛阳钼业",
+        "weight": "10.55%"
+      },
+      {
+        "name": "北方稀土",
+        "weight": "8.50%"
+      },
+      {
+        "name": "盐湖股份",
+        "weight": "8.28%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "6.28%"
+      },
+      {
+        "name": "赣锋锂业",
+        "weight": "6.25%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159227",
+    "name": "航空航天ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "国证航天",
+    "scale_yi": 64.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 13.87,
+    "year_3_return": null,
+    "sharpe_ratio": 0.77,
+    "calmar_ratio": 0.5,
+    "max_drawdown": -27.71,
+    "annual_vol": 33.56,
+    "tracking_error": null,
+    "listing_date": "2025-04-30",
+    "holdings": [
+      {
+        "name": "航发动力",
+        "weight": "8.29%"
+      },
+      {
+        "name": "光启技术",
+        "weight": "7.67%"
+      },
+      {
+        "name": "航天电子",
+        "weight": "7.21%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "6.20%"
+      },
+      {
+        "name": "中航沈飞",
+        "weight": "5.50%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "560610",
+    "name": "A500ETF",
+    "issuer": "招商",
+    "category": "行业",
+    "track_index": "中证A500指数收益率 (000510)",
+    "scale_yi": 64.4,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 40.6,
+    "year_3_return": null,
+    "sharpe_ratio": 2.17,
+    "calmar_ratio": 4.74,
+    "max_drawdown": -8.57,
+    "annual_vol": 15.43,
+    "tracking_error": 0.7906,
+    "listing_date": "2024-10-15",
+    "holdings": [
+      {
+        "name": "宁德时代",
+        "weight": "3.79%"
+      },
+      {
+        "name": "贵州茅台",
+        "weight": "3.14%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "2.28%"
+      },
+      {
+        "name": "中国平安",
+        "weight": "2.15%"
+      },
+      {
+        "name": "紫金矿业",
+        "weight": "1.91%"
+      }
+    ],
+    "track_index_code": "000510"
+  },
+  {
+    "code": "159263",
+    "name": "价值ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "国证价值100指数收益率",
+    "scale_yi": 63.8,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.05,
+    "fee_total": 0.55,
+    "year_1_return": 16.1,
+    "year_3_return": -8.48,
+    "sharpe_ratio": 1.1,
+    "calmar_ratio": null,
+    "max_drawdown": -8.48,
+    "annual_vol": 12.74,
+    "tracking_error": 1.4275,
+    "listing_date": "2025-07-08",
+    "holdings": [
+      {
+        "name": "格力电器",
+        "weight": "8.32%"
+      },
+      {
+        "name": "美的集团",
+        "weight": "8.31%"
+      },
+      {
+        "name": "招商银行",
+        "weight": "6.90%"
+      },
+      {
+        "name": "陕西煤业",
+        "weight": "5.97%"
+      },
+      {
+        "name": "中国海油",
+        "weight": "4.70%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513380",
+    "name": "恒生科技ETF",
+    "issuer": "广发",
+    "category": "跨境",
+    "track_index": "恒生科技指数 (HSTECH)",
+    "scale_yi": 63.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": -11.71,
+    "year_3_return": 9.63,
+    "sharpe_ratio": -0.47,
+    "calmar_ratio": -0.37,
+    "max_drawdown": -31.49,
+    "annual_vol": 24.49,
+    "tracking_error": null,
+    "listing_date": "2022-04-27",
+    "holdings": [
+      {
+        "name": "比亚迪股份",
+        "weight": "9.58%"
+      },
+      {
+        "name": "美团-W",
+        "weight": "9.05%"
+      },
+      {
+        "name": "小米集团-W",
+        "weight": "8.31%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "7.88%"
+      },
+      {
+        "name": "阿里巴巴-W",
+        "weight": "7.45%"
+      }
+    ],
+    "track_index_code": "HSTECH"
+  },
+  {
+    "code": "513530",
+    "name": "港股通红利ETF",
+    "issuer": "华泰柏瑞",
+    "category": "红利",
+    "track_index": "中证港股通高股息投资指数收益率",
+    "scale_yi": 63.6,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 23.78,
+    "year_3_return": 71.18,
+    "sharpe_ratio": 1.5,
+    "calmar_ratio": 2.04,
+    "max_drawdown": -11.68,
+    "annual_vol": 13.58,
+    "tracking_error": 1.9368,
+    "listing_date": "2022-04-25",
+    "holdings": [
+      {
+        "name": "中远海控",
+        "weight": "5.97%"
+      },
+      {
+        "name": "中国重汽",
+        "weight": "4.80%"
+      },
+      {
+        "name": "中国海洋石油",
+        "weight": "4.51%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "4.27%"
+      },
+      {
+        "name": "中煤能源",
+        "weight": "4.20%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512200",
+    "name": "房地产ETF",
+    "issuer": "南方",
+    "category": "行业",
+    "track_index": "房地产",
+    "scale_yi": 63.3,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 3.38,
+    "year_3_return": -26.01,
+    "sharpe_ratio": 0.17,
+    "calmar_ratio": 0.16,
+    "max_drawdown": -21.39,
+    "annual_vol": 21.98,
+    "tracking_error": null,
+    "listing_date": "2017-08-25",
+    "holdings": [
+      {
+        "name": "保利发展",
+        "weight": "8.51%"
+      },
+      {
+        "name": "招商蛇口",
+        "weight": "6.18%"
+      },
+      {
+        "name": "万科A",
+        "weight": "5.53%"
+      },
+      {
+        "name": "张江高科",
+        "weight": "5.40%"
+      },
+      {
+        "name": "海南机场",
+        "weight": "4.21%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159985",
+    "name": "豆粕ETF",
+    "issuer": "华夏",
+    "category": "商品",
+    "track_index": "大连商品交易所豆粕期货价格指数收益率",
+    "scale_yi": 62.5,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 9.41,
+    "year_3_return": 16.09,
+    "sharpe_ratio": 0.52,
+    "calmar_ratio": 0.78,
+    "max_drawdown": -12.06,
+    "annual_vol": 15.85,
+    "tracking_error": 2.1421,
+    "listing_date": "2019-12-05",
+    "holdings": [],
+    "track_index_code": ""
+  },
+  {
+    "code": "512680",
+    "name": "军工ETF",
+    "issuer": "广发",
+    "category": "行业",
+    "track_index": "中证军工指数收益率 (399967)",
+    "scale_yi": 62.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 37.34,
+    "year_3_return": 26.01,
+    "sharpe_ratio": 1.13,
+    "calmar_ratio": 1.48,
+    "max_drawdown": -25.26,
+    "annual_vol": 30.43,
+    "tracking_error": null,
+    "listing_date": "2016-10-14",
+    "holdings": [
+      {
+        "name": "中国船舶",
+        "weight": "8.47%"
+      },
+      {
+        "name": "航发动力",
+        "weight": "4.04%"
+      },
+      {
+        "name": "航天电子",
+        "weight": "3.70%"
+      },
+      {
+        "name": "光启技术",
+        "weight": "3.65%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "3.05%"
+      }
+    ],
+    "track_index_code": "399967"
+  },
+  {
+    "code": "512710",
+    "name": "军工龙头ETF",
+    "issuer": "富国",
+    "category": "行业",
+    "track_index": "中证军工龙头指数收益率",
+    "scale_yi": 61.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 29.26,
+    "year_3_return": 7.44,
+    "sharpe_ratio": 0.88,
+    "calmar_ratio": 1.15,
+    "max_drawdown": -25.54,
+    "annual_vol": 33.27,
+    "tracking_error": 3.7146,
+    "listing_date": "2019-08-26",
+    "holdings": [
+      {
+        "name": "航发动力",
+        "weight": "9.47%"
+      },
+      {
+        "name": "航天电子",
+        "weight": "8.68%"
+      },
+      {
+        "name": "中国卫星",
+        "weight": "7.18%"
+      },
+      {
+        "name": "中航光电",
+        "weight": "6.35%"
+      },
+      {
+        "name": "中航沈飞",
+        "weight": "6.18%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "515290",
+    "name": "银行ETF",
+    "issuer": "天弘",
+    "category": "行业",
+    "track_index": "中证银行指数收益率",
+    "scale_yi": 60.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 1.62,
+    "year_3_return": 47.65,
+    "sharpe_ratio": 0.04,
+    "calmar_ratio": 0.11,
+    "max_drawdown": -15.34,
+    "annual_vol": 13.66,
+    "tracking_error": 2.4913,
+    "listing_date": "2020-12-28",
+    "holdings": [
+      {
+        "name": "招商银行",
+        "weight": "14.27%"
+      },
+      {
+        "name": "兴业银行",
+        "weight": "10.19%"
+      },
+      {
+        "name": "工商银行",
+        "weight": "7.91%"
+      },
+      {
+        "name": "农业银行",
+        "weight": "6.16%"
+      },
+      {
+        "name": "交通银行",
+        "weight": "5.97%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513910",
+    "name": "港股通央企红利ETF",
+    "issuer": "华夏",
+    "category": "红利",
+    "track_index": "中证港股通央企红利指数收益率(经估值汇率调整)",
+    "scale_yi": 59.3,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 22.44,
+    "year_3_return": null,
+    "sharpe_ratio": 1.4,
+    "calmar_ratio": 2.52,
+    "max_drawdown": -8.9,
+    "annual_vol": 13.76,
+    "tracking_error": 1.6661,
+    "listing_date": "2024-03-04",
+    "holdings": [
+      {
+        "name": "中远海控",
+        "weight": "4.35%"
+      },
+      {
+        "name": "中国海洋石油",
+        "weight": "3.29%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "3.11%"
+      },
+      {
+        "name": "中煤能源",
+        "weight": "3.07%"
+      },
+      {
+        "name": "中国石油股份",
+        "weight": "2.97%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "512010",
+    "name": "医药ETF",
+    "issuer": "易方达",
+    "category": "行业",
+    "track_index": "沪深300医药卫生指数",
+    "scale_yi": 59.2,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": -1.69,
+    "year_3_return": -26.43,
+    "sharpe_ratio": -0.09,
+    "calmar_ratio": -0.07,
+    "max_drawdown": -23.68,
+    "annual_vol": 19.95,
+    "tracking_error": 2.0508,
+    "listing_date": "2013-10-28",
+    "holdings": [
+      {
+        "name": "恒瑞医药",
+        "weight": "20.17%"
+      },
+      {
+        "name": "药明康德",
+        "weight": "19.85%"
+      },
+      {
+        "name": "迈瑞医疗",
+        "weight": "8.16%"
+      },
+      {
+        "name": "联影医疗",
+        "weight": "4.52%"
+      },
+      {
+        "name": "新和成",
+        "weight": "4.34%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "510510",
+    "name": "中证500ETF",
+    "issuer": "广发",
+    "category": "宽基",
+    "track_index": "中证500 (000905)",
+    "scale_yi": 59.0,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 54.54,
+    "year_3_return": 43.24,
+    "sharpe_ratio": 2.13,
+    "calmar_ratio": 3.89,
+    "max_drawdown": -14.03,
+    "annual_vol": 20.61,
+    "tracking_error": null,
+    "listing_date": "2013-04-11",
+    "holdings": [
+      {
+        "name": "亨通光电",
+        "weight": "1.05%"
+      },
+      {
+        "name": "赤峰黄金",
+        "weight": "0.73%"
+      },
+      {
+        "name": "佰维存储",
+        "weight": "0.70%"
+      },
+      {
+        "name": "金风科技",
+        "weight": "0.65%"
+      },
+      {
+        "name": "信维通信",
+        "weight": "0.64%"
+      }
+    ],
+    "track_index_code": "000905"
+  },
+  {
+    "code": "159217",
+    "name": "港股通创新药ETF",
+    "issuer": "工银",
+    "category": "跨境",
+    "track_index": "经汇率调整后的国证港股通创新药指数收益率",
+    "scale_yi": 59.0,
+    "fee_mgmt": 0.4,
+    "fee_custody": 0.07,
+    "fee_total": 0.47,
+    "year_1_return": 11.04,
+    "year_3_return": null,
+    "sharpe_ratio": 0.42,
+    "calmar_ratio": 0.34,
+    "max_drawdown": -32.92,
+    "annual_vol": 35.97,
+    "tracking_error": 5.0679,
+    "listing_date": "2025-04-03",
+    "holdings": [
+      {
+        "name": "康方生物",
+        "weight": "12.01%"
+      },
+      {
+        "name": "信达生物",
+        "weight": "9.93%"
+      },
+      {
+        "name": "石药集团",
+        "weight": "9.51%"
+      },
+      {
+        "name": "百济神州",
+        "weight": "9.18%"
+      },
+      {
+        "name": "中国生物制药",
+        "weight": "9.13%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513660",
+    "name": "恒生ETF",
+    "issuer": "华夏",
+    "category": "跨境",
+    "track_index": "(人民币/港币汇率*恒生指数)收益率 (HSI)",
+    "scale_yi": 58.7,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 9.56,
+    "year_3_return": 38.43,
+    "sharpe_ratio": 0.49,
+    "calmar_ratio": 0.67,
+    "max_drawdown": -14.21,
+    "annual_vol": 17.72,
+    "tracking_error": 1.6013,
+    "listing_date": "2015-01-26",
+    "holdings": [
+      {
+        "name": "阿里巴巴-W",
+        "weight": "8.25%"
+      },
+      {
+        "name": "腾讯控股",
+        "weight": "8.21%"
+      },
+      {
+        "name": "汇丰控股",
+        "weight": "8.16%"
+      },
+      {
+        "name": "友邦保险",
+        "weight": "5.57%"
+      },
+      {
+        "name": "建设银行",
+        "weight": "5.09%"
+      }
+    ],
+    "track_index_code": "HSI"
+  },
+  {
+    "code": "588060",
+    "name": "科创50ETF",
+    "issuer": "广发",
+    "category": "宽基",
+    "track_index": "上证科创板50成份指数收益率 (000688)",
+    "scale_yi": 57.5,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 68.01,
+    "year_3_return": 59.35,
+    "sharpe_ratio": 1.78,
+    "calmar_ratio": 3.51,
+    "max_drawdown": -19.37,
+    "annual_vol": 30.73,
+    "tracking_error": null,
+    "listing_date": "2021-07-15",
+    "holdings": [
+      {
+        "name": "寒武纪",
+        "weight": "9.36%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "8.84%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.50%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "6.49%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "6.05%"
+      }
+    ],
+    "track_index_code": "000688"
+  },
+  {
+    "code": "563300",
+    "name": "中证2000ETF",
+    "issuer": "华泰柏瑞",
+    "category": "宽基",
+    "track_index": "中证2000指数收益率",
+    "scale_yi": 56.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 54.29,
+    "year_3_return": -32.76,
+    "sharpe_ratio": 2.06,
+    "calmar_ratio": 4.03,
+    "max_drawdown": -13.47,
+    "annual_vol": 21.32,
+    "tracking_error": null,
+    "listing_date": "2023-09-14",
+    "holdings": [
+      {
+        "name": "鼎通科技",
+        "weight": "0.70%"
+      },
+      {
+        "name": "华锐精密",
+        "weight": "0.62%"
+      },
+      {
+        "name": "万润新能",
+        "weight": "0.59%"
+      },
+      {
+        "name": "信息发展",
+        "weight": "0.51%"
+      },
+      {
+        "name": "成都先导",
+        "weight": "0.50%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "159381",
+    "name": "创业板人工智能ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "创业板人工智能 (399006)",
+    "scale_yi": 56.2,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 206.69,
+    "year_3_return": -22.03,
+    "sharpe_ratio": 2.82,
+    "calmar_ratio": 14.14,
+    "max_drawdown": -14.62,
+    "annual_vol": 42.37,
+    "tracking_error": null,
+    "listing_date": "2025-03-14",
+    "holdings": [
+      {
+        "name": "新易盛",
+        "weight": "15.21%"
+      },
+      {
+        "name": "中际旭创",
+        "weight": "13.92%"
+      },
+      {
+        "name": "天孚通信",
+        "weight": "9.72%"
+      },
+      {
+        "name": "润泽科技",
+        "weight": "4.02%"
+      },
+      {
+        "name": "蓝色光标",
+        "weight": "3.89%"
+      }
+    ],
+    "track_index_code": "399006"
+  },
+  {
+    "code": "588090",
+    "name": "科创50ETF",
+    "issuer": "华泰柏瑞",
+    "category": "宽基",
+    "track_index": "上证科创板50成份指数收益率 (000688)",
+    "scale_yi": 55.9,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 68.23,
+    "year_3_return": 59.36,
+    "sharpe_ratio": 1.78,
+    "calmar_ratio": 3.58,
+    "max_drawdown": -19.06,
+    "annual_vol": 30.91,
+    "tracking_error": null,
+    "listing_date": "2020-11-16",
+    "holdings": [
+      {
+        "name": "寒武纪",
+        "weight": "9.31%"
+      },
+      {
+        "name": "海光信息",
+        "weight": "8.81%"
+      },
+      {
+        "name": "中芯国际",
+        "weight": "8.47%"
+      },
+      {
+        "name": "澜起科技",
+        "weight": "6.47%"
+      },
+      {
+        "name": "中微公司",
+        "weight": "6.05%"
+      }
+    ],
+    "track_index_code": "000688"
+  },
+  {
+    "code": "159652",
+    "name": "有色ETF",
+    "issuer": "汇添富",
+    "category": "商品",
+    "track_index": "细分有色 (000811)",
+    "scale_yi": 55.7,
+    "fee_mgmt": null,
+    "fee_custody": null,
+    "fee_total": null,
+    "year_1_return": 92.86,
+    "year_3_return": 86.21,
+    "sharpe_ratio": 1.88,
+    "calmar_ratio": 3.16,
+    "max_drawdown": -29.4,
+    "annual_vol": 37.82,
+    "tracking_error": null,
+    "listing_date": "2023-01-16",
+    "holdings": [
+      {
+        "name": "紫金矿业",
+        "weight": "14.13%"
+      },
+      {
+        "name": "洛阳钼业",
+        "weight": "6.61%"
+      },
+      {
+        "name": "北方稀土",
+        "weight": "5.32%"
+      },
+      {
+        "name": "中国铝业",
+        "weight": "3.99%"
+      },
+      {
+        "name": "华友钴业",
+        "weight": "3.93%"
+      }
+    ],
+    "track_index_code": "000811"
+  },
+  {
+    "code": "159732",
+    "name": "消费电子ETF",
+    "issuer": "华夏",
+    "category": "行业",
+    "track_index": "国证消费电子主题指数收益率",
+    "scale_yi": 55.1,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 91.28,
+    "year_3_return": 106.32,
+    "sharpe_ratio": 2.19,
+    "calmar_ratio": 5.06,
+    "max_drawdown": -18.03,
+    "annual_vol": 31.1,
+    "tracking_error": null,
+    "listing_date": "2021-08-23",
+    "holdings": [
+      {
+        "name": "立讯精密",
+        "weight": "8.42%"
+      },
+      {
+        "name": "胜宏科技",
+        "weight": "7.36%"
+      },
+      {
+        "name": "兆易创新",
+        "weight": "7.22%"
+      },
+      {
+        "name": "东山精密",
+        "weight": "6.28%"
+      },
+      {
+        "name": "京东方A",
+        "weight": "6.15%"
+      }
+    ],
+    "track_index_code": ""
+  },
+  {
+    "code": "513690",
+    "name": "港股红利ETF",
+    "issuer": "博时",
+    "category": "红利",
+    "track_index": "恒生港股通高股息率指数收益率(经估值汇率调整后)",
+    "scale_yi": 55.0,
+    "fee_mgmt": 0.5,
+    "fee_custody": 0.1,
+    "fee_total": 0.6,
+    "year_1_return": 28.03,
+    "year_3_return": 57.52,
+    "sharpe_ratio": 1.71,
+    "calmar_ratio": 2.96,
+    "max_drawdown": -9.48,
+    "annual_vol": 13.92,
+    "tracking_error": 1.6815,
+    "listing_date": "2021-05-20",
+    "holdings": [
+      {
+        "name": "兖煤澳大利亚",
+        "weight": "4.04%"
+      },
+      {
+        "name": "东方海外国际",
+        "weight": "3.54%"
+      },
+      {
+        "name": "中远海控",
+        "weight": "3.48%"
+      },
+      {
+        "name": "海丰国际",
+        "weight": "3.20%"
+      },
+      {
+        "name": "中国神华",
+        "weight": "2.93%"
+      }
+    ],
+    "track_index_code": ""
+  }
+]
