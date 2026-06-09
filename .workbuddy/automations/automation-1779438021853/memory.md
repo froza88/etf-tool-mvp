@@ -1,6 +1,32 @@
 # ETF 每日数据更新 - 执行历史
 
-## 2026-06-08
+## 2026-06-10
+
+### 执行摘要
+- **状态**: 成功（跨会话完成）
+- **时间**: ~02:58 - 03:16（pipeline 前序会话，wequote 本会话）
+
+### 各步骤状态
+
+| 步骤 | 状态 | 说明 |
+|------|------|------|
+| 1. pipeline.py --push --no-wind | 成功 | 02:59-03:01，前序会话；sync 1500(+6) → enrich 0 → calc 166/34 → build 1500 → git push ✅ |
+| 2. wequote_daily.py | 成功 | 03:02-03:16，14m8s，一次通过 |
+| 3. git commit + push | 成功 | 884c7ca，2415 增/1965 删 |
+| 4. PA 同步 curl | 失败(405) | Method Not Allowed，连续第 14 天 |
+
+### 数据更新
+- Pipeline: 1500 ETF，sync +6 新增，calc 166成功/34失败，build 1500，部署 2 次 commit
+- WeStock: quote 更新 1500 字段，etf 更新 1200 字段，总计 2700 字段
+- 字段覆盖率: custodian 1491/1500 (99.4%), fee_rate 899/1500 (59.9%), benchmark 1477/1500 (98.5%), premium_discount 145/1500 (9.7%)
+- Git: 2415 行新增，1965 行删除
+
+### 问题
+- PA 同步返回 405 Method Not Allowed（连续第 14 天），需检查 API 配置
+- logs/ 目录无当天日志文件（pipeline 可能未写入 logs/ 或写入路径不同）
+
+---
+
 
 ### 执行摘要
 - **状态**: 成功
