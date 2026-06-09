@@ -1,0 +1,7 @@
+{
+  "build": {
+    "outputDirectory": "prototypes/v10_full_1470/deploy",
+    "installCommand": "",
+    "buildCommand": ""
+  }
+}
