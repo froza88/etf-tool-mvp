@@ -18327,9 +18327,11 @@
     "annual_vol_5y": 0
   },
   "589210": {
+    "year_1_return": null,
+    "year_3_return": null,
     "max_drawdown": -19.08,
-    "sharpe_ratio": 2.96,
-    "annual_vol": 42.8
+    "sharpe_ratio": 2.35,
+    "annual_vol": 44.21
   },
   "561000": {
     "year_1_return": 24.79,
