@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"基金成立日\", \"type\": \"date\"}, {\"name\": \"基金管理人\", \"type\": \"string\"}, {\"name\": \"现任基金经理姓名\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"亿元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"托管费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"销售服务费率_支持历史\", \"type\": \"number\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差_跟踪指数\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"区间收益率_年化\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}], \"excelTotalCount\": 12, \"resolved_question\": \"\", \"rows\": [[\"560810.OF\", \"融通中证诚通央企ESGETF\", \"2024-11-25\", \"融通基金管理有限公司\", \"蔡志伟,吕寒\", 2.5802, 0.3, 0.05, null, 1.2641, 0.2892, 15.2424, -10.5916, 0.1286, 32.8171, \"人民币元\"]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"基金全称\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"百万元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"复权单位净值增长率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}], \"excelTotalCount\": 8, \"resolved_question\": \"\", \"rows\": [[\"526050.OF\", \"招商中证港股通信息技术综合ETF\", \"招商中证港股通信息技术综合交易型开放式指数证券投资基金\", 77.3686, 0.5, 1.1971, 0.5091, 38.3889, -6.8738, 5.0445, null, \"人民币元\"]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

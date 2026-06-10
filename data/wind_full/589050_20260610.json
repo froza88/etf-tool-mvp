@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"百万元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差_跟踪指数\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"复权单位净值增长率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}], \"excelTotalCount\": 14, \"resolved_question\": \"\", \"rows\": [[\"589050.SH\", \"兴业上证科创板综合价格ETF\", 66.8261, 0.15, 1.4228, 0.2255, 27.8784, -16.5591, 0.7141, null, \"人民币元\"], [\"589050.OF\", \"兴业上证科创板综合价格ETF\", 66.8261, 0.15, 1.4228, 0.2255, 27.8784, -16.5591, 0.7141, null, \"人民币元\"]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

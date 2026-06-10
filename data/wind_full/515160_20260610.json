@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"基金成立日\", \"type\": \"date\"}, {\"name\": \"基金管理人\", \"type\": \"string\"}, {\"name\": \"现任基金经理姓名\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"亿元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"托管费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"销售服务费率_支持历史\", \"type\": \"number\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"复权单位净值增长率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}], \"excelTotalCount\": 12, \"resolved_question\": \"\", \"rows\": [[\"515160.OF\", \"招商MSCI中国A股国际通ETF\", \"2020-02-03\", \"招商基金管理有限公司\", \"范刚强\", 4.131, 0.5, 0.1, null, 1.6527, 0.2918, 12.5549, -7.7088, 0.6312, 27.819, \"人民币元\"]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"基金成立日\", \"type\": \"date\"}, {\"name\": \"基金管理人\", \"type\": \"string\"}, {\"name\": \"现任基金经理姓名\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"亿元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"复权单位净值增长率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}], \"excelTotalCount\": 10, \"resolved_question\": \"\", \"rows\": [[\"520790.OF\", \"兴业中证港股通互联网ETF\", \"2026-03-19\", \"兴业基金管理有限公司\", \"楼华锋\", 3.1641, 0.45, 0.8667, -0.2427, 29.4753, -16.4948, 3.381, null, \"人民币元\"]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

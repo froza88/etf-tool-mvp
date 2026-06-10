@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"百万元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"复权单位净值增长率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}], \"excelTotalCount\": 15, \"resolved_question\": \"\", \"rows\": [[\"516250.OF\", \"富国中证工程机械主题ETF\", 92.8031, 0.5, 1.0682, 0.0837, 22.2109, -19.0965, 2.291, null, \"人民币元\"], [\"560280.SH\", \"广发中证工程机械ETF\", 3420.7669, 0.5, 1.6924, 0.2007, 20.7596, -19.071, 2.2491, 33.0712, \"人民币元\"]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

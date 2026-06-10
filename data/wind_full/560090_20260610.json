@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\": {\"data\": [{\"columns\": [{\"name\": \"Wind代码\", \"type\": \"string\"}, {\"name\": \"证券简称\", \"type\": \"string\"}, {\"name\": \"基金管理人\", \"type\": \"string\"}, {\"name\": \"上市基金规模_WIND计算\", \"type\": \"number\", \"unit\": \"亿元\"}, {\"name\": \"管理费率_支持历史\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"最大回撤\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"跟踪误差_跟踪指数\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"现任基金经理姓名\", \"type\": \"string\"}, {\"name\": \"SHARPE\", \"type\": \"number\"}, {\"name\": \"单位净值\", \"type\": \"number\", \"unit\": \"元\"}, {\"name\": \"单位净值币种\", \"type\": \"string\"}, {\"name\": \"年化波动率\", \"type\": \"number\", \"unit\": \"%\"}, {\"name\": \"基金成立日\", \"type\": \"date\"}, {\"name\": \"近1年回报\", \"type\": \"number\", \"unit\": \"%\"}], \"excelTotalCount\": 11, \"resolved_question\": \"\", \"rows\": [[\"560090.OF\", \"汇添富中证全指证券公司ETF\", \"汇添富基金管理股份有限公司\", 26.5261, 0.5, -25.8512, 0.0449, \"董瑾\", -0.0346, 1.0777, \"人民币元\", 20.1808, \"2023-02-27\", -6.0828]], \"step\": \"Step1\"}]}, \"error\": null}"
+    }
+  ],
+  "isError": false
+}

@@ -3,22 +3,22 @@
     {
       "code": "512010",
       "name": "医药ETF",
-      "issuer": "易方达",
-      "scale": 58.2,
-      "benchmark": "沪深300医药卫生指数",
+      "issuer": "易方达基金",
+      "scale": 163.4,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": -1.69,
-      "year_3_return": -26.43,
-      "annual_vol": 19.95,
-      "sharpe_ratio": -0.09,
-      "max_drawdown": -23.68,
-      "annual_3y": -9.73,
+      "year_1_return": -14.81,
+      "year_3_return": -23.88,
+      "annual_vol": 16.12,
+      "sharpe_ratio": -0.0709,
+      "max_drawdown": -26.37,
+      "annual_3y": -8.69,
       "calmar_ratio": -0.07,
-      "change_pct": -1.53,
-      "close": 0.356,
-      "volume": 17313034.0,
+      "change_pct": -0.62,
+      "close": 0.32,
+      "volume": 1836560605,
       "top_holdings": [
         {
           "name": "恒瑞医药",
@@ -44,403 +44,277 @@
     },
     {
       "code": "159892",
-      "name": "恒生医药ETF",
-      "issuer": "华夏",
-      "scale": 33.7,
-      "benchmark": "恒生生物科技指数收益率(使用估值汇率折算)",
+      "name": "恒生医药ETF华夏",
+      "issuer": "华夏基金",
+      "scale": 53.2,
+      "benchmark": "",
       "fee_rate": 0.65,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.15,
-      "year_1_return": 13.06,
-      "year_3_return": 11.09,
-      "annual_vol": 32.1,
-      "sharpe_ratio": 0.48,
-      "max_drawdown": -28.43,
-      "annual_3y": 3.57,
-      "calmar_ratio": 0.46,
-      "change_pct": -3.44,
-      "close": 0.718,
-      "volume": 12973253.0,
+      "year_1_return": -14.4,
+      "year_3_return": 4.57,
+      "annual_vol": 34.61,
+      "sharpe_ratio": 0.037,
+      "max_drawdown": -31.87,
+      "annual_3y": 1.5,
+      "calmar_ratio": -0.45,
+      "change_pct": -0.81,
+      "close": 0.613,
+      "volume": 1656518804,
       "top_holdings": [
         {
-          "name": "信达生物",
-          "weight": "9.83%"
+          "name": "和黄医药",
+          "weight": ""
         },
         {
-          "name": "康方生物",
-          "weight": "9.00%"
+          "name": "阿里健康",
+          "weight": ""
         },
         {
-          "name": "百济神州",
-          "weight": "8.92%"
+          "name": "远大医药",
+          "weight": ""
         },
         {
-          "name": "药明生物",
-          "weight": "8.28%"
+          "name": "微创医疗",
+          "weight": ""
         },
         {
-          "name": "石药集团",
-          "weight": "6.88%"
+          "name": "康哲药业",
+          "weight": ""
         }
       ]
     },
     {
       "code": "512290",
-      "name": "生物医药ETF",
-      "issuer": "国泰",
-      "scale": 32.5,
-      "benchmark": "中证生物医药指数收益率",
+      "name": "生物医药ETF国泰",
+      "issuer": "国泰基金",
+      "scale": 36.1,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 3.42,
-      "year_3_return": -22.69,
-      "annual_vol": 22.85,
-      "sharpe_ratio": 0.17,
-      "max_drawdown": -26.15,
-      "annual_3y": -8.22,
-      "calmar_ratio": 0.13,
-      "change_pct": -1.96,
-      "close": 0.961,
-      "volume": 1423426.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "17.27%"
-        },
-        {
-          "name": "恒瑞医药",
-          "weight": "14.25%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "12.95%"
-        },
-        {
-          "name": "上海莱士",
-          "weight": "3.99%"
-        },
-        {
-          "name": "长春高新",
-          "weight": "3.62%"
-        }
-      ]
+      "year_1_return": -14.33,
+      "year_3_return": -22.32,
+      "annual_vol": 18.88,
+      "sharpe_ratio": -0.0337,
+      "max_drawdown": -26.22,
+      "annual_3y": -8.07,
+      "calmar_ratio": -0.55,
+      "change_pct": -0.35,
+      "close": 0.846,
+      "volume": 88923100,
+      "top_holdings": []
     },
     {
       "code": "159929",
-      "name": "医药ETF",
-      "issuer": "汇添富",
-      "scale": 27.2,
-      "benchmark": "中证医药卫生指数",
+      "name": "医药ETF汇添富",
+      "issuer": "汇添富基金",
+      "scale": 22.4,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 0.32,
-      "year_3_return": -23.92,
-      "annual_vol": 18.47,
-      "sharpe_ratio": 0.0,
-      "max_drawdown": -21.2,
-      "annual_3y": -8.71,
-      "calmar_ratio": 0.02,
-      "change_pct": -1.69,
-      "close": 1.283,
-      "volume": 777622.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.29%"
-        },
-        {
-          "name": "恒瑞医药",
-          "weight": "9.32%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "5.32%"
-        },
-        {
-          "name": "联影医疗",
-          "weight": "2.97%"
-        },
-        {
-          "name": "新和成",
-          "weight": "2.84%"
-        }
-      ]
+      "year_1_return": -13.11,
+      "year_3_return": -23.18,
+      "annual_vol": 15.14,
+      "sharpe_ratio": -0.0565,
+      "max_drawdown": -23.11,
+      "annual_3y": -8.41,
+      "calmar_ratio": -0.57,
+      "change_pct": -0.43,
+      "close": 1.155,
+      "volume": 58646500,
+      "top_holdings": []
     },
     {
       "code": "159938",
-      "name": "医药ETF",
-      "issuer": "广发",
-      "scale": 25.9,
-      "benchmark": "中证全指医药卫生指数",
+      "name": "医药ETF广发",
+      "issuer": "广发基金",
+      "scale": 43.9,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": -0.16,
-      "year_3_return": -23.97,
-      "annual_vol": 18.08,
-      "sharpe_ratio": -0.03,
-      "max_drawdown": -21.61,
-      "annual_3y": -8.73,
-      "calmar_ratio": -0.01,
-      "change_pct": -1.92,
-      "close": 0.623,
-      "volume": 932651.0,
+      "year_1_return": -13.65,
+      "year_3_return": -22.98,
+      "annual_vol": 15.47,
+      "sharpe_ratio": -0.0556,
+      "max_drawdown": -23.28,
+      "annual_3y": -8.34,
+      "calmar_ratio": -0.59,
+      "change_pct": -0.18,
+      "close": 0.562,
+      "volume": 64912700,
       "top_holdings": [
         {
-          "name": "恒瑞医药",
-          "weight": "10.55%"
+          "name": "国药一致",
+          "weight": ""
         },
         {
-          "name": "药明康德",
-          "weight": "10.39%"
+          "name": "派林生物",
+          "weight": ""
         },
         {
-          "name": "迈瑞医疗",
-          "weight": "4.27%"
+          "name": "东阿阿胶",
+          "weight": ""
         },
         {
-          "name": "联影医疗",
-          "weight": "2.37%"
+          "name": "丽珠集团",
+          "weight": ""
         },
         {
-          "name": "新和成",
-          "weight": "2.27%"
+          "name": "云南白药",
+          "weight": ""
         }
       ]
     },
     {
       "code": "159859",
-      "name": "生物医药ETF",
-      "issuer": "天弘",
-      "scale": 14.7,
-      "benchmark": "国证生物医药指数收益率",
+      "name": "生物医药ETF天弘",
+      "issuer": "天弘基金",
+      "scale": 41.1,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 6.16,
-      "year_3_return": -35.36,
-      "annual_vol": 23.15,
-      "sharpe_ratio": 0.29,
-      "max_drawdown": -24.84,
-      "annual_3y": -13.54,
-      "calmar_ratio": 0.25,
-      "change_pct": -2.74,
-      "close": 0.369,
-      "volume": 4759358.0,
+      "year_1_return": -14.44,
+      "year_3_return": -32.06,
+      "annual_vol": 19.53,
+      "sharpe_ratio": -0.0223,
+      "max_drawdown": -25.97,
+      "annual_3y": -12.09,
+      "calmar_ratio": -0.56,
+      "change_pct": 0,
+      "close": 0.32,
+      "volume": 340122815,
       "top_holdings": [
         {
-          "name": "药明康德",
-          "weight": "11.12%"
+          "name": "派林生物",
+          "weight": ""
         },
         {
-          "name": "复星医药",
-          "weight": "6.56%"
+          "name": "长春高新",
+          "weight": ""
         },
         {
-          "name": "泰格医药",
-          "weight": "5.50%"
+          "name": "华兰生物",
+          "weight": ""
         },
         {
           "name": "上海莱士",
-          "weight": "5.46%"
+          "weight": ""
         },
         {
-          "name": "康龙化成",
-          "weight": "5.11%"
+          "name": "凯莱英",
+          "weight": ""
         }
       ]
     },
     {
       "code": "513200",
-      "name": "港股通医药ETF",
-      "issuer": "易方达",
-      "scale": 9.8,
-      "benchmark": "中证港股通医药卫生综合指数收益率(使用估值汇率折算)",
+      "name": "港股通医药ETF易方达",
+      "issuer": "易方达基金",
+      "scale": 12.4,
+      "benchmark": "",
       "fee_rate": 0.2,
       "management_fee_rate": 0.15,
       "custody_fee_rate": 0.05,
-      "year_1_return": 12.66,
-      "year_3_return": 0.85,
-      "annual_vol": 31.43,
-      "sharpe_ratio": 0.47,
-      "max_drawdown": -28.96,
-      "annual_3y": 0.28,
-      "calmar_ratio": 0.44,
-      "change_pct": -3.33,
-      "close": 0.979,
-      "volume": 1470106.0,
-      "top_holdings": [
-        {
-          "name": "信达生物",
-          "weight": "10.46%"
-        },
-        {
-          "name": "药明生物",
-          "weight": "10.05%"
-        },
-        {
-          "name": "百济神州",
-          "weight": "9.34%"
-        },
-        {
-          "name": "康方生物",
-          "weight": "7.08%"
-        },
-        {
-          "name": "石药集团",
-          "weight": "5.41%"
-        }
-      ]
+      "year_1_return": -14.15,
+      "year_3_return": -5.39,
+      "annual_vol": 33.14,
+      "sharpe_ratio": 0.0358,
+      "max_drawdown": -31.93,
+      "annual_3y": -1.83,
+      "calmar_ratio": -0.44,
+      "change_pct": -0.36,
+      "close": 0.84,
+      "volume": 207131862,
+      "top_holdings": []
     },
     {
       "code": "515950",
-      "name": "医药50ETF",
-      "issuer": "富国",
-      "scale": 4.4,
-      "benchmark": "中证医药50指数收益率",
+      "name": "医药50ETF富国",
+      "issuer": "富国基金",
+      "scale": 5.2,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 1.63,
-      "year_3_return": -22.44,
-      "annual_vol": 18.76,
-      "sharpe_ratio": 0.07,
-      "max_drawdown": -21.0,
-      "annual_3y": -8.12,
-      "calmar_ratio": 0.08,
-      "change_pct": -1.93,
-      "close": 0.891,
-      "volume": 134160.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.12%"
-        },
-        {
-          "name": "恒瑞医药",
-          "weight": "9.17%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "8.55%"
-        },
-        {
-          "name": "联影医疗",
-          "weight": "4.85%"
-        },
-        {
-          "name": "新和成",
-          "weight": "4.65%"
-        }
-      ]
+      "year_1_return": -10.73,
+      "year_3_return": -20.41,
+      "annual_vol": 15.88,
+      "sharpe_ratio": -0.034,
+      "max_drawdown": -22.27,
+      "annual_3y": -7.33,
+      "calmar_ratio": -0.48,
+      "change_pct": -0.12,
+      "close": 0.814,
+      "volume": 7491500,
+      "top_holdings": []
     },
     {
       "code": "588700",
-      "name": "科创医药ETF",
-      "issuer": "嘉实",
-      "scale": 3.9,
-      "benchmark": "上证科创板生物医药指数收益率",
+      "name": "科创医药ETF嘉实",
+      "issuer": "嘉实基金",
+      "scale": 4.1,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 3.91,
-      "year_3_return": null,
-      "annual_vol": 25.06,
-      "sharpe_ratio": 0.2,
-      "max_drawdown": -26.65,
-      "annual_3y": null,
-      "calmar_ratio": 0.15,
-      "change_pct": -2.85,
-      "close": 1.029,
-      "volume": 422593.0,
-      "top_holdings": [
-        {
-          "name": "联影医疗",
-          "weight": "9.05%"
-        },
-        {
-          "name": "百济神州",
-          "weight": "5.77%"
-        },
-        {
-          "name": "艾力斯",
-          "weight": "5.56%"
-        },
-        {
-          "name": "百利天恒",
-          "weight": "4.91%"
-        },
-        {
-          "name": "荣昌生物",
-          "weight": "4.91%"
-        }
-      ]
+      "year_1_return": -15.3,
+      "year_3_return": -7.52,
+      "annual_vol": 23.78,
+      "sharpe_ratio": 0.0027,
+      "max_drawdown": -27.2,
+      "annual_3y": -2.57,
+      "calmar_ratio": -0.56,
+      "change_pct": 0.34,
+      "close": 0.889,
+      "volume": 33303900,
+      "top_holdings": []
     },
     {
       "code": "159839",
-      "name": "生物医药ETF",
-      "issuer": "汇添富",
-      "scale": 3.3,
-      "benchmark": "国证生物医药指数收益率",
+      "name": "生物医药ETF汇添富",
+      "issuer": "汇添富基金",
+      "scale": 9.8,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 5.33,
-      "year_3_return": -36.6,
-      "annual_vol": 22.95,
-      "sharpe_ratio": 0.25,
-      "max_drawdown": -25.0,
-      "annual_3y": -14.09,
-      "calmar_ratio": 0.21,
-      "change_pct": -2.61,
-      "close": 0.343,
-      "volume": 1808186.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.07%"
-        },
-        {
-          "name": "复星医药",
-          "weight": "6.53%"
-        },
-        {
-          "name": "泰格医药",
-          "weight": "5.48%"
-        },
-        {
-          "name": "上海莱士",
-          "weight": "5.40%"
-        },
-        {
-          "name": "康龙化成",
-          "weight": "5.08%"
-        }
-      ]
+      "year_1_return": -14.86,
+      "year_3_return": -32.88,
+      "annual_vol": 19.47,
+      "sharpe_ratio": -0.0279,
+      "max_drawdown": -26.34,
+      "annual_3y": -12.44,
+      "calmar_ratio": -0.56,
+      "change_pct": 0,
+      "close": 0.298,
+      "volume": 103847904,
+      "top_holdings": []
     }
   ],
   "医疗": [
     {
       "code": "512170",
       "name": "医疗ETF",
-      "issuer": "华宝",
-      "scale": 82.3,
-      "benchmark": "中证医疗指数收益率",
+      "issuer": "华宝基金",
+      "scale": 251.6,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 0.95,
-      "year_3_return": -36.13,
-      "annual_vol": 20.25,
-      "sharpe_ratio": 0.05,
-      "max_drawdown": -22.39,
-      "annual_3y": -13.88,
+      "year_1_return": -12.54,
+      "year_3_return": -31.54,
+      "annual_vol": 19.19,
+      "sharpe_ratio": -0.0277,
+      "max_drawdown": -22.45,
+      "annual_3y": -11.87,
       "calmar_ratio": 0.04,
-      "change_pct": -2.33,
-      "close": 0.327,
-      "volume": 27044290.0,
+      "change_pct": -0.34,
+      "close": 0.292,
+      "volume": 1864778719,
       "top_holdings": [
         {
           "name": "药明康德",
@@ -466,297 +340,192 @@
     },
     {
       "code": "513060",
-      "name": "恒生医疗ETF",
-      "issuer": "博时",
-      "scale": 29.1,
-      "benchmark": "恒生医疗保健指数收益率(经汇率调整后)",
+      "name": "恒生医疗ETF博时",
+      "issuer": "博时基金",
+      "scale": 58.3,
+      "benchmark": "",
       "fee_rate": 0.65,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.15,
-      "year_1_return": 7.8,
-      "year_3_return": -3.67,
-      "annual_vol": 30.08,
-      "sharpe_ratio": 0.33,
-      "max_drawdown": -30.19,
-      "annual_3y": -1.24,
-      "calmar_ratio": 0.26,
-      "change_pct": -3.32,
-      "close": 0.54,
-      "volume": 11362985.0,
+      "year_1_return": -17.08,
+      "year_3_return": -7.72,
+      "annual_vol": 32.65,
+      "sharpe_ratio": 0.0172,
+      "max_drawdown": -33.42,
+      "annual_3y": -2.64,
+      "calmar_ratio": 0.11,
+      "change_pct": -0.64,
+      "close": 0.463,
+      "volume": 1538325900,
       "top_holdings": [
         {
-          "name": "信达生物",
-          "weight": "9.76%"
+          "name": "和黄医药",
+          "weight": ""
         },
         {
-          "name": "百济神州",
-          "weight": "9.42%"
+          "name": "阿里健康",
+          "weight": ""
         },
         {
-          "name": "药明生物",
-          "weight": "8.57%"
+          "name": "四环医药",
+          "weight": ""
         },
         {
-          "name": "康方生物",
-          "weight": "6.69%"
+          "name": "远大医药",
+          "weight": ""
         },
         {
-          "name": "石药集团",
-          "weight": "5.12%"
+          "name": "中国中药",
+          "weight": ""
         }
       ]
     },
     {
       "code": "159506",
-      "name": "港股通创新药医疗ETF",
-      "issuer": "富国",
-      "scale": 28.8,
-      "benchmark": "恒生港股通创新药及医疗保健指数收益率(使用估值汇率折算)",
+      "name": "港股通创新药医疗ETF富国",
+      "issuer": "富国基金",
+      "scale": 26.3,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 13.79,
-      "year_3_return": null,
-      "annual_vol": 35.29,
-      "sharpe_ratio": 0.49,
-      "max_drawdown": -29.86,
-      "annual_3y": null,
-      "calmar_ratio": 0.46,
-      "change_pct": -3.05,
-      "close": 1.236,
-      "volume": 2394169.0,
-      "top_holdings": [
-        {
-          "name": "信达生物",
-          "weight": "14.93%"
-        },
-        {
-          "name": "百济神州",
-          "weight": "13.65%"
-        },
-        {
-          "name": "康方生物",
-          "weight": "10.24%"
-        },
-        {
-          "name": "石药集团",
-          "weight": "7.83%"
-        },
-        {
-          "name": "中国生物制药",
-          "weight": "6.49%"
-        }
-      ]
+      "year_1_return": -16.61,
+      "year_3_return": 5.22,
+      "annual_vol": 36.78,
+      "sharpe_ratio": 0.0398,
+      "max_drawdown": -33.41,
+      "annual_3y": 1.71,
+      "calmar_ratio": -0.5,
+      "change_pct": -0.38,
+      "close": 1.045,
+      "volume": 365226400,
+      "top_holdings": []
     },
     {
       "code": "159883",
-      "name": "医疗器械ETF",
-      "issuer": "永赢",
-      "scale": 19.5,
-      "benchmark": "中证全指医疗器械指数收益率",
+      "name": "医疗器械ETF永赢",
+      "issuer": "永赢基金",
+      "scale": 44.5,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 1.52,
-      "year_3_return": -29.03,
-      "annual_vol": 19.17,
-      "sharpe_ratio": 0.07,
-      "max_drawdown": -19.19,
-      "annual_3y": -10.8,
-      "calmar_ratio": 0.08,
-      "change_pct": -2.28,
-      "close": 0.474,
-      "volume": 2352062.0,
+      "year_1_return": -12.83,
+      "year_3_return": -28.31,
+      "annual_vol": 17.92,
+      "sharpe_ratio": -0.0307,
+      "max_drawdown": -19.06,
+      "annual_3y": -10.5,
+      "calmar_ratio": -0.67,
+      "change_pct": 0,
+      "close": 0.428,
+      "volume": 144443031,
       "top_holdings": [
         {
-          "name": "迈瑞医疗",
-          "weight": "12.88%"
+          "name": "贝瑞基因",
+          "weight": ""
         },
         {
-          "name": "联影医疗",
-          "weight": "7.79%"
+          "name": "科华生物",
+          "weight": ""
         },
         {
-          "name": "英科医疗",
-          "weight": "3.79%"
+          "name": "达安基因",
+          "weight": ""
         },
         {
-          "name": "九安医疗",
-          "weight": "3.37%"
+          "name": "鱼跃医疗",
+          "weight": ""
         },
         {
-          "name": "惠泰医疗",
-          "weight": "2.96%"
+          "name": "蓝帆医疗",
+          "weight": ""
         }
       ]
     },
     {
       "code": "560260",
-      "name": "医疗ETF",
-      "issuer": "广发",
-      "scale": 11.3,
-      "benchmark": "中证医疗指数收益率",
+      "name": "医疗ETF广发",
+      "issuer": "广发基金",
+      "scale": 14.5,
+      "benchmark": "",
       "fee_rate": 0.55,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.05,
-      "year_1_return": 2.15,
-      "year_3_return": null,
-      "annual_vol": 20.69,
-      "sharpe_ratio": 0.11,
-      "max_drawdown": -22.0,
-      "annual_3y": null,
-      "calmar_ratio": 0.1,
-      "change_pct": -2.12,
-      "close": 0.825,
-      "volume": 120788.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.09%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "8.51%"
-        },
-        {
-          "name": "联影医疗",
-          "weight": "6.97%"
-        },
-        {
-          "name": "爱尔眼科",
-          "weight": "5.59%"
-        },
-        {
-          "name": "康龙化成",
-          "weight": "3.65%"
-        }
-      ]
+      "year_1_return": -11.93,
+      "year_3_return": -27.79,
+      "annual_vol": 19.31,
+      "sharpe_ratio": -0.0215,
+      "max_drawdown": -22.47,
+      "annual_3y": -10.28,
+      "calmar_ratio": -0.53,
+      "change_pct": -0.54,
+      "close": 0.734,
+      "volume": 31520500,
+      "top_holdings": []
     },
     {
       "code": "159828",
-      "name": "医疗ETF",
-      "issuer": "国泰",
-      "scale": 8.6,
-      "benchmark": "中证医疗指数收益率",
+      "name": "医疗ETF国泰",
+      "issuer": "国泰基金",
+      "scale": 21.8,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": 2.3,
-      "year_3_return": -36.1,
-      "annual_vol": 20.57,
-      "sharpe_ratio": 0.12,
-      "max_drawdown": -22.29,
-      "annual_3y": -13.87,
-      "calmar_ratio": 0.1,
-      "change_pct": -2.41,
-      "close": 0.408,
-      "volume": 1559955.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.11%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "8.51%"
-        },
-        {
-          "name": "联影医疗",
-          "weight": "6.99%"
-        },
-        {
-          "name": "爱尔眼科",
-          "weight": "5.61%"
-        },
-        {
-          "name": "康龙化成",
-          "weight": "3.63%"
-        }
-      ]
+      "year_1_return": -11.62,
+      "year_3_return": -31.78,
+      "annual_vol": 19.33,
+      "sharpe_ratio": -0.0201,
+      "max_drawdown": -22.25,
+      "annual_3y": -11.97,
+      "calmar_ratio": -0.52,
+      "change_pct": -0.55,
+      "close": 0.363,
+      "volume": 108150400,
+      "top_holdings": []
     },
     {
       "code": "516820",
-      "name": "医疗创新ETF",
-      "issuer": "平安",
-      "scale": 5.9,
-      "benchmark": "中证医药及医疗器械创新指数收益率",
+      "name": "医疗创新ETF平安",
+      "issuer": "平安基金",
+      "scale": 17.7,
+      "benchmark": "",
       "fee_rate": 0.6,
       "management_fee_rate": 0.5,
       "custody_fee_rate": 0.1,
-      "year_1_return": -0.89,
-      "year_3_return": -34.32,
-      "annual_vol": 18.15,
-      "sharpe_ratio": -0.07,
-      "max_drawdown": -21.83,
-      "annual_3y": -13.08,
-      "calmar_ratio": -0.04,
-      "change_pct": -1.29,
-      "close": 0.342,
-      "volume": 1406958.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.23%"
-        },
-        {
-          "name": "恒瑞医药",
-          "weight": "9.26%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "8.60%"
-        },
-        {
-          "name": "新和成",
-          "weight": "7.21%"
-        },
-        {
-          "name": "片仔癀",
-          "weight": "6.24%"
-        }
-      ]
+      "year_1_return": -14.72,
+      "year_3_return": -26.55,
+      "annual_vol": 15.56,
+      "sharpe_ratio": -0.0839,
+      "max_drawdown": -25.22,
+      "annual_3y": -9.77,
+      "calmar_ratio": -0.58,
+      "change_pct": -0.65,
+      "close": 0.305,
+      "volume": 104228900,
+      "top_holdings": []
     },
     {
       "code": "159847",
-      "name": "医疗ETF",
-      "issuer": "易方达",
-      "scale": 5.6,
-      "benchmark": "中证医疗指数收益率",
+      "name": "医疗ETF易方达",
+      "issuer": "易方达基金",
+      "scale": 14.7,
+      "benchmark": "",
       "fee_rate": 0.2,
       "management_fee_rate": 0.15,
       "custody_fee_rate": 0.05,
-      "year_1_return": 2.97,
-      "year_3_return": -32.92,
-      "annual_vol": 20.44,
-      "sharpe_ratio": 0.15,
-      "max_drawdown": -21.91,
-      "annual_3y": -12.46,
-      "calmar_ratio": 0.14,
-      "change_pct": -2.25,
-      "close": 0.388,
-      "volume": 1112682.0,
-      "top_holdings": [
-        {
-          "name": "药明康德",
-          "weight": "11.11%"
-        },
-        {
-          "name": "迈瑞医疗",
-          "weight": "8.53%"
-        },
-        {
-          "name": "联影医疗",
-          "weight": "6.97%"
-        },
-        {
-          "name": "爱尔眼科",
-          "weight": "5.58%"
-        },
-        {
-          "name": "康龙化成",
-          "weight": "3.64%"
-        }
-      ]
+      "year_1_return": -11.03,
+      "year_3_return": -28.89,
+      "annual_vol": 19.3,
+      "sharpe_ratio": -0.0144,
+      "max_drawdown": -21.98,
+      "annual_3y": -10.74,
+      "calmar_ratio": -0.5,
+      "change_pct": -0.58,
+      "close": 0.345,
+      "volume": 86593379,
+      "top_holdings": []
     }
   ],
   "correlation": {
