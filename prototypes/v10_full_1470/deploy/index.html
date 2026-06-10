@@ -63,6 +63,17 @@ th:first-child,td:first-child{font-weight:600}
 .legend span{padding:2px 8px;border-radius:4px}
 .tips{background:#fff;padding:14px 18px;border-radius:10px;margin-top:20px;font-size:12px;color:#666;line-height:1.8;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .tips code{background:#f5f5f5;padding:2px 6px;border-radius:4px;font-size:11px}
+/* 新增样式 */
+.quick-groups{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.quick-btn{padding:4px 10px;font-size:11px;border:1px solid #ddd;border-radius:14px;background:#fff;cursor:pointer;color:#555;white-space:nowrap;transition:all .15s}
+.quick-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.filter-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.filter-row select{padding:6px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;background:#fff}
+.export-btn{padding:6px 12px;background:#1565c0;color:#fff;border:none;border-radius:6px;font-size:11px;cursor:pointer}
+.export-btn:hover{opacity:.9}
+.history-bar{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;font-size:11px}
+.history-item{padding:3px 8px;background:#f5f5f5;border-radius:10px;cursor:pointer;color:#666}
+.history-item:hover{background:#e0e0e0}
 </style>
 </head>
 <body>
@@ -77,12 +88,15 @@ th:first-child,td:first-child{font-weight:600}
 </header>
 
 <div class="status-bar" id="statusBar">
-  <div><span class="status-dot green"></span> COS静态：<span style="color:#2e7d32">1470只ETF内嵌 · 19字段独立运行</span></div>
+  <div><span class="status-dot green"></span> COS静态：<span style="color:#2e7d32">1685只ETF内嵌 · 19字段独立运行</span></div>
   <div><span class="status-dot gray" id="dot2"></span> 腾讯行情：<span id="statusPrice" style="color:#999">等待对比</span></div>
   <div style="margin-left:auto;font-weight:600;color:#1a1a2e;font-variant-numeric:tabular-nums;font-size:14px" id="liveClock">--</div>
 </div>
 
 <div class="search-section">
+  <div class="quick-groups" id="quickGroups">
+    <span style="font-size:11px;color:#888;line-height:24px">快捷对比：</span>
+  </div>
   <div class="search-row">
     <div class="search-box">
       <input id="searchInput" placeholder="输入代码或名称搜索（如 消费、300、芯片、黄金）" autocomplete="off" oninput="handleSearch(this.value)" onkeydown="handleKey(event)">
@@ -93,13 +107,18 @@ th:first-child,td:first-child{font-weight:600}
       <button class="btn-clear" onclick="clearAll()">清空</button>
     </div>
   </div>
+  <div class="filter-row">
+    <select id="filterCat" onchange="onFilter()"><option value="">全部分类</option></select>
+    <select id="filterSort" onchange="onFilter()"><option value="">默认排序</option><option value="scale_desc">规模↓</option><option value="ret1_desc">近1年收益↓</option><option value="fee_asc">费率↑</option></select>
+  </div>
+  <div class="history-bar" id="historyBar"></div>
   <div class="selected-row" id="selectedRow">
     <span style="color:#888;font-size:12px">已选ETF：</span>
   </div>
 </div>
 
 <div class="comp-section" id="compSection">
-  <div style="font-size:14px;font-weight:600;margin-bottom:10px;color:#555">对比结果 <span id="compCount"></span> <span style="font-size:11px;color:#888">← 横向滚动查看更多字段</span></div>
+  <div style="font-size:14px;font-weight:600;margin-bottom:10px;color:#555">对比结果 <span id="compCount"></span> <span style="font-size:11px;color:#888">← 横向滚动查看更多字段</span> <button class="export-btn" onclick="exportCSV()" style="float:right">📥 导出CSV</button></div>
   <div class="table-wrap"><div id="compTable"></div></div>
   <div class="legend">
     <span style="background:var(--best-bg)">🟡 最优值</span>
@@ -131,7 +150,7 @@ th:first-child,td:first-child{font-weight:600}
 <script>
 console.log('✅ ETF核心数据已内嵌：' + ETF_CORE_DATA.length + '只');
 
-// 完整数据按需加载（1MB+，仅在对比时 fetch）
+// 完整数据按需加载
 var FULL_DATA = null;
 function loadFullData() {
   if (FULL_DATA) return Promise.resolve(FULL_DATA);
@@ -141,9 +160,87 @@ function loadFullData() {
 }
 function getFullETF(code) {
   if (FULL_DATA) return FULL_DATA.find(x => x.code === code);
-  // Fallback to light index
   return ETF_CORE_DATA.find(x => x.code === code);
 }
+
+// ============================================================
+// 快捷对比组（易混淆ETF系列 + 热门主题）
+// ============================================================
+const QUICK_GROUPS = [
+  {name:'黄金vs黄金股', codes:['518880','517520']},
+  {name:'消费vs消费电子', codes:['159928','159732']},
+  {name:'医药vs医疗', codes:['512010','512170']},
+  {name:'沪深300三巨头', codes:['510300','510310','510330']},
+  {name:'科创50 5选', codes:['588000','588080','588050','588060','588090']},
+  {name:'半导体设备ETF', codes:['159516','159558','560780','561980','562590']},
+  {name:'AI ETF三强', codes:['159819','515070','515980']},
+  {name:'黄金ETF 5巨头', codes:['518880','159937','159934','518800','518850']},
+  {name:'创业板vs科创50', codes:['159915','588000']},
+  {name:'红利vs红利低波', codes:['510880','512890']},
+  {name:'中证500vs1000', codes:['510500','512100']},
+  {name:'通信ETF热度', codes:['515880','515050','159994']},
+];
+function renderQuickGroups() {
+  document.getElementById('quickGroups').innerHTML = '<span style="font-size:11px;color:#888;line-height:24px">快捷对比：</span>' + 
+    QUICK_GROUPS.map(g => '<button class="quick-btn" onclick="quickCompare('+JSON.stringify(g.codes)+')">'+g.name+'</button>').join('');
+}
+function quickCompare(codes) {
+  clearAll();
+  codes.forEach(c => addETF(c));
+  startCompare();
+}
+renderQuickGroups();
+
+// ============================================================
+// 分类筛选初始化
+// ============================================================
+function initFilters() {
+  const cats = [...new Set(ETF_CORE_DATA.map(e => e.category).filter(Boolean))].sort();
+  const sel = document.getElementById('filterCat');
+  cats.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c + ' ('+ETF_CORE_DATA.filter(e=>e.category===c).length+')'; sel.appendChild(o); });
+}
+initFilters();
+
+// ============================================================
+// 搜索自动补全 — 智能排序（规模权重）
+// ============================================================
+function handleSearch(q){
+  const dd = document.getElementById('dropdown');
+  dropdownIndex = -1;
+  if(!q||q.length<1){dd.classList.remove('active');return;}
+  const query = q.toLowerCase();
+  const catFilter = document.getElementById('filterCat').value;
+  const sortBy = document.getElementById('filterSort').value;
+  
+  let matches = ETF_CORE_DATA.filter(e => {
+    if (catFilter && e.category !== catFilter) return false;
+    return e.code.includes(query)||e.name.toLowerCase().includes(query)||(e.issuer||'').toLowerCase().includes(query)||(e.category||'').toLowerCase().includes(query);
+  });
+  
+  // 智能排序：精确匹配 > 名称匹配 > 代码匹配，规模加权
+  matches.sort((a,b) => {
+    const aExact = a.code === q ? 1000 : (a.name.toLowerCase() === query ? 500 : 0);
+    const bExact = b.code === q ? 1000 : (b.name.toLowerCase() === query ? 500 : 0);
+    if (aExact !== bExact) return bExact - aExact;
+    return (b.scale_yi||0) - (a.scale_yi||0);
+  });
+  
+  // 按排序字段再排
+  if (sortBy === 'scale_desc') matches.sort((a,b)=>(b.scale_yi||0)-(a.scale_yi||0));
+  else if (sortBy === 'ret1_desc') matches.sort((a,b)=>(b.year_1_return||0)-(a.year_1_return||0));
+  else if (sortBy === 'fee_asc') matches.sort((a,b)=>(a.fee_total||99)-(b.fee_total||99));
+  
+  matches = matches.slice(0,10);
+  if(!matches.length){dd.classList.remove('active');return;}
+  dd.innerHTML = matches.map((e,i)=>{
+    const s = (e.scale_yi||0)>100 ? ((e.scale_yi||0)/100).toFixed(1)+'百亿' : (e.scale_yi||0).toFixed(0)+'亿';
+    const ret = e.year_1_return ? ((e.year_1_return>0?'+':'')+e.year_1_return.toFixed(1)+'%') : '';
+    return '<div class="dropdown-item" data-code="'+e.code+'" data-idx="'+i+'" onmousedown="addETF(\''+e.code+'\')" onmouseover="highlightItem('+i+')"><div class="info"><span class="name">'+e.code+' '+e.name+'</span><span class="meta">'+e.issuer+' · '+s+(ret?' · '+ret:'')+' · '+e.category+'</span></div><span class="add">+</span></div>';
+  }).join('');
+  dd.classList.add('active');
+}
+
+function onFilter(){handleSearch(document.getElementById('searchInput').value);}
 
 // 实时数据源：静态托管无后端 → 浏览器 JSONP 直连腾讯行情（绕过CORS）
 // sqt.gtimg.cn 响应即 JS 变量赋值，script标签加载后读取 window.v_shXXXXXX
@@ -341,6 +438,7 @@ async function startCompare(silent){
   // 先合并缓存中的实时数据（如果有），再渲染表格
   codes.forEach(c=>{if(PRICE_CACHE[c]){if(d[c])Object.assign(d[c],PRICE_CACHE[c]);else d[c]={...PRICE_CACHE[c]};}});
   renderTable(codes,d);
+  saveHistory(codes);
   document.getElementById('compareBtn').disabled=false;document.getElementById('compareBtn').textContent='重新对比';
   // 首次加载必须拉一次填充缓存（否则实时字段永远是"-"），之后非交易不拉
   const cacheHit = codes.filter(c => PRICE_CACHE[c] && PRICE_CACHE[c].prev_close);
@@ -508,10 +606,26 @@ function tick() {
 }
 tick(); setInterval(tick, 1000);
 
-// 本地持久化：保存/恢复已选ETF和对比数据
+// ============================================================
+// 历史记录 + 本地持久化
+// ============================================================
+const COMPARE_HISTORY = (()=>{try{return JSON.parse(localStorage.getItem('etf_compare_history')||'[]');}catch(e){return [];}})();
+function saveHistory(codes) {
+  const entry = {codes:[...codes],ts:Date.now(),label:codes.map(c=>{const e=ETF_CORE_DATA.find(x=>x.code===c);return e?e.name:c;}).join(' vs ')};
+  COMPARE_HISTORY.unshift(entry);
+  if (COMPARE_HISTORY.length > 5) COMPARE_HISTORY.length = 5;
+  localStorage.setItem('etf_compare_history', JSON.stringify(COMPARE_HISTORY));
+  renderHistory();
+}
+function renderHistory() {
+  if (!COMPARE_HISTORY.length) return;
+  document.getElementById('historyBar').innerHTML = '<span style="color:#888">最近对比：</span>' +
+    COMPARE_HISTORY.map((h,i) => '<span class="history-item" onclick="quickCompare('+JSON.stringify(h.codes)+')" title="'+new Date(h.ts).toLocaleString('zh-CN')+'">'+h.label+'</span>').join('');
+}
+renderHistory();
+
 function saveState() {
-  const state = {selected: [...selected], codes: [...selected]};
-  if (state.codes.length) localStorage.setItem('etf_compare_state', JSON.stringify(state));
+  localStorage.setItem('etf_compare_state', JSON.stringify({selected:[...selected]}));
 }
 function loadState() {
   try {
@@ -523,14 +637,33 @@ function loadState() {
         renderSelected();
         document.getElementById('compareBtn').disabled = false;
         document.getElementById('compareBtn').textContent = '恢复对比('+selected.size+')';
-        // 自动恢复上次对比
         startCompare(true);
       }
     }
   } catch(e) {}
 }
-// 自动恢复
 loadState();
+
+// ============================================================
+// 导出CSV
+// ============================================================
+function exportCSV() {
+  const table = document.querySelector('#compTable table');
+  if (!table) return;
+  let csv = '\uFEFF'; // BOM for Excel Chinese
+  const rows = table.querySelectorAll('tr');
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('th,td');
+    csv += [...cells].map(c => '"'+c.textContent.replace(/"/g,'""')+'"').join(',') + '\n';
+  });
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ETF对比_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 // 长文本点击展开/收起
 function toggleExpand(td) {
