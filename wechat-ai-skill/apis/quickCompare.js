@@ -1,5 +1,5 @@
 /**
- * 快捷对比 — 加载预设 ETF 对比组合
+ * 快捷对比 — 复用 compareETF
  */
 const compareETF = require('./compareETF')
 
@@ -24,11 +24,13 @@ async function quickCompare({ group = '' }) {
     const available = Object.keys(QUICK_GROUPS).join('、')
     return {
       isError: true,
-      content: [{ type: 'text', text: `未找到预设组「${group}」。当前可用：${available}` }]
+      content: [{
+        type: 'text',
+        text: `预设组「${group}」不存在，当前可用的快捷对比组：${available}。请告知用户目前不支持的场景，并引导用户通过 searchETF 手动搜索后再调用 compareETF。不要用无效的组名重试。`
+      }]
     }
   }
 
-  // 直接复用 compareETF
   return await compareETF({ codes })
 }
 
