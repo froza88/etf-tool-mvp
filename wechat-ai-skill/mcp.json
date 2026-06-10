@@ -1,0 +1,193 @@
+{
+  "apis": [
+    {
+      "name": "searchETF",
+      "description": "按名称/代码/分类搜索 ETF。搜索范围：1685 只全市场 ETF，包括股票、债券、商品、货币、跨境等品类。\n调用前置条件：用户提供了名称关键词（如「医药」「黄金」）或代码（如「512010」）或分类（如「商品类ETF」）。\n【严禁场景】用户已明确给出了2个以上的ETF代码要求对比时，禁止调用本接口，应直接调用 compareETF。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "搜索关键词。支持：ETF名称（如「沪深300」）、代码（如「510300」）、管理人名称（如「华夏」）、分类（如「商品」）。取用户原话中的关键词。"
+          },
+          "category": {
+            "type": "string",
+            "description": "可选，分类筛选。可选值：STOCK/BOND/COMMODITY/CURRENCY/跨境/行业/宽基。"
+          }
+        },
+        "required": ["keyword"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "匹配的 ETF 列表，按规模降序",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": { "type": "string", "description": "6位ETF代码" },
+                "name": { "type": "string", "description": "ETF简称" },
+                "issuer": { "type": "string", "description": "管理人" },
+                "category": { "type": "string", "description": "分类" },
+                "scale_yi": { "type": "number", "description": "规模（亿元）" },
+                "year_1_return": { "type": "number", "description": "近1年收益率（%）" }
+              }
+            }
+          },
+          "total": { "type": "number", "description": "匹配总数" }
+        }
+      }
+    },
+    {
+      "name": "compareETF",
+      "description": "对比 2-5 只 ETF 的全维度指标（规模/费率/收益/风险/持仓/实时行情）。\n调用前置条件：已通过 searchETF 或用户直接提供的代码获得 2-5 个有效 ETF 代码。\n【严禁场景】代码不足 2 个时禁止调用；代码超过 5 个时只取前 5 个；代码无效或不存在时告知用户并列出有效代码。\n【输出格式】对比结果须以结构化数据返回，包含每只 ETF 的全维度信息。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "codes": {
+            "type": "array",
+            "description": "ETF代码列表，2-5个。取值来源：searchETF 返回的 items[].code 或用户直接输入。禁止编造。",
+            "items": { "type": "string" },
+            "minItems": 2,
+            "maxItems": 5
+          }
+        },
+        "required": ["codes"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "etfs": {
+            "type": "array",
+            "description": "对比结果数组",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": { "type": "string" },
+                "name": { "type": "string" },
+                "issuer": { "type": "string", "description": "管理人" },
+                "category": { "type": "string" },
+                "scale_yi": { "type": "number", "description": "规模（亿）" },
+                "fee_total": { "type": "number", "description": "总费率（%）" },
+                "year_1_return": { "type": "number", "description": "近1年收益（%）" },
+                "year_3_return": { "type": "number", "description": "近3年收益（%）" },
+                "sharpe_ratio": { "type": "number", "description": "夏普比率" },
+                "annual_vol": { "type": "number", "description": "年化波动率（%）" },
+                "max_drawdown": { "type": "number", "description": "最大回撤（%）" },
+                "tracking_error": { "type": "number", "description": "跟踪误差（%）" },
+                "holdings_str": { "type": "string", "description": "前5大持仓" },
+                "track_index": { "type": "string", "description": "跟踪指数" },
+                "listing_date": { "type": "string", "description": "成立日期" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "rankETF",
+      "description": "按指定字段排序，返回 TOP N ETF。\n调用前置条件：用户明确表达了排序需求（如「收益最高的」「规模最大的」「费率最低的」）。\n【严禁场景】用户未指定排序字段时，反问用户想按什么排（收益/规模/费率/夏普/回撤）。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "排序字段。仅允许：'year_1_return'（近1年收益）/ 'scale_yi'（规模）/ 'fee_total'（总费率，越低越好）/ 'sharpe_ratio'（夏普比率）/ 'max_drawdown'（最大回撤）/ 'annual_vol'（年化波动）。",
+            "enum": ["year_1_return", "scale_yi", "fee_total", "sharpe_ratio", "max_drawdown", "annual_vol"]
+          },
+          "limit": {
+            "type": "integer",
+            "description": "返回数量，默认10，最大20",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "category": {
+            "type": "string",
+            "description": "可选，限定分类范围。如只排「行业」类ETF。"
+          }
+        },
+        "required": ["field"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "field": { "type": "string", "description": "排序字段" },
+          "items": {
+            "type": "array",
+            "description": "排名列表",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rank": { "type": "integer" },
+                "code": { "type": "string" },
+                "name": { "type": "string" },
+                "issuer": { "type": "string" },
+                "value": { "type": "number", "description": "排序字段的值" },
+                "scale_yi": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "getETFDetail",
+      "description": "查看单只 ETF 的完整信息，包括全部19个字段。\n调用前置条件：已有有效 ETF 代码（来自 searchETF 或用户直接提供）。\n【严禁场景】代码无效时告知用户。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "6位ETF代码。取值来源：searchETF 返回的 code 或用户直接输入。禁止编造。"
+          }
+        },
+        "required": ["code"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "name": { "type": "string" },
+          "issuer": { "type": "string" },
+          "category": { "type": "string" },
+          "scale_yi": { "type": "number" },
+          "fee_mgmt": { "type": "number", "description": "管理费（%）" },
+          "fee_custody": { "type": "number", "description": "托管费（%）" },
+          "fee_total": { "type": "number" },
+          "year_1_return": { "type": "number" },
+          "year_3_return": { "type": "number" },
+          "sharpe_ratio": { "type": "number" },
+          "annual_vol": { "type": "number" },
+          "max_drawdown": { "type": "number" },
+          "tracking_error": { "type": "number" },
+          "holdings_str": { "type": "string" },
+          "track_index": { "type": "string" },
+          "listing_date": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "quickCompare",
+      "description": "加载预设的 ETF 对比组合，覆盖常见易混淆对比场景。\n调用前置条件：用户提到的对比场景匹配预设组的名称（如「黄金ETF对比」「沪深300选哪个」）。\n预设组包括：黄金vs黄金股、消费vs消费电子、医药vs医疗、沪深300三巨头、科创50、半导体设备、AI ETF、创业板vs科创50、红利vs红利低波等12组。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "group": {
+            "type": "string",
+            "description": "预设组名称。仅允许：'黄金vs黄金股'/'消费vs消费电子'/'医药vs医疗'/'沪深300三巨头'/'科创50'/'半导体设备'/'AI ETF'/'黄金ETF'/'创业板vs科创50'/'红利vs红利低波'/'中证500vs1000'/'通信ETF'。"
+          }
+        },
+        "required": ["group"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "group": { "type": "string" },
+          "codes": { "type": "array", "items": { "type": "string" }, "description": "组合中的ETF代码" },
+          "etfs": { "type": "array", "description": "同 compareETF 的 outputSchema" }
+        }
+      }
+    }
+  ]
+}
