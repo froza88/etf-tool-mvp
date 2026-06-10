@@ -130,6 +130,20 @@ th:first-child,td:first-child{font-weight:600}
 <script>
 console.log('✅ ETF核心数据已内嵌：' + ETF_CORE_DATA.length + '只');
 
+// 完整数据按需加载（1MB+，仅在对比时 fetch）
+var FULL_DATA = null;
+function loadFullData() {
+  if (FULL_DATA) return Promise.resolve(FULL_DATA);
+  return fetch('etf_core_data.json')
+    .then(r => r.json())
+    .then(d => { FULL_DATA = d; console.log('✅ 完整数据已加载：' + FULL_DATA.length + '只'); return d; });
+}
+function getFullETF(code) {
+  if (FULL_DATA) return FULL_DATA.find(x => x.code === code);
+  // Fallback to light index
+  return ETF_CORE_DATA.find(x => x.code === code);
+}
+
 // 实时数据源：静态托管无后端 → 浏览器 JSONP 直连腾讯行情（绕过CORS）
 // sqt.gtimg.cn 响应即 JS 变量赋值，script标签加载后读取 window.v_shXXXXXX
 
@@ -321,7 +335,8 @@ async function startCompare(silent){
   if (!silent) {
     document.getElementById('compareBtn').disabled=true;document.getElementById('compareBtn').textContent='对比中…';
   }
-  const d={};codes.forEach(c=>{const e=ETF_CORE_DATA.find(x=>x.code===c);if(e)d[c]=e;});
+  await loadFullData();
+  const d={};codes.forEach(c=>{const e=getFullETF(c);if(e)d[c]=e;});
   // 先合并缓存中的实时数据（如果有），再渲染表格
   codes.forEach(c=>{if(PRICE_CACHE[c]){if(d[c])Object.assign(d[c],PRICE_CACHE[c]);else d[c]={...PRICE_CACHE[c]};}});
   renderTable(codes,d);
