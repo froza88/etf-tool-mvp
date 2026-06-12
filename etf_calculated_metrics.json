@@ -17456,9 +17456,11 @@
     "updated": "2026-06-06T00:34:37.031387"
   },
   "159271": {
+    "year_1_return": null,
+    "year_3_return": null,
     "max_drawdown": -13.36,
-    "sharpe_ratio": -0.25,
-    "annual_vol": 16.93
+    "sharpe_ratio": -0.31,
+    "annual_vol": 17.0
   },
   "561510": {
     "year_1_return": -6.11,

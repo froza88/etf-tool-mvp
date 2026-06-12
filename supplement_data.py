@@ -72,6 +72,123 @@ def check_completeness(etfs):
                 'coverage': v['valid']/total*100} for k, v in fields.items()}
 
 
+def parse_raw_wind_response(filepath):
+    """解析 data/wind_full/{code}_{date}.json 原始 Wind MCP 响应
+    
+    返回 dict，key=Wind字段名, value=值。
+    支持新旧两种格式：旧版多block（6块），新版单block（11字段）。
+    """
+    try:
+        with open(filepath) as f:
+            raw = json.load(f)
+    except Exception:
+        return {}
+    
+    # 提取 inner JSON
+    try:
+        inner = json.loads(raw['content'][0]['text'])
+        blocks = inner['data']['data']
+    except Exception:
+        return {}
+    
+    result = {}
+    for blk in blocks:
+        if 'columns' not in blk or 'rows' not in blk:
+            continue
+        cols = [c['name'] for c in blk['columns']]
+        if not blk['rows']:
+            continue
+        row = blk['rows'][0]  # 第一行=目标ETF
+        for i, name in enumerate(cols):
+            if i < len(row) and row[i] is not None and row[i] != '':
+                result[name] = row[i]
+    
+    return result
+
+
+def supplement_from_wind_full(standard_etfs, wind_full_dir):
+    """从 data/wind_full/*.json 原始 Wind 缓存批量补充缺失字段
+    
+    一次性遍历所有缓存文件，逐只解析并填充。
+    只填充空值，不覆盖已有有效数据。
+    """
+    import glob
+    code_to_etf = {e['code']: e for e in standard_etfs}
+    wind_data = {}  # code -> parsed dict
+    
+    # 批量加载所有 wind_full 缓存
+    pattern = os.path.join(wind_full_dir, '*.json')
+    for fpath in glob.glob(pattern):
+        fname = os.path.basename(fpath)
+        code = fname.split('_')[0]  # "159001_20260530.json" → "159001"
+        if code not in code_to_etf:
+            continue
+        parsed = parse_raw_wind_response(fpath)
+        if parsed:
+            wind_data[code] = parsed
+    
+    # 字段映射：Wind字段名 → (标准字段名, 是否优先用Wind值)
+    wind_field_map = [
+        ('Wind代码', 'wind_code'),
+        ('证券简称', 'short_name'),
+        ('基金管理人', 'fund_manager'),
+        ('基金托管人', 'custodian'),
+        ('基金成立日', 'issue_date'),
+        ('上市日期', 'listing_date'),
+        ('投资类型_二级分类', 'invest_type'),
+        ('业绩比较基准', 'benchmark'),
+        ('上市基金规模_WIND计算', 'scale'),
+        ('基金规模合计', 'scale'),
+        ('单位净值', 'nav'),
+        ('管理费率_支持历史', 'management_fee_rate'),
+        ('托管费率_支持历史', 'custody_fee_rate'),
+        ('SHARPE', 'sharpe_ratio'),
+        ('年化波动率', 'annual_vol'),
+        ('最大回撤', 'max_drawdown'),
+        ('跟踪误差_跟踪指数', 'tracking_error'),
+        ('近1年回报', 'year_1_return'),
+        ('近3年回报', 'year_3_return'),
+    ]
+    
+    filled = {}
+    for code, wd in wind_data.items():
+        etf = code_to_etf[code]
+        
+        for wind_key, std_key in wind_field_map:
+            if is_valid(etf.get(std_key)):
+                continue  # 已有有效值
+            val = wd.get(wind_key)
+            if is_valid(val):
+                # 处理数字类型
+                if std_key in ('scale', 'nav', 'management_fee_rate', 'custody_fee_rate',
+                               'sharpe_ratio', 'annual_vol', 'max_drawdown',
+                               'tracking_error', 'year_1_return', 'year_3_return'):
+                    try:
+                        etf[std_key] = float(val)
+                    except (ValueError, TypeError):
+                        etf[std_key] = val
+                else:
+                    etf[std_key] = str(val)
+                if std_key not in filled:
+                    filled[std_key] = 0
+                filled[std_key] += 1
+        
+        # 总费率派生
+        if not is_valid(etf.get('fee_rate')):
+            mgmt = etf.get('management_fee_rate', 0) or 0
+            custody = etf.get('custody_fee_rate', 0) or 0
+            if mgmt or custody:
+                try:
+                    etf['fee_rate'] = round(float(mgmt) + float(custody), 4)
+                    if 'fee_rate' not in filled:
+                        filled['fee_rate'] = 0
+                    filled['fee_rate'] += 1
+                except (ValueError, TypeError):
+                    pass
+    
+    return filled, len(wind_data)
+
+
 def supplement_from_repair(standard_etfs, repair_data, calc_metrics=None):
     """
     从修复数据库补充标准数据缺失字段。
@@ -310,6 +427,8 @@ def main():
     parser.add_argument('--report-html', type=str, nargs='?', const='etf_completeness_report.html',
                         help='生成自包含 HTML 完整度报告（可选指定路径）')
     parser.add_argument('--dry-run', action='store_true', help='检查补充效果但不写入文件')
+    parser.add_argument('--no-wind', action='store_true', help='跳过 Wind 数据补充')
+    parser.add_argument('--wind-dir', type=str, default=None, help='wind_full 缓存目录（默认 data/wind_full/）')
     args = parser.parse_args()
     
     # 加载数据
@@ -342,16 +461,74 @@ def main():
         return
     
     # 执行补充
+    total_filled = {}
+    
+    # 1) 从修复数据库补充
     if repair_data:
         filled = supplement_from_repair(standard_etfs, repair_data, calc_data)
         if filled:
             print(f"\n从修复数据库补充：")
             for field, count in sorted(filled.items(), key=lambda x: -x[1]):
                 print(f"  +{field}: {count} 条")
+                total_filled[field] = total_filled.get(field, 0) + count
         else:
-            print("\n无需补充，所有字段均已完整")
+            print("\n从修复数据库：无需补充，所有字段均已完整")
     else:
         print(f"\n⚠️ 修复数据库不可用 ({REPAIR_DB})，跳过补充")
+    
+    # 2) 从 Wind 缓存补充
+    if not args.no_wind:
+        wind_dir = args.wind_dir or str(ROOT / 'data' / 'wind_full')
+        if os.path.isdir(wind_dir):
+            wfilled, wcount = supplement_from_wind_full(standard_etfs, wind_dir)
+            if wfilled:
+                print(f"\n从 Wind 缓存（{wcount} 只）补充：")
+                for field, count in sorted(wfilled.items(), key=lambda x: -x[1]):
+                    print(f"  +{field}: {count} 条")
+                    total_filled[field] = total_filled.get(field, 0) + count
+            else:
+                print(f"\n从 Wind 缓存（{wcount} 只）：无需补充，字段均已完整")
+        else:
+            print(f"\n⚠️ Wind 缓存目录不存在: {wind_dir}，跳过")
+    else:
+        print(f"\n⏭️ 已跳过 Wind 补充 (--no-wind)")
+    
+    # 3) 加载 etf_wind_data.json（补充性，优先匹配）
+    wind_parsed = load_json(WIND_FILE)
+    if wind_parsed:
+        wind_full_count = sum(1 for k in wind_parsed if isinstance(wind_parsed[k], dict))
+        if wind_full_count > 0:
+            print(f"\n从 etf_wind_data.json（{wind_full_count} 只）补充：")
+            # 复用 wind_field_map
+            field_map_ws = [
+                ('基金管理人', 'fund_manager'), ('基金托管人', 'custodian'),
+                ('管理费率_支持历史', 'management_fee_rate'),
+                ('托管费率_支持历史', 'custody_fee_rate'),
+                ('单位净值', 'nav'), ('SHARPE', 'sharpe_ratio'),
+                ('年化波动率', 'annual_vol'), ('最大回撤', 'max_drawdown'),
+                ('跟踪误差_跟踪指数', 'tracking_error'),
+                ('近1年回报', 'year_1_return'), ('近3年回报', 'year_3_return'),
+                ('wind_code', 'wind_code'), ('short_name', 'short_name'),
+            ]
+            std_map = {e['code']: e for e in standard_etfs}
+            extra = {}
+            for code, wd in wind_parsed.items():
+                if code not in std_map or not isinstance(wd, dict):
+                    continue
+                etf = std_map[code]
+                for wk, sk in field_map_ws:
+                    if is_valid(etf.get(sk)):
+                        continue
+                    val = wd.get(wk)
+                    if is_valid(val):
+                        etf[sk] = val
+                        extra[sk] = extra.get(sk, 0) + 1
+            if extra:
+                for field, count in sorted(extra.items(), key=lambda x: -x[1]):
+                    print(f"  +{field}: {count} 条")
+                    total_filled[field] = total_filled.get(field, 0) + count
+            else:
+                print(f"  （无需补充）")
     
     after_cov = check_completeness(standard_etfs)
     after_ok = sum(1 for v in after_cov.values() if v['coverage'] >= 90)
