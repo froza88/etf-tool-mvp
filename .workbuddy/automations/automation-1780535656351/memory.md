@@ -83,3 +83,23 @@
 - ETF_工具MVP_完整版本清单.md (322 个版本)
 
 **部署**：git push 成功，PA 同步失败（No module named 'requests'）
+
+## 2026-06-13 03:55
+
+**补充前**：1507 ETF | 34 字段 | ≥90% 覆盖: 23/34
+
+**执行补充**：
+- 从修复数据库补充：listing_date(962), wind_code(962), short_name(962), invest_type(957), tracking_error(753), nav(460), year_1_return(318), change_pct(27), year_3_return(21), sharpe_ratio(4), fund_manager(1), volume(1)
+- 从 Wind 缓存（1473 只）补充：fund_manager(1452), wind_code(511), short_name(511), listing_date(509), invest_type(506), nav(28), year_3_return(8), sharpe_ratio(1), annual_vol(1), max_drawdown(1)
+
+**补充后**：1507 ETF | 40 字段 | ≥90% 覆盖: 29/40 ✅ 首次达标
+
+**Wind 缓存**：1473/1507 覆盖，缺失 34 只（<100，无需告警）
+
+**输出文件**：
+- etf_standard_data.json (1,826,113 bytes)
+- etf_data_generated.json (1,055,325 bytes)
+- etf_completeness_report.html (751,067 bytes)
+- ETF_工具MVP_完整版本清单.md (327 个版本)
+
+**部署**：git push 成功，PA 同步失败（404）

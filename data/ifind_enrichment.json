@@ -1,0 +1,503 @@
+{
+  "_meta": {
+    "source": "iFind Repilot + Wind MCP",
+    "date": "2026-06-13",
+    "total_stocks": 39,
+    "note": "利润增速为FY2026一致预期；PE为一致预期预测市盈率；机构数为覆盖预测机构数"
+  },
+  "stocks": {
+    "601899": {
+      "name": "紫金矿业",
+      "rating": "buy",
+      "institutions": 44,
+      "profit_growth": "+58.5%",
+      "pe": 9.42,
+      "target": "46.08",
+      "note": "44家机构覆盖，数据可靠"
+    },
+    "600547": {
+      "name": "山东黄金",
+      "rating": "outperform",
+      "institutions": 2,
+      "profit_growth": "+93.7%",
+      "pe": 13.96,
+      "target": "32.58",
+      "note": "仅2家盈利预测，统计意义弱"
+    },
+    "600489": {
+      "name": "中金黄金",
+      "rating": "buy",
+      "institutions": 12,
+      "profit_growth": "+92.2%",
+      "pe": 11.0,
+      "target": "30.69",
+      "note": "12家机构覆盖"
+    },
+    "600519": {
+      "name": "贵州茅台",
+      "rating": "buy",
+      "institutions": 45,
+      "profit_growth": "+4.7%",
+      "pe": 18.74,
+      "target": "2030",
+      "note": "45家机构评级，FY26增速低但确定性高"
+    },
+    "000858": {
+      "name": "五粮液",
+      "rating": "buy-",
+      "institutions": 25,
+      "profit_growth": "+114.7%",
+      "pe": 16.13,
+      "target": "131.50",
+      "note": "25家评级，26年低基数反弹，增速极高"
+    },
+    "600887": {
+      "name": "伊利股份",
+      "rating": "buy-",
+      "institutions": 34,
+      "profit_growth": "+6.0%",
+      "pe": 13.26,
+      "target": "36.10",
+      "note": "34家评级，增速稳健，消费防御属性"
+    },
+    "000333": {
+      "name": "美的集团",
+      "rating": "buy",
+      "institutions": 30,
+      "profit_growth": "+7.1%",
+      "pe": 13.46,
+      "target": "95.19",
+      "note": "30家评级，白马龙头，估值合理"
+    },
+    "000651": {
+      "name": "格力电器",
+      "rating": "—",
+      "institutions": 0,
+      "profit_growth": "—",
+      "pe": 0,
+      "target": "—",
+      "note": "单独补充"
+    },
+    "300750": {
+      "name": "宁德时代",
+      "rating": "buy",
+      "institutions": 19,
+      "profit_growth": "+31.7%",
+      "pe": 19.21,
+      "target": "—",
+      "note": "19家预测机构，增速强劲，锂电龙头"
+    },
+    "002594": {
+      "name": "比亚迪",
+      "rating": "buy",
+      "institutions": 14,
+      "profit_growth": "+26.5%",
+      "pe": 20.19,
+      "target": "—",
+      "note": "14家预测，新能源车+电池双轮驱动"
+    },
+    "601012": {
+      "name": "隆基绿能",
+      "rating": "buy-",
+      "institutions": 13,
+      "profit_growth": "+91.9%",
+      "pe": -196.8,
+      "target": "18.58",
+      "note": "13家评级，亏损收窄中，PE无意义"
+    },
+    "300274": {
+      "name": "阳光电源",
+      "rating": "buy-",
+      "institutions": 28,
+      "profit_growth": "+18.4%",
+      "pe": 19.34,
+      "target": "184.44",
+      "note": "28家评级，逆变器+储能双主线"
+    },
+    "300124": {
+      "name": "汇川技术",
+      "rating": "buy",
+      "institutions": 16,
+      "profit_growth": "+20.1%",
+      "pe": 29.98,
+      "target": "86.18",
+      "note": "16家评级，工控龙头，估值偏高"
+    },
+    "300760": {
+      "name": "迈瑞医疗",
+      "rating": "buy-",
+      "institutions": 28,
+      "profit_growth": "+8.0%",
+      "pe": 20.84,
+      "target": "218.28",
+      "note": "28家评级，医疗器械龙头，增速平稳"
+    },
+    "600276": {
+      "name": "恒瑞医药",
+      "rating": "buy",
+      "institutions": 24,
+      "profit_growth": "+23.4%",
+      "pe": 33.84,
+      "target": "77.94",
+      "note": "24家评级，创新药龙头，增速加速"
+    },
+    "603259": {
+      "name": "药明康德",
+      "rating": "buy",
+      "institutions": 27,
+      "profit_growth": "-7.0%",
+      "pe": 16.7,
+      "target": "145.82",
+      "note": "27家评级，FY26利润小幅下滑，但FY27恢复+17.8%"
+    },
+    "688981": {
+      "name": "中芯国际",
+      "rating": "—",
+      "institutions": 6,
+      "profit_growth": "+31.0%",
+      "pe": 0,
+      "target": "—",
+      "note": "6家预测，晶圆代工龙头"
+    },
+    "688256": {
+      "name": "寒武纪",
+      "rating": "—",
+      "institutions": 1,
+      "profit_growth": "+148.8%",
+      "pe": 0,
+      "target": "—",
+      "note": "仅1家预测，AI芯片高弹性但覆盖极薄"
+    },
+    "688041": {
+      "name": "海光信息",
+      "rating": "—",
+      "institutions": 3,
+      "profit_growth": "+73.1%",
+      "pe": 0,
+      "target": "—",
+      "note": "3家预测，国产CPU/GPU替代逻辑"
+    },
+    "002371": {
+      "name": "北方华创",
+      "rating": "—",
+      "institutions": 2,
+      "profit_growth": "+40.7%",
+      "pe": 0,
+      "target": "—",
+      "note": "2家预测，半导体设备龙头"
+    },
+    "603501": {
+      "name": "豪威集团(韦尔)",
+      "rating": "—",
+      "institutions": 1,
+      "profit_growth": "-0.2%",
+      "pe": 0,
+      "target": "—",
+      "note": "已更名豪威集团，1家预测，CIS芯片"
+    },
+    "300059": {
+      "name": "东方财富",
+      "rating": "—",
+      "institutions": 2,
+      "profit_growth": "+22.1%",
+      "pe": 19.27,
+      "target": "24.77",
+      "note": "2家预测，互联网券商龙头"
+    },
+    "600036": {
+      "name": "招商银行",
+      "rating": "buy",
+      "institutions": 17,
+      "profit_growth": "+2.6%",
+      "pe": 6.44,
+      "target": "52.28",
+      "note": "17家预测，零售银行标杆，增速低但稳健"
+    },
+    "601318": {
+      "name": "中国平安",
+      "rating": "—",
+      "institutions": 13,
+      "profit_growth": "+9.8%",
+      "pe": 6.61,
+      "target": "80.91",
+      "note": "13家预测，保险龙头，增速温和恢复"
+    },
+    "600900": {
+      "name": "长江电力",
+      "rating": "buy",
+      "institutions": 14,
+      "profit_growth": "+3.8%",
+      "pe": 19.32,
+      "target": "33.67",
+      "note": "14家预测，水电龙头，股息稳定"
+    },
+    "601088": {
+      "name": "中国神华",
+      "rating": "—",
+      "institutions": 0,
+      "profit_growth": "+10.8%",
+      "pe": 19.41,
+      "target": "—",
+      "note": "煤炭+电力双主业，无盈利预测覆盖"
+    },
+    "601225": {
+      "name": "陕西煤业",
+      "rating": "—",
+      "institutions": 1,
+      "profit_growth": "+26.1%",
+      "pe": 16.19,
+      "target": "—",
+      "note": "1家预测，优质动力煤"
+    },
+    "601398": {
+      "name": "工商银行",
+      "rating": "—",
+      "institutions": 1,
+      "profit_growth": "+2.9%",
+      "pe": 7.47,
+      "target": "—",
+      "note": "1家预测，国有大行，增速极低但稳定"
+    },
+    "601939": {
+      "name": "建设银行",
+      "rating": "—",
+      "institutions": 0,
+      "profit_growth": "—",
+      "pe": 8.19,
+      "target": "—",
+      "note": "无盈利预测覆盖"
+    },
+    "600760": {
+      "name": "中航沈飞",
+      "rating": "—",
+      "institutions": 21,
+      "profit_growth": "+7.6%",
+      "pe": 33.41,
+      "target": "—",
+      "note": "21家预测，战斗机龙头，增速温和"
+    },
+    "600893": {
+      "name": "航发动力",
+      "rating": "—",
+      "institutions": 18,
+      "profit_growth": "-5.2%",
+      "pe": 172.1,
+      "target": "—",
+      "note": "18家预测，发动机龙头，利润下滑，PE极高"
+    },
+    "600150": {
+      "name": "中国船舶",
+      "rating": "—",
+      "institutions": 18,
+      "profit_growth": "+135.0%",
+      "pe": 14.24,
+      "target": "—",
+      "note": "18家预测，造船龙头，利润爆发式增长"
+    },
+    "002714": {
+      "name": "牧原股份",
+      "rating": "—",
+      "institutions": 32,
+      "profit_growth": "-54.4%",
+      "pe": 28.52,
+      "target": "—",
+      "note": "32家预测，猪周期下行，利润大幅下滑"
+    },
+    "300498": {
+      "name": "温氏股份",
+      "rating": "—",
+      "institutions": 30,
+      "profit_growth": "-61.0%",
+      "pe": 41.91,
+      "target": "—",
+      "note": "30家预测，猪鸡双杀，利润剧烈下滑"
+    },
+    "600019": {
+      "name": "宝钢股份",
+      "rating": "—",
+      "institutions": 1,
+      "profit_growth": "+13.2%",
+      "pe": 12.94,
+      "target": "—",
+      "note": "1家预测，钢铁龙头，覆盖极薄"
+    },
+    "688111": {
+      "name": "金山办公",
+      "rating": "—",
+      "institutions": 15,
+      "profit_growth": "+20.8%",
+      "pe": 0,
+      "target": "—",
+      "note": "15家预测，AI+办公，SaaS转型"
+    },
+    "002230": {
+      "name": "科大讯飞",
+      "rating": "—",
+      "institutions": 1,
+      "profit_growth": "+49.0%",
+      "pe": 0,
+      "target": "—",
+      "note": "1家预测，AI语音龙头，覆盖极薄"
+    },
+    "300308": {
+      "name": "中际旭创",
+      "rating": "—",
+      "institutions": 3,
+      "profit_growth": "+114.0%",
+      "pe": 0,
+      "target": "—",
+      "note": "3家预测，光模块龙头，AI算力驱动"
+    },
+    "600406": {
+      "name": "国电南瑞",
+      "rating": "—",
+      "institutions": 7,
+      "profit_growth": "+14.2%",
+      "pe": 0,
+      "target": "—",
+      "note": "7家预测(Q3数据)，电网自动化龙头"
+    }
+  },
+  "report_map": {
+    "黄金ETFvs黄金股ETF": [
+      "601899",
+      "600547",
+      "600489"
+    ],
+    "消费ETFvs消费电子ETF": [
+      "600519",
+      "000858",
+      "600887",
+      "000333",
+      "603501"
+    ],
+    "医药ETFvs医疗ETF": [
+      "300760",
+      "600276",
+      "603259"
+    ],
+    "电力ETFvs电网设备ETF": [
+      "600900",
+      "601088",
+      "600406"
+    ],
+    "新能源ETFvs新能源车ETF": [
+      "300750",
+      "002594",
+      "300124"
+    ],
+    "军工ETFvs军工龙头ETF": [
+      "600760",
+      "600893",
+      "600150"
+    ],
+    "农业ETFvs养殖ETF": [
+      "002714",
+      "300498"
+    ],
+    "煤炭ETFvs钢铁ETF": [
+      "601088",
+      "601225",
+      "600019"
+    ],
+    "创新药ETFvs港股创新药ETF": [
+      "600276",
+      "603259"
+    ],
+    "芯片ETFvs科创芯片ETF": [
+      "688981",
+      "688256",
+      "688041",
+      "002371"
+    ],
+    "AI ETF三岔口": [
+      "688256",
+      "688111",
+      "002230",
+      "300308"
+    ],
+    "互联网ETFvs港股通互联网ETF": [],
+    "恒生科技ETFvs港股通科技ETF": [],
+    "中概互联ETFvs恒生互联ETF": [],
+    "纳指ETFvs纳斯达克100ETF": [],
+    "红利ETFvs红利低波ETF": [
+      "601088",
+      "601225",
+      "601398",
+      "601939",
+      "600900"
+    ],
+    "沪深300ETFvs沪深300增强ETF": [
+      "600519",
+      "300750",
+      "600036",
+      "601318",
+      "000333"
+    ],
+    "创业板ETFvs创业板50ETF": [
+      "300750",
+      "300059",
+      "300760",
+      "300274"
+    ],
+    "科创50ETFvs科创100ETF": [
+      "688981",
+      "688256",
+      "688041",
+      "688111"
+    ],
+    "中证红利ETFvs上证红利ETF": [
+      "601088",
+      "601225",
+      "601398",
+      "600900"
+    ],
+    "新能源ETFvs碳中和ETF": [
+      "300750",
+      "601012",
+      "300274"
+    ],
+    "沪深300ETFvsA500ETF": [
+      "600519",
+      "300750",
+      "600036",
+      "601318",
+      "000333"
+    ],
+    "中证500ETFvs中证1000ETF": [
+      "300059",
+      "002594",
+      "300124"
+    ],
+    "科创50ETFvs科创创业50ETF": [
+      "688981",
+      "688256",
+      "300750",
+      "300760"
+    ],
+    "上证50ETFvs深证100ETF": [
+      "600519",
+      "600036",
+      "601318",
+      "300750",
+      "000333",
+      "000651"
+    ],
+    "沪深300ETFvs上证综指ETF": [
+      "600519",
+      "300750",
+      "600036",
+      "601398"
+    ],
+    "日经225ETFvs东证指数ETF": [],
+    "新能源ETFvs新能源车ETF(重)": [
+      "300750",
+      "002594",
+      "300274",
+      "601012"
+    ],
+    "QDII通道vs港股通通道": [],
+    "ETF溢价率专题": [],
+    "人民币份额vs港币份额": []
+  }
+}
