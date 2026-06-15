@@ -1,5 +1,32 @@
 # ETF 每日数据更新 - 执行历史
 
+## 2026-06-16
+
+### 执行摘要
+- **状态**: 成功
+- **时间**: 02:59 - 03:17
+
+### 各步骤状态
+
+| 步骤 | 状态 | 说明 |
+|------|------|------|
+| 1. pipeline.py --push --no-wind | 成功 | 02:59-03:00，~1m50s，2次deploy commit，332版本 |
+| 2. wequote_daily.py | 成功 | 03:02-03:17，14m44s，一次通过 |
+| 3. git commit + push | 成功 | 90c3500，2441 增/1988 删 |
+| 4. PA 同步 curl | 失败(404) | 连续第 17 天 |
+
+### 数据更新
+- Pipeline: 1510 ETF，版本清单 332 个版本，git push 成功（2 次 deploy commit）
+- WeStock: quote 更新 1510 个字段，etf 更新 1208 个字段，总计 2718 字段
+- 字段覆盖率: custodian 1497/1510 (99.1%), fee_rate 1394/1510 (92.3%), benchmark 1489/1510 (98.6%), premium_discount 145/1510 (9.6%)
+- Git: 2441 行新增，1988 行删除
+
+### 问题
+- PA 同步返回 404（连续第 17 天），PythonAnywhere 疑似下线
+- logs/ 目录无当天日志文件（pipeline/wequote 写入 stdout，非 logs/）
+
+---
+
 ## 2026-06-13
 
 ### 执行摘要
