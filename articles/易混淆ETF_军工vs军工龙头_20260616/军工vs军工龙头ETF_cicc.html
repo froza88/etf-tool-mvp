@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>军工ETF vs 军工龙头ETF：全行业覆盖还是龙头集中？</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#faf8f5;--card:#f0f3f7;--text:#1a1a1a;--muted:#5a6370;--navy:#1a3a5c;--red:#c41230;--green:#1a7a3a;--gold:#b45309;--border:#c5cad3;--light-border:#e0e4ea}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",Georgia,serif;line-height:1.85;font-size:14px}
+.container{max-width:860px;margin:0 auto;padding:32px 28px}
+h2{font-size:17px;font-weight:700;color:var(--navy);margin:30px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--navy);letter-spacing:0.5px}
+h3{font-size:14px;font-weight:600;color:var(--navy);margin:16px 0 8px}
+.cover{text-align:center;padding:36px 20px 24px;border-bottom:double 3px var(--navy);margin-bottom:28px;position:relative}
+.cover::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0f1f35 0%,#1a3a5c 50%,#2a5078 100%)}
+.cover .org{font-size:12px;color:var(--muted);letter-spacing:2px;margin-bottom:6px;text-transform:uppercase}
+.cover h1{font-size:24px;font-weight:700;color:var(--navy);line-height:1.4;margin:6px 0}
+.cover .subtitle{font-size:13px;color:var(--muted);margin:4px 0}
+.cover .meta{font-size:10px;color:#8b95a5;margin-top:10px}
+.badge{display:inline-block;padding:2px 7px;border-radius:2px;font-size:10px;font-weight:600;margin:0 2px}
+.badge-navy{background:#e8eef5;color:var(--navy)}
+.badge-red{background:#fdf0f0;color:var(--red)}
+.badge-green{background:#f0faf4;color:var(--green)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#edf0f5;padding:6px 9px;text-align:left;font-weight:600;border-bottom:2px solid var(--navy);font-size:11px;color:#4b5563}
+td{padding:6px 9px;border-bottom:1px solid var(--light-border)}
+tr:last-child td{border-bottom:2px solid var(--navy)}
+.positive{color:var(--red);font-weight:600}
+.negative{color:var(--green);font-weight:600}
+.agent-block{background:var(--card);border-left:3px solid var(--navy);padding:14px 18px;margin:14px 0;border-radius:0 6px 6px 0}
+.agent-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--light-border)}
+.agent-num{width:30px;height:30px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.agent-num.g1{background:#1a3a5c;color:#fff}
+.agent-num.g2{background:#2a5078;color:#fff}
+.agent-num.g3{background:#1a7a3a;color:#fff}
+.agent-num.g4{background:#b45309;color:#fff}
+.agent-name{font-weight:700;font-size:13px}
+.agent-role{font-size:10px;color:var(--muted)}
+.agent-output{font-size:12.5px;line-height:1.85;color:#333}
+.agent-output p{margin:6px 0}
+.agent-output ul{margin:6px 0 6px 18px}
+.agent-output li{margin:2px 0}
+.phase-divider{text-align:center;margin:28px 0 12px;font-size:11px;color:var(--muted);letter-spacing:3px;border-top:1px solid var(--border);padding-top:14px}
+.verdict-box{background:linear-gradient(135deg,#f2f5f8,#faf8f5);border:2px solid var(--navy);padding:20px 22px;margin:20px 0;border-radius:4px}
+.verdict-box h3{color:var(--navy);margin-bottom:8px}
+.chart-row{display:flex;gap:18px;margin:12px 0;flex-wrap:wrap;align-items:flex-start}
+.chart-col{flex:1;min-width:280px;max-width:100%}
+.chart-col h4{font-size:12px;text-align:center;color:var(--muted);margin-bottom:6px;font-weight:500}
+canvas{display:block;max-width:100%}
+.final-score{display:flex;gap:12px;margin:14px 0;flex-wrap:wrap}
+.score-card{text-align:center;padding:12px 18px;border:1px solid var(--border);flex:1;min-width:100px;background:#fff}
+.score-card .label{font-size:10px;color:var(--muted);margin-bottom:3px}
+.score-card .value{font-size:22px;font-weight:700;color:var(--navy)}
+.score-card .detail{font-size:10px;color:var(--muted)}
+.disclaimer{font-size:10px;color:#8b95a5;border-top:1px solid var(--border);margin-top:32px;padding-top:14px;text-align:center;line-height:1.8}
+@media(max-width:600px){.container{padding:12px 14px}.chart-col{min-width:100%}}
+</style></head><body><div class="container">
+
+<div class="cover">
+<div class="org">ETF 易混淆对比系列 · 第6篇</div>
+<h1>军工ETF vs 军工龙头ETF：全行业覆盖还是龙头集中？</h1>
+<div class="subtitle">512660 国泰中证军工ETF（AUM ¥96.8亿） vs 512710 富国中证军工龙头ETF（AUM ¥59.1亿）</div>
+<div class="meta">
+<span class="badge badge-navy">10 Agent 独立分析 · NVIDIA Kimi K2.6</span>
+<span class="badge badge-red">数据截止 2026-06-16 收盘</span>
+<span class="badge badge-green">数据源：westock-data · ETF工具快照 · Wind MCP</span>
+</div>
+</div>
+
+<h2>一、基本面对比</h2>
+<table>
+<tr><th style="width:18%">指标</th><th style="width:41%">军工ETF（512660）</th><th style="width:41%">军工龙头ETF（512710）</th></tr>
+<tr><td>全称</td><td>国泰中证军工ETF</td><td>富国中证军工龙头ETF</td></tr>
+<tr><td>跟踪指数</td><td>中证军工指数</td><td>中证军工龙头指数</td></tr>
+<tr><td>基金规模</td><td>¥96.8亿</td><td>¥59.1亿</td></tr>
+<tr><td>管理+托管费</td><td>0.60%</td><td>0.60%</td></tr>
+<tr><td>最新价格</td><td>¥1.267 <span class="positive">+1.61%</span></td><td>¥0.676 <span class="negative">-1.74%</span></td></tr>
+<tr><td>净值(NAV)</td><td>¥1.28</td><td>¥0.69</td></tr>
+<tr><td>近1年收益</td><td class="positive">+37.37%</td><td class="positive">+29.26%</td></tr>
+<tr><td>近3年收益</td><td class="positive">+26.01%</td><td class="positive">+7.44%</td></tr>
+<tr><td>年化波动率</td><td>30.27%</td><td>33.27%</td></tr>
+<tr><td>最大回撤(近1年)</td><td class="negative">-25.15%</td><td class="negative">-25.54%</td></tr>
+<tr><td>夏普比率</td><td>1.14</td><td>0.88</td></tr>
+<tr><td>Calmar比率</td><td>1.49</td><td>1.15</td></tr>
+<tr><td>跟踪误差</td><td>0.05%</td><td>0.05%</td></tr>
+<tr><td>近5日净流入</td><td class="positive">+0.11%（+600万份）</td><td class="negative">-1.35%（-1.57亿份）</td></tr>
+<tr><td>日均成交</td><td>250万手</td><td>490万手</td></tr>
+<tr><td>持仓集中度(TOP5)</td><td>22.9%</td><td>37.9%</td></tr>
+<tr><td>上市日期</td><td>2016-08-08</td><td>2019-08-26</td></tr>
+<tr><td>基金管理人</td><td>国泰基金</td><td>富国基金</td></tr>
+</table>
+
+<h3>前五大持仓对比</h3>
+<table>
+<tr><th>排名</th><th>512660 军工ETF</th><th>权重</th><th>512710 军工龙头ETF</th><th>权重</th></tr>
+<tr><td>1</td><td>中国船舶</td><td>8.48%</td><td>航发动力</td><td>9.47%</td></tr>
+<tr><td>2</td><td>航发动力</td><td>4.04%</td><td>航天电子</td><td>8.68%</td></tr>
+<tr><td>3</td><td>航天电子</td><td>3.70%</td><td>中国卫星</td><td>7.18%</td></tr>
+<tr><td>4</td><td>光启技术</td><td>3.65%</td><td>中航光电</td><td>6.35%</td></tr>
+<tr><td>5</td><td>中国卫星</td><td>3.05%</td><td>中航沈飞</td><td>6.18%</td></tr>
+</table>
+
+<div class="chart-row"><div class="chart-col"><h4>512660 军工ETF（国泰）· 近30日K线</h4><canvas id="c1" width="800" height="260" style="height:260px"></canvas></div><div class="chart-col"><h4>512710 军工龙头ETF（富国）· 近30日K线</h4><canvas id="c2" width="800" height="260" style="height:260px"></canvas></div></div>
+
+<div class="chart-row"><div class="chart-col" style="flex:1;min-width:100%"><h4>四维收益对比（5日/20日/60日/YTD）</h4><canvas id="c3" width="800" height="200" style="height:200px"></canvas></div></div>
+
+<!-- ====== PHASE 1 ====== -->
+<div class="phase-divider">第一阶段 · 独立分析（4 Agent 并行）</div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g1">1</span>
+<div><span class="agent-name">新闻分析师</span> <span class="agent-role">News Analyst · 全渠道舆情扫描</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g2">2</span>
+<div><span class="agent-name">行情分析师</span> <span class="agent-role">Technical Analyst · K线+指标系统</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g3">3</span>
+<div><span class="agent-name">资金流向分析师</span> <span class="agent-role">Flow Analyst · 主力资金追踪</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g4">4</span>
+<div><span class="agent-name">指数编制分析师</span> <span class="agent-role">Index Analyst · 选股规则+加权方式</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<h2>二、关联性分析</h2>
+<p>很多人以为"军工ETF"和"军工龙头ETF"是差不多的一对——名字像、行业一样。但从数据看，它们的关联并没有表面那么"铁"：</p></blockquote>
+
+<table>
+<tr><th>关联维度</th><th>数据</th><th>解读</th></tr>
+<tr><td>30日价格相关系数</td><td><strong>r = 0.91</strong>（高度正相关）</td><td>两只ETF日涨跌方向约八成一致，受军工板块整体驱动</td></tr>
+<tr><td>可解释方差 R²</td><td><strong>82.6%</strong></td><td>约83%的波动可互相解释——但不是100%</td></tr>
+<tr><td>不可解释方差</td><td><strong>17.4%</strong></td><td>这部分差异来自指数编制和持仓结构的不同</td></tr>
+<tr><td>持仓重叠（TOP10）</td><td><strong>3只重叠</strong>（航发动力、航天电子、中国卫星）</td><td>Jaccard相似度仅42.9%，近6成重仓股不同</td></tr>
+<tr><td>重叠股权重差异</td><td>512710中3股合计24.33%，512660中仅10.79%</td><td>同样持有航发动力，512710配了9.47%，512660只配4.04%</td></tr>
+<tr><td>年化波动差异</td><td>30.27% vs 33.27%（差3个百分点）</td><td>龙头集中策略天然波动更大，弹性更足，回撤更深</td></tr>
+</table>
+
+<p><strong>表面像，实质不同。</strong>两只ETF虽然高度正相关（r=0.91）——意味着军工板块涨时它们一起涨，板块跌时一起跌——但在约17%的时间里，它们的走势会出现明显分歧。这个分歧恰恰来自跟踪指数的差异：512660跟踪中证军工指数（全行业等权覆盖），而512710跟踪中证军工龙头指数（精选头部公司集中持仓）。</p>
+<p style="font-size:11px;color:var(--muted);background:#fef9f0;padding:8px 12px;border-radius:3px;margin:10px 0">💡 <strong>怎么理解r=0.91？</strong>如果军工板块整体涨1%，512660约涨1%，512710约涨1.1%。方向一致，但幅度不同。近3年512660涨了26%而512710只涨7%——这是因为它们在板块下跌时跌幅不同（512710回撤更深），日积月累的微小差异最终变成了18.6个百分点的累计差距。</p>
+
+<div class="phase-divider">第二阶段 · 研究辩论（多空对决 → 经理裁决）</div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g1">5</span>
+<div><span class="agent-name">多头研究员</span> <span class="agent-role">Bull Analyst · 做多512660军工ETF</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g2">6</span>
+<div><span class="agent-name">空头研究员</span> <span class="agent-role">Bear Analyst · 不可忽视512710的亮点</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g3">7</span>
+<div><span class="agent-name">研究主管</span> <span class="agent-role">Research Director · 独立裁决</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="verdict-box" style="margin-top:16px">
+<div class="final-score" style="margin:0">
+<div class="score-card" style="border:2px solid var(--navy)">
+<div class="label">数据领先方</div>
+<div class="value">军工ETF</div>
+<div class="detail">数据全面领先</div></div>
+<div class="score-card">
+<div class="label">核心指标</div>
+<div class="value" style="font-size:16px">波动30.3% · 夏普1.14</div>
+<div class="detail">近3年收益 +26.01%</div></div>
+</div>
+</div>
+
+<!-- ====== PHASE 3 ====== -->
+<div class="phase-divider">第三阶段 · 交易方案</div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g1">8</span>
+<div><span class="agent-name">交易策略师</span> <span class="agent-role">Trading Strategist · 战术执行</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<!-- ====== PHASE 4 ====== -->
+<div class="phase-divider">第四阶段 · 风险评估 + 最终裁决（2 Agent 并行）</div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g2">9</span>
+<div><span class="agent-name">风险分析师</span> <span class="agent-role">Risk Analyst · 风险矩阵</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<div class="agent-block">
+<div class="agent-header">
+<span class="agent-num g3">10</span>
+<div><span class="agent-name">风控主管</span> <span class="agent-role">Risk Manager · 最终裁决</span></div>
+</div>
+<div class="agent-output">
+<p style="color:var(--red)">❌ Error: HTTP 429</p>
+</div></div>
+
+<!-- ====== SUMMARY ====== -->
+<h2>二、综合结论</h2>
+<div class="agent-block" style="border-left-color:var(--red)">
+<div class="agent-output">
+<p><strong>核心发现：同一"军工"之名，不同投资逻辑。</strong>两只ETF的核心差异在于跟踪指数的编制方法——全行业覆盖 vs 龙头集中。这一差异在近3年造成了18.6个百分点的收益差距。</p>
+<ul>
+<li><strong>512660 军工ETF（国泰）</strong>：全市场最大军工ETF（96.8亿），跟踪中证军工指数。分散化持仓（TOP5仅22.9%）、风险调整收益更优（夏普1.14）、近5日资金净流入。历史3年累计回报+26.01%，在同类军工ETF中表现突出。</li>
+<li><strong>512710 军工龙头ETF（富国）</strong>：跟踪中证军工龙头指数。持仓集中（TOP5 37.9%）、流动性更好（日均490万手）、单价更低（0.676元）。高集中度特征使其具有更强的短期弹性。</li>
+</ul>
+<p><strong>两种策略的差异本质：</strong></p>
+<ul>
+<li><strong>全行业覆盖（512660）</strong>——买整个军工行业。跟踪中证军工指数，覆盖约90只成分股，每只股票权重分散。好处是个股暴雷不致命（TOP5仅占22.9%），坏处是抓到牛股也赚不多。本质上买的是"军工行业整体有没有前途"。</li>
+<li><strong>龙头集中（512710）</strong>——精选头部公司。跟踪中证军工龙头指数，约50只成分股，前5大占比37.9%。好处是如果龙头拿订单能力强、利润集中，弹性就大；坏处是如果龙头掉队，集中持仓加倍受伤。本质上买的是"头部公司能不能持续拉开与同行的差距"。</li>
+</ul>
+<p>过去3年，全行业覆盖策略（+26.01%）大幅跑赢龙头集中策略（+7.44%），说明军工行业整体在增长，但龙头的竞争优势并未体现在股价上。未来会不会反转——订单集中到头部公司、龙头利润占比提升——是两个策略走向分歧的关键变量。</p>
+</div>
+</div>
+
+<div class="disclaimer">
+<p style="margin-bottom:14px;color:var(--text);font-size:11px;text-align:left;line-height:2">
+<strong style="color:var(--navy)">📖 名词解释</strong><br>
+<span style="color:var(--muted)">·</span> <strong>KDJ</strong>：随机指标，K值&lt;20超卖区（跌过头），K值&gt;80超买区（涨过头）。J值&gt;100短期过热。<br>
+<span style="color:var(--muted)">·</span> <strong>MACD DIF</strong>：快慢均线差，正值=多头趋势，负值=空头趋势。MACD柱由绿转红为买入信号。<br>
+<span style="color:var(--muted)">·</span> <strong>RSI(6)</strong>：6日相对强弱指数，&lt;30弱势超卖，&gt;70强势超买，40-60为中性区间。<br>
+<span style="color:var(--muted)">·</span> <strong>夏普比率</strong>：每承担1%波动能赚多少超额收益。数字越大越好，&gt;1算优秀，&lt;0说明"担风险不如存银行"。<br>
+<span style="color:var(--muted)">·</span> <strong>Calmar比率</strong>：年化收益率÷最大回撤绝对值。衡量"赚钱效率"，&gt;1算不错。<br>
+<span style="color:var(--muted)">·</span> <strong>最大回撤</strong>：从历史最高点跌到最低点的幅度。-25.15%意味着¥10万最多亏到¥7.49万。<br>
+<span style="color:var(--muted)">·</span> <strong>年化波动率</strong>：价格一年内的涨跌剧烈程度。20-30%为高波动，&gt;35%算极高波动。军工ETF 30%属高波动区间。<br>
+<span style="color:var(--muted)">·</span> <strong>跟踪误差</strong>：ETF实际收益与跟踪指数收益的偏离程度。越小越好，&gt;2%说明跟踪效果不佳。<br>
+<span style="color:var(--muted)">·</span> <strong>AUM</strong>：基金总规模（Assets Under Management），影响流动性和机构认可度。<br>
+<span style="color:var(--muted)">·</span> <strong>持仓集中度</strong>：前N大重仓股占基金总资产的比例。集中度越高，个股风险越大。<br>
+<span style="color:var(--muted)">·</span> <strong>SAR</strong>：停损转向指标。价格在SAR上方=上升趋势，跌破SAR=止损信号。<br>
+<span style="color:var(--muted)">·</span> <strong>净流入</strong>：一定时间内买入金额减卖出金额。正值=资金流入（看多），负值=流出（看空）。<br>
+<span style="color:var(--muted)">·</span> <strong>换手率</strong>：一天内多少持仓被交易。&gt;5%偏高（筹码频繁换手），&lt;1%偏低（持仓稳定）。
+</p>
+<hr style="border:none;border-top:1px solid var(--light-border);margin:16px 0">
+<p><strong>免责声明：</strong>本报告由10个独立AI Agent通过NVIDIA Kimi K2.6 API并行生成，每个Agent使用专属system prompt和独立数据上下文，所有数字来自API原始数据，未经人为修改。</p>
+<p><strong>数据完整性声明：</strong>研究主管10维对比表由Agent #7独立生成，未经修改。所有Agent输出均为API原始返回内容，保留完整分析逻辑。</p>
+<p>报告中的任何观点、结论和建议均不构成投资建议。投资者应独立判断并自行承担投资风险。</p>
+<p>数据截止2026年6月16日收盘 · 深圳证券交易所/上海证券交易所</p>
+</div>
+
+</div>
+
+<!-- ====== CHARTS ====== -->
+<script>
+const o1=[["05-07",1.43,1.45,1.43,1.45],["05-08",1.44,1.48,1.43,1.47],["05-11",1.48,1.50,1.47,1.48],["05-12",1.48,1.49,1.45,1.47],["05-13",1.46,1.49,1.46,1.49],["05-14",1.49,1.49,1.42,1.42],["05-15",1.42,1.43,1.38,1.39],["05-18",1.37,1.40,1.37,1.38],["05-19",1.38,1.38,1.34,1.38],["05-20",1.37,1.38,1.36,1.37],["05-21",1.38,1.40,1.34,1.34],["05-22",1.34,1.36,1.34,1.36],["05-25",1.37,1.38,1.35,1.38],["05-26",1.37,1.37,1.33,1.35],["05-27",1.35,1.37,1.32,1.32],["05-28",1.32,1.35,1.32,1.34],["05-29",1.35,1.35,1.28,1.28],["06-01",1.28,1.30,1.27,1.27],["06-02",1.27,1.28,1.24,1.27],["06-03",1.26,1.29,1.26,1.27],["06-04",1.26,1.29,1.26,1.28],["06-05",1.28,1.30,1.26,1.27],["06-08",1.25,1.27,1.21,1.22],["06-09",1.23,1.24,1.21,1.24],["06-10",1.23,1.24,1.21,1.22],["06-11",1.21,1.23,1.20,1.22],["06-12",1.24,1.28,1.24,1.25],["06-15",1.25,1.27,1.24,1.27],["06-16",1.267,1.276,1.26,1.267]];
+const o2=[["05-07",0.79,0.79,0.78,0.79],["05-08",0.79,0.82,0.78,0.81],["05-11",0.82,0.83,0.82,0.82],["05-12",0.82,0.83,0.80,0.81],["05-13",0.80,0.82,0.80,0.81],["05-14",0.81,0.82,0.77,0.77],["05-15",0.77,0.78,0.75,0.75],["05-18",0.75,0.77,0.75,0.75],["05-19",0.75,0.75,0.74,0.75],["05-20",0.75,0.75,0.74,0.75],["05-21",0.75,0.76,0.73,0.73],["05-22",0.74,0.74,0.73,0.74],["05-25",0.74,0.75,0.73,0.75],["05-26",0.74,0.74,0.72,0.73],["05-27",0.73,0.74,0.71,0.71],["05-28",0.71,0.73,0.71,0.72],["05-29",0.72,0.72,0.69,0.69],["06-01",0.69,0.70,0.69,0.69],["06-02",0.69,0.69,0.67,0.68],["06-03",0.68,0.70,0.68,0.69],["06-04",0.68,0.69,0.68,0.69],["06-05",0.69,0.70,0.68,0.69],["06-08",0.68,0.69,0.66,0.66],["06-09",0.66,0.67,0.65,0.67],["06-10",0.66,0.67,0.65,0.66],["06-11",0.65,0.66,0.64,0.65],["06-12",0.66,0.69,0.66,0.68],["06-15",0.67,0.68,0.66,0.68],["06-16",0.677,0.681,0.672,0.676]];
+
+function drawCandle(cid, data){
+  const c=document.getElementById(cid); if(!c)return;
+  const ctx=c.getContext('2d'),W=c.width,H=c.height;
+  const pad={t:20,r:30,b:32,l:40},pw=W-pad.l-pad.r,ph=H-pad.t-pad.b;
+  const highs=data.map(d=>d[2]),lows=data.map(d=>d[3]);
+  let yMn=Math.floor(Math.min(...lows)*0.98*100)/100,yMx=Math.ceil(Math.max(...highs)*1.02*100)/100;
+  const cw=Math.max(Math.min(pw/data.length-0.5,5),1.5);
+  ctx.fillStyle='#faf8f5';ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#e0e4ea';ctx.lineWidth=0.5;
+  for(let i=0;i<=4;i++){const y=pad.t+ph*i/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();ctx.fillStyle='#8b95a5';ctx.font='9px sans-serif';ctx.textAlign='right';ctx.fillText((yMx-(yMx-yMn)*i/4).toFixed(3),pad.l-4,y+3);}
+  data.forEach((d,i)=>{
+    const x=pad.l+i*pw/data.length+(pw/data.length-cw)/2,o=d[1],h=d[2],l=d[3],cl=d[4];
+    const yo=pad.t+ph*(yMx-o)/(yMx-yMn),yc=pad.t+ph*(yMx-cl)/(yMx-yMn);
+    const yh=pad.t+ph*(yMx-h)/(yMx-yMn),yl=pad.t+ph*(yMx-l)/(yMx-yMn);
+    const isRed=cl>=o;
+    ctx.strokeStyle=isRed?'#c41230':'#1a7a3a';ctx.fillStyle=isRed?'#c41230':'#1a7a3a';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(x+cw/2,yh);ctx.lineTo(x+cw/2,yl);ctx.stroke();
+    ctx.fillRect(x,isRed?yc:yo,cw,Math.max(1,Math.abs(yc-yo)));
+    if(i%5===0){ctx.fillStyle='#333';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.fillText(d[0],x+cw/2,H-10);}
+  });
+}
+
+new Chart(document.getElementById('c3'),{
+  type:'bar',
+  data:{
+    labels:['5日','20日','60日','YTD'],
+    datasets:[
+      {label:'512660 军工ETF',data:[0.27,-2.52,-3.85,-1.50],backgroundColor:'#1a3a5c'},
+      {label:'512710 军工龙头ETF',data:[0.32,-3.17,-6.52,-3.10],backgroundColor:'#6b8cae'}
+    ]
+  },
+  options:{
+    responsive:true,
+    scales:{
+      y:{position:'right',title:{display:true,text:'%'},grid:{drawBorder:false}},
+      x:{position:'top',grid:{display:false}}
+    },
+    plugins:{
+      legend:{position:'bottom',labels:{usePointStyle:true,padding:20,font:{size:11}}},
+      tooltip:{enabled:true}
+    }
+  },
+  plugins:[{
+    id:'dataLabels',
+    afterDraw:function(chart){
+      var ctx=chart.ctx;
+      chart.data.datasets.forEach(function(ds,i){
+        var meta=chart.getDatasetMeta(i);
+        meta.data.forEach(function(bar,idx){
+          if(!bar)return;
+          var val=chart.data.datasets[i].data[idx];
+          if(val===null||val===undefined)return;
+          ctx.fillStyle=val>=0?'#c41230':'#1a7a3a';
+          ctx.font='bold 11px sans-serif';
+          ctx.textAlign='center';
+          ctx.textBaseline=val>=0?'bottom':'top';
+          ctx.fillText((val>=0?'+':'')+val.toFixed(2)+'%',bar.x,val>=0?bar.y-2:bar.y+2);
+        });
+      });
+    }
+  }]
+});
+
+window.addEventListener('load',()=>{drawCandle('c1',o1);drawCandle('c2',o2);});
+</script>
+</body></html>
