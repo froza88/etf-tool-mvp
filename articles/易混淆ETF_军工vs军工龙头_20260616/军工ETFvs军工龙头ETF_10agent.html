@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>军工ETF vs 军工龙头ETF · Trading Agents 10 Agent分析</title>
+<style>
+:root{--gold:#d4a017;--primary:#1a1a2e;--accent:#c41230;--green:#1a7a3a;--orange:#d97706;--blue:#1a5fb4;--muted:#6b7280;--border:#e5e7eb}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"STSong","SimSun","Songti SC","PingFang SC","Microsoft YaHei",sans-serif;background:#fff;color:var(--primary);font-size:14px;line-height:1.8}
+.cover{text-align:center;padding:80px 40px 50px;background:linear-gradient(to bottom,#fefcf5,#fff)}
+.cover h1{font-size:28px;font-weight:900;color:var(--primary);letter-spacing:2px}
+.cover .divider{width:50px;height:3px;background:var(--accent);margin:20px auto}
+.cover .sub{font-size:15px;color:var(--muted);margin:8px 0}
+.cover .meta{font-size:11px;color:var(--muted);margin-top:24px;line-height:2}
+.cover .badge{display:inline-block;padding:3px 16px;border-radius:12px;font-size:11px;font-weight:700;color:#fff;margin:4px}
+.badge-blue{background:var(--blue)}.badge-dark{background:var(--primary)}.badge-green{background:var(--green)}.badge-red{background:var(--accent)}.badge-gold{background:var(--gold)}
+.badge-phase1{background:var(--blue)}.badge-phase2{background:var(--primary)}.badge-phase3{background:var(--green)}.badge-phase4{background:var(--accent)}
+.content{padding:20px 36px;max-width:900px;margin:0 auto}
+h2{font-size:19px;font-weight:700;margin:30px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:16px;font-weight:700;margin:18px 0 8px}
+h4{font-size:13px;font-weight:700;margin:12px 0 6px;color:var(--blue)}
+.phase-header{padding:10px 14px;margin:20px 0 12px;font-size:15px;font-weight:700;border-radius:4px;color:#fff}
+.phase-1{background:var(--blue)}.phase-2{background:var(--primary)}.phase-3{background:var(--green)}.phase-4{background:var(--accent)}
+.agent-block{border:1px solid var(--border);padding:14px;margin:10px 0;border-radius:4px;background:#fff}
+.agent-title{font-size:14px;font-weight:700;margin-bottom:8px}
+.agent-badge{display:inline-block;padding:2px 10px;border-radius:3px;font-size:11px;font-weight:700;color:#fff;margin-right:8px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:var(--primary);color:#fff;padding:6px 7px;text-align:center;font-weight:600;font-size:11px}
+td{padding:5px 7px;border-bottom:1px solid var(--border);text-align:center;font-size:11px}
+tr:nth-child(even){background:#f8f8f8}
+td:first-child{text-align:left;font-weight:600}
+.tag{padding:1px 8px;border-radius:3px;font-size:10px;font-weight:700}
+.tg-bear{background:#dcfce7;color:#166534}.tg-bull{background:#fee2e2;color:var(--accent)}.tg-neutral{background:#fef3c7;color:var(--orange)}
+.tg-high{background:#f3e8ff;color:#7c3aed}.tg-mid{background:#fef9c3;color:#ca8a04}.tg-low{background:#dbeafe;color:#2563eb}
+.verdict-box{border:2px solid var(--gold);padding:16px;margin:16px 0;border-radius:6px;background:#fefcf5;text-align:center}
+.verdict-box .big{font-size:20px;font-weight:900;color:var(--primary)}
+.verdict-box .sub{font-size:12px;color:var(--muted);margin:6px 0}
+.signal-grid{display:grid;grid-template-columns:1fr;gap:6px;margin:8px 0}
+.signal-item{padding:6px 10px;border-radius:4px;font-size:12px;border-left:3px solid}
+.signal-bull{border-color:var(--accent);background:#fef2f2}
+.signal-bear{border-color:#166534;background:#f0fdf4}
+.footer{margin-top:32px;padding-top:14px;border-top:2px solid var(--border);font-size:11px;color:var(--muted);text-align:center}
+ul,ol{margin:4px 0 4px 20px;font-size:12px}li{margin:2px 0}
+p{margin:4px 0;text-align:justify;text-indent:2em;font-size:13px}
+.no-indent{text-indent:0}
+.chart-container{width:100%;margin:12px 0;text-align:center}
+.chart-container canvas{max-width:100%}
+.chart-caption{font-size:10px;color:var(--muted);margin-top:4px}
+.flex-row{display:flex;gap:10px;flex-wrap:wrap}
+.flex-row>div{flex:1;min-width:300px}
+@media(max-width:768px){.content{padding:10px 14px}.cover{padding:40px 20px 30px}.flex-row>div{min-width:100%}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="cover">
+<h1>🛡️ 军工ETF vs 军工龙头ETF</h1>
+<div class="divider"></div>
+<div class="sub">trading-agents 满血版 · 10 Agent 全激活</div>
+<div class="meta">
+<span class="badge badge-phase1">Phase 1 数据采集</span>
+<span class="badge badge-phase2">Phase 2 研究辩论</span>
+<span class="badge badge-phase3">Phase 3 交易方案</span>
+<span class="badge badge-phase4">Phase 4 风险评估</span>
+</div>
+<div class="meta">
+<p class="no-indent">国泰中证军工ETF（512660）vs 富国中证军工龙头ETF（512710）</p>
+<p class="no-indent">数据源：Wind(新闻) + westock-data(行情/K线/资金/技术) + ETF工具快照 v2026-06-16</p>
+<p class="no-indent">报告时间：2026年6月16日 16:20 · ⚠️ 本文仅供研究参考，不构成投资建议</p>
+</div>
+</div>
+
+<div class="content">
+
+<div class="phase-header phase-1">Phase 1 · 数据采集层（4 Agent 并行）</div>
+
+<!-- Agent #1: 新闻分析师 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-blue">Agent #1</span> 新闻分析师 · 军工板块情绪研判</div>
+<table>
+<tr><th>标题</th><th>来源</th><th>情绪</th><th>评级</th></tr>
+<tr><td>军工板块估值处于历史低位，机构看好长期配置价值</td><td>证券时报</td><td><span class="tag tg-bull">偏多</span></td><td><span class="tag tg-high">高</span></td></tr>
+<tr><td>地缘政治紧张局势持续，军工需求端保持稳健</td><td>经济观察报</td><td><span class="tag tg-bull">偏多</span></td><td><span class="tag tg-high">高</span></td></tr>
+<tr><td>军工企业一季报分化明显，龙头公司表现优于行业平均</td><td>中国证券报</td><td><span class="tag tg-neutral">中性</span></td><td><span class="tag tg-mid">中</span></td></tr>
+<tr><td>国防预算增速稳定，军工产业链受益确定性高</td><td>人民日报</td><td><span class="tag tg-bull">偏多</span></td><td><span class="tag tg-high">高</span></td></tr>
+<tr><td>军工板块近期资金持续流出，短期承压</td><td>21世纪经济报道</td><td><span class="tag tg-bear">偏空</span></td><td><span class="tag tg-mid">中</span></td></tr>
+</table>
+<p><strong>研判</strong>：军工板块消息面整体偏暖，地缘政治风险推升需求预期，国防预算稳步增长提供基本面支撑。但短期资金面承压，板块走势分化。龙头公司抗风险能力更强，中证军工指数覆盖面更广，中证军工龙头指数集中度更高。</p>
+</div>
+
+<!-- Agent #2: 行情分析师 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-blue">Agent #2</span> 行情分析师 · 多维对比</div>
+
+<h4>四维收益对比</h4>
+<div class="flex-row">
+<div class="chart-container"><canvas id="retChart"></canvas>
+<div class="chart-caption">数据来源：westock-data + ETF工具快照 v2026-06-16</div></div>
+</div>
+
+<h4>60日K线图并排</h4>
+<div class="flex-row">
+<div><canvas id="kl660" height="220"></canvas><div class="chart-caption" style="text-align:center">512660 军工ETF(国泰) · 60日K线</div></div>
+<div><canvas id="kl710" height="220"></canvas><div class="chart-caption" style="text-align:center">512710 军工龙头ETF(富国) · 60日K线</div></div>
+</div>
+
+<table>
+<tr><th>指标</th><th>512660 军工ETF(国泰)</th><th>512710 军工龙头ETF(富国)</th></tr>
+<tr><td>最新价</td><td>1.267</td><td>0.676</td></tr>
+<tr><td>今日涨跌</td><td style="color:var(--accent)">+1.61%</td><td style="color:var(--green)">-1.74%</td></tr>
+<tr><td>净值(NAV)</td><td>1.28</td><td>0.69</td></tr>
+<tr><td>规模(亿)</td><td>96.8</td><td>59.1</td></tr>
+<tr><td>日均成交(万手)</td><td>250</td><td>490</td></tr>
+<tr><td>跟踪指数</td><td>中证军工指数</td><td>中证军工龙头指数</td></tr>
+<tr><td>管理人</td><td>国泰基金</td><td>富国基金</td></tr>
+<tr><td>上市日期</td><td>2016-08-08</td><td>2019-08-26</td></tr>
+</table>
+
+<p><strong>术语解释</strong>：<br>
+<strong>净值(NAV)</strong>：基金资产总值减负债后除以总份额，是ETF的"内在价值"。价格围绕净值波动。<br>
+<strong>跟踪指数</strong>：ETF被动跟踪的基准指数。本文核心差异：一只跟踪中证军工指数（全行业覆盖），一只跟踪军工龙头指数（精选头部公司）。<br>
+<strong>日均成交</strong>：每日平均成交手数，反映ETF流动性。512710成交更活跃。</p>
+</div>
+
+<!-- Agent #3: 技术面分析师 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-blue">Agent #3</span> 技术面分析师 · 指标研判</div>
+<table>
+<tr><th>指标</th><th>512660 军工ETF</th><th>512710 军工龙头ETF</th><th>含义</th></tr>
+<tr><td>RSI(6)</td><td>53.22</td><td>46.47</td><td>均处于中性区间</td></tr>
+<tr><td>KDJ-K</td><td>51.17</td><td>45.47</td><td>均未超买超卖</td></tr>
+<tr><td>KDJ-J</td><td>82.28</td><td>70.45</td><td>512660偏强势</td></tr>
+<tr><td>MACD-DIF</td><td>-0.036</td><td>-0.025</td><td>均为负值</td></tr>
+<tr><td>MACD柱</td><td style="color:var(--accent)">+0.001</td><td style="color:var(--accent)">+0.001</td><td>绿柱缩小，空头减弱</td></tr>
+<tr><td>MA5</td><td>1.244</td><td>0.667</td><td>均低于MA20</td></tr>
+<tr><td>MA20</td><td>1.289</td><td>0.696</td><td>中期均线</td></tr>
+<tr><td>SAR</td><td>1.203</td><td>0.645</td><td>价格均在SAR上方</td></tr>
+<tr><td>CCI(14)</td><td>13.03</td><td>-16.87</td><td>均为中性</td></tr>
+</table>
+<p><strong>研判</strong>：两只ETF技术面均处于弱势反弹格局。MACD绿柱缩窄至零轴附近，RSI中性，KDJ未超买，短期方向不明。SAR指标显示价格仍在上升趋势线上方，暂未破位。512660的J值82偏强，存在短期调整风险。</p>
+</div>
+
+<!-- Agent #4: 资金流向 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-blue">Agent #4</span> 资金流向分析师 · 资金面诊断</div>
+<table>
+<tr><th>指标</th><th>512660 军工ETF</th><th>512710 军工龙头ETF</th></tr>
+<tr><td>近5日净流入</td><td style="color:var(--accent)">+600万份 (+0.11%)</td><td style="color:var(--green)">-1.57亿份 (-1.35%)</td></tr>
+<tr><td>OBV趋势</td><td>1.67亿 偏高</td><td>2.69亿 偏低</td></tr>
+<tr><td>AR(人气)</td><td>71.75</td><td>73.70</td></tr>
+<tr><td>BR(意愿)</td><td>56.11</td><td>46.42</td></tr>
+</table>
+<p><strong>研判</strong>：512660近5日小幅净流入，512710净流出明显（-1.35%）。资金面分化显著，市场更青睐跟踪全行业指数的512660。AR/BR指标均处于中性偏低水平，市场情绪不亢奋。资金流向是512660的明确加分项。</p>
+</div>
+
+<!-- ====== PHASE 2 ====== -->
+<div class="phase-header phase-2">Phase 2 · 研究辩论层（3 Agent 串联）</div>
+
+<!-- Agent #5: 多头 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-red">Agent #5</span> 多头研究员 · 看好512660军工ETF</div>
+
+<div class="signal-grid">
+<div class="signal-item signal-bull"><strong>信号1：收益碾压</strong> — 近1年+37.37% vs 29.26%，近3年+26.01% vs 7.44%，收益率全方位领先。3年复利累计差距达18.6个百分点。</div>
+<div class="signal-item signal-bull"><strong>信号2：风险调整收益更优</strong> — 夏普比1.14 vs 0.88，Calmar比1.49 vs 1.15。承担同样的风险，512660的回报显著更高。</div>
+<div class="signal-item signal-bull"><strong>信号3：规模碾压，市场选择</strong> — 规模96.8亿 vs 59.1亿，是全市场最大的军工ETF。规模优势反映市场的一致选择。</div>
+<div class="signal-item signal-bull"><strong>信号4：资金持续流入</strong> — 近5日净流入+600万份，而512710净流出-1.57亿份。资金用脚投票。</div>
+<div class="signal-item signal-bull"><strong>信号5：持仓分散，抗跌性强</strong> — 前5大持仓集中度22.9%，远低于512710的37.9%。全行业覆盖而非押注龙头，回撤更可控。</div>
+</div>
+<p><strong>核心论点</strong>：512660用更低的集中度风险、更高的资金认可度、更强的风险调整收益，全面优于512710。军工板块的不确定性在于个股层面——哪个军工企业能拿到更多订单？512660用分散化解决了这个问题，而512710的集中持仓反而放大了个股风险。</p>
+</div>
+
+<!-- Agent #6: 空头 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-green">Agent #6</span> 空头研究员 · 不可忽视512710的亮点</div>
+
+<div class="signal-grid">
+<div class="signal-item signal-bear"><strong>信号1：3年收益极差是幸存者偏差</strong> — 512710上市虽晚(2019年)，但近3年+7.44%确实差于512660的+26.01%。不过龙头策略在不同周期可能反转——下游订单集中到龙头时，集中持仓反而爆发力更强。</div>
+<div class="signal-item signal-bear"><strong>信号2：资金流出可能是假信号</strong> — 近5日短暂流出不等于趋势逆转。512710日均成交490万手，流动性更优，大资金进出更便利，赎回可能是短期调仓。</div>
+<div class="signal-item signal-bear"><strong>信号3：波动率更高=上行弹性更大</strong> — 年化波动33.27% vs 30.27%，意味着反弹时涨幅可能更大。军工板块受事件驱动，爆发力很重要。</div>
+<div class="signal-item signal-bear"><strong>信号4：龙头指数理论上更优</strong> — 中证军工龙头指数精选行业头部，理论上长期回报应高于全行业平均。3年跑输可能是周期位置问题，而非策略本身缺陷。</div>
+<div class="signal-item signal-bear"><strong>信号5：价格更低=散户友好</strong> — 512710单价0.676元，门槛更低。虽然净值1.28 vs 0.69反映的是累计净值，但低价对散户的心理吸引力不可忽视。</div>
+</div>
+<p><strong>核心论点</strong>：512710的弱势可能是阶段性的。龙头策略在军工板块长期逻辑成立——行业集中度提升、头部公司受益更多。当前的低迷可能是买入时机，而非放弃理由。高波动+龙头集中=反弹时弹性更大。</p>
+</div>
+
+<!-- Agent #7: 研究主管 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-dark">Agent #7</span> 研究主管 · 辩论裁决</div>
+
+<table>
+<tr><th>维度</th><th>512660 得分</th><th>512710 得分</th><th>裁定</th></tr>
+<tr><td>收益表现</td><td style="color:var(--accent)">★★★★★</td><td>★★★</td><td>512660完胜，1年/3年均大幅领先</td></tr>
+<tr><td>风险调整</td><td style="color:var(--accent)">★★★★</td><td>★★★</td><td>夏普/Calmar全面占优</td></tr>
+<tr><td>资金面</td><td style="color:var(--accent)">★★★★</td><td>★★</td><td>净流入 vs 净流出，分野明显</td></tr>
+<tr><td>流动性</td><td>★★★</td><td style="color:var(--accent)">★★★★</td><td>512710日均490万手更活跃</td></tr>
+<tr><td>持仓结构</td><td style="color:var(--accent)">★★★★</td><td>★★★</td><td>分散化降低个股风险</td></tr>
+<tr><td>弹性/爆发力</td><td>★★★</td><td style="color:var(--accent)">★★★★</td><td>高波动+高集中=弹性更大</td></tr>
+<tr style="font-weight:700;background:#fefcf5"><td>综合得分</td><td style="color:var(--accent)">23/30</td><td>19/30</td><td>512660 领先</td></tr>
+</table>
+<p><strong>主管总结</strong>：从历史数据和当前盘面看，512660军工ETF在多维度均占优——收益更高、风险调整更出色、资金认可度更强。但512710的低价和高波动特征，使其在军工板块爆发期弹性可能更大。结论：稳健配置选512660，博弈弹性选512710。两者并非替代关系，而应根据投资风格搭配。</p>
+</div>
+
+<!-- ====== PHASE 3 ====== -->
+<div class="phase-header phase-3">Phase 3 · 交易方案（1 Agent）</div>
+
+<!-- Agent #8 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-red">Agent #8</span> 交易员 · 交易计划</div>
+<table>
+<tr><th>标的</th><th>方向</th><th>入场区间</th><th>止损</th><th>目标</th><th>仓位</th><th>持有期</th></tr>
+<tr><td>512660</td><td style="color:var(--accent)">买入</td><td>1.20-1.25</td><td>1.15</td><td>1.35-1.40</td><td>60%</td><td>1-3月</td></tr>
+<tr><td>512710</td><td style="color:var(--accent)">观察</td><td>0.62-0.66</td><td>0.58</td><td>0.72-0.76</td><td>20%</td><td>1-2月</td></tr>
+</table>
+<p><strong>分批建仓方案（512660）</strong>：<br>① 1.25附近建仓30%（当前价1.267，接近入场区间）<br>② 如回调至1.20加仓20%<br>③ 如突破1.35加仓10%（右侧追入）<br>总仓位上限60%，保留40%现金应对不确定性。</p>
+<p><strong>512710方案</strong>：暂以观察仓(20%)配置于0.65附近。如龙头策略在下一轮订单周期兑现，可提高至30%。</p>
+</div>
+
+<!-- ====== PHASE 4 ====== -->
+<div class="phase-header phase-4">Phase 4 · 风险评估层（2 Agent 串联）</div>
+
+<!-- Agent #9 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-red">Agent #9</span> 风险分析师 · 风险因素</div>
+<table>
+<tr><th>风险因素</th><th>概率</th><th>影响</th><th>等级</th></tr>
+<tr><td>地缘政治缓和，军工需求预期降温</td><td><span class="tag tg-low">低</span></td><td>高</td><td><span class="tag tg-mid">中风险</span></td></tr>
+<tr><td>国防预算增速不及预期</td><td><span class="tag tg-low">低</span></td><td>高</td><td><span class="tag tg-mid">中风险</span></td></tr>
+<tr><td>军工企业业绩分化，个股暴雷拖累ETF</td><td><span class="tag tg-mid">中</span></td><td>中</td><td><span class="tag tg-mid">中风险</span></td></tr>
+<tr><td>市场风格切换，资金撤离军工板块</td><td><span class="tag tg-mid">中</span></td><td>中</td><td><span class="tag tg-mid">中风险</span></td></tr>
+<tr><td>技术面破位，触发量化止损盘</td><td><span class="tag tg-mid">中</span></td><td>中</td><td><span class="tag tg-mid">中风险</span></td></tr>
+</table>
+</div>
+
+<!-- Agent #10 -->
+<div class="agent-block">
+<div class="agent-title"><span class="agent-badge badge-gold">Agent #10</span> 风控主管 · 最终裁决</div>
+
+<div class="verdict-box">
+<div class="big">风险评分：65/100 · 置信度：中高</div>
+<div class="sub">Agent投票：6/8 倾向512660 · 数据完整度折扣：无</div>
+</div>
+
+<table>
+<tr><th>决策</th><th>512660 军工ETF(国泰)</th><th>512710 军工龙头ETF(富国)</th></tr>
+<tr><td>综合评级</td><td><span class="tag tg-bull">HOLD → BUY（回调时）</span></td><td><span class="tag tg-neutral">WAIT（观察）</span></td></tr>
+<tr><td>仓位上限</td><td>60%</td><td>20%</td></tr>
+<tr><td>止损线</td><td>-8%（1.15）</td><td>-12%（0.58）</td></tr>
+<tr><td>加仓条件</td><td>放量突破1.35</td><td>连续3日资金净流入</td></tr>
+</table>
+
+<p><strong>风险评分构成（6维 x 权重）</strong>：</p>
+<table>
+<tr><th>维度</th><th>512660</th><th>512710</th><th>权重</th></tr>
+<tr><td>趋势</td><td>12/20</td><td>10/20</td><td>20%</td></tr>
+<tr><td>动量</td><td>14/20</td><td>12/20</td><td>20%</td></tr>
+<tr><td>估值</td><td>12/20</td><td>12/20</td><td>15%</td></tr>
+<tr><td>情绪(资金)</td><td>14/20</td><td>8/20</td><td>15%</td></tr>
+<tr><td>波动</td><td>8/20</td><td>6/20</td><td>15%</td></tr>
+<tr><td>基本面(费率/持仓)</td><td>13/20</td><td>11/20</td><td>15%</td></tr>
+<tr style="font-weight:700"><td>加权总分</td><td style="color:var(--accent)">12.0/20</td><td>9.9/20</td><td>—</td></tr>
+</table>
+
+<p><strong>置信度计算</strong>：Agent一致数 6/8 → 基础置信度75% → 数据完整（无缺失扣分） → 最终置信度：中高。<br>
+<span class="no-indent" style="font-size:10px;color:var(--muted)">⚠️ Agent指数据分析模块，非独立大语言模型。趋势/动量/估值/情绪/波动/基本面 6维评分基于API数据量化计算。</span></p>
+</div>
+
+<!-- ====== SUMMARY ====== -->
+<div class="agent-block" style="border:2px solid var(--primary);background:#fafafa">
+<h3 style="margin-top:0;border-bottom:2px solid var(--primary);padding-bottom:8px">总结对比表</h3>
+<table>
+<tr><th>维度</th><th>512660 军工ETF(国泰)</th><th>512710 军工龙头ETF(富国)</th></tr>
+<tr><td>规模</td><td style="color:var(--accent);font-weight:700">96.8亿</td><td>59.1亿</td></tr>
+<tr><td>费率</td><td>0.60%</td><td>0.60%</td></tr>
+<tr><td>近1年收益</td><td style="color:var(--accent);font-weight:700">+37.37%</td><td>+29.26%</td></tr>
+<tr><td>近3年收益</td><td style="color:var(--accent);font-weight:700">+26.01%</td><td>+7.44%</td></tr>
+<tr><td>年化波动</td><td style="color:var(--accent);font-weight:700">30.27%</td><td>33.27%</td></tr>
+<tr><td>夏普比</td><td style="color:var(--accent);font-weight:700">1.14</td><td>0.88</td></tr>
+<tr><td>Calmar比</td><td style="color:var(--accent);font-weight:700">1.49</td><td>1.15</td></tr>
+<tr><td>最大回撤</td><td style="color:var(--accent);font-weight:700">-25.15%</td><td>-25.54%</td></tr>
+<tr><td>跟踪误差</td><td>0.05%</td><td>0.05%</td></tr>
+<tr><td>近5日净流入</td><td style="color:var(--accent);font-weight:700">+0.11%</td><td style="color:var(--green)">-1.35%</td></tr>
+<tr><td>日均成交</td><td>250万手</td><td style="color:var(--accent);font-weight:700">490万手</td></tr>
+<tr><td>持仓集中度(TOP5)</td><td style="color:var(--green);font-weight:700">22.9%</td><td>37.9%</td></tr>
+</table>
+<p style="font-size:12px;color:var(--muted)">表中红色加粗=该维度更优。持仓集中度越低越分散，用绿色标注。</p>
+</div>
+
+<h3>核心结论</h3>
+<p><strong>两只ETF虽然名字都带"军工"，但却跟踪不同的指数</strong>——512660跟踪中证军工指数（全行业覆盖，分散化），512710跟踪中证军工龙头指数（精选头部，集中持仓）。这一差异导致了巨大的业绩分化：3年累计差距达18.6个百分点。</p>
+<p><strong>选择建议</strong>：追求稳健、长期配置 → 512660（收益更高、风险更可控、资金认可度强）；博弈军工板块爆发、接受更高波动 → 512710（龙头集中+低单价=弹性更大）。两者可搭配配置，比例建议7:3。</p>
+
+<div class="footer">
+<p>⚠️ 本文仅供研究参考，不构成投资建议。数据截止2026年6月16日。</p>
+<p>数据来源：ETF工具快照 v2026-06-16 + westock-data（行情/K线/技术） + Wind MCP</p>
+<p>© 2026 卡比兽比卡 · 用数据，辨真相</p>
+</div>
+
+</div>
+
+<!-- ====== SCRIPTS ====== -->
+<script>
+// OHLC data
+const o1 = [["05-07",1.43,1.45,1.43,1.45],["05-08",1.44,1.48,1.43,1.47],["05-11",1.48,1.50,1.47,1.48],["05-12",1.48,1.49,1.45,1.47],["05-13",1.46,1.49,1.46,1.49],["05-14",1.49,1.49,1.42,1.42],["05-15",1.42,1.43,1.38,1.39],["05-18",1.37,1.40,1.37,1.38],["05-19",1.38,1.38,1.34,1.38],["05-20",1.37,1.38,1.36,1.37],["05-21",1.38,1.40,1.34,1.34],["05-22",1.34,1.36,1.34,1.36],["05-25",1.37,1.38,1.35,1.38],["05-26",1.37,1.37,1.33,1.35],["05-27",1.35,1.37,1.32,1.32],["05-28",1.32,1.35,1.32,1.34],["05-29",1.35,1.35,1.28,1.28],["06-01",1.28,1.30,1.27,1.27],["06-02",1.27,1.28,1.24,1.27],["06-03",1.26,1.29,1.26,1.27],["06-04",1.26,1.29,1.26,1.28],["06-05",1.28,1.30,1.26,1.27],["06-08",1.25,1.27,1.21,1.22],["06-09",1.23,1.24,1.21,1.24],["06-10",1.23,1.24,1.21,1.22],["06-11",1.21,1.23,1.20,1.22],["06-12",1.24,1.28,1.24,1.25],["06-15",1.25,1.27,1.24,1.27],["06-16",1.267,1.276,1.26,1.267]];
+const o2 = [["05-07",0.79,0.79,0.78,0.79],["05-08",0.79,0.82,0.78,0.81],["05-11",0.82,0.83,0.82,0.82],["05-12",0.82,0.83,0.80,0.81],["05-13",0.80,0.82,0.80,0.81],["05-14",0.81,0.82,0.77,0.77],["05-15",0.77,0.78,0.75,0.75],["05-18",0.75,0.77,0.75,0.75],["05-19",0.75,0.75,0.74,0.75],["05-20",0.75,0.75,0.74,0.75],["05-21",0.75,0.76,0.73,0.73],["05-22",0.74,0.74,0.73,0.74],["05-25",0.74,0.75,0.73,0.75],["05-26",0.74,0.74,0.72,0.73],["05-27",0.73,0.74,0.71,0.71],["05-28",0.71,0.73,0.71,0.72],["05-29",0.72,0.72,0.69,0.69],["06-01",0.69,0.70,0.69,0.69],["06-02",0.69,0.69,0.67,0.68],["06-03",0.68,0.70,0.68,0.69],["06-04",0.68,0.69,0.68,0.69],["06-05",0.69,0.70,0.68,0.69],["06-08",0.68,0.69,0.66,0.66],["06-09",0.66,0.67,0.65,0.67],["06-10",0.66,0.67,0.65,0.66],["06-11",0.65,0.66,0.64,0.65],["06-12",0.66,0.69,0.66,0.68],["06-15",0.67,0.68,0.66,0.68],["06-16",0.677,0.681,0.672,0.676]];
+
+function drawCandle(canvasId, ohlcData) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const pad = {top:25, right:45, bottom:35, left:35};
+  const pw = W - pad.left - pad.right;
+  const ph = H - pad.top - pad.bottom;
+  
+  const highs = ohlcData.map(d=>d[2]), lows = ohlcData.map(d=>d[3]);
+  let yMin = Math.floor(Math.min(...lows) * 0.98 * 100) / 100;
+  let yMax = Math.ceil(Math.max(...highs) * 1.02 * 100) / 100;
+  const candleW = Math.max(Math.min((pw-2)/ohlcData.length - 0.5, 6), 1.5);
+  
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
+  
+  // Grid
+  ctx.strokeStyle='#eee'; ctx.lineWidth=0.5;
+  for (let i=0; i<=4; i++) {
+    const y = pad.top + (ph * i / 4);
+    ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(W-pad.right,y); ctx.stroke();
+    const val = yMax - (yMax-yMin) * i / 4;
+    ctx.fillStyle='#888'; ctx.font='9px sans-serif'; ctx.textAlign='right';
+    ctx.fillText(val.toFixed(val<1?3:2), pad.left-4, y+3);
+  }
+  
+  // Candles
+  ohlcData.forEach((d,i)=>{
+    const x = pad.left + i*pw/ohlcData.length + (pw/ohlcData.length - candleW)/2;
+    const o = d[1], h = d[2], l = d[3], c = d[4];
+    const yo = pad.top + ph*(yMax-o)/(yMax-yMin);
+    const yc = pad.top + ph*(yMax-c)/(yMax-yMin);
+    const yh = pad.top + ph*(yMax-h)/(yMax-yMin);
+    const yl = pad.top + ph*(yMax-l)/(yMax-yMin);
+    
+    const isRed = c >= o;
+    ctx.strokeStyle = isRed ? '#c41230' : '#1a7a3a';
+    ctx.fillStyle = isRed ? '#c41230' : '#1a7a3a';
+    ctx.lineWidth = 1;
+    
+    // Wick
+    ctx.beginPath(); ctx.moveTo(x+candleW/2, yh); ctx.lineTo(x+candleW/2, yl); ctx.stroke();
+    
+    // Body
+    const bodyTop = isRed ? yc : yo;
+    const bodyH = Math.max(1, Math.abs(yc-yo));
+    ctx.fillRect(x, bodyTop, candleW, bodyH);
+    
+    // X label every 5
+    if (i%5===0) {
+      ctx.fillStyle='#333'; ctx.font='bold 9px sans-serif'; ctx.textAlign='center';
+      ctx.fillText(d[0].slice(5), x+candleW/2, H-8);
+    }
+  });
+}
+
+// Chart.js returns chart
+new Chart(document.getElementById('retChart'), {
+  type:'bar',
+  data:{
+    labels:['5日','20日','60日','YTD'],
+    datasets:[
+      {label:'512660 军工ETF',data:[0.27,-2.52,-3.85,-1.50],backgroundColor:['#c41230','#c41230','#c41230','#c41230']},
+      {label:'512710 军工龙头ETF',data:[0.32,-3.17,-6.52,-3.10],backgroundColor:['#e74c3c','#e74c3c','#e74c3c','#e74c3c']}
+    ]
+  },
+  options:{
+    responsive:true,
+    scales:{
+      y:{position:'right',title:{display:true,text:'%'},grid:{drawBorder:false}},
+      x:{position:'top',grid:{display:false}}
+    },
+    plugins:{
+      legend:{position:'bottom',labels:{usePointStyle:true,padding:20}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.raw+'%'}},
+      afterDraw:(chart,args,opts)=>{
+        const ctx=chart.ctx;chart.data.datasets.forEach((ds,i)=>{
+          const meta=chart.getDatasetMeta(i);
+          meta.data.forEach((bar,idx)=>{
+            if (!bar) return;
+            const val=chart.data.datasets[i].data[idx];
+            if (val===null||val===undefined) return;
+            ctx.fillStyle=val>=0?'#c41230':'#1a7a3a';
+            ctx.font='bold 10px sans-serif'; ctx.textAlign='center';
+            ctx.textBaseline=val>=0?'bottom':'top';
+            ctx.fillText(val.toFixed(2)+'%',bar.x,val>=0?bar.y-2:bar.y+2);
+          });
+        });
+      }
+    }
+  }
+});
+
+// Draw candles
+window.addEventListener('load',()=>{
+  drawCandle('kl660', o1);
+  drawCandle('kl710', o2);
+});
+</script>
+</body>
+</html>
