@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>腾讯元器 ETF 对比 Agent 配置指南</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  padding: 24px;
+}
+h1 { text-align: center; font-size: 22px; margin-bottom: 4px; color: #1a1a2e; }
+h1 small { display: block; font-size: 13px; color: #999; font-weight: normal; margin-top: 4px; }
+h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e8e8e8;
+  color: #1a1a2e;
+}
+.container { max-width: 1000px; margin: 0 auto; }
+
+/* Workflow flow */
+.flow { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px 0 32px; }
+.flow-node {
+  background: #fff;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 100px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.flow-node.start { background: #e6f7ff; border-color: #1677ff; color: #1677ff; }
+.flow-node.api { background: #fff7e6; border-color: #fa8c16; color: #d46b08; }
+.flow-node.reply { background: #f6ffed; border-color: #52c41a; color: #389e0d; }
+.flow-arrow { font-size: 20px; color: #999; font-weight: bold; }
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.card.start-card { border-left: 4px solid #1677ff; }
+.card.api-card { border-left: 4px solid #fa8c16; }
+.card.reply-card { border-left: 4px solid #52c41a; }
+
+/* Form fields */
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 4px;
+}
+.field .input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+  background: #fafafa;
+}
+.field .input.readonly { background: #f5f5f5; color: #666; cursor: default; }
+.field .hint { font-size: 12px; color: #999; margin-top: 3px; }
+
+/* Table */
+.config-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+.config-table th, .config-table td {
+  border: 1px solid #e8e8e8;
+  padding: 9px 12px;
+  text-align: left;
+}
+.config-table th { background: #fafafa; font-weight: 600; color: #555; font-size: 12px; }
+.config-table td { font-family: "SF Mono", Monaco, "Cascadia Code", monospace; font-size: 12px; }
+.config-table td.mono { color: #1677ff; }
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag.input { background: #e6f7ff; color: #1677ff; }
+.tag.ref { background: #fff7e6; color: #d46b08; }
+.tag.fixed { background: #f5f5f5; color: #666; }
+
+/* Reply preview */
+.reply-preview {
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.reply-preview .var {
+  background: #fff7e6;
+  color: #d46b08;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 12px;
+}
+
+/* Step indicator */
+.step { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; font-weight: 700; color: #fff; margin-right: 8px; }
+.step-1 { background: #1677ff; }
+.step-2 { background: #fa8c16; }
+.step-3 { background: #52c41a; }
+
+/* Highlight box */
+.highlight-box {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #8c6900;
+}
+.highlight-box strong { color: #d46b08; }
+
+/* arrow marker */
+.mark-area {
+  position: relative;
+}
+.mark-area::before {
+  content: "▶";
+  position: absolute;
+  left: -22px;
+  top: 2px;
+  color: #1677ff;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>腾讯元器 ETF 对比 Agent · 完整配置指南<small>3 个节点逐一填写，对照操作即可</small></h1>
+
+<!-- Flow -->
+<div class="flow">
+  <div class="flow-node start">⏵ 开始</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node api">🔌 API 节点</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node reply">💬 回复</div>
+</div>
+
+<!-- ======= NODE 1: 开始节点 ======= -->
+<div class="card start-card">
+  <h2><span class="step step-1">1</span> 开始节点 — 定义输入变量</h2>
+  <p style="font-size:13px;color:#999;margin-bottom:14px;">不需要改任何代码，只需要声明两个输入变量</p>
+
+  <table class="config-table">
+    <tr>
+      <th>位置</th>
+      <th>填入内容</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>节点名称</td>
+      <td class="mono">开始</td>
+      <td>或填"用户输入"</td>
+    </tr>
+    <tr>
+      <td>节点描述</td>
+      <td>用户输入两只 ETF 代码</td>
+      <td>备忘用</td>
+    </tr>
+    <tr>
+      <td>输入变量 ①</td>
+      <td class="mono">etf_code1</td>
+      <td>第一只 ETF 代码，类型选 String</td>
+    </tr>
+    <tr>
+      <td>输入变量 ②</td>
+      <td class="mono">etf_code2</td>
+      <td>第二只 ETF 代码，类型选 String</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box">
+    <strong>💡 提示：</strong>变量名必须叫 <code>etf_code1</code> 和 <code>etf_code2</code>（全小写），不然 API 收不到。
+  </div>
+</div>
+
+<!-- ======= NODE 2: API 节点 ======= -->
+<div class="card api-card">
+  <h2><span class="step step-2">2</span> API 节点 — 调用 ETF 对比接口</h2>
+  <p style="font-size:13px;color:#999;margin-bottom:14px;">这是核心节点，需要填 4 个区域</p>
+
+  <!-- 基本信息 -->
+  <table class="config-table">
+    <tr><th>位置</th><th>填入内容</th><th>说明</th></tr>
+    <tr><td>节点名称</td><td class="mono">ETF对比接口</td><td>⚠️ 记住这个名字，回复节点要用</td></tr>
+    <tr><td>节点描述</td><td>获取两只 ETF 核心对比指标</td><td>备忘用</td></tr>
+    <tr><td>接口链接</td><td class="mono">https://froza.pythonanywhere.com/api/compare</td><td>固定写死</td></tr>
+    <tr><td>请求方式</td><td class="mono">POST</td><td>必须 POST</td></tr>
+    <tr><td>调用方式</td><td class="mono">非流式</td><td>等完整响应</td></tr>
+    <tr><td>授权方式</td><td class="mono">无需授权</td><td>当前无鉴权</td></tr>
+  </table>
+
+  <!-- Header -->
+  <table class="config-table" style="margin-top:20px;">
+    <tr>
+      <th colspan="3" style="background:#fff7e6;color:#d46b08;">Header 区域</th>
+    </tr>
+    <tr>
+      <td style="width:25%">Content-Type</td>
+      <td style="width:30%" class="mono">application/json</td>
+      <td style="width:45%"><span class="tag fixed">输入固定值</span> 直接手打</td>
+    </tr>
+    <tr>
+      <td colspan="3" style="color:#999;font-size:12px;">
+        ✅ 其余所有行留空，不要加 etf_code1、etf_code2
+      </td>
+    </tr>
+  </table>
+
+  <!-- Body -->
+  <table class="config-table" style="margin-top:20px;">
+    <tr>
+      <th colspan="4" style="background:#fff7e6;color:#d46b08;">Body 区域 — 选 JSON 格式</th>
+    </tr>
+    <tr>
+      <th>参数名</th>
+      <th>参数值</th>
+      <th>数据来源</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td class="mono">etf_code1</td>
+      <td class="mono">{{开始.etf_code1}}</td>
+      <td><span class="tag ref">引用</span></td>
+      <td>从开始节点拿第一只 ETF 代码</td>
+    </tr>
+    <tr>
+      <td class="mono">etf_code2</td>
+      <td class="mono">{{开始.etf_code2}}</td>
+      <td><span class="tag ref">引用</span></td>
+      <td>从开始节点拿第二只 ETF 代码</td>
+    </tr>
+    <tr>
+      <td colspan="4" style="color:#999;font-size:12px;">
+        ⚠️ 数据来源必须选 <strong>"引用"</strong>，然后选开始节点的变量。不能选"输入固定值"。
+      </td>
+    </tr>
+  </table>
+
+  <!-- Query -->
+  <table class="config-table" style="margin-top:20px;">
+    <tr>
+      <th colspan="2" style="background:#fff7e6;color:#d46b08;">Query 区域</th>
+    </tr>
+    <tr>
+      <td colspan="2" style="color:#999;font-size:12px;">✅ 留空，一行都不加</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box">
+    <strong>⚠️ 关键：</strong>Body 区域里 etf_code1 和 etf_code2 的数据来源是 <strong>"引用"</strong>（不是输入固定值），引用的变量是开始节点的 <code>etf_code1</code> 和 <code>etf_code2</code>。
+  </div>
+</div>
+
+<!-- ======= NODE 3: 回复节点 ======= -->
+<div class="card reply-card">
+  <h2><span class="step step-3">3</span> 回复节点 — 展示对比结果</h2>
+  <p style="font-size:13px;color:#999;margin-bottom:14px;">把 API 返回的数据展示给用户</p>
+
+  <table class="config-table">
+    <tr><th>位置</th><th>填入内容</th><th>说明</th></tr>
+    <tr><td>节点名称</td><td class="mono">回复</td><td>随便填</td></tr>
+  </table>
+
+  <p style="font-size:13px;color:#555;margin-top:16px;margin-bottom:8px;font-weight:600;">
+    回复内容 — 把下面这段完整复制到回复编辑框里：
+  </p>
+
+  <div class="reply-preview">📊 <b>{{<span class="var">ETF对比接口.body.etf1.name</span>}} vs {{<span class="var">ETF对比接口.body.etf2.name</span>}}</b> 对比
+
+| 指标 | ① | ② |
+|------|------|------|
+| 代码 | {{<span class="var">ETF对比接口.body.etf1.code</span>}} | {{<span class="var">ETF对比接口.body.etf2.code</span>}} |
+| 规模（亿） | {{<span class="var">ETF对比接口.body.etf1.scale_yi</span>}} | {{<span class="var">ETF对比接口.body.etf2.scale_yi</span>}} |
+| 费率（%） | {{<span class="var">ETF对比接口.body.etf1.fee_total</span>}} | {{<span class="var">ETF对比接口.body.etf2.fee_total</span>}} |
+| 近 1 年收益（%） | {{<span class="var">ETF对比接口.body.etf1.year_1_return</span>}} | {{<span class="var">ETF对比接口.body.etf2.year_1_return</span>}} |
+| 夏普比率 | {{<span class="var">ETF对比接口.body.etf1.sharpe_ratio</span>}} | {{<span class="var">ETF对比接口.body.etf2.sharpe_ratio</span>}} |
+| 最大回撤（%） | {{<span class="var">ETF对比接口.body.etf1.max_drawdown</span>}} | {{<span class="var">ETF对比接口.body.etf2.max_drawdown</span>}} |
+| 跟踪指数 | {{<span class="var">ETF对比接口.body.etf1.track_index</span>}} | {{<span class="var">ETF对比接口.body.etf2.track_index</span>}} |</div>
+
+  <div class="highlight-box" style="margin-top:16px;">
+    <strong>⚠️ 关键：</strong>所有变量里"ETF对比接口"这是 API 节点的名称。<br>
+    如果你的 API 节点叫别的名字，用 Ctrl+F 把"ETF对比接口"替换成你 API 节点的名字。
+  </div>
+</div>
+
+<!-- === 检查清单 === -->
+<div class="card" style="border-left:4px solid #333;">
+  <h2>✅ 最终自查清单</h2>
+  <table class="config-table">
+    <tr><th>#</th><th>检查项</th></tr>
+    <tr><td>1</td><td>PA 上已 <code>git reset --hard origin/main</code> + Web Reload</td></tr>
+    <tr><td>2</td><td>开始节点两个变量叫 <code>etf_code1</code>、<code>etf_code2</code></td></tr>
+    <tr><td>3</td><td>API 节点 Body 里数据来源选了"引用"（不是输入固定值）</td></tr>
+    <tr><td>4</td><td>回复节点里"ETF对比接口"是 API 节点的实际名称</td></tr>
+    <tr><td>5</td><td>Header 里只保留 <code>Content-Type: application/json</code></td></tr>
+    <tr><td>6</td><td>先点 API 节点"调试"按钮，确认返回 200 后再跑整个流程</td></tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>
