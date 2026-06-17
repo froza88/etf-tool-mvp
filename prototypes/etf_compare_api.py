@@ -31,6 +31,7 @@ def compare():
         data = {}
     code1 = str(data.get('etf_code1', '')).strip()
     code2 = str(data.get('etf_code2', '')).strip()
+    fmt = data.get('format', 'json')  # json 或 text
     if not code1 or not code2:
         return jsonify({"error": "请提供 etf_code1 和 etf_code2"}), 400
     e1, e2 = DB.get(code1), DB.get(code2)
@@ -38,9 +39,9 @@ def compare():
         return jsonify({"error": f"未找到: {[c for c in [code1,code2] if not DB.get(c)]}"}), 404
 
     # 生成 markdown 格式化文本
-    def safe(val, fmt="{}"):
+    def safe(val, fmt_str="{}"):
         if val is None: return "暂无"
-        return fmt.format(val)
+        return fmt_str.format(val)
 
     markdown = f"""📊 **{e1['name']}** vs **{e2['name']}**
 
@@ -56,6 +57,8 @@ def compare():
 | 最大回撤（%） | {safe(e1['max_drawdown'])} | {safe(e2['max_drawdown'])} |
 | 跟踪指数 | {e1['track_index']} | {e2['track_index']} |"""
 
+    if fmt == 'text':
+        return markdown, 200, {'Content-Type': 'text/plain; charset=utf-8'}
     return jsonify({"etf1": e1, "etf2": e2, "text": markdown})
 
 @app.route('/api/search')
