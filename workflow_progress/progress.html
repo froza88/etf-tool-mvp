@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="5">
+<title>军工ETF vs 军工龙头ETF 文章写作进度</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;background:#f5f7fa;color:#333;padding:20px}
+.header{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:30px;border-radius:12px;margin-bottom:30px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.header h1{font-size:24px;margin-bottom:10px}
+.progress-bar{background:rgba(255,255,255,.3);height:24px;border-radius:12px;margin-top:15px;overflow:hidden}
+.progress-fill{height:100%;background:#3498db;transition:width .5s;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold}
+.meta{display:flex;gap:30px;margin-top:15px;font-size:14px;opacity:.9}
+.stages{display:grid;grid-template-columns:1fr;gap:15px;margin-bottom:30px}
+.stage-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:4px solid #bdc3c7;transition:all .3s}
+.stage-card.completed{border-left-color:#27ae60}
+.stage-card.in-progress{border-left-color:#3498db;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 2px 8px rgba(52,152,219,.3)}50%{box-shadow:0 4px 16px rgba(52,152,219,.6)}}
+.stage-title{font-size:16px;font-weight:600}
+.status-completed{color:#27ae60}.status-in-progress{color:#3498db}.status-pending{color:#95a5a6}
+.stage-criteria{font-size:13px;color:#7f8c8d;margin-bottom:8px}
+.stage-time{font-size:11px;color:#95a5a6;margin-top:5px}
+.dialogue-log{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.dialogue-log h2{font-size:16px;margin-bottom:15px}
+.log-entry{padding:10px;border-bottom:1px solid #ecf0f1;font-size:13px}
+.log-role-ai{color:#3498db;font-weight:600}
+.auto-refresh{position:fixed;bottom:20px;right:20px;background:#e74c3c;color:#fff;padding:10px 20px;border-radius:20px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>军工ETF vs 军工龙头ETF</h1>
+<div class="progress-bar"><div class="progress-fill" style="width:0%">0%</div></div>
+<div class="meta">
+<span>512660 vs 512710</span>
+<span>0/7</span>
+<span>预计约105分钟</span>
+</div>
+</div>
+<div class="stages">
+<div class="stage-card in-progress">
+<div class="stage-title">阶段1：数据采集</div>
+<div class="stage-criteria">从ETF对比工具获取512660+512710完整数据</div>
+<div class="stage-time">进行中 · 预计20分钟</div>
+</div>
+<div class="stage-card"><div class="stage-title">阶段2-7：等待中</div><div class="stage-criteria">数据审查完成后继续</div></div>
+</div>
+<div class="dialogue-log">
+<h2>对话记录</h2>
+<div class="log-entry"><span class="log-role-ai">AI:</span> 7个阶段已创建。开始执行阶段1（数据采集）？</div>
+</div>
+<div class="auto-refresh">自动刷新5s</div>
+<script>setInterval(()=>{const n=new Date();document.querySelector('.auto-refresh').textContent='刷新 '+n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0')+':'+n.getSeconds().toString().padStart(2,'0')},1e3)</script>
+</body>
+</html>
