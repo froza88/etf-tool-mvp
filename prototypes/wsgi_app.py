@@ -78,6 +78,32 @@ def api_enrich():
     })
 
 
+@app.route('/api/compare', methods=['POST', 'GET', 'OPTIONS'])
+def api_compare():
+    if request.method == 'OPTIONS':
+        return jsonify({})
+    data = request.get_json(silent=True) if request.method == 'POST' else request.args
+    if not data:
+        data = {}
+    code1 = str(data.get('etf_code1', '')).strip()
+    code2 = str(data.get('etf_code2', '')).strip()
+    if not code1 or not code2:
+        return jsonify({"error": "请提供 etf_code1 和 etf_code2"}), 400
+
+    # 加载 ETF 数据
+    db_file = os.path.join(BASE_DIR, 'etf_data.json')
+    if not os.path.exists(db_file):
+        return jsonify({"error": "数据文件不存在"}), 500
+    with open(db_file) as f:
+        db = json.load(f)
+
+    e1, e2 = db.get(code1), db.get(code2)
+    if not e1 or not e2:
+        missing = [c for c in [code1, code2] if not db.get(c)]
+        return jsonify({"error": f"未找到: {missing}"}), 404
+    return jsonify({"etf1": e1, "etf2": e2})
+
+
 @app.route('/api/health')
 def api_health():
     return jsonify({"status": "ok", "time": time.strftime("%Y-%m-%d %H:%M:%S")})
