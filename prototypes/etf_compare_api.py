@@ -56,7 +56,7 @@ def compare():
 | 最大回撤（%） | {safe(e1['max_drawdown'])} | {safe(e2['max_drawdown'])} |
 | 跟踪指数 | {e1['track_index']} | {e2['track_index']} |"""
 
-    return jsonify({"etf1": e1, "etf2": e2, "markdown": markdown})
+    return jsonify({"etf1": e1, "etf2": e2, "text": markdown})
 
 @app.route('/api/search')
 def search():
