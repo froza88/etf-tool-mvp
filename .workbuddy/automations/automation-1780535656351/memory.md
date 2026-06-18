@@ -104,6 +104,27 @@
 
 **部署**：git push 成功，PA 同步失败（404）
 
+## 2026-06-18 03:55
+
+**补充前**：1511 ETF | 34 字段 | ≥90% 覆盖: 23/34（<29，触发补充）
+
+**执行补充**：
+- 从修复数据库补充 12 字段：listing_date(962), wind_code(962), short_name(962), invest_type(957), tracking_error(753), nav(460), year_1_return(318), change_pct(52), year_3_return(19), sharpe_ratio(4), fund_manager(1), volume(1)
+- 从 Wind 缓存（1473 只）补充 10 字段：fund_manager(1451), wind_code(511), short_name(511), listing_date(509), invest_type(506), nav(28), year_3_return(6), sharpe_ratio(1), annual_vol(1), max_drawdown(1)
+- 从 etf_wind_data.json（1 只）补充：nav(1), tracking_error(1)
+
+**补充后**：1511 ETF | 40 字段 | ≥90% 覆盖: 29/40 ✅
+
+**Wind 缓存**：1473/1511，缺失 38 只（<100，无需告警）
+
+**输出文件**：
+- etf_standard_data.json (1,830,894 bytes)
+- etf_data_generated.json (1,058,198 bytes)
+- etf_completeness_report.html (753,841 bytes)
+- ETF_工具MVP_完整版本清单.md (351 个版本)
+
+**部署**：git push 成功，PA 同步失败（404）
+
 ## 2026-06-16 03:55
 
 **补充前**：1510 ETF | 34 字段 | ≥90% 覆盖: 23/34（<29，触发补充）

@@ -13658,9 +13658,11 @@
     "annual_vol": 31.96
   },
   "159160": {
-    "max_drawdown": -9.08,
-    "sharpe_ratio": 2.49,
-    "annual_vol": 34.71
+    "year_1_return": null,
+    "year_3_return": null,
+    "max_drawdown": -10.35,
+    "sharpe_ratio": 0.59,
+    "annual_vol": 33.05
   },
   "562030": {
     "year_1_return": 22.44,
@@ -20932,9 +20934,11 @@
     "annual_vol": 16.58
   },
   "589180": {
+    "year_1_return": null,
+    "year_3_return": null,
     "max_drawdown": -16.41,
-    "sharpe_ratio": 2.43,
-    "annual_vol": 30.98
+    "sharpe_ratio": 2.3,
+    "annual_vol": 31.57
   },
   "560990": {
     "year_1_return": 48.4,
