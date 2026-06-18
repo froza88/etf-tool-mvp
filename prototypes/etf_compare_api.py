@@ -53,6 +53,31 @@ def compare():
         sign = "+" if val > 0 else ""
         return f"{sign}{val}%"
 
+    def vol(val):
+        """成交量格式化：万手"""
+        if val is None:
+            return "—"
+        v = int(val / 10000)
+        if v >= 10000:
+            return f"{v/10000:.1f}亿手"
+        return f"{v}万手"
+
+    def name_display(e):
+        """显示名称：优先全称，否则 简称+公司"""
+        fn = e.get('full_name') or e.get('short_name')
+        if fn:
+            return fn
+        return f"{s(e.get('name'))}·{s(e.get('issuer'))}"
+
+    def hld_fmt(holdings):
+        """持仓格式化：去掉%%并缩略"""
+        items = []
+        for h in (holdings or [])[:5]:
+            n = h.get('name', '')
+            w = str(h.get('weight', '')).replace('%', '')
+            items.append(f"{n} {w}%")
+        return "  ".join(items)
+
     # 等号：数据矩阵，不做⭐标记
     def cell_a(val, unit="", default="—"):
         return s(val, unit, default)
@@ -64,7 +89,7 @@ def compare():
 
     # 一、基本画像
     profile_rows = []
-    profile_rows.append(f"| 全称 | {s(e1.get('name'))} | {s(e2.get('name'))} |")
+    profile_rows.append(f"| 全称 | {name_display(e1)} | {name_display(e2)} |")
     profile_rows.append(f"| 代码 | {code1} | {code2} |")
     profile_rows.append(f"| 管理公司 | {s(e1.get('issuer'))} | {s(e2.get('issuer'))} |")
     profile_rows.append(f"| 基金规模 | {cell_a(e1.get('scale_yi'), '亿')} | {cell_b(e2.get('scale_yi'), '亿')} |")
@@ -79,7 +104,7 @@ def compare():
     perf_rows.append(f"| 近1年收益 | {pct(e1.get('year_1_return'))} | {pct(e2.get('year_1_return'))} |")
     perf_rows.append(f"| 近3年累计 | {pct(e1.get('year_3_return'))} | {pct(e2.get('year_3_return'))} |")
     perf_rows.append(f"| 近3年年化 | {pct(e1.get('annual_3y'))} | {pct(e2.get('annual_3y'))} |")
-    perf_rows.append(f"| 日成交量 | {cell_a(e1.get('volume'), '万手')} | {cell_b(e2.get('volume'), '万手')} |")
+    perf_rows.append(f"| 日成交量 | {vol(e1.get('volume'))} | {vol(e2.get('volume'))} |")
 
     # 三、风险指标
     risk_rows = []
@@ -93,8 +118,8 @@ def compare():
     # 四、前5大持仓
     h1 = e1.get('holdings', [])
     h2 = e2.get('holdings', [])
-    h1_str = "  ".join([f"{h.get('name','')} {h.get('weight','')}%" for h in h1[:5]])
-    h2_str = "  ".join([f"{h.get('name','')} {h.get('weight','')}%" for h in h2[:5]])
+    h1_str = hld_fmt(h1)
+    h2_str = hld_fmt(h2)
 
     # 计算共同持仓
     common = set()
@@ -108,7 +133,7 @@ def compare():
     hold_rows.append(f"| TOP10共同持仓 | {'、'.join(common) if common else '无'} | — |")
 
     # ── 拼装输出 ──
-    markdown = f"""📊 **{s(e1.get('name'))} vs {s(e2.get('name'))}**
+    markdown = f"""📊 **{name_display(e1)} vs {name_display(e2)}**
 > {code1} · {s(e1.get('issuer'))}   |   {code2} · {s(e2.get('issuer'))}   |   数据截止 06-18 收盘
 
 ## 一、基本画像
