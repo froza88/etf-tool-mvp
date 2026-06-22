@@ -109,7 +109,7 @@ header h1{font-size:22px;margin-bottom:4px;color:var(--red)}
 // ============================================================
 // 实时时钟
 // ============================================================
-function tick(){const n=new Date();document.getElementById('liveClock').textContent=n.toLocaleTimeString('zh-CN',{hour12:false});}
+function tick(){const n=new Date();document.getElementById('liveClock').textContent=n.toLocaleDateString('zh-CN')+' '+n.toLocaleTimeString('zh-CN',{hour12:false});}
 tick();setInterval(tick,1000);
 
 // ============================================================
