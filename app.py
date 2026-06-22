@@ -669,12 +669,8 @@ def v2_test():
     """v2 测试页"""
     return send_from_directory(ROOT / 'v2' / 'frontend', 'test.html')
 
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, use_reloader=False, host='0.0.0.0', port=port)
-
-
-@app.route('/v2')
-def v2_frontend():
-    """v2 前端（动态版）"""
-    return send_from_directory(ROOT / 'v2' / 'frontend', 'index_local.html')
