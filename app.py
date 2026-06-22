@@ -1,6 +1,6 @@
 """
-ETF 工具 Web 应用 — 方案C 简化版
-架构：每日快照（首页列表）+ 实时聚合（对比页）
+ETF 工具 Web 应用 — v2 动态版
+架构：PA API（内存缓存）+ EdgeOne CDN（静态前端）
 """
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from datetime import datetime, timedelta
@@ -9,8 +9,64 @@ import json
 import os
 import sys
 from pathlib import Path
+from functools import wraps
 
 app = Flask(__name__)
+
+# ============================================================
+#  CORS 支持（EdgeOne 前端调 PA API 需要）
+# ============================================================
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
+@app.before_request
+def handle_options():
+    if request.method == 'OPTIONS':
+        return '', 200
+
+# ============================================================
+#  内存缓存（P0 核心：降低 PA CPU 消耗）
+# ============================================================
+
+_cache = {}
+_cache_timeout = {}
+
+def cached(timeout_seconds=3600):
+    """内存缓存装饰器"""
+    def decorator(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            key = f.__name__ + str(args) + str(kwargs)
+            now = datetime.now().timestamp()
+            if key in _cache and now - _cache_timeout.get(key, 0) < timeout_seconds:
+                return _cache[key]
+            result = f(*args, **kwargs)
+            _cache[key] = result
+            _cache_timeout[key] = now
+            return result
+        return wrapper
+    return decorator
+
+def clear_cache(prefix=None):
+    """清空缓存（可选按前缀）"""
+    global _cache, _cache_timeout
+    if prefix:
+        keys_to_remove = [k for k in _cache.keys() if k.startswith(prefix)]
+        for k in keys_to_remove:
+            _cache.pop(k, None)
+            _cache_timeout.pop(k, None)
+    else:
+        _cache.clear()
+        _cache_timeout.clear()
+
+# ============================================================
+#  响应头（禁用浏览器缓存，用服务端缓存）
+# ============================================================
 
 @app.after_request
 def add_no_cache_header(response):
@@ -113,6 +169,7 @@ def risk_page(code):
 #  数据 API
 # ============================================================
 
+@cached(timeout_seconds=3600)  # 缓存 1 小时
 @app.route('/api/etfs')
 def get_etfs():
     """ETF列表 API：筛选、排序、分页"""
@@ -145,6 +202,7 @@ def get_etfs():
     })
 
 
+@cached(timeout_seconds=3600)  # 缓存 1 小时
 @app.route('/api/etf/search')
 def api_etf_search():
     """搜索 ETF（按代码或名称模糊匹配）"""
@@ -173,6 +231,7 @@ def api_etf_search():
     return jsonify({"results": results[:limit], "total": total})
 
 
+@cached(timeout_seconds=900)  # 缓存 15 分钟
 @app.route('/api/etf/<code>')
 def get_etf_api(code):
     etf = etf_data.get_etf_by_code(code)
@@ -238,6 +297,7 @@ def get_etf_history(code):
                     "note": "数据暂不可用，显示模拟数据"})
 
 
+@cached(timeout_seconds=1800)  # 缓存 30 分钟
 @app.route('/api/compare')
 def api_compare():
     """对比数据 API — 方案C简化版：L1本地 + L2 WeStock 叠加（无内存缓存）"""
