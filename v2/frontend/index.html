@@ -223,14 +223,19 @@ async function startCompare() {
   ]);
   document.getElementById('sDot1').className='status-dot green';
   document.getElementById('sApi').textContent=`${apiR.count}只`;
-  renderTable(apiR.etfs);
+  renderTable(apiR.etfs, apiR.updated);
 }
 
-function renderTable(etfs) {
+function renderTable(etfs, updated) {
   if(!etfs?.length){ document.getElementById('result').innerHTML='<p style="color:#888">无数据</p>'; return; }
+
+  // 数据日期
+  const dt = updated ? updated.slice(0,10) : (new Date()).toISOString().slice(0,10);
+  const note = `<span style="font-size:11px;color:#999">数据快照: ${dt} | 实时价: 腾讯行情 | 规模/收益/风险: Wind</span>`;
 
   const metrics=[
     ['实时价',   'live',    'up',      ''],
+    ['昨收价',   'preclose','neutral',''],
     ['涨跌幅',    'pct',     'up',      '%'],
     ['规模(亿)',  'scale_yi','up',      ''],
     ['近1年收益', 'year_1_return','up','%'],
@@ -246,6 +251,7 @@ function renderTable(etfs) {
     ['基金公司',   'issuer',   'neutral',''],
     ['跟踪指数',   'track_index','neutral',''],
     ['成立日期',   'listing_date','neutral',''],
+    ['分类',     'category', 'neutral',''],
   ];
 
   function bestVal(key,dir){
@@ -256,10 +262,14 @@ function renderTable(etfs) {
 
   function fmt(key,e){
     const v=e[key];
-    if(v==null&&key!=='live'&&key!=='pct') return '-';
+    if(v==null&&key!=='live'&&key!=='pct'&&key!=='preclose') return '-';
     if(key==='live'){
       const p=PRICE_CACHE[e.code]; if(!p||!p.latest_price) return '-';
       return parseFloat(p.latest_price).toFixed(3);
+    }
+    if(key==='preclose'){
+      const p=PRICE_CACHE[e.code]; if(!p||!p.prev_close) return '-';
+      return parseFloat(p.prev_close).toFixed(3);
     }
     if(key==='pct'){
       const p=PRICE_CACHE[e.code]; if(!p||!p.change_pct) return '-';
@@ -267,11 +277,11 @@ function renderTable(etfs) {
       return `<span style="color:${up?'#d32f2f':dn?'#2e7d32':'#666'};font-weight:600">${(cp>0?'+':'')+cp.toFixed(2)}%</span>`;
     }
     // 文本字段直接返回
-    if(['issuer','track_index','listing_date'].includes(key)) return v || '-';
+    if(['issuer','track_index','listing_date','category'].includes(key)) return v || '-';
     return Number(v).toFixed(2);
   }
 
-  let h='<div class="compare-card"><div class="compare-title">📊 对比详情<span style="font-size:11px;color:#aaa">红色加粗 = 最优值</span></div><div class="table-wrap"><table class="compare-table">';
+  let h='<div class="compare-card"><div class="compare-title">📊 对比详情 '+note+'</div><div class="table-wrap"><table class="compare-table">';
   h+='<tr><th>指标</th>';
   etfs.forEach(e=>h+=`<th><div class="etf-name">${e.name}</div><div class="etf-code">${e.code}</div></th>`);
   h+='</tr>';
@@ -280,9 +290,9 @@ function renderTable(etfs) {
     const best=dir!=='neutral'?bestVal(key,dir):null;
     h+='<tr><td>'+label+'</td>';
     etfs.forEach(e=>{
-      const v=key==='live'||key==='pct'?null:e[key];
+      const v=key==='live'||key==='pct'||key==='preclose'?null:e[key];
       const isBest=best!=null&&v!=null&&!isNaN(v)&&Math.abs(v-best)<0.001;
-      h+=`<td class="${isBest?'best':''}">${fmt(key,e)}${unit&&key!=='live'&&key!=='pct'&&v!=null?' '+unit:''}</td>`;
+      h+=`<td class="${isBest?'best':''}">${fmt(key,e)}${unit&&key!=='live'&&key!=='pct'&&key!=='preclose'&&v!=null?' '+unit:''}</td>`;
     });
     h+='</tr>';
   });
@@ -294,7 +304,7 @@ function renderTable(etfs) {
     hd.slice(0,5).forEach(hh=>h+=`<span class="holding-tag">${hh.name}${hh.weight?' '+hh.weight:''}</span>`);
     h+='</td>';
   });
-  h+='</tr></table></div></div>';
+  h+='</tr></table></div><div style="padding:8px 14px;font-size:11px;color:#999;border-top:1px solid var(--border)">⚠️ 规模/收益/风险指标为快照数据（截至'+dt+'），费率/跟踪指数/持仓为静态数据。实时价来自腾讯行情。</div></div>';
   document.getElementById('result').innerHTML=h;
 }
 
