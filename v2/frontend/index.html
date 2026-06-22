@@ -23,7 +23,7 @@ header h1{font-size:22px;margin-bottom:4px;color:var(--red)}
 .dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--border);border-radius:0 0 8px 8px;max-height:240px;overflow-y:auto;z-index:100;display:none;box-shadow:0 4px 12px rgba(0,0,0,.1)}
 .dropdown.active{display:block}
 .dropdown-item{padding:8px 14px;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f5f5f5}
-.dropdown-item:hover{background:#f0f4ff}
+.dropdown-item:hover,.dropdown-item.hover{background:#f0f4ff}
 .selected-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center;min-height:28px}
 .selected-chip{padding:5px 12px;background:var(--red);color:#fff;border-radius:16px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px}
 .selected-chip::after{content:'×';opacity:.7;font-size:14px}
@@ -55,6 +55,9 @@ header h1{font-size:22px;margin-bottom:4px;color:var(--red)}
 .compare-table .etf-name{font-size:13px;color:var(--text)}
 .compare-table .etf-code{font-size:11px;color:var(--sub)}
 .holding-tag{display:inline-block;padding:2px 6px;background:#f0f0f0;border-radius:4px;font-size:11px;margin:1px}
+.cell-loading{color:#bbb;font-style:italic;font-size:11px}
+td.trunc-cell{max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;font-size:11px}
+td.trunc-cell.expanded{white-space:normal;max-width:180px;overflow:visible}
 .loading{text-align:center;padding:40px;color:var(--sub)}
 .spinner{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -131,14 +134,26 @@ function showHotETF(){ showDropdown([{code:'510300',name:'沪深300ETF',issuer:'
 function quickSearch(k){ document.getElementById('searchInput').value=k; handleSearch(k); }
 function showDropdown(items){
   const dd=document.getElementById('dropdown'); dd.innerHTML='';
+  dd.removeAttribute('data-items'); dd.removeAttribute('data-hover');
   if(!items.length){ dd.classList.remove('active'); return; }
-  items.forEach(e=>{
-    const d=document.createElement('div'); d.className='dropdown-item';
+  dd.setAttribute('data-items', JSON.stringify(items));
+  items.forEach((e,i)=>{
+    const d=document.createElement('div'); d.className='dropdown-item'; d.setAttribute('data-idx',i);
     d.innerHTML=`<div><b>${e.name}</b> <span style="color:#aaa;font-size:11px">${e.code}</span><br><span style="font-size:11px;color:#999">${[e.category,e.issuer].filter(Boolean).join(' · ')}</span></div>`;
-    d.onclick=()=>addETF(e); dd.appendChild(d);
+    d.onclick=()=>addETF(e); d.onmouseenter=()=>{dd.querySelectorAll('.dropdown-item').forEach(x=>x.classList.remove('hover'));d.classList.add('hover');dd.setAttribute('data-hover',i);};
+    dd.appendChild(d);
   });
   dd.classList.add('active');
 }
+// 键盘导航
+document.getElementById('searchInput').addEventListener('keydown',function(e){
+  const dd=document.getElementById('dropdown'); if(!dd.classList.contains('active')) return;
+  const items=JSON.parse(dd.getAttribute('data-items')||'[]'); let idx=parseInt(dd.getAttribute('data-hover')||'-1');
+  if(e.key==='ArrowDown'){e.preventDefault();idx=(idx+1)%items.length;setHover(dd,idx);}
+  else if(e.key==='ArrowUp'){e.preventDefault();idx=idx<=0?items.length-1:idx-1;setHover(dd,idx);}
+  else if(e.key==='Enter'&&idx>=0){e.preventDefault();addETF(items[idx]);}
+});
+function setHover(dd,idx){dd.querySelectorAll('.dropdown-item').forEach(x=>x.classList.remove('hover'));const t=dd.querySelector('[data-idx="'+idx+'"]');if(t){t.classList.add('hover');t.scrollIntoView({block:'nearest'});dd.setAttribute('data-hover',idx);}}
 function addETF(e){
   if(selected.find(x=>x.code===e.code)) return;
   if(selected.length>=5){ alert('最多5只'); return; }
@@ -283,12 +298,16 @@ function renderTable(etfs, updated) {
       const cp=parseFloat(p.change_pct), up=cp>0, dn=cp<0;
       return `<span style="color:${up?'#d32f2f':dn?'#2e7d32':'#666'};font-weight:600">${(cp>0?'+':'')+cp.toFixed(2)}%</span>`;
     }
-    // 文本字段直接返回
-    if(['issuer','track_index','listing_date','category'].includes(key)) return v || '-';
+    // 文本字段直接返回，长文本加截断
+    if(['issuer','track_index','listing_date','category'].includes(key)){
+      const txt = v || '-';
+      if(txt.length > 8) return `<span class="trunc-cell" onclick="this.classList.toggle('expanded')" title="${txt.replace(/"/g,'&quot;')}">${txt}</span>`;
+      return txt;
+    }
     return Number(v).toFixed(2);
   }
 
-  let h='<div class="compare-card"><div class="compare-title">📊 对比详情 '+note+'</div><div class="table-wrap"><table class="compare-table">';
+  let h='<div class="compare-card"><div class="compare-title">📊 对比 '+etfs.length+' 只 ETF '+note+'</div><div class="table-wrap"><table class="compare-table">';
   h+='<tr><th>指标</th>';
   etfs.forEach(e=>h+=`<th><div class="etf-name">${e.name}</div><div class="etf-code">${e.code}</div></th>`);
   h+='</tr>';
