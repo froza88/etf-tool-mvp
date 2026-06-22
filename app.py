@@ -234,8 +234,24 @@ def api_etf_search():
 @cached(timeout_seconds=900)  # 缓存 15 分钟
 @app.route('/api/etf/<code>')
 def get_etf_api(code):
-    etf = etf_data.get_etf_by_code(code)
-    return jsonify({"error": "ETF不存在"}), 404 if not etf else jsonify(etf)
+    """获取单只ETF详情"""
+    try:
+        with open(ROOT / 'etf_standard_data.json', 'r', encoding='utf-8') as f:
+            all_etfs = json.load(f)
+        # 兼容两种格式：list 或 {"etfs": [...]}
+        if isinstance(all_etfs, dict):
+            all_etfs = all_etfs.get('etfs', all_etfs)
+        # 找到对应 code 的 ETF
+        etf = None
+        for e in all_etfs:
+            if e.get('code') == code:
+                etf = e
+                break
+        if not etf:
+            return jsonify({"error": "ETF不存在"}), 404
+        return jsonify(etf)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route('/api/etf/<code>/history')
@@ -648,6 +664,17 @@ def api_state():
         return state_file.read_text(encoding='utf-8'), 200, {'Content-Type': 'text/plain; charset=utf-8'}
     return "STATE.md 不存在", 404
 
+@app.route('/v2/test')
+def v2_test():
+    """v2 测试页"""
+    return send_from_directory(ROOT / 'v2' / 'frontend', 'test.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, use_reloader=False, host='0.0.0.0', port=port)
+
+
+@app.route('/v2')
+def v2_frontend():
+    """v2 前端（动态版）"""
+    return send_from_directory(ROOT / 'v2' / 'frontend', 'index_local.html')

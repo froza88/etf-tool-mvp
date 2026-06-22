@@ -189,3 +189,9 @@ def reload_data():
     _ETFLIST = None
     _ETFMAP = None
     _ensure_loaded()
+
+
+def get_etf_by_code(code):
+    """根据代码获取单只ETF详情"""
+    _ensure_loaded()
+    return _ETF_MAP.get(code)

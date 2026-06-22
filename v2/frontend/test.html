@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>v2 测试页</title>
+<style>
+body { font-family: sans-serif; padding: 40px; background: #f0f2f5; }
+.box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+h1 { color: #d32f2f; }
+.status { padding: 10px; background: #e8f5e9; border-radius: 8px; margin-top: 20px; color: #2e7d32; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>🚀 ETF 对比工具 · v2 动态版</h1>
+  <p>如果你能看到这个页面，说明浏览器能正常渲染 HTML。</p>
+  <div class="status">
+    ✅ 页面加载成功<br>
+    ✅ JavaScript 未报错<br>
+    ⏳ 下一步：测试 API 连接
+  </div>
+  <button onclick="testAPI()" style="margin-top:20px; padding:10px 20px; background:#d32f2f; color:white; border:none; border-radius:8px; cursor:pointer">
+    测试 API 连接
+  </button>
+  <div id="apiResult" style="margin-top:15px; font-size:13px;"></div>
+</div>
+<script>
+function testAPI() {
+  const result = document.getElementById('apiResult');
+  result.innerHTML = '⏳ 正在连接 http://127.0.0.1:5000/api/etfs ...';
+  fetch('http://127.0.0.1:5000/api/etfs?limit=3')
+    .then(r => r.json())
+    .then(data => {
+      result.innerHTML = `✅ API 连接成功！<br>返回数据：${JSON.stringify(data).slice(0, 200)}...`;
+      result.style.color = '#2e7d32';
+    })
+    .catch(e => {
+      result.innerHTML = `❌ API 连接失败：${e.message}<br>可能原因：PA API 服务未启动，或 CORS 限制。`;
+      result.style.color = '#d32f2f';
+    });
+}
+</script>
+</body>
+</html>
