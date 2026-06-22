@@ -73,6 +73,7 @@ header h1{font-size:22px;margin-bottom:4px;color:var(--red)}
 <div class="status-bar">
   <div><span class="status-dot green" id="sDot1"></span> API：<span id="sApi">就绪</span></div>
   <div><span class="status-dot gray" id="sDot2"></span> 行情：<span id="sPrice">等待对比</span></div>
+  <div style="margin-left:auto;font-weight:600;color:#1a1a2e;font-size:14px" id="liveClock">--</div>
 </div>
 
 <div class="search-section">
@@ -105,6 +106,12 @@ header h1{font-size:22px;margin-bottom:4px;color:var(--red)}
 </div>
 
 <script>
+// ============================================================
+// 实时时钟
+// ============================================================
+function tick(){const n=new Date();document.getElementById('liveClock').textContent=n.toLocaleTimeString('zh-CN',{hour12:false});}
+tick();setInterval(tick,1000);
+
 // ============================================================
 // 全局状态（完全照搬 V1 模式）
 // ============================================================
