@@ -1,0 +1,139 @@
+{
+  "count": 12,
+  "updated": "2026-06-26T16:57:07.522887",
+  "source": "legulegu.com via AKShare",
+  "rows": [
+    {
+      "benchmark": "上证红利",
+      "pe": 7.97,
+      "pe_percentile": 46.7,
+      "pb": 0.76,
+      "pb_percentile": 22.2,
+      "level": "适中",
+      "level_color": "#ff9800",
+      "pe_days": 5214,
+      "pb_days": 5214
+    },
+    {
+      "benchmark": "创业板50",
+      "pe": 45.32,
+      "pe_percentile": 49.5,
+      "pb": 8.15,
+      "pb_percentile": 85.5,
+      "level": "适中",
+      "level_color": "#ff9800",
+      "pe_days": 4044,
+      "pb_days": 4044
+    },
+    {
+      "benchmark": "上证180",
+      "pe": 11.65,
+      "pe_percentile": 55.8,
+      "pb": 1.19,
+      "pb_percentile": 18.6,
+      "level": "适中",
+      "level_color": "#ff9800",
+      "pe_days": 5213,
+      "pb_days": 5213
+    },
+    {
+      "benchmark": "上证50",
+      "pe": 11.24,
+      "pe_percentile": 57.0,
+      "pb": 1.2,
+      "pb_percentile": 21.4,
+      "level": "适中",
+      "level_color": "#ff9800",
+      "pe_days": 5213,
+      "pb_days": 5213
+    },
+    {
+      "benchmark": "沪深300",
+      "pe": 13.98,
+      "pe_percentile": 69.4,
+      "pb": 1.47,
+      "pb_percentile": 35.2,
+      "level": "偏高",
+      "level_color": "#ef5350",
+      "pe_days": 5153,
+      "pb_days": 5153
+    },
+    {
+      "benchmark": "中证500",
+      "pe": 33.7,
+      "pe_percentile": 71.7,
+      "pb": 2.78,
+      "pb_percentile": 66.1,
+      "level": "偏高",
+      "level_color": "#ef5350",
+      "pe_days": 4724,
+      "pb_days": 4724
+    },
+    {
+      "benchmark": "中证1000",
+      "pe": 37.26,
+      "pe_percentile": 73.2,
+      "pb": 2.78,
+      "pb_percentile": 59.9,
+      "level": "偏高",
+      "level_color": "#ef5350",
+      "pe_days": 2841,
+      "pb_days": 2841
+    },
+    {
+      "benchmark": "中证800",
+      "pe": 16.05,
+      "pe_percentile": 77.2,
+      "pb": 1.64,
+      "pb_percentile": 46.9,
+      "level": "偏高",
+      "level_color": "#ef5350",
+      "pe_days": 4724,
+      "pb_days": 4724
+    },
+    {
+      "benchmark": "深证红利",
+      "pe": 19.0,
+      "pe_percentile": 78.5,
+      "pb": 2.87,
+      "pb_percentile": 79.8,
+      "level": "偏高",
+      "level_color": "#ef5350",
+      "pe_days": 5214,
+      "pb_days": 5214
+    },
+    {
+      "benchmark": "上证380",
+      "pe": 27.64,
+      "pe_percentile": 80.9,
+      "pb": 2.37,
+      "pb_percentile": 72.8,
+      "level": "高估",
+      "level_color": "#d32f2f",
+      "pe_days": 3782,
+      "pb_days": 3782
+    },
+    {
+      "benchmark": "中证100",
+      "pe": 16.99,
+      "pe_percentile": 83.7,
+      "pb": 1.94,
+      "pb_percentile": 73.0,
+      "level": "高估",
+      "level_color": "#d32f2f",
+      "pe_days": 4881,
+      "pb_days": 4881
+    },
+    {
+      "benchmark": "深证100",
+      "pe": 26.69,
+      "pe_percentile": 88.8,
+      "pb": 3.3,
+      "pb_percentile": 77.0,
+      "level": "高估",
+      "level_color": "#d32f2f",
+      "pe_days": 4060,
+      "pb_days": 4060
+    }
+  ]
+}
