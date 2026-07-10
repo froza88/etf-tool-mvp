@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 实时对比 · 用数据辨真相</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+@font-face{font-family:'Xuanzong';src:url('xuanzongti.otf') format('opentype');font-display:swap}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0f0f1a;--card:#181830;--card2:#1e1e3a;
+  --text:#f1f5f9;--text2:#8899aa;
+  --red:#f87171;--green:#34d399;--blue:#60a5fa;
+  --purple:#8b5cf6;--purple-light:#c4b5fd;
+  --border:#252545;--best-bg:rgba(139,92,246,0.14);
+  --accent:rgba(139,92,246,0.08);
+  --radius:10px;
+  --font-title:"Xuanzong","Inter",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --yellow:#fbbf24;
+}
+:root[data-theme="light"]{
+  --bg:#FEFCF8;--card:#fff;--card2:#F8F5F0;
+  --text:#1a1a1a;--text2:#8c8c8c;
+  --red:#C41230;--green:#1A7A3A;--blue:#1A5FB4;
+  --purple:#6d28d9;--purple-light:#5b21b6;
+  --border:#E6E4E0;--best-bg:#FFF9F0;
+  --accent:#F5F0EB;--yellow:#B8860B;
+}
+body{
+  font-family:"Inter",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;
+  -webkit-font-smoothing:antialiased;transition:background .3s,color .3s;
+}
+.container{max-width:100%;margin:0 auto;padding:32px 20px}
+header{margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.header-left{flex:1}
+header h1{
+  font-family:var(--font-title);
+  font-size:36px;margin-bottom:0;font-weight:800;letter-spacing:-1px;
+  background:linear-gradient(135deg,var(--purple-light),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.theme-toggle{
+  padding:8px 16px;border:1px solid var(--border);border-radius:20px;
+  background:var(--card);color:var(--text2);font-size:13px;cursor:pointer;
+  font-family:inherit;transition:all .2s;white-space:nowrap;
+}
+.theme-toggle:hover{background:var(--accent);color:var(--text)}
+.arch-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.arch-tag{padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600}
+.arch-tag.json{background:rgba(52,211,153,0.12);color:var(--green)}
+.arch-tag.api{background:rgba(96,165,250,0.12);color:var(--blue)}
+.arch-divider{width:36px;height:3px;background:var(--purple);margin:8px 0 12px;border-radius:2px}
+.search-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:22px}
+.search-row{display:flex;gap:10px;align-items:center}
+.search-box{flex:1;position:relative}
+.search-box input{
+  width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;
+  font-size:14px;outline:none;font-family:inherit;background:var(--bg);color:var(--text);
+  transition:border-color .2s;
+}
+.search-box input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(139,92,246,0.15)}
+.search-box input::placeholder{color:var(--text2)}
+.dropdown{
+  position:absolute;top:100%;left:0;right:0;background:var(--card);
+  border:1px solid var(--purple);border-top:none;
+  border-radius:0 0 var(--radius) var(--radius);
+  max-height:280px;overflow-y:auto;z-index:100;display:none;
+}
+.dropdown.active{display:block}
+.dropdown-item{
+  padding:10px 16px;font-size:13px;cursor:pointer;display:flex;
+  justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--border);transition:background .1s;
+}
+.dropdown-item:hover,.dropdown-item.hover{background:var(--accent)}
+.dropdown-item .info{display:flex;flex-direction:column;gap:1px}
+.dropdown-item .name{font-weight:600;font-size:13px}
+.dropdown-item .meta{font-size:11px;color:var(--text2)}
+.dropdown-item .add{color:var(--purple-light);font-weight:700;font-size:18px;line-height:1}
+.selected-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;min-height:28px}
+.selected-chip{
+  padding:6px 14px;border-radius:6px;background:rgba(139,92,246,0.15);
+  color:var(--purple-light);font-size:12px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:6px;border:1px solid rgba(139,92,246,0.25);
+}
+.selected-chip::after{content:'×';opacity:.5;font-size:15px;margin-left:2px}
+.selected-chip:hover{background:rgba(239,68,68,0.15);color:var(--red)}
+.btn-row{display:flex;gap:10px;align-items:center}
+.btn-compare{
+  padding:10px 22px;background:linear-gradient(135deg,var(--purple),#6366f1);
+  color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .2s;font-family:inherit;
+}
+.btn-compare:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(139,92,246,0.3)}
+.btn-compare:disabled{background:#333;color:#555;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-clear{
+  padding:9px 14px;background:transparent;border:1px solid var(--border);
+  border-radius:8px;cursor:pointer;font-size:12px;color:var(--text2);
+  font-family:inherit;transition:all .15s;
+}
+.btn-clear:hover{border-color:var(--purple);color:var(--purple-light)}
+.status-bar{display:flex;gap:24px;padding:12px 0;margin-bottom:18px;font-size:11px;color:var(--text2);border-bottom:1px solid var(--border)}
+.status-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px}
+.status-dot.green{background:var(--green)}
+.status-dot.gray{background:var(--text2)}
+.status-dot.animate{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.comp-section{display:none}
+.comp-section.active{display:block}
+.table-skeleton{padding:60px 20px;text-align:center;color:var(--text2);font-size:14px;background:var(--card);border-radius:12px;border:1px dashed var(--border);}
+
+/* 数据源标签页 */
+.source-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.source-tab{
+  padding:7px 16px;border:1px solid var(--border);border-radius:20px;
+  background:var(--card);color:var(--text2);font-size:12px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:all .15s;
+}
+.source-tab:hover{background:var(--accent);color:var(--text)}
+.source-tab.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.source-tab .src-count{font-size:10px;opacity:.7;margin-left:4px}
+
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius)}
+table{width:100%;min-width:800px;border-collapse:collapse;background:var(--card);font-size:12px;font-variant-numeric:tabular-nums}
+th,td{padding:12px 14px;border-bottom:1px solid var(--border);white-space:nowrap;text-align:center;font-variant-numeric:tabular-nums}
+th{background:rgba(255,255,255,0.02);font-weight:600;color:var(--text2);font-size:10px;letter-spacing:.5px;text-transform:uppercase;position:sticky;top:0;z-index:1}
+td{color:var(--text)}
+td.holdings-cell{white-space:pre-line;font-size:11px;line-height:1.6;min-width:160px;text-align:left}
+td.trunc-cell{max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;font-size:11px}
+td.trunc-cell.expanded{white-space:normal;max-width:200px;overflow:visible}
+th:first-child,td:first-child{font-weight:600;font-family:"SF Mono","Fira Code",monospace}
+.red{color:var(--red);font-weight:700}
+.green{color:var(--green);font-weight:700}
+.blue{color:var(--blue);font-weight:700}
+.best{background:var(--best-bg)}
+.cell-loading{color:#555;font-style:italic;font-size:10px}
+.legend{display:flex;gap:20px;margin-top:12px;font-size:11px;color:var(--text2);flex-wrap:wrap}
+.tips{
+  background:var(--bg);padding:20px 24px;margin-top:28px;
+  font-size:11px;color:var(--text2);line-height:2;
+  border-top:1px solid var(--border);
+}
+.tips code{background:var(--card);padding:2px 6px;border:1px solid var(--border);border-radius:4px;font-size:10px;font-family:"SF Mono","Fira Code",monospace}
+.tips hr{border:none;border-top:1px solid var(--border);margin:8px 0}
+.tips strong{color:var(--text)}
+.quick-groups{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.quick-btn{
+  padding:5px 12px;font-size:11px;border:1px solid var(--border);border-radius:6px;
+  background:var(--card);cursor:pointer;color:var(--text2);white-space:nowrap;
+  font-family:inherit;transition:all .15s;
+}
+.quick-btn:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
+.filter-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.filter-row select{
+  padding:7px 12px;border:1px solid var(--border);border-radius:6px;
+  font-size:11px;background:var(--bg);color:var(--text2);font-family:inherit;
+}
+.export-btn{
+  padding:7px 14px;background:transparent;color:var(--text2);border:1px solid var(--border);
+  border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .15s;
+}
+.export-btn:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
+.history-bar{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;font-size:11px}
+.history-item{
+  padding:4px 10px;background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;cursor:pointer;color:var(--text2);transition:all .15s;
+}
+.history-item:hover{background:var(--accent);color:var(--purple-light)}
+.source-legend{display:flex;gap:16px;margin-bottom:8px;font-size:10px;color:var(--text2);flex-wrap:wrap}
+.src-ak {color:#fbbf24}.src-ft{color:#60a5fa}.src-wind{color:#a78bfa}.src-tt{color:#34d399}.src-scr{color:#22d3ee}
+
+/* 数据新鲜度面板 */
+.freshness-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;font-size:11px;color:var(--text2)}
+.freshness-item{display:flex;align-items:center;gap:6px;padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:20px}
+.freshness-item .dot{width:6px;height:6px;border-radius:50%}
+.freshness-item .dot.live{background:var(--green);animation:pulse 1.5s infinite}
+.freshness-item .dot.daily{background:var(--blue)}
+.freshness-item .dot.static{background:var(--text2)}
+.freshness-item .src{font-weight:600;color:var(--text)}
+
+/* 数据源字段说明面板 */
+.source-detail-toggle{
+  display:inline-flex;align-items:center;gap:6px;margin-bottom:10px;padding:6px 12px;
+  background:var(--card);border:1px dashed var(--border);border-radius:6px;
+  font-size:11px;color:var(--text2);cursor:pointer;transition:all .15s;
+}
+.source-detail-toggle:hover{border-color:var(--purple);color:var(--text)}
+.source-detail-panel{
+  display:none;margin-bottom:12px;padding:14px;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--card);font-size:12px;line-height:1.6;
+}
+.source-detail-panel.active{display:block}
+.source-detail-item{margin-bottom:10px}
+.source-detail-item:last-child{margin-bottom:0}
+.source-detail-item strong{
+  display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;
+}
+.source-detail-fields{display:flex;flex-wrap:wrap;gap:6px;color:var(--text2)}
+.source-detail-fields span{
+  padding:2px 8px;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:11px;
+}
+
+/* 加载遮罩 */
+#loadingOverlay{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .3s}
+#loadingOverlay.hidden{opacity:0;pointer-events:none}
+.loader{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{margin-top:16px;font-size:13px;color:var(--text2)}
+.loading-size{margin-top:6px;font-size:11px;color:var(--text2);opacity:.7}
+
+/* 表格首列冻结 */
+table{position:relative}
+th:first-child,td:first-child{position:sticky;left:0;z-index:2;background:var(--card);box-shadow:2px 0 5px rgba(0,0,0,.05)}
+th:first-child{z-index:3}
+:root[data-theme="light"] th:first-child,:root[data-theme="light"] td:first-child{background:#fff}
+
+/* 搜索高亮 */
+.search-highlight{background:rgba(139,92,246,.25);border-radius:2px;padding:0 2px}
+
+/* 移动端适配 */
+@media(max-width:768px){
+  .container{padding:16px 12px}
+  header h1{font-size:26px}
+  .search-section{padding:14px}
+  .search-row{flex-direction:column;align-items:stretch}
+  .btn-row{width:100%}
+  .btn-compare,.btn-clear{flex:1}
+  .status-bar{gap:12px;font-size:10px}
+  .freshness-bar{gap:6px}
+  .freshness-item{font-size:10px;padding:4px 8px}
+  .source-tabs{gap:6px}
+  .source-tab{padding:6px 10px;font-size:11px}
+  .quick-groups{margin-bottom:10px}
+  .quick-btn{font-size:10px;padding:4px 8px}
+  .selected-row{font-size:11px}
+  th,td{padding:10px 8px;font-size:11px}
+  .dropdown{max-height:220px}
+  .dropdown-item{padding:10px 12px}
+}
+@media(max-width:480px){
+  header h1{font-size:22px}
+  .theme-toggle{padding:6px 10px;font-size:11px}
+  .arch-bar{gap:6px}
+  .arch-tag{font-size:10px;padding:2px 8px}
+}
+
+/* ===== LANDING SECTIONS FROM HEX_STYLE ===== */
+.landing-hero{
+  text-align:center;padding:48px 20px 40px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139,92,246,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(34,211,238,0.05) 0%, transparent 60%);
+}
+.landing-hero h2{
+  font-family:var(--font-title);
+  font-size:clamp(36px,6vw,56px);
+  font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:16px;
+}
+.landing-hero h2 .gradient{
+  background:linear-gradient(135deg,var(--purple-light),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.landing-hero p{
+  font-size:17px;color:var(--text2);max-width:600px;margin:0 auto 28px;line-height:1.7;
+}
+.landing-cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.landing-cta .btn{
+  padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;
+  text-decoration:none;border:none;font-family:inherit;transition:all .2s;
+}
+.landing-cta .btn-primary{
+  background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;
+}
+.landing-cta .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(139,92,246,0.3)}
+.landing-cta .btn-secondary{
+  background:var(--card);color:var(--text);border:1px solid var(--border);
+}
+.landing-cta .btn-secondary:hover{background:var(--accent)}
+
+.landing-stats{
+  display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+  padding:32px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--card);
+}
+.landing-stat{text-align:center}
+.landing-stat .value{
+  font-size:36px;font-weight:800;letter-spacing:-1px;
+  background:linear-gradient(135deg,var(--purple-light),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.landing-stat .label{font-size:12px;color:var(--text2);margin-top:4px}
+
+.landing-section{padding:40px 20px;max-width:1200px;margin:0 auto}
+.landing-section .sec-label{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--purple-light);margin-bottom:8px;
+}
+.landing-section .sec-title{
+  font-size:clamp(24px,3.5vw,34px);font-weight:800;letter-spacing:-1px;margin-bottom:12px;
+}
+.landing-section .sec-desc{font-size:15px;color:var(--text2);max-width:560px;margin-bottom:28px;line-height:1.6}
+
+.chart-container{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;
+}
+.chart-container canvas{max-height:420px}
+
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.feature-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .2s;
+}
+.feature-card:hover{border-color:var(--purple);transform:translateY(-3px)}
+.feature-card .icon{font-size:28px;margin-bottom:14px}
+.feature-card h4{font-size:16px;font-weight:700;margin-bottom:6px}
+.feature-card p{font-size:13px;color:var(--text2);line-height:1.6}
+
+@media(max-width:768px){
+  .landing-hero{padding:36px 16px 28px}
+  .landing-hero h2{font-size:32px}
+  .landing-stats{gap:32px}
+  .landing-stat .value{font-size:28px}
+  .landing-section{padding:28px 16px}
+}
+</style>
+</head>
+<body>
+<div id="loadingOverlay"><div class="loader"></div><div class="loading-text">正在加载 ETF 数据…</div><div class="loading-size">首次加载约 2MB，后续将从本地缓存读取</div></div>
+
+<div class="container">
+<header>
+  <div class="header-left">
+    <h1>ETF 实时对比</h1>
+    <div class="arch-divider"></div>
+    <div class="arch-bar">
+      <span class="arch-tag json">1685只ETF</span>
+      <span class="arch-tag api">腾讯行情实时价</span>
+      <span class="arch-tag" style="background:rgba(52,211,153,0.12);color:var(--green)">✓ 多源验证</span>
+    </div>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ 浅色模式</button>
+</header>
+
+<div class="status-bar">
+  <div><span class="status-dot green"></span> 1685只ETF · 51字段 · 数据更新至 <b>2026-07-06</b></div>
+  <div><span class="status-dot gray" id="dot2"></span> 腾讯行情：<span id="statusPrice" style="color:var(--text2)">等待对比</span></div>
+  <div style="margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums;font-size:14px" id="liveClock">--</div>
+</div>
+
+<!-- ===== LANDING HERO ===== -->
+<div class="landing-hero">
+  <h2>用数据，<span class="gradient">辨真相</span></h2>
+  <p>1685 只 ETF，51 个字段，多源交叉验证。不要凭感觉选 ETF，让数据说话。</p>
+  <div class="landing-cta">
+    <button class="btn btn-primary" onclick="startDemoCompare()">开始对比</button>
+    <button class="btn btn-secondary" onclick="document.getElementById('scatter').scrollIntoView({behavior:'smooth'})">探索分布</button>
+  </div>
+</div>
+
+<div class="landing-stats">
+  <div class="landing-stat"><div class="value" id="statCount">1,685</div><div class="label">全市场 ETF</div></div>
+  <div class="landing-stat"><div class="value">51</div><div class="label">分析字段</div></div>
+  <div class="landing-stat"><div class="value" id="statRealtime">实时</div><div class="label">腾讯行情价</div></div>
+  <div class="landing-stat"><div class="value">100%</div><div class="label">数据完整率</div></div>
+</div>
+
+<!-- ===== SCATTER CHART ===== -->
+<div class="landing-section" id="scatter">
+  <div class="sec-label">可视化</div>
+  <h3 class="sec-title">风险-收益分布</h3>
+  <p class="sec-desc">气泡大小代表规模，一眼看清哪些 ETF 落在「高收益-低波动」区域。仅展示有有效波动率和收益率的 ETF。</p>
+  <div class="chart-container"><canvas id="scatterChart"></canvas></div>
+</div>
+
+<!-- ===== HOW IT WORKS ===== -->
+<div class="landing-section">
+  <div class="sec-label">工作原理</div>
+  <h3 class="sec-title">数据从哪里来</h3>
+  <p class="sec-desc">多源融合，每条数据都可追溯到具体来源。</p>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="icon">📡</div><h4>AKShare 资金流</h4><p>东方财富数据聚合，主力资金流/档位资金/份额，日终更新。</p></div>
+    <div class="feature-card"><div class="icon">🏦</div><h4>Wind 风控</h4><p>Alpha/Beta/夏普/PE分位等机构级指标。</p></div>
+    <div class="feature-card"><div class="icon">🔍</div><h4>多源验证</h4><p>每个字段至少两个数据源交叉校验，round() 消除浮点精度差。</p></div>
+    <div class="feature-card"><div class="icon">⏰</div><h4>实时行情</h4><p>腾讯行情 JSONP，盘中实时刷新收盘价与涨跌幅。</p></div>
+  </div>
+</div>
+
+<div class="search-section" id="compare-tool">
+  <div class="quick-groups" id="quickGroups"></div>
+  <div class="search-row">
+    <div class="search-box">
+      <input id="searchInput" placeholder="代码 / 名称 / 管理人 / 指数 / 分类（如 300、消费、华泰）" autocomplete="off" oninput="handleSearchDebounced(this.value)" onkeydown="handleKey(event)">
+      <div class="dropdown" id="dropdown"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-compare" id="compareBtn" disabled onclick="startCompare()">开始对比</button>
+      <button class="btn-clear" onclick="clearAll()">清空</button>
+    </div>
+  </div>
+  <div class="filter-row">
+    <select id="filterCat" onchange="onFilter()"><option value="">全部分类</option></select>
+    <select id="filterSort" onchange="onFilter()"><option value="">默认排序</option><option value="scale_desc">规模↓</option><option value="ret1_desc">近1年收益↓</option><option value="fee_asc">费率↑</option></select>
+  </div>
+  <div class="history-bar" id="historyBar"></div>
+  <div class="selected-row" id="selectedRow"><span style="color:var(--text2);font-size:12px">已选ETF：</span></div>
+</div>
+
+<div class="comp-section" id="compSection">
+  <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text)">对比结果 <span id="compCount"></span> <button class="export-btn" onclick="exportCSV()" style="float:right">📥 导出CSV</button></div>
+  <div class="freshness-bar" style="margin-bottom:8px">
+    <div class="freshness-item"><span class="dot live"></span><span class="src">腾讯行情</span> 实时</div>
+    <div class="freshness-item"><span class="dot daily"></span><span class="src">AKShare 资金流</span> 日终</div>
+    <div class="freshness-item"><span class="dot static"></span><span class="src">Wind 风控/收益</span> 2026-07-06</div>
+    <div class="freshness-item"><span class="dot static"></span><span class="src">Scrapling F10</span> 2026-07-06</div>
+    <div class="freshness-item"><span class="dot static"></span><span class="src">估值数据</span> 2026-07-06</div>
+  </div>
+  <div class="source-detail-toggle" onclick="toggleSourceDetail()" id="sourceDetailToggle">📋 查看每个数据源提供哪些字段</div>
+  <div class="source-detail-panel" id="sourceDetailPanel"></div>
+  <div class="source-tabs" id="sourceTabs"></div>
+  <div class="legend"><span style="background:var(--best-bg)">🟡 最优值</span> <span class="red">红=正值/上涨</span> <span class="green">绿=负值/下跌</span> <span class="blue">蓝=越低越好</span></div>
+  <div class="table-wrap" style="margin-top:8px"><div id="compTable"></div></div>
+</div>
+
+<div class="tips">
+  <strong>数据来源与更新频率</strong><br>
+  <div style="font-size:11px;margin:4px 0;line-height:1.8">
+  <span><b class="src-tt">腾讯行情</b> → 收盘价/涨跌%（实时 JSONP）</span><br>
+  <span><b class="src-ak">AKShare</b> → 主力资金流/档位资金/份额（日终，开盘前为上一交易日）</span><br>
+  <span><b class="src-wind">Wind</b> → 收益/夏普/Calmar/最大回撤/波动/跟踪误差/Alpha/Beta（更新至 2026-07-06）</span><br>
+  <span><b class="src-ft">非凸科技</b> → 规模/份额/基础行情（更新至 2026-07-06）</span><br>
+  <span><b class="src-scr">Scrapling · 东方财富</b> → 费率/经理/托管人/成立日/跟踪指数（更新至 2026-07-06）</span><br>
+  <span>估值 → PE 分位（Wind+legulegu+iFind，更新至 2026-07-06）</span>
+  </div>
+  <hr>
+  <strong style="color:var(--red)">⚡ 免责声明</strong><br>
+  本工具数据来源于 Wind、非凸、腾讯行情等第三方数据服务商。<br>
+  不同数据源因计算口径、更新时点差异可能导致数值不一致。数据仅供参考，不构成投资建议。<br>
+  数据可能存在延迟、遗漏或错误，使用者自行承担投资风险。
+</div>
+</div>
+
+<script>
+// ===== DATA CACHE & LOADER =====
+const DATA_VERSION='2026-07-06',DB_NAME='etf_tool_v1',STORE_NAME='core_data';
+function openDB(){return new Promise(function(resolve,reject){var req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=function(e){var db=e.target.result;if(!db.objectStoreNames.contains(STORE_NAME))db.createObjectStore(STORE_NAME);};req.onsuccess=function(e){resolve(e.target.result);};req.onerror=function(e){reject(e);};});}
+function dbGet(db,key){return new Promise(function(resolve,reject){var tx=db.transaction(STORE_NAME,'readonly');var store=tx.objectStore(STORE_NAME);var req=store.get(key);req.onsuccess=function(){resolve(req.result);};req.onerror=function(){reject(req.error);};});}
+function dbPut(db,key,value){return new Promise(function(resolve,reject){var tx=db.transaction(STORE_NAME,'readwrite');var store=tx.objectStore(STORE_NAME);var req=store.put(value,key);req.onsuccess=function(){resolve();};req.onerror=function(){reject(req.error);};});}
+async function saveDataCache(data){try{var db=await openDB();await dbPut(db,'version',DATA_VERSION);await dbPut(db,'data',data);await dbPut(db,'ts',Date.now());console.log('💾 ETF 数据已缓存到 IndexedDB');}catch(e){console.warn('缓存失败',e);}}
+async function loadDataCache(){try{var db=await openDB();var ver=await dbGet(db,'version');var data=await dbGet(db,'data');if(ver===DATA_VERSION&&data&&data.length>0){console.log('⚡ ETF 数据从 IndexedDB 缓存加载：'+data.length+'只');return data;}}catch(e){console.warn('读取缓存失败',e);}return null;}
+window._ETF_DATA_READY=new Promise(async function(resolve){
+  var cached=await loadDataCache();
+  if(cached){window.ETF_CORE_DATA=cached;window.ETF_DATA_FROM_CACHE=true;document.getElementById('loadingOverlay').classList.add('hidden');resolve(cached);}
+  else{var s=document.createElement('script');s.src='etf_data_embed.js';s.onload=function(){if(window.ETF_CORE_DATA&&window.ETF_CORE_DATA.length)saveDataCache(window.ETF_CORE_DATA);document.getElementById('loadingOverlay').classList.add('hidden');resolve(window.ETF_CORE_DATA);};s.onerror=function(){document.querySelector('#loadingOverlay .loading-text').textContent='数据加载失败，请刷新页面重试';resolve([]);};document.head.appendChild(s);}
+});
+</script>
+
+<script>
+// ===== THEME TOGGLE =====
+(function(){var s=localStorage.getItem('etf_theme');if(s==='light')document.documentElement.setAttribute('data-theme','light');updateThemeBtn();})();
+function toggleTheme(){var isLight=document.documentElement.hasAttribute('data-theme');if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('etf_theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('etf_theme','light');}updateThemeBtn();}
+function updateThemeBtn(){document.getElementById('themeBtn').textContent=document.documentElement.hasAttribute('data-theme')?'🌙 深色模式':'☀️ 浅色模式';}
+
+window._ETF_DATA_READY.then(function(ETF_CORE_DATA){
+console.log('✅ ETF核心数据已加载：'+ETF_CORE_DATA.length+'只'+(window.ETF_DATA_FROM_CACHE?'（来自缓存）':'（来自网络）'));
+
+
+// 数据源映射 — 按真实来源拆分，不混合展示
+const SOURCE_GROUPS = {
+  'FTShare (非凸实时)': ['code','name','short_name','scale_yi','shares','close','prev_close','change_pct','change_rate','volume'],
+  'Wind (风控/收益)': ['year_1_return','year_3_return','annual_3y','sharpe_ratio','calmar_ratio','info_ratio','max_drawdown','annual_vol','tracking_error','beta','alpha'],
+  'AKShare (资金流)': ['main_net_inflow','main_net_ratio','super_large_inflow','large_inflow','medium_inflow','small_inflow','flow_shares','flow_data_date'],
+  'Scrapling (基本面/F10)': ['issuer','issuer_full','issuer_short','category','invest_type','track_index','track_index_code','listing_date','issue_date','fund_manager','custodian','nav','fee_mgmt','fee_custody','fee_total','holdings','holdings_str','top_holdings'],
+  '估值 (Wind+legulegu+iFind)': ['valuation_percentile','premium_discount'],
+  '全部字段': []
+};
+
+// ===== QUICK GROUPS =====
+const QUICK_GROUPS = [
+  {name:'黄金vs黄金股',codes:['518880','517520']},{name:'消费vs消费电子',codes:['159928','159732']},
+  {name:'医药vs医疗',codes:['512010','512170']},{name:'沪深300三巨头',codes:['510300','510310','510330']},
+  {name:'科创50 5选',codes:['588000','588080','588050','588060','588090']},
+  {name:'创业板vs科创50',codes:['159915','588000']},{name:'红利vs红利低波',codes:['510880','512890']},
+  {name:'中证500vs1000',codes:['510500','512100']},
+];
+function renderQuickGroups(){
+  document.getElementById('quickGroups').innerHTML='<span style="font-size:11px;color:var(--text2);line-height:24px">快捷对比：</span>'+
+    QUICK_GROUPS.map(g=>'<button class="quick-btn" onclick="quickCompare('+JSON.stringify(g.codes).replace(/"/g,'&quot;')+')">'+g.name+'</button>').join('');
+}
+function quickCompare(codes){clearAll();codes.forEach(c=>addETF(c));startCompare();}
+function startDemoCompare(){
+  var codes=['510300','510310','510330'];
+  clearAll();codes.forEach(c=>addETF(c));
+  document.getElementById('compare-tool').scrollIntoView({behavior:'smooth'});
+  setTimeout(function(){startCompare();},400);
+}
+renderQuickGroups();
+
+// ===== FILTERS =====
+function initFilters(){
+  var cats=[...new Set(ETF_CORE_DATA.map(e=>e.category).filter(Boolean))].sort();
+  var sel=document.getElementById('filterCat');
+  cats.forEach(c=>{var o=document.createElement('option');o.value=c;o.textContent=c+' ('+ETF_CORE_DATA.filter(e=>e.category===c).length+')';sel.appendChild(o);});
+}
+initFilters();
+
+// ===== SEARCH =====
+function escapeReg(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function highlightText(text,query){
+  if(!query||!text)return text;
+  var re=new RegExp('('+escapeReg(query)+')','gi');
+  return String(text).replace(re,'<span class="search-highlight">$1</span>');
+}
+function calcSearchScore(e,query){
+  var q=query.toLowerCase();
+  if(e.code===q)return 1000;
+  if(e.code.startsWith(q))return 900;
+  var n=e.name.toLowerCase();
+  if(n===q)return 800;
+  if(n.startsWith(q))return 700;
+  if(n.includes(q))return 600;
+  var issuer=(e.issuer||'').toLowerCase();
+  if(issuer.includes(q))return 400;
+  var issuerShort=(e.issuer_short||'').toLowerCase();
+  if(issuerShort.includes(q))return 380;
+  var cat=(e.category||'').toLowerCase();
+  if(cat.includes(q))return 350;
+  var idx=(e.track_index||'').toLowerCase();
+  if(idx.includes(q))return 300;
+  var idxCode=(e.track_index_code||'').toLowerCase();
+  if(idxCode.includes(q))return 250;
+  return 0;
+}
+function handleSearch(q){
+  var dd=document.getElementById('dropdown');dropdownIndex=-1;
+  if(!q||q.length<1){dd.classList.remove('active');return;}
+  var query=q.toLowerCase(),catFilter=document.getElementById('filterCat').value,sortBy=document.getElementById('filterSort').value;
+  var matches=ETF_CORE_DATA.filter(e=>{
+    if(catFilter&&e.category!==catFilter)return false;
+    if(e.code.includes(query))return true;
+    if(e.name.toLowerCase().includes(query))return true;
+    if((e.issuer||'').toLowerCase().includes(query))return true;
+    if((e.issuer_short||'').toLowerCase().includes(query))return true;
+    if((e.category||'').toLowerCase().includes(query))return true;
+    if((e.track_index||'').toLowerCase().includes(query))return true;
+    if((e.track_index_code||'').toLowerCase().includes(query))return true;
+    return false;
+  });
+  matches.sort((a,b)=>{
+    var sa=calcSearchScore(a,query),sb=calcSearchScore(b,query);
+    if(sa!==sb)return sb-sa;
+    return (b.scale_yi||0)-(a.scale_yi||0);
+  });
+  if(sortBy==='scale_desc')matches.sort((a,b)=>(b.scale_yi||0)-(a.scale_yi||0));else if(sortBy==='ret1_desc')matches.sort((a,b)=>(b.year_1_return||0)-(a.year_1_return||0));else if(sortBy==='fee_asc')matches.sort((a,b)=>(a.fee_total||99)-(b.fee_total||99));
+  matches=matches.slice(0,10);
+  if(!matches.length){dd.classList.remove('active');return;}
+  dd.innerHTML=matches.map((e,i)=>{
+    var s=(e.scale_yi||0)>100?((e.scale_yi||0)/100).toFixed(1)+'百亿':(e.scale_yi||0).toFixed(0)+'亿';
+    var ret=e.year_1_return?((e.year_1_return>0?'+':'')+e.year_1_return.toFixed(1)+'%'):'';
+    var nameHtml=highlightText(e.code+' '+e.name,query);
+    var metaHtml=highlightText(e.issuer+' · '+s+(ret?' · '+ret:'')+' · '+e.category+(e.track_index_code?' · '+e.track_index_code:''),query);
+    return '<div class="dropdown-item" data-code="'+e.code+'" data-idx="'+i+'" onmousedown="addETF(\''+e.code+'\')" onmouseover="highlightItem('+i+')"><div class="info"><span class="name">'+nameHtml+'</span><span class="meta">'+metaHtml+'</span></div><span class="add">+</span></div>';
+  }).join('');
+  dd.classList.add('active');
+}
+var searchTimer=null;
+function handleSearchDebounced(q){
+  if(searchTimer)clearTimeout(searchTimer);
+  searchTimer=setTimeout(function(){handleSearch(q);},120);
+}
+function onFilter(){handleSearchDebounced(document.getElementById('searchInput').value);}
+var dropdownIndex=-1;
+function highlightItem(idx){dropdownIndex=idx;document.querySelectorAll('.dropdown-item').forEach((el,i)=>el.classList.toggle('hover',i===idx));}
+function handleKey(e){
+  var dd=document.getElementById('dropdown'),items=dd.querySelectorAll('.dropdown-item');
+  if(!items.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();dropdownIndex=Math.min(dropdownIndex+1,items.length-1);highlightItem(dropdownIndex);}
+  else if(e.key==='ArrowUp'){e.preventDefault();dropdownIndex=Math.max(dropdownIndex-1,0);highlightItem(dropdownIndex);}
+  else if(e.key==='Enter'){e.preventDefault();if(dropdownIndex>=0&&items[dropdownIndex])addETF(items[dropdownIndex].dataset.code);}
+  else if(e.key==='Escape'){dd.classList.remove('active');}
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.search-box'))document.getElementById('dropdown').classList.remove('active');});
+
+// ===== SELECTION =====
+var selected=new Set(),currentSource='全部字段';
+function addETF(code){selected.add(code);saveState();document.getElementById('dropdown').classList.remove('active');document.getElementById('searchInput').value='';renderSelected();updateBtn();}
+function removeETF(code){selected.delete(code);saveState();renderSelected();updateBtn();}
+function clearAll(){selected.clear();saveState();renderSelected();updateBtn();document.getElementById('compSection').classList.remove('active');}
+function updateBtn(){document.getElementById('compareBtn').disabled=selected.size<2;document.getElementById('compareBtn').textContent=selected.size>=2?'开始对比('+selected.size+')':'开始对比';}
+function renderSelected(){
+  var chips=[...selected].map(code=>{var e=ETF_CORE_DATA.find(x=>x.code===code);var label=e?e.name+'·'+e.issuer:code;return '<span class="selected-chip" onclick="removeETF(\''+code+'\')">'+label+'</span>';}).join('');
+  document.getElementById('selectedRow').innerHTML='<span style="color:var(--text2);font-size:12px">已选ETF：</span>'+(chips||'<span style="color:var(--text2);font-size:12px">暂无，请搜索添加</span>');
+}
+
+// ===== PRICE FETCH (Tencent JSONP) =====
+var PRICE_CACHE=(()=>{try{var s=localStorage.getItem('etf_price_cache');if(s){var d=JSON.parse(s);var age=Date.now()-(d._ts||0);if(age<3600000)return d;}}catch(e){}return {};})();
+var refreshTimer=null;
+
+function isTradingTime(){var d=new Date();var day=d.getDay();if(day===0||day===6)return false;var h=d.getHours(),m=d.getMinutes();var mins=h*60+m;return(mins>=570&&mins<690)||(mins>=780&&mins<900);}
+function getTTL(){return isTradingTime()?1000:86400000;}
+
+function fetchTencentDirect(codes){
+  return new Promise(resolve=>{
+    var prefixMap={};
+    codes.forEach(c=>{prefixMap[c]=(c.startsWith('5')||c.startsWith('6'))?'sh':'sz';});
+    var symbols=codes.map(c=>prefixMap[c]+c).join(',');
+    var script=document.createElement('script');
+    script.src='https://sqt.gtimg.cn/q='+symbols;
+    script.onload=()=>{
+      var results={};
+      codes.forEach(code=>{var varName='v_'+prefixMap[code]+code;var raw=window[varName];if(raw&&typeof raw==='string'){var parts=raw.split('~');if(parts.length>=33){var ts=parts[30]||'';results[code]={prev_close:parts[4],latest_price:parts[3],change_pct:parts[32],update_time:ts.length>=14?ts.slice(0,4)+'-'+ts.slice(4,6)+'-'+ts.slice(6,8)+' '+ts.slice(8,10)+':'+ts.slice(10,12)+':'+ts.slice(12,14):ts};try{delete window[varName];}catch(e){}}else{results[code]={};}}else{results[code]={};}});script.remove();resolve(results);};
+    script.onerror=()=>{var results={};codes.forEach(c=>{results[c]={};});script.remove();resolve(results);};
+    document.head.appendChild(script);
+  });
+}
+
+async function fetchTTJJ(codes){
+  var now=Date.now(),ttl=getTTL();
+  var stale=codes.filter(c=>!PRICE_CACHE[c]||(now-PRICE_CACHE[c].ts)>ttl);
+  if(stale.length===0){
+    document.getElementById('dot2').className='status-dot green';
+    var status=isTradingTime()?'交易中（缓存）':'已收盘';
+    document.getElementById('statusPrice').textContent='✅ '+status;document.getElementById('statusPrice').style.color=isTradingTime()?'#34d399':'#8899aa';
+    var results={};codes.forEach(c=>{results[c]=PRICE_CACHE[c];});return results;
+  }
+  document.getElementById('dot2').className='status-dot gray animate';document.getElementById('statusPrice').textContent='腾讯行情获取中…';
+  try{
+    var data=await fetchTencentDirect(stale);
+    Object.entries(data).forEach(([code,info])=>{if(info&&(info.prev_close||info.change_pct)){PRICE_CACHE[code]={...info,ts:Date.now()};try{localStorage.setItem('etf_price_cache',JSON.stringify({...PRICE_CACHE,_ts:Date.now()}));}catch(e){}}});
+    var times=Object.values(data||{}).map(e=>e.update_time).filter(Boolean);var updTime=times.find(t=>t.length>16)||times[0]||'';
+    document.getElementById('dot2').className='status-dot green';document.getElementById('statusPrice').textContent='✅ 腾讯行情 '+updTime;
+  }catch(e){
+    document.getElementById('dot2').className='status-dot gray';document.getElementById('statusPrice').textContent='⚠️ 行情暂不可用';
+  }
+  var results={};codes.forEach(c=>{results[c]=PRICE_CACHE[c]||{};});return results;
+}
+
+// ===== SOURCE TABS =====
+function renderSourceTabs(){
+  var tabs=Object.keys(SOURCE_GROUPS);
+  document.getElementById('sourceTabs').innerHTML=tabs.map(k=>{
+    var active=k===currentSource?' active':'',count=SOURCE_GROUPS[k].length;
+    return '<button class="source-tab'+active+'" onclick="switchSource(\''+k+'\')">'+k+(count?'<span class="src-count">'+count+'字段</span>':'')+'</button>';
+  }).join('');
+}
+function switchSource(key){
+  currentSource=key;renderSourceTabs();
+  reRenderTable();
+}
+function renderSourceDetail(){
+  var html=Object.keys(SOURCE_GROUPS).filter(function(k){return k!=='全部字段';}).map(function(src){
+    var ids=SOURCE_GROUPS[src]||[];
+    var labels=ids.map(function(id){var f=ALL_FIELDS.find(function(x){return x.id===id;});return f?f.label:id;}).filter(Boolean);
+    return '<div class="source-detail-item"><strong>'+src+'</strong><div class="source-detail-fields">'+labels.map(function(l){return '<span>'+l+'</span>';}).join('')+'</div></div>';
+  }).join('');
+  document.getElementById('sourceDetailPanel').innerHTML=html;
+}
+function toggleSourceDetail(){document.getElementById('sourceDetailPanel').classList.toggle('active');}
+
+// ===== FULL DATA LOAD =====
+// 全量数据已通过 etf_data_embed.js 内嵌，无需二次 fetch
+function loadFullData(){return Promise.resolve(ETF_CORE_DATA);}
+function getFullETF(code){return ETF_CORE_DATA.find(x=>x.code===code);}
+
+// ===== FILTER FIELDS BY SOURCE =====
+var ALL_FIELDS=[
+  {id:'code',label:'代码'},{id:'name',label:'简称'},{id:'short_name',label:'短名'},
+  {id:'issuer',label:'管理人'},{id:'issuer_full',label:'管理人全称'},{id:'issuer_short',label:'管理人简称'},
+  {id:'category',label:'分类'},{id:'invest_type',label:'投资类型'},
+  {id:'track_index',label:'跟踪指数'},{id:'track_index_code',label:'指数代码'},
+  {id:'listing_date',label:'成立日期'},{id:'issue_date',label:'发行日期'},
+  {id:'fund_manager',label:'基金经理'},{id:'custodian',label:'托管人'},
+  {id:'nav',label:'单位净值'},
+  {id:'scale_yi',label:'规模(亿)',better:'higher'},{id:'shares',label:'份额(亿)',better:'higher'},
+  {id:'close',label:'最新价',type:'ttjj'},{id:'prev_close',label:'昨收',type:'ttjj'},
+  {id:'change_pct',label:'涨跌%',type:'ttjj'},{id:'change_rate',label:'涨跌幅(率)'},
+  {id:'volume',label:'成交量'},
+  {id:'fee_mgmt',label:'管理费%',better:'lower'},{id:'fee_custody',label:'托管费%',better:'lower'},
+  {id:'fee_total',label:'总费率%',better:'lower'},
+  {id:'year_1_return',label:'近1年收益%',better:'higher'},{id:'year_3_return',label:'近3年收益%',better:'higher'},
+  {id:'annual_3y',label:'近3年年化%',better:'higher'},
+  {id:'sharpe_ratio',label:'夏普比率',better:'higher'},{id:'calmar_ratio',label:'卡玛比率',better:'higher'},
+  {id:'info_ratio',label:'信息比率',better:'higher'},{id:'max_drawdown',label:'最大回撤%',better:'higher'},
+  {id:'annual_vol',label:'年化波动%',better:'lower'},{id:'tracking_error',label:'跟踪误差%',better:'lower'},
+  {id:'beta',label:'Beta',better:'lower'},{id:'alpha',label:'Alpha',better:'higher'},
+  {id:'main_net_inflow',label:'主力净流入(亿)',better:'higher'},{id:'main_net_ratio',label:'主力净占比%',better:'higher'},
+  {id:'super_large_inflow',label:'超大单净流入(万)',better:'higher'},{id:'large_inflow',label:'大单净流入(万)',better:'higher'},
+  {id:'medium_inflow',label:'中单净流入(万)',better:'higher'},{id:'small_inflow',label:'小单净流入(万)',better:'higher'},
+  {id:'flow_shares',label:'最新份额(亿)',better:'higher'},{id:'flow_data_date',label:'资金日期'},
+  {id:'valuation_percentile',label:'PE分位%',better:'lower'},
+  {id:'premium_discount',label:'折溢价%'},{id:'holdings_str',label:'前5持仓'},{id:'top_holdings',label:'重仓股'},
+  {id:'holdings',label:'全部持仓'}
+];
+renderSourceDetail();
+var cachedEtfs=null,cachedCodes=null;
+
+function getFilteredFields(){
+  if(currentSource==='全部字段')return ALL_FIELDS;
+  var ids=SOURCE_GROUPS[currentSource]||[];
+  return ALL_FIELDS.filter(f=>ids.includes(f.id));
+}
+
+// ===== COMPARE =====
+async function startCompare(silent){
+  var codes=[...selected];if(codes.length<2)return;
+  document.getElementById('compSection').classList.add('active');
+  document.getElementById('compCount').textContent='（'+codes.length+'只）';
+  if(!silent){document.getElementById('compareBtn').disabled=true;document.getElementById('compareBtn').textContent='对比中…';}
+  await loadFullData();
+  var d={};codes.forEach(function(c){var e=getFullETF(c);if(e)d[c]=e;});
+  codes.forEach(function(c){if(PRICE_CACHE[c]){if(d[c])Object.assign(d[c],PRICE_CACHE[c]);else d[c]={...PRICE_CACHE[c]};}});
+  cachedEtfs=codes.map(function(c){return d[c];}).filter(Boolean);cachedCodes=codes;
+  currentSource='全部字段';renderSourceTabs();
+  document.getElementById('compTable').innerHTML='<div class="table-skeleton">正在渲染对比表格…</div>';
+  requestAnimationFrame(function(){
+    renderFilteredTable(cachedEtfs);
+    saveHistory(codes);
+    document.getElementById('compareBtn').disabled=false;document.getElementById('compareBtn').textContent='重新对比';
+  });
+  var cacheHit=codes.filter(function(c){return PRICE_CACHE[c]&&PRICE_CACHE[c].prev_close;});
+  var needFetch=isTradingTime()||cacheHit.length<codes.length;
+  if(needFetch){fetchTTJJ(codes).then(function(ttjj){updatePriceCells(codes,ttjj);if(isTradingTime())startAutoRefresh([...codes]);});}
+}
+
+var reRenderTimer=null;
+function reRenderTable(){
+  if(!cachedEtfs||cachedEtfs.length<2)return;
+  if(reRenderTimer)clearTimeout(reRenderTimer);
+  reRenderTimer=setTimeout(function(){renderFilteredTable(cachedEtfs);},50);
+}
+
+// 表格渲染辅助函数（提升到外部，避免每次重新定义）
+function _fmtNum(v,digits){return v!=null?v.toFixed(digits):'-';}
+function _pctCls(v){return v>0?'red':(v<0?'green':'');}
+function _bestCls(cls,isBest){return isBest?cls+' best':cls;}
+function _fmtLongText(v){return v!=null?String(v).replace(/\n/g,'<br>'):'-';}
+function _escapeAttr(s){return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+// 字段分类缓存（Set 查找 O(1)）
+var _TEXT_FIELDS=new Set(['code','name','issuer_full','custodian','fund_manager','short_name','wind_code','track_index','issuer','issuer_short','category','invest_type','track_index_code','flow_source']);
+var _DATE_FIELDS=new Set(['listing_date','issue_date','flow_data_date']);
+var _HOLDINGS_FIELDS=new Set(['holdings_str','top_holdings','holdings']);
+var _SCALE_FIELDS=new Set(['scale_yi','shares']);
+var _FEE_FIELDS=new Set(['fee_mgmt','fee_custody','fee_total']);
+var _RETURN_FIELDS=new Set(['year_1_return','year_3_return','annual_3y']);
+var _RATIO_FIELDS=new Set(['sharpe_ratio','calmar_ratio','info_ratio','alpha']);
+var _RISK_PCT_FIELDS=new Set(['annual_vol','tracking_error']);
+var _FLOW_FIELDS=new Set(['main_net_inflow','super_large_inflow','large_inflow','medium_inflow','small_inflow']);
+
+function computeBestValues(etfs,fields){
+  var best={};
+  fields.forEach(function(f){
+    if(f.id==='max_drawdown'){var max=-Infinity;etfs.forEach(function(e){var v=e['max_drawdown'];if(v!=null&&v>max)max=v;});if(max>-Infinity)best['max_drawdown']=max;}
+    else if(f.better==='higher'){var max=-Infinity;etfs.forEach(function(e){var v=e[f.id];if(v!=null&&v>max)max=v;});if(max>-Infinity)best[f.id]=max;}
+    else if(f.better==='lower'){var min=Infinity;etfs.forEach(function(e){var v=e[f.id];if(v!=null&&v<min)min=v;});if(min<Infinity)best[f.id]=min;}
+  });
+  return best;
+}
+
+function renderCell(f,e,isBest){
+  var id=f.id,v=e[id];
+  if(f.type==='ttjj'){
+    var cellId='cell_'+e.code+'_'+id;
+    if(v!=null&&v!==''){
+      if(id==='change_pct'){var n=parseFloat(v);return '<td id="'+cellId+'">'+(n>0?'<span class="red">+':'<span class="green">')+n.toFixed(2)+'%</span></td>';}
+      return '<td id="'+cellId+'">'+_fmtNum(v,3)+'</td>';
+    }
+    return '<td id="'+cellId+'"><span class="cell-loading">-</span></td>';
+  }
+  if(id==='code')return '<td>'+e.code+'</td>';
+  if(_TEXT_FIELDS.has(id)){
+    if(id==='name'||id==='issuer_full'||id==='custodian'||id==='fund_manager'||id==='short_name'||id==='wind_code'||id==='track_index'){
+      return '<td class="trunc-cell" onclick="toggleExpand(this)">'+_fmtLongText(v)+'</td>';
+    }
+    return '<td>'+(v||'-')+'</td>';
+  }
+  if(_DATE_FIELDS.has(id))return '<td style="font-size:11px">'+(v||'-')+'</td>';
+  if(_HOLDINGS_FIELDS.has(id))return '<td class="holdings-cell">'+_fmtLongText(v)+'</td>';
+  if(_SCALE_FIELDS.has(id))return '<td class="'+_bestCls(isBest?'red':'',isBest)+'">'+(v!=null?v.toFixed(2):'-')+'亿</td>';
+  if(id==='flow_shares')return '<td class="'+_bestCls(isBest?'red':'',isBest)+'">'+(v!=null?(v/1e8).toFixed(2):'-')+'亿</td>';
+  if(id==='volume')return '<td>'+(v!=null?(v/1e4).toFixed(2)+'万': '-')+'</td>';
+  if(id==='nav')return '<td>'+_fmtNum(v,4)+'</td>';
+  if(_FEE_FIELDS.has(id))return '<td class="'+_bestCls('blue',isBest)+'">'+(v!=null?v.toFixed(2):'-')+'%</td>';
+  if(_RETURN_FIELDS.has(id))return '<td class="'+_bestCls(_pctCls(v),isBest)+'">'+(v!=null?(v>0?'+':'')+v.toFixed(2)+'%':'-')+'</td>';
+  if(_RATIO_FIELDS.has(id))return '<td class="'+_bestCls(v>0?'red':'green',isBest)+'">'+_fmtNum(v,2)+'</td>';
+  if(id==='max_drawdown')return '<td class="'+_bestCls('green',isBest)+'">'+(v!=null?v.toFixed(1):'-')+'%</td>';
+  if(_RISK_PCT_FIELDS.has(id))return '<td class="'+_bestCls('blue',isBest)+'">'+(v!=null?v.toFixed(2):'-')+'%</td>';
+  if(id==='beta')return '<td class="'+_bestCls('blue',isBest)+'">'+_fmtNum(v,2)+'</td>';
+  if(_FLOW_FIELDS.has(id)){var unit=(Math.abs(v||0)>=1e8)?'亿':'万';var div=(Math.abs(v||0)>=1e8)?1e8:1e4;return '<td class="'+_bestCls(_pctCls(v),isBest)+'">'+(v!=null?(v/div).toFixed(2)+unit:'-')+'</td>';}
+  if(id==='main_net_ratio')return '<td class="'+_bestCls(_pctCls(v),isBest)+'">'+_fmtNum(v,2)+'%</td>';
+  if(id==='valuation_percentile')return '<td class="'+_bestCls('blue',isBest)+'">'+(v!=null&&v>=0?v.toFixed(1)+'%':'-')+'</td>';
+  if(id==='premium_discount')return '<td class="'+_pctCls(v)+'">'+_fmtNum(v,2)+'%</td>';
+  if(id==='change_rate'){var n=(v||0)*100;return '<td class="'+_pctCls(n)+'">'+(n>0?'+':'')+n.toFixed(2)+'%</td>';}
+  return '<td>'+(v!=null?v:'-')+'</td>';
+}
+
+function renderFilteredTable(etfs){
+  var fields=getFilteredFields();
+  var best=computeBestValues(etfs,fields);
+  var thead=['<table><thead><tr>'];
+  fields.forEach(function(f){thead.push('<th>'+f.label+'</th>');});
+  thead.push('</tr></thead><tbody>');
+  var rows=[];
+  etfs.forEach(function(e){
+    rows.push('<tr>');
+    fields.forEach(function(f){
+      var v=e[f.id];
+      var isBest=v!=null&&v===best[f.id];
+      rows.push(renderCell(f,e,isBest));
+    });
+    rows.push('</tr>');
+  });
+  rows.push('</tbody></table>');
+  document.getElementById('compTable').innerHTML=thead.join('')+rows.join('');
+}
+
+function updatePriceCells(codes,data){
+  codes.forEach(code=>{
+    var d=data[code];if(!d)return;
+    // 腾讯行情返回 prev_close/latest_price/change_pct，表格字段为 close/change_pct
+    var map={'change_pct':'change_pct','latest_price':'close'};
+    Object.entries(map).forEach(([srcKey,cellKey])=>{
+      var cell=document.getElementById('cell_'+code+'_'+cellKey);if(!cell)return;
+      var val=d[srcKey];if(val!==undefined&&val!==''){
+        if(cellKey==='change_pct'){var n=parseFloat(val);cell.innerHTML=(n>0?'<span class="red">+':'<span class="green">')+n.toFixed(2)+'%</span>';if(d.update_time){var ts=d.update_time.length>16?d.update_time.slice(11):(d.update_time.includes(' ')?d.update_time.split(' ')[1]:'');cell.innerHTML+=' <span style="font-size:9px;color:var(--text2);display:block">'+ts+'</span>';}}
+        else{cell.textContent=val;if(d.update_time){var ts=d.update_time.length>16?d.update_time.slice(11):(d.update_time.includes(' ')?d.update_time.split(' ')[1]:'');cell.innerHTML=val+' <span style="font-size:9px;color:var(--text2);display:block">'+ts+'</span>';}}
+      }
+    });
+  });
+}
+function startAutoRefresh(codes){stopAutoRefresh();if(!isTradingTime())return;refreshTimer=setInterval(async()=>{var data=await fetchTTJJ(codes);updatePriceCells(codes,data);},1000);}
+function stopAutoRefresh(){if(refreshTimer){clearInterval(refreshTimer);refreshTimer=null;}}
+
+// ===== CLOCK =====
+function tick(){var now=new Date();document.getElementById('liveClock').textContent=now.toLocaleString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});}
+tick();setInterval(tick,1000);
+
+// ===== HISTORY =====
+var COMPARE_HISTORY=(()=>{try{return JSON.parse(localStorage.getItem('etf_compare_history')||'[]');}catch(e){return [];}})();
+function saveHistory(codes){var entry={codes:[...codes],ts:Date.now(),label:codes.map(c=>{var e=ETF_CORE_DATA.find(x=>x.code===c);return e?e.name:c;}).join(' vs ')};COMPARE_HISTORY.unshift(entry);if(COMPARE_HISTORY.length>5)COMPARE_HISTORY.length=5;localStorage.setItem('etf_compare_history',JSON.stringify(COMPARE_HISTORY));renderHistory();}
+function renderHistory(){if(!COMPARE_HISTORY.length)return;document.getElementById('historyBar').innerHTML='<span style="color:var(--text2)">最近对比：</span>'+COMPARE_HISTORY.map((h,i)=>'<span class="history-item" onclick="quickCompare('+JSON.stringify(h.codes).replace(/"/g,'&quot;')+')">'+h.label+'</span>').join('');}
+renderHistory();
+
+function saveState(){localStorage.setItem('etf_compare_state',JSON.stringify({selected:[...selected]}));}
+function loadState(){try{var raw=localStorage.getItem('etf_compare_state');if(raw){var state=JSON.parse(raw);if(state.selected&&state.selected.length){state.selected.forEach(c=>selected.add(c));renderSelected();document.getElementById('compareBtn').disabled=false;document.getElementById('compareBtn').textContent='恢复对比('+selected.size+')';startCompare(true);}}}catch(e){}}
+loadState();
+
+// ===== LANDING SECTIONS =====
+function renderLandingStats(){
+  document.getElementById('statCount').textContent=ETF_CORE_DATA.length.toLocaleString('zh-CN');
+}
+function drawScatterChart(){
+  var canvas=document.getElementById('scatterChart');if(!canvas||!window.Chart)return;
+  var ctx=canvas.getContext('2d');
+  var points=ETF_CORE_DATA.filter(e=>e.annual_vol>0&&e.annual_vol<80&&e.year_1_return!=null).slice(0,800);
+  var isLight=document.documentElement.hasAttribute('data-theme');
+  var gridColor=isLight?'rgba(0,0,0,0.08)':'rgba(148,163,184,0.15)';
+  var textColor=isLight?'#64748b':'#94a3b8';
+  new Chart(ctx,{
+    type:'scatter',
+    data:{
+      datasets:[{
+        label:'ETF',
+        data:points.map(d=>({x:d.annual_vol,y:d.year_1_return,r:Math.max(2,Math.min(12,(d.scale_yi||10)/80))})),
+        backgroundColor:points.map(d=>{if(d.year_1_return>50)return 'rgba(239,68,68,0.55)';if(d.year_1_return>0)return 'rgba(139,92,246,0.5)';return 'rgba(16,185,129,0.5)';}),
+        borderColor:'rgba(255,255,255,0.05)',borderWidth:1
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          callbacks:{
+            label:function(ctx){var d=points[ctx.dataIndex];return d.code+' '+d.name+' | 收益:'+d.year_1_return.toFixed(1)+'% | 波动:'+d.annual_vol.toFixed(1)+'% | 规模:'+(d.scale_yi||0).toFixed(0)+'亿';}
+          }
+        }
+      },
+      scales:{
+        x:{title:{display:true,text:'年化波动率 (%)',color:textColor},grid:{color:gridColor},ticks:{color:textColor}},
+        y:{title:{display:true,text:'近1年收益率 (%)',color:textColor},grid:{color:gridColor},ticks:{color:textColor}}
+      }
+    }
+  });
+}
+renderLandingStats();
+
+// 散点图懒加载：滚动到可视区域再渲染，避免首屏阻塞
+var _scatterObserved=false;
+function observeScatterChart(){
+  if(_scatterObserved||!window.IntersectionObserver)return;
+  var canvas=document.getElementById('scatterChart');if(!canvas)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){drawScatterChart();obs.disconnect();}
+    });
+  },{rootMargin:'100px'});
+  obs.observe(canvas);_scatterObserved=true;
+}
+observeScatterChart();
+
+// ===== CSV EXPORT =====
+function exportCSV(){var table=document.querySelector('#compTable table');if(!table)return;var csv='\uFEFF';var rows=table.querySelectorAll('tr');rows.forEach(row=>{var cells=row.querySelectorAll('th,td');csv+=[...cells].map(c=>'"'+c.textContent.replace(/"/g,'""')+'"').join(',')+'\n';});var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='ETF对比_'+new Date().toISOString().slice(0,10)+'.csv';a.click();URL.revokeObjectURL(url);}
+function toggleExpand(td){td.classList.toggle('expanded');}
+
+// 暴露给 HTML 内联事件属性使用
+window.addETF=addETF;window.removeETF=removeETF;window.startCompare=startCompare;window.quickCompare=quickCompare;window.startDemoCompare=startDemoCompare;
+window.switchSource=switchSource;window.toggleSourceDetail=toggleSourceDetail;window.exportCSV=exportCSV;window.toggleExpand=toggleExpand;
+window.clearAll=clearAll;window.handleSearch=handleSearch;window.handleSearchDebounced=handleSearchDebounced;window.handleKey=handleKey;window.onFilter=onFilter;window.highlightItem=highlightItem;
+window.renderFilteredTable=renderFilteredTable;
+Object.defineProperty(window,'cachedEtfs',{get:function(){return cachedEtfs;},configurable:true}); // 暴露给测试/调试
+});
+</script>
+</body>
+</html>
