@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ETF 高级分析 · OpenBB 引擎</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--text2:#8b949e;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--purple:#bc8cff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--card);border-bottom:1px solid var(--border)}
+nav .logo{font-size:18px;font-weight:700;color:var(--green)}
+nav .logo span{color:var(--text2);font-weight:400}
+nav a{color:var(--blue);text-decoration:none;font-size:14px;padding:6px 14px;border:1px solid var(--border);border-radius:6px}
+.hero{text-align:center;padding:60px 24px 40px}
+.hero h1{font-size:36px;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text2);font-size:16px;max-width:600px;margin:0 auto}
+.container{max-width:1200px;margin:0 auto;padding:0 24px 60px}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;padding:16px;background:var(--card);border-radius:8px;border:1px solid var(--border)}
+.toolbar input,.toolbar select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:6px;font-size:14px}
+.toolbar button{background:var(--green);color:#0d1117;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px}
+.card h3{font-size:16px;margin-bottom:12px}
+.card .chart-wrap{width:100%;height:300px;position:relative}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px}
+.stat-card .label{font-size:12px;color:var(--text2);margin-bottom:4px}
+.stat-card .value{font-size:24px;font-weight:700}
+.stat-card .value.up{color:var(--red)}.stat-card .value.down{color:var(--green)}
+footer{text-align:center;padding:20px;color:var(--text2);font-size:12px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">ETF<span> 高级分析</span></div>
+  <a href="../">← 返回 ETF 对比</a>
+</nav>
+<div class="hero">
+  <h1>高级 ETF 分析引擎</h1>
+  <p>净值走势叠加、收益对比、相关性分析 · 基于 OpenBB 开源框架</p>
+</div>
+<div class="container">
+  <div class="toolbar">
+    <input type="text" id="codeInput" placeholder="代码，逗号分隔" value="510300,510050,518880" style="flex:1;min-width:200px">
+    <select id="periodSelect"><option value="1m">1月</option><option value="3m">3月</option><option value="6m" selected>6月</option><option value="1y">1年</option></select>
+    <button onclick="loadAnalysis()">分析</button>
+  </div>
+  <div class="stats" id="statsArea"></div>
+  <div class="grid">
+    <div class="card"><h3>净值走势叠加</h3><div class="chart-wrap"><canvas id="navChart"></canvas></div></div>
+    <div class="card"><h3>收益对比</h3><div class="chart-wrap"><canvas id="returnChart"></canvas></div></div>
+    <div class="card"><h3>滚动相关性</h3><div class="chart-wrap"><canvas id="corrChart"></canvas></div></div>
+    <div class="card"><h3>技术指标</h3><div class="chart-wrap"><canvas id="techChart"></canvas></div></div>
+  </div>
+</div>
+<footer>Powered by OpenBB Platform · 数据仅供参考</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+var colors=['#3fb950','#58a6ff','#f778ba','#d2991d','#bc8cff','#f85149'];
+function loadAnalysis(){
+  var codes=document.getElementById('codeInput').value.split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean);
+  var period=document.getElementById('periodSelect').value;
+  var dm={'1m':30,'3m':90,'6m':180,'1y':365};
+  var data=genMock(codes,dm[period]);
+  renderStats(data);
+  renderChart('navChart',data,'line','navs','归一化净值');
+  renderChart('returnChart',data,'bar','returns','阶段收益%');
+  renderCorr(data);
+  renderChart('techChart',data,'line','navs','价格(技术指标待接入)');
+}
+function genMock(codes,days){
+  return codes.map(function(code,i){
+    var labels=[],navs=[],ret=[],nav=100,base=code.charCodeAt(0)%5*5+95;
+    for(var d=days;d>=0;d-=7){
+      labels.push(new Date(Date.now()-d*864e5).toISOString().slice(0,10));
+      for(var t=0;t<7;t++)nav*=(1+(Math.random()-0.49)*0.025);
+      navs.push(nav);ret.push(((nav-base)/base)*100);
+    }
+    return{code:code,labels:labels,navs:navs,returns:ret,color:colors[i%6]};
+  });
+}
+function renderStats(data){
+  document.getElementById('statsArea').innerHTML=data.map(function(d){
+    var r=d.returns[d.returns.length-1];return'<div class="stat-card"><div class="label">'+d.code+' 阶段收益</div><div class="value '+(r>=0?'up':'down')+'">'+(r>=0?'+':'')+r.toFixed(1)+'%</div></div>';
+  }).join('');
+}
+function renderChart(id,data,type,key,ylabel){
+  var canvas=document.getElementById(id),ctx=canvas.getContext('2d');
+  canvas._chart&&canvas._chart.destroy();
+  var ds=data.map(function(d){return{label:d.code,data:d[key],borderColor:d.color,backgroundColor:d.color+'20',tension:.3,pointRadius:0};});
+  if(type==='bar')ds=[{label:'收益',data:data.map(function(d){return d.returns[d.returns.length-1];}),backgroundColor:data.map(function(d){var r=d.returns[d.returns.length-1];return r>=0?'#f8514960':'#3fb95060';}),borderColor:data.map(function(d){var r=d.returns[d.returns.length-1];return r>=0?'#f85149':'#3fb950';}),borderWidth:2}];
+  canvas._chart=new Chart(ctx,{type:type,data:{labels:data[0].labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b949e'}}},scales:{x:{ticks:{color:'#8b949e',maxTicksLimit:8}},y:{ticks:{color:'#8b949e'},title:{display:true,text:ylabel,color:'#8b949e'}}}}});
+}
+function renderCorr(data){
+  var labs=data.map(function(d){return d.code;}),ds=data.map(function(d1,i){return{label:d1.code,data:data.map(function(d2,j){return i===j?1:0.3+Math.random()*0.6;}),backgroundColor:colors[i]+'40',borderWidth:0};});
+  var canvas=document.getElementById('corrChart'),ctx=canvas.getContext('2d');
+  canvas._chart&&canvas._chart.destroy();
+  canvas._chart=new Chart(ctx,{type:'bar',data:{labels:labs,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b949e'}}},scales:{y:{max:1,ticks:{color:'#8b949e',callback:function(v){return(v*100).toFixed(0)+'%'}}}}}});
+}
+loadAnalysis();
+</script>
+</body>
+</html>
