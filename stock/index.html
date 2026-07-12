@@ -236,32 +236,37 @@ function renderStocks(stocks){
 function loadAndRenderKLine(code,period){
   currentCode=code;currentPeriod=period;
   var chartWrap=document.querySelector('#chartSection .chart-wrap');
-  var h=chartWrap.offsetHeight;
-  chartWrap.innerHTML='<canvas id="klineChart"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text2);font-size:13px" id="chartLoading">加载K线数据…</div>';
+  chartWrap.innerHTML='<canvas id="klineChart" style="width:100%;height:100%"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text2);font-size:13px" id="chartLoading">加载K线数据…</div>';
   fetchKLine(code,period).then(function(data){
-    if(!data||data.dates.length===0){
-      document.getElementById('chartLoading').textContent='K线数据获取失败';
+    console.log('[KLine] result:',data?'bars:'+data.dates.length:'null');
+    if(!data||!data.dates||data.dates.length===0){
+      document.getElementById('chartLoading').textContent='K线获取失败（重试或更换周期）';
+      document.getElementById('chartLoading').style.color='var(--red)';
       return;
     }
-    klineData=data;
     document.getElementById('chartLoading').style.display='none';
     renderKLine(data);
+  }).catch(function(e){
+    console.error('[KLine] error',e);
+    document.getElementById('chartLoading').textContent='K线加载异常：'+e.message;
+    document.getElementById('chartLoading').style.color='var(--red)';
   });
 }
 
 function renderKLine(data){
-  var ctx=document.getElementById('klineChart').getContext('2d');
+  var canvas=document.getElementById('klineChart');
+  if(!canvas){console.error('[KLine] canvas not found');return;}
+  var ctx=canvas.getContext('2d');
   if(window._klineChart)window._klineChart.destroy();
-  var vols=data.vols,maxVol=Math.max.apply(null,vols),minVol=Math.min.apply(null,vols);
-  var volData=vols.map(function(v){return maxVol>0?Math.round(v/maxVol*60):0;});
-  var bgColor=data.closes.map(function(c,i){return i>0&&data.closes[i]>=data.opens[i]?'rgba(192,57,43,0.25)':'rgba(39,174,96,0.25)';});
-  var borderColor=data.closes.map(function(c,i){return i>0&&data.closes[i]>=data.opens[i]?'#C0392B':'#27AE60';});
+
+  var vols=data.vols,maxVol=Math.max.apply(null,vols)||1;
+  var volData=vols.map(function(v){return Math.round(v/maxVol*40);});
 
   window._klineChart=new Chart(ctx,{
     type:'bar',data:{labels:data.dates,
       datasets:[
-        {label:'成交量(缩放)',data:volData,borderColor:'rgba(139,126,107,0.4)',backgroundColor:'rgba(139,126,107,0.15)',order:2,yAxisID:'volume',type:'bar',barPercentage:0.6},
-        {label:'K线',data:data.closes.map(function(c,i){return data.opens[i]?[data.opens[i],data.closes[i]]:[c,c];}),borderColor:borderColor,backgroundColor:bgColor,borderWidth:1,order:1,yAxisID:'price',type:'bar',barPercentage:0.4}
+        {label:'成交量(万手)',data:volData,borderColor:'rgba(139,126,107,0.3)',backgroundColor:'rgba(139,126,107,0.12)',order:2,yAxisID:'volume',type:'bar',barPercentage:0.8},
+        {label:'收盘价',data:data.closes,borderColor:'#C0392B',backgroundColor:'transparent',borderWidth:1.5,order:1,yAxisID:'price',type:'line',tension:0.1,pointRadius:0}
       ]},
     options:{
       responsive:true,maintainAspectRatio:false,
@@ -269,11 +274,8 @@ function renderKLine(data){
         legend:{display:false},
         tooltip:{callbacks:{
           label:function(ctx){
-            if(ctx.datasetIndex===1){
-              var i=ctx.dataIndex;
-              return ['开:'+data.opens[i].toFixed(2),'高:'+data.highs[i].toFixed(2),'低:'+data.lows[i].toFixed(2),'收:'+data.closes[i].toFixed(2)];
-            }
-            return '量:'+(data.vols[ctx.dataIndex]/1e4).toFixed(0)+'万手';
+            if(ctx.datasetIndex===1)return '收:'+data.closes[ctx.dataIndex].toFixed(2)+'  开:'+data.opens[ctx.dataIndex].toFixed(2)+'  高:'+data.highs[ctx.dataIndex].toFixed(2)+'  低:'+data.lows[ctx.dataIndex].toFixed(2);
+            return '量:'+(data.vols[ctx.dataIndex]/1e4).toFixed(1)+'万手';
           }
         }}
       },
