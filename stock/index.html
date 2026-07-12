@@ -153,22 +153,23 @@ function parseQuote(raw){
   };
 }
 
-// ===== 东方财富 K线 =====
+// ===== 腾讯 K线 =====
 function fetchKLine(code,period){
   var days={'1m':22,'3m':66,'6m':132,'1y':252};
-  var limit=days[period]||66,secid='';
-  if(code.startsWith('60')||code.startsWith('68'))secid='1.'+code;
-  else secid='0.'+code;
-  var url='https://push2his.eastmoney.com/api/qt/stock/kline/get?secid='+secid+'&klt=101&fqt=1&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&end=20500101&lmt='+limit;
+  var limit=days[period]||66;
+  var prefix=code.startsWith('60')||code.startsWith('68')?'sh':'sz';
+  var url='https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param='+prefix+code+',day,,,'+limit+',qfq';
   return fetch(url).then(function(r){return r.json();}).then(function(d){
-    var klines=(d.data||{}).klines||[];
-    if(!klines||klines.length===0){console.warn('[KLine] empty for '+code, d);return null;}
+    var key=prefix+code,stock=(d.data||{})[key]||{};
+    var klines=stock['qfqday']||stock['day']||[];
+    if(klines.length===0){console.warn('[KLine] empty for '+code,d);return null;}
     var dates=[],opens=[],highs=[],lows=[],closes=[],vols=[];
     klines.forEach(function(k){
-      var p=k.split(',');dates.push(p[0]);
-      opens.push(parseFloat(p[1]));closes.push(parseFloat(p[2]));highs.push(parseFloat(p[3]));
-      lows.push(parseFloat(p[4]));vols.push(parseFloat(p[5]));
+      dates.push(k[0]);
+      opens.push(parseFloat(k[1]));closes.push(parseFloat(k[2]));highs.push(parseFloat(k[3]));
+      lows.push(parseFloat(k[4]));vols.push(parseFloat(k[5]));
     });
+    console.log('[KLine] '+code+' loaded '+klines.length+' bars');
     return {dates:dates,opens:opens,highs:highs,lows:lows,closes:closes,vols:vols};
   }).catch(function(e){console.error('[KLine] fetch error',e);return null;});
 }
