@@ -222,24 +222,39 @@ function renderStocks(stocks){
 // ===== 迷你 K 线（每个卡片内嵌） =====
 var MINI_CHARTS={};
 function loadMiniKLines(stocks){
-  var colors=['#C0392B','#2E86C1','#8E44AD','#27AE60','#E67E22'];
   stocks.forEach(function(s,i){
     fetchKLine(s.code,'1m').then(function(data){
       if(!data||!data.closes||data.closes.length<2)return;
       var canvas=document.getElementById('mk_'+s.code);
       if(!canvas)return;
       var parent=canvas.parentElement;
-      if(parent)parent.style.minHeight='200px';
+      if(parent)parent.style.minHeight='220px';
       if(MINI_CHARTS[s.code])MINI_CHARTS[s.code].destroy();
-      var ctx=canvas.getContext('2d'),c=colors[i%colors.length];
+      var ctx=canvas.getContext('2d');
       var up=data.closes[data.closes.length-1]>=data.closes[0];
-      var lineC=up?'#C0392B':'#27AE60',fillC=up?'rgba(192,57,43,0.1)':'rgba(39,174,96,0.1)';
+      var lineC=up?'#C0392B':'#27AE60',fillC=up?'rgba(192,57,43,0.08)':'rgba(39,174,96,0.08)';
+      var maxVol=Math.max.apply(null,data.vols)||1;
+      var volData=data.vols.map(function(v){return Math.round(v/maxVol*30);});
       MINI_CHARTS[s.code]=new Chart(ctx,{
-        type:'line',data:{labels:data.dates,datasets:[{data:data.closes,borderColor:lineC,backgroundColor:fillC,borderWidth:1.5,fill:true,tension:0.3,pointRadius:0}]},
+        data:{labels:data.dates,
+          datasets:[
+            {label:'量',data:volData,backgroundColor:'rgba(139,126,107,0.2)',borderColor:'rgba(139,126,107,0.3)',borderWidth:0.5,order:2,yAxisID:'vol',type:'bar',barPercentage:0.9,categoryPercentage:1},
+            {label:'价',data:data.closes,borderColor:lineC,backgroundColor:fillC,borderWidth:1.5,fill:true,tension:0.3,pointRadius:0,order:1,yAxisID:'price',type:'line'}
+          ]},
         options:{
           responsive:true,maintainAspectRatio:false,
-          plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return s.name+' '+data.closes[ctx.dataIndex].toFixed(2);}}}},
-          scales:{x:{display:false},y:{display:false,min:Math.min.apply(null,data.closes)*0.97,max:Math.max.apply(null,data.closes)*1.03}}
+          plugins:{legend:{display:false},
+            tooltip:{callbacks:{label:function(ctx){
+              if(ctx.datasetIndex===0)return '量:'+(data.vols[ctx.dataIndex]/1e4).toFixed(1)+'万手';
+              var i=ctx.dataIndex;
+              return [s.name,'收:'+data.closes[i].toFixed(2),'开:'+data.opens[i].toFixed(2),'高:'+data.highs[i].toFixed(2),'低:'+data.lows[i].toFixed(2)];
+            }}}
+          },
+          scales:{
+            x:{display:false},
+            price:{type:'linear',position:'left',display:false,min:Math.min.apply(null,data.closes)*0.97,max:Math.max.apply(null,data.closes)*1.03},
+            vol:{type:'linear',position:'right',display:false,grid:{display:false},max:maxVol*1.5}
+          }
         }
       });
     });
