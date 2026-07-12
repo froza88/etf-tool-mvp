@@ -98,13 +98,22 @@ function fetchQuotes(codes){
     return prefix+c;
   }).join(',');
   return new Promise(function(resolve,reject){
-    var callback='_qt_cb_'+Date.now();
-    window[callback]=function(data){delete window[callback];resolve(data);};
     var script=document.createElement('script');
-    script.src='https://sqt.gtimg.cn/q='+symbols+'&callback='+callback;
-    script.onerror=function(){delete window[callback];reject(new Error('Fetch failed'));};
+    script.charset='gbk';
+    script.src='https://sqt.gtimg.cn/q='+symbols;
+    script.onload=function(){
+      document.head.removeChild(script);
+      var out={};
+      codes.forEach(function(c){
+        var prefix=c.startsWith('60')?'sh':(c.startsWith('00')||c.startsWith('30')||c.startsWith('002')?'sz':'sh');
+        var key='v_'+prefix+c;
+        if(window[key]!==undefined){out[key]=window[key];}
+      });
+      resolve(out);
+    };
+    script.onerror=function(){document.head.removeChild(script);reject(new Error('Fetch failed'));};
     document.head.appendChild(script);
-//    setTimeout(function(){delete window[callback];resolve({});},15000);
+    setTimeout(function(){if(script.parentNode){document.head.removeChild(script);}reject(new Error('Timeout'));},8000);
   });
 }
 
