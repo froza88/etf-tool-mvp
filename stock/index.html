@@ -29,7 +29,9 @@ h1{font-size:28px;text-align:center;margin:48px 0 8px;font-weight:800}
 .search-hint{font-size:12px;color:var(--text2);margin-bottom:20px}
 /* 股票卡片区 */
 .stock-list{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
-.stock-card{flex:1;min-width:280px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow)}
+.stock-card{flex:1;min-width:280px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:border-color .2s}
+.stock-card:hover{border-color:var(--blue)}
+.stock-card.active{border-color:var(--blue);border-width:2px;padding:19px}
 .stock-card .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .stock-card .name{font-size:18px;font-weight:700}
 .stock-card .code{font-size:12px;color:var(--text2)}
@@ -208,9 +210,9 @@ function doSearch(){
 
 function renderStocks(stocks){
   var html='<div class="stock-list">';
-  stocks.forEach(function(s){
+  stocks.forEach(function(s,i){
     var cls=s.change_pct>=0?'up':'down',sign=s.change_pct>=0?'+':'';
-    html+='<div class="stock-card">';
+    html+='<div class="stock-card'+(i===0?' active':'')+'" data-code="'+s.code+'" onclick="switchStock('+JSON.stringify(s.code)+')">';
     html+='<div class="header"><span class="name">'+s.name+'</span><span class="code">'+s.code+'</span></div>';
     html+='<div class="price '+cls+'">'+s.price.toFixed(2)+'</div>';
     html+='<div class="change '+cls+'">'+sign+s.change_pct.toFixed(2)+'% &nbsp; '+sign+s.change.toFixed(2)+'</div>';
@@ -230,16 +232,23 @@ function renderStocks(stocks){
   });
   html+='</div>';
   document.getElementById('stockArea').innerHTML=html;
+  // 存全局方便切换K线
+  window._stocks=stocks;
+}
+
+// ===== 切换 K 线标的 =====
+function switchStock(code){
+  document.querySelectorAll('.stock-card').forEach(function(c){c.classList.toggle('active',c.dataset.code===code);});
+  loadAndRenderKLine(code,currentPeriod);
 }
 
 // ===== K线图 =====
 function loadAndRenderKLine(code,period){
   currentCode=code;currentPeriod=period;
-  // 找到股票名称
-  var cards=document.querySelectorAll('.stock-card');
-  var stockName=code;
-  cards.forEach(function(card){var c=card.querySelector('.code');if(c&&c.textContent===code){stockName=card.querySelector('.name').textContent+' '+code;}});
-  document.getElementById('klineStockName').textContent=stockName;
+  // 从全局 stock 列表找名称
+  var stocks=window._stocks||[];
+  var s=stocks.find(function(x){return x.code===code;});
+  document.getElementById('klineStockName').textContent=s?s.name+' '+code:code;
   var chartWrap=document.querySelector('#chartSection .chart-wrap');
   chartWrap.innerHTML='<canvas id="klineChart" style="width:100%;height:100%"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--text2);font-size:13px" id="chartLoading">加载K线数据…</div>';
   fetchKLine(code,period).then(function(data){
