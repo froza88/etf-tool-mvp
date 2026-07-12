@@ -42,8 +42,11 @@ h1{font-size:28px;text-align:center;margin:48px 0 8px;font-weight:800}
 .stock-card .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
 .stock-card .info-item .label{color:var(--text2);font-size:11px}
 .stock-card .info-item .val{font-weight:600}
-.mini-kline{width:100%!important;height:100%!important}
-/* 状态 */
+  .mini-kline{width:100%!important;height:100%!important}
+  .period-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+  .period-bar button{padding:6px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-size:12px;cursor:pointer;color:var(--text2);font-family:inherit}
+  .period-bar button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  /* 状态 */
 .loading{text-align:center;padding:60px;color:var(--text2)}
 .error{text-align:center;padding:30px;color:var(--red);font-size:14px}
 footer{text-align:center;padding:30px;color:var(--text2);font-size:12px;border-top:1px solid var(--border)}
@@ -63,6 +66,13 @@ footer{text-align:center;padding:30px;color:var(--text2);font-size:12px;border-t
     <button onclick="doSearch()">查询</button>
   </div>
   <p class="search-hint">支持沪市(sh)、深市(sz)代码。自动识别 600xxx / 000xxx / 300xxx / 688xxx 等前缀</p>
+
+  <div class="period-bar" id="periodBar" style="display:none">
+    <button data-period="1m" class="active">1月</button>
+    <button data-period="3m">3月</button>
+    <button data-period="6m">6月</button>
+    <button data-period="1y">1年</button>
+  </div>
 
   <div id="stockArea"><div class="loading">输入代码后点击查询</div></div>
 </div>
@@ -215,15 +225,17 @@ function renderStocks(stocks){
   html+='</div>';
   document.getElementById('stockArea').innerHTML=html;
   window._stocks=stocks;
-  // 加载所有迷你K线
+  // 显示周期选择器并加载K线
+  document.getElementById('periodBar').style.display='flex';
   loadMiniKLines(stocks);
 }
 
 // ===== 迷你 K 线（每个卡片内嵌） =====
-var MINI_CHARTS={};
-function loadMiniKLines(stocks){
+var MINI_CHARTS={},CUR_PERIOD='1m';
+function loadMiniKLines(stocks,period){
+  if(period)CUR_PERIOD=period;
   stocks.forEach(function(s,i){
-    fetchKLine(s.code,'1m').then(function(data){
+    fetchKLine(s.code,CUR_PERIOD).then(function(data){
       if(!data||!data.closes||data.closes.length<2)return;
       var canvas=document.getElementById('mk_'+s.code);
       if(!canvas)return;
@@ -263,6 +275,12 @@ function loadMiniKLines(stocks){
 
 // ===== 初始化 =====
 document.getElementById('codeInput').addEventListener('keydown',function(e){if(e.key==='Enter')doSearch();});
+// 周期切换
+document.getElementById('periodBar').addEventListener('click',function(e){
+  var btn=e.target;if(!btn.dataset.period)return;
+  this.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b===btn);});
+  loadMiniKLines(window._stocks||[],btn.dataset.period);
+});
 // 自动加载默认代码
 setTimeout(doSearch,300);
 </script>
