@@ -263,8 +263,8 @@ function loadMiniKLines(stocks,period){
             }}}
           },
           scales:{
-            x:{display:false},
-            price:{type:'linear',position:'left',display:false,min:Math.min.apply(null,data.closes)*0.97,max:Math.max.apply(null,data.closes)*1.03},
+            x:{ticks:{maxTicksLimit:4,color:'#B5A89A',font:{size:10}}},
+            price:{type:'linear',position:'left',ticks:{maxTicksLimit:4,color:'#B5A89A',font:{size:10},callback:function(v){return v.toFixed(1);}},grid:{color:'rgba(0,0,0,0.04)'}},
             vol:{type:'linear',position:'right',display:false,grid:{display:false},max:maxVol*1.5}
           }
         }
