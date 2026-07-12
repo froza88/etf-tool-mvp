@@ -251,10 +251,11 @@ function loadMiniKLines(stocks,period){
         data:{labels:data.dates,
           datasets:[
             {label:'量',data:volData,backgroundColor:'rgba(139,126,107,0.2)',borderColor:'rgba(139,126,107,0.3)',borderWidth:0.5,order:2,yAxisID:'vol',type:'bar',barPercentage:0.9,categoryPercentage:1},
-            {label:'价',data:data.closes,borderColor:lineC,backgroundColor:fillC,borderWidth:1.5,fill:true,tension:0.3,pointRadius:0,order:1,yAxisID:'price',type:'line'}
+            {label:'价',data:data.closes,borderColor:lineC,backgroundColor:fillC,borderWidth:1.5,fill:true,tension:0.3,pointRadius:0,pointHoverRadius:4,pointHoverBackgroundColor:lineC,order:1,yAxisID:'price',type:'line'}
           ]},
         options:{
           responsive:true,maintainAspectRatio:false,
+          interaction:{mode:'index',intersect:false},
           plugins:{legend:{display:false},
             tooltip:{callbacks:{label:function(ctx){
               if(ctx.datasetIndex===0)return '量:'+(data.vols[ctx.dataIndex]/1e4).toFixed(1)+'万手';
