@@ -214,12 +214,12 @@ function renderStocks(stocks){
     html+='<div class="info-item"><div class="label">最高</div><div class="val">'+s.high.toFixed(2)+'</div></div>';
     html+='<div class="info-item"><div class="label">最低</div><div class="val">'+s.low.toFixed(2)+'</div></div>';
     html+='<div class="info-item"><div class="label">昨收</div><div class="val">'+s.prev_close.toFixed(2)+'</div></div>';
-    html+='<div class="info-item"><div class="label">成交量</div><div class="val">'+(s.volume/1e4).toFixed(0)+'万手</div></div>';
-    html+='<div class="info-item"><div class="label">成交额</div><div class="val">'+(s.amount/1e8).toFixed(2)+'亿</div></div>';
+    html+='<div class="info-item"><div class="label">成交量</div><div class="val">'+(s.volume/1e4).toFixed(1)+'万手</div></div>';
+    html+='<div class="info-item"><div class="label">成交额</div><div class="val">'+(s.amount/1e4).toFixed(2)+'亿</div></div>';
     html+='<div class="info-item"><div class="label">振幅</div><div class="val">'+s.amplitude.toFixed(2)+'%</div></div>';
     html+='<div class="info-item"><div class="label">换手率</div><div class="val">'+s.turnover.toFixed(2)+'%</div></div>';
     html+='<div class="info-item"><div class="label">PE(TTM)</div><div class="val">'+(s.pe?Number(s.pe).toFixed(2):'-')+'</div></div>';
-    html+='<div class="info-item"><div class="label">总市值</div><div class="val">'+(s.market_cap?Number(s.market_cap/1e8).toFixed(0)+'亿':'-')+'</div></div>';
+    html+='<div class="info-item"><div class="label">总市值</div><div class="val">'+(s.market_cap?Number(s.market_cap).toFixed(0)+'亿':'-')+'</div></div>';
     html+='</div></div>';
   });
   html+='</div>';
