@@ -39,11 +39,16 @@ h1{font-size:28px;text-align:center;margin:48px 0 8px;font-weight:800}
 .stock-card .price.up{color:var(--red)}.stock-card .price.down{color:var(--green)}
 .stock-card .change{font-size:15px;margin-bottom:16px}
 .stock-card .change.up{color:var(--red)}.stock-card .change.down{color:var(--green)}
-.stock-card .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
-.stock-card .info-item .label{color:var(--text2);font-size:11px}
-.stock-card .info-item .val{font-weight:600}
-/* 图表 */
-.chart-section{margin-top:24px}
+  .stock-card .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
+  .stock-card .info-item .label{color:var(--text2);font-size:11px}
+  .stock-card .info-item .val{font-weight:600}
+  /* 左右分栏 */
+  .main-panel{display:flex;gap:20px;align-items:flex-start}
+  .main-panel .stock-side{flex:0 0 380px;min-width:300px}
+  .main-panel .chart-side{flex:1;min-width:0}
+  @media(max-width:900px){.main-panel{flex-direction:column}.main-panel .stock-side{flex:auto}}
+  /* 图表 */
+.chart-section{margin-top:0}
 .chart-section h3{font-size:16px;margin-bottom:12px}
 .chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);height:420px;position:relative}
 .chart-toolbar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
@@ -70,10 +75,10 @@ footer{text-align:center;padding:30px;color:var(--text2);font-size:12px;border-t
   </div>
   <p class="search-hint">支持沪市(sh)、深市(sz)代码。自动识别 600xxx / 000xxx / 300xxx / 688xxx 等前缀</p>
 
-  <div id="stockArea"><div class="loading">输入代码后点击查询</div></div>
-
-  <div id="chartSection" class="chart-section" style="display:none">
-    <h3>K线图 · <span id="klineStockName">—</span></h3>
+  <div class="main-panel">
+    <div id="stockArea" class="stock-side"><div class="loading">输入代码后点击查询</div></div>
+    <div id="chartSection" class="chart-section chart-side" style="display:none">
+      <h3>K线图 · <span id="klineStockName">—</span></h3>
     <div class="chart-toolbar" id="chartToolbar">
       <button data-period="1m" class="active">1月</button>
       <button data-period="3m">3月</button>
@@ -82,6 +87,7 @@ footer{text-align:center;padding:30px;color:var(--text2);font-size:12px;border-t
     </div>
     <div class="chart-wrap"><canvas id="klineChart"></canvas></div>
   </div>
+  </div><!-- /main-panel -->
 </div>
 <footer>A股实时行情数据来源：腾讯行情 (sqt.gtimg.cn) · K线数据：腾讯前复权日线 (ifzq.gtimg.cn)</footer>
 
