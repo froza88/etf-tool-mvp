@@ -156,9 +156,10 @@ function fetchKLine(code,period){
   var limit=days[period]||66,secid='';
   if(code.startsWith('60')||code.startsWith('68'))secid='1.'+code;
   else secid='0.'+code;
-  var url='https://push2his.eastmoney.com/api/qt/stock/kline/get?secid='+secid+'&klt=101&fqt=1&fields1=f1,f2&fields2=f51,f52,f53,f54,f55,f56,f57&lmt='+limit;
+  var url='https://push2his.eastmoney.com/api/qt/stock/kline/get?secid='+secid+'&klt=101&fqt=1&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&end=20500101&lmt='+limit;
   return fetch(url).then(function(r){return r.json();}).then(function(d){
     var klines=(d.data||{}).klines||[];
+    if(!klines||klines.length===0){console.warn('[KLine] empty for '+code, d);return null;}
     var dates=[],opens=[],highs=[],lows=[],closes=[],vols=[];
     klines.forEach(function(k){
       var p=k.split(',');dates.push(p[0]);
@@ -166,7 +167,7 @@ function fetchKLine(code,period){
       lows.push(parseFloat(p[4]));vols.push(parseFloat(p[5]));
     });
     return {dates:dates,opens:opens,highs:highs,lows:lows,closes:closes,vols:vols};
-  }).catch(function(){return null;});
+  }).catch(function(e){console.error('[KLine] fetch error',e);return null;});
 }
 
 // ===== 渲染 =====
