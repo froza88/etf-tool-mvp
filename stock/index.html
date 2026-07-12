@@ -93,27 +93,35 @@ var QT_FIELDS={
 };
 
 function fetchQuotes(codes){
-  var symbols=codes.map(function(c){
-    var prefix=c.startsWith('60')?'sh':(c.startsWith('00')||c.startsWith('30')||c.startsWith('002')?'sz':'sh');
-    return prefix+c;
-  }).join(',');
-  return new Promise(function(resolve,reject){
+  var prefixMap={};
+  codes.forEach(function(c){
+    if(c.startsWith('60')||c.startsWith('68')||c.startsWith('51')||c.startsWith('56'))prefixMap[c]='sh';
+    else prefixMap[c]='sz';
+  });
+  var symbols=codes.map(function(c){return prefixMap[c]+c;}).join(',');
+  return new Promise(function(resolve){
+    var finished=false;
+    function finish(results){if(finished)return;finished=true;try{script.remove();}catch(e){}resolve(results);}
     var script=document.createElement('script');
-    script.charset='gbk';
     script.src='https://sqt.gtimg.cn/q='+symbols;
     script.onload=function(){
-      document.head.removeChild(script);
+      console.log('[JSONP] script loaded, symbols='+symbols);
       var out={};
       codes.forEach(function(c){
-        var prefix=c.startsWith('60')?'sh':(c.startsWith('00')||c.startsWith('30')||c.startsWith('002')?'sz':'sh');
-        var key='v_'+prefix+c;
-        if(window[key]!==undefined){out[key]=window[key];}
+        var key='v_'+prefixMap[c]+c;
+        var raw=window[key];
+        console.log('[JSONP] key='+key+' type='+(typeof raw));
+        if(raw&&typeof raw==='string'){out[key]=raw;}
+        try{delete window[key];}catch(e){}
       });
-      resolve(out);
+      finish(out);
     };
-    script.onerror=function(){document.head.removeChild(script);reject(new Error('Fetch failed'));};
+    script.onerror=function(e){
+      console.error('[JSONP] script error',e);
+      finish({});
+    };
     document.head.appendChild(script);
-    setTimeout(function(){if(script.parentNode){document.head.removeChild(script);}reject(new Error('Timeout'));},8000);
+    setTimeout(function(){console.warn('[JSONP] timeout');finish({});},5000);
   });
 }
 
@@ -167,24 +175,29 @@ var currentPeriod='1m',currentCode=null,klineData=null;
 function doSearch(){
   var raw=document.getElementById('codeInput').value.split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean);
   if(raw.length===0)return;
+  var prefixMap={};
+  raw.forEach(function(c){
+    if(c.startsWith('60')||c.startsWith('68')||c.startsWith('51')||c.startsWith('56'))prefixMap[c]='sh';
+    else prefixMap[c]='sz';
+  });
   var area=document.getElementById('stockArea');
   area.innerHTML='<div class="loading">正在获取实时行情…</div>';
   fetchQuotes(raw).then(function(data){
+    console.log('[doSearch] data keys',Object.keys(data));
     var stocks=[];
     raw.forEach(function(c){
-      var prefix=c.startsWith('60')?'sh':(c.startsWith('00')||c.startsWith('30')||c.startsWith('002')?'sz':'sh');
-      var key='v_'+prefix+c,rawData=data[key];
+      var key='v_'+prefixMap[c]+c,rawData=data[key];
       if(rawData){var q=parseQuote(rawData);if(q)stocks.push(q);}
     });
-    if(stocks.length===0){area.innerHTML='<div class="error">未获取到行情数据，请检查代码</div>';return;}
+    if(stocks.length===0){area.innerHTML='<div class="error">未获取到行情数据，请检查代码（当前日期：'+new Date().toLocaleString()+'）</div>';return;}
     renderStocks(stocks);
-    // 自动加载第一只股票的K线
     currentCode=stocks[0].code;currentPeriod='1m';
     document.getElementById('chartToolbar').querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b.dataset.period==='1m');});
     document.getElementById('chartSection').style.display='block';
     loadAndRenderKLine(currentCode,currentPeriod);
-  }).catch(function(){
-    area.innerHTML='<div class="error">行情获取失败，请检查网络或重试</div>';
+  }).catch(function(e){
+    console.error('[doSearch] error',e);
+    area.innerHTML='<div class="error">行情获取失败：'+(e&&e.message||'未知错误')+'</div>';
   });
 }
 
