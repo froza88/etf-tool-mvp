@@ -28,8 +28,10 @@ h1{font-size:28px;text-align:center;margin:48px 0 8px;font-weight:800}
 .search-box button:hover{opacity:.9}
 .search-hint{font-size:12px;color:var(--text2);margin-bottom:20px}
 /* 股票卡片区 */
-.stock-list{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
-.stock-card{flex:1;min-width:280px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow)}
+.stock-list{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+.stock-card{display:flex;gap:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);align-items:stretch}
+.stock-card .info-col{flex:0 0 240px;min-width:200px}
+.stock-card .kline-col{flex:1;min-width:0;position:relative}
 .stock-card .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .stock-card .name{font-size:18px;font-weight:700}
 .stock-card .code{font-size:12px;color:var(--text2)}
@@ -37,11 +39,10 @@ h1{font-size:28px;text-align:center;margin:48px 0 8px;font-weight:800}
 .stock-card .price.up{color:var(--red)}.stock-card .price.down{color:var(--green)}
 .stock-card .change{font-size:15px;margin-bottom:16px}
 .stock-card .change.up{color:var(--red)}.stock-card .change.down{color:var(--green)}
-  .stock-card .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
-  .stock-card .info-item .label{color:var(--text2);font-size:11px}
-  .stock-card .info-item .val{font-weight:600}
-  .mini-kline{width:100%;height:180px;margin-top:12px}
-  /* 图表工具条 */
+.stock-card .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
+.stock-card .info-item .label{color:var(--text2);font-size:11px}
+.stock-card .info-item .val{font-weight:600}
+.mini-kline{width:100%!important;height:100%!important}
 /* 状态 */
 .loading{text-align:center;padding:60px;color:var(--text2)}
 .error{text-align:center;padding:30px;color:var(--red);font-size:14px}
@@ -191,24 +192,24 @@ function renderStocks(stocks){
   stocks.forEach(function(s,i){
     var cls=s.change_pct>=0?'up':'down',sign=s.change_pct>=0?'+':'';
     html+='<div class="stock-card" data-code="'+s.code+'">';
+    html+='<div class="info-col">';
     html+='<div class="header"><span class="name">'+s.name+'</span><span class="code">'+s.code+'</span></div>';
     html+='<div class="price '+cls+'">'+s.price.toFixed(2)+'</div>';
-    html+='<div class="change '+cls+'">'+sign+s.change_pct.toFixed(2)+'% &nbsp; '+sign+s.change.toFixed(2)+'</div>';
-    html+='<div style="font-size:11px;color:var(--text2);margin-bottom:12px">'+s.update_time+'</div>';
+    html+='<div class="change '+cls+'">'+sign+s.change_pct.toFixed(2)+'%</div>';
+    html+='<div style="font-size:11px;color:var(--text2);margin-bottom:10px">'+s.update_time+'</div>';
     html+='<div class="info-grid">';
     html+='<div class="info-item"><div class="label">今开</div><div class="val">'+s.open.toFixed(2)+'</div></div>';
     html+='<div class="info-item"><div class="label">昨收</div><div class="val">'+s.prev_close.toFixed(2)+'</div></div>';
     html+='<div class="info-item"><div class="label">最高</div><div class="val">'+s.high.toFixed(2)+'</div></div>';
-    html+='<div class="info-item"><div class="label">低</div><div class="val">'+s.low.toFixed(2)+'</div></div>';
-    html+='<div class="info-item"><div class="label">昨收</div><div class="val">'+s.prev_close.toFixed(2)+'</div></div>';
+    html+='<div class="info-item"><div class="label">最低</div><div class="val">'+s.low.toFixed(2)+'</div></div>';
     html+='<div class="info-item"><div class="label">成交量</div><div class="val">'+(s.volume/1e4).toFixed(1)+'万手</div></div>';
     html+='<div class="info-item"><div class="label">成交额</div><div class="val">'+(s.amount/1e4).toFixed(2)+'亿</div></div>';
     html+='<div class="info-item"><div class="label">振幅</div><div class="val">'+s.amplitude.toFixed(2)+'%</div></div>';
     html+='<div class="info-item"><div class="label">换手率</div><div class="val">'+s.turnover.toFixed(2)+'%</div></div>';
     html+='<div class="info-item"><div class="label">PE(TTM)</div><div class="val">'+(s.pe?Number(s.pe).toFixed(2):'-')+'</div></div>';
     html+='<div class="info-item"><div class="label">总市值</div><div class="val">'+(s.market_cap?Number(s.market_cap).toFixed(0)+'亿':'-')+'</div></div>';
-    html+='</div>';
-    html+='<canvas class="mini-kline" id="mk_'+s.code+'"></canvas>';
+    html+='</div></div><!-- /info-col -->';
+    html+='<div class="kline-col"><canvas class="mini-kline" id="mk_'+s.code+'"></canvas></div>';
     html+='</div>';
   });
   html+='</div>';
@@ -227,6 +228,8 @@ function loadMiniKLines(stocks){
       if(!data||!data.closes||data.closes.length<2)return;
       var canvas=document.getElementById('mk_'+s.code);
       if(!canvas)return;
+      var parent=canvas.parentElement;
+      if(parent)parent.style.minHeight='200px';
       if(MINI_CHARTS[s.code])MINI_CHARTS[s.code].destroy();
       var ctx=canvas.getContext('2d'),c=colors[i%colors.length];
       var up=data.closes[data.closes.length-1]>=data.closes[0];
