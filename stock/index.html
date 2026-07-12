@@ -89,7 +89,7 @@ footer{text-align:center;padding:30px;color:var(--text2);font-size:12px;border-t
 var QT_FIELDS={
   name:1, code:2, price:3, prev_close:4, open:5, volume:6, amount:37,
   high:33, low:34, amplitude:43, turnover:38, pe:39, market_cap:45,
-  high52:34, low52:35, change:31, change_pct:32
+  high52:34, low52:35, change:31, change_pct:32, update_time:30
 };
 
 function fetchQuotes(codes){
@@ -131,6 +131,8 @@ function parseQuote(raw){
   if(s.length<40)return null;
   var name=s[QT_FIELDS.name];
   if(!name||name==='')return null;
+  var ts=s[QT_FIELDS.update_time]||'';
+  var upd=(ts.length>=14)?ts.slice(0,4)+'-'+ts.slice(4,6)+'-'+ts.slice(6,8)+' '+ts.slice(8,10)+':'+ts.slice(10,12)+':'+ts.slice(12,14):ts;
   return {
     name:name,
     code:s[QT_FIELDS.code],
@@ -146,7 +148,8 @@ function parseQuote(raw){
     pe:parseFloat(s[QT_FIELDS.pe])||0,
     market_cap:parseFloat(s[QT_FIELDS.market_cap])||0,
     change:parseFloat(s[QT_FIELDS.change])||0,
-    change_pct:parseFloat(s[QT_FIELDS.change_pct])||0
+    change_pct:parseFloat(s[QT_FIELDS.change_pct])||0,
+    update_time:upd
   };
 }
 
@@ -210,6 +213,7 @@ function renderStocks(stocks){
     html+='<div class="header"><span class="name">'+s.name+'</span><span class="code">'+s.code+'</span></div>';
     html+='<div class="price '+cls+'">'+s.price.toFixed(2)+'</div>';
     html+='<div class="change '+cls+'">'+sign+s.change_pct.toFixed(2)+'% &nbsp; '+sign+s.change.toFixed(2)+'</div>';
+    html+='<div style="font-size:11px;color:var(--text2);margin-bottom:12px">'+s.update_time+'</div>';
     html+='<div class="info-grid">';
     html+='<div class="info-item"><div class="label">今开</div><div class="val">'+s.open.toFixed(2)+'</div></div>';
     html+='<div class="info-item"><div class="label">最高</div><div class="val">'+s.high.toFixed(2)+'</div></div>';
