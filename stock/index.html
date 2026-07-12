@@ -212,7 +212,7 @@ function renderStocks(stocks){
   var html='<div class="stock-list">';
   stocks.forEach(function(s,i){
     var cls=s.change_pct>=0?'up':'down',sign=s.change_pct>=0?'+':'';
-    html+='<div class="stock-card'+(i===0?' active':'')+'" data-code="'+s.code+'" onclick="switchStock('+JSON.stringify(s.code)+')">';
+    html+='<div class="stock-card'+(i===0?' active':'')+'" data-code="'+s.code+'" onclick="switchStock(\''+s.code+'\')">';
     html+='<div class="header"><span class="name">'+s.name+'</span><span class="code">'+s.code+'</span></div>';
     html+='<div class="price '+cls+'">'+s.price.toFixed(2)+'</div>';
     html+='<div class="change '+cls+'">'+sign+s.change_pct.toFixed(2)+'% &nbsp; '+sign+s.change.toFixed(2)+'</div>';
