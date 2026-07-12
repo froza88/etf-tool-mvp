@@ -103,6 +103,7 @@ function fetchQuotes(codes){
     var finished=false;
     function finish(results){if(finished)return;finished=true;try{script.remove();}catch(e){}resolve(results);}
     var script=document.createElement('script');
+    script.charset='gbk';
     script.src='https://sqt.gtimg.cn/q='+symbols;
     script.onload=function(){
       console.log('[JSONP] script loaded, symbols='+symbols);
