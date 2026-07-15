@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVIDIA Corporation (NVDA) - DCF Valuation Report | ValueNaut</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --blue: #1a56db;
+    --dark: #1f2937;
+    --gray: #6b7280;
+    --light-bg: #f8f9fa;
+    --bg: #FEFCF8;
+    --red: #dc2626;
+    --green: #16a34a;
+    --border: #e5e7eb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg); color: var(--dark); line-height: 1.6;
+    max-width: 860px; margin: 0 auto; padding: 0 24px 64px;
+  }
+
+  /* Cover */
+  .cover {
+    text-align: center; padding: 80px 0 60px; border-bottom: 2px solid var(--blue);
+  }
+  .cover .brand { font-size: 22px; color: var(--blue); font-weight: 700; letter-spacing: 0.5px; }
+  .cover .subtitle { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+  .cover .ticker { font-size: 42px; font-weight: 800; color: var(--dark); margin: 28px 0 4px; }
+  .cover .name { font-size: 18px; color: var(--gray); }
+  .cover .date { font-size: 13px; color: #9ca3af; margin-top: 12px; }
+  .cover .verdict-box {
+    display: inline-block; margin-top: 28px; padding: 14px 36px;
+    border-radius: 8px; font-size: 16px; font-weight: 700;
+  }
+  .cover .verdict-undervalued { background: #fef2f2; color: var(--red); border: 1.5px solid #fecaca; }
+  .cover .verdict-overvalued { background: #f0fdf4; color: var(--green); border: 1.5px solid #bbf7d0; }
+  .cover .verdict-fair { background: #f8f9fa; color: var(--dark); border: 1.5px solid var(--border); }
+  .cover .metrics { display: flex; justify-content: center; gap: 48px; margin-top: 32px; }
+  .cover .metric-item { text-align: center; }
+  .cover .metric-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.8px; }
+  .cover .metric-value { font-size: 24px; font-weight: 700; color: var(--dark); margin-top: 4px; }
+  .cover .metric-delta { font-size: 13px; margin-top: 2px; }
+
+  /* Sections */
+  h2 { font-size: 20px; color: var(--blue); margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
+  h3 { font-size: 15px; color: var(--dark); margin: 28px 0 10px; }
+  p { font-size: 14px; line-height: 1.75; margin-bottom: 14px; color: #374151; }
+  strong { color: var(--dark); }
+
+  /* Investment Thesis highlight */
+  .thesis-box {
+    background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+    border-left: 4px solid var(--blue); padding: 18px 22px; margin: 16px 0 24px;
+    border-radius: 0 6px 6px 0;
+  }
+  .thesis-box p { margin-bottom: 0; font-size: 14px; }
+
+  /* Framing Questions */
+  ol.framing-questions { counter-reset: fq; list-style: none; padding: 0; margin: 16px 0 24px; }
+  ol.framing-questions li {
+    counter-increment: fq; padding: 14px 18px; margin-bottom: 10px;
+    background: var(--light-bg); border-radius: 6px; font-size: 14px;
+    border-left: 3px solid var(--blue);
+  }
+  ol.framing-questions li::before {
+    content: counter(fq); font-weight: 700; color: var(--blue); margin-right: 10px;
+  }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 12px; }
+  th { background: var(--blue); color: white; padding: 9px 12px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  th.center, td.center { text-align: center; }
+  th.right, td.right { text-align: right; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: var(--light-bg); }
+  tr.total td { font-weight: 700; background: #e8f0fe !important; border-top: 2px solid var(--blue); }
+  .table-caption { font-size: 11px; color: var(--gray); margin-top: -12px; margin-bottom: 20px; font-style: italic; }
+
+  /* Scenario & Sensitivity */
+  .scenario-up { color: var(--red); }
+  .scenario-down { color: var(--green); }
+  .highlight-cell { background: #fff3cd !important; font-weight: 700; }
+
+  /* Charts */
+  .chart-container { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 20px 0; }
+  .chart-container canvas { max-height: 360px; }
+
+  /* Weak Links */
+  .weak-link { border-left: 3px solid #f59e0b; padding: 10px 16px; margin-bottom: 12px; background: #fffbeb; border-radius: 0 6px 6px 0; font-size: 14px; }
+
+  /* Bottom Line */
+  .price-band {
+    display: inline-block; padding: 6px 16px; margin: 3px 4px; border-radius: 4px;
+    font-size: 13px; font-weight: 600; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  }
+  .band-undervalued { background: #fef2f2; color: var(--red); }
+  .band-value { background: #fefce8; color: #a16207; }
+  .band-fair { background: var(--light-bg); color: var(--dark); }
+  .band-rich { background: #f0fdf4; color: #15803d; }
+  .band-overvalued { background: #ecfdf5; color: var(--green); }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  /* Footer */
+  .disclaimer {
+    margin-top: 48px; padding: 20px 24px; background: var(--light-bg); border-radius: 8px;
+    font-size: 11px; color: var(--gray); line-height: 1.6;
+  }
+  .footer-info { text-align: center; font-size: 11px; color: #9ca3af; margin-top: 24px; }
+
+  /* Print */
+  @media print {
+    body { padding: 0; }
+    .chart-container { break-inside: avoid; }
+    h2 { break-before: page; }
+    .cover h2 { break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <div class="brand">ValueNaut</div>
+  <div class="subtitle">Institutional Equity Valuation Report · Damodaran DCF Framework</div>
+  <div class="ticker">NVDA</div>
+  <div class="name">NVIDIA Corporation</div>
+  <div class="date">July 14, 2026</div>
+
+  <div class="verdict-box verdict-overvalued">OVERVALUED</div>
+
+  <div class="metrics">
+    <div class="metric-item">
+      <div class="metric-label">Current Price</div>
+      <div class="metric-value">$203.53</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label">Fair Value</div>
+      <div class="metric-value">$105.09</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-label">Upside / Downside</div>
+      <div class="metric-value" style="color:#16a34a">-48.4%</div>
+    </div>
+  </div>
+  <div style="margin-top:24px;font-size:12px;color:#16a34a">
+    Enterprise Value: $2561B | Market Cap: $4930B
+  </div>
+</div>
+
+<!-- ══════════ 1. INVESTMENT THESIS ══════════ -->
+<h2>1. Investment Thesis</h2>
+<div class="thesis-box">
+  
+    <p>NVIDIA dominates the AI accelerator market with an estimated 80%+ share in data center GPUs,
+    anchored by the CUDA software ecosystem that has compounded over nearly two decades. The business
+    generates operating margins above 60% and revenue that has crossed $215 billion annually — numbers
+    that reflect not just a chip vendor but a platform company collecting tolls on AI infrastructure.
+    However, the central question is straightforward and uncomfortable: can a company whose largest
+    customers are also its most capable competitors sustain premium margins and explosive growth
+    indefinitely? Hyperscalers represent roughly half of Data Center revenue, and they are actively
+    developing custom silicon alternatives. AMD is improving, Broadcom's ASIC business is scaling, and
+    Google's TPU and AWS Trainium are becoming commercial realities. The moat is real, but so is the
+    incentive to breach it. This valuation is my attempt to quantify how much of NVIDIA's current
+    dominance is durable and how much is cyclical.</p>
+</div>
+
+<!-- ══════════ 2. FRAMING QUESTIONS ══════════ -->
+<h2>2. Framing Questions</h2>
+<ol class="framing-questions">
+  
+  <li>How sustainable is the current 60%+ operating margin profile given that hyperscaler customers — who collectively represent approximately 50% of Data Center revenue — are actively developing custom silicon alternatives, and what margin floor should we model in a normalized competitive environment?</li>
+  
+  <li>What is the realistic trajectory for AI compute spending over the next 5–10 years given the well-documented gap between hyperscaler infrastructure spend and downstream AI software revenue, and how should we distinguish between a one-time infrastructure buildout and a recurring replacement-and-expansion cycle?</li>
+  
+  <li>Given NVIDIA's massive reinvestment needs — R&D spending exceeding $25 billion annually, ecosystem development through CUDA and networking, plus $119 billion in manufacturing commitments — versus its rapidly growing cash generation of over $50 billion per quarter in operating cash flow, what is the optimal capital allocation framework, and does the software ecosystem moat justify a terminal ROIC well above the semiconductor industry historical average?</li>
+  
+</ol>
+
+<!-- ══════════ 3. THE BACK STORY ══════════ -->
+<h2>3. The Back Story</h2>
+<h3>Company Overview</h3>
+<p>
+    <p><strong>NVIDIA Corporation</strong> was founded by Jensen Huang in 1993 to build graphics processors for gaming.
+    For most of its first two decades, that is exactly what it did — surviving brutal competition from ATI (later AMD)
+    and Intel. The pivot that changed everything was CUDA, introduced in 2006: a parallel-computing platform that
+    allowed developers to write general-purpose code for NVIDIA GPUs. At the time it looked like a clever engineering
+    move. In retrospect, it was one of the most consequential software decisions in the history of the semiconductor
+    industry.</p>
+    <p>Today, NVIDIA is not a graphics chip company. Data Center revenue now represents approximately 92% of total
+    company revenue, with an annualized run-rate above $300 billion. The company generated $215.9 billion in revenue
+    in the most recent fiscal year, with operating margins of 60.4% and a return profile that places it among the
+    most profitable large companies in history. With a market capitalization approaching $5 trillion, NVIDIA has become
+    the toll road for AI infrastructure — a position that converts directly into cash: $50 billion in quarterly
+    operating cash flow, 74% gross margins, and a balance sheet with more cash than debt. The question is not whether
+    this position is valuable today; it is whether it is durable.</p></p>
+
+<h3>Financial Foundations</h3>
+<table>
+  <tr><th>Metric</th><th class="center">Latest Fiscal Year</th><th class="center">Year-1</th><th class="center">Year-2</th></tr>
+  <tr>
+    <td>Revenue ($B)</td>
+    <td class="right">215.9</td>
+    <td class="right">130.5</td>
+    <td class="right">60.9</td>
+  </tr>
+  <tr>
+    <td>Revenue Growth</td>
+    <td class="right">65.5%</td>
+    <td class="right">114.2%</td>
+    <td class="right">0.0%</td>
+  </tr>
+  <tr>
+    <td>Gross Margin</td>
+    <td class="right">71.1%</td>
+    <td class="right">75.0%</td>
+    <td class="right">72.7%</td>
+  </tr>
+  <tr>
+    <td>Operating Margin</td>
+    <td class="right">60.4%</td>
+    <td class="right">62.4%</td>
+    <td class="right">54.1%</td>
+  </tr>
+  <tr>
+    <td>Net Margin</td>
+    <td class="right">55.6%</td>
+    <td class="right">55.8%</td>
+    <td class="right">48.8%</td>
+  </tr>
+  <tr>
+    <td>ROE</td>
+    <td class="right">76.3%</td>
+    <td class="right">91.9%</td>
+    <td class="right">69.2%</td>
+  </tr>
+  <tr>
+    <td>Beta</td>
+    <td class="right" colspan="3">1.52</td>
+  </tr>
+</table>
+
+<p style="font-size:13px;color:var(--gray);"><em>Note: R&D is capitalized as a 5-year amortizable asset. Adjusted EBIT: $140.9B (vs reported $130.4B).</em></p>
+
+<p style="font-size:11px;color:var(--gray);"><em>Source: SEC filings (10-K, 10-Q); my estimates.</em></p>
+
+<!-- ══════════ 4. INDUSTRY LANDSCAPE ══════════ -->
+<h2>4. The Industry Landscape</h2>
+<h3>Market Context</h3>
+<p>
+    <p>The AI infrastructure market is enormous and still accelerating. Hyperscaler capital expenditures are projected
+    at $700–900 billion in 2026, with roughly 75% tied to AI infrastructure. AMD's CEO has cited a $1 trillion AI
+    accelerator TAM by 2030. I am skeptical of the precision of any of these numbers, but the direction is clear: AI
+    compute is becoming a recurring production input for the world's largest companies, and NVIDIA sits at the center
+    of that supply chain.</p>
+    <p>That said, the competitive landscape is more contested than it appears. Only 25–40% of hyperscaler AI capex
+    flows directly to GPUs — the rest goes to land, power, cooling, and networking. More importantly, NVIDIA's largest
+    customers are also its most capable competitors. Google is commercializing TPU v7, AWS is reportedly exploring
+    direct sales of Trainium3, and Broadcom's custom ASIC revenue is scaling at 30–50% cheaper per token for stable
+    inference workloads. The industry operating margin of 19.7% (66 firms in Damodaran's dataset) versus NVIDIA's
+    60.4% tells the story: NVIDIA's margins are not the industry norm — they are the outlier. The question is how
+    long the outlier persists.</p>
+    <p>Power constraints add an additional layer of uncertainty. Data center interconnection backlogs and multi-year
+    grid capacity expansion timelines mean that even if demand is unlimited, supply is not. This creates a floor under
+    pricing today but also a ceiling on growth tomorrow. The TAM numbers are directionally right and precisely wrong.</p></p>
+
+
+<h3>Damodaran Industry Benchmarks: Semiconductor</h3>
+<table>
+  <tr><th>Metric</th><th class="center">Industry Median</th><th class="center">NVDA</th><th class="center">Delta</th></tr>
+  <tr>
+    <td>Operating Margin</td>
+    <td class="center">19.7%</td>
+    <td class="center">60.4%</td>
+    <td class="center" style="color:var(--red)">+40.7%</td>
+  </tr>
+  <tr>
+    <td>Revenue Growth (5yr)</td>
+    <td class="center">6.4%</td>
+    <td class="center">89.8%</td>
+    <td class="center" style="color:var(--red)">+83.4%</td>
+  </tr>
+  <tr>
+    <td>Beta</td>
+    <td class="center">1.52</td>
+    <td class="center">1.52</td>
+    <td class="center">+0.00</td>
+  </tr>
+  
+  <tr>
+    <td>Trailing P/E</td>
+    <td class="center">82.8x</td>
+    <td class="center">38.0x</td>
+    <td class="center">—</td>
+  </tr>
+  
+</table>
+<p class="table-caption">Source: Damodaran industry datasets (66 firms); my estimates.</p>
+
+
+<!-- ══════════ 5. THE STORY ══════════ -->
+<h2>5. The Story</h2>
+<p>
+    <p><strong>Possible:</strong> The full range of outcomes for NVIDIA spans from "dominant AI platform with sustained
+    60%+ margins" to "cyclical hardware vendor facing 30% margin compression as custom ASICs take share." At one end,
+    AI compute becomes as essential as electricity, and NVIDIA collects a permanent toll on every token processed —
+    justifying a terminal value that dominates the valuation. At the other end, the current buildout proves to be a
+    one-time infrastructure cycle, and NVIDIA's pricing power erodes as customers deploy their own silicon. Between
+    these extremes lies the answer.</p>
+    <p><strong>Plausible:</strong> NVIDIA becomes the dominant but less monopolistic backbone of AI compute. Hyperscaler
+    spending evolves from a panic buildout into a recurring replacement-and-expansion cycle as AI clusters age, model
+    architectures advance, and inference scales to sovereign, enterprise, and physical AI workloads. Growth decelerates
+    from today's explosive pace — 35% in Year 1, then 18% for Years 2–5 — but does not collapse into a commodity cycle,
+    because CUDA's 7.5 million developers and deep integration into every major AI framework make switching genuinely
+    costly. Premium cash flows survive, but peak margins do not.</p>
+    <p><strong>Probable:</strong> My base case assumes revenue growth of 18% annually in Years 2–5, decelerating to
+    8% in Years 6–10. Operating margins normalize from 60.4% to 46.1% over the decade — a level that reflects CUDA's
+    moat but acknowledges competitive pressure. The terminal growth rate of 3.5% caps the perpetuity at a plausible
+    level for a company that would be among the largest in history. This story — dominance with normalization — produces
+    an intrinsic value of $105.09 per share. It is more conservative than the Street consensus, and I am comfortable
+    with that conservatism.</p></p>
+
+<!-- ══════════ 6. STORY TO NUMBERS ══════════ -->
+<h2>6. From Story to Numbers</h2>
+<p>The table below maps the narrative onto specific value drivers before any model output appears:</p>
+<table>
+  <tr><th>Value Driver</th><th class="center">Estimate</th><th>Benchmark / Rationale</th></tr>
+  
+  <tr>
+    <td><strong>Year-1 Revenue Growth</strong></td>
+    <td class="center">35.0%</td>
+    <td style="font-size:12px;">Historical growth (89.8%) moderated for near-term visibility</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Years 2-5 Revenue Growth</strong></td>
+    <td class="center">18.0%</td>
+    <td style="font-size:12px;">Deceleration toward mature company growth trajectory</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Years 6-10 Revenue Growth</strong></td>
+    <td class="center">8.0%</td>
+    <td style="font-size:12px;">Mature growth phase, approaching industry average</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Current Operating Margin</strong></td>
+    <td class="center">60.4%</td>
+    <td style="font-size:12px;">Latest fiscal year actual</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Target Operating Margin (Yr 10)</strong></td>
+    <td class="center">46.1%</td>
+    <td style="font-size:12px;">Industry median 19.7% — blended with company-specific premium</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Sales-to-Capital</strong></td>
+    <td class="center">1.24</td>
+    <td style="font-size:12px;">Revenue ÷ Invested Capital, reflecting reinvestment efficiency</td>
+  </tr>
+  
+  <tr>
+    <td><strong>WACC</strong></td>
+    <td class="center">10.5%</td>
+    <td style="font-size:12px;">Rf=4.50% + Beta(1.52) × ERP(4.46%)</td>
+  </tr>
+  
+  <tr>
+    <td><strong>Terminal Growth Rate</strong></td>
+    <td class="center">3.5%</td>
+    <td style="font-size:12px;">Capped below the risk-free rate of 4.50%</td>
+  </tr>
+  
+</table>
+<p class="table-caption">Source: my estimates; SEC filings; Damodaran industry datasets.</p>
+
+<p><strong>1. Year-1 Revenue Growth: 35.0%.</strong> Starting from a 89.8% historical growth rate, we assume 35.0% for Year 1, reflecting continued momentum but acknowledging that the base effect from $215.9B in revenue limits the sustainable growth rate.</p>
+
+<p><strong>2. Years 2-5 Revenue Growth: 18.0%.</strong> This is the central operating bet. At 18.0% annual growth over Years 2-5, we assume a transition from high growth to mature expansion, consistent with companies at this scale facing market saturation and competitive pressure.</p>
+
+<p><strong>3. Years 6-10 Revenue Growth: 8.0%.</strong> By Years 6-10, growth decelerates to 8.0%, approaching the Damodaran industry benchmark of 6.4% and reflecting a mature company whose primary growth levers are market expansion and pricing power.</p>
+
+<p><strong>4. Current Operating Margin: 60.4%.</strong> The current operating margin of 60.4% reflects the company's current competitive position and cost structure. This is the starting point for the 10-year normalization path.</p>
+
+<p><strong>5. Target Operating Margin (Yr 10): 46.1%.</strong> Over the 10-year forecast, we assume margins normalize to 46.1%, blending the company's current 60.4% with the industry median of 19.7%. The company earns a premium for its competitive advantages, but scale and competition erode the peak.</p>
+
+<p><strong>6. Sales-to-Capital: 1.24.</strong> A sales-to-capital ratio of 1.24 means every $1 of revenue growth requires approximately $0.81 of reinvestment. This reflects the capital intensity of the business model, balancing growth investment against capital efficiency.</p>
+
+<p><strong>7. WACC: 10.5%.</strong> The cost of capital of 10.5% reflects the required return given a risk-free rate of 4.50%, a beta of 1.52, and an equity risk premium of 4.46%. This rate remains stable through the projection period.</p>
+
+<p><strong>8. Terminal Growth Rate: 3.5%.</strong> The terminal growth rate of 3.5% is set below the 4.50% risk-free rate, consistent with the constraint that no company can grow faster than the economy in perpetuity. It reflects the company's long-term competitive position.</p>
+
+
+<!-- ══════════ 7. THE VALUATION ══════════ -->
+<h2>7. The Valuation</h2>
+<h3>DCF Summary</h3>
+<div class="chart-container">
+  <canvas id="chartFcff"></canvas>
+</div>
+<p class="table-caption">10-Year Free Cash Flow to Firm Projections ($B). Source: my DCF model.</p>
+
+<h3>Free Cash Flow Decomposition</h3>
+<table>
+  <tr><th>Year</th><th class="right">Revenue ($B)</th><th class="right">EBIT ($B)</th><th class="right">NOPAT ($B)</th><th class="right">− Reinvest ($B)</th><th class="right">= FCFF ($B)</th><th class="right">PV(FCFF) ($B)</th></tr>
+  
+  <tr>
+    <td>Yr 1</td>
+    <td class="right">292</td>
+    <td class="right">172</td>
+    <td class="right">146</td>
+    <td class="right">61</td>
+    <td class="right">85</td>
+    <td class="right">77</td>
+  </tr>
+  
+  <tr>
+    <td>Yr 2</td>
+    <td class="right">344</td>
+    <td class="right">198</td>
+    <td class="right">168</td>
+    <td class="right">42</td>
+    <td class="right">126</td>
+    <td class="right">103</td>
+  </tr>
+  
+  <tr>
+    <td>Yr 3</td>
+    <td class="right">406</td>
+    <td class="right">228</td>
+    <td class="right">193</td>
+    <td class="right">50</td>
+    <td class="right">143</td>
+    <td class="right">106</td>
+  </tr>
+  
+  <tr>
+    <td>Yr 4</td>
+    <td class="right">479</td>
+    <td class="right">262</td>
+    <td class="right">222</td>
+    <td class="right">59</td>
+    <td class="right">163</td>
+    <td class="right">109</td>
+  </tr>
+  
+  <tr>
+    <td>Yr 5</td>
+    <td class="right">565</td>
+    <td class="right">301</td>
+    <td class="right">256</td>
+    <td class="right">70</td>
+    <td class="right">186</td>
+    <td class="right">113</td>
+  </tr>
+  
+  <tr>
+    <td>Yr 7</td>
+    <td class="right">659</td>
+    <td class="right">332</td>
+    <td class="right">282</td>
+    <td class="right">39</td>
+    <td class="right">243</td>
+    <td class="right">120</td>
+  </tr>
+  
+  <tr>
+    <td>Yr 10</td>
+    <td class="right">830</td>
+    <td class="right">383</td>
+    <td class="right">325</td>
+    <td class="right">50</td>
+    <td class="right">276</td>
+    <td class="right">101</td>
+  </tr>
+  
+</table>
+
+<h3>Valuation Bridge</h3>
+<table>
+  <tr><th>Component</th><th class="right">Amount ($B)</th><th class="right">Per Share ($)</th></tr>
+  <tr><td>PV of 10-Year FCFF</td><td class="right">1077</td><td class="right">44.20</td></tr>
+  <tr><td>PV of Terminal Value</td><td class="right">1484</td><td class="right">60.93</td></tr>
+  <tr class="total"><td>Enterprise Value</td><td class="right">2561</td><td class="right">105.12</td></tr>
+  <tr><td>(+) Cash</td><td class="right">11</td><td></td></tr>
+  <tr><td>(−) Total Debt</td><td class="right">1</td><td></td></tr>
+  <tr class="total"><td>Equity Value</td><td class="right">2560</td><td class="right"><strong>$105.09</strong></td></tr>
+</table>
+<p style="font-size:13px;color:var(--gray);">
+  The terminal value represents <strong>58%</strong> of total enterprise value.
+  Terminal FCFF = $285B, discounted at WACC of 10.5%.
+  Terminal growth rate: 3.5%.
+</p>
+
+<!-- ══════════ 8. FACING UP TO UNCERTAINTY ══════════ -->
+<h2>8. Facing Up to Uncertainty</h2>
+
+<h3>Scenario Analysis</h3>
+<table>
+  <tr><th>Scenario</th><th class="right">Value Per Share ($)</th><th class="right">vs Base ($105.09)</th></tr>
+  
+  <tr>
+    <td>Base Case ★ Base</td>
+    <td class="right">105.09</td>
+    <td class="right" style="color:var(--green)">+0.0%</td>
+  </tr>
+  
+  <tr>
+    <td>Bull: Sustained Premium</td>
+    <td class="right">162.22</td>
+    <td class="right" style="color:var(--red)">+54.4%</td>
+  </tr>
+  
+  <tr>
+    <td>Bear: Demand Deceleration</td>
+    <td class="right">70.92</td>
+    <td class="right" style="color:var(--green)">-32.5%</td>
+  </tr>
+  
+  <tr>
+    <td>Conservative: Margin Pressure</td>
+    <td class="right">72.67</td>
+    <td class="right" style="color:var(--green)">-30.9%</td>
+  </tr>
+  
+  <tr>
+    <td>Pessimistic: Capex Digestion</td>
+    <td class="right">50.35</td>
+    <td class="right" style="color:var(--green)">-52.1%</td>
+  </tr>
+  
+</table>
+
+<h3>Sensitivity: WACC × Terminal Growth Rate</h3>
+<div class="chart-container">
+  <canvas id="chartSensitivity"></canvas>
+</div>
+<p class="table-caption">Implied share price at each WACC / Terminal Growth combination. Base case highlighted in yellow.</p>
+
+<h3>Monte Carlo Simulation (10,000 Trials)</h3>
+<p>Varying Years 2–5 revenue growth, target operating margin, and WACC using triangular distributions:</p>
+<div class="chart-container">
+  <canvas id="chartMc"></canvas>
+</div>
+<table>
+  <tr><th>Metric</th><th class="right">Value</th></tr>
+  <tr><td>Median Intrinsic Value</td><td class="right"><strong>$109.15</strong></td></tr>
+  <tr><td>10th Percentile</td><td class="right">$93.59</td></tr>
+  <tr><td>25th Percentile</td><td class="right">$100.42</td></tr>
+  <tr><td>75th Percentile</td><td class="right">$119.50</td></tr>
+  <tr><td>90th Percentile</td><td class="right">$129.85</td></tr>
+  <tr><td>Standard Deviation</td><td class="right">$14.18</td></tr>
+  <tr><td>Probability of Upside</td><td class="right"><strong>0.0%</strong></td></tr>
+</table>
+
+<h3>The Weak Links</h3>
+
+    <div class='weak-link'><strong>1. Years 2–5 Revenue Growth: 18.0%.</strong> This is the central operating bet.
+    NVIDIA must transition from a panic AI buildout into a durable replacement-and-expansion cycle without a sharp
+    capex digestion period. I would revise this downward if hyperscaler capex guidance turns flat, if lead times
+    collapse, or if AMD and custom ASIC deployments visibly take incremental workloads. The $119 billion in
+    manufacturing commitments represents real inventory risk if demand disappoints.</div>
+    <div class='weak-link'><strong>2. Target Operating Margin: 46.1%.</strong> The weak link is not whether NVIDIA
+    has a moat today — it clearly does. The question is whether hyperscaler ASICs, AMD's CDNA architecture, Google
+    TPUs, and AWS Trainium can compress pricing faster than the 10-year normalization glide assumes. The precedent
+    from Q1 FY2026, when gross margin fell to 60.5% due to export-related charges, shows how quickly margins can
+    move when external shocks hit. A sustained margin below 55% would signal faster normalization.</div>
+    <div class='weak-link'><strong>3. Terminal Growth Rate: 3.5%.</strong> Compounding from a $216 billion revenue
+    base through our growth trajectory would put Year-10 revenue near levels comparable to the world's largest
+    companies. The physical sanity check matters: can any company maintain 3.5% perpetual growth from a base this
+    large? I would reduce this if AI compute starts resembling a cyclical hardware replacement market rather than
+    a permanent production input.</div>
+    <div class='weak-link'><strong>4. Cost of Capital: 10.5% (WACC).</strong> This valuation uses the Damodaran
+    Semiconductor industry median WACC. NVIDIA's actual risk profile may differ — the stock's raw beta of 2.21
+    suggests much higher volatility, but bottom-up industry beta of 1.52 provides a more stable anchor. If AI
+    infrastructure proves to be more cyclical than secular, the appropriate WACC would be higher; if the CUDA moat
+    proves impenetrable, a lower WACC could be justified. The 10.5% reflects a balanced view of the risks.</div>
+
+<!-- ══════════ 9. THE PRICING GAME ══════════ -->
+<h2>9. The Pricing Game</h2>
+<h3>Peer Comparison</h3>
+<table>
+  <tr>
+    <th>Company</th>
+    <th class="right">P/E</th>
+    <th class="right">Fwd P/E</th>
+    <th class="right">EV/EBITDA</th>
+    <th class="right">EV/Sales</th>
+    <th class="right">Gross Margin</th>
+    <th class="right">Op. Margin</th>
+    <th class="right">Net Margin</th>
+    <th class="right">ROE</th>
+    <th class="right">Rev Growth</th>
+  </tr>
+  
+  <tr>
+    <td><strong>AAPL</strong></td>
+    <td class="right">41.6x</td>
+    <td class="right">37.8x</td>
+    <td class="right">32.3x</td>
+    <td class="right">11.2x</td>
+    <td class="right">46.9%</td>
+    <td class="right">32.0%</td>
+    <td class="right">26.9%</td>
+    <td class="right">151.9%</td>
+    <td class="right">6.4%</td>
+  </tr>
+  
+  <tr>
+    <td><strong>GOOGL</strong></td>
+    <td class="right">32.3x</td>
+    <td class="right">29.3x</td>
+    <td class="right">23.7x</td>
+    <td class="right">10.6x</td>
+    <td class="right">59.7%</td>
+    <td class="right">32.1%</td>
+    <td class="right">32.8%</td>
+    <td class="right">31.8%</td>
+    <td class="right">15.1%</td>
+  </tr>
+  
+  <tr>
+    <td><strong>MSFT</strong></td>
+    <td class="right">28.5x</td>
+    <td class="right">25.9x</td>
+    <td class="right">18.1x</td>
+    <td class="right">10.3x</td>
+    <td class="right">68.8%</td>
+    <td class="right">45.6%</td>
+    <td class="right">36.1%</td>
+    <td class="right">29.6%</td>
+    <td class="right">14.9%</td>
+  </tr>
+  
+  <tr>
+    <td><strong>TSM</strong></td>
+    <td class="right">1.3x</td>
+    <td class="right">1.1x</td>
+    <td class="right">0.8x</td>
+    <td class="right">0.6x</td>
+    <td class="right">59.9%</td>
+    <td class="right">50.8%</td>
+    <td class="right">45.1%</td>
+    <td class="right">32.2%</td>
+    <td class="right">33.0%</td>
+  </tr>
+  
+  <tr style="font-weight:700;border-top:2px solid var(--blue);">
+    <td>Peer Median</td>
+    <td class="right">32.3x</td>
+    <td class="right">29.3x</td>
+    <td class="right">23.7x</td>
+    <td class="right">10.6x</td>
+    <td class="right">59.9%</td>
+    <td class="right">45.6%</td>
+    <td class="right">36.1%</td>
+    <td class="right">32.2%</td>
+    <td class="right">15.1%</td>
+  </tr>
+</table>
+<p class="table-caption">Source: Financial Modeling Prep /stable/; market data as of report date.</p>
+
+
+    <p>NVIDIA trades at a trailing P/E that reflects its extraordinary current fundamentals — but the pricing debate
+    is not about current earnings. At today's multiples, the market is implicitly assuming that the AI buildout
+    continues at or near its current pace for several more years. The peer comparison reinforces this: NVIDIA's
+    margins and growth rates are outliers, and the market is pricing them as such. The question is whether the
+    market is correctly pricing the durability of those outliers.</p>
+    <p>What the multiples miss is the structural tension: NVIDIA's largest customers are also its most capable
+    competitors, and the incentive to reduce dependence grows with every quarter of 60%+ margins. A company can be
+    an extraordinary business and still be overpriced — or underpriced — depending on how long the extraordinary
+    lasts. Our DCF suggests the market is pricing in a best-case duration that history suggests is unlikely. The
+    debate is not about NVIDIA's quality; it is about the market's extrapolation of that quality into perpetuity.</p>
+
+<!-- ══════════ 10. BOTTOM LINE ══════════ -->
+<h2>10. Bottom Line</h2>
+<p>My DCF model values <strong>NVIDIA Corporation</strong> at <strong>$105.09 per share</strong>. The Monte Carlo analysis produces the following price-conditional verdict:</p>
+
+<div style="margin: 20px 0; line-height: 2.2;">
+  <div><span class="price-band band-undervalued">Below $100.42</span> — Undervalued on my value distribution (below 25th percentile of simulated outcomes).</div>
+  <div><span class="price-band band-value">$100.42 – $108.05</span> — Solid value, between the 25th and 40th percentile.</div>
+  <div><span class="price-band band-fair">$108.05 – $111.87</span> — Fairly priced. Today's price of $203.53 falls here.</div>
+  <div><span class="price-band band-rich">$111.87 – $119.50</span> — Richly priced, between the 60th and 75th percentile.</div>
+  <div><span class="price-band band-overvalued">Above $119.50</span> — Overvalued on my assumptions, in the upper quartile.</div>
+</div>
+
+<p><strong>At $203.53, NVIDIA Corporation is overvalued,</strong> with 0.0% of simulated outcomes producing a value above the current price. The market appears to be pricing in a best-case scenario. Modest assumptions would suggest the stock is above fair value.</p>
+
+
+    <p>Three things I would watch closely before revisiting my assumptions: (1) hyperscaler capex guidance in the
+    next two earnings cycles, because any flattening would pressure the Years 2–5 growth assumption directly;
+    (2) NVIDIA's gross margin trajectory over the next four quarters, because a sustained move below 70% would
+    suggest competitive normalization is arriving faster than the 10-year glide assumes; and (3) the commercial
+    scale of Google TPU and AWS Trainium deployments outside their own clouds, because merchant availability of
+    those alternatives would materially alter the inference pricing dynamic.</p>
+
+<hr>
+
+<p style="font-size:14px; font-style:italic;">This is my valuation, not the valuation. The assumptions I have made are defensible, but they are not the only defensible assumptions. Do your own research. I have shown you my work, and I am comfortable being transparently wrong about it. Time will tell!</p>
+
+<!-- ══════════ DISCLAIMER ══════════ -->
+<div class="disclaimer">
+  <strong>Disclaimer</strong><br><br>
+  This report is generated by ValueNaut AI for <strong>informational and educational purposes only</strong>.
+  It does not constitute investment advice, nor is it an offer, solicitation, or recommendation to buy or sell any security.
+  AI-generated analysis may contain errors or omissions. You are solely responsible for your investment decisions —
+  do your own research and consult a licensed financial advisor.<br><br>
+  <strong>Data Sources:</strong> Financial Modeling Prep /stable/ API; Damodaran industry datasets; SEC filings (10-K, 10-Q);
+  analyst consensus data; market data as of July 14, 2026.
+  <strong>Methodology:</strong> Damodaran 10-Year DCF with margin normalization and sales-to-capital-driven reinvestment.
+</div>
+
+<div class="footer-info">
+  ValueNaut AI | July 14, 2026 | Damodaran DCF Framework<br>
+  NVDA Valuation Report
+</div>
+
+<!-- ══════════ CHARTS ══════════ -->
+<script>
+// FCFF Bar Chart
+new Chart(document.getElementById('chartFcff'), {
+  type: 'bar',
+  data: {
+    labels: ["Yr 1", "Yr 2", "Yr 3", "Yr 4", "Yr 5", "Yr 6", "Yr 7", "Yr 8", "Yr 9", "Yr 10"],
+    datasets: [{
+      label: 'FCFF ($B)',
+      data: [84.7666907292955, 125.55701450503989, 143.252630060423, 163.25061994578078, 185.80650097590961, 232.0322316938618, 242.6291957040565, 253.43666767304163, 264.4205083045585, 275.5397687640105],
+      backgroundColor: '#1a56db',
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: { display: true, text: 'Projected Free Cash Flow to Firm', font: { size: 14 }, color: '#1f2937' },
+      legend: { display: false }
+    },
+    scales: {
+      y: { title: { display: true, text: '$ Billions' }, grid: { color: '#f0f0f0' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Sensitivity Heatmap
+new Chart(document.getElementById('chartSensitivity'), {
+  type: 'bar',
+  data: {
+    labels: ["WACC8.5% TG2.5%", "WACC9.0% TG2.5%", "WACC9.5% TG2.5%", "WACC10.0% TG2.5%", "WACC10.5% TG2.5%", "WACC11.0% TG2.5%", "WACC11.5% TG2.5%", "WACC12.0% TG2.5%", "WACC12.5% TG2.5%", "WACC8.5% TG3.0%", "WACC9.0% TG3.0%", "WACC9.5% TG3.0%", "WACC10.0% TG3.0%", "WACC10.5% TG3.0%", "WACC11.0% TG3.0%", "WACC11.5% TG3.0%", "WACC12.0% TG3.0%", "WACC12.5% TG3.0%", "WACC8.5% TG3.5%", "WACC9.0% TG3.5%", "WACC9.5% TG3.5%", "WACC10.0% TG3.5%", "WACC10.5% TG3.5%", "WACC11.0% TG3.5%", "WACC11.5% TG3.5%", "WACC12.0% TG3.5%", "WACC12.5% TG3.5%", "WACC8.5% TG4.0%", "WACC9.0% TG4.0%", "WACC9.5% TG4.0%", "WACC10.0% TG4.0%", "WACC10.5% TG4.0%", "WACC11.0% TG4.0%", "WACC11.5% TG4.0%", "WACC12.0% TG4.0%", "WACC12.5% TG4.0%", "WACC8.5% TG4.5%", "WACC9.0% TG4.5%", "WACC9.5% TG4.5%", "WACC10.0% TG4.5%", "WACC10.5% TG4.5%", "WACC11.0% TG4.5%", "WACC11.5% TG4.5%", "WACC12.0% TG4.5%", "WACC12.5% TG4.5%", "WACC8.5% TG5.0%", "WACC9.0% TG5.0%", "WACC9.5% TG5.0%", "WACC10.0% TG5.0%", "WACC10.5% TG5.0%", "WACC11.0% TG5.0%", "WACC11.5% TG5.0%", "WACC12.0% TG5.0%", "WACC12.5% TG5.0%"],
+    datasets: [{
+      label: 'Implied Share Price ($)',
+      data: [133.8621095868063, 122.63215144403722, 113.01963808130269, 104.70243326353119, 97.43847275961518, 91.04234736133554, 85.36964941419842, 80.30623727152296, 75.76070477673717, 141.91547670669132, 129.17932139131986, 118.41137099660686, 109.19210040459843, 101.21315765394574, 94.24283247896906, 88.10364271924439, 82.65735157263819, 77.79469203798104, 151.56390860704747, 136.9063895153616, 124.69445738444692, 114.36732511924507, 105.52334027671782, 97.86728311162884, 91.17730775807986, 85.28348448666425, 80.05345590005915, 163.33337474873562, 146.1638950375107, 132.1098501326113, 120.39811048443134, 110.49167377074788, 102.00591840737214, 94.65813856501354, 88.2358885434991, 82.57643579959115, 178.0096513710954, 157.45649666694268, 140.99394927772528, 127.51573378327512, 116.28136495852604, 106.77650985534932, 98.63277933023059, 91.57939503028283, 85.41287109610914, 196.8213392818394, 171.53813327683244, 151.83105785326072, 136.0430867114331, 123.11444529481615, 112.33576856856413, 103.21433481612429, 95.39722988587727, 88.62504654048824],
+      backgroundColor: ["#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#1a56db", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd", "#93c5fd"],
+      borderRadius: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: { display: true, text: 'Sensitivity: WACC × Terminal Growth', font: { size: 14 }, color: '#1f2937' },
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => '$' + ctx.raw.toFixed(2) } }
+    },
+    scales: {
+      y: { title: { display: true, text: 'Implied Share Price ($)' }, grid: { color: '#f0f0f0' } },
+      x: { ticks: { maxRotation: 60, font: { size: 9 } }, grid: { display: false } }
+    }
+  }
+});
+
+// Monte Carlo Distribution (Gaussian)
+(function() {
+  const median = 109.14801910110607, std = 14.17789219878804, price = 203.53;
+  const steps = 100, range = 4;
+  const labels = [], curveData = [];
+  for (let i = 0; i <= steps; i++) {
+    const x = median - range*std + (2*range*std*i/steps);
+    labels.push(x.toFixed(1));
+    const z = (x - median) / std;
+    curveData.push(Math.exp(-0.5*z*z) / (std * Math.sqrt(2*Math.PI)));
+  }
+  const priceIndex = labels.findIndex(l => parseFloat(l) >= price);
+  const colors = curveData.map((_, i) => i === priceIndex ? '#dc2626' : '#1a56db33');
+
+  new Chart(document.getElementById('chartMc'), {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Probability Density',
+        data: curveData,
+        backgroundColor: colors,
+        borderColor: colors,
+        borderWidth: 0,
+        borderRadius: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: { display: true, text: 'Monte Carlo Value Distribution (10,000 Trials)', font: { size: 14 }, color: '#1f2937' },
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.dataIndex === priceIndex
+              ? 'Current Price: $' + price.toFixed(2) + ' (red bar)'
+              : '$' + parseFloat(ctx.label).toFixed(2)
+          }
+        }
+      },
+      scales: {
+        y: { display: false },
+        x: {
+          title: { display: true, text: 'Intrinsic Value per Share ($)' },
+          ticks: { maxTicksLimit: 15, font: { size: 9 }, maxRotation: 45 },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

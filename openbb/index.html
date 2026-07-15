@@ -33,6 +33,24 @@ nav a{color:var(--blue);text-decoration:none;font-size:14px;padding:6px 14px;bor
 .tab-btn{padding:8px 20px;background:var(--bg);border:1px solid var(--border);border-bottom:none;color:var(--text2);cursor:pointer;font-size:13px;border-radius:8px 8px 0 0;margin-right:-1px}
 .tab-btn.active{background:var(--card);color:var(--green);font-weight:600}
 footer{text-align:center;padding:20px;color:var(--text2);font-size:12px;border-top:1px solid var(--border)}
+
+/* 深度工具 */
+.tools-section{display:none;margin-top:24px}
+.tools-section.active{display:block}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px}
+.tool-card h3{font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.tool-card .desc{font-size:13px;color:var(--text2);margin-bottom:16px}
+.tool-card .form-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool-card input,.tool-card select,.tool-card textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:6px;font-size:14px;font-family:inherit}
+.tool-card textarea{flex:1;min-width:300px;resize:vertical}
+.tool-card button{background:var(--green);color:#0d1117;border:none;padding:10px 22px;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px}
+.tool-card button:hover{opacity:.85}
+.tool-card button.secondary{background:var(--blue)}
+.tool-output{margin-top:16px;padding:16px;background:var(--bg);border-radius:8px;min-height:60px;font-size:13px;color:var(--text2)}
+.tool-output img{max-width:100%;border-radius:8px}
+.tool-output iframe{width:100%;height:600px;border:1px solid var(--border);border-radius:8px;background:#fff}
+.loading{display:inline-block;width:14px;height:14px;border:2px solid var(--text2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}.badge-new{background:rgba(63,185,80,0.15);color:var(--green)}.badge-beta{background:rgba(188,140,255,0.15);color:var(--purple)}
 </style>
 </head>
 <body>
@@ -46,9 +64,10 @@ footer{text-align:center;padding:20px;color:var(--text2);font-size:12px;border-t
 </div>
 <div class="container">
   <div class="tab-bar" id="tabBar">
-    <button class="tab-btn active" onclick="switchTab('etf')">A股 ETF</button>
+    <button class="tab-btn" onclick="switchTab('etf')">A股 ETF</button>
     <button class="tab-btn" onclick="switchTab('us')">美股 ETF</button>
     <button class="tab-btn" onclick="switchTab('backtest')">组合回测</button>
+    <button class="tab-btn" onclick="switchTab('deep')">🔧 深度工具</button>
   </div>
   <div class="toolbar" id="toolbar">
     <input type="text" id="codeInput" placeholder="ETF代码，逗号分隔" value="510300,510050,518880" style="flex:1;min-width:220px">
@@ -62,7 +81,77 @@ footer{text-align:center;padding:20px;color:var(--text2);font-size:12px;border-t
     <div class="card"><h3>滚动相关性</h3><div class="chart-wrap"><canvas id="corrChart"></canvas></div></div>
   </div>
 </div>
-<footer>数据源: 东方财富 (A股) · Yahoo Finance (美股) · 浏览器直连</footer>
+
+<!-- ═══ 深度工具 ═══ -->
+<div class="tools-section" id="deepTools">
+  <!-- AI 封面生成 -->
+  <div class="tool-card">
+    <h3>🎨 AI 封面生成 <span class="badge badge-new">新</span></h3>
+    <p class="desc">腾讯混元底图 + 完美中文叠字。输入标题，AI 自动出图，适合公众号 2.35:1 封面。</p>
+    <div class="form-row">
+      <input type="text" id="coverTitle" placeholder="主标题，如：军工ETF vs 军工龙头ETF" style="flex:2">
+      <input type="text" id="coverSubtitle" placeholder="副标题，如：选军工板块还是挑龙头？" style="flex:2">
+    </div>
+    <div class="form-row">
+      <input type="text" id="coverStyle" placeholder="视觉风格描述，如：歼-20战斗机 vs 055大驱，蔚蓝天空，塞班蓝大海" style="flex:3">
+      <button onclick="generateCover()">生成封面</button>
+    </div>
+    <div class="tool-output" id="coverOutput">
+      <em>提示：封面通过 AI 生成需要 30-60 秒，请耐心等待。标题/副标题/风格越具体，效果越好。</em>
+    </div>
+  </div>
+
+  <!-- SVG 数据看板 -->
+  <div class="tool-card">
+    <h3>📊 SVG 数据看板 <span class="badge badge-new">新</span></h3>
+    <p class="desc">纯 SVG 动画仪表盘，支持 KPI 卡片、迷你折线、环形图、柱状图，零外部依赖。</p>
+    <div class="form-row">
+      <input type="text" id="dashboardTitle" placeholder="看板标题，如：军工 ETF 核心指标" value="军工 ETF 核心指标" style="flex:2">
+      <select id="dashboardTheme" style="flex:1">
+        <option value="dark">深蓝主题</option>
+        <option value="light">暖白主题</option>
+      </select>
+      <button onclick="loadDashboard()" class="secondary">加载看板</button>
+    </div>
+    <div class="tool-output" id="dashboardOutput">
+      <em>提示：点击加载后注入当前对比数据，生成 SVG 动画看板。</em>
+    </div>
+  </div>
+
+  <!-- DCF 估值报告 -->
+  <div class="tool-card">
+    <h3>📈 Damodaran DCF 估值报告 <span class="badge badge-beta">Beta</span></h3>
+    <p class="desc">基于 Damodaran 10 年 DCF 框架（销售资本比驱动再投资 + 利润率归一化 + 蒙特卡洛 + 情景分析），中英双语，中文全叙事。对标 DamodaranBot 出品质量。</p>
+    <div class="form-row">
+      <select id="dcfSelect" style="flex:3" onchange="loadDCFReport()">
+        <option value="">— 选择已生成的 Damodaran DCF 报告 —</option>
+        <optgroup label="美股 · 中文">
+          <option value="./dcf_reports/NVDA_CN_DCF_NVDA.html">NVIDIA (NVDA) — $105.09 (-48.4%)</option>
+          <option value="./dcf_reports/AAPL_CN_DCF_AAPL.html">Apple (AAPL) — $96.16 (-69.7%)</option>
+        </optgroup>
+        <optgroup label="美股 · English Damodaran Narrative">
+          <option value="./dcf_reports/NVDA_Valuation_v2_Full_generate_nvda_narrative.html">NVIDIA — Full Narrative English</option>
+        </optgroup>
+        <optgroup label="A股 · 中文 (WeStock 数据)">
+          <option value="./dcf_reports/sh600519_贵州茅台_Full_CN_20260714.html">贵州茅台 (600519) — ¥1109 (-8.6%)</option>
+          <option value="./dcf_reports/sz300502_新易盛_Full_CN_20260714.html">新易盛 (300502) — ¥130 (-77.1%)</option>
+          <option value="./dcf_reports/sz002432_九安医疗_Full_CN_20260714.html">九安医疗 (002432) — ¥94 (+55.0%)</option>
+          <option value="./dcf_reports/sz002428_云南锗业_Full_CN_20260714.html">云南锗业 (002428) — N/M</option>
+          <option value="./dcf_reports/sz000554_泰山石油_Full_CN_20260714.html">泰山石油 (000554) — N/M</option>
+          <option value="./dcf_reports/sz000100_TCL科技_Full_CN_20260714.html">TCL科技 (000100) — N/M</option>
+        </optgroup>
+      </select>
+      <button onclick="loadDCFReport()" class="secondary">加载报告</button>
+      <button onclick="window.open(document.getElementById('dcfSelect').value,'_blank')" style="background:var(--purple);border:none;padding:10px 16px;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;font-size:14px">新窗口打开</button>
+    </div>
+    <p class="desc" style="font-size:11px;margin-top:4px">报告结构: Investment Thesis → Framing Questions → Back Story → Industry → Story → Numbers → Valuation Bridge → MC + Scenarios → Weak Links → Bottom Line | 数据源: FMP (美股) / WeStock MCP (A股) | Damodaran 行业基准 | 10,000 次蒙特卡洛</p>
+    <div class="tool-output" id="dcfOutput">
+      <em>选择一份报告，查看完整的 Damodaran DCF 分析，含 9 章节叙事 + Chart.js 图表 + 估值桥接。</em>
+    </div>
+  </div>
+</div>
+
+<footer>数据源: 东方财富 (A股) · Yahoo Finance (美股) · 浏览器直连 · WeStock MCP (DCF) · 腾讯混元 AI (封面)</footer>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script>
 var currentTab='etf';
@@ -70,15 +159,21 @@ var colors=['#3fb950','#58a6ff','#f778ba','#d2991d','#bc8cff','#f85149'];
 
 function switchTab(tab){
   currentTab=tab;
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active',b.dataset.tab===tab||b.textContent.includes(tab==='etf'?'A股':'美股'));});
   document.querySelectorAll('#tabBar .tab-btn').forEach(function(b,i){
-    b.classList.toggle('active',(i===0&&tab==='etf')||(i===1&&tab==='us')||(i===2&&tab==='backtest'));
+    b.classList.toggle('active',(i===0&&tab==='etf')||(i===1&&tab==='us')||(i===2&&tab==='backtest')||(i===3&&tab==='deep'));
   });
-  var inp=document.getElementById('codeInput'),ph,val;
-  if(tab==='etf'){ph='ETF代码，逗号分隔';val='510300,510050,518880';}
-  else if(tab==='us'){ph='美股代码，逗号分隔';val='SPY,QQQ,IWM';}
-  else{ph='代码，逗号分隔 (可加权重)';val='SPY,QQQ';}
-  inp.placeholder=ph;inp.value=val;
+  var showAnalysis=(tab!=='deep');
+  document.getElementById('toolbar').style.display=showAnalysis?'':'none';
+  document.getElementById('statsArea').style.display=showAnalysis?'':'none';
+  document.getElementById('charts').style.display=showAnalysis?'':'none';
+  document.getElementById('deepTools').classList.toggle('active',tab==='deep');
+  if(showAnalysis){
+    var inp=document.getElementById('codeInput'),ph,val;
+    if(tab==='etf'){ph='ETF代码，逗号分隔';val='510300,510050,518880';}
+    else if(tab==='us'){ph='美股代码，逗号分隔';val='SPY,QQQ,IWM';}
+    else{ph='代码，逗号分隔 (可加权重)';val='SPY,QQQ';}
+    inp.placeholder=ph;inp.value=val;
+  }
 }
 
 // ===== 数据获取 =====
@@ -311,6 +406,64 @@ document.querySelectorAll('#tabBar .tab-btn').forEach(function(b,i){
   b.addEventListener('click',function(){switchTab(b.dataset.tab);});
 });
 loadAnalysis();
+
+// ===== 深度工具 =====
+
+// AI 封面生成
+function generateCover(){
+  var title=document.getElementById('coverTitle').value.trim();
+  var sub=document.getElementById('coverSubtitle').value.trim();
+  var style=document.getElementById('coverStyle').value.trim();
+  if(!title){alert('请输入封面标题');return;}
+  if(!style){alert('请输入视觉风格描述');return;}
+  var out=document.getElementById('coverOutput');
+  out.innerHTML='<div style="display:flex;align-items:center;gap:10px"><span class="loading"></span> 准备 AI 封面生成…</div>';
+
+  // 构建完整的 AI 生成 prompt
+  var prompt='公众号封面 2.35:1。标题: "'+title+'"。副标题: "'+(sub||'')+'"。';
+  prompt+='视觉风格: '+style+'。';
+  prompt+='纯底图不含文字，留白给 Pillow 叠中文。暗色主题，专业质感。No text. No watermark.';
+
+  // 复制到剪贴板
+  navigator.clipboard.writeText(prompt).then(function(){
+    out.innerHTML='<div style="padding:12px;background:rgba(63,185,80,0.08);border-radius:6px;border:1px solid rgba(63,185,80,0.2)">'
+      +'<strong style="color:#3fb950">✅ Prompt 已复制到剪贴板</strong><br><br>'
+      +'<div style="font-size:13px;color:#c9d1d9;line-height:1.6;background:#0d1117;padding:12px;border-radius:6px;margin:8px 0">'
+      +prompt.replace(/</g,'&lt;')+'</div>'
+      +'<p style="font-size:12px;color:#8b949e;margin-top:8px">'
+      +'💡 在 WorkBuddy 中说: "<strong>出封面：标题"'+title+'"</strong>"，AI 自动完成后续（腾讯混元底图 + Pillow 叠中文）。'
+      +'<br>或使用 <code>ai-cover-zh</code> skill 一行命令完成。</p>'
+      +'</div>';
+  }).catch(function(){
+    out.innerHTML='<div style="color:#f85149">❌ 复制 prompt 失败，请手动复制下方文本到 WorkBuddy</div><br>'
+      +'<pre style="background:#0d1117;padding:12px;border-radius:6px;font-size:12px;color:#c9d1d9;overflow-x:auto">'+prompt+'</pre>';
+  });
+}
+
+// SVG 数据看板
+function loadDashboard(){
+  var out=document.getElementById('dashboardOutput');
+  var theme=document.getElementById('dashboardTheme').value;
+  out.innerHTML='<div style="display:flex;align-items:center;gap:10px"><span class="loading"></span> 加载 SVG 看板…</div>';
+
+  // 加载项目根目录的 dashboard.html
+  var iframeSrc='../../dashboard.html';
+  out.innerHTML='<div style="text-align:center;margin-bottom:8px;font-size:12px;color:var(--text2)">')
+    +'<a href="'+iframeSrc+'" target="_blank" style="color:var(--blue)">在新窗口打开</a></div>'
+    +'<iframe src="'+iframeSrc+'" style="width:100%;height:680px;border:1px solid var(--border);border-radius:12px;background:#fff" '
+    +'onload="this.previousElementSibling?this.previousElementSibling.style.display=\'none\':null"></iframe>';
+}
+
+// DCF 估值报告 — 直接加载已生成的 Damodaran DCF 报告
+function loadDCFReport(){
+  var sel=document.getElementById('dcfSelect');
+  var url=sel.value;
+  if(!url){alert('请先选择一份报告');return;}
+  var out=document.getElementById('dcfOutput');
+  out.innerHTML='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span class="loading"></span> 加载 Damodaran DCF 报告…</div>'
+    +'<iframe src="'+url+'" style="width:100%;height:800px;border:1px solid var(--border);border-radius:12px;background:#FEFCF8" '
+    +'onload="var self=this;self.style.borderColor=\'#3fb950\';self.previousElementSibling.style.display=\'none\'"></iframe>';
+}
 </script>
 </body>
 </html>

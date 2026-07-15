@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<title>NVIDIA Corporation (NVDA) — DCF 估值报告 | ValueForge</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>:root{--blue:#1a56db;--dark:#1f2937;--gray:#6b7280;--lb:#f8f9fa;--bg:#FEFCF8;--red:#dc2626;--green:#16a34a;--bd:#e5e7eb}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--dark);line-height:1.8;max-width:860px;margin:0 auto;padding:0 24px 64px}
+.cover{text-align:center;padding:80px 0 60px;border-bottom:2px solid var(--blue)}
+.cover .brand{font-size:22px;color:var(--blue);font-weight:700}.cover .sub{font-size:12px;color:#9ca3af;margin-top:4px}
+.cover .tk{font-size:42px;font-weight:800;margin:24px 0 4px}.cover .nm{font-size:18px;color:var(--gray)}
+.cover .dt{font-size:13px;color:#9ca3af;margin-top:12px}
+.cover .verdict{display:inline-block;margin-top:24px;padding:14px 36px;border-radius:8px;font-size:16px;font-weight:700}
+.cover .v-up{background:#fef2f2;color:var(--red);border:1.5px solid #fecaca}
+.cover .v-down{background:#f0fdf4;color:var(--green);border:1.5px solid #bbf7d0}
+.cover .v-fair{background:#f8f9fa;border:1.5px solid var(--bd)}
+.cover .ms{display:flex;justify-content:center;gap:48px;margin-top:32px}
+.cover .mi{text-align:center}.cover .ml{font-size:11px;color:var(--gray);letter-spacing:.8px}
+.cover .mv{font-size:24px;font-weight:700;margin-top:4px}
+h2{font-size:20px;color:var(--blue);margin:48px 0 16px;padding-bottom:8px;border-bottom:1.5px solid var(--bd)}
+h3{font-size:15px;margin:28px 0 10px}p{font-size:14px;margin-bottom:14px;color:#374151}
+strong{color:var(--dark)}.thesis{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border-left:4px solid var(--blue);padding:18px 22px;margin:16px 0 24px;border-radius:0 6px 6px 0}
+ol.fq{list-style:none;padding:0;margin:16px 0 24px}ol.fq li{padding:14px 18px;margin-bottom:10px;background:var(--lb);border-radius:6px;font-size:14px;border-left:3px solid var(--blue)}
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:12px}
+th{background:var(--blue);color:white;padding:9px 12px;text-align:left;font-weight:600;font-size:11px}
+th.r,td.r{text-align:right}th.c,td.c{text-align:center}
+td{padding:8px 12px;border-bottom:1px solid var(--bd)}tr:nth-child(even) td{background:var(--lb)}
+tr.tt td{font-weight:700;background:#e8f0fe!important;border-top:2px solid var(--blue)}
+.cap{font-size:11px;color:var(--gray);margin-top:-12px;margin-bottom:20px;font-style:italic}
+.chart{background:white;border:1px solid var(--bd);border-radius:8px;padding:20px;margin:20px 0}.chart canvas{max-height:360px}
+.wl{border-left:3px solid #f59e0b;padding:10px 16px;margin-bottom:12px;background:#fffbeb;border-radius:0 6px 6px 0;font-size:14px}
+.pb{display:inline-block;padding:6px 16px;margin:3px 4px;border-radius:4px;font-size:13px;font-weight:600;font-family:'SF Mono',Menlo,monospace}
+.bu{background:#fef2f2;color:var(--red)}.bv{background:#fefce8;color:#a16207}
+.bf{background:var(--lb)}.br{background:#f0fdf4;color:#15803d}.bo{background:#ecfdf5;color:var(--green)}
+.disc{margin-top:48px;padding:20px 24px;background:var(--lb);border-radius:8px;font-size:11px;color:var(--gray);line-height:1.6}
+.ft{text-align:center;font-size:11px;color:#9ca3af;margin-top:24px}
+@media print{body{padding:0}.chart{break-inside:avoid}h2{break-before:page}}
+</style></head><body>
+
+<div class="cover">
+<div class="brand">ValueForge</div>
+<div class="sub">机构级 DCF 估值报告 · Damodaran 10 年现金流折现框架</div>
+<div class="tk">NVDA</div>
+<div class="nm">NVIDIA Corporation</div>
+<div class="dt">2026 年 7 月 14 日</div>
+<div class="verdict v-down">高估</div>
+<div class="ms">
+<div class="mi"><div class="ml">当前股价</div><div class="mv">$203.53</div></div>
+<div class="mi"><div class="ml">内在价值</div><div class="mv">$105.09</div></div>
+<div class="mi"><div class="ml">估值空间</div><div class="mv" style="color:#16a34a">-48.4%</div></div>
+</div>
+<div style="margin-top:24px;font-size:12px;color:var(--gray)">企业价值: $2561B | 市值: $4930B | WACC: 10.5%</div>
+</div>
+
+<h2>一、投资论题</h2>
+<div class="thesis"><p>NVIDIA Corporation 是 Technology/Semiconductors 领域的全球领导者，营收达 $216B，营业利润率 60.4%。
+    公司的核心竞争优势支撑着远超行业平均水平的盈利能力，但市场也在对其定价中包含了持续高增长的预期。
+    当前股价 $203.53，DCF 模型估算内在价值 $105.09，估值空间 -48.4%。
+    本报告的核心问题是：当前的竞争优势能否在未来的竞争格局中持续？我们以 Damodaran 的 10 年现金流折现框架对这一张力进行量化分析。</p></div>
+
+<h2>二、框架性问题</h2>
+<ol class="fq"><li>NVIDIA Corporation 当前 60.4% 的营业利润率在面对竞争加剧和客户议价能力提升时能维持多久？合理的长期归一化利润率水平应该是多少？</li><li>在营收已达 $216B 的体量下，未来 5-10 年的增速路径有多大的确定性？市场是否过度外推了近期的高速增长？</li><li>当前 10.5% 的加权平均资本成本是否充分反映了行业风险？如果竞争格局恶化或增长减速，估值会如何变化？</li></ol>
+
+<h2>三、公司背景与财务基础</h2>
+<h3>公司概况</h3>
+<p><strong>NVIDIA Corporation</strong> 在 Technology 行业深耕多年，近年营收从高速增长期逐步进入成熟发展阶段。
+    最新财报显示营收 $216B，营业利润率 60.4%，展现出强劲的盈利能力。
+    公司市值约 $4930B，是行业内最大市值公司之一。
+    从历史表现来看，NVIDIA Corporation 的长期增长轨迹反映了公司在技术创新和市场拓展方面的持续投入。
+    当前面临的挑战是：如何在体量巨大的基础上维持增长动能，以及如何在竞争加剧的环境中保护利润率。</p>
+
+<h3>财务基本面</h3>
+<table>
+<tr><th>指标</th><th class="c">最新财年</th><th class="c">前一年</th><th class="c">前两年</th></tr>
+<tr><td>营业收入 ($B)</td><td class="r">215.9</td><td class="r">130.5</td><td class="r">60.9</td></tr>
+<tr><td>收入增长率</td><td class="r">65.5%</td><td class="r">114.2%</td><td class="r">0.0%</td></tr>
+<tr><td>毛利率</td><td class="r">71.1%</td><td class="r">75.0%</td><td class="r">72.7%</td></tr>
+<tr><td>营业利润率</td><td class="r">60.4%</td><td class="r">62.4%</td><td class="r">54.1%</td></tr>
+<tr><td>净利率</td><td class="r">55.6%</td><td class="r">55.8%</td><td class="r">48.8%</td></tr>
+<tr><td>Beta</td><td class="r" colspan="3">1.52</td></tr>
+</table>
+
+<h3>行业基准对照 (Damodaran 数据集)</h3>
+<p>对标行业: <strong>Semiconductor</strong>（66 家公司）。NVIDIA Corporation 营业利润率 60.4%，行业中位数 19.7%，溢价 +40.7个百分点。
+行业平均增速 6.4%，NVIDIA Corporation 历史增速 89.8%。</p>
+
+<h2>四、行业格局</h2>
+<p>NVIDIA Corporation 所处的行业竞争格局复杂。Damodaran 行业数据集显示该行业共有 66 家公司，
+    中位营业利润率 19.7%。NVIDIA Corporation 的 60.4% 营业利润率显著高于行业中位数，溢价 +41 个百分点，
+    反映了其独特的竞争护城河和市场地位。行业 5 年平均增速 6.4%，而 NVIDIA Corporation 的历史增速 89.8%
+    远高于行业平均水平。但规模效应和竞争压力将逐步拉低增速——护城河是真实的，但侵蚀护城河的激励同样真实。</p>
+
+<h2>五、叙事框架：从故事到数字</h2>
+<p><strong>可能的结果范围：</strong>NVIDIA Corporation 的完整结果分布从"维持优势地位、利润率长期高于行业"
+    到"竞争侵蚀、利润率向行业中位数回归"。两种极端都有可能，取决于技术壁垒的持久性和竞争态势的演变。
+    在 $216B 营收体量下，增长必然减速，问题在于减速的过程是平滑的还是急剧的。</p>
+    <p><strong>合理的情景：</strong>最可辩护的增长路径是中速增长减速加渐进式的利润率归一化。
+    公司的竞争地位支持高于平均水平的回报，但不可能永久保持峰值利润率。
+    第 1 年增长 35%，第 2-5 年 18%，第 6-10 年 8%——这是一个从爆发式增长到成熟扩张的过渡故事。</p>
+    <p><strong>大概率的情景（基线）：</strong>在这一路径下，营业利润率从 60.4%
+    在 10 年内逐步归一化至 46.1%，永续增长率 3.5%，折现率 10.5%。
+    此情景产生每股内在价值 $105.09。</p>
+
+<h3>价值驱动因素</h3>
+<table>
+<tr><th>驱动因素</th><th class="c">估计值</th><th>依据</th></tr>
+
+<tr><td><strong>1. 第 1 年收入增长率</strong></td><td class="c">35.0%</td><td style="font-size:12px">历史增速 89.8% 的合理减速，反映近期可预见的需求动能</td></tr>
+
+<tr><td><strong>2. 第 2-5 年收入增长率</strong></td><td class="c">18.0%</td><td style="font-size:12px">向成熟公司增长轨迹过渡</td></tr>
+
+<tr><td><strong>3. 第 6-10 年收入增长率</strong></td><td class="c">8.0%</td><td style="font-size:12px">成熟增长阶段，接近行业均值</td></tr>
+
+<tr><td><strong>4. 当前营业利润率</strong></td><td class="c">60.4%</td><td style="font-size:12px">最新财年实际数据</td></tr>
+
+<tr><td><strong>5. 目标营业利润率（第 10 年）</strong></td><td class="c">46.1%</td><td style="font-size:12px">行业基准 19.7%，结合公司特有竞争优势</td></tr>
+
+<tr><td><strong>6. 销售资本比</strong></td><td class="c">1.24</td><td style="font-size:12px">每 1 元收入增长所需的再投资</td></tr>
+
+<tr><td><strong>7. WACC</strong></td><td class="c">10.5%</td><td style="font-size:12px">使用 Damodaran 行业 WACC 数据</td></tr>
+
+<tr><td><strong>8. 永续增长率</strong></td><td class="c">3.5%</td><td style="font-size:12px">低于无风险利率 4.50%</td></tr>
+
+</table>
+
+
+<p><strong>1. 第 1 年收入增长率：35.0%。</strong>从历史增速 89.8% 减速至 35.0%，假设近期动能持续但基数效应开始显现。</p>
+
+<p><strong>2. 第 2-5 年收入增长率：18.0%。</strong>这是估值最核心的假设。18.0% 的年化增长假设公司能够在扩大体量的同时维持可观增速，但这需要市场总需求持续扩张和份额保持稳定。</p>
+
+<p><strong>3. 第 6-10 年收入增长率：8.0%。</strong>到第 6-10 年，增速减速至 8.0%，接近 Damodaran 行业基准 6.4%。这一阶段的增长更多依赖定价能力和市场扩张而非份额抢占。</p>
+
+<p><strong>4. 当前营业利润率：60.4%。</strong>当前 60.4% 的营业利润率反映了公司当前的竞争地位和成本结构。这是一切归一化分析的起点。</p>
+
+<p><strong>5. 目标营业利润率（第 10 年）：46.1%。</strong>10 年内假设利润率归一化至 46.1%，公司的护城河使其维持对行业基准（19.7%）的溢价，但规模和竞争压力逐步侵蚀峰值利润率。这不是对公司护城河的否定，而是对时间维度的诚实。</p>
+
+<p><strong>6. 销售资本比：1.24。</strong>销售资本比 1.24 意味着每增长 1 元收入需要约 0.81 元的再投资。这反映了业务模式的资本密集度。</p>
+
+<p><strong>7. WACC：10.5%。</strong>资本成本 10.5% 来自 Damodaran 行业数据集。这比从 CAPM 直接计算（Rf 4.50% + β 1.52 × ERP 4.46%）更为稳健，因为它反映了市场对该行业风险的综合定价。</p>
+
+<p><strong>8. 永续增长率：3.5%。</strong>永续增长率 3.5% 低于 4.50% 的无风险利率，满足 Damodaran 约束。在当前营收体量下，这一假设意味着公司在永续阶段仍将保持可观增长——这本身就是慷慨的。</p>
+
+
+<h2>六、估值</h2>
+<div class="chart"><canvas id="c1"></canvas></div>
+<p class="cap">10 年自由现金流预测 ($B)。来源：我的 DCF 模型。</p>
+
+<h3>估值桥接</h3>
+<table>
+<tr><th>组成部分</th><th class="r">金额 ($B)</th><th class="r">每股 ($)</th></tr>
+<tr><td>10 年 FCFF 现值</td><td class="r">1077</td><td class="r">44.20</td></tr>
+<tr><td>终值现值</td><td class="r">1484</td><td class="r">60.93</td></tr>
+<tr class="tt"><td>企业价值</td><td class="r">2561</td><td class="r">105.12</td></tr>
+<tr><td>(+) 现金</td><td class="r">11</td><td></td></tr>
+<tr><td>(−) 债务</td><td class="r">1</td><td></td></tr>
+<tr class="tt"><td>股权价值</td><td class="r">2560</td><td class="r"><strong>$105.09</strong></td></tr>
+</table>
+<p style="font-size:13px;color:var(--gray)">终值占企业价值的 <strong>58%</strong>。永续增长率 3.5%，WACC 10.5%。</p>
+
+<h2>七、不确定性分析</h2>
+<h3>情景分析</h3>
+<table>
+<tr><th>情景</th><th class="r">每股价值 ($)</th><th class="r">vs 基线 ($105.09)</th></tr>
+
+<tr><td>Base Case ★ 基线</td><td class="r">105.09</td><td class="r" style="color:#16a34a">+0.0%</td></tr>
+
+<tr><td>Bull: Sustained Premium</td><td class="r">162.22</td><td class="r" style="color:#dc2626">+54.4%</td></tr>
+
+<tr><td>Bear: Demand Deceleration</td><td class="r">70.92</td><td class="r" style="color:#16a34a">-32.5%</td></tr>
+
+<tr><td>Conservative: Margin Pressure</td><td class="r">72.67</td><td class="r" style="color:#16a34a">-30.9%</td></tr>
+
+<tr><td>Pessimistic: Capex Digestion</td><td class="r">50.35</td><td class="r" style="color:#16a34a">-52.1%</td></tr>
+
+</table>
+
+<h3>蒙特卡洛模拟 (10,000 次)</h3>
+<div class="chart"><canvas id="c2"></canvas></div>
+<table>
+<tr><th>指标</th><th class="r">数值</th></tr>
+<tr><td>中位数内在价值</td><td class="r"><strong>$109.17</strong></td></tr>
+<tr><td>第 10 百分位</td><td class="r">$93.64</td></tr>
+<tr><td>第 25 百分位</td><td class="r">$100.38</td></tr>
+<tr><td>第 75 百分位</td><td class="r">$119.10</td></tr>
+<tr><td>第 90 百分位</td><td class="r">$129.46</td></tr>
+<tr><td>标准差</td><td class="r">$14.00</td></tr>
+<tr><td>上行概率</td><td class="r"><strong>0.0%</strong></td></tr>
+</table>
+
+<h3>脆弱环节</h3>
+<div class='wl'><strong>1. 第 2-5 年收入增长 18.0%。</strong>这是估值最核心的假设——NVIDIA Corporation 必须从爆发式增长平滑过渡到成熟扩张期。
+    如果行业需求提前见顶，或竞争侵蚀份额，此假设需要下调。增长减速的形态（平滑还是急剧）对估值影响巨大。</div>
+    <div class='wl'><strong>2. 目标营业利润率 46.1%。</strong>争议不在于公司当前是否有护城河——显然有。
+    问题在于护城河能否在 10 年维度上抵御竞争侵蚀。NVIDIA Corporation 的利润率对行业基准（19.7%）的溢价反映了其独特优势，
+    但客户垂直整合、竞争对手技术追赶等因素可能在任一节点加速压缩。</div>
+    <div class='wl'><strong>3. 永续增长率 3.5%。</strong>从当前营收体量按此增速永续增长，
+    意味着公司将成为历史上体量最大的企业之一。如果该行业最终被证明是周期性而非长期增长性的，这一假设需要下调。</div>
+    <div class='wl'><strong>4. 资本成本 10.5%。</strong>我们使用 Damodaran 行业 WACC，但它假设行业的风险特征保持稳定。
+    如果行业出现结构性变化（监管、技术颠覆、需求波动加剧），折现率需要相应调整。这是一个稳固但不确切的锚点。</div>
+
+<h2>八、定价博弈</h2>
+<table>
+<tr><th>公司</th><th class="r">P/E</th><th class="r">EV/EBITDA</th><th class="r">毛利率</th><th class="r">营业利润率</th><th class="r">收入增长</th></tr>
+
+<tr><td><strong>AAPL</strong></td><td class="r">41.6x</td><td class="r">32.3x</td><td class="r">46.9%</td><td class="r">32.0%</td><td class="r">6.4%</td></tr>
+
+</table>
+<p class="cap">数据来源：Financial Modeling Prep /stable/ API</p>
+<p><p>NVIDIA Corporation 当前估值反映的不仅是当前优异的基本面，更是市场对其优异状态可持续性的判断。
+    与同行的对比显示，NVIDIA Corporation 在利润率和增长指标上显著高于行业中位数。
+    市场给予的估值溢价取决于这些优异状态的持续期——而持续期恰恰是最不确定的变量。</p></p>
+
+<h2>九、结论</h2>
+<p>我的 DCF 模型对 <strong>NVIDIA Corporation</strong> 的估值为 <strong>$105.09 每股</strong>。蒙特卡洛分析下的价格区间判定：</p>
+<div style="margin:20px 0;line-height:2.2">
+<div><span class="pb bu">低于 $100.38</span> — 低估（低于 25 百分位）</div>
+<div><span class="pb bf">$100.38 – $107.87</span> — 具有价值（25–40 百分位）</div>
+<div><span class="pb bf">$107.87 – $111.61</span> — 公允定价。当前股价 $203.53 落在这里。</div>
+<div><span class="pb br">$111.61 – $119.10</span> — 偏高（60–75 百分位）</div>
+<div><span class="pb bo">高于 $119.10</span> — 高估（75 百分位以上）</div>
+</div>
+<p><strong>在 $203.53 当前股价下，NVIDIA Corporation 处于<font color="#16a34a">高估</font>区间，</strong>约 0.0% 的模拟结果产生高于当前股价的内在价值。估值假设较为保守，如果市场定价更乐观的预期，当前的差距可能在基本面向好的情况下收窄。</p>
+<p><p><strong>需要密切关注的三件事：</strong>(1) 未来两个季度的营收增长数据——如果出现意外的减速，
+    将直接影响第 2-5 年增长假设；(2) 利润率趋势——如果利润率出现持续下滑，说明竞争归一化的速度可能快于模型假设；
+    (3) 行业竞争格局的重大变化——新的竞争对手、客户垂直整合、监管变化都可能改变估值逻辑。</p></p>
+<p style="font-size:14px;font-style:italic;margin-top:24px">这是我的估值，不是绝对真理。我已经展示了我的工作，也坦然接受犯错的可能。请做你自己的研究。时间会证明一切。</p>
+
+<div class="disc">
+<strong>免责声明</strong><br><br>
+本报告由 ValueForge AI 生成，仅供<strong>信息与教育目的</strong>。不构成投资建议。
+AI 生成分析可能存在错误或遗漏。投资决策需独立判断，请咨询持牌金融顾问。<br><br>
+<strong>数据来源：</strong>Financial Modeling Prep /stable/ API；Damodaran 行业数据集；SEC 申报文件（10-K、10-Q）
+<strong>方法论：</strong>Damodaran 10 年 DCF，含营业利润率归一化与销售资本比驱动的再投资逻辑。
+</div>
+<div class="ft">ValueForge AI | 2026 年 7 月 14 日 | Damodaran DCF 框架<br>NVDA NVIDIA Corporation 估值报告</div>
+
+<script>
+new Chart(document.getElementById('c1'),{type:'bar',data:{labels:["\u7b2c1\u5e74", "\u7b2c2\u5e74", "\u7b2c3\u5e74", "\u7b2c4\u5e74", "\u7b2c5\u5e74", "\u7b2c6\u5e74", "\u7b2c7\u5e74", "\u7b2c8\u5e74", "\u7b2c9\u5e74", "\u7b2c10\u5e74"],datasets:[{label:'FCFF ($B)',data:[84.7666907292955, 125.55701450503989, 143.252630060423, 163.25061994578078, 185.80650097590961, 232.0322316938618, 242.6291957040565, 253.43666767304163, 264.4205083045585, 275.5397687640105],backgroundColor:'#1a56db',borderRadius:3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#f0f0f0'}},x:{grid:{display:false}}}}});
+(function(){const m=109.1721367964015,s=14.00203207290514,p=203.53,n=100,r=4;const l=[],d=[];for(let i=0;i<=n;i++){const x=m-r*s+2*r*s*i/n;l.push(x.toFixed(1));d.push(Math.exp(-0.5*((x-m)/s)**2)/(s*Math.sqrt(2*Math.PI)))}const pi=l.findIndex(v=>parseFloat(v)>=p);const c=d.map((_,i)=>i===pi?'#dc2626':'#1a56db33');new Chart(document.getElementById('c2'),{type:'bar',data:{labels:l,datasets:[{data:d,backgroundColor:c,borderWidth:0,borderRadius:1}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{display:false},x:{ticks:{maxTicksLimit:15,font:{size:9}}}}}})})();
+</script></body></html>
