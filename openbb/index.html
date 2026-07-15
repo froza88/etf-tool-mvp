@@ -402,7 +402,7 @@ function pearson(x,y){
 
 // 启动
 document.querySelectorAll('#tabBar .tab-btn').forEach(function(b,i){
-  b.dataset.tab=['etf','us','backtest'][i];
+  b.dataset.tab=['etf','us','backtest','deep'][i];
   b.addEventListener('click',function(){switchTab(b.dataset.tab);});
 });
 loadAnalysis();
